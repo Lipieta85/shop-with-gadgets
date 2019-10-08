@@ -1,0 +1,37 @@
+.navbar {
+  padding: 0;
+  .collapse {
+    border-top: 2px solid #a0a3a6;
+    border-bottom: 2px solid #a0a3a6;
+    height: 60px;
+    .navbar-nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .nav-item {
+        margin: 0 43.7px;
+        .nav-link {
+          margin: 0 10px;
+          padding: 17px;
+          &:hover {
+            color: #fff;
+            background-color: #a0a3a6;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1199px) {
+  .navbar {
+    padding: 0;
+    .collapse {
+      .navbar-nav {
+        .nav-item {
+          margin: 0 46px;
+        }
+      }
+    }
+  }
+}

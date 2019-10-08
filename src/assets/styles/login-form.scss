@@ -1,0 +1,67 @@
+.content-header {
+  background: url(../images/bg_top_2.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 20px 0;
+  .login-panel {
+    background-color: #f7f7f7;
+    margin-left: 10px;
+    .form {
+      input {
+        border: 0;
+      }
+      .head-text {
+        color: black;
+        font-size: 20px !important;
+        line-height: 1.1;
+        margin: 3px 0;
+        padding: 0;
+        text-transform: uppercase;
+      }
+      p {
+        color: #98a3a8;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+      .recovery-password {
+        margin-top: 10px;
+      }
+      .btn {
+        margin-top: 5px;
+        border: 2px solid #004c97;
+        color: #004c97;
+        background: transparent;
+        border-radius: 0;
+        font-size: 14px !important;
+        padding: 4px;
+      }
+    }
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1199px) {
+  .content-header {
+    margin-bottom: 80px;
+    .login-panel {
+      width: 290px;
+      position: absolute;
+      margin-left: 0;
+      .form {
+        padding: 20px 10px !important;
+        .head-text {
+          font-size: 18px !important;
+        }
+        p {
+          font-size: 16px;
+        }
+        .recovery-password {
+          font-size: 14px;
+        }
+        .btn {
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
+}
