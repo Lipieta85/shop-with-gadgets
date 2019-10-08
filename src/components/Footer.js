@@ -45,7 +45,7 @@
 
 
 import React from 'react';
-import "../assets/styles/footer.css";
+import "../assets/styles/footer.scss";
 
 
 const Footer = () => {
