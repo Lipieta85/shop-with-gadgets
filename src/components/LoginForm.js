@@ -1,16 +1,17 @@
 import React from 'react';
 import "../assets/styles/login-form.scss"
 import imageGallery from '../assets/images/intro_1.jpg'
+import Carousel from './Carousel';
 
 const LoginForm = () => {
 	return (
 		<div className="content-header">
-			<div className="container">
+			<div className="container-fluid">
 				<div className="row">
-					<div className="col-sm-12 col-md-8 col-lg-8">
-						<img className="w-100" src={imageGallery} alt="imageGallery" />
+					<div className="col-sm-12 col-md-12 col-lg-8">
+						<Carousel />
 					</div>
-					<div className="col-sm-12 col-md-4 col-lg-4">
+					<div className="col-sm-12 col-md-12 col-lg-4">
 						<div className="login-panel">
 							<form className="px-4 py-3 form">
 								<h4 className="head-text">Masz dane dostępowe ?</h4>

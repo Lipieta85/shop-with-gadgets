@@ -1,6 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 
+import "../assets/styles/slider.scss"
+
 import image1 from "../assets/images/iphone.jpg"
 import image2 from "../assets/images/bike.jpg"
 import image3 from "../assets/images/tablet.jpg"
@@ -18,12 +20,30 @@ const MultipleItems = () => {
         autoplaySpeed: 2000,
         pauseOnHover: true,
         focusOnSelect: true,
-    }
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
 
     return (
-        <div className="container">
-
-            <Slider className="border border-dark" {...settings}>
+        <div className="container-fluid">
+            <h1 className="slider-header">DOŁĄCZ DO PROGRAMU, W KTÓRYM MASZ GWARANCJĘ ODBIORU NAGRODY!</h1>
+            <Slider className="slider border border-dark" {...settings}>
                 <div>
                     <a href="/" ><img className="slider-image mx-auto" src={image1} alt="slide-img" /></a>
                 </div>
