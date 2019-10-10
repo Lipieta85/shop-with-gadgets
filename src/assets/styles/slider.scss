@@ -1,4 +1,4 @@
-.container-fluid {
+.container {
   .slider-header {
     font-size: 26px !important;
     text-align: center;
@@ -12,8 +12,7 @@
 }
 
 @media (max-width: 767px) {
-  .container-fluid {
-    width: 90%;
+  .container {
     .slider-header {
       font-size: 20px !important;
     }

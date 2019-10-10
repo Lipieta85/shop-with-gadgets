@@ -41,7 +41,7 @@ const MultipleItems = () => {
 
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <h1 className="slider-header">DOŁĄCZ DO PROGRAMU, W KTÓRYM MASZ GWARANCJĘ ODBIORU NAGRODY!</h1>
             <Slider className="slider border border-dark" {...settings}>
                 <div>
