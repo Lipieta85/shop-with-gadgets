@@ -8,7 +8,7 @@ import icon3 from "../assets/images/icons/rules_ico_3.png";
 
 const Rules = () => {
     return (
-        <div className="container-fluid pt-5 pb-5">
+        <div className="container pt-5 pb-5">
             <h1 className="container-header mb-5">
                 CZYTELNE ZASADY!
             </h1>
