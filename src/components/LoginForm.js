@@ -42,8 +42,11 @@ const LoginForm = () => {
 		})
 	}
 
-	if (isLoggedIn) {
+	if (isLoggedIn && userName === "admin") {
 		return <Redirect to="/admin" />;
+	}
+	if (isLoggedIn && userName === "klient") {
+		return <Redirect to="/client" />;
 	}
 
 	return (
