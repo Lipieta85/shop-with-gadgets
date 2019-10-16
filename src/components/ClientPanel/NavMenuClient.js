@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import '../../assets/styles/nav-menu.scss';
+import logo from "../../assets/images/logo_benefit.png";
 import { Link } from 'react-router-dom';
-import '../assets/styles/nav-menu.scss';
-import logo from "../assets/images/logo_benefit.png"
+import { useSelector } from "react-redux";
+import { useAuth } from "../../authentication/Auth";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 const NavMenu = () => {
+    const totalQuantity = useSelector(state => state.totalQuantity);
+
+    const { setAuthTokens } = useAuth();
+
+    const logOut = () => {
+        setAuthTokens();
+    }
+
     return (
         <div className="nav-menu fixed-top w-100">
             <div className="container-fluid">
@@ -21,24 +33,23 @@ const NavMenu = () => {
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse text-right p-2" id="navbarNavDropdown">
-                                <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">Strona główna</a>
+                                <ul className="navbar-nav ml-auto d-flex align-items-center">
+                                    <li>
+                                        <Link to="/client">Wróć do Produktów</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Nagrody</a>
+                                        <a className="nav-link" href="#">Kategorie</a>
                                     </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">Zasady</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">Faq</a>
-                                    </li>
-                                    <li className="nav-item mr-0">
-                                        <a className="nav-link" href="#">Kontakt</a>
+                                    <li className="nav-item mr-2">
+                                        <a className="nav-link" href="#">Powiadomienia</a>
                                     </li>
                                 </ul>
                             </div>
+                            {/* <li className="nav-item">
+                                <a className="nav-link" href={"/Basket"}>Koszyk</a>
+                            </li> */}
+
+                            <Link to="/Basket" className="d-flex"><FontAwesomeIcon icon={faShoppingBasket} size="2x" color="#a0a3a6" /><span className="badge">{totalQuantity}</span></Link>
                         </nav>
                     </div>
                     <div className="col-lg-1"></div>
