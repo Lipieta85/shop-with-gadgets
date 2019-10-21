@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 //import rootReducer from "./reducers/rootReducer";
 import cartReducer from "./reducers/cartReducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware, combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 // import logger from "redux-logger";
 
@@ -32,13 +32,14 @@ import thunk from "redux-thunk";
 // const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middleware)));
 // let persistor = persistStore(store);
 
-const store = createStore(cartReducer, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(
+    cartReducer,
+    composeWithDevTools(applyMiddleware(thunk)),
+);
 
 ReactDOM.render(
     <Provider store={store}>
-
         <App />
-
     </Provider>,
-    document.getElementById("root")
+    document.getElementById("root"),
 );

@@ -3,35 +3,46 @@ import * as type from "../actions/types";
 export const changeText = text => {
     return {
         type: type.CHANGE_TEXT,
-        text
+        text,
     };
 };
 
 export const addItemToBasket = id => {
     return {
         type: type.ADD_TO_BASKET,
-        id
-    }
+        id,
+    };
 };
 
 export const addQuantity = id => {
     return {
         type: type.ADD_QUANTITY,
-        id
-    }
+        id,
+    };
 };
 
 export const subtractQuantity = id => {
     return {
         type: type.SUBTRACT_QUANTITY,
-        id
-    }
+        id,
+    };
 };
 
 export const removeCart = id => {
     return {
         type: type.REMOVE_CART,
-        id
-    }
+        id,
+    };
 };
 
+export const addDelivery = () => {
+    return {
+        type: type.ADD_DELIVERY,
+    };
+};
+
+export const addPayMethod = () => {
+    return {
+        type: type.ADD_PAY_METHOD,
+    };
+};
