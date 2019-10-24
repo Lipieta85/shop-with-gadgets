@@ -31,7 +31,7 @@ const Products = () => {
                                 </h5>
                                 <p className="card-text">{item.desc}</p>
                                 <p className="card-text">
-                                    <strong>Cena: {item.price}zł</strong>
+                                    <strong>Cena: {item.price},00 zł</strong>
                                 </p>
                                 <button
                                     className="btn btn-outline-primary"
