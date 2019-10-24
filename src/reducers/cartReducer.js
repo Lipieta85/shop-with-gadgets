@@ -1,58 +1,15 @@
-import Item1 from "../assets/images/MM-0002.png";
-import Item2 from "../assets/images/MM-0011.png";
-import Item3 from "../assets/images/MM-0020.png";
-import Item4 from "../assets/images/MM-0025.png";
-import Item5 from "../assets/images/MM-0028.png";
 import * as type from "../actions/types";
+import productsData from "../db.json";
 
-const initState = {
-    items: [
-        {
-            id: 1,
-            title: "Ubranie",
-            desc: "Ubranie zrobione z najwyższej jakości materiału ",
-            price: 110,
-            img: Item1,
-        },
-        {
-            id: 2,
-            title: "Notes",
-            desc:
-                "Ładny notes na notatki, z wieloma stronami do zapisu notatek",
-            price: 80,
-            img: Item2,
-        },
-        {
-            id: 3,
-            title: "Scyzoryk",
-            desc:
-                "Scyzoryk z wieloma funkcjami, sprawdzi się w różnych sytuacjach",
-            price: 120,
-            img: Item3,
-        },
-        {
-            id: 4,
-            title: "Długopis",
-            desc: "Ładny i dobrze piszący długopis, o długiej żywotności",
-            price: 260,
-            img: Item4,
-        },
-        {
-            id: 5,
-            title: "Parasol",
-            desc:
-                "Parasol o ładnej stylistyce, zrobiony z najwyższej jakości matreiałów",
-            price: 160,
-            img: Item5,
-        },
-    ],
+const initialState = {
+    items: productsData,
     addedItems: [],
     total: 0,
     totalQuantity: 0,
-    delivery: 0,
-    payMethod: 0,
+    budget: 1000,
+    checkedItems: new Map(),
 };
-const cartReducer = (state = initState, action) => {
+const cartReducer = (state = initialState, action) => {
     if (action.type === type.ADD_TO_BASKET) {
         let addedItem = state.items.find(item => item.id === action.id);
 
@@ -62,6 +19,7 @@ const cartReducer = (state = initState, action) => {
             return {
                 ...state,
                 total: state.total + addedItem.price,
+                budget: state.budget - addedItem.price,
                 totalQuantity: (state.totalQuantity += 1),
             };
         } else {
@@ -73,6 +31,7 @@ const cartReducer = (state = initState, action) => {
                 ...state,
                 addedItems: [...state.addedItems, addedItem],
                 total: newTotal,
+                budget: state.budget - addedItem.price,
                 totalQuantity: (state.totalQuantity += 1),
             };
         }
@@ -87,6 +46,7 @@ const cartReducer = (state = initState, action) => {
             ...state,
             addedItems: new_items,
             total: newTotal,
+            budget: state.budget + itemToRemove.price * itemToRemove.quantity,
             totalQuantity: state.totalQuantity - itemToRemove.quantity,
         };
     }
@@ -100,6 +60,7 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             total: newTotal,
+            budget: state.budget - addedItem.price,
             totalQuantity: (state.totalQuantity += 1),
         };
     }
@@ -115,6 +76,7 @@ const cartReducer = (state = initState, action) => {
                 ...state,
                 addedItems: new_items,
                 total: newTotal,
+                budget: state.budget + addedItem.price,
                 totalQuantity: (state.totalQuantity -= 1),
             };
         } else {
@@ -123,6 +85,7 @@ const cartReducer = (state = initState, action) => {
             return {
                 ...state,
                 total: newTotal,
+                budget: state.budget + addedItem.price,
                 totalQuantity: (state.totalQuantity -= 1),
             };
         }
@@ -137,6 +100,21 @@ const cartReducer = (state = initState, action) => {
         return {
             ...state,
             total: state.total + 29,
+        };
+    }
+    if (action.type === type.ADD_CHECK) {
+        return {
+            ...state,
+            checkedItems: state.checkedItems.set(action.item),
+        };
+    }
+    if (action.type === type.CLEAR_BASKET) {
+        return {
+            ...state,
+            addedItems: [],
+            totalQuantity: 0,
+            total: 0,
+            budget: 1000,
         };
     }
     return state;

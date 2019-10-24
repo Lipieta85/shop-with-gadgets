@@ -40,7 +40,7 @@ const NavMenu = () => {
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div
-                                className="collapse navbar-collapse text-right p-2"
+                                className="collapse navbar-collapse text-right p-2 order-last order-lg-first"
                                 id="navbarNavDropdown"
                             >
                                 <ul className="navbar-nav ml-auto d-flex align-items-center">
@@ -49,10 +49,42 @@ const NavMenu = () => {
                                             Wróć do Produktów
                                         </Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="navbarDropdown"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
                                             Kategorie
                                         </a>
+                                        <div
+                                            className="dropdown-menu border border-primary"
+                                            aria-labelledby="navbarDropdown"
+                                        >
+                                            <a
+                                                className="dropdown-item"
+                                                href="#"
+                                            >
+                                                Ubrania
+                                            </a>
+                                            <a
+                                                className="dropdown-item"
+                                                href="#"
+                                            >
+                                                Długopisy
+                                            </a>
+                                            <div className="dropdown-divider"></div>
+                                            <a
+                                                className="dropdown-item"
+                                                href="#"
+                                            >
+                                                Inne Gadżety
+                                            </a>
+                                        </div>
                                     </li>
                                     <li className="nav-item mr-2">
                                         <a className="nav-link" href="#">
@@ -61,7 +93,10 @@ const NavMenu = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <Link to="/Basket" className="d-flex">
+                            <Link
+                                to="/Basket"
+                                className="d-flex order-first order-lg-first"
+                            >
                                 <FontAwesomeIcon
                                     icon={faShoppingBasket}
                                     size="2x"

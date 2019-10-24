@@ -1,13 +1,12 @@
 import React from "react";
-import OrderOptions from "../components/Order/OrderOptions";
-import NavMenuClient from "../components/ClientPanel/NavMenuClient";
 import OrderSummary from "../components/Order/OrderSummary";
+import NavMenuClient from "../components/ClientPanel/NavMenuClient";
 
 const OrderContainer = () => {
     return (
         <>
             <NavMenuClient />
-            <OrderOptions />
+            <OrderSummary />
         </>
     );
 };
