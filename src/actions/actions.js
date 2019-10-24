@@ -35,14 +35,22 @@ export const removeCart = id => {
     };
 };
 
-export const addDelivery = () => {
+export const addChecked = item => {
     return {
-        type: type.ADD_DELIVERY,
+        type: type.ADD_CHECK,
+        item,
     };
 };
 
-export const addPayMethod = () => {
+export const getProduct = id => {
     return {
-        type: type.ADD_PAY_METHOD,
+        type: type.GET_PRODUCT,
+        id,
+    };
+};
+
+export const clearBasket = () => {
+    return {
+        type: type.CLEAR_BASKET,
     };
 };

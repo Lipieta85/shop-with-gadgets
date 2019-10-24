@@ -52,7 +52,7 @@ const AdminPanel = () => {
                             <div className="logged-panel-btn-group">
                                 <div className="btn-left">
                                     <a
-                                        href="/"
+                                        href="#"
                                         className="btn btn-outline-primary left-btn"
                                         role="button"
                                     >
@@ -77,13 +77,13 @@ const AdminPanel = () => {
                                         Wartość twoich zakupów
                                     </span>
                                     <br />
-                                    <span className="value">0,00</span>
+                                    <span className="value">0,00 zł</span>
                                     <br />
                                     <span className="purchase-header">
                                         Premia za wzrost zakupowy
                                     </span>
                                     <br />
-                                    <span className="value">0,00</span>
+                                    <span className="value">0,00 zł</span>
                                 </p>
                             </div>
                             <div className="divider"></div>
@@ -100,7 +100,7 @@ const AdminPanel = () => {
                                     <span>30</span> dystrybutorów
                                 </p>
                                 <a
-                                    href="/"
+                                    href="#"
                                     className="btn btn-outline-primary distributors-btn"
                                     role="button"
                                 >

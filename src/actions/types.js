@@ -5,3 +5,6 @@ export const SUBTRACT_QUANTITY = "SUBTRACT_QUANTITY";
 export const REMOVE_CART = "REMOVE_CART";
 export const ADD_DELIVERY = "ADD_DELIVERY";
 export const ADD_PAY_METHOD = "ADD_PAY_METHOD";
+export const ADD_CHECK = "ADD_CHECK";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const CLEAR_BASKET = "CLEAR_BASKET";

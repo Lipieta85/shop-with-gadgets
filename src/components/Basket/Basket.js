@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../../assets/styles/basket.scss";
 import { Link } from "react-router-dom";
@@ -9,16 +9,10 @@ import {
 } from "../../actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
-import BasketSummary from "./BasketSummary";
 
 const Basket = () => {
-    const [showBasketSummary, setShowBasketSummary] = useState(true);
     const items = useSelector(state => state.addedItems);
     const total = useSelector(state => state.total);
-
-    useEffect(() => {
-        total > 0 ? setShowBasketSummary(false) : setShowBasketSummary(true);
-    }, [total]);
 
     const dispatch = useDispatch();
 
@@ -42,7 +36,7 @@ const Basket = () => {
                             </h4>
                             <p>{item.desc}</p>
                             <p>
-                                <b>Cena: {item.price}zł</b>
+                                <b>Cena: {item.price},00 zł</b>
                             </p>
                             <div className="add-remove">
                                 <span className="mr-3 mb-3">
@@ -86,19 +80,7 @@ const Basket = () => {
     ) : (
         <p>Twój koszyk jest pusty</p>
     );
-    return (
-        <div className="container">
-            <div className="cart">
-                <h5 className="basket-header ml-4">
-                    Twoje produkty znajdujące się aktualnie w koszyku:
-                </h5>
-                <ul className="collection">
-                    {addedItems}
-                    <BasketSummary />
-                </ul>
-            </div>
-        </div>
-    );
+    return <>{addedItems}</>;
 };
 
 export default Basket;

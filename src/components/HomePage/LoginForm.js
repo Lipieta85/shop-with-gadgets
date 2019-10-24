@@ -34,12 +34,12 @@ const LoginForm = () => {
     function postLogin() {
         //const data = [userName, password]
         data.users.map(user => {
-            console.log(user);
             if (
                 user.userName === loginState.login &&
                 user.password === loginState.password
             ) {
                 setAuthTokens(loginState);
+                console.log(loginState);
                 setLoggedIn(true);
             } else {
                 setIsError(true);

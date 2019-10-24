@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../../assets/styles/products.scss";
 
 const Products = () => {
@@ -10,7 +11,10 @@ const Products = () => {
             <div className="container text-center">
                 <div className="row text-center">
                     {items.map(item => (
-                        <div class="card m-1 col-sm-6 col-lg-4 border border-primary">
+                        <div
+                            class="card m-1 col-sm-6 col-lg-4 border border-primary"
+                            key={item.id}
+                        >
                             <div className="card-img d-flex align-items-center pt-3 px-3">
                                 <div className="card-img-wrapper">
                                     <img
@@ -29,7 +33,11 @@ const Products = () => {
                                 <p className="card-text">
                                     <strong>Cena: {item.price}zł</strong>
                                 </p>
-                                <button className="btn btn-outline-primary">
+                                <button
+                                    className="btn btn-outline-primary"
+                                    // key={item.id}
+                                    // to={"admin/products/" + item.id}
+                                >
                                     Edytuj
                                 </button>
                             </div>
