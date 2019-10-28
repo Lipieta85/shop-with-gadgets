@@ -8,17 +8,18 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+//import { loadState } from "./reducers/localStorage";
 // import logger from "redux-logger";
 
 // import { PersistGate } from "redux-persist/integration/react";
 // import { persistStore, persistReducer } from "redux-persist";
 // import storage from "redux-persist/lib/storage";
-// import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+// import hardSet from "redux-persist/lib/stateReconciler/hardSet";
 
 // const persistConfig = {
 //     key: "root",
 //     storage,
-//     stateReconciler: autoMergeLevel2
+//     stateReconciler: hardSet,
 // };
 
 // let middleware = [];
@@ -29,11 +30,17 @@ import thunk from "redux-thunk";
 // }
 
 // const persistedReducer = persistReducer(persistConfig, cartReducer);
-// const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middleware)));
+// const store = createStore(
+//     persistedReducer,
+//     composeWithDevTools(applyMiddleware(...middleware)),
+// );
 // let persistor = persistStore(store);
+// <PersistGate loading={null} persistor={persistor}></PersistGate>
+//const persistedState = loadState();
 
 const store = createStore(
     cartReducer,
+    //persistedState,
     composeWithDevTools(applyMiddleware(thunk)),
 );
 

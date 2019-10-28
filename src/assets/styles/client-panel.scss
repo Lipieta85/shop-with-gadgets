@@ -2,7 +2,17 @@
     background: url(../images/bg_top_2.jpg) center no-repeat;
     background-size: cover;
     position: relative;
-    .admin-panel {
-        padding: 0;
+    margin: 0 auto;
+    .buttons-container {
+        margin: 0 auto;
+        .product-input {
+            width: inherit;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        flex: none;
     }
 }

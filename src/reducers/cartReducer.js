@@ -6,33 +6,36 @@ const initialState = {
     addedItems: [],
     total: 0,
     totalQuantity: 0,
-    budget: 1000,
+    budget: 10000,
     checkedItems: new Map(),
+    orderInputState: "",
+    orderSelectInputValue: "Wrocław ul. Sadowa",
 };
 const cartReducer = (state = initialState, action) => {
     if (action.type === type.ADD_TO_BASKET) {
         let addedItem = state.items.find(item => item.id === action.id);
 
         let existed_item = state.addedItems.find(item => action.id === item.id);
+
+        let addedValue = Object.values(action.productQuantity);
+        let addedValueNum = Number(addedValue[0]);
         if (existed_item) {
-            addedItem.quantity += 1;
             return {
                 ...state,
-                total: state.total + addedItem.price,
-                budget: state.budget - addedItem.price,
-                totalQuantity: (state.totalQuantity += 1),
+                addedItem: (addedItem.quantity += addedValueNum),
+                total: state.total + addedItem.price * addedValueNum,
+                budget: state.budget - addedItem.price * addedValueNum,
+                totalQuantity: (state.totalQuantity += addedValueNum),
             };
         } else {
-            addedItem.quantity = 1;
-
-            let newTotal = state.total + addedItem.price;
-
+            let newTotal = state.total + addedItem.price * addedValueNum;
             return {
                 ...state,
+                addedItem: (addedItem.quantity = addedValueNum),
                 addedItems: [...state.addedItems, addedItem],
                 total: newTotal,
-                budget: state.budget - addedItem.price,
-                totalQuantity: (state.totalQuantity += 1),
+                budget: state.budget - addedItem.price * addedValueNum,
+                totalQuantity: (state.totalQuantity += addedValueNum),
             };
         }
     }
@@ -53,12 +56,12 @@ const cartReducer = (state = initialState, action) => {
 
     if (action.type === type.ADD_QUANTITY) {
         let addedItem = state.items.find(item => item.id === action.id);
-
-        addedItem.quantity += 1;
+        console.log(addedItem.quantity);
         //state.totalQuantity += 1
         let newTotal = state.total + addedItem.price;
         return {
             ...state,
+            addedItem: (addedItem.quantity += 1),
             total: newTotal,
             budget: state.budget - addedItem.price,
             totalQuantity: (state.totalQuantity += 1),
@@ -80,41 +83,60 @@ const cartReducer = (state = initialState, action) => {
                 totalQuantity: (state.totalQuantity -= 1),
             };
         } else {
-            addedItem.quantity -= 1;
             let newTotal = state.total - addedItem.price;
             return {
                 ...state,
+                addedItem: (addedItem.quantity -= 1),
                 total: newTotal,
                 budget: state.budget + addedItem.price,
                 totalQuantity: (state.totalQuantity -= 1),
             };
         }
     }
-    if (action.type === type.ADD_DELIVERY) {
-        return {
-            ...state,
-            total: state.total + 20,
-        };
-    }
-    if (action.type === type.ADD_PAY_METHOD) {
-        return {
-            ...state,
-            total: state.total + 29,
-        };
-    }
-    if (action.type === type.ADD_CHECK) {
-        return {
-            ...state,
-            checkedItems: state.checkedItems.set(action.item),
-        };
-    }
+    // if (action.type === type.ADD_CHECK) {
+    //     state.checkedItems.clear();
+    //     return {
+    //         ...state,
+    //         checkedItems: state.checkedItems.set(action.item, action.isChecked),
+    //     };
+    // }
     if (action.type === type.CLEAR_BASKET) {
         return {
             ...state,
             addedItems: [],
             totalQuantity: 0,
             total: 0,
-            budget: 1000,
+            budget: 10000,
+        };
+    }
+    if (action.type === type.ORDER_INPUT_STATE) {
+        return {
+            ...state,
+            orderInputState: (state.orderInputState = action.value),
+        };
+    }
+    if (action.type === type.ORDER_SELECT_INPUT_VALUE) {
+        return {
+            ...state,
+            orderSelectInputValue: (state.orderSelectInputValue = action.value),
+        };
+    }
+    if (action.type === type.CHANGE_BASKET_AMOUNTS) {
+        let addedItem = state.items.find(item => item.id === action.productId);
+
+        let oldAddedItemQuantity = Number(addedItem.quantity);
+        let addedValue = Object.values(action.newProductAmount);
+        let addedValueNum = Number(addedValue[0]);
+
+        let oldItemTotal = addedItem.price * oldAddedItemQuantity;
+        let newItemTotal = addedItem.price * addedValueNum;
+        return {
+            ...state,
+            addedItem: (addedItem.quantity = addedValueNum),
+            total: (state.total -= oldItemTotal) + newItemTotal,
+            budget: (state.budget += oldItemTotal) - newItemTotal,
+            totalQuantity:
+                (state.totalQuantity -= oldAddedItemQuantity) + addedValueNum,
         };
     }
     return state;

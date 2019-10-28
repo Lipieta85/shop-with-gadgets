@@ -22,7 +22,6 @@ const NavMenu = () => {
                     </div>
                     <div className="col-6 col-sm-6 col-md-7 col-lg-7">
                         <nav className="navbar navbar-expand-lg navbar-light">
-                            <a className="navbar-brand" href="#"></a>
                             <button
                                 className="navbar-toggler mt-2"
                                 type="button"
@@ -42,28 +41,45 @@ const NavMenu = () => {
                                     <li className="nav-item">
                                         <a
                                             className="nav-link text-uppercase"
-                                            href="#"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
                                         >
                                             Strona główna
                                         </a>
                                     </li>
                                     <li className="nav-item text-uppercase">
-                                        <a className="nav-link" href="#">
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Nagrody
                                         </a>
                                     </li>
                                     <li className="nav-item text-uppercase">
-                                        <a className="nav-link" href="#">
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Zasady
                                         </a>
                                     </li>
                                     <li className="nav-item text-uppercase">
-                                        <a className="nav-link" href="#">
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Faq
                                         </a>
                                     </li>
                                     <li className="nav-item mr-0 text-uppercase">
-                                        <a className="nav-link" href="#">
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Kontakt
                                         </a>
                                     </li>

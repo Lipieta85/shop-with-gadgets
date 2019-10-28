@@ -7,15 +7,13 @@ const BasketSummary = () => {
     return (
         <div className="row">
             <div className="col-sm-12 offset-md-4 col-md-8 p-0">
-                <li className="nav-item list-unstyled basket-summary">
-                    <div className="border list-unstyled p-3">
-                        <div className="basket-summary content  p-0 m-0">
-                            <li className="basket-summary-order text-uppercase">
-                                <b>Razem: {total},00 zł</b>
-                            </li>
-                        </div>
+                <div className="border list-unstyled p-3">
+                    <div className="basket-summary content  p-0 m-0">
+                        <li className="basket-summary-order text-uppercase">
+                            <b>Razem: {total},00 zł</b>
+                        </li>
                     </div>
-                </li>
+                </div>
             </div>
         </div>
     );

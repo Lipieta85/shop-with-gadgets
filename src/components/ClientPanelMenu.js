@@ -23,15 +23,16 @@ const ClientPanelMenu = () => {
     }, [budget]);
 
     return (
-        <div className="client-panel">
+        <div className="client-panel border border-primary mt-3">
             <div className="admin-panel__logged-panel">
                 <h4 className="logged-panel-header">Witaj</h4>
                 <div className="logged-panel-btn-group">
                     <div className="btn-left">
                         <a
-                            href="#"
+                            href="/"
                             className="btn btn-outline-primary left-btn"
                             role="button"
+                            onClick={e => e.preventDefault()}
                         >
                             Edycja konta >
                         </a>

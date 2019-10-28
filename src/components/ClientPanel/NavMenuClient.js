@@ -27,7 +27,6 @@ const NavMenu = () => {
                     </div>
                     <div className="col-6 col-sm-6 col-md-7 col-lg-7">
                         <nav className="navbar navbar-expand-lg navbar-light">
-                            <a className="navbar-brand" href="#"></a>
                             <button
                                 className="navbar-toggler mt-2"
                                 type="button"
@@ -52,12 +51,13 @@ const NavMenu = () => {
                                     <li className="nav-item dropdown">
                                         <a
                                             className="nav-link dropdown-toggle"
-                                            href="#"
+                                            href="/"
                                             id="navbarDropdown"
                                             role="button"
                                             data-toggle="dropdown"
                                             aria-haspopup="true"
                                             aria-expanded="false"
+                                            onClick={e => e.preventDefault()}
                                         >
                                             Kategorie
                                         </a>
@@ -67,27 +67,40 @@ const NavMenu = () => {
                                         >
                                             <a
                                                 className="dropdown-item"
-                                                href="#"
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
                                             >
                                                 Ubrania
                                             </a>
                                             <a
                                                 className="dropdown-item"
-                                                href="#"
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
                                             >
                                                 Długopisy
                                             </a>
                                             <div className="dropdown-divider"></div>
                                             <a
                                                 className="dropdown-item"
-                                                href="#"
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
                                             >
                                                 Inne Gadżety
                                             </a>
                                         </div>
                                     </li>
                                     <li className="nav-item mr-2">
-                                        <a className="nav-link" href="#">
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Powiadomienia
                                         </a>
                                     </li>

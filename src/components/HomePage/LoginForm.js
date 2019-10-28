@@ -20,7 +20,7 @@ const LoginForm = () => {
         ],
     });
     const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
+    //const [isError, setIsError] = useState(false);
     const [loginState, setLoginState] = useState({
         login: "",
         password: "",
@@ -39,8 +39,6 @@ const LoginForm = () => {
             ) {
                 setAuthTokens(loginState);
                 setLoggedIn(true);
-            } else {
-                setIsError(true);
             }
             return null;
         });

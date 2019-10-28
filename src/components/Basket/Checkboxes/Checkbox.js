@@ -1,9 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Checkbox = ({ type = "checkbox", name, checked, onChange, disabled }) => (
+const Checkbox = ({
+    type,
+    className,
+    id,
+    name,
+    checked,
+    onChange,
+    disabled,
+}) => (
     <input
+        id={id}
         type={type}
+        className={className}
         name={name}
         disabled={disabled}
         checked={checked}

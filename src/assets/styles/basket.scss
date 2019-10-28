@@ -1,7 +1,23 @@
 .cart {
-  margin-top: 100px;
-  .desc-col {
-    background-color: #f7f7f7;
-    padding: 10px;
-  }
+    margin-top: 100px;
+    .desc-col {
+        background-color: #f7f7f7;
+        padding: 10px;
+    }
+    .basket-quantity-input {
+        width: 80px;
+        padding: 4px;
+        background-color: #f7f7f7;
+        &:hover {
+            color: black;
+        }
+    }
+    .basket-button {
+        font-size: 13px;
+    }
+    .product-quantity {
+        margin: 0;
+        padding: 5px;
+        color: #004c97;
+    }
 }

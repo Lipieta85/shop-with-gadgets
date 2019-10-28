@@ -52,9 +52,10 @@ const AdminPanel = () => {
                             <div className="logged-panel-btn-group">
                                 <div className="btn-left">
                                     <a
-                                        href="#"
+                                        href="/"
                                         className="btn btn-outline-primary left-btn"
                                         role="button"
+                                        onClick={e => e.preventDefault()}
                                     >
                                         Edycja konta >
                                     </a>
@@ -100,9 +101,10 @@ const AdminPanel = () => {
                                     <span>30</span> dystrybutorów
                                 </p>
                                 <a
-                                    href="#"
+                                    href="/"
                                     className="btn btn-outline-primary distributors-btn"
                                     role="button"
+                                    onClick={e => e.preventDefault()}
                                 >
                                     Status importu >
                                 </a>

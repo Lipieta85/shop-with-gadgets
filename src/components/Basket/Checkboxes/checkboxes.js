@@ -1,13 +1,15 @@
 const checkboxes = [
     {
-        name: "Budżet marketingowy(S5)",
+        //id: "customCheck1",
+        name: "Budżet marketingowy",
         key: "checkBox1",
-        label: "Check Box 1",
+        label: "check-box1",
     },
     {
-        name: "Płatne(S6)",
+        //id: "customCheck2",
+        name: "Płatne",
         key: "checkBox2",
-        label: "Check Box 2",
+        label: "check-box2",
     },
 ];
 

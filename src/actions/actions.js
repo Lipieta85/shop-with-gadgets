@@ -7,10 +7,11 @@ export const changeText = text => {
     };
 };
 
-export const addItemToBasket = id => {
+export const addItemToBasket = (id, productQuantity) => {
     return {
         type: type.ADD_TO_BASKET,
         id,
+        productQuantity,
     };
 };
 
@@ -35,10 +36,11 @@ export const removeCart = id => {
     };
 };
 
-export const addChecked = item => {
+export const addChecked = (item, isChecked) => {
     return {
         type: type.ADD_CHECK,
         item,
+        isChecked,
     };
 };
 
@@ -52,5 +54,27 @@ export const getProduct = id => {
 export const clearBasket = () => {
     return {
         type: type.CLEAR_BASKET,
+    };
+};
+
+export const orderInputState = value => {
+    return {
+        type: type.ORDER_INPUT_STATE,
+        value,
+    };
+};
+
+export const orderSelectInputValue = value => {
+    return {
+        type: type.ORDER_SELECT_INPUT_VALUE,
+        value,
+    };
+};
+
+export const changeBasketAmounts = (productId, newProductAmount) => {
+    return {
+        type: type.CHANGE_BASKET_AMOUNTS,
+        productId,
+        newProductAmount,
     };
 };

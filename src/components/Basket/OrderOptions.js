@@ -3,15 +3,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import checkboxes from "./Checkboxes/checkboxes";
 import Checkbox from "./Checkboxes/Checkbox";
-import { addChecked } from "../../actions/actions";
+import {
+    addChecked,
+    orderInputState,
+    orderSelectInputValue,
+} from "../../actions/actions";
 
 import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
     const budget = useSelector(state => state.budget);
     const updatedCheck = useSelector(state => state.checkedItems);
+    const inputStoreState = useSelector(state => state.orderInputState);
+    const selectStoreState = useSelector(state => state.orderSelectInputValue);
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+    const [selectInputValue, setSelectInputValue] = useState(
+        "Wrocław ul. Sadowa",
+    );
 
     const dispatch = useDispatch();
 
@@ -23,55 +33,86 @@ const OrderOptions = () => {
         }
     }, [budget]);
 
+    useEffect(() => {
+        setInputValue(inputStoreState);
+    }, [inputStoreState]);
+
+    useEffect(() => {
+        setSelectInputValue(selectStoreState);
+    }, [selectStoreState]);
+
     const onHandleChange = e => {
         const item = e.target.name;
         const isChecked = e.target.checked;
         setCheckedItems(prevState => {
+            prevState.clear();
             return prevState.set(item, isChecked);
         });
-        dispatch(addChecked(checkedItems));
-        console.log(checkedItems);
+        dispatch(addChecked(item, isChecked));
+        console.log(updatedCheck);
+    };
+
+    const inputHandler = event => {
+        setInputValue(event.target.value);
+    };
+
+    const selectValueHandler = event => {
+        setSelectInputValue(event.target.value);
     };
 
     return (
-        <div className="order-options">
+        <div className="order-options border border-primary">
             <h4 className="options-header">Wybierz adres dostawy</h4>
             <div className="input-group mb-3">
-                <select className="custom-select" id="inputGroupSelect02">
-                    <option selected>Wrocław ul. Sadowa</option>
-                    <option value="1">Wrocław</option>
-                    <option value="2">Wieluń</option>
-                    <option value="3">Gdańsk</option>
+                <select
+                    className="custom-select"
+                    id="inputGroupSelect02"
+                    onChange={selectValueHandler}
+                    value={selectInputValue}
+                >
+                    <option defaultValue>Wrocław ul. Sadowa</option>
+                    <option value="Wrocław ul. Wrocławska">
+                        Wrocław ul. Wrocławska
+                    </option>
+                    <option value="Wieluń ul. Sadowa">Wieluń ul. Sadowa</option>
+                    <option value="Gdańsk ul. Gdańska">
+                        Gdańsk ul. Gdańska
+                    </option>
                 </select>
             </div>
             <hr />
             <h4 className="options-header">Wpisz numer zamówienia Klienta</h4>
-            <input type="text" />
+            <input type="text" value={inputValue} onChange={inputHandler} />
             <hr />
-            <div className="order-type">
+            <div className="order-type invisible" style={{ height: "0" }}>
                 <h4 className="options-header">Wybierz typ zamówienia:</h4>
                 <div>
                     {checkboxes.map(item => (
                         <li
-                            className="options-list list-unstyled"
+                            className="options-list list-unstyled "
                             key={item.key}
                         >
                             <label className="options-delivery p-1">
                                 <div
-                                    className="list-input"
+                                    className="list-input "
                                     style={
                                         disabledCheckbox
                                             ? { color: "red" }
                                             : { color: "black" }
                                     }
                                 >
-                                    {item.name}
                                     <Checkbox
+                                        id={item.id}
                                         name={item.name}
-                                        checked={updatedCheck.get(item.name)}
+                                        checked={checkedItems.get(item.name)}
                                         onChange={onHandleChange}
                                         disabled={disabledCheckbox}
+                                        type="checkbox"
                                     />
+
+                                    <span className="ml-2 mb-2">
+                                        {item.name}
+                                    </span>
                                 </div>
                             </label>
                         </li>
@@ -85,6 +126,10 @@ const OrderOptions = () => {
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
                     className="btn btn-outline-primary mt-1"
+                    onClick={() =>
+                        dispatch(orderInputState(inputValue)) &&
+                        dispatch(orderSelectInputValue(selectInputValue))
+                    }
                 >
                     Złóż zamówienie
                 </Link>
