@@ -32,13 +32,34 @@ const Footer = () => {
                                 <div className="col-sm-12 col-md-4 col-lg-4">
                                     <ul>
                                         <li>
-                                            <a href="#">link1</a>
+                                            <a
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
+                                            >
+                                                link1
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="#">link2</a>
+                                            <a
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
+                                            >
+                                                link2
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="#">link3</a>
+                                            <a
+                                                href="/"
+                                                onClick={e =>
+                                                    e.preventDefault()
+                                                }
+                                            >
+                                                link3
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

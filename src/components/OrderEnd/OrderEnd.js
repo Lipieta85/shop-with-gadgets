@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearBasket } from "../../actions/actions";
 
 const OrderEnd = () => {
-    const basketState = useSelector(state => state.addedItems);
     const dispatch = useDispatch();
 
     return (
-        <div className="text-center mt-5">
+        <div className="text-center mt-5" style={{ paddingTop: "180px" }}>
             <h3>
                 Twoje zamówienie zostało przekazane do realizacji, czekaj na
                 potwierdzenie

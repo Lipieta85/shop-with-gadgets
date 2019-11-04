@@ -1,13 +1,37 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-summary.scss";
 
 const OrderSummary = () => {
     const items = useSelector(state => state.addedItems);
     const total = useSelector(state => state.total);
+    const orderSelectInputValue = useSelector(
+        state => state.orderSelectInputValue,
+    );
+    const orderInputState = useSelector(state => state.orderInputState);
+    //const checkboxStatus = useSelector(state => state.checkedItems);
+    const [checkBoxText] = useState("Budżet maretingowy");
 
-    const dispatch = useDispatch();
+    // useEffect(() => {
+    //     checkboxStatus.forEach((value, key) => {
+    //         console.log(value, key);
+    //         if (key === "Budżet marketingowy" && value === true) {
+    //             return setCheckBoxText("Budżet marketingowy");
+    //         }
+    //         if (key === "Budżet marketingowy" && value === false) {
+    //             return setCheckBoxText("");
+    //         }
+    //         if (key === "Płatne" && value === true) {
+    //             return setCheckBoxText("Płatne");
+    //         }
+    //         if (key === "Płatne" && value === false) {
+    //             return setCheckBoxText("");
+    //         } else {
+    //             return setCheckBoxText("");
+    //         }
+    //     });
+    // }, []);
 
     let addedItems = items.length ? (
         items.map(item => {
@@ -66,22 +90,28 @@ const OrderSummary = () => {
                 <span className="summary-text-value">{total},00 zł</span>
             </p>
             <p className="order-summary-text font-weight-bold">
-                3. Adres dostawy:
+                3. Adres dostawy:{" "}
+                <span className="summary-text-value">
+                    {orderSelectInputValue}
+                </span>
             </p>
             <p className="order-summary-text font-weight-bold">
-                4. Numer zamówienia Klienta:
+                4. Numer zamówienia Klienta:{" "}
+                <span className="summary-text-value">{orderInputState}</span>
             </p>
             <p className="order-summary-text font-weight-bold">
-                5. Typ zamówienia:
+                5. Typ zamówienia:{" "}
+                <span className="summary-text-value">{checkBoxText}</span>
             </p>
             <hr />
-            <Link to="/OrderEnd" className="btn btn-outline-primary mt-4">
-                Zatwierdź zamówienie
-            </Link>
-            <br />
-            <Link to="/Basket" className="btn btn-outline-primary mt-4">
-                Wróć do koszyka
-            </Link>
+            <div className="d-flex justify-content-between">
+                <Link to="/Basket" className="btn btn-outline-primary mt-4">
+                    Wróć do koszyka
+                </Link>
+                <Link to="/OrderEnd" className="btn btn-outline-primary mt-4">
+                    Zatwierdź zamówienie
+                </Link>
+            </div>
         </div>
     );
 };
