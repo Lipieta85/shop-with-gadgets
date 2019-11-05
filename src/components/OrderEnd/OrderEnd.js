@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clearBasket } from "../../actions/actions";
+import { clearBasket } from "../../actions/index";
 
 const OrderEnd = () => {
     const dispatch = useDispatch();

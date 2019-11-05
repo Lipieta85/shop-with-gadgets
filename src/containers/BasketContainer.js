@@ -12,12 +12,15 @@ const BasketContainer = () => {
             <div className="container-fluid">
                 <NavMenuClient />
                 <div className="row">
+                    <div className="col-md-12">
+                        <h5 className="basket-header ml-4">
+                            Twoje produkty znajdujące się aktualnie w koszyku:
+                        </h5>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="cart-content order-last col-sm-12 order-sm-last col-md-12 order-md-last col-lg-9 order-lg-first">
                         <div className="cart">
-                            <h5 className="basket-header ml-4">
-                                Twoje produkty znajdujące się aktualnie w
-                                koszyku:
-                            </h5>
                             <ul className="collection">
                                 <Basket />
                                 <BasketSummary />

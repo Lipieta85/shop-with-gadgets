@@ -10,7 +10,7 @@ const BasketSummary = () => {
                 <div className="border list-unstyled p-3">
                     <div className="basket-summary content  p-0 m-0">
                         <li className="basket-summary-order text-uppercase">
-                            <b>Razem: {total},00 zł</b>
+                            <b>Kwota do zapłaty: {total} zł</b>
                         </li>
                     </div>
                 </div>

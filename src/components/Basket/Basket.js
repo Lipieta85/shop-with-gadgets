@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 
-const Basket = () => {
+const Basket = props => {
     const items = useSelector(state => state.addedItems);
 
     let addedItems = items.length ? (
         items.map(item => {
+            console.log(item);
             return (
                 <li
                     className="row nav-item collection-item border d-flex"
@@ -26,6 +27,7 @@ const Basket = () => {
                             itemTitle={item.title}
                             itemPrice={item.price}
                             itemQuantity={item.quantity}
+                            itemTotalPrice={item.itemTotalPrice}
                         />
                     </div>
                 </li>

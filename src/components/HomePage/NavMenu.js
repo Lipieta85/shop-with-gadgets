@@ -9,7 +9,7 @@ const NavMenu = () => {
             <div className="container-fluid border-bottom border-primary">
                 <div className="row">
                     <div className="col-lg-1"></div>
-                    <div className="col-6 col-sm-6 col-md-5 col-lg-3">
+                    <div className="col-sm-6 col-md-5 col-lg-3">
                         <div className="logo-div p-3">
                             <Link to="/">
                                 <img
@@ -20,8 +20,8 @@ const NavMenu = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="col-6 col-sm-6 col-md-7 col-lg-7">
-                        <nav className="navbar navbar-expand-lg navbar-light">
+                    <div className="col-sm-6 col-md-7 col-lg-7 d-flex">
+                        <nav className="navbar navbar-expand-lg navbar-light w-100">
                             <button
                                 className="navbar-toggler mt-2"
                                 type="button"
@@ -34,10 +34,10 @@ const NavMenu = () => {
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div
-                                className="collapse navbar-collapse text-right p-2"
+                                className="collapse navbar-collapse p-2 w-100"
                                 id="navbarNavDropdown"
                             >
-                                <ul className="navbar-nav ml-auto">
+                                <ul className="navbar-nav text-right w-100 d-flex justify-content-around">
                                     <li className="nav-item">
                                         <a
                                             className="nav-link text-uppercase"

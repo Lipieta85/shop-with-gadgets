@@ -3,11 +3,24 @@
     .container-fluid {
         background-color: #f7f7f7;
         .navbar-collapse {
-            margin-left: 10px;
             .nav-item {
+                &:after {
+                    content: "";
+                    display: block;
+                    margin: auto;
+                    height: 2px;
+                    width: 0px;
+                    background: transparent;
+                    transition: width 0.2s ease, background-color 0.2s ease;
+                }
+                &:hover:after {
+                    width: 95%;
+                    background: #004c97;
+                }
                 .nav-link {
-                    width: 160px;
                     text-align: center;
+                    font-weight: bold;
+                    text-transform: uppercase;
                 }
             }
         }
