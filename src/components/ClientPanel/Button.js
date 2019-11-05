@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItemToBasket } from "../../actions/actions";
+import { addItemToBasket } from "../../actions/index";
 
 const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });

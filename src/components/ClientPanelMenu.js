@@ -23,7 +23,7 @@ const ClientPanelMenu = () => {
     }, [budget]);
 
     return (
-        <div className="client-panel border border-primary mt-3">
+        <div className="client-panel border border-primary">
             <div className="admin-panel__logged-panel">
                 <h4 className="logged-panel-header">Witaj</h4>
                 <div className="logged-panel-btn-group">
@@ -54,14 +54,14 @@ const ClientPanelMenu = () => {
                             Dostępny budżet marketingowy
                         </span>
                         <br />
-                        <span className="value">{budget},00 zł</span>
+                        <span className="value">{budget} zł</span>
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
                         <span className="purchase-header">
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className="value">{priceValue},00 zł</span>
+                        <span className="value">{priceValue} zł</span>
                     </p>
                 </div>
                 <div className="divider"></div>

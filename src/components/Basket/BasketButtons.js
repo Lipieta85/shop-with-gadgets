@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { removeCart, changeBasketAmounts } from "../../actions/actions";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
+import { removeCart, changeBasketAmounts } from "../../actions/index";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
@@ -28,14 +26,6 @@ const BasketButtons = props => {
         return dispatch(changeBasketAmounts(props.itemId, productAmount));
     };
 
-    // const addQuantityButton = event => {
-    //     return input.current.value++, dispatch(addQuantity(props.itemId));
-    // };
-
-    // const subtractQuantityButton = () => {
-    //     return input.current.value--, dispatch(subtractQuantity(props.itemId));
-    // };
-
     const removeCartButton = () => {
         return dispatch(removeCart(props.itemId));
     };
@@ -45,7 +35,7 @@ const BasketButtons = props => {
             <h4 className="title text-uppercase">{props.itemTitle}</h4>
             <p>{props.itemDesc}</p>
             <p>
-                <b>Cena: {props.itemPrice},00 zł</b>
+                <b>Cena: {props.itemPrice} zł</b>
             </p>
             <div className="add-remove d-flex align-items-center">
                 <span className="mr-3">
@@ -58,6 +48,7 @@ const BasketButtons = props => {
                             ref={input}
                             className="basket-quantity-input btn-outline-primary"
                             onChange={changeAmountHandler}
+                            min="1"
                         />
                     </b>
                 </span>
@@ -68,23 +59,11 @@ const BasketButtons = props => {
                 >
                     Aktualizuj
                 </span>
-
-                {/* <span>
-                    <span
-                        className="product-quantity"
-                        onClick={addQuantityButton}
-                        id={props.itemId}
-                    >
-                        <FontAwesomeIcon icon={faPlusSquare} />
-                    </span>
-                    <span
-                        className="product-quantity"
-                        onClick={subtractQuantityButton}
-                        id={props.itemId}
-                    >
-                        <FontAwesomeIcon icon={faMinusSquare} />
-                    </span>
-                </span> */}
+            </div>
+            <div>
+                <p className="basket-single-item-total font-bold mt-3 font-weight-bold">
+                    Razem: {props.itemTotalPrice} zł
+                </p>
             </div>
             <div className="text-right">
                 <button

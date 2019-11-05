@@ -50,7 +50,7 @@ const OrderSummary = () => {
                         </div>
                     </div>
 
-                    <div className="col-md-8 border-left desc-col">
+                    <div className="col-md-8 border-left desc-col d-flex align-items-center">
                         <div className="item-desc">
                             <h4 className="title text-uppercase">
                                 {item.title}
@@ -59,13 +59,24 @@ const OrderSummary = () => {
                                 <b>
                                     Cena:{" "}
                                     <span className="order-text-value">
-                                        {item.price},00 zł
+                                        {item.price} zł
                                     </span>
                                 </b>
                             </p>
                             <div className="add-remove">
+                                <span className="mr-3 mb-4">
+                                    <b>Ilość: </b>
+                                    <b className="order-text-value">
+                                        {item.quantity}
+                                    </b>
+                                </span>
+                            </div>
+                            <div className="add-remove">
                                 <span className="mr-3 mb-3">
-                                    <b>Ilość: {item.quantity}</b>
+                                    <b>Razem: </b>
+                                    <b className="order-text-value">
+                                        {item.itemTotalPrice} zł
+                                    </b>
                                 </span>
                             </div>
                         </div>
@@ -87,7 +98,7 @@ const OrderSummary = () => {
             {addedItems}
             <p className="order-summary-text font-weight-bold mt-2">
                 2. Kwota do zapłaty:{" "}
-                <span className="summary-text-value">{total},00 zł</span>
+                <span className="summary-text-value">{total} zł</span>
             </p>
             <p className="order-summary-text font-weight-bold">
                 3. Adres dostawy:{" "}

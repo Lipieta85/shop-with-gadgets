@@ -7,6 +7,7 @@ import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
 import ClientPanelContainer from "./containers/ClientPanelContainer";
 import OrderEndContainer from "./containers/OrderEndContainer";
+import ProductDetails from "./components/ClientPanel/ProductDetails/ProductDetails";
 import PrivateRoute from "./authentication/PrivateRoute";
 import { AuthContext } from "./authentication/Auth";
 
@@ -31,16 +32,17 @@ function App() {
                         path="/admin"
                         component={AdminPanelContainer}
                     />
-                    <PrivateRoute
-                        path="/client"
-                        component={ClientPanelContainer}
-                    />
                     <PrivateRoute path="/Basket" component={BasketContainer} />
                     <PrivateRoute path="/Order" component={OrderContainer} />
                     <PrivateRoute
                         path="/OrderEnd"
                         component={OrderEndContainer}
                     />
+                    <PrivateRoute
+                        path="/client"
+                        component={ClientPanelContainer}
+                    ></PrivateRoute>
+                    <PrivateRoute path="/:id" component={ProductDetails} />
                     <Route path="*" component={PageNotFound} />
                 </Switch>
             </Router>
