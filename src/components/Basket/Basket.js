@@ -4,7 +4,7 @@ import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 
 const Basket = props => {
-    const items = useSelector(state => state.addedItems);
+    const items = useSelector(state => state.cartReducer.addedItems);
 
     let addedItems = items.length ? (
         items.map(item => {

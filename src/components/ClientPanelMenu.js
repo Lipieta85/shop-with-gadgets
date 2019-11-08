@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 import "../assets/styles/client-panel-menu.scss";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../actions/authorization";
 
 const ClientPanelMenu = () => {
-    const priceValue = useSelector(state => state.total);
-    const budget = useSelector(state => state.budget);
+    const dispatch = useDispatch();
+    const priceValue = useSelector(state => state.cartReducer.total);
+    const budget = useSelector(state => state.cartReducer.budget);
     const [budgetAlert, setBudgetAlert] = useState("");
-
+    const onSignout = () => {
+        dispatch(signOut());
+    };
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
@@ -17,7 +21,7 @@ const ClientPanelMenu = () => {
                     większą ilość produktów złóż najpierw zamówienie
                     standardowe, a dodatkowe produkty zamów osobnym zamówieniem
                     płatnym.
-                </div>,
+                </div>
             );
         } else setBudgetAlert("");
     }, [budget]);
@@ -38,13 +42,14 @@ const ClientPanelMenu = () => {
                         </a>
                     </div>
                     <div className="btn-right">
-                        <a
-                            href="/"
+                        <Link
+                            to="/"
                             className="btn btn-outline-primary right-btn"
                             role="button"
+                            onClick={onSignout}
                         >
                             Wyloguj >
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="divider"></div>

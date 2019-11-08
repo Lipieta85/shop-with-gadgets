@@ -9,7 +9,7 @@ const Button = props => {
 
     const changeQuantityHandler = event => {
         setProductQuantity({
-            [event.target.id]: event.target.value,
+            [event.target.id]: event.target.value
         });
     };
 

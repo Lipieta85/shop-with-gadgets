@@ -7,7 +7,7 @@ import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 
 const ClientPanel = () => {
-    const items = useSelector(state => state.items);
+    const items = useSelector(state => state.cartReducer.items);
 
     return (
         <div className="client-side">
@@ -20,7 +20,7 @@ const ClientPanel = () => {
                                     className="card border-primary m-1 col-sm-6 col-lg-4"
                                     key={item.id}
                                 >
-                                    <Link to={"/" + item.id}>
+                                    <Link to={`/product/${item.id}`}>
                                         <div className="card-img d-flex align-items-center pt-3 px-3">
                                             <div className="card-img-wrapper">
                                                 <img

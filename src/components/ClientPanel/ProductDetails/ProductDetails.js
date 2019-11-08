@@ -8,7 +8,7 @@ import ClientPanelMenu from "../../ClientPanelMenu";
 import "../../../assets/styles/product-details.scss";
 
 const ProductDetails = props => {
-    const products = useSelector(state => state.items);
+    const products = useSelector(state => state.cartReducer.items);
     const [loadedProduct, setLoadedProduct] = useState([]);
     const id = props.match.params.id;
 
@@ -22,7 +22,7 @@ const ProductDetails = props => {
             }
         }
     }, [loadedProduct, products, id]);
-
+    console.log(loadedProduct.img);
     return (
         <div className="product-details">
             <div className="container-fluid">
@@ -33,7 +33,7 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex align-items-center">
                                 <div className="d-flex justify-content-center">
                                     <img
-                                        src={loadedProduct.img}
+                                        src={`/${loadedProduct.img}`}
                                         className="product-detail-image w-100"
                                         alt="product"
                                     />

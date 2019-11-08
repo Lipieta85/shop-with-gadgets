@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import "../../assets/styles/order-summary.scss";
 
 const OrderSummary = () => {
-    const items = useSelector(state => state.addedItems);
-    const total = useSelector(state => state.total);
+    const items = useSelector(state => state.cartReducer.addedItems);
+    const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
-        state => state.orderSelectInputValue,
+        state => state.orderSelectInputValue
     );
-    const orderInputState = useSelector(state => state.orderInputState);
+    const orderInputState = useSelector(
+        state => state.cartReducer.orderInputState
+    );
     //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
 

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
 const NavMenu = () => {
-    const totalQuantity = useSelector(state => state.totalQuantity);
+    const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
 
     return (
         <div className="nav-menu fixed-top w-100">
@@ -45,7 +45,7 @@ const NavMenu = () => {
                                 <ul className="navbar-nav text-right w-75 ml-auto d-flex justify-content-around">
                                     <li className="nav-item">
                                         <Link
-                                            to="/client"
+                                            to="/"
                                             className="nav-link font-weight-bold text-uppercase"
                                         >
                                             Wróć do Produktów

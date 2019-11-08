@@ -3,33 +3,34 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
 //import rootReducer from "./reducers/rootReducer";
-import cartReducer from "./reducers/cartReducer";
 import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware } from "redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { applyMiddleware, createStore } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./reducers";
+import logger from "redux-logger";
 import thunk from "redux-thunk";
-import { loadState, saveState } from "./localStorage";
-import throttle from "lodash/throttle";
 
-const persistedState = loadState();
+const persistConfig = {
+    key: "root",
+    storage
+};
+let middleware = [];
+if (window.location.hostname === "localhost") {
+    middleware = [...middleware, logger, thunk];
+} else {
+    middleware = [...middleware, thunk];
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const store = createStore(persistedReducer, applyMiddleware(...middleware));
 
-const store = createStore(
-    cartReducer,
-    persistedState,
-    composeWithDevTools(applyMiddleware(thunk)),
-);
-
-store.subscribe(
-    throttle(() => {
-        console.log(store.getState());
-        saveState(store.getState());
-    }),
-    1000,
-);
-
+let persistor = persistStore(store);
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+            <App />
+        </PersistGate>
     </Provider>,
-    document.getElementById("root"),
+    document.getElementById("root")
 );
