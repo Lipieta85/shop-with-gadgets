@@ -1,44 +1,46 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useAuth } from "../../authentication/Auth";
 import "../../assets/styles/login-form.scss";
 import Carousel from "./Carousel";
+import { useDispatch } from "react-redux";
+import { signIn } from "../../actions/authorization";
+import { useSelector } from "react-redux";
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector(state => state.authReducer.isAuth);
     const [data] = useState({
         users: [
-            {
-                id: 1,
-                userName: "admin",
-                password: "admin",
-            },
+            // {
+            //     id: 1,
+            //     userName: "admin",
+            //     password: "admin"
+            // },
             {
                 id: 2,
                 userName: "klient",
-                password: "klient",
-            },
-        ],
+                password: "klient"
+            }
+        ]
     });
-    const [isLoggedIn, setLoggedIn] = useState(false);
     //const [isError, setIsError] = useState(false);
     const [loginState, setLoginState] = useState({
         login: "",
-        password: "",
+        password: ""
     });
-    const { setAuthTokens } = useAuth();
 
     const onHandleChange = e => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value });
     };
 
-    function postLogin() {
+    function postLogin(e) {
+        e.preventDefault();
         data.users.map(user => {
             if (
                 user.userName === loginState.login &&
                 user.password === loginState.password
             ) {
-                setAuthTokens(loginState);
-                setLoggedIn(true);
+                dispatch(signIn({ isAuth: true }));
             }
             return null;
         });
@@ -60,7 +62,10 @@ const LoginForm = () => {
                     </div>
                     <div className="col-sm-12 col-md-12 col-lg-4">
                         <div className="login-panel">
-                            <form className="px-4 py-3 form">
+                            <form
+                                className="px-4 py-3 form"
+                                onSubmit={e => postLogin(e)}
+                            >
                                 <h4 className="head-text">
                                     Masz dane dostępowe ?
                                 </h4>
@@ -94,7 +99,7 @@ const LoginForm = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-outline-primary"
-                                    onClick={postLogin}
+                                    // onClick={e => postLogin()}
                                 >
                                     Zaloguj się
                                 </button>

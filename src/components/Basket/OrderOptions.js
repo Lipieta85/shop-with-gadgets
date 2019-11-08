@@ -8,15 +8,19 @@ import { orderInputState, orderSelectInputValue } from "../../actions/index";
 import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
-    const budget = useSelector(state => state.budget);
+    const budget = useSelector(state => state.cartReducer.budget);
     //const updatedCheck = useSelector(state => state.checkedItems);
-    const inputStoreState = useSelector(state => state.orderInputState);
-    const selectStoreState = useSelector(state => state.orderSelectInputValue);
+    const inputStoreState = useSelector(
+        state => state.cartReducer.orderInputState
+    );
+    const selectStoreState = useSelector(
+        state => state.cartReducer.orderSelectInputValue
+    );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [selectInputValue, setSelectInputValue] = useState(
-        "Wrocław ul. Sadowa",
+        "Wrocław ul. Sadowa"
     );
 
     const dispatch = useDispatch();
@@ -116,7 +120,7 @@ const OrderOptions = () => {
                 </div>
             </div>
             <div className="basket-checkout d-flex flex-wrap justify-content-between">
-                <Link to="/client" className="btn btn-outline-primary mt-1">
+                <Link to="/" className="btn btn-outline-primary mt-1">
                     Wróć do sklepu
                 </Link>
                 <Link

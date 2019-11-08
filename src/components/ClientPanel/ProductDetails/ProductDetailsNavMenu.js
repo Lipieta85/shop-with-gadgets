@@ -8,7 +8,7 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../../assets/images/logo_benefit.png";
 
 const ProductDetailsNavMenu = () => {
-    const totalQuantity = useSelector(state => state.totalQuantity);
+    const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
 
     return (
         <div className="nav-menu fixed-top w-100">
@@ -45,7 +45,7 @@ const ProductDetailsNavMenu = () => {
                             >
                                 <ul className="navbar-nav ml-auto d-flex align-items-center">
                                     <li className="nav-item">
-                                        <Link to="/client" className="nav-link">
+                                        <Link to="/" className="nav-link">
                                             Wróć do Produktów
                                         </Link>
                                     </li>

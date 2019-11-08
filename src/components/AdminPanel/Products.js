@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "../../assets/styles/products.scss";
 
 const Products = () => {
-    const items = useSelector(state => state.items);
+    const items = useSelector(state => state.cartReducer.items);
 
     return (
         <div className="col-7 offset-md-2">
@@ -11,7 +11,7 @@ const Products = () => {
                 <div className="row text-center">
                     {items.map(item => (
                         <div
-                            class="card m-1 col-sm-6 col-lg-4 border border-primary"
+                            className="card m-1 col-sm-6 col-lg-4 border border-primary"
                             key={item.id}
                         >
                             <div className="card-img d-flex align-items-center pt-3 px-3">
@@ -24,7 +24,7 @@ const Products = () => {
                                 </div>
                             </div>
                             <hr />
-                            <div class="card-body pt-0 pb-3 px-3 p-1">
+                            <div className="card-body pt-0 pb-3 px-3 p-1">
                                 <h5 className="card-title mt-3 text-uppercase">
                                     {item.title}
                                 </h5>

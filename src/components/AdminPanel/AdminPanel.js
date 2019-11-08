@@ -7,6 +7,7 @@ import "../../assets/styles/admin-panel.scss";
 
 //import image300 from "../../assets/images/Filtron_300pkt.jpg";
 
+//admin panel not used
 const AdminPanel = () => {
     const { setAuthTokens } = useAuth();
 

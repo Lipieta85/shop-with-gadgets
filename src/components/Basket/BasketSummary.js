@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const BasketSummary = () => {
-    const total = useSelector(state => state.total);
+    const total = useSelector(state => state.cartReducer.total);
 
     return (
         <div className="row">
