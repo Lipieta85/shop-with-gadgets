@@ -27,14 +27,25 @@ const cartReducer = (state = initialState, action) => {
             existed_item.itemTotalPrice = (
                 existed_item.quantity * Number(addedItem.price)
             ).toFixed(2);
-            console.log(existed_item.itemTotalPrice);
+
             state.total = Number(state.total);
+
             return {
                 ...state,
+                items: state.items.map(item =>
+                    item.id === action.id
+                        ? {
+                              ...item,
+                              availableProduct:
+                                  item.availableProduct - addedValueNum,
+                          }
+                        : item,
+                ),
                 total: (
                     state.total +
                     Number(existed_item.price) * addedValueNum
                 ).toFixed(2),
+
                 budget: (
                     Number(state.budget) -
                     Number(existed_item.price) * addedValueNum
@@ -59,9 +70,20 @@ const cartReducer = (state = initialState, action) => {
                 Number(addedItem2.price) * addedValueNum2
             ).toFixed(2);
 
+            addedItem2.availableProduct -= addedValueNum2;
+            console.log(state.addedItems);
             return {
                 ...state,
                 addedItems: [...state.addedItems, addedItem2],
+                items: state.items.map(item =>
+                    item.id === action.id
+                        ? {
+                              ...item,
+                              availableProduct:
+                                  item.availableProduct - addedValueNum2,
+                          }
+                        : item,
+                ),
                 total: newTotal,
                 budget: (
                     Number(state.budget) -
@@ -85,6 +107,15 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addedItems: new_items,
+                items: state.items.map(item =>
+                    item.id === action.id
+                        ? {
+                              ...item,
+                              availableProduct:
+                                  item.availableProduct + itemToRemove.quantity,
+                          }
+                        : item,
+                ),
                 total: newTotal2,
                 budget: (
                     Number(state.budget) +
@@ -152,6 +183,16 @@ const cartReducer = (state = initialState, action) => {
                 addedItems: [...state.addedItems],
                 total: ((state.total -= oldItemTotal) + newItemTotal).toFixed(
                     2,
+                ),
+                items: state.items.map(item =>
+                    item.id === action.productId
+                        ? {
+                              ...item,
+                              availableProduct:
+                                  (item.availableProduct += oldAddedItemQuantity) -
+                                  addedValueNum3,
+                          }
+                        : item,
                 ),
                 budget: (
                     Number(state.budget) +

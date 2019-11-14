@@ -19,15 +19,15 @@ const BasketContainer = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="cart-content order-last col-sm-12 order-sm-last col-md-12 order-md-last col-lg-9 order-lg-first">
+                    <div className="cart-content col-sm-12 col-md-12 col-lg-9">
                         <div className="cart">
-                            <ul className="collection">
+                            <ul className="cart-collection">
                                 <Basket />
                                 <BasketSummary />
                             </ul>
                         </div>
                     </div>
-                    <div className="order-first col-sm-12 order-sm-first col-md-12 order-md-first col-lg-3 order-lg-last">
+                    <div className="col-sm-12 col-md-12 col-lg-3">
                         <div className="client-panel-menu">
                             <ClientPanelMenu />
                         </div>

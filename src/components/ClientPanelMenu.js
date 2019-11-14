@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+
 import "../assets/styles/client-panel-menu.scss";
 
-import { useSelector, useDispatch } from "react-redux";
-import { signOut } from "../actions/authorization";
-
 const ClientPanelMenu = () => {
-    const dispatch = useDispatch();
     const priceValue = useSelector(state => state.cartReducer.total);
     const budget = useSelector(state => state.cartReducer.budget);
+    const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
+
     const [budgetAlert, setBudgetAlert] = useState("");
-    const onSignout = () => {
-        dispatch(signOut());
-    };
+
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
@@ -21,36 +23,35 @@ const ClientPanelMenu = () => {
                     większą ilość produktów złóż najpierw zamówienie
                     standardowe, a dodatkowe produkty zamów osobnym zamówieniem
                     płatnym.
-                </div>
+                </div>,
             );
         } else setBudgetAlert("");
     }, [budget]);
 
     return (
-        <div className="client-panel border border-primary">
+        <div className="client-panel">
             <div className="admin-panel__logged-panel">
                 <h4 className="logged-panel-header">Witaj</h4>
                 <div className="logged-panel-btn-group">
-                    <div className="btn-left">
-                        <a
-                            href="/"
-                            className="btn btn-outline-primary left-btn"
-                            role="button"
-                            onClick={e => e.preventDefault()}
-                        >
-                            Edycja konta >
-                        </a>
-                    </div>
-                    <div className="btn-right">
-                        <Link
-                            to="/"
-                            className="btn btn-outline-primary right-btn"
-                            role="button"
-                            onClick={onSignout}
-                        >
-                            Wyloguj >
-                        </Link>
-                    </div>
+                    {window.location.pathname === "/Basket" ? (
+                        <div className="d-flex">
+                            <FontAwesomeIcon
+                                icon={faShoppingBasket}
+                                size="2x"
+                                color="#a0a3a6"
+                            />
+                            <span className="badge">{totalQuantity}</span>
+                        </div>
+                    ) : (
+                        <div className="d-flex align-items-center">
+                            <Link
+                                to="/Basket"
+                                className="btn btn-outline-primary"
+                            >
+                                Przejdź do koszyka({totalQuantity})
+                            </Link>
+                        </div>
+                    )}
                 </div>
                 <div className="divider"></div>
                 <div className="logged-panel__purchase-value">

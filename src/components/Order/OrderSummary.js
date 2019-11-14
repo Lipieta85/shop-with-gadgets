@@ -7,10 +7,10 @@ const OrderSummary = () => {
     const items = useSelector(state => state.cartReducer.addedItems);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
-        state => state.orderSelectInputValue
+        state => state.cartReducer.orderSelectInputValue,
     );
     const orderInputState = useSelector(
-        state => state.cartReducer.orderInputState
+        state => state.cartReducer.orderInputState,
     );
     //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
@@ -43,7 +43,7 @@ const OrderSummary = () => {
                     key={item.id}
                 >
                     <div className="col-md-4 d-flex align-items-center text-center">
-                        <div className="item-img">
+                        <div className="item-img p-3">
                             <img
                                 src={item.img}
                                 alt="item"
@@ -91,34 +91,43 @@ const OrderSummary = () => {
     );
 
     return (
-        <div className="container" style={{ marginTop: "100px" }}>
+        <div className="container" style={{ marginTop: "80px" }}>
             <h2>Podsumowanie Twojego zamówienia</h2>
             <hr />
             <p className="order-summary-text font-weight-bold">
                 1. Zamówiłeś następujące produkty
             </p>
-            {addedItems}
-            <p className="order-summary-text font-weight-bold mt-2">
+            <div className="m-2">{addedItems}</div>
+            <p className="order-summary-text mt-2">
                 2. Kwota do zapłaty:{" "}
-                <span className="summary-text-value">{total} zł</span>
+                <span className="summary-text-value font-weight-bold text-uppercase">
+                    {total} zł
+                </span>
             </p>
-            <p className="order-summary-text font-weight-bold">
+            <p className="order-summary-text">
                 3. Adres dostawy:{" "}
-                <span className="summary-text-value">
+                <span className="summary-text-value font-weight-bold text-uppercase">
                     {orderSelectInputValue}
                 </span>
             </p>
-            <p className="order-summary-text font-weight-bold">
+            <p className="order-summary-text">
                 4. Numer zamówienia Klienta:{" "}
-                <span className="summary-text-value">{orderInputState}</span>
+                <span className="summary-text-value font-weight-bold text-uppercase">
+                    {orderInputState}
+                </span>
             </p>
-            <p className="order-summary-text font-weight-bold">
+            <p className="order-summary-text">
                 5. Typ zamówienia:{" "}
-                <span className="summary-text-value">{checkBoxText}</span>
+                <span className="summary-text-value font-weight-bold text-uppercase">
+                    {checkBoxText}
+                </span>
             </p>
             <hr />
-            <div className="d-flex justify-content-between">
-                <Link to="/Basket" className="btn btn-outline-primary mt-4">
+            <div className="d-flex flex-wrap justify-content-between">
+                <Link
+                    to="/Basket"
+                    className="btn btn-outline-primary mr-1 mt-4"
+                >
                     Wróć do koszyka
                 </Link>
                 <Link to="/OrderEnd" className="btn btn-outline-primary mt-4">

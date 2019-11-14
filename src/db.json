@@ -4,34 +4,39 @@
         "title": "Ubranie",
         "desc": "Ubranie zrobione z najwyższej jakości materiału ",
         "price": "110.00",
-        "img": "images/MM-0002.png"
+        "img": "images/MM-0002.png",
+        "availableProduct": "100"
     },
     {
         "id": "2",
         "title": "Notes",
         "desc": "Ładny notes na notatki, z wieloma stronami do zapisu notatek",
         "price": "80.50",
-        "img": "images/MM-0011.png"
+        "img": "images/MM-0011.png",
+        "availableProduct": "100"
     },
     {
         "id": "3",
         "title": "Scyzoryk",
         "desc": "Scyzoryk z wieloma funkcjami, sprawdzi się w różnych sytuacjach",
         "price": "120.30",
-        "img": "images/MM-0020.png"
+        "img": "images/MM-0020.png",
+        "availableProduct": "100"
     },
     {
         "id": "4",
         "title": "Długopis",
         "desc": "Ładny i dobrze piszący długopis, o długiej żywotności",
         "price": "260.30",
-        "img": "images/MM-0025.png"
+        "img": "images/MM-0025.png",
+        "availableProduct": "100"
     },
     {
         "id": "5",
         "title": "Parasol",
         "desc": "Parasol o ładnej stylistyce, zrobiony z najwyższej jakości matreiałów",
         "price": "160.20",
-        "img": "images/MM-0028.png"
+        "img": "images/MM-0028.png",
+        "availableProduct": "100"
     }
 ]

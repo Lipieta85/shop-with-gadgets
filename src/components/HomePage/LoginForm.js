@@ -50,7 +50,7 @@ const LoginForm = () => {
         return <Redirect to="/admin" />;
     }
     if (isLoggedIn && loginState.password === "klient") {
-        return <Redirect to="/client" />;
+        return <Redirect to="/customer" />;
     }
 
     return (

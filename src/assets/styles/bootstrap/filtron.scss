@@ -2,7 +2,7 @@
 @import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
 
 $primary: #004c97;
-$secondary: #a0a3a6;
+$secondary: #ccc;
 // $success: #28a745;
 // $danger: #dc3545;
 // $info: #17a2b8;
@@ -12,8 +12,8 @@ $secondary: #a0a3a6;
 // $spacer: 1rem;
 $border-width: 2px;
 $btn-border-radius: 0;
-$navbar-light-color: #004c97;
-$navbar-light-hover-color: #a0a3a6;
+$navbar-light-color: #a0a3a6;
+$navbar-light-hover-color: black;
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 

@@ -17,6 +17,7 @@ const OrderEnd = () => {
                 className="btn btn-outline-primary mt-4"
                 onClick={() => dispatch(clearBasket())}
             >
+                {" "}
                 Wróć do sklepu
             </Link>
         </div>

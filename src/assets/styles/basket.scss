@@ -3,6 +3,11 @@
     .desc-col {
         background-color: #f7f7f7;
         padding: 10px;
+        .text-right {
+            button {
+                font-size: 13px;
+            }
+        }
     }
     .basket-quantity-input {
         width: 80px;

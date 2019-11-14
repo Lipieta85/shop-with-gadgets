@@ -3,10 +3,13 @@
     background-size: cover;
     position: relative;
     margin: 0 auto;
-    .buttons-container {
-        margin: 0 auto;
-        .product-input {
-            width: inherit;
+    padding: 90px 10px 0 10px;
+    .card-container {
+        .buttons-container {
+            margin: 0 auto;
+            .product-input {
+                width: 50px;
+            }
         }
     }
 }
@@ -14,5 +17,38 @@
 @media (min-width: 992px) {
     .card {
         flex: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .client-side {
+        .card-container {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+@media (min-width: 1839px) {
+    .client-side {
+        padding: 90px 50px 0 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .client-side {
+        padding-top: 70px;
+        .container-fluid {
+            .buttons-container {
+                padding-left: 8px;
+                .product-input {
+                    font-size: 11px;
+                    width: 40px;
+                }
+                .product-basket-icon {
+                    font-size: 0.8em;
+                }
+            }
+        }
     }
 }

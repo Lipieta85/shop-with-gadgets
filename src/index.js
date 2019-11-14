@@ -8,13 +8,13 @@ import { PersistGate } from "redux-persist/integration/react";
 import { applyMiddleware, createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import rootReducer from "./reducers";
+import rootReducer from "./reducers/index";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 const persistConfig = {
     key: "root",
-    storage
+    storage,
 };
 let middleware = [];
 if (window.location.hostname === "localhost") {
@@ -26,11 +26,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer, applyMiddleware(...middleware));
 
 let persistor = persistStore(store);
+//const store = createStore(rootReducer, applyMiddleware(thunk));
+
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <App />
         </PersistGate>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById("root"),
 );
