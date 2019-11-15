@@ -55,7 +55,7 @@ const ClientPanelMenu = () => {
                 </div>
                 <div className="divider"></div>
                 <div className="logged-panel__purchase-value">
-                    <p className="purchase-text">
+                    <div className="purchase-text">
                         <span className="available-budget">
                             Dostępny budżet marketingowy
                         </span>
@@ -68,7 +68,7 @@ const ClientPanelMenu = () => {
                         </span>
                         <br />
                         <span className="value">{priceValue} zł</span>
-                    </p>
+                    </div>
                 </div>
                 <div className="divider"></div>
             </div>
