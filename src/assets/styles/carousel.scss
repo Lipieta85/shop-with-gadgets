@@ -35,6 +35,10 @@ button:focus {
     text-align: center;
     padding: 20px;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: #e4e4e6;
 }
 

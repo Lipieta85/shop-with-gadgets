@@ -23,7 +23,7 @@ const cartReducer = (state = initialState, action) => {
             let addedValueNum = Number(addedValue[0]);
 
             existed_item.quantity += addedValueNum;
-            console.log(existed_item.itemTotalPrice);
+
             existed_item.itemTotalPrice = (
                 existed_item.quantity * Number(addedItem.price)
             ).toFixed(2);
@@ -71,7 +71,7 @@ const cartReducer = (state = initialState, action) => {
             ).toFixed(2);
 
             addedItem2.availableProduct -= addedValueNum2;
-            console.log(state.addedItems);
+
             return {
                 ...state,
                 addedItems: [...state.addedItems, addedItem2],

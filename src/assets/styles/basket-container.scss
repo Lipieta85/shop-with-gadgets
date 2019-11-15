@@ -1,9 +1,16 @@
 .basket-header {
     margin-top: 90px;
+    padding-left: 90px;
 }
 
 @media (max-width: 991px) {
     .cart-collection {
         padding: 0 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .basket-header {
+        padding-left: 10px;
     }
 }

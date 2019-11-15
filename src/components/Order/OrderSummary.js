@@ -17,7 +17,7 @@ const OrderSummary = () => {
 
     // useEffect(() => {
     //     checkboxStatus.forEach((value, key) => {
-    //         console.log(value, key);
+    //
     //         if (key === "Budżet marketingowy" && value === true) {
     //             return setCheckBoxText("Budżet marketingowy");
     //         }
@@ -43,43 +43,50 @@ const OrderSummary = () => {
                     key={item.id}
                 >
                     <div className="col-md-4 d-flex align-items-center text-center">
-                        <div className="item-img p-3">
+                        <div className="item-img p-1">
                             <img
                                 src={item.img}
                                 alt="item"
-                                className="w-50 p-2"
+                                className="item-summary-img w-25 p-2"
                             />
                         </div>
                     </div>
 
                     <div className="col-md-8 border-left desc-col d-flex align-items-center">
-                        <div className="item-desc">
+                        <div
+                            className="item-desc mt-2"
+                            style={{ minHeight: "70px" }}
+                        >
                             <h4 className="title text-uppercase">
                                 {item.title}
                             </h4>
-                            <p>
-                                <b>
-                                    Cena:{" "}
-                                    <span className="order-text-value">
-                                        {item.price} zł
-                                    </span>
-                                </b>
-                            </p>
-                            <div className="add-remove">
-                                <span className="mr-3 mb-4">
-                                    <b>Ilość: </b>
-                                    <b className="order-text-value">
-                                        {item.quantity}
-                                    </b>
-                                </span>
-                            </div>
-                            <div className="add-remove">
-                                <span className="mr-3 mb-3">
-                                    <b>Razem: </b>
-                                    <b className="order-text-value">
-                                        {item.itemTotalPrice} zł
-                                    </b>
-                                </span>
+                            <div>
+                                <div className="d-flex flex-wrap justify-content-between">
+                                    <div>
+                                        <b>
+                                            Cena:{" "}
+                                            <span className="order-text-value">
+                                                {item.price} zł
+                                            </span>
+                                        </b>
+                                    </div>
+                                    <div className="add-remove">
+                                        <span className="mx-3 mb-4">
+                                            <b>Ilość: </b>
+                                            <b className="order-text-value">
+                                                {item.quantity}
+                                            </b>
+                                        </span>
+                                    </div>
+                                    <div className="add-remove">
+                                        <span className="mr-3 mb-3">
+                                            <b>Razem: </b>
+                                            <b className="order-text-value">
+                                                {item.itemTotalPrice} zł
+                                            </b>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

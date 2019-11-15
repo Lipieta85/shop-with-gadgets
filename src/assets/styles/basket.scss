@@ -1,5 +1,12 @@
 .cart {
     margin-top: 10px;
+    .collection-item {
+        width: 90%;
+        margin: 0 auto;
+        .item-basket-img {
+            width: 30%;
+        }
+    }
     .desc-col {
         background-color: #f7f7f7;
         padding: 10px;
@@ -24,5 +31,16 @@
         margin: 0;
         padding: 5px;
         color: #004c97;
+    }
+}
+
+@media (max-width: 767px) {
+    .cart {
+        .collection-item {
+            .item-basket-img {
+                width: 50%;
+                margin: 5px;
+            }
+        }
     }
 }

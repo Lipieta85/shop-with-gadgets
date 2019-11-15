@@ -8,7 +8,6 @@ const Basket = props => {
 
     let addedItems = items.length ? (
         items.map(item => {
-            console.log(item);
             return (
                 <li
                     className="row nav-item collection-item border d-flex"
@@ -16,7 +15,11 @@ const Basket = props => {
                 >
                     <div className="col-md-4 d-flex align-items-center text-center p-1">
                         <div className="item-img">
-                            <img src={item.img} alt="item" className="w-50" />
+                            <img
+                                src={item.img}
+                                alt="item"
+                                className="item-basket-img"
+                            />
                         </div>
                     </div>
 

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToBasket } from "../../actions/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,17 +7,38 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
 const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
+    const inputValue = useSelector(state => state.cartReducer.items);
+    const [disabled, setDisabled] = useState(false);
 
     const dispatch = useDispatch();
+
+    const input = useRef();
 
     const changeQuantityHandler = event => {
         setProductQuantity({
             [event.target.id]: event.target.value,
         });
+        inputValue.map(item => {
+            if (event.target.id === item.id) {
+                if (event.target.value > Number(item.availableProduct)) {
+                    setDisabled(true);
+                } else {
+                    setDisabled(false);
+                }
+            }
+            return disabled;
+        });
     };
 
-    const dispatchHandler = () => {
-        dispatch(addItemToBasket(props.itemId, productQuantity));
+    const dispatchHandler = event => {
+        if (disabled) {
+            alert(
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
+            );
+            event.preventDefault();
+        } else {
+            dispatch(addItemToBasket(props.itemId, productQuantity));
+        }
     };
 
     return (
@@ -25,6 +46,7 @@ const Button = props => {
             <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                 <input
                     type="text"
+                    ref={input}
                     className="btn-outline-primary product-input"
                     id={props.itemId}
                     defaultValue={productQuantity.id}

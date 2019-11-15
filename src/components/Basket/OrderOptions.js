@@ -49,7 +49,6 @@ const OrderOptions = () => {
             return prevState.set(item, isChecked);
         });
         // dispatch(addChecked(item, isChecked));
-        // console.log(updatedCheck);
     };
 
     const inputHandler = event => {
@@ -61,7 +60,7 @@ const OrderOptions = () => {
     };
 
     return (
-        <div className="order-options border border-secondary">
+        <div className="order-options">
             <h4 className="options-header">Wybierz adres dostawy</h4>
             <div className="input-group mb-3">
                 <select

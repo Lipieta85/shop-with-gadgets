@@ -45,25 +45,25 @@ const ProductDetails = props => {
                                         <p className="product-details-text">
                                             {loadedProduct.desc}
                                         </p>
-                                        <p className="font-weight-bold text-uppercase">
+                                        <p className="font-weight-bold">
                                             Kod produktu:{" "}
                                             <span className="product-details-text">
                                                 WPK700
                                             </span>
                                         </p>
-                                        <p className="font-weight-bold text-uppercase">
+                                        <p className="font-weight-bold">
                                             Jednostka miary:{" "}
                                             <span className="product-details-text">
                                                 szt
                                             </span>
                                         </p>
-                                        <p className="font-weight-bold text-uppercase">
+                                        <p className="font-weight-bold">
                                             Cena jendostkowa:{" "}
                                             <span className="product-details-text">
                                                 {loadedProduct.price} zł
                                             </span>
                                         </p>
-                                        <p className="font-weight-bold text-uppercase">
+                                        <p className="font-weight-bold">
                                             Stan magazynowy:{" "}
                                             <span className="product-details-text">
                                                 {loadedProduct.availableProduct}{" "}

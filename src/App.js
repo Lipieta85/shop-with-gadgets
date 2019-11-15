@@ -13,34 +13,34 @@ import PageNotFound from "./components/NotFound";
 import { useSelector } from "react-redux";
 
 function App() {
-  const isLoggedIn = useSelector(state => state.authReducer.isAuth);
-  return (
-    <Router>
-      <Switch>
-        <Route
-          path="/"
-          exact
-          render={render =>
-            isLoggedIn ? (
-              <ClientPanelContainer {...render} />
-            ) : (
-              <HomePageContainer {...render} />
-            )
-          }
-        />
-        {/* <PrivateRoute path="/admin" component={AdminPanelContainer} /> */}
-        <PrivateRoute path="/Basket" component={BasketContainer} />
-        <PrivateRoute path="/Order" component={OrderContainer} />
-        <PrivateRoute path="/OrderEnd" component={OrderEndContainer} />
-        {/* <PrivateRoute
+    const isLoggedIn = useSelector(state => state.authReducer.isAuth);
+    return (
+        <Router>
+            <Switch>
+                <Route
+                    path="/"
+                    exact
+                    render={render =>
+                        isLoggedIn ? (
+                            <ClientPanelContainer {...render} />
+                        ) : (
+                            <HomePageContainer {...render} />
+                        )
+                    }
+                />
+                {/* <PrivateRoute path="/admin" component={AdminPanelContainer} /> */}
+                <PrivateRoute path="/Basket" component={BasketContainer} />
+                <PrivateRoute path="/Order" component={OrderContainer} />
+                <PrivateRoute path="/OrderEnd" component={OrderEndContainer} />
+                {/* <PrivateRoute
                     path="/client"
                     component={ClientPanelContainer}
                 ></PrivateRoute> */}
-        <PrivateRoute path="/product/:id" component={ProductDetails} />
-        <Route path="*" component={PageNotFound} />
-      </Switch>
-    </Router>
-  );
+                <PrivateRoute path="/product/:id" component={ProductDetails} />
+                <Route path="*" component={PageNotFound} />
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;
