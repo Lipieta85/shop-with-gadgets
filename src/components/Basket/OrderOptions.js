@@ -11,16 +11,16 @@ const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     //const updatedCheck = useSelector(state => state.checkedItems);
     const inputStoreState = useSelector(
-        state => state.cartReducer.orderInputState
+        state => state.cartReducer.orderInputState,
     );
     const selectStoreState = useSelector(
-        state => state.cartReducer.orderSelectInputValue
+        state => state.cartReducer.orderSelectInputValue,
     );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [selectInputValue, setSelectInputValue] = useState(
-        "Wrocław ul. Sadowa"
+        "Wrocław ul. Sadowa",
     );
 
     const dispatch = useDispatch();
@@ -49,7 +49,6 @@ const OrderOptions = () => {
             return prevState.set(item, isChecked);
         });
         // dispatch(addChecked(item, isChecked));
-        // console.log(updatedCheck);
     };
 
     const inputHandler = event => {
@@ -61,7 +60,7 @@ const OrderOptions = () => {
     };
 
     return (
-        <div className="order-options border border-primary">
+        <div className="order-options">
             <h4 className="options-header">Wybierz adres dostawy</h4>
             <div className="input-group mb-3">
                 <select

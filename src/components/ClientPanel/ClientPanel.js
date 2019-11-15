@@ -11,13 +11,13 @@ const ClientPanel = () => {
 
     return (
         <div className="client-side">
-            <div className="container-fluid" style={{ marginTop: "80px" }}>
+            <div className="container-fluid">
                 <div className="row">
-                    <div className="col-sm-12 col-lg-8 offset-lg-1 col-xl-8 order-lg-first order-last">
+                    <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
                         <div className="row card-container text-center mt-3">
                             {items.map(item => (
                                 <div
-                                    className="card border-primary m-1 col-sm-6 col-lg-4"
+                                    className="card border-secondary m-1 col-sm-6 col-lg-4"
                                     key={item.id}
                                 >
                                     <Link to={`/product/${item.id}`}>
@@ -32,21 +32,29 @@ const ClientPanel = () => {
                                         </div>
                                     </Link>
                                     <hr />
-                                    <div className="card-body pt-0 pb-3 px-3 p-1">
-                                        <div style={{ minHeight: "110px" }}>
-                                            <h5 className="card-title mt-3 text-uppercase">
+                                    <div className="card-body pt-0 pb-2 px-1">
+                                        <div>
+                                            <h5 className="card-title text-uppercase">
                                                 {item.title}
                                             </h5>
-                                            <p>{item.desc}</p>
                                         </div>
                                         <div>
                                             <p className="card-text">
                                                 <strong>
-                                                    Cena: {item.price} zł
+                                                    Cena: {item.price} PLN/szt.
                                                 </strong>
                                             </p>
-                                            <div className="buttons-container row">
-                                                <ButtonInput itemId={item.id} />
+                                            <span className="card-available-quantity">
+                                                Dostępna ilość:{" "}
+                                                {item.availableProduct} szt.
+                                            </span>
+                                            <div className="buttons-container row d-flex align-items-center">
+                                                <ButtonInput
+                                                    itemId={item.id}
+                                                    availabaleItemQuantity={
+                                                        item.availableProduct
+                                                    }
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +62,7 @@ const ClientPanel = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="client-panel col-sm-12 col-lg-3 col-xl-3 order-lg-last order-first">
+                    <div className="client-panel col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />
                     </div>
                 </div>

@@ -1,71 +1,70 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../../actions/authorization";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-
-import logo from "../../../assets/images/logo_benefit.png";
+import logo from "../../../assets/images/filtron_logo.png";
 
 const ProductDetailsNavMenu = () => {
-    const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
+    const dispatch = useDispatch();
+
+    const onSignout = () => {
+        dispatch(signOut());
+    };
 
     return (
         <div className="nav-menu fixed-top w-100">
-            <div className="container-fluid border-bottom border-primary">
-                <div className="row">
-                    <div className="col-lg-1"></div>
-                    <div className="col-6 col-sm-6 col-md-5 col-lg-3">
-                        <div className="logo-div p-3">
-                            <Link to="/">
-                                <img
-                                    src={logo}
-                                    className="logo-media"
-                                    alt="logo"
-                                />
-                            </Link>
-                        </div>
+            <div className="container-fluid border-bottom p-0">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <Link className="navbar-brand" to="/">
+                        <img src={logo} width="200" height="35" alt="" />
+                    </Link>
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div
+                        className="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <Link
+                                    className="nav-link text-uppercase"
+                                    to="/"
+                                >
+                                    Wróć do strony głównej{" "}
+                                </Link>
+                            </li>
+                            <li className="nav-item text-uppercase">
+                                <a
+                                    className="nav-link"
+                                    href="/"
+                                    onClick={e => e.preventDefault()}
+                                >
+                                    Edycja konta
+                                </a>
+                            </li>
+                            <li className="nav-item text-uppercase">
+                                <a
+                                    className="nav-link"
+                                    onClick={onSignout}
+                                    href="/"
+                                >
+                                    Wyloguj
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div className="col-6 col-sm-6 col-md-7 col-lg-7">
-                        <nav className="navbar navbar-expand-lg navbar-light">
-                            <button
-                                className="navbar-toggler mt-2"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target="#navbarNavDropdown"
-                                aria-controls="navbarNavDropdown"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation"
-                            >
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div
-                                className="collapse navbar-collapse text-right p-2 order-last order-lg-first"
-                                id="navbarNavDropdown"
-                            >
-                                <ul className="navbar-nav ml-auto d-flex align-items-center">
-                                    <li className="nav-item">
-                                        <Link to="/" className="nav-link">
-                                            Wróć do Produktów
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <Link
-                                to="/Basket"
-                                className="d-flex order-first order-lg-first"
-                            >
-                                <FontAwesomeIcon
-                                    icon={faShoppingBasket}
-                                    size="2x"
-                                    color="#a0a3a6"
-                                />
-                                <span className="badge">{totalQuantity}</span>
-                            </Link>
-                        </nav>
-                    </div>
-                    <div className="col-lg-1"></div>
-                </div>
+                </nav>
             </div>
         </div>
     );
