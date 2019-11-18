@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToBasket } from "../../actions/index";
 
@@ -14,9 +14,29 @@ const Button = props => {
 
     const input = useRef();
 
+    useEffect(() => {
+        if (props.changeProduct) {
+            input.current.value = 1;
+            setProductQuantity({ id: 1 });
+        }
+        if (disabled) {
+            setProductQuantity({ id: input.current.value });
+        }
+        inputValue.map(item => {
+            if (input.current.id === item.id) {
+                if (input.current.value > Number(item.availableProduct)) {
+                    setDisabled(true);
+                } else {
+                    setDisabled(false);
+                }
+            }
+            return disabled;
+        });
+    }, [props.changeProduct, disabled, inputValue]);
+
     const changeQuantityHandler = event => {
         setProductQuantity({
-            [event.target.id]: event.target.value,
+            [event.target.id]: event.target.value
         });
         inputValue.map(item => {
             if (event.target.id === item.id) {
@@ -31,9 +51,13 @@ const Button = props => {
     };
 
     const dispatchHandler = event => {
+        if (input.current.value < 0) {
+            alert("Wpisana wartość jest nie prawidłowa");
+            return false;
+        }
         if (disabled) {
             alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie"
             );
             event.preventDefault();
         } else {
@@ -51,6 +75,7 @@ const Button = props => {
                     id={props.itemId}
                     defaultValue={productQuantity.id}
                     onChange={changeQuantityHandler}
+                    min="0"
                 />
                 <span className="font-weight-bold ml-1">szt.</span>
             </div>

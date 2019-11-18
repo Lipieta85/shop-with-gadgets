@@ -9,18 +9,19 @@ import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
+    const addedItems = useSelector(state => state.cartReducer.addedItems);
     //const updatedCheck = useSelector(state => state.checkedItems);
     const inputStoreState = useSelector(
-        state => state.cartReducer.orderInputState,
+        state => state.cartReducer.orderInputState
     );
     const selectStoreState = useSelector(
-        state => state.cartReducer.orderSelectInputValue,
+        state => state.cartReducer.orderSelectInputValue
     );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [selectInputValue, setSelectInputValue] = useState(
-        "Wrocław ul. Sadowa",
+        "Wrocław ul. Sadowa"
     );
 
     const dispatch = useDispatch();
@@ -59,6 +60,16 @@ const OrderOptions = () => {
         setSelectInputValue(event.target.value);
     };
 
+    const orderConfirmHandler = e => {
+        if (addedItems.length === 0) {
+            e.preventDefault();
+            alert("Koszyk jest pusty, dodaj produkt");
+        } else {
+            dispatch(orderInputState(inputValue)) &&
+                dispatch(orderSelectInputValue(selectInputValue));
+        }
+    };
+
     return (
         <div className="order-options">
             <h4 className="options-header">Wybierz adres dostawy</h4>
@@ -70,7 +81,7 @@ const OrderOptions = () => {
                     value={selectInputValue}
                 >
                     <option defaultValue>Wrocław ul. Sadowa</option>
-                    <option value="Wrocław ul. Wrocławska">
+                    <option className="options" value="Wrocław ul. Wrocławska">
                         Wrocław ul. Wrocławska
                     </option>
                     <option value="Wieluń ul. Sadowa">Wieluń ul. Sadowa</option>
@@ -125,10 +136,7 @@ const OrderOptions = () => {
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
                     className="btn btn-outline-primary mt-1"
-                    onClick={() =>
-                        dispatch(orderInputState(inputValue)) &&
-                        dispatch(orderSelectInputValue(selectInputValue))
-                    }
+                    onClick={orderConfirmHandler}
                 >
                     Złóż zamówienie
                 </Link>
