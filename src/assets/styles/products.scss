@@ -74,6 +74,7 @@
 @media (max-width: 400px) {
     .card {
         max-width: 157px;
+        padding: 5px;
         .card-img {
             height: 90px;
             .card-img-wrapper {
@@ -93,6 +94,7 @@
         }
         .card-available-quantity {
             font-size: 11px;
+            margin-bottom: 10px;
         }
     }
 }
