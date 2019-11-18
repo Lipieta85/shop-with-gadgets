@@ -15,9 +15,15 @@
     }
 }
 
-@media (min-width: 992px) {
-    .card {
-        flex: none;
+@media (min-width: 1839px) {
+    .client-side {
+        padding: 90px 50px 0 50px;
+    }
+}
+
+@media (max-width: 1838px) {
+    .client-side {
+        padding: 70px 20px 0 20px;
     }
 }
 
@@ -30,9 +36,9 @@
     }
 }
 
-@media (min-width: 1839px) {
-    .client-side {
-        padding: 90px 50px 0 50px;
+@media (min-width: 992px) {
+    .card {
+        flex: none;
     }
 }
 

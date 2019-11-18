@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeCart, changeBasketAmounts } from "../../actions/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
+    const [disabled, setDisabled] = useState(false);
+    const inputValue = useSelector(state => state.cartReducer.items);
 
     const dispatch = useDispatch();
 
@@ -14,19 +16,40 @@ const BasketButtons = props => {
 
     useEffect(() => {
         return setProductAmount({
-            [props.itemId]: props.itemQuantity,
+            [props.itemId]: props.itemQuantity
         });
     }, [props.itemId, props.itemQuantity]);
 
     const changeAmountHandler = () => {
-        return setProductAmount({
+        setProductAmount({
             ...productAmount,
-            [input.current.id]: input.current.value,
+            [input.current.id]: input.current.value
+        });
+        inputValue.map(item => {
+            if (input.current.id === item.id) {
+                if (input.current.value > Number(item.availableProduct)) {
+                    setDisabled(true);
+                } else {
+                    setDisabled(false);
+                }
+            }
+            return disabled;
         });
     };
 
-    const confirmationButton = () => {
-        return dispatch(changeBasketAmounts(props.itemId, productAmount));
+    const confirmationButton = event => {
+        if (input.current.value < 0) {
+            alert("Wpisana wartość jest nie prawidłowa");
+            return false;
+        }
+        if (disabled) {
+            alert(
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie"
+            );
+            event.preventDefault();
+        } else {
+            dispatch(changeBasketAmounts(props.itemId, productAmount));
+        }
     };
 
     const removeCartButton = () => {

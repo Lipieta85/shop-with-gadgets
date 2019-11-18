@@ -12,6 +12,7 @@ const ClientPanelMenu = () => {
     const priceValue = useSelector(state => state.cartReducer.total);
     const budget = useSelector(state => state.cartReducer.budget);
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
+    const addedItems = useSelector(state => state.cartReducer.addedItems);
 
     const [budgetAlert, setBudgetAlert] = useState("");
 
@@ -23,10 +24,17 @@ const ClientPanelMenu = () => {
                     większą ilość produktów złóż najpierw zamówienie
                     standardowe, a dodatkowe produkty zamów osobnym zamówieniem
                     płatnym.
-                </div>,
+                </div>
             );
         } else setBudgetAlert("");
     }, [budget]);
+
+    const buttonHandler = e => {
+        if (addedItems.length === 0) {
+            e.preventDefault();
+            alert("Koszyk jest pusty, dodaj produkt");
+        }
+    };
 
     return (
         <div className="client-panel">
@@ -46,7 +54,8 @@ const ClientPanelMenu = () => {
                         <div className="d-flex align-items-center">
                             <Link
                                 to="/Basket"
-                                className="btn btn-outline-primary"
+                                className="button-basket btn btn-outline-primary"
+                                onClick={buttonHandler}
                             >
                                 Przejdź do koszyka({totalQuantity})
                             </Link>
