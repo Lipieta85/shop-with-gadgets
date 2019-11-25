@@ -3,7 +3,14 @@ export {
     removeCart,
     addChecked,
     clearBasket,
-    changeBasketAmounts,
+    changeBasketAmounts, //setProducts //fetchProductsFailed
 } from "./basket.js";
 
-export { orderInputState, orderSelectInputValue } from "./order.js";
+export {
+    orderInputState,
+    orderSelectInputValue,
+    addOrderData,
+    showOrderHistory,
+} from "./order.js";
+
+export { setProducts, initProducts, fetchProductsFailed } from "./products.js";

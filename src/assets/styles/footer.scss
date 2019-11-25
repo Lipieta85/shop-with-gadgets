@@ -1,6 +1,23 @@
 .footer {
-    overflow: hidden;
-    background: #f0f0f0;
-    padding: 20px;
-    margin-top: 20px;
+    background-color: #f8f9fa;
+    color: #a0a3a6;
+    text-transform: uppercase;
+    width: 100%;
+    bottom: 0;
+    height: 55px;
+    bottom: 0;
+    .footer-regulations {
+        color: #a0a3a6;
+        &:hover {
+            color: black;
+        }
+    }
+    .footer-rodo {
+        .rodo {
+            color: #a0a3a6;
+            &:hover {
+                color: black;
+            }
+        }
+    }
 }
