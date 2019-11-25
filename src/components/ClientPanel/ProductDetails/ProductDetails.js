@@ -12,7 +12,6 @@ const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const [loadedProduct, setLoadedProduct] = useState([]);
     const id = props.match.params.id;
-    console.log(props);
     useEffect(() => {
         if (id) {
             const filter = products.filter(product => {

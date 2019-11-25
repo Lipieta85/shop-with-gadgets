@@ -14,7 +14,7 @@ export const fetchProductsFailed = () => {
     };
 };
 
-export const initProducts = (token) => {
+export const initProducts = token => {
     return dispatch => {
         axios({
             method: "get",
@@ -24,7 +24,6 @@ export const initProducts = (token) => {
             },
         })
             .then(res => {
-                console.log(res);
                 dispatch(setProducts(res.data));
             })
             .catch(error => {
@@ -32,4 +31,3 @@ export const initProducts = (token) => {
             });
     };
 };
-
