@@ -35,6 +35,64 @@ const NavMenu = () => {
                         id="navbarSupportedContent"
                     >
                         <ul className="navbar-nav">
+                            {window.location.pathname === `/` ? (
+                                <li className="nav-item dropdown">
+                                    <a
+                                        className="nav-link dropdown-toggle text-uppercase"
+                                        href="/"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        onClick={e => e.preventDefault}
+                                    >
+                                        Kategorie
+                                    </a>
+                                    <div
+                                        className="dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown"
+                                    >
+                                        <a
+                                            className="dropdown-item text-uppercase"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            Ubrania
+                                        </a>
+                                        <a
+                                            className="dropdown-item text-uppercase"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            Akcesoria
+                                        </a>
+                                        <div className="dropdown-divider"></div>
+                                        <a
+                                            className="dropdown-item text-uppercase"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            Wszystkie
+                                        </a>
+                                    </div>
+                                </li>
+                            ) : null}
+                        </ul>
+                        <ul className="navbar-nav ml-auto">
+                            {window.location.pathname === `/Order` ||
+                            window.location.pathname === `/Basket` ||
+                            window.location.pathname === `/Regulations` ||
+                            window.location.pathname === `/Rodo` ? (
+                                <li className="nav-item">
+                                    <Link
+                                        className="nav-link text-uppercase"
+                                        to="/"
+                                    >
+                                        Wróć do strony głównej{" "}
+                                    </Link>
+                                </li>
+                            ) : null}
                             <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle text-uppercase"
@@ -46,7 +104,7 @@ const NavMenu = () => {
                                     aria-expanded="false"
                                     onClick={e => e.preventDefault}
                                 >
-                                    Kategorie
+                                    Moje Konto
                                 </a>
                                 <div
                                     className="dropdown-menu text-uppercase"
@@ -57,46 +115,15 @@ const NavMenu = () => {
                                         href="/"
                                         onClick={e => e.preventDefault()}
                                     >
-                                        Ubrania
+                                        Edycja Konta
                                     </a>
-                                    <a
-                                        className="dropdown-item text-uppercase"
-                                        href="/"
-                                        onClick={e => e.preventDefault()}
-                                    >
-                                        Akcesoria
-                                    </a>
-                                    <div className="dropdown-divider"></div>
-                                    <a
-                                        className="dropdown-item text-uppercase"
-                                        href="/"
-                                        onClick={e => e.preventDefault()}
-                                    >
-                                        Wszystkie
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav ml-auto">
-                            {window.location.pathname === `/Order` ||
-                            window.location.pathname === `/Basket` ? (
-                                <li className="nav-item">
                                     <Link
-                                        className="nav-link text-uppercase"
-                                        to="/"
+                                        className="dropdown-item text-uppercase"
+                                        to="/OrderHistory"
                                     >
-                                        Wróć do strony głównej{" "}
+                                        Lista zamówień
                                     </Link>
-                                </li>
-                            ) : null}
-                            <li className="nav-item text-uppercase">
-                                <a
-                                    className="nav-link"
-                                    href="/"
-                                    onClick={e => e.preventDefault()}
-                                >
-                                    Edycja konta
-                                </a>
+                                </div>
                             </li>
                             <li className="nav-item text-uppercase">
                                 <a

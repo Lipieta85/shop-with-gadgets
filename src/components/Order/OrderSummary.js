@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addOrderData } from "../../actions/index";
 import "../../assets/styles/order-summary.scss";
 
 const OrderSummary = () => {
@@ -12,8 +13,24 @@ const OrderSummary = () => {
     const orderInputState = useSelector(
         state => state.cartReducer.orderInputState,
     );
+    const orderData = useSelector(state => state.orderReducer.orderData);
     //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
+
+    const dispatch = useDispatch();
+
+    const orderDataHandler = () => {
+        const order = {
+            orderDate: new Date().toISOString().split("T")[0],
+            orderNumber: orderInputState,
+            orderTotal: total,
+            orderPlace: orderSelectInputValue,
+            orderProducts: items,
+        };
+        dispatch(addOrderData(order));
+        console.log(orderData);
+        return orderData;
+    };
 
     // useEffect(() => {
     //     checkboxStatus.forEach((value, key) => {
@@ -40,7 +57,7 @@ const OrderSummary = () => {
             return (
                 <li
                     className="row nav-item collection-item border d-flex"
-                    key={item.id}
+                    key={item.product.id}
                 >
                     <div className="col-md-4 d-flex align-items-center text-center">
                         <div className="item-img p-1">
@@ -58,7 +75,7 @@ const OrderSummary = () => {
                             style={{ minHeight: "70px" }}
                         >
                             <h4 className="title text-uppercase">
-                                {item.title}
+                                {item.product.description1}
                             </h4>
                             <div>
                                 <div className="d-flex flex-wrap justify-content-between">
@@ -98,48 +115,54 @@ const OrderSummary = () => {
     );
 
     return (
-        <div className="container" style={{ marginTop: "80px" }}>
-            <h2>Podsumowanie Twojego zamówienia</h2>
-            <hr />
-            <p className="order-summary-text font-weight-bold">
-                1. Zamówiłeś następujące produkty
-            </p>
-            <div className="m-2">{addedItems}</div>
-            <p className="order-summary-text mt-2">
-                2. Kwota do zapłaty:{" "}
-                <span className="summary-text-value font-weight-bold text-uppercase">
-                    {total} zł
-                </span>
-            </p>
-            <p className="order-summary-text">
-                3. Adres dostawy:{" "}
-                <span className="summary-text-value font-weight-bold text-uppercase">
-                    {orderSelectInputValue}
-                </span>
-            </p>
-            <p className="order-summary-text">
-                4. Numer zamówienia Klienta:{" "}
-                <span className="summary-text-value font-weight-bold text-uppercase">
-                    {orderInputState}
-                </span>
-            </p>
-            <p className="order-summary-text">
-                5. Typ zamówienia:{" "}
-                <span className="summary-text-value font-weight-bold text-uppercase">
-                    {checkBoxText}
-                </span>
-            </p>
-            <hr />
-            <div className="d-flex flex-wrap justify-content-between">
-                <Link
-                    to="/Basket"
-                    className="btn btn-outline-primary mr-1 mt-4"
-                >
-                    Wróć do koszyka
-                </Link>
-                <Link to="/OrderEnd" className="btn btn-outline-primary mt-4">
-                    Zatwierdź zamówienie
-                </Link>
+        <div className="order-summary">
+            <div className="container">
+                <h2>Podsumowanie Twojego zamówienia</h2>
+                <hr />
+                <p className="order-summary-text font-weight-bold">
+                    1. Zamówiłeś następujące produkty
+                </p>
+                <div className="m-2">{addedItems}</div>
+                <p className="order-summary-text mt-2">
+                    2. Kwota do zapłaty:{" "}
+                    <span className="summary-text-value font-weight-bold text-uppercase">
+                        {total} zł
+                    </span>
+                </p>
+                <p className="order-summary-text">
+                    3. Adres dostawy:{" "}
+                    <span className="summary-text-value font-weight-bold text-uppercase">
+                        {orderSelectInputValue}
+                    </span>
+                </p>
+                <p className="order-summary-text">
+                    4. Numer zamówienia Klienta:{" "}
+                    <span className="summary-text-value font-weight-bold text-uppercase">
+                        {orderInputState}
+                    </span>
+                </p>
+                <p className="order-summary-text">
+                    5. Typ zamówienia:{" "}
+                    <span className="summary-text-value font-weight-bold text-uppercase">
+                        {checkBoxText}
+                    </span>
+                </p>
+                <hr />
+                <div className="d-flex flex-wrap justify-content-between">
+                    <Link
+                        to="/Basket"
+                        className="btn btn-outline-primary mr-1 mt-4"
+                    >
+                        Wróć do koszyka
+                    </Link>
+                    <Link
+                        to="/OrderEnd"
+                        className="btn btn-outline-primary mt-4"
+                        onClick={orderDataHandler}
+                    >
+                        Zatwierdź zamówienie
+                    </Link>
+                </div>
             </div>
         </div>
     );

@@ -1,57 +1,42 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import "../../assets/styles/login-form.scss";
 import Carousel from "./Carousel";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../actions/authorization";
-import { useSelector } from "react-redux";
+import sha256 from "js-sha256";
+import { getToken, getUserData } from "../../api/index";
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const isLoggedIn = useSelector(state => state.authReducer.isAuth);
-    const [data] = useState({
-        users: [
-            // {
-            //     id: 1,
-            //     userName: "admin",
-            //     password: "admin"
-            // },
-            {
-                id: 2,
-                userName: "klient",
-                password: "klient"
-            }
-        ]
-    });
-    //const [isError, setIsError] = useState(false);
+
     const [loginState, setLoginState] = useState({
         login: "",
-        password: ""
+        password: "",
     });
 
     const onHandleChange = e => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value });
     };
 
-    function postLogin(e) {
+    const getSessionToken = e => {
         e.preventDefault();
-        data.users.map(user => {
-            if (
-                user.userName === loginState.login &&
-                user.password === loginState.password
-            ) {
-                dispatch(signIn({ isAuth: true }));
-            }
-            return null;
-        });
-    }
+        const password = sha256(loginState.password);
 
-    if (isLoggedIn && loginState.login === "admin") {
-        return <Redirect to="/admin" />;
-    }
-    if (isLoggedIn && loginState.password === "klient") {
-        return <Redirect to="/customer" />;
-    }
+        const userData = btoa(loginState.login + ":" + password);
+        getToken(userData)
+            .then(res => {
+                console.log(res);
+                //const token = res.data.token.split(".");
+                //const userID = JSON.parse(atob(token[1]));
+                //sessionStorage.setItem("userID", userID.userId);
+                sessionStorage.setItem("token", res.data.token);
+                getUserData(res.data.token).then(userInfo => {
+                    console.log(userInfo);
+                    dispatch(signIn({ isAuth: true }));
+                });
+            })
+            .catch(err => console.log(err.response));
+    };
 
     return (
         <div className="content-header">
@@ -64,7 +49,7 @@ const LoginForm = () => {
                         <div className="login-panel">
                             <form
                                 className="px-4 py-3 form"
-                                onSubmit={e => postLogin(e)}
+                                onSubmit={getSessionToken}
                             >
                                 <h4 className="head-text">
                                     Masz dane dostępowe ?

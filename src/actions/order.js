@@ -13,3 +13,16 @@ export const orderSelectInputValue = value => {
         value,
     };
 };
+
+export const addOrderData = data => {
+    return {
+        type: type.ADD_ORDER_DATA,
+        data,
+    };
+};
+
+export const showOrderHistory = () => {
+    return {
+        type: type.SHOW_ORDER_HISTORY,
+    };
+};

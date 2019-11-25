@@ -2,19 +2,12 @@
     margin: 5px 0px 5px 0px;
     max-width: 295px;
     .card-img {
-        height: 180px;
+        height: 175px;
         .card-img-wrapper {
             margin: 0 auto;
             .card-img-content {
-                max-height: 180px;
+                max-height: 175px;
                 max-width: 100%;
-            }
-        }
-        .card-body {
-            .btn {
-                border: 2px solid #004c97;
-                background: transparent;
-                color: #004c97;
             }
         }
     }
@@ -73,7 +66,7 @@
 
 @media (max-width: 400px) {
     .card {
-        max-width: 157px;
+        max-width: 147px;
         padding: 5px;
         .card-img {
             height: 90px;

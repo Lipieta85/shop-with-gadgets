@@ -3,7 +3,6 @@ import NavMenu from "../components/HomePage/NavMenu";
 import LoginForm from "../components/HomePage/LoginForm";
 import Rules from "../components/HomePage/Rules";
 import Slider from "../components/HomePage/Slider";
-import Footer from "../components/HomePage/Footer";
 
 const HomePageContainer = () => {
     return (
@@ -12,7 +11,6 @@ const HomePageContainer = () => {
             <LoginForm />
             <Rules />
             <Slider />
-            <Footer />
         </>
     );
 };

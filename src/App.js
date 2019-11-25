@@ -11,6 +11,10 @@ import ProductDetails from "./components/ClientPanel/ProductDetails/ProductDetai
 import PrivateRoute from "./authentication/PrivateRoute";
 import PageNotFound from "./components/NotFound";
 import { useSelector } from "react-redux";
+import Footer from "./components/Footer/Footer";
+import Regulations from "./components/Footer/Regulations";
+import Rodo from "./components/Footer/Rodo";
+import OrderHistory from "./components/OrderHistory/OrderHistory";
 
 function App() {
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
@@ -32,13 +36,13 @@ function App() {
                 <PrivateRoute path="/Basket" component={BasketContainer} />
                 <PrivateRoute path="/Order" component={OrderContainer} />
                 <PrivateRoute path="/OrderEnd" component={OrderEndContainer} />
-                {/* <PrivateRoute
-                    path="/client"
-                    component={ClientPanelContainer}
-                ></PrivateRoute> */}
+                <PrivateRoute path="/OrderHistory" component={OrderHistory} />
+                <PrivateRoute path="/Regulations" component={Regulations} />
+                <PrivateRoute path="/Rodo" component={Rodo} />
                 <PrivateRoute path="/product/:id" component={ProductDetails} />
                 <Route path="*" component={PageNotFound} />
             </Switch>
+            <Footer />
         </Router>
     );
 }
