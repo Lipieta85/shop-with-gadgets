@@ -7,6 +7,7 @@ import { initProducts } from "../../actions/index";
 import Spinner from "../UI/Spinner/Spinner";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
+import defImg from "../../assets/images/default.jpg";
 
 const ClientPanel = () => {
     const items = useSelector(state => state.cartReducer.items);
@@ -33,7 +34,7 @@ const ClientPanel = () => {
                         <div className="card-img-wrapper">
                             <img
                                 className="card-img-content"
-                                src={item.img}
+                                src={item.img ? item.img : defImg}
                                 alt="Card-cap"
                             ></img>
                         </div>

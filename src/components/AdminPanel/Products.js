@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "../../assets/styles/products.scss";
-
+import defImg from "../../assets/images/default.jpg";
 const Products = () => {
     const items = useSelector(state => state.cartReducer.items);
 
@@ -18,7 +18,7 @@ const Products = () => {
                                 <div className="card-img-wrapper">
                                     <img
                                         className="card-img-content"
-                                        src={item.img}
+                                        src={item.img ? item.img : defImg}
                                         alt="Card-cap"
                                     ></img>
                                 </div>

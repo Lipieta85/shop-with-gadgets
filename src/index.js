@@ -19,7 +19,7 @@ const persistConfig = {
     storage,
 };
 let middleware = [];
-if (!window.location.hostname === "localhost") {
+if (window.location.hostname === "localhost") {
     middleware = [...middleware, logger, thunk];
 } else {
     middleware = [...middleware, thunk];
