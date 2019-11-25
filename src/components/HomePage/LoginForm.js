@@ -25,13 +25,11 @@ const LoginForm = () => {
         const userData = btoa(loginState.login + ":" + password);
         getToken(userData)
             .then(res => {
-                console.log(res);
                 //const token = res.data.token.split(".");
                 //const userID = JSON.parse(atob(token[1]));
                 //sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(userInfo => {
-                    console.log(userInfo);
                     dispatch(signIn({ isAuth: true }));
                 });
             })

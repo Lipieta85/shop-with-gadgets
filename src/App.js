@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { withRouter, Route, Switch } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
 import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
@@ -15,11 +15,26 @@ import Footer from "./components/Footer/Footer";
 import Regulations from "./components/Footer/Regulations";
 import Rodo from "./components/Footer/Rodo";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
+import ReactGA from "react-ga";
 
-function App() {
+function initializeReactGA() {
+    ReactGA.initialize("UA-153158200-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
+export default withRouter(function App({ location }) {
+    const [currentPath, setCurrentPath] = useState(location.pathname);
+
+    useEffect(() => {
+        const { pathname } = location;
+        // console.log("New path:", pathname);
+        setCurrentPath(pathname);
+        initializeReactGA(currentPath);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location.pathname]);
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
     return (
-        <Router>
+        <>
             <Switch>
                 <Route
                     path="/"
@@ -43,8 +58,6 @@ function App() {
                 <Route path="*" component={PageNotFound} />
             </Switch>
             <Footer />
-        </Router>
+        </>
     );
-}
-
-export default App;
+});

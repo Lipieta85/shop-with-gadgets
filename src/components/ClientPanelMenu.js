@@ -35,7 +35,6 @@ const ClientPanelMenu = () => {
     }, [budget]);
 
     useEffect(() => {
-        console.log(orderHistoryShow);
         if (orderHistoryShow) {
             setOrderList(
                 orderHistory.map(order => {

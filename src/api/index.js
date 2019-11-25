@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = sessionStorage.getItem("token");
+// const token = sessionStorage.getItem("token");
 
 export const getToken = async userData => {
     return await axios({
@@ -17,7 +17,6 @@ export const getToken = async userData => {
     });
 };
 
-console.log(token);
 export const getUserData = async t => {
     return await axios({
         method: "get",
