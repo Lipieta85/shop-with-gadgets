@@ -36,7 +36,7 @@ const Button = props => {
 
     const changeQuantityHandler = event => {
         setProductQuantity({
-            [event.target.id]: event.target.value
+            [event.target.id]: event.target.value,
         });
         inputValue.map(item => {
             if (event.target.id === item.product.id) {
