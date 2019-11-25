@@ -1,4 +1,5 @@
 import * as type from "../actions/types";
+//import Axios from "axios";
 
 export const addIfItemEmpty = (id, productQuantity) => {
     return {
@@ -19,7 +20,7 @@ export const addIfItemExist = (id, productQuantity) => {
 export const addItemToBasket = (id, productQuantity) => {
     return (dispatch, getState) => {
         let existed_item = getState().cartReducer.addedItems.find(
-            item => id === item.id,
+            item => id === item.product.id,
         );
 
         if (existed_item) {

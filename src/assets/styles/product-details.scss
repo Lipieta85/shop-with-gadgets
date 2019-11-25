@@ -2,8 +2,8 @@
     background: url(../images/bg_top_2.jpg) center no-repeat;
     background-size: cover;
     position: relative;
-    margin-top: 60px;
-    height: calc(100vh - 60px);
+    padding-top: 60px;
+    min-height: calc(100vh - 57px);
     .product-details-container {
         .product-details-content {
             margin-top: 100px;

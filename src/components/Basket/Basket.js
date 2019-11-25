@@ -11,7 +11,7 @@ const Basket = props => {
             return (
                 <li
                     className="row nav-item collection-item border d-flex"
-                    key={item.id}
+                    key={item.product.id}
                 >
                     <div className="col-md-4 d-flex align-items-center text-center p-1">
                         <div className="item-img">
@@ -25,9 +25,9 @@ const Basket = props => {
 
                     <div className="col-md-8 border-left desc-col">
                         <BasketButtons
-                            itemId={item.id}
-                            itemDesc={items.desc}
-                            itemTitle={item.title}
+                            itemId={item.product.id}
+                            //itemDesc={items.product.description1}
+                            itemTitle={item.product.description1}
                             itemPrice={item.price}
                             itemQuantity={item.quantity}
                             itemTotalPrice={item.itemTotalPrice}

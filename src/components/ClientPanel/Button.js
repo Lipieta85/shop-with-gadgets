@@ -23,7 +23,7 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
         inputValue.map(item => {
-            if (input.current.id === item.id) {
+            if (input.current.id === item.product.id) {
                 if (input.current.value > Number(item.availableProduct)) {
                     setDisabled(true);
                 } else {
@@ -36,10 +36,10 @@ const Button = props => {
 
     const changeQuantityHandler = event => {
         setProductQuantity({
-            [event.target.id]: event.target.value
+            [event.target.id]: event.target.value,
         });
         inputValue.map(item => {
-            if (event.target.id === item.id) {
+            if (event.target.id === item.product.id) {
                 if (event.target.value > Number(item.availableProduct)) {
                     setDisabled(true);
                 } else {

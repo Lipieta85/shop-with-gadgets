@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearBasket } from "../../actions/index";
+import "../../assets/styles/order-end.scss";
 
 const OrderEnd = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className="text-center mt-5" style={{ paddingTop: "180px" }}>
+        <div className="order-end text-center">
             <h3>
                 Twoje zamówienie zostało przekazane do realizacji, czekaj na
                 potwierdzenie

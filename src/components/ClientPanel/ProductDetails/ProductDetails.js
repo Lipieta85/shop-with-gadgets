@@ -12,15 +12,15 @@ const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const [loadedProduct, setLoadedProduct] = useState([]);
     const id = props.match.params.id;
-
+    console.log(props);
     useEffect(() => {
         if (id) {
             const filter = products.filter(product => {
-                return product.id === id;
+                return product.product.id === id;
             });
             setLoadedProduct(filter[0]);
         }
-    }, [loadedProduct, products, id]);
+    }, [loadedProduct, id, products]);
 
     const nexItem = () => {
         if (Number(id) < products.length) {
@@ -36,6 +36,26 @@ const ProductDetails = props => {
             props.history.push("/product/" + (Number(id) - 1));
         }
     };
+
+    let productAvailability;
+    let productTitle;
+    let productUnit;
+    if (loadedProduct) {
+        for (var key in loadedProduct.availability) {
+            if (key === "availability") {
+                productAvailability = loadedProduct.availability[key];
+            }
+            if (key === "unitOfMeasure") {
+                productUnit = loadedProduct.availability[key];
+            }
+        }
+        for (let key in loadedProduct.product) {
+            if (key === "description1") {
+                productTitle = loadedProduct.product[key];
+            }
+        }
+    }
+
     return (
         <div className="product-details">
             <div className="container-fluid">
@@ -46,7 +66,7 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex align-items-center">
                                 <div className="d-flex justify-content-center">
                                     <Carousel
-                                        loadedProductImage={`/${loadedProduct.img}`}
+                                    //loadedProductImage={`/${loadedProduct.img}`}
                                     />
                                 </div>
                             </div>
@@ -54,10 +74,10 @@ const ProductDetails = props => {
                                 <div style={{ maxWidth: "1000px" }}>
                                     <div className="product-details-desc p-3">
                                         <h3 className="product-details-header">
-                                            {loadedProduct.title}
+                                            {productTitle}
                                         </h3>
                                         <p className="product-details-text">
-                                            {loadedProduct.desc}
+                                            {productTitle}
                                         </p>
                                         <p className="font-weight-bold">
                                             Kod produktu:{" "}
@@ -68,7 +88,7 @@ const ProductDetails = props => {
                                         <p className="font-weight-bold">
                                             Jednostka miary:{" "}
                                             <span className="product-details-text">
-                                                szt
+                                                {productUnit}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
@@ -80,8 +100,8 @@ const ProductDetails = props => {
                                         <p className="font-weight-bold">
                                             Stan magazynowy:{" "}
                                             <span className="product-details-text">
-                                                {loadedProduct.availableProduct}{" "}
-                                                szt.
+                                                {productAvailability}{" "}
+                                                {productUnit}.
                                             </span>
                                         </p>
                                         <div className="product-buttons-container row">

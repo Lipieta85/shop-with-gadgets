@@ -13,6 +13,11 @@ const ClientPanelMenu = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
+    const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
+    const orderHistoryShow = useSelector(
+        state => state.orderReducer.historyShow
+    );
+    const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
 
@@ -28,6 +33,17 @@ const ClientPanelMenu = () => {
             );
         } else setBudgetAlert("");
     }, [budget]);
+
+    useEffect(() => {
+        console.log(orderHistoryShow);
+        if (orderHistoryShow) {
+            setOrderList(
+                orderHistory.map(order => {
+                    return <p>{order.orderDate}</p>;
+                })
+            );
+        }
+    }, [orderHistoryShow, orderHistory]);
 
     const buttonHandler = e => {
         if (addedItems.length === 0) {
@@ -57,7 +73,7 @@ const ClientPanelMenu = () => {
                                 className="button-basket btn btn-outline-primary"
                                 onClick={buttonHandler}
                             >
-                                Przejdź do koszyka({totalQuantity})
+                                Przejdź do koszyka ({totalQuantity})
                             </Link>
                         </div>
                     )}
@@ -80,6 +96,7 @@ const ClientPanelMenu = () => {
                     </div>
                 </div>
                 <div className="divider"></div>
+                <div>{orderList}</div>
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import * as type from "../actions/types";
-import productsData from "../db.json";
+//import productsData from "../db.json";
 
 const initialState = {
-    items: productsData,
+    items: null,
     addedItems: [],
     total: "0.00",
     totalQuantity: 0,
@@ -10,14 +10,17 @@ const initialState = {
     //checkedItems: new Map(),
     orderInputState: "",
     orderSelectInputValue: "Wrocław ul. Sadowa",
+    error: false,
 };
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case type.ADD_IF_ITEM_EXIST:
-            let addedItem = state.items.find(item => item.id === action.id);
+            let addedItem = state.items.find(
+                item => item.product.id === action.id,
+            );
 
             let existed_item = state.addedItems.find(
-                item => action.id === item.id,
+                item => action.id === item.product.id,
             );
             let addedValue = Object.values(action.productQuantity);
             let addedValueNum = Number(addedValue[0]);
@@ -33,11 +36,15 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: state.items.map(item =>
-                    item.id === action.id
+                    item.product.id === action.id
                         ? {
                               ...item,
-                              availableProduct:
-                                  item.availableProduct - addedValueNum,
+                              availability: {
+                                  ...item.availability,
+                                  availability:
+                                      item.availability.availability -
+                                      addedValueNum,
+                              },
                           }
                         : item,
                 ),
@@ -54,8 +61,10 @@ const cartReducer = (state = initialState, action) => {
             };
 
         case type.ADD_IF_ITEM_EMPTY:
-            let addedItem2 = state.items.find(item => item.id === action.id);
-
+            let addedItem2 = state.items.find(
+                item => item.product.id === action.id,
+            );
+            console.log(addedItem2);
             let addedValue2 = Object.values(action.productQuantity);
             let addedValueNum2 = Number(addedValue2[0]);
 
@@ -76,11 +85,15 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 addedItems: [...state.addedItems, addedItem2],
                 items: state.items.map(item =>
-                    item.id === action.id
+                    item.product.id === action.id
                         ? {
                               ...item,
-                              availableProduct:
-                                  item.availableProduct - addedValueNum2,
+                              availability: {
+                                  ...item.availability,
+                                  availability:
+                                      item.availability.availability -
+                                      addedValueNum2,
+                              },
                           }
                         : item,
                 ),
@@ -94,10 +107,10 @@ const cartReducer = (state = initialState, action) => {
 
         case type.REMOVE_CART:
             let itemToRemove = state.addedItems.find(
-                item => action.id === item.id,
+                item => action.id === item.product.id,
             );
             let new_items = state.addedItems.filter(
-                item => action.id !== item.id,
+                item => action.id !== item.product.id,
             );
 
             let newTotal2 = (
@@ -108,11 +121,15 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 addedItems: new_items,
                 items: state.items.map(item =>
-                    item.id === action.id
+                    item.product.id === action.id
                         ? {
                               ...item,
-                              availableProduct:
-                                  item.availableProduct + itemToRemove.quantity,
+                              availability: {
+                                  ...item.availability,
+                                  availability:
+                                      item.availability.availability +
+                                      itemToRemove.quantity,
+                              },
                           }
                         : item,
                 ),
@@ -158,7 +175,7 @@ const cartReducer = (state = initialState, action) => {
 
         case type.CHANGE_BASKET_AMOUNTS:
             let addedItem3 = state.addedItems.find(
-                item => item.id === action.productId,
+                item => item.product.id === action.productId,
             );
 
             let oldAddedItemQuantity = Number(addedItem3.quantity);
@@ -185,12 +202,15 @@ const cartReducer = (state = initialState, action) => {
                     2,
                 ),
                 items: state.items.map(item =>
-                    item.id === action.productId
+                    item.product.id === action.id
                         ? {
                               ...item,
-                              availableProduct:
-                                  (item.availableProduct += oldAddedItemQuantity) -
-                                  addedValueNum3,
+                              availability: {
+                                  ...item.availability,
+                                  availability:
+                                      (item.availability.availability += oldAddedItemQuantity) -
+                                      addedValueNum3,
+                              },
                           }
                         : item,
                 ),
@@ -204,7 +224,19 @@ const cartReducer = (state = initialState, action) => {
                     (state.totalQuantity -= oldAddedItemQuantity) +
                     addedValueNum3,
             };
+        case type.SET_PRODUCTS:
+            let products = Object.values(action.products);
 
+            return {
+                ...state,
+                items: products[0],
+                error: false,
+            };
+        case type.FETCH_PRODUCTS_FAILED:
+            return {
+                ...state,
+                error: true,
+            };
         default:
             return state;
     }

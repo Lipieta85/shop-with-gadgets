@@ -1,6 +1,9 @@
-.basket-header {
-    margin-top: 90px;
-    padding-left: 4.9vw;
+.basket-container {
+    min-height: calc(100vh - 57px);
+    .basket-header {
+        margin-top: 90px;
+        padding-left: 4.9vw;
+    }
 }
 
 @media (max-width: 991px) {
