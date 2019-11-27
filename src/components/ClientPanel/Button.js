@@ -24,7 +24,7 @@ const Button = props => {
         }
         inputValue.map(item => {
             if (input.current.id === item.product.id) {
-                if (input.current.value > Number(item.availableProduct)) {
+                if (input.current.value > item.availability.availability) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
@@ -40,7 +40,7 @@ const Button = props => {
         });
         inputValue.map(item => {
             if (event.target.id === item.product.id) {
-                if (event.target.value > Number(item.availableProduct)) {
+                if (event.target.value > item.availability.availability) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
@@ -57,7 +57,7 @@ const Button = props => {
         }
         if (disabled) {
             alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie"
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
             );
             event.preventDefault();
         } else {

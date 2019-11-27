@@ -18,7 +18,7 @@ export const initProducts = token => {
     return dispatch => {
         axios({
             method: "get",
-            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/filtron`,
+            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":1, "itemsPerPage":100}}`,
             headers: {
                 Authorization: token,
             },

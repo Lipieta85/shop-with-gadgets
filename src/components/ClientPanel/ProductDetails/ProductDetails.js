@@ -7,38 +7,72 @@ import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
 
 import "../../../assets/styles/product-details.scss";
+//import { setProducts } from "../../../actions";
 
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const [loadedProduct, setLoadedProduct] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
+    const [productId, setProductId] = useState(id);
+    //const [oldProductId, setOldProductdId] = useState(id);
+
     useEffect(() => {
-        if (id) {
-            const filter = products.filter(product => {
-                return product.product.id === id;
+        if (selectedIndex === products.length) {
+            //setLoadedProduct(products[1]);
+            products.map((product, i) => {
+                return i === 0
+                    ? setProductId(product.product.id) &&
+                          setLoadedProduct(products[0])
+                    : null;
             });
-            setLoadedProduct(filter[0]);
+            props.history.push("/product/" + productId);
         }
-    }, [loadedProduct, id, products]);
+        if (selectedIndex > 0 && selectedIndex < products.length) {
+            return (
+                setLoadedProduct(products[selectedIndex]),
+                props.history.push("/product/" + productId)
+            );
+        } else {
+            products.map((product, i) => {
+                return product.product.id === id ? setSelectedIndex(i) : null;
+            });
+            return setLoadedProduct(products[selectedIndex]);
+        }
+    }, [loadedProduct, id, products, selectedIndex, productId, props.history]);
 
     const nexItem = () => {
-        if (Number(id) < products.length) {
-            props.history.push("/product/" + (Number(id) + 1));
-        } else if (Number(id) === products.length) {
-            props.history.push("/product/1");
-        }
+        setSelectedIndex(selectedIndex + 1);
+        products.map((product, i) => {
+            return i === selectedIndex + 1
+                ? setProductId(product.product.id)
+                : null;
+        });
+        // if (Number(id) < products.length) {
+        //     props.history.push("/product/" + (Number(id) + 1));
+        // } else if (Number(id) === products.length) {
+        //     props.history.push("/product/1");
+        // }
     };
     const prevItem = () => {
-        if (Number(id) === 1) {
-            props.history.push("/product/" + products.length);
-        } else {
-            props.history.push("/product/" + (Number(id) - 1));
-        }
+        setSelectedIndex(selectedIndex - 1);
+        products.map((product, i) => {
+            return i === selectedIndex - 1
+                ? setProductId(product.product.id)
+                : null;
+        });
+
+        //  if (Number(id) === 1) {
+        //      props.history.push("/product/" + products.length);
+        //  } else {
+        //      props.history.push("/product/" + (Number(id) - 1));
+        //  }
     };
 
     let productAvailability;
     let productTitle;
     let productUnit;
+    let productPrice;
     if (loadedProduct) {
         for (var key in loadedProduct.availability) {
             if (key === "availability") {
@@ -51,6 +85,11 @@ const ProductDetails = props => {
         for (let key in loadedProduct.product) {
             if (key === "description1") {
                 productTitle = loadedProduct.product[key];
+            }
+        }
+        for (let key in loadedProduct) {
+            if (key === "price") {
+                productPrice = loadedProduct[key];
             }
         }
     }
@@ -91,21 +130,21 @@ const ProductDetails = props => {
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            Cena jendostkowa:{" "}
+                                            Cena jednostkowa:{" "}
                                             <span className="product-details-text">
-                                                {loadedProduct.price} zł
+                                                {productPrice} zł
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
                                             Stan magazynowy:{" "}
                                             <span className="product-details-text">
                                                 {productAvailability}{" "}
-                                                {productUnit}.
+                                                {productUnit}
                                             </span>
                                         </p>
                                         <div className="product-buttons-container row">
                                             <Button
-                                                itemId={id}
+                                                itemId={productId}
                                                 changeProduct={props}
                                             />
                                         </div>

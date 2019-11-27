@@ -16,11 +16,11 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case type.ADD_IF_ITEM_EXIST:
             let addedItem = state.items.find(
-                item => item.product.id === action.id
+                item => item.product.id === action.id,
             );
 
             let existed_item = state.addedItems.find(
-                item => action.id === item.product.id
+                item => action.id === item.product.id,
             );
             let addedValue = Object.values(action.productQuantity);
             let addedValueNum = Number(addedValue[0]);
@@ -46,7 +46,7 @@ const cartReducer = (state = initialState, action) => {
                                       addedValueNum,
                               },
                           }
-                        : item
+                        : item,
                 ),
                 total: (
                     state.total +
@@ -62,7 +62,7 @@ const cartReducer = (state = initialState, action) => {
 
         case type.ADD_IF_ITEM_EMPTY:
             let addedItem2 = state.items.find(
-                item => item.product.id === action.id
+                item => item.product.id === action.id,
             );
             let addedValue2 = Object.values(action.productQuantity);
             let addedValueNum2 = Number(addedValue2[0]);
@@ -94,7 +94,7 @@ const cartReducer = (state = initialState, action) => {
                                       addedValueNum2,
                               },
                           }
-                        : item
+                        : item,
                 ),
                 total: newTotal,
                 budget: (
@@ -106,10 +106,10 @@ const cartReducer = (state = initialState, action) => {
 
         case type.REMOVE_CART:
             let itemToRemove = state.addedItems.find(
-                item => action.id === item.product.id
+                item => action.id === item.product.id,
             );
             let new_items = state.addedItems.filter(
-                item => action.id !== item.product.id
+                item => action.id !== item.product.id,
             );
 
             let newTotal2 = (
@@ -130,7 +130,7 @@ const cartReducer = (state = initialState, action) => {
                                       itemToRemove.quantity,
                               },
                           }
-                        : item
+                        : item,
                 ),
                 total: newTotal2,
                 budget: (
@@ -174,7 +174,7 @@ const cartReducer = (state = initialState, action) => {
 
         case type.CHANGE_BASKET_AMOUNTS:
             let addedItem3 = state.addedItems.find(
-                item => item.product.id === action.productId
+                item => item.product.id === action.productId,
             );
 
             let oldAddedItemQuantity = Number(addedItem3.quantity);
@@ -191,14 +191,14 @@ const cartReducer = (state = initialState, action) => {
                 Number(addedItem3.price) * addedItem3.quantity;
 
             addedItem3.itemTotalPrice = Number(
-                addedItem3.itemTotalPrice
+                addedItem3.itemTotalPrice,
             ).toFixed(2);
 
             return {
                 ...state,
                 addedItems: [...state.addedItems],
                 total: ((state.total -= oldItemTotal) + newItemTotal).toFixed(
-                    2
+                    2,
                 ),
                 items: state.items.map(item =>
                     item.product.id === action.id
@@ -211,7 +211,7 @@ const cartReducer = (state = initialState, action) => {
                                       addedValueNum3,
                               },
                           }
-                        : item
+                        : item,
                 ),
                 budget: (
                     Number(state.budget) +
@@ -225,6 +225,7 @@ const cartReducer = (state = initialState, action) => {
             };
         case type.SET_PRODUCTS:
             let products = Object.values(action.products);
+            delete products[0].pagination;
 
             return {
                 ...state,
