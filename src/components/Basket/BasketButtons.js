@@ -16,18 +16,18 @@ const BasketButtons = props => {
 
     useEffect(() => {
         return setProductAmount({
-            [props.itemId]: props.itemQuantity
+            [props.itemId]: props.itemQuantity,
         });
     }, [props.itemId, props.itemQuantity]);
 
     const changeAmountHandler = () => {
         setProductAmount({
             ...productAmount,
-            [input.current.id]: input.current.value
+            [input.current.id]: input.current.value,
         });
         inputValue.map(item => {
-            if (input.current.id === item.id) {
-                if (input.current.value > Number(item.availableProduct)) {
+            if (input.current.id === item.product.id) {
+                if (input.current.value > item.availability.availability) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
@@ -44,7 +44,7 @@ const BasketButtons = props => {
         }
         if (disabled) {
             alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie"
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
             );
             event.preventDefault();
         } else {

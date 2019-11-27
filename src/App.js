@@ -27,7 +27,7 @@ export default withRouter(function App({ location }) {
 
     useEffect(() => {
         const { pathname } = location;
-        // console.log("New path:", pathname);
+
         setCurrentPath(pathname);
         initializeReactGA(currentPath);
         // eslint-disable-next-line react-hooks/exhaustive-deps
