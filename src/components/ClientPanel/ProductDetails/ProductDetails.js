@@ -19,7 +19,7 @@ const ProductDetails = props => {
 
     useEffect(() => {
         if (selectedIndex === products.length) {
-            //setLoadedProduct(products[1]);
+            setLoadedProduct(products[1]);
             products.map((product, i) => {
                 return i === 0
                     ? setProductId(product.product.id) &&
