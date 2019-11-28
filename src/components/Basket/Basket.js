@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
+import defImg from "../../assets/images/default.jpg";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
@@ -16,7 +17,7 @@ const Basket = props => {
                     <div className="col-md-4 d-flex align-items-center text-center p-1">
                         <div className="item-img">
                             <img
-                                src={item.img}
+                                src={item.img ? item.img : defImg}
                                 alt="item"
                                 className="item-basket-img"
                             />
