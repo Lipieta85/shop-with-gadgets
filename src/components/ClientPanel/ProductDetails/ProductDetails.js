@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
+import defImg from "../../../assets/images/default.jpg";
 import Button from "../Button";
 import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
@@ -104,7 +104,7 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex align-items-center">
                                 <div className="d-flex justify-content-center">
                                     <Carousel
-                                    //loadedProductImage={`/${loadedProduct.img}`}
+                                        loadedProductImage={`${defImg}`}
                                     />
                                 </div>
                             </div>

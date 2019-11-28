@@ -18,7 +18,11 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import ReactGA from "react-ga";
 
 function initializeReactGA() {
-    ReactGA.initialize(process.env.REACT_APP_TRACKING_ID);
+    ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
+        gaOptions: {
+            siteSpeedSampleRate: 100
+        }
+    });
     ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
