@@ -14,16 +14,17 @@ export const fetchProductsFailed = () => {
     };
 };
 
-export const initProducts = token => {
+export const initProducts = (token, currentPage) => {
     return dispatch => {
         axios({
             method: "get",
-            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":1, "itemsPerPage":100}}`,
+            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 Authorization: token,
             },
         })
             .then(res => {
+                console.log(res.data);
                 dispatch(setProducts(res.data));
             })
             .catch(error => {

@@ -8,17 +8,18 @@ const OrderSummary = () => {
     const items = useSelector(state => state.cartReducer.addedItems);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
-        state => state.cartReducer.orderSelectInputValue
+        state => state.cartReducer.orderSelectInputValue,
     );
     const orderInputState = useSelector(
-        state => state.cartReducer.orderInputState
+        state => state.cartReducer.orderInputState,
     );
     const orderData = useSelector(state => state.orderReducer.orderData);
     //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
 
     const dispatch = useDispatch();
-
+    console.log(orderSelectInputValue);
+    console.log(orderInputState);
     const orderDataHandler = () => {
         const order = {
             orderDate: new Date().toISOString().split("T")[0],

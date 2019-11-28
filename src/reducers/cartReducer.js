@@ -1,5 +1,6 @@
 import * as type from "../actions/types";
 //import productsData from "../db.json";
+import { mapKeys } from "lodash";
 
 const initialState = {
     items: null,
@@ -11,6 +12,7 @@ const initialState = {
     orderInputState: "",
     orderSelectInputValue: "Wrocław ul. Sadowa",
     error: false,
+    pagination: {},
 };
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -224,13 +226,23 @@ const cartReducer = (state = initialState, action) => {
                     addedValueNum3,
             };
         case type.SET_PRODUCTS:
-            let products = Object.values(action.products);
-            delete products[0].pagination;
+            let data = Object.values(action.products);
+            // delete products[0].pagination;
+            const arr = [];
+            mapKeys(data[0], function(value, key) {
+                return arr.push(value);
+            });
+            const products = arr;
+            products.pop();
+            const pagination = data[0].pagination;
+            console.log(products);
+            console.log(pagination);
 
             return {
                 ...state,
-                items: products[0],
+                items: products,
                 error: false,
+                pagination,
             };
         case type.FETCH_PRODUCTS_FAILED:
             return {
