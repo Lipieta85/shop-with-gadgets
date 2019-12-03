@@ -10,7 +10,8 @@ export {
     orderInputState,
     orderSelectInputValue,
     addOrderData,
-    showOrderHistory,
 } from "./order.js";
 
 export { setProducts, initProducts, fetchProductsFailed } from "./products.js";
+
+export { nextPage, prevPage, setPage } from "./page.js";

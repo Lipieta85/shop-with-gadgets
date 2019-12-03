@@ -12,4 +12,6 @@ export const SIGN_OUT = "SIGN_OUT";
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const FETCH_PRODUCTS_FAILED = "FETCH_PRODUCTS_FAILED";
 export const ADD_ORDER_DATA = "ADD_ORDER_DATA";
-export const SHOW_ORDER_HISTORY = "SHOW_ORDER_HISTORY";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const SET_PAGE = "SET_PAGE";

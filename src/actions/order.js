@@ -20,9 +20,3 @@ export const addOrderData = data => {
         data,
     };
 };
-
-export const showOrderHistory = () => {
-    return {
-        type: type.SHOW_ORDER_HISTORY,
-    };
-};

@@ -1,5 +1,6 @@
 import * as type from "../actions/types";
 import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
 
 export const setProducts = products => {
     return {
@@ -16,19 +17,21 @@ export const fetchProductsFailed = () => {
 
 export const initProducts = (token, currentPage) => {
     return dispatch => {
-        axios({
-            method: "get",
-            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
-            headers: {
-                Authorization: token,
-            },
-        })
-            .then(res => {
-                console.log(res.data);
-                dispatch(setProducts(res.data));
+        trackPromise(
+            axios({
+                method: "get",
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+                headers: {
+                    Authorization: token,
+                },
             })
-            .catch(error => {
-                dispatch(fetchProductsFailed());
-            });
+                .then(res => {
+                    console.log(res.data);
+                    dispatch(setProducts(res.data));
+                })
+                .catch(error => {
+                    dispatch(fetchProductsFailed());
+                }),
+        );
     };
 };

@@ -1,72 +1,90 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import defImg from "../../../assets/images/default.jpg";
 import Button from "../Button";
 import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
+import { initProducts } from "../../../actions/index";
 
 import "../../../assets/styles/product-details.scss";
 //import { setProducts } from "../../../actions";
 
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
+    const currentPage = useSelector(state => state.pageReducer.currentPage);
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const [loadedProduct, setLoadedProduct] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
     const [productId, setProductId] = useState(id);
-    //const [oldProductId, setOldProductdId] = useState(id);
+    const [currentItems] = useState(pagination.totalItems);
+
+    const dispatch = useDispatch();
+
+    const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        if (selectedIndex === products.length) {
-            setLoadedProduct(products[1]);
-            products.map((product, i) => {
-                return i === 0
-                    ? setProductId(product.product.id) &&
-                          setLoadedProduct(products[0])
-                    : null;
-            });
-            props.history.push("/product/" + productId);
-        }
-        if (selectedIndex > 0 && selectedIndex < products.length) {
+        dispatch(initProducts(token, currentPage, currentItems));
+    }, [dispatch, token, currentPage, currentItems]);
+
+    useEffect(() => {
+        if (selectedIndex >= 0 && selectedIndex < products.length) {
             return (
                 setLoadedProduct(products[selectedIndex]),
                 props.history.push("/product/" + productId)
             );
-        } else {
+        }
+        if (!selectedIndex) {
             products.map((product, i) => {
                 return product.product.id === id ? setSelectedIndex(i) : null;
             });
             return setLoadedProduct(products[selectedIndex]);
         }
-    }, [loadedProduct, id, products, selectedIndex, productId, props.history]);
+    }, [
+        loadedProduct,
+        id,
+        products,
+        selectedIndex,
+        productId,
+        props.history,
+        currentPage,
+        dispatch,
+        pagination.totalPages,
+        currentItems,
+    ]);
 
     const nexItem = () => {
-        setSelectedIndex(selectedIndex + 1);
+        setSelectedIndex(prevState => prevState + 1);
         products.map((product, i) => {
             return i === selectedIndex + 1
                 ? setProductId(product.product.id)
                 : null;
         });
-        // if (Number(id) < products.length) {
-        //     props.history.push("/product/" + (Number(id) + 1));
-        // } else if (Number(id) === products.length) {
-        //     props.history.push("/product/1");
-        // }
+        if (selectedIndex + 1 === products.length) {
+            setLoadedProduct(products[0]);
+            setSelectedIndex(0);
+            products.map((product, i) => {
+                return i === 0 ? setProductId(product.product.id) : null;
+            });
+        }
     };
     const prevItem = () => {
-        setSelectedIndex(selectedIndex - 1);
+        setSelectedIndex(prevState => prevState - 1);
         products.map((product, i) => {
             return i === selectedIndex - 1
                 ? setProductId(product.product.id)
                 : null;
         });
-
-        //  if (Number(id) === 1) {
-        //      props.history.push("/product/" + products.length);
-        //  } else {
-        //      props.history.push("/product/" + (Number(id) - 1));
-        //  }
+        if (selectedIndex - 1 === -1) {
+            setLoadedProduct(products[products.length - 1]);
+            setSelectedIndex(products.length - 1);
+            products.map((product, i) => {
+                return i === products.length - 1
+                    ? setProductId(product.product.id)
+                    : null;
+            });
+        }
     };
 
     let productAvailability;

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// const token = sessionStorage.getItem("token");
-
 export const getToken = async userData => {
     return await axios({
         method: "post",

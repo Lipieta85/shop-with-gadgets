@@ -2,7 +2,6 @@ import * as type from "../actions/types";
 
 const initialState = {
     historyOfBuy: [],
-    historyShow: false,
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -11,11 +10,6 @@ const orderReducer = (state = initialState, action) => {
             return {
                 ...state,
                 historyOfBuy: state.historyOfBuy.concat(action.data),
-            };
-        case type.SHOW_ORDER_HISTORY:
-            return {
-                ...state,
-                historyShow: !state.historyShow,
             };
         default:
             return state;

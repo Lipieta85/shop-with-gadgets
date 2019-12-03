@@ -227,7 +227,7 @@ const cartReducer = (state = initialState, action) => {
             };
         case type.SET_PRODUCTS:
             let data = Object.values(action.products);
-            // delete products[0].pagination;
+
             const arr = [];
             mapKeys(data[0], function(value, key) {
                 return arr.push(value);
@@ -235,8 +235,6 @@ const cartReducer = (state = initialState, action) => {
             const products = arr;
             products.pop();
             const pagination = data[0].pagination;
-            console.log(products);
-            console.log(pagination);
 
             return {
                 ...state,

@@ -6,7 +6,7 @@ import { signIn } from "../../actions/authorization";
 import sha256 from "js-sha256";
 import { getToken, getUserData } from "../../api/index";
 
-const LoginForm = () => {
+const LoginForm = props => {
     const dispatch = useDispatch();
 
     const [loginState, setLoginState] = useState({
@@ -17,7 +17,7 @@ const LoginForm = () => {
     const onHandleChange = e => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value });
     };
-
+    console.log(window.location.pathname);
     const getSessionToken = e => {
         e.preventDefault();
         const password = sha256(loginState.password);
