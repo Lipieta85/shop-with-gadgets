@@ -19,6 +19,7 @@
     .basket-quantity-input {
         width: 80px;
         padding: 4px;
+        margin: 5px;
         background-color: #f7f7f7;
         &:hover {
             color: black;
@@ -37,6 +38,7 @@
 @media (max-width: 767px) {
     .cart {
         .collection-item {
+            width: 100%;
             .item-basket-img {
                 width: 50%;
                 margin: 5px;

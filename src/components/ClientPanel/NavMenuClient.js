@@ -34,51 +34,27 @@ const NavMenu = () => {
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul className="navbar-nav">
+                        {/* <ul className="navbar-nav">
                             {window.location.pathname === `/` ? (
-                                <li className="nav-item dropdown">
-                                    <a
-                                        className="nav-link dropdown-toggle text-uppercase"
-                                        href="/"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        onClick={e => e.preventDefault}
-                                    >
-                                        Kategorie
-                                    </a>
-                                    <div
-                                        className="dropdown-menu text-uppercase"
-                                        aria-labelledby="navbarDropdown"
-                                    >
-                                        <a
-                                            className="dropdown-item text-uppercase"
-                                            href="/"
-                                            onClick={e => e.preventDefault()}
-                                        >
-                                            Ubrania
-                                        </a>
-                                        <a
-                                            className="dropdown-item text-uppercase"
-                                            href="/"
-                                            onClick={e => e.preventDefault()}
-                                        >
-                                            Akcesoria
-                                        </a>
-                                        <div className="dropdown-divider"></div>
-                                        <a
-                                            className="dropdown-item text-uppercase"
-                                            href="/"
-                                            onClick={e => e.preventDefault()}
-                                        >
+                                <ul className="nav nav-tabs">
+                                    <li className="nav-item">
+                                        <a className="nav-link active" href="#">
                                             Wszystkie
                                         </a>
-                                    </div>
-                                </li>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                            Ubrania
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#">
+                                            Długopisy
+                                        </a>
+                                    </li>
+                                </ul>
                             ) : null}
-                        </ul>
+                        </ul> */}
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
                             window.location.pathname === `/Basket` ||
@@ -129,7 +105,7 @@ const NavMenu = () => {
                                 <a
                                     className="nav-link"
                                     onClick={onSignout}
-                                    href="/"
+                                    href="https://mh-ecommerce-dev.bpower2.com/index.php/site/desktop"
                                 >
                                     Wyloguj
                                 </a>

@@ -29,7 +29,7 @@ const Basket = props => {
                             itemId={item.product.id}
                             //itemDesc={items.product.description1}
                             itemTitle={item.product.description1}
-                            itemPrice={item.price}
+                            itemPrice={item.price.price}
                             itemQuantity={item.quantity}
                             itemTotalPrice={item.itemTotalPrice}
                         />

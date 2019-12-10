@@ -10,3 +10,22 @@
         }
     }
 }
+
+@media (max-width: 767.98px) {
+    .order-history {
+        padding-top: 30px;
+        .order-container {
+            padding: 0;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media (max-width: 422px) {
+    .order-history {
+        .order-history-delivery {
+            font-size: 13px;
+            margin: 5px 0;
+        }
+    }
+}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import checkboxes from "./Checkboxes/checkboxes";
 import Checkbox from "./Checkboxes/Checkbox";
 import { orderInputState, orderSelectInputValue } from "../../actions/index";
+import { mapKeys } from "lodash";
 
 import "../../assets/styles/order-options.scss";
 
@@ -12,17 +13,18 @@ const OrderOptions = () => {
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     //const updatedCheck = useSelector(state => state.checkedItems);
     const inputStoreState = useSelector(
-        state => state.cartReducer.orderInputState
+        state => state.cartReducer.orderInputState,
     );
     const selectStoreState = useSelector(
-        state => state.cartReducer.orderSelectInputValue
+        state => state.cartReducer.orderSelectInputValue,
+    );
+    const deliveryData = useSelector(
+        state => state.clientDataReducer.clientData,
     );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [inputValue, setInputValue] = useState("");
-    const [selectInputValue, setSelectInputValue] = useState(
-        "Wrocław ul. Sadowa"
-    );
+    const [selectInputValue, setSelectInputValue] = useState("");
 
     const dispatch = useDispatch();
 
@@ -33,10 +35,6 @@ const OrderOptions = () => {
             setDisabledCheckbox(false);
         }
     }, [budget]);
-
-    useEffect(() => {
-        setInputValue(inputStoreState);
-    }, [inputStoreState]);
 
     useEffect(() => {
         setSelectInputValue(selectStoreState);
@@ -52,9 +50,9 @@ const OrderOptions = () => {
         // dispatch(addChecked(item, isChecked));
     };
 
-    const inputHandler = event => {
-        setInputValue(event.target.value);
-    };
+    // const inputHandler = event => {
+    //     setInputValue(event.target.value);
+    // };
 
     const selectValueHandler = event => {
         setSelectInputValue(event.target.value);
@@ -65,10 +63,24 @@ const OrderOptions = () => {
             e.preventDefault();
             alert("Koszyk jest pusty, dodaj produkt");
         } else {
-            dispatch(orderInputState(inputValue)) &&
-                dispatch(orderSelectInputValue(selectInputValue));
+            dispatch(orderSelectInputValue(selectInputValue));
         }
     };
+    let orderAdressess = [];
+    let arr = [];
+
+    if (deliveryData) {
+        deliveryData.map(data =>
+            orderAdressess.push(data.getWixClientData.deliveryAddresses[0]),
+        );
+        //console.log(orderAdressess);
+        mapKeys(orderAdressess[0], function(value, key) {
+            return arr.push({ key: value });
+        });
+        if (arr.length) {
+            dispatch(orderSelectInputValue(arr[1].key));
+        }
+    }
 
     return (
         <div className="order-options">
@@ -80,20 +92,22 @@ const OrderOptions = () => {
                     onChange={selectValueHandler}
                     value={selectInputValue}
                 >
-                    <option defaultValue>Wrocław ul. Sadowa</option>
-                    <option className="options" value="Wrocław ul. Wrocławska">
+                    <option defaultValue>
+                        {arr.length ? arr[1].key : null}
+                    </option>
+                    {/* <option className="options" value="Wrocław ul. Wrocławska">
                         Wrocław ul. Wrocławska
                     </option>
                     <option value="Wieluń ul. Sadowa">Wieluń ul. Sadowa</option>
                     <option value="Gdańsk ul. Gdańska">
                         Gdańsk ul. Gdańska
-                    </option>
+                    </option> */}
                 </select>
             </div>
             <hr />
-            <h4 className="options-header">Wpisz numer zamówienia Klienta</h4>
+            {/* <h4 className="options-header">Wpisz numer zamówienia Klienta</h4>
             <input type="text" value={inputValue} onChange={inputHandler} />
-            <hr />
+            <hr /> */}
             <div className="order-type invisible" style={{ height: "0" }}>
                 <h4 className="options-header">Wybierz typ zamówienia:</h4>
                 <div>

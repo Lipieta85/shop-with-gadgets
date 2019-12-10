@@ -15,14 +15,28 @@ export const getToken = async userData => {
     });
 };
 
-export const getUserData = async t => {
+export const getUserData = async token => {
     return await axios({
         method: "get",
         url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getLoggedUser",
+            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getWixClientData",
         headers: {
             "Content-Type": "application/json",
-            Authorization: t,
+            Authorization: token,
+        },
+    });
+};
+
+export const getLinkToken = async token => {
+    return await axios({
+        method: "post",
+        url:
+            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/generateJWT/useDisposableToken/1",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: {
+            dToken: token,
         },
     });
 };

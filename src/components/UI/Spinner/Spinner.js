@@ -15,7 +15,7 @@ const Spinner = () => {
                         position: "fixed",
                         bottom: "44%",
                         left: "34%",
-                        backgroundColor: "#FFF",
+                        zIndex: "999"
                     }}
                     role="status"
                 >

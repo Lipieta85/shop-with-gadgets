@@ -3,7 +3,10 @@ export {
     removeCart,
     addChecked,
     clearBasket,
-    changeBasketAmounts, //setProducts //fetchProductsFailed
+    changeBasketAmounts,
+    changeBasketQuantity,
+    addBasketId, //setProducts //fetchProductsFailed
+    deleteItem,
 } from "./basket.js";
 
 export {
@@ -15,3 +18,5 @@ export {
 export { setProducts, initProducts, fetchProductsFailed } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";
+
+export { clientData } from "./clientData.js";
