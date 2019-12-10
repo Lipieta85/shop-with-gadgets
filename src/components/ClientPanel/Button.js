@@ -61,7 +61,14 @@ const Button = props => {
             );
             event.preventDefault();
         } else {
-            dispatch(addItemToBasket(props.itemId, productQuantity));
+            dispatch(
+                addItemToBasket(
+                    props.itemId,
+                    productQuantity,
+                    props.itemUnit,
+                    props.token,
+                ),
+            );
         }
     };
 

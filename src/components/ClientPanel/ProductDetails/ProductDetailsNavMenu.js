@@ -44,14 +44,37 @@ const ProductDetailsNavMenu = () => {
                                     Wróć do strony głównej{" "}
                                 </Link>
                             </li>
-                            <li className="nav-item text-uppercase">
+                            <li className="nav-item dropdown">
                                 <a
-                                    className="nav-link"
+                                    className="nav-link dropdown-toggle text-uppercase"
                                     href="/"
-                                    onClick={e => e.preventDefault()}
+                                    id="navbarDropdown"
+                                    role="button"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    onClick={e => e.preventDefault}
                                 >
-                                    Edycja konta
+                                    Moje Konto
                                 </a>
+                                <div
+                                    className="dropdown-menu text-uppercase"
+                                    aria-labelledby="navbarDropdown"
+                                >
+                                    <a
+                                        className="dropdown-item text-uppercase"
+                                        href="/"
+                                        onClick={e => e.preventDefault()}
+                                    >
+                                        Edycja Konta
+                                    </a>
+                                    <Link
+                                        className="dropdown-item text-uppercase"
+                                        to="/OrderHistory"
+                                    >
+                                        Lista zamówień
+                                    </Link>
+                                </div>
                             </li>
                             <li className="nav-item text-uppercase">
                                 <a

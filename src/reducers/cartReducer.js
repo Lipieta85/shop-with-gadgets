@@ -8,13 +8,14 @@ const initialState = {
     total: "0.00",
     totalQuantity: 0,
     budget: "10000.00",
-    //checkedItems: new Map(),
+    basket: null,
     orderInputState: "",
-    orderSelectInputValue: "Wrocław ul. Sadowa",
+    orderSelectInputValue: "",
     error: false,
     pagination: {},
 };
 const cartReducer = (state = initialState, action) => {
+    console.log(state.basket);
     switch (action.type) {
         case type.ADD_IF_ITEM_EXIST:
             let addedItem = state.items.find(
@@ -30,7 +31,7 @@ const cartReducer = (state = initialState, action) => {
             existed_item.quantity += addedValueNum;
 
             existed_item.itemTotalPrice = (
-                existed_item.quantity * Number(addedItem.price)
+                existed_item.quantity * Number(addedItem.price.price)
             ).toFixed(2);
 
             state.total = Number(state.total);
@@ -52,12 +53,12 @@ const cartReducer = (state = initialState, action) => {
                 ),
                 total: (
                     state.total +
-                    Number(existed_item.price) * addedValueNum
+                    Number(existed_item.price.price) * addedValueNum
                 ).toFixed(2),
 
                 budget: (
                     Number(state.budget) -
-                    Number(existed_item.price) * addedValueNum
+                    Number(existed_item.price.price) * addedValueNum
                 ).toFixed(2),
                 totalQuantity: (state.totalQuantity += addedValueNum),
             };
@@ -71,13 +72,13 @@ const cartReducer = (state = initialState, action) => {
 
             addedItem2.quantity = addedValueNum2;
             let itemTotalPrice = (
-                Number(addedItem2.price) * addedItem2.quantity
+                Number(addedItem2.price.price) * addedItem2.quantity
             ).toFixed(2);
             addedItem2 = { ...addedItem2, itemTotalPrice: itemTotalPrice };
 
             let newTotal = (
                 Number(state.total) +
-                Number(addedItem2.price) * addedValueNum2
+                Number(addedItem2.price.price) * addedValueNum2
             ).toFixed(2);
 
             addedItem2.availableProduct -= addedValueNum2;
@@ -101,12 +102,12 @@ const cartReducer = (state = initialState, action) => {
                 total: newTotal,
                 budget: (
                     Number(state.budget) -
-                    Number(addedItem2.price) * addedValueNum2
+                    Number(addedItem2.price.price) * addedValueNum2
                 ).toFixed(2),
                 totalQuantity: (state.totalQuantity += addedValueNum2),
             };
 
-        case type.REMOVE_CART:
+        case type.DELETE_ITEM:
             let itemToRemove = state.addedItems.find(
                 item => action.id === item.product.id,
             );
@@ -116,7 +117,7 @@ const cartReducer = (state = initialState, action) => {
 
             let newTotal2 = (
                 Number(state.total) -
-                Number(itemToRemove.price) * itemToRemove.quantity
+                Number(itemToRemove.price.price) * itemToRemove.quantity
             ).toFixed(2);
             return {
                 ...state,
@@ -137,7 +138,7 @@ const cartReducer = (state = initialState, action) => {
                 total: newTotal2,
                 budget: (
                     Number(state.budget) +
-                    Number(itemToRemove.price) * itemToRemove.quantity
+                    Number(itemToRemove.price.price) * itemToRemove.quantity
                 ).toFixed(2),
                 totalQuantity: state.totalQuantity - itemToRemove.quantity,
             };
@@ -183,14 +184,15 @@ const cartReducer = (state = initialState, action) => {
             let addedValue3 = Object.values(action.newProductAmount);
             let addedValueNum3 = Number(addedValue3[0]);
 
-            let oldItemTotal = Number(addedItem3.price) * oldAddedItemQuantity;
+            let oldItemTotal =
+                Number(addedItem3.price.price) * oldAddedItemQuantity;
             oldItemTotal.toFixed(2);
-            let newItemTotal = Number(addedItem3.price) * addedValueNum3;
+            let newItemTotal = Number(addedItem3.price.price) * addedValueNum3;
             newItemTotal.toFixed(2);
             addedItem3.quantity = addedValueNum3;
             //addedItem.totalPrice = addedItem.quantity * addedItem.price;
             addedItem3.itemTotalPrice =
-                Number(addedItem3.price) * addedItem3.quantity;
+                Number(addedItem3.price.price) * addedItem3.quantity;
 
             addedItem3.itemTotalPrice = Number(
                 addedItem3.itemTotalPrice,
@@ -246,6 +248,11 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true,
+            };
+        case type.ADD_BASKET_ID:
+            return {
+                ...state,
+                basket: action.id,
             };
         default:
             return state;

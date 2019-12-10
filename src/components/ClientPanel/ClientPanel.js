@@ -5,16 +5,24 @@ import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 import Spinner from "../UI/Spinner/Spinner";
 import { initProducts, nextPage, prevPage, setPage } from "../../actions/index";
-import { times } from "lodash";
+//import { times } from "lodash";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
 import defImg from "../../assets/images/default.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAngleDoubleLeft,
+    faAngleDoubleRight,
+} from "@fortawesome/free-solid-svg-icons";
+//const queryString = require("query-string");
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     const pagination = useSelector(state => state.cartReducer.pagination);
     const [currentItems] = useState(8);
+    const [shortPagination, setShortPagination] = useState([2, 3, 4]);
+    const [firstLastPages] = useState([1, pagination.totalPages]);
 
     const dispatch = useDispatch();
 
@@ -22,7 +30,18 @@ const ClientPanel = props => {
 
     useEffect(() => {
         dispatch(initProducts(token, currentPage, currentItems));
-    }, [dispatch, token, currentPage, currentItems]);
+        if (currentPage < 3) {
+            setShortPagination([2, 3, 4]);
+        } else if (currentPage > pagination.totalPages - 3) {
+            setShortPagination([
+                pagination.totalPages - 3,
+                pagination.totalPages - 2,
+                pagination.totalPages - 1,
+            ]);
+        } else {
+            setShortPagination([currentPage - 1, currentPage, currentPage + 1]);
+        }
+    }, [dispatch, token, currentPage, currentItems, pagination.totalPages]);
 
     let product = items
         ? items.map(item => {
@@ -55,7 +74,8 @@ const ClientPanel = props => {
                           <div>
                               <p className="card-text">
                                   <strong>
-                                      Cena: {item.price} PLN/
+                                      Cena: {item.price.price}{" "}
+                                      {item.price.currency}/
                                       {item.availability.unitOfMeasure}
                                   </strong>
                               </p>
@@ -70,6 +90,8 @@ const ClientPanel = props => {
                                       availabaleItemQuantity={
                                           item.availability.availability
                                       }
+                                      itemUnit={item.availability.unitOfMeasure}
+                                      token={token}
                                   />
                               </div>
                           </div>
@@ -100,7 +122,9 @@ const ClientPanel = props => {
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
-    const pages = times(pagination.totalPages, Number);
+    // const pages = times(pagination.totalPages, Number);
+    const pages = [...shortPagination, ...firstLastPages].sort((a, b) => a - b);
+    console.log(pages);
     return (
         <div className="client-side">
             <div className="container-fluid">
@@ -123,31 +147,101 @@ const ClientPanel = props => {
                                                 prevPageHandler(event)
                                             }
                                         >
-                                            Poprzednia strona
+                                            <FontAwesomeIcon
+                                                icon={faAngleDoubleLeft}
+                                                color="#a0a3a6"
+                                                cursor="pointer"
+                                            />
                                         </button>
                                     </li>
-                                    {pages.map(item => {
-                                        item += 1;
+
+                                    <li
+                                        className={
+                                            1 === currentPage
+                                                ? "page-item active"
+                                                : "page-item"
+                                        }
+                                    >
+                                        <button
+                                            className="page-link"
+                                            onClick={event =>
+                                                pageHandler(event)
+                                            }
+                                        >
+                                            1
+                                        </button>
+                                    </li>
+                                    {currentPage > 3 && (
+                                        <li
+                                            className={
+                                                pagination.totalPages ===
+                                                currentPage
+                                                    ? "page-item active"
+                                                    : "page-item"
+                                            }
+                                        >
+                                            <button className="page-link">
+                                                ...
+                                            </button>
+                                        </li>
+                                    )}
+                                    {shortPagination.map(item => {
+                                        //item += 1;
+
                                         return (
-                                            <li
-                                                className={
-                                                    item === currentPage
-                                                        ? "page-item active"
-                                                        : "page-item"
-                                                }
-                                                key={item}
-                                            >
-                                                <button
-                                                    className="page-link"
-                                                    onClick={event =>
-                                                        pageHandler(event)
+                                            <>
+                                                <li
+                                                    className={
+                                                        item === currentPage
+                                                            ? "page-item active"
+                                                            : "page-item"
                                                     }
+                                                    key={item}
                                                 >
-                                                    {item}
-                                                </button>
-                                            </li>
+                                                    <button
+                                                        className="page-link"
+                                                        onClick={event =>
+                                                            pageHandler(event)
+                                                        }
+                                                    >
+                                                        {item}
+                                                    </button>
+                                                </li>
+                                            </>
                                         );
                                     })}
+                                    {currentPage <
+                                        pagination.totalPages - 2 && (
+                                        <li
+                                            className={
+                                                pagination.totalPages ===
+                                                currentPage
+                                                    ? "page-item active"
+                                                    : "page-item"
+                                            }
+                                        >
+                                            <button className="page-link">
+                                                ...
+                                            </button>
+                                        </li>
+                                    )}
+                                    <li
+                                        className={
+                                            pagination.totalPages ===
+                                            currentPage
+                                                ? "page-item active"
+                                                : "page-item"
+                                        }
+                                    >
+                                        <button
+                                            className="page-link"
+                                            onClick={event =>
+                                                pageHandler(event)
+                                            }
+                                        >
+                                            {pagination.totalPages}
+                                        </button>
+                                    </li>
                                     <li className="page-item">
                                         <button
                                             className="page-link"
@@ -155,7 +249,11 @@ const ClientPanel = props => {
                                                 nextPageHandler(event)
                                             }
                                         >
-                                            Następna strona
+                                            <FontAwesomeIcon
+                                                icon={faAngleDoubleRight}
+                                                color="#a0a3a6"
+                                                cursor="pointer"
+                                            />
                                         </button>
                                     </li>
                                 </ul>

@@ -5,7 +5,8 @@ import Button from "../Button";
 import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
-import { initProducts } from "../../../actions/index";
+import Spinner from "../../UI/Spinner/Spinner";
+import { initProducts, setPage, nextPage } from "../../../actions/index";
 
 import "../../../assets/styles/product-details.scss";
 //import { setProducts } from "../../../actions";
@@ -23,12 +24,13 @@ const ProductDetails = props => {
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
-
+    console.log(currentPage);
     useEffect(() => {
         dispatch(initProducts(token, currentPage, currentItems));
     }, [dispatch, token, currentPage, currentItems]);
 
     useEffect(() => {
+        //console.log(products);
         if (selectedIndex >= 0 && selectedIndex < products.length) {
             return (
                 setLoadedProduct(products[selectedIndex]),
@@ -41,18 +43,24 @@ const ProductDetails = props => {
             });
             return setLoadedProduct(products[selectedIndex]);
         }
+        //eslint-disable-next-line
     }, [
         loadedProduct,
         id,
-        products,
         selectedIndex,
         productId,
         props.history,
-        currentPage,
-        dispatch,
         pagination.totalPages,
         currentItems,
     ]);
+
+    useEffect(() => {
+        setLoadedProduct(products[0]);
+        setSelectedIndex(0);
+        products.map((product, i) => {
+            return i === 0 ? setProductId(product.product.id) : null;
+        });
+    }, [currentPage, products]);
 
     const nexItem = () => {
         setSelectedIndex(prevState => prevState + 1);
@@ -62,6 +70,9 @@ const ProductDetails = props => {
                 : null;
         });
         if (selectedIndex + 1 === products.length) {
+            currentPage === pagination.totalPages
+                ? dispatch(setPage(1))
+                : dispatch(nextPage());
             setLoadedProduct(products[0]);
             setSelectedIndex(0);
             products.map((product, i) => {
@@ -116,6 +127,7 @@ const ProductDetails = props => {
         <div className="product-details">
             <div className="container-fluid">
                 <NavMenu />
+                <Spinner />
                 <div className="row product-details-container">
                     <div className="col-md-9">
                         <div className="product-details-content row p-2">

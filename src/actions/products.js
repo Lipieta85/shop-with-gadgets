@@ -3,34 +3,35 @@ import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
 
 export const setProducts = products => {
-  return {
-    type: type.SET_PRODUCTS,
-    products: products
-  };
+    return {
+        type: type.SET_PRODUCTS,
+        products: products,
+    };
 };
 
 export const fetchProductsFailed = () => {
-  return {
-    type: type.FETCH_PRODUCTS_FAILED
-  };
+    return {
+        type: type.FETCH_PRODUCTS_FAILED,
+    };
 };
 
 export const initProducts = (token, currentPage) => {
-  return dispatch => {
-    trackPromise(
-      axios({
-        method: "get",
-        url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
-        headers: {
-          Authorization: token
-        }
-      })
-        .then(res => {
-          dispatch(setProducts(res.data));
-        })
-        .catch(error => {
-          dispatch(fetchProductsFailed());
-        })
-    );
-  };
+    return dispatch => {
+        trackPromise(
+            axios({
+                method: "get",
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+                headers: {
+                    Authorization: token,
+                },
+            })
+                .then(res => {
+                    console.log(res);
+                    dispatch(setProducts(res.data));
+                })
+                .catch(error => {
+                    dispatch(fetchProductsFailed());
+                }),
+        );
+    };
 };

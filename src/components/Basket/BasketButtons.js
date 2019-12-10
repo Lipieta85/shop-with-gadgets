@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCart, changeBasketAmounts } from "../../actions/index";
+import { removeCart, changeBasketQuantity } from "../../actions/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,8 @@ const BasketButtons = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
+
+    const token = sessionStorage.getItem("token");
 
     useEffect(() => {
         return setProductAmount({
@@ -48,12 +50,12 @@ const BasketButtons = props => {
             );
             event.preventDefault();
         } else {
-            dispatch(changeBasketAmounts(props.itemId, productAmount));
+            dispatch(changeBasketQuantity(props.itemId, productAmount));
         }
     };
 
     const removeCartButton = () => {
-        return dispatch(removeCart(props.itemId));
+        return dispatch(removeCart(token, props.itemId));
     };
 
     return (
@@ -75,7 +77,7 @@ const BasketButtons = props => {
                 className="d-flex align-items-center justify-content-between flex-wrap"
                 style={{ minHeight: "60px" }}
             >
-                <p style={{ margin: "0" }}>
+                <p style={{ margin: "0 5px 0 0" }}>
                     <b>Cena: {props.itemPrice} zł</b>
                 </p>
                 <div className="add-remove d-flex align-items-center">

@@ -15,3 +15,6 @@ export const ADD_ORDER_DATA = "ADD_ORDER_DATA";
 export const NEXT_PAGE = "NEXT_PAGE";
 export const PREV_PAGE = "PREV_PAGE";
 export const SET_PAGE = "SET_PAGE";
+export const ADD_BASKET_ID = "ADD_BASKET_ID";
+export const ADD_CLIENT_DATA = "ADD_CLIENT_DATA";
+export const DELETE_ITEM = "DELETE_ITEM";
