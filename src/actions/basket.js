@@ -34,38 +34,36 @@ export const addIfItemExist = (id, productQuantity) => {
 export const addItemToBasket = (id, productQuantity, unit, token) => {
     let productAmount = Object.values(productQuantity);
     let productNumber = String(productAmount[0]);
-    console.log(id, productNumber, unit);
 
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
         );
-        console.log(basketId);
 
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`;
         if (basketId) {
-            axios
-                .put(
-                    `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`,
-                    {
-                        timeZone: "Pacific/Chatham",
-                        //shipToNumber: "182887",
-                        items: [
-                            {
-                                prodId: id,
-                                uomPrimary: unit,
-                                quantity: productNumber,
-                            },
-                        ],
-                    },
-                    {
-                        headers: {
-                            Authorization: token,
+            axios({
+                method: "put",
+                url: url,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-PINGOTHER": "pingpong",
+                    Authorization: token,
+                },
+                data: {
+                    timeZone: "Pacific/Chatham",
+                    //shipToNumber: "182887",
+                    items: [
+                        {
+                            prodId: 5548874,
+                            uomPrimary: unit,
+                            quantity: productNumber,
                         },
-                    },
-                )
+                    ],
+                },
+            })
                 .then(res => {
-                    console.log(res);
                     if (existed_item) {
                         dispatch(addIfItemExist(id, productQuantity));
                     } else {
@@ -97,7 +95,6 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     },
                 )
                 .then(res => {
-                    console.log(res);
                     dispatch(addBasketId(res.data.create.order.id_orders));
                     if (existed_item) {
                         dispatch(addIfItemExist(id, productQuantity));
@@ -120,23 +117,21 @@ export const removeCart = (token, id) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
 
-        console.log(basketId);
-
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
         if (basketId) {
-            axios
-                .delete(
-                    `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/deleteProduct/parameters/{“orderId”:${basketId}}`,
-                    {
-                        "0": id,
-                    },
-                    {
-                        headers: {
-                            Authorization: token,
-                        },
-                    },
-                )
+            axios({
+                method: "delete",
+                url: url,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-PINGOTHER": "pingpong",
+                    Authorization: token,
+                },
+                data: {
+                    "0": id,
+                },
+            })
                 .then(res => {
-                    console.log(res);
                     dispatch(deleteItem(id));
                 })
                 .catch(error => {
@@ -167,39 +162,39 @@ export const clearBasket = () => {
     };
 };
 
-export const changeBasketQuantity = (productId, newProductAmount) => {
-    return (dispatch, getState) => {
-        const basketId = getState().cartReducer.basket;
-        if (basketId) {
-            axios
-                .put(
-                    `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`,
-                    {
-                        timeZone: "Pacific/Chatham",
-                        //shipToNumber: "182887",
-                        items: [
-                            {
-                                prodId: productId,
-                                uomPrimary: "SZ",
-                                quantity: newProductAmount,
-                            },
-                        ],
-                    },
-                    {
-                        headers: {
-                            //Authorization: token,
-                        },
-                    },
-                )
-                .then(res => {
-                    dispatch(changeBasketAmounts(productId, newProductAmount));
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
-    };
-};
+// export const changeBasketQuantity = (productId, newProductAmount) => {
+//   return (dispatch, getState) => {
+//     const basketId = getState().cartReducer.basket;
+//     if (basketId) {
+//       axios
+//         .put(
+//           `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`,
+//           {
+//             timeZone: "Pacific/Chatham",
+//             //shipToNumber: "182887",
+//             items: [
+//               {
+//                 prodId: productId,
+//                 uomPrimary: "SZ",
+//                 quantity: newProductAmount
+//               }
+//             ]
+//           },
+//           {
+//             headers: {
+//               //Authorization: token,
+//             }
+//           }
+//         )
+//         .then(res => {
+//           dispatch(changeBasketAmounts(productId, newProductAmount));
+//         })
+//         .catch(error => {
+//           console.log(error);
+//         });
+//     }
+//   };
+// };
 
 export const changeBasketAmounts = (productId, newProductAmount) => {
     return {

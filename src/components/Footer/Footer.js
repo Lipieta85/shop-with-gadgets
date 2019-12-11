@@ -6,8 +6,8 @@ const Footer = () => {
     return (
         <div>
             <footer className="footer border-top d-flex align-items-center">
-                <div className="container-fluid">
-                    <div className="d-flex justify-content-end align-items-center">
+                <div className="container">
+                    <div className="d-flex align-items-center">
                         <p className="footer-regulations m-0">
                             <Link
                                 className="regulations text-decoration-none"

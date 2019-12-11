@@ -24,13 +24,12 @@ const ProductDetails = props => {
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
-    console.log(currentPage);
+
     useEffect(() => {
         dispatch(initProducts(token, currentPage, currentItems));
     }, [dispatch, token, currentPage, currentItems]);
 
     useEffect(() => {
-        //console.log(products);
         if (selectedIndex >= 0 && selectedIndex < products.length) {
             return (
                 setLoadedProduct(products[selectedIndex]),

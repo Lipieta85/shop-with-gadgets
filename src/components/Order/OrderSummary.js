@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { addOrderData } from "../../actions/index";
 import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
+import axios from "axios";
 
 const OrderSummary = () => {
     const items = useSelector(state => state.cartReducer.addedItems);
+    const basket = useSelector(state => state.cartReducer.basket);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
@@ -20,6 +22,8 @@ const OrderSummary = () => {
 
     const dispatch = useDispatch();
 
+    const token = sessionStorage.getItem("token");
+
     const orderDataHandler = () => {
         const order = {
             orderDate: new Date().toISOString().split("T")[0],
@@ -30,6 +34,21 @@ const OrderSummary = () => {
         };
         dispatch(addOrderData(order));
         return orderData;
+
+        // const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basket}}`;
+        // axios({
+        //     method: "post",
+        //     url: url,
+        //     headers: {
+        //         Authorization: token,
+        //     },
+        // })
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
     };
 
     // useEffect(() => {
@@ -158,7 +177,7 @@ const OrderSummary = () => {
                     <Link
                         to="/OrderEnd"
                         className="btn btn-outline-primary mt-4"
-                        onClick={orderDataHandler}
+                        onClick={() => orderDataHandler()}
                     >
                         Zatwierdź zamówienie
                     </Link>
