@@ -72,7 +72,7 @@ export default withRouter(function App({ location }, props) {
             isLoggedIn ? (
               <ClientPanelContainer {...render} />
             ) : (
-              <HomePageContainer {...render} />
+              <ClientPanelContainer {...render} />
             )
           }
         />
