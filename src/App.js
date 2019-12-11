@@ -18,7 +18,7 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
-import { clientData } from "./actions/index";
+import { clientData, companyId } from "./actions/index";
 import queryString from "query-string";
 import axios from "axios";
 
@@ -44,10 +44,9 @@ export default withRouter(function App({ location }, props) {
 
     if (location.search) {
         const parsed = queryString.parse(location.search);
-        console.log(parsed.dt);
+        dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
             .then(res => {
-                console.log(res);
                 const token = res.data.token.split(".");
                 const userID = JSON.parse(atob(token[1]));
                 sessionStorage.setItem("userID", userID.userId);
@@ -61,7 +60,7 @@ export default withRouter(function App({ location }, props) {
         //window.location.replace("http://192.168.0.105:3000/");
     }
 
-    location.href = document.URL.split("/")[2] + "/";
+    //location.href = document.URL.split("/")[2] + "/";
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
     return (
         <>

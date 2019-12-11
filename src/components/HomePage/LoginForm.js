@@ -25,7 +25,6 @@ const LoginForm = props => {
         const userData = btoa(loginState.login + ":" + password);
         getToken(userData)
             .then(res => {
-                console.log(res);
                 //const token = res.data.token.split(".");
                 //const userID = JSON.parse(atob(token[1]));
                 //sessionStorage.setItem("userID", userID.userId);

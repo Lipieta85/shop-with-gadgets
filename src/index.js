@@ -14,29 +14,27 @@ import rootReducer from "./reducers/index";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 const history = createBrowserHistory();
-const persistConfig = {
-    key: "root",
-    storage,
-};
-let middleware = [];
-if (window.location.hostname === "localhost") {
-    middleware = [...middleware, logger, thunk];
-} else {
-    middleware = [...middleware, thunk];
-}
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(persistedReducer, applyMiddleware(...middleware));
+// const persistConfig = {
+//     key: "root",
+//     storage,
+// };
+// let middleware = [];
+// if (window.location.hostname === "localhost") {
+//     middleware = [...middleware, logger, thunk];
+// } else {
+//     middleware = [...middleware, thunk];
+// }
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const store = createStore(persistedReducer, applyMiddleware(...middleware));
 
-let persistor = persistStore(store);
-//const store = createStore(rootReducer, applyMiddleware(thunk));
+// let persistor = persistStore(store);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <Router history={history}>
-                <App />
-            </Router>
-        </PersistGate>
-    </Provider>,
-    document.getElementById("root"),
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
 );

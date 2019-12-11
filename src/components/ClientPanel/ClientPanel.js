@@ -124,7 +124,7 @@ const ClientPanel = props => {
     };
     // const pages = times(pagination.totalPages, Number);
     const pages = [...shortPagination, ...firstLastPages].sort((a, b) => a - b);
-    console.log(pages);
+
     return (
         <div className="client-side">
             <div className="container-fluid">

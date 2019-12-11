@@ -73,7 +73,6 @@ const OrderOptions = () => {
         deliveryData.map(data =>
             orderAdressess.push(data.getWixClientData.deliveryAddresses[0]),
         );
-        //console.log(orderAdressess);
         mapKeys(orderAdressess[0], function(value, key) {
             return arr.push({ key: value });
         });

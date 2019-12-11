@@ -16,17 +16,18 @@ export const fetchProductsFailed = () => {
 };
 
 export const initProducts = (token, currentPage) => {
-    return dispatch => {
+    return (dispatch, getState) => {
+        const company = getState().clientDataReducer.companyId;
+
         trackPromise(
             axios({
                 method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
                 headers: {
                     Authorization: token,
                 },
             })
                 .then(res => {
-                    console.log(res);
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {

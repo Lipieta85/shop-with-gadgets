@@ -2,6 +2,7 @@ import * as type from "../actions/types";
 
 const initialState = {
     clientData: [],
+    companyId: null,
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 clientData: state.clientData.concat(action.data),
+            };
+        case type.COMPANY_ID:
+            return {
+                ...state,
+                companyId: action.id,
             };
         default:
             return state;
