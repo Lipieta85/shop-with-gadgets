@@ -43,7 +43,7 @@ const NavMenu = () => {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>>
+                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>
                                             Ubrania
                                         </a>
                                     </li>
