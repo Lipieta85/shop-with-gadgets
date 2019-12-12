@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
-import HomePageContainer from "./containers/HomePageContainer";
+//import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
 import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
@@ -70,7 +70,7 @@ export default withRouter(function App({ location }, props) {
                         isLoggedIn ? (
                             <ClientPanelContainer {...render} />
                         ) : (
-                            <HomePageContainer {...render} />
+                            <ClientPanelContainer {...render} />
                         )
                     }
                 />

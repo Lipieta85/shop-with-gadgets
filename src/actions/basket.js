@@ -50,18 +50,19 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     Authorization: token,
                 },
                 data: {
-                    "timeZone": "Pacific/Chatham",
+                    timeZone: "Pacific/Chatham",
                     //shipToNumber: "182887",
-                    "items": [
+                    items: [
                         {
-                            "prodId": "5548874",
-                            "uomPrimary": "unit",
-                            "quantity": "productNumber"
-                        }
-                    ]
-                }
+                            prodId: id,
+                            uomPrimary: unit,
+                            quantity: productNumber,
+                        },
+                    ],
+                },
             })
                 .then(res => {
+                    console.log(res);
                     if (existed_item) {
                         dispatch(addIfItemExist(id, productQuantity));
                     } else {
@@ -93,6 +94,7 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     },
                 )
                 .then(res => {
+                    console.log(res);
                     dispatch(addBasketId(res.data.create.order.id_orders));
                     if (existed_item) {
                         dispatch(addIfItemExist(id, productQuantity));
