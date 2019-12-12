@@ -22,7 +22,7 @@ const ClientPanel = props => {
     const pagination = useSelector(state => state.cartReducer.pagination);
     const [currentItems] = useState(8);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
-    const [firstLastPages] = useState([1, pagination.totalPages]);
+    //const [firstLastPages] = useState([1, pagination.totalPages]);
 
     const dispatch = useDispatch();
 
@@ -123,7 +123,7 @@ const ClientPanel = props => {
         event.target.parentNode.classList.add("active");
     };
     // const pages = times(pagination.totalPages, Number);
-    const pages = [...shortPagination, ...firstLastPages].sort((a, b) => a - b);
+    //const pages = [...shortPagination, ...firstLastPages].sort((a, b) => a - b);
 
     return (
         <div className="client-side">

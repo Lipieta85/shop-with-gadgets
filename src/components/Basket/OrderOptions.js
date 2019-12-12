@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import checkboxes from "./Checkboxes/checkboxes";
 import Checkbox from "./Checkboxes/Checkbox";
-import { orderInputState, orderSelectInputValue } from "../../actions/index";
+import { orderSelectInputValue } from "../../actions/index";
 import { mapKeys } from "lodash";
 
 import "../../assets/styles/order-options.scss";
@@ -12,9 +12,9 @@ const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     //const updatedCheck = useSelector(state => state.checkedItems);
-    const inputStoreState = useSelector(
-        state => state.cartReducer.orderInputState,
-    );
+    // const inputStoreState = useSelector(
+    //     state => state.cartReducer.orderInputState,
+    // );
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
@@ -23,7 +23,7 @@ const OrderOptions = () => {
     );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
-    const [inputValue, setInputValue] = useState("");
+    //const [inputValue, setInputValue] = useState("");
     const [selectInputValue, setSelectInputValue] = useState("");
 
     const dispatch = useDispatch();

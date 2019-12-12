@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   removeCart,
-  changeBasketQuantity,
+  //changeBasketQuantity,
   changeBasketAmounts
 } from "../../actions/index";
 

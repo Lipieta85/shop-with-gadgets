@@ -8,7 +8,7 @@ import "../../assets/styles/order-history.scss";
 
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.historyOfBuy);
-    const newOrders = useSelector(state => state.clientDataReducer.clientData);
+    //const newOrders = useSelector(state => state.clientDataReducer.clientData);
     const [clickedOrder, setClickedOrder] = useState();
 
     let confirmedOrder;
@@ -30,7 +30,7 @@ const OrderHistory = () => {
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    }, [token]);
 
     const orderDetailHandler = selectedOrder => {
         orders.map((order, i) => {

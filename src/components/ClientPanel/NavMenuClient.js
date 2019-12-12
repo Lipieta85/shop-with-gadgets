@@ -38,17 +38,17 @@ const NavMenu = () => {
                             {window.location.pathname === `/` ? (
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item">
-                                        <a className="nav-link active" href="#">
+                                        <a className="nav-link active" href="/" onClick={(e) => e.preventDefault()}>
                                             Wszystkie
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>>
                                             Ubrania
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>
                                             Długopisy
                                         </a>
                                     </li>

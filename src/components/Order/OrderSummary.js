@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { addOrderData } from "../../actions/index";
 import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
-import axios from "axios";
+//import axios from "axios";
 
 const OrderSummary = () => {
     const items = useSelector(state => state.cartReducer.addedItems);
-    const basket = useSelector(state => state.cartReducer.basket);
+    //const basket = useSelector(state => state.cartReducer.basket);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
@@ -22,7 +22,7 @@ const OrderSummary = () => {
 
     const dispatch = useDispatch();
 
-    const token = sessionStorage.getItem("token");
+    //const token = sessionStorage.getItem("token");
 
     const orderDataHandler = () => {
         const order = {
