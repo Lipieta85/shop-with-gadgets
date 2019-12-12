@@ -41,27 +41,25 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
             item => id === item.product.id,
         );
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`;
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:"W"}`;
         if (basketId) {
             axios({
                 method: "put",
                 url: url,
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-PINGOTHER": "pingpong",
                     Authorization: token,
                 },
                 data: {
-                    timeZone: "Pacific/Chatham",
+                    "timeZone": "Pacific/Chatham",
                     //shipToNumber: "182887",
-                    items: [
+                    "items": [
                         {
-                            prodId: 5548874,
-                            uomPrimary: unit,
-                            quantity: productNumber,
-                        },
-                    ],
-                },
+                            "prodId": "5548874",
+                            "uomPrimary": "unit",
+                            "quantity": "productNumber"
+                        }
+                    ]
+                }
             })
                 .then(res => {
                     if (existed_item) {

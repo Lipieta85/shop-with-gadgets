@@ -6,12 +6,12 @@ import "../node_modules/font-awesome/css/font-awesome.min.css";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+//import { PersistGate } from "redux-persist/integration/react";
 import { applyMiddleware, createStore } from "redux";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+//import { persistStore, persistReducer } from "redux-persist";
+//import storage from "redux-persist/lib/storage";
 import rootReducer from "./reducers/index";
-import logger from "redux-logger";
+//import logger from "redux-logger";
 import thunk from "redux-thunk";
 const history = createBrowserHistory();
 // const persistConfig = {
