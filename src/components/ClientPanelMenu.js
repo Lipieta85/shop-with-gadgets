@@ -47,7 +47,7 @@ const ClientPanelMenu = () => {
     const buttonHandler = e => {
         if (addedItems.length === 0) {
             e.preventDefault();
-            alert("Koszyk jest pusty, dodaj produkt");
+            //alert("Koszyk jest pusty, dodaj produkt");
         }
     };
 
@@ -58,21 +58,21 @@ const ClientPanelMenu = () => {
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
                         <div className="d-flex">
-                            <FontAwesomeIcon
-                                icon={faShoppingBasket}
-                                size="2x"
-                                color="#a0a3a6"
-                            />
-                            <span className="badge">{totalQuantity}</span>
+                            <FontAwesomeIcon icon={faShoppingBasket} size="2x" color="#a0a3a6"/>
+                            <span className="badge badge-blue">{totalQuantity}</span>
                         </div>
                     ) : (
                         <div className="d-flex align-items-center">
-                            <Link
-                                to="/Basket"
-                                className="button-basket btn btn-outline-primary"
-                                onClick={buttonHandler}
-                            >
-                                Przejdź do koszyka ({totalQuantity})
+                            <Link to="/Basket" className="no-deco basket-box" onClick={buttonHandler}>
+                                <FontAwesomeIcon icon={faShoppingBasket} size="2x" className="basket"/>
+                                {totalQuantity===0?<>             
+                                    <span className="basket-counter counter-gray">{totalQuantity}</span>
+                                    <span className="basket-title">Koszyk (pusty)</span>
+                                </>:<>
+                                    <span className="basket-counter counter-blue">{totalQuantity}</span>
+                                    <span className="basket-title">Twój koszyk</span>
+                                </>}
+                                
                             </Link>
                         </div>
                     )}
@@ -84,14 +84,17 @@ const ClientPanelMenu = () => {
                             Dostępny budżet marketingowy
                         </span>
                         <br />
-                        <span className="value">{budget} zł</span>
+                        <span className="blue-value">{budget} </span>
+                        <span className="value">zł</span>
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
+                        <div className="y-rem-18"></div>
                         <span className="purchase-header">
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className="value">{priceValue} zł</span>
+                        <span className="blue-value">{priceValue} </span>
+                        <span className="value">zł</span>
                     </div>
                 </div>
                 <div className="divider"></div>

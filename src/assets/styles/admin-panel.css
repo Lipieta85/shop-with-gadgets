@@ -1,0 +1,90 @@
+.admin-panel {
+  background: url(../images/bg_top_2.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 120px 0 20px 0;
+}
+
+.admin-panel .admin-panel__logged-panel {
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel-header {
+  text-transform: uppercase;
+}
+
+.admin-panel .admin-panel__logged-panel p {
+  color: #98a3a8;
+  font-size: 16px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel-btn-group {
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel-btn-group .left-btn {
+  width: 130px;
+  border: 2px solid #004c97;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel-btn-group .right-btn {
+  width: 130px;
+  border: 2px solid #004c97;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.admin-panel .admin-panel__logged-panel .divider {
+  margin: 15px 0;
+  display: block;
+  height: 1px;
+  background: #e4e6e7;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .purchase-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 15px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .value {
+  color: #4d4f51;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__distributors {
+  margin-bottom: 15px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-text {
+  margin: 0;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-text span {
+  font-weight: bold;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-btn {
+  width: 130px;
+  border: 2px solid #004c97;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.admin-panel .admin-panel__logged-panel .logged-panel__status span {
+  font-weight: bold;
+}
+/*# sourceMappingURL=admin-panel.css.map */

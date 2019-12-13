@@ -1,0 +1,24 @@
+.basket-container {
+  min-height: calc(100vh - 57px);
+}
+
+.basket-container .basket-header {
+  margin-top: 90px;
+  padding-left: 4.9vw;
+}
+
+@media (max-width: 991px) {
+  .cart-collection {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cart-collection {
+    padding: 0;
+  }
+  .basket-header {
+    padding-left: 10px;
+  }
+}
+/*# sourceMappingURL=basket-container.css.map */

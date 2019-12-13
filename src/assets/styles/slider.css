@@ -1,0 +1,18 @@
+.container .slider-header {
+  font-size: 26px !important;
+  text-align: center;
+  color: #4d4f51 !important;
+  margin-bottom: 30px;
+}
+
+.container .slider {
+  width: 75%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .container .slider-header {
+    font-size: 20px !important;
+  }
+}
+/*# sourceMappingURL=slider.css.map */

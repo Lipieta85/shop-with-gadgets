@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToBasket } from "../../actions/index";
+import "../../assets/styles/buttons.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
@@ -86,7 +87,7 @@ const Button = props => {
                 />
                 <span className="font-weight-bold ml-1">szt.</span>
             </div>
-            <div className="product-basket-icon col-5 p-0">
+            {/* <div className="product-basket-icon col-5 p-0">
                 <FontAwesomeIcon
                     icon={faShoppingBasket}
                     size="2x"
@@ -94,6 +95,9 @@ const Button = props => {
                     onClick={dispatchHandler}
                     cursor="pointer"
                 />
+            </div> */}
+            <div onClick={dispatchHandler} className="cart-add-button">
+                Dodaj <FontAwesomeIcon icon={faShoppingBasket} size="1x" onClick={dispatchHandler}/>
             </div>
         </>
     );

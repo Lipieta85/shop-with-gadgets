@@ -1,0 +1,9 @@
+.order-summary {
+  min-height: calc(100vh - 57px);
+  padding-top: 80px;
+}
+
+.order-summary .order-summary-text {
+  font-size: 16px;
+}
+/*# sourceMappingURL=order-summary.css.map */

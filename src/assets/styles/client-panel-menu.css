@@ -1,0 +1,88 @@
+.client-panel {
+  margin-top: 10px;
+}
+
+.client-panel .admin-panel__logged-panel {
+  background-color: #f7f7f7;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel-header {
+  text-transform: uppercase;
+}
+
+.client-panel .admin-panel__logged-panel p {
+  color: #98a3a8;
+  font-size: 16px;
+}
+
+.client-panel .admin-panel__logged-panel .divider {
+  margin: 15px 0;
+  display: block;
+  height: 1px;
+  background: #e4e6e7;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .available-budget {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 15px 0;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .budget-alert {
+  color: red;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .purchase-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 15px;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__purchase-value .purchase-text .value {
+  color: #4d4f51;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__distributors {
+  margin-bottom: 15px;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-text {
+  margin: 0;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-text span {
+  font-weight: bold;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__distributors .distributors-btn {
+  width: 130px;
+  border: 2px solid #004c97;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.client-panel .admin-panel__logged-panel .logged-panel__status span {
+  font-weight: bold;
+}
+
+@media (max-width: 1518px) {
+  .logged-panel-btn-group .button-basket {
+    font-size: 13px;
+    padding: 6px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .client-panel {
+    width: 87%;
+    margin: 20px auto 20px auto;
+  }
+}
+/*# sourceMappingURL=client-panel-menu.css.map */

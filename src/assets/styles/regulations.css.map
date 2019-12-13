@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,kBAAkB;CACjC",
+    "sources": [
+        "regulations.scss"
+    ],
+    "names": [],
+    "file": "regulations.css"
+}

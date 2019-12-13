@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
-//import HomePageContainer from "./containers/HomePageContainer";
+import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
 import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
@@ -41,7 +41,7 @@ export default withRouter(function App({ location }, props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (location.search) {
+    /* if (location.search) {
         const parsed = queryString.parse(location.search);
         dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
@@ -57,7 +57,7 @@ export default withRouter(function App({ location }, props) {
             })
             .catch(err => console.log(err.response));
         //window.location.replace("http://192.168.0.105:3000/");
-    }
+    } */
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
     return (
@@ -70,7 +70,7 @@ export default withRouter(function App({ location }, props) {
                         isLoggedIn ? (
                             <ClientPanelContainer {...render} />
                         ) : (
-                            <ClientPanelContainer {...render} />
+                            <HomePageContainer {...render} />
                         )
                     }
                 />

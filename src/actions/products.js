@@ -22,7 +22,7 @@ export const initProducts = (token, currentPage) => {
         trackPromise(
             axios({
                 method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
                 headers: {
                     Authorization: token,
                 },

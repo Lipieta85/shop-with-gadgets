@@ -1,0 +1,34 @@
+.basket-summary {
+  margin: 0 auto;
+  text-align: right;
+}
+
+.summary-p {
+  padding: 1rem 0.6rem !important;
+}
+
+.badge-blue {
+  position: relative;
+  top: 17px;
+  left: -10px;
+  color: white;
+  font-size: 0.7rem;
+  height: 16px;
+  background-color: #035899;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 767px) {
+  .basket-summary {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=basket-summary.css.map */

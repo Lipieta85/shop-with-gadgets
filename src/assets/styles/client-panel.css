@@ -1,0 +1,93 @@
+.client-side {
+  background: url(../images/bg_top_2.jpg) center no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: 0 auto;
+  min-height: calc(100vh - 57px);
+  padding: 90px 10px 0 10px;
+}
+
+.client-side .card-container .buttons-container {
+  margin: 7px auto 7px auto;
+}
+
+.client-side .card-container .buttons-container .product-input {
+  width: 50px;
+}
+
+.navigation-pager {
+  margin-top: 1.5rem;
+}
+
+.blue-value {
+  color: #035899;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.gray-value {
+  color: #a0a3a6;
+}
+
+.y-rem-18 {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  background-color: transparent;
+  height: 1.8rem;
+}
+
+.card {
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 1839px) {
+  .client-side {
+    padding: 90px 50px 0 50px;
+  }
+}
+
+@media (max-width: 1838px) {
+  .client-side {
+    padding: 70px 16px 0 24px;
+  }
+}
+
+@media (max-width: 991px) {
+  .client-side .card-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .client-side {
+    padding-top: 70px;
+  }
+  .client-side .container-fluid .buttons-container {
+    padding-left: 8px;
+  }
+  .client-side .container-fluid .buttons-container .product-input {
+    font-size: 11px;
+    width: 40px;
+  }
+  .client-side .container-fluid .buttons-container .product-basket-icon {
+    font-size: 0.8em;
+  }
+}
+/*# sourceMappingURL=client-panel.css.map */

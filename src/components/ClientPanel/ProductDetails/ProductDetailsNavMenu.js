@@ -13,8 +13,8 @@ const ProductDetailsNavMenu = () => {
     };
 
     return (
-        <div className="nav-menu fixed-top w-100">
-            <div className="container-fluid border-bottom p-0">
+        <div className="nav-menu fixed-top w-100 nav-shadow">
+            <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand" to="/">
                         <img src={logo} width="200" height="35" alt="" />

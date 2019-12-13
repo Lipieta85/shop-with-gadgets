@@ -1,0 +1,26 @@
+.footer {
+  background-color: #f8f9fa;
+  color: #a0a3a6;
+  text-transform: uppercase;
+  width: 100%;
+  bottom: 0;
+  height: 55px;
+  bottom: 0;
+}
+
+.footer .footer-regulations {
+  color: #a0a3a6;
+}
+
+.footer .footer-regulations:hover {
+  color: black;
+}
+
+.footer .footer-rodo .rodo {
+  color: #a0a3a6;
+}
+
+.footer .footer-rodo .rodo:hover {
+  color: black;
+}
+/*# sourceMappingURL=footer.css.map */

@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/images/filtron_logo.png";
+import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch } from "react-redux";
@@ -12,8 +13,8 @@ const NavMenu = () => {
     };
 
     return (
-        <div className="nav-menu fixed-top w-100">
-            <div className="container-fluid border-bottom p-0">
+        <div className="nav-menu fixed-top w-100 nav-shadow">
+            <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand" to="/">
                         <img src={logo} width="200" height="35" alt="" />
