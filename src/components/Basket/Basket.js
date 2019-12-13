@@ -38,7 +38,7 @@ const Basket = props => {
             );
         })
     ) : (
-        <p>Twój koszyk jest pusty</p>
+        <p className="emptyBasket">Twój koszyk jest pusty</p>
     );
     return <>{addedItems}</>;
 };
