@@ -1,6 +1,11 @@
-.basket-summary {
-    width: 90%;
-    margin: 0 auto;
+.row {
+    .border {
+        background-color: #f7f7f7;
+    }
+    .basket-summary {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 767px) {

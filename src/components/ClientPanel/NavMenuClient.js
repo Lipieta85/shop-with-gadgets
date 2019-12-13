@@ -38,17 +38,29 @@ const NavMenu = () => {
                             {window.location.pathname === `/` ? (
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item">
-                                        <a className="nav-link active" href="/" onClick={(e) => e.preventDefault()}>
+                                        <a
+                                            className="nav-link active"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Wszystkie
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Ubrania
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/" onClick={(e) => e.preventDefault()}>
+                                        <a
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
                                             Długopisy
                                         </a>
                                     </li>
@@ -86,13 +98,13 @@ const NavMenu = () => {
                                     className="dropdown-menu text-uppercase"
                                     aria-labelledby="navbarDropdown"
                                 >
-                                    <a
+                                    {/* <a
                                         className="dropdown-item text-uppercase"
                                         href="/"
                                         onClick={e => e.preventDefault()}
                                     >
                                         Edycja Konta
-                                    </a>
+                                    </a> */}
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"

@@ -19,7 +19,7 @@ export const getUserData = async token => {
     return await axios({
         method: "get",
         url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getWixClientData",
+            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getLoggedUser",
         headers: {
             "Content-Type": "application/json",
             Authorization: token,

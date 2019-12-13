@@ -78,7 +78,7 @@ const Button = props => {
                 <input
                     type="text"
                     ref={input}
-                    className="btn-outline-primary product-input"
+                    className="form-control product-input"
                     id={props.itemId}
                     defaultValue={productQuantity.id}
                     onChange={changeQuantityHandler}
