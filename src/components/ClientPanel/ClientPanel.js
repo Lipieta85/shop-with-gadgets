@@ -29,17 +29,23 @@ const ClientPanel = props => {
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        dispatch(initProducts(token, currentPage, currentItems));
-        if (currentPage < 3) {
-            setShortPagination([2, 3, 4]);
-        } else if (currentPage > pagination.totalPages - 3) {
-            setShortPagination([
-                pagination.totalPages - 3,
-                pagination.totalPages - 2,
-                pagination.totalPages - 1,
-            ]);
-        } else {
-            setShortPagination([currentPage - 1, currentPage, currentPage + 1]);
+        if (token) {
+            dispatch(initProducts(token, currentPage, currentItems));
+            if (currentPage < 3) {
+                setShortPagination([2, 3, 4]);
+            } else if (currentPage > pagination.totalPages - 3) {
+                setShortPagination([
+                    pagination.totalPages - 3,
+                    pagination.totalPages - 2,
+                    pagination.totalPages - 1,
+                ]);
+            } else {
+                setShortPagination([
+                    currentPage - 1,
+                    currentPage,
+                    currentPage + 1,
+                ]);
+            }
         }
     }, [dispatch, token, currentPage, currentItems, pagination.totalPages]);
 
