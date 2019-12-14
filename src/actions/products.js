@@ -1,5 +1,5 @@
 import * as type from "../actions/types";
-import axios from "axios";
+import axios from "../utils/axios";
 import { trackPromise } from "react-promise-tracker";
 
 export const setProducts = products => {
@@ -22,10 +22,7 @@ export const initProducts = (token, currentPage) => {
         trackPromise(
             axios({
                 method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/wix/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
-                headers: {
-                    Authorization: token,
-                },
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             })
                 .then(res => {
                     dispatch(setProducts(res.data));

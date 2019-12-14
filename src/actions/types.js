@@ -19,3 +19,4 @@ export const ADD_BASKET_ID = "ADD_BASKET_ID";
 export const ADD_CLIENT_DATA = "ADD_CLIENT_DATA";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const COMPANY_ID = "COMPANY_ID";
+export const TOKEN = "TOKEN";
