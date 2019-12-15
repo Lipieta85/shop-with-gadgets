@@ -1,5 +1,7 @@
 import * as type from "../actions/types";
 import axios from "axios";
+import { mapKeys } from "lodash";
+import { trackPromise } from "react-promise-tracker";
 
 export const addIfItemEmpty = (id, productQuantity) => {
     return {
@@ -17,31 +19,37 @@ export const addIfItemExist = (id, productQuantity) => {
     };
 };
 
-// export const addItemToBasket = (id, productQuantity) => {
-//     return (dispatch, getState) => {
-//         let existed_item = getState().cartReducer.addedItems.find(
-//             item => id === item.product.id,
-//         );
-
-//         if (existed_item) {
-//             dispatch(addIfItemExist(id, productQuantity));
-//         } else {
-//             dispatch(addIfItemEmpty(id, productQuantity));
-//         }
-//     };
-// };
-
 export const addItemToBasket = (id, productQuantity, unit, token) => {
     let productAmount = Object.values(productQuantity);
     let productNumber = String(productAmount[0]);
+    console.log(id);
+    console.log(productNumber);
+    console.log(unit);
 
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
+        Number(basketId);
+        let company = getState().clientDataReducer.companyId;
+        let clientData = getState().clientDataReducer.clientData;
+        let companyId = company.charAt(0).toUpperCase();
+
+        let adressess = [];
+        let deliveryAddress = [];
+
+        if (clientData) {
+            clientData.map(data =>
+                adressess.push(data.getWixClientData.deliveryAddresses[0]),
+            );
+            mapKeys(adressess[0], function(value, key) {
+                return deliveryAddress.push({ key: value });
+            });
+        }
+
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
         );
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:"W"}`;
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         if (basketId) {
             axios({
                 method: "put",
@@ -50,13 +58,13 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     Authorization: token,
                 },
                 data: {
-                    timeZone: "Pacific/Chatham",
-                    //shipToNumber: "182887",
-                    items: [
+                    "timeZone": "Pacific/Chatham",
+                    "shipToNumber": deliveryAddress[0].key,
+                    "items": [
                         {
-                            prodId: id,
-                            uomPrimary: unit,
-                            quantity: productNumber,
+                            "prodId": id,
+                            "uomPrimary": unit,
+                            "quantity": productNumber
                         },
                     ],
                 },
@@ -73,38 +81,39 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     console.log(error);
                 });
         } else {
-            axios
-                .post(
-                    `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":"W"}`,
-                    {
+            const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":${company}}`;
+            trackPromise(
+                axios({
+                    method: "post",
+                    url: urlPost,
+                    headers: {
+                        Authorization: token,
+                    },
+                    data: {
                         timeZone: "Pacific/Chatham",
-                        shipToNumber: "182887",
+                        shipToNumber: deliveryAddress[0].key,
                         items: [
                             {
                                 prodId: id,
                                 uomPrimary: unit,
-                                quantity: productNumber,
+                                quantity: productNumber
                             },
                         ],
                     },
-                    {
-                        headers: {
-                            Authorization: token,
-                        },
-                    },
-                )
-                .then(res => {
-                    console.log(res);
-                    dispatch(addBasketId(res.data.create.order.id_orders));
-                    if (existed_item) {
-                        dispatch(addIfItemExist(id, productQuantity));
-                    } else {
-                        dispatch(addIfItemEmpty(id, productQuantity));
-                    }
                 })
-                .catch(error => {
-                    console.log(error);
-                });
+                    .then(res => {
+                        console.log(res);
+                        dispatch(addBasketId(res.data.create.order.id_orders));
+                        if (existed_item) {
+                            dispatch(addIfItemExist(id, productQuantity));
+                        } else {
+                            dispatch(addIfItemEmpty(id, productQuantity));
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    }),
+            );
         }
     };
 };
@@ -123,8 +132,6 @@ export const removeCart = (token, id) => {
                 method: "delete",
                 url: url,
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-PINGOTHER": "pingpong",
                     Authorization: token,
                 },
                 data: {
@@ -201,5 +208,28 @@ export const changeBasketAmounts = (productId, newProductAmount) => {
         type: type.CHANGE_BASKET_AMOUNTS,
         productId,
         newProductAmount,
+    };
+};
+
+export const getBasketProducts = token => {
+    return (dispatch, getState) => {
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/get/parameters/{"clientId":"16"}`;
+        axios({
+            method: "get",
+            url: url,
+            headers: {
+                Authorization: token,
+            },
+        })
+            .then(res => {
+                let baskets = [];
+                baskets.push(res.data.get);
+                console.log(baskets);
+                //let lastBasket = baskets[0][baskets[0].length - 1];
+                //console.log(lastBasket)
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 };

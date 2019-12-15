@@ -14,6 +14,8 @@ const Button = props => {
 
     const input = useRef();
 
+    const token = sessionStorage.getItem("token");
+
     useEffect(() => {
         if (props.changeProduct) {
             input.current.value = 1;
@@ -24,7 +26,7 @@ const Button = props => {
         }
         products.map(item => {
             if (input.current.id === item.product.id) {
-                if (input.current.value > item.availability.availability) {
+                if (input.current.value > item.availability) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
@@ -40,7 +42,7 @@ const Button = props => {
         });
         products.map(item => {
             if (event.target.id === item.product.id) {
-                if (event.target.value > item.availability.availability) {
+                if (event.target.value > item.availability) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
@@ -66,7 +68,7 @@ const Button = props => {
                     props.itemId,
                     productQuantity,
                     props.itemUnit,
-                    props.token,
+                    token,
                 ),
             );
         }

@@ -7,6 +7,7 @@ const initialState = {
 };
 
 const clientDataReducer = (state = initialState, action) => {
+    console.log(state.clientData);
     switch (action.type) {
         case type.ADD_CLIENT_DATA:
             return {

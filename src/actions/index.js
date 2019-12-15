@@ -7,12 +7,16 @@ export {
     //changeBasketQuantity,
     addBasketId, //setProducts //fetchProductsFailed
     deleteItem,
+    getBasketProducts,
 } from "./basket.js";
 
 export {
     orderInputState,
     orderSelectInputValue,
     addOrderData,
+    createOrder,
+    getClientOrdersHistory,
+    setClientOrderHistory,
 } from "./order.js";
 
 export { setProducts, initProducts, fetchProductsFailed } from "./products.js";

@@ -1,59 +1,43 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addOrderData } from "../../actions/index";
+import { createOrder } from "../../actions/index";
 import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
-//import axios from "axios";
 
 const OrderSummary = () => {
-    const items = useSelector(state => state.cartReducer.addedItems);
+    const products = useSelector(state => state.cartReducer.addedItems);
     //const basket = useSelector(state => state.cartReducer.basket);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
-    const orderInputState = useSelector(
-        state => state.cartReducer.orderInputState,
-    );
-    const orderData = useSelector(state => state.orderReducer.orderData);
+    // const orderInputState = useSelector(
+    //     state => state.cartReducer.orderInputState,
+    // );
+    //const orderData = useSelector(state => state.orderReducer.orderData);
     //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
 
     const dispatch = useDispatch();
 
-    //const token = sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
-    const orderDataHandler = () => {
-        const order = {
-            orderDate: new Date().toISOString().split("T")[0],
-            orderNumber: orderInputState,
-            orderTotal: total,
-            orderPlace: orderSelectInputValue,
-            orderProducts: items,
-        };
-        dispatch(addOrderData(order));
-        return orderData;
-
-        // const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basket}}`;
-        // axios({
-        //     method: "post",
-        //     url: url,
-        //     headers: {
-        //         Authorization: token,
-        //     },
-        // })
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
-    };
+    // const orderDataHandler = () => {
+    //     const order = {
+    //         orderDate: new Date().toISOString().split("T")[0],
+    //         orderNumber: orderInputState,
+    //         orderTotal: total,
+    //         orderPlace: orderSelectInputValue,
+    //         orderProducts: items,
+    //     };
+    //     dispatch(addOrderData(order));
+    //     return orderData;
+    // };
 
     // useEffect(() => {
     //     checkboxStatus.forEach((value, key) => {
-    //
+
     //         if (key === "Budżet marketingowy" && value === true) {
     //             return setCheckBoxText("Budżet marketingowy");
     //         }
@@ -70,9 +54,23 @@ const OrderSummary = () => {
     //         }
     //     });
     // }, []);
+    let items = [];
 
-    let addedItems = items.length ? (
-        items.map(item => {
+    if (products) {
+        products.map(item => {
+            const basketProducts = {
+                prodId: item.product.id,
+                uomPrimary: item.availability.unitOfMeasure,
+                quantity: item.quantity,
+            };
+            return items.push(basketProducts);
+        });
+    }
+
+    let currency = [];
+    let addedItems = products.length ? (
+        products.map(item => {
+            currency.push(item.price.currency)
             return (
                 <li
                     className="row nav-item collection-item border d-flex"
@@ -102,7 +100,7 @@ const OrderSummary = () => {
                                         <b>
                                             Cena:{" "}
                                             <span className="order-text-value">
-                                                {item.price.price} zł
+                                                {item.price.price} {item.price.currency}
                                             </span>
                                         </b>
                                     </div>
@@ -118,7 +116,7 @@ const OrderSummary = () => {
                                         <span className="mr-3 mb-3">
                                             <b>Razem: </b>
                                             <b className="order-text-value">
-                                                {item.itemTotalPrice} zł
+                                                {item.itemTotalPrice} {item.price.currency}
                                             </b>
                                         </span>
                                     </div>
@@ -145,7 +143,7 @@ const OrderSummary = () => {
                 <p className="order-summary-text mt-2">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
-                        {total} zł
+                        {total} {currency}
                     </span>
                 </p>
                 <p className="order-summary-text">
@@ -177,7 +175,7 @@ const OrderSummary = () => {
                     <Link
                         to="/OrderEnd"
                         className="btn btn-outline-primary mt-4"
-                        onClick={() => orderDataHandler()}
+                        onClick={() => dispatch(createOrder(token, items))}
                     >
                         Zatwierdź zamówienie
                     </Link>

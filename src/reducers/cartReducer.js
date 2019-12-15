@@ -42,12 +42,7 @@ const cartReducer = (state = initialState, action) => {
                     item.product.id === action.id
                         ? {
                               ...item,
-                              availability: {
-                                  ...item.availability,
-                                  availability:
-                                      item.availability.availability -
-                                      addedValueNum,
-                              },
+                              availability: item.availability - addedValueNum,
                           }
                         : item,
                 ),
@@ -90,12 +85,8 @@ const cartReducer = (state = initialState, action) => {
                     item.product.id === action.id
                         ? {
                               ...item,
-                              availability: {
-                                  ...item.availability,
-                                  availability:
-                                      item.availability.availability -
-                                      addedValueNum2,
-                              },
+
+                              availability: item.availability - addedValueNum2,
                           }
                         : item,
                 ),
@@ -126,12 +117,9 @@ const cartReducer = (state = initialState, action) => {
                     item.product.id === action.id
                         ? {
                               ...item,
-                              availability: {
-                                  ...item.availability,
-                                  availability:
-                                      item.availability.availability +
-                                      itemToRemove.quantity,
-                              },
+
+                              availability:
+                                  item.availability + itemToRemove.quantity,
                           }
                         : item,
                 ),
@@ -208,12 +196,10 @@ const cartReducer = (state = initialState, action) => {
                     item.product.id === action.id
                         ? {
                               ...item,
-                              availability: {
-                                  ...item.availability,
-                                  availability:
-                                      (item.availability.availability += oldAddedItemQuantity) -
-                                      addedValueNum3,
-                              },
+
+                              availability:
+                                  (item.availability += oldAddedItemQuantity) -
+                                  addedValueNum3,
                           }
                         : item,
                 ),
