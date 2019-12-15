@@ -22,9 +22,6 @@ export const addIfItemExist = (id, productQuantity) => {
 export const addItemToBasket = (id, productQuantity, unit, token) => {
     let productAmount = Object.values(productQuantity);
     let productNumber = String(productAmount[0]);
-    console.log(id);
-    console.log(productNumber);
-    console.log(unit);
 
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
@@ -224,7 +221,6 @@ export const getBasketProducts = token => {
             .then(res => {
                 let baskets = [];
                 baskets.push(res.data.get);
-                console.log(baskets);
                 //let lastBasket = baskets[0][baskets[0].length - 1];
                 //console.log(lastBasket)
             })

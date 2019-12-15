@@ -25,7 +25,6 @@ export const initProducts = (token, currentPage) => {
                 url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             })
                 .then(res => {
-                    console.log(res);
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
