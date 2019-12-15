@@ -18,8 +18,6 @@ const ProductDetails = props => {
     const [productId, setProductId] = useState(id);
     const [currentItems] = useState(pagination.totalItems);
 
-    console.log(id)
-
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < products.length) {
             return (

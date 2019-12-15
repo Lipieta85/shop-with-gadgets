@@ -15,7 +15,6 @@ const initialState = {
     pagination: {},
 };
 const cartReducer = (state = initialState, action) => {
-    //console.log(state.basket)
     switch (action.type) {
         case type.ADD_IF_ITEM_EXIST:
             let addedItem = state.items.find(
