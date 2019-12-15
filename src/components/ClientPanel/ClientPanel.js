@@ -50,7 +50,7 @@ const ClientPanel = props => {
     }, [dispatch, token, currentPage, currentItems, pagination.totalPages]);
 
     let product = items
-        ? items.map(item => {
+        ? items.map((item, i) => {
               return (
                   <div
                       className="card border-secondary m-1 col-sm-6 col-lg-4"
@@ -82,21 +82,18 @@ const ClientPanel = props => {
                                   <strong>
                                       Cena: {item.price.price}{" "}
                                       {item.price.currency}/
-                                      {item.availability.unitOfMeasure}
+                                      {item.product.uom_primary}
                                   </strong>
                               </p>
                               <span className="card-available-quantity">
-                                  Dostępna ilość:{" "}
-                                  {item.availability.availability}{" "}
-                                  {item.availability.unitOfMeasure}
+                                  Dostępna ilość: {item.availability}{" "}
+                                  {item.product.uom_primary}
                               </span>
                               <div className="buttons-container row d-flex align-items-center">
                                   <ButtonInput
                                       itemId={item.product.id}
-                                      availabaleItemQuantity={
-                                          item.availability.availability
-                                      }
-                                      itemUnit={item.availability.unitOfMeasure}
+                                      availabaleItemQuantity={item.availability}
+                                      itemUnit={item.product.uom_primary}
                                       token={token}
                                   />
                               </div>

@@ -1,11 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getBasketProducts } from "../../actions/index";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 import defImg from "../../assets/images/default.jpg";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
+
+    const dispatch = useDispatch();
+
+    const token = sessionStorage.getItem("token");
+
+    useEffect(() => {
+       dispatch(getBasketProducts(token)) 
+    }, [dispatch, token])
 
     let addedItems = items.length ? (
         items.map(item => {
@@ -27,11 +36,11 @@ const Basket = props => {
                     <div className="col-md-8 border-left desc-col">
                         <BasketButtons
                             itemId={item.product.id}
-                            //itemDesc={items.product.description1}
                             itemTitle={item.product.description1}
                             itemPrice={item.price.price}
                             itemQuantity={item.quantity}
                             itemTotalPrice={item.itemTotalPrice}
+                            itemCurrency={item.price.currency}
                         />
                     </div>
                 </li>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
-import HomePageContainer from "./containers/HomePageContainer";
+//import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
 import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
@@ -66,10 +66,16 @@ export default withRouter(function App({ location }, props) {
     return (
         <>
             <Switch>
-                <Route
+            <Route
                     path="/"
                     exact
-                    render={render => <ClientPanelContainer {...render} />}
+                    render={render =>
+                        isLoggedIn ? (
+                            <ClientPanelContainer {...render} />
+                        ) : (
+                            <ClientPanelContainer {...render} />
+                        )
+                    }
                 />
                 {/* <PrivateRoute path="/admin" component={AdminPanelContainer} /> */}
                 <PrivateRoute path="/Basket" component={BasketContainer} />

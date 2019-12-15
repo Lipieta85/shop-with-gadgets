@@ -20,6 +20,12 @@ const ClientPanelMenu = () => {
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
+    let currency = []
+    if (addedItems) {
+        addedItems.map(item => {
+           return currency.push(item.price.currency)
+        })
+    }
 
     useEffect(() => {
         if (budget < 0) {
@@ -84,14 +90,14 @@ const ClientPanelMenu = () => {
                             Dostępny budżet marketingowy
                         </span>
                         <br />
-                        <span className="value">{budget} zł</span>
+                        <span className="value">{budget} {currency}</span>
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
                         <span className="purchase-header">
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className="value">{priceValue} zł</span>
+                        <span className="value">{priceValue} {currency}</span>
                     </div>
                 </div>
                 <div className="divider"></div>

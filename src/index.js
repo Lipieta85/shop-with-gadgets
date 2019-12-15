@@ -28,7 +28,7 @@ const history = createBrowserHistory();
 // }
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 // const store = createStore(persistedReducer, applyMiddleware(...middleware));
-
+// <PersistGate loading={null} persistor={persistor}></PersistGate>
 // let persistor = persistStore(store);
 const store = createStore(
     rootReducer,
