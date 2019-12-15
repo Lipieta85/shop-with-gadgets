@@ -7,20 +7,11 @@ const Spinner = () => {
     return (
         <div>
             {promiseInProgress === true ? (
-                <div
-                    className="spinner-border"
-                    style={{
-                        width: "8rem",
-                        height: "8rem",
-                        position: "fixed",
-                        bottom: "44%",
-                        left: "34%",
-                        zIndex: "999"
-                    }}
-                    role="status"
-                >
-                    <span className="sr-only">Loading...</span>
+                <div class="d-flex justify-content-center position-fixed" style={{top: "45%", left: "45%"}}>
+                <div class="spinner-border" role="status" style={{width: "70px", height: "70px"}}>
+                  <span class="sr-only">Loading...</span>
                 </div>
+              </div>
             ) : null}
         </div>
     );
