@@ -1,5 +1,6 @@
 import * as type from "../actions/types";
 import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
 
 export const orderInputState = value => {
     return {
@@ -26,9 +27,11 @@ export const createOrder = (token, items) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
         const company = getState().clientDataReducer.companyId;
+        let companyId = company.charAt(0).toUpperCase();
         Number(basketId)
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":${company}}`;
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        trackPromise(
         axios({
             method: "post",
             url: url,
@@ -41,7 +44,8 @@ export const createOrder = (token, items) => {
             })
             .catch(error => {
                 console.log(error);
-            });
+            })
+        )
     };
 };
 
