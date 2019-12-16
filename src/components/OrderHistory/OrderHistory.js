@@ -3,7 +3,6 @@ import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientOrdersHistory } from "../../actions/index";
 import defImg from "../../assets/images/default.jpg";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
 

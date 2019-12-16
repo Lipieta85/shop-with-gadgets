@@ -23,8 +23,12 @@ export const initProducts = (token, currentPage) => {
             axios({
                 method: "get",
                 url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+                headers: {
+                    Authorization: token,
+                },
             })
                 .then(res => {
+                    console.log(res)
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
