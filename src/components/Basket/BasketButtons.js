@@ -33,7 +33,7 @@ const BasketButtons = props => {
     });
     inputValue.map(item => {
       if (input.current.id === item.product.id) {
-        if (input.current.value > item.availability.availability) {
+        if (input.current.value > item.availability) {
           setDisabled(true);
         } else {
           setDisabled(false);
@@ -80,7 +80,7 @@ const BasketButtons = props => {
         style={{ minHeight: "60px" }}
       >
         <p style={{ margin: "0 5px 0 0" }}>
-          <b>Cena: {props.itemPrice} zł</b>
+          <b>Cena: {props.itemPrice} {props.itemCurrency}</b>
         </p>
         <div className="add-remove d-flex align-items-center">
           <span className="mr-3">
@@ -110,7 +110,7 @@ const BasketButtons = props => {
             className="basket-single-item-total font-bold font-weight-bold"
             style={{ margin: "0" }}
           >
-            Razem: {props.itemTotalPrice} zł
+            Razem: {props.itemTotalPrice} {props.itemCurrency}
           </p>
         </div>
       </div>

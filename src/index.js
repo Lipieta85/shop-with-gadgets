@@ -13,6 +13,8 @@ import { applyMiddleware, createStore } from "redux";
 import rootReducer from "./reducers/index";
 //import logger from "redux-logger";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 const history = createBrowserHistory();
 // const persistConfig = {
 //     key: "root",
@@ -26,15 +28,18 @@ const history = createBrowserHistory();
 // }
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 // const store = createStore(persistedReducer, applyMiddleware(...middleware));
-
+// <PersistGate loading={null} persistor={persistor}></PersistGate>
 // let persistor = persistStore(store);
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(thunk)),
+);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById("root")
+    <Provider store={store}>
+        <Router history={history}>
+            <App />
+        </Router>
+    </Provider>,
+    document.getElementById("root"),
 );

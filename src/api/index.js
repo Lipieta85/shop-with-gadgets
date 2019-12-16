@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/axios";
 
 export const getToken = async userData => {
     return await axios({
@@ -19,7 +19,7 @@ export const getUserData = async token => {
     return await axios({
         method: "get",
         url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getLoggedUser",
+            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getWixClientData",
         headers: {
             "Content-Type": "application/json",
             Authorization: token,

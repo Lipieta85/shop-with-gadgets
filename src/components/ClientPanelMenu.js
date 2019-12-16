@@ -20,6 +20,12 @@ const ClientPanelMenu = () => {
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
+    let currency = []
+    if (addedItems) {
+        addedItems.map(item => {
+           return currency.push(item.price.currency)
+        })
+    }
 
     useEffect(() => {
         if (budget < 0) {
@@ -85,7 +91,7 @@ const ClientPanelMenu = () => {
                         </span>
                         <br />
                         <span className="blue-value">{budget} </span>
-                        <span className="value">zł</span>
+                        <span className="value">{currency}</span>
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
                         <div className="y-rem-18"></div>
@@ -94,7 +100,7 @@ const ClientPanelMenu = () => {
                         </span>
                         <br />
                         <span className="blue-value">{priceValue} </span>
-                        <span className="value">zł</span>
+                        <span className="value">{currency}</span>
                     </div>
                 </div>
                 <div className="divider"></div>

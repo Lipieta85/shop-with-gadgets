@@ -3,6 +3,7 @@ import * as type from "../actions/types";
 const initialState = {
     clientData: [],
     companyId: null,
+    token: "",
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 companyId: action.id,
+            };
+        case type.TOKEN:
+            return {
+                ...state,
+                token: action.token,
             };
         default:
             return state;
