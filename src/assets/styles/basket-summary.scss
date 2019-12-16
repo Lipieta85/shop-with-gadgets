@@ -3,10 +3,11 @@ $blue:rgb(3,88,153);
 .basket-summary {
     margin: 0 auto;
     text-align: right;
+    .summary-p{
+        padding: 1rem 0.6rem !important;
+    }
 }
-.summary-p{
-    padding: 1rem 0.6rem !important;
-}
+
 .badge-blue{
     position: relative;
     top: 17px;
