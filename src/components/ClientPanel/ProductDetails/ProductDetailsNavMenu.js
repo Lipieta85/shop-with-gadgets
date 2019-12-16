@@ -61,13 +61,13 @@ const ProductDetailsNavMenu = () => {
                                     className="dropdown-menu text-uppercase"
                                     aria-labelledby="navbarDropdown"
                                 >
-                                    <a
+                                    {/* <a
                                         className="dropdown-item text-uppercase"
                                         href="/"
                                         onClick={e => e.preventDefault()}
                                     >
                                         Edycja Konta
-                                    </a>
+                                    </a> */}
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"

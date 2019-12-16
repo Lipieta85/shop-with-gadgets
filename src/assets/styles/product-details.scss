@@ -6,7 +6,7 @@
     min-height: calc(100vh - 57px);
     .product-details-container {
         .product-details-content {
-            margin-top: 100px;
+            margin-top: 22px;
             .product-details-desc {
                 background-color: #f7f7f7;
                 display: flex;
@@ -30,6 +30,13 @@
                     }
                 }
             }
+        }
+    }
+}
+@media (min-width: 700px) and (max-width: 900px) {
+    .navButtons {
+        .btn-outline-primary {
+            padding: 0.3em;
         }
     }
 }

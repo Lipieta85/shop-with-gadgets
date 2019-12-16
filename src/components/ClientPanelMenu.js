@@ -15,7 +15,7 @@ const ClientPanelMenu = () => {
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
     const orderHistoryShow = useSelector(
-        state => state.orderReducer.historyShow
+        state => state.orderReducer.historyShow,
     );
     const [orderList, setOrderList] = useState();
 
@@ -29,7 +29,7 @@ const ClientPanelMenu = () => {
                     większą ilość produktów złóż najpierw zamówienie
                     standardowe, a dodatkowe produkty zamów osobnym zamówieniem
                     płatnym.
-                </div>
+                </div>,
             );
         } else setBudgetAlert("");
     }, [budget]);
@@ -39,7 +39,7 @@ const ClientPanelMenu = () => {
             setOrderList(
                 orderHistory.map(order => {
                     return <p>{order.orderDate}</p>;
-                })
+                }),
             );
         }
     }, [orderHistoryShow, orderHistory]);

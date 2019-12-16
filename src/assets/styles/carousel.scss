@@ -62,7 +62,16 @@ button:focus {
         text-align: center;
     }
 }
-
+@media (min-width: 1400px) {
+    .image-gallery-swipe {
+        width: 500px;
+    }
+}
+// @media (max-width: 750px) {
+//     .image-gallery-swipe {
+//         margin-left: 20%;
+//     }
+// }
 .image-gallery-content.fullscreen .image-gallery-slide {
     background: #e4e4e6;
 }
