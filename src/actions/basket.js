@@ -48,35 +48,37 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
 
         const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         if (basketId) {
-            axios({
-                method: "put",
-                url: url,
-                headers: {
-                    Authorization: token,
-                },
-                data: {
-                    "timeZone": "Pacific/Chatham",
-                    "shipToNumber": deliveryAddress[0].key,
-                    "items": [
-                        {
-                            "prodId": id,
-                            "uomPrimary": unit,
-                            "quantity": productNumber
-                        },
-                    ],
-                },
-            })
-                .then(res => {
-                    console.log(res);
-                    if (existed_item) {
-                        dispatch(addIfItemExist(id, productQuantity));
-                    } else {
-                        dispatch(addIfItemEmpty(id, productQuantity));
-                    }
+            trackPromise(
+                axios({
+                    method: "put",
+                    url: url,
+                    headers: {
+                        Authorization: token,
+                    },
+                    data: {
+                        timeZone: "Pacific/Chatham",
+                        shipToNumber: deliveryAddress[0].key,
+                        items: [
+                            {
+                                prodId: id,
+                                uomPrimary: unit,
+                                quantity: productNumber,
+                            },
+                        ],
+                    },
                 })
-                .catch(error => {
-                    console.log(error);
-                });
+                    .then(res => {
+                        console.log(res);
+                        if (existed_item) {
+                            dispatch(addIfItemExist(id, productQuantity));
+                        } else {
+                            dispatch(addIfItemEmpty(id, productQuantity));
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    }),
+            );
         } else {
             const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":${company}}`;
             trackPromise(
@@ -93,7 +95,7 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                             {
                                 prodId: id,
                                 uomPrimary: unit,
-                                quantity: productNumber
+                                quantity: productNumber,
                             },
                         ],
                     },
@@ -199,6 +201,45 @@ export const clearBasket = () => {
 //     }
 //   };
 // };
+
+export const changeBasketQuantity = (productId, newProductAmount) => {
+    return (dispatch, getState) => {
+        //let basketId = getState().cartReducer.basket;
+        let addedItems = getState().cartReducer.addedItems;
+        let items = [];
+        console.log(addedItems);
+        dispatch(changeBasketAmounts(productId, newProductAmount)).then(() => {
+            addedItems.map(item => {
+                const basketProducts = {
+                    prodId: item.product.id,
+                    uomPrimary: item.product.uom_primary,
+                    quantity: item.quantity,
+                };
+                return items.push(basketProducts);
+            });
+        });
+        console.log(items);
+        // const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
+        // if (basketId) {
+        //     axios({
+        //         method: "delete",
+        //         url: url,
+        //         headers: {
+        //             Authorization: token,
+        //         },
+        //         data: {
+        //             "0": id,
+        //         },
+        //     })
+        //         .then(res => {
+        //             dispatch(deleteItem(id));
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         });
+        // }
+    };
+};
 
 export const changeBasketAmounts = (productId, newProductAmount) => {
     return {
