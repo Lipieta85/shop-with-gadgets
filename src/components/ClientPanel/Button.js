@@ -58,7 +58,7 @@ const Button = props => {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
         }
-        if(props.availabaleItemQuantity == 0){
+        if(props.availabaleItemQuantity === 0){
             event.preventDefault();
             return false;
         }
@@ -95,7 +95,7 @@ const Button = props => {
                 <FontAwesomeIcon
                     icon={faShoppingBasket}
                     size="2x"
-                    color={props.availabaleItemQuantity==0?"#e2e2e2":"#a0a3a6"}
+                    color={props.availabaleItemQuantity===0?"#e2e2e2":"#a0a3a6"}
                     onClick={dispatchHandler}
                     cursor="pointer"
                 />
