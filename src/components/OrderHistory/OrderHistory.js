@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getClientOrdersHistory } from "../../actions/index";
 import defImg from "../../assets/images/default.jpg";
-import axios from "axios";
 
 import "../../assets/styles/order-history.scss";
 
@@ -11,26 +11,16 @@ const OrderHistory = () => {
     //const newOrders = useSelector(state => state.clientDataReducer.clientData);
     const [clickedOrder, setClickedOrder] = useState();
 
+    const dispatch = useDispatch();
+
     let confirmedOrder;
     let selectedOrderView;
 
     const token = sessionStorage.getItem("token");
+
     useEffect(() => {
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
-        axios({
-            method: "get",
-            url: url,
-            headers: {
-                Authorization: token,
-            },
-        })
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, [token]);
+        dispatch(getClientOrdersHistory(token))
+    }, [token, dispatch]);
 
     const orderDetailHandler = selectedOrder => {
         orders.map((order, i) => {

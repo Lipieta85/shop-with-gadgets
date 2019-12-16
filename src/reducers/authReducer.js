@@ -4,12 +4,13 @@ export default (state = { isAuth: false }, action) => {
             return {
                 ...state,
                 // userID: action.userID,
-                isAuth: action.isAuth
+                isAuth: action.isAuth,
             };
         case "SIGN_OUT":
+            sessionStorage.removeItem("token");
             return {
                 ...state,
-                isAuth: false
+                isAuth: false,
             };
         default:
             return state;

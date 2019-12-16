@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
-import HomePageContainer from "./containers/HomePageContainer";
+//import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
 import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
@@ -18,7 +18,7 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
-import { clientData, companyId } from "./actions/index";
+import { clientData, companyId, setToken } from "./actions/index";
 import queryString from "query-string";
 
 function initializeReactGA() {
@@ -41,36 +41,39 @@ export default withRouter(function App({ location }, props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // if (location.search) {
-    //     const parsed = queryString.parse(location.search);
-    //     dispatch(companyId(parsed.brand));
-    //     getLinkToken(parsed.dt)
-    //         .then(res => {
-    //             const token = res.data.token.split(".");
-    //             const userID = JSON.parse(atob(token[1]));
-    //             sessionStorage.setItem("userID", userID.userId);
-    //             sessionStorage.setItem("token", res.data.token);
-    //             getUserData(res.data.token).then(res => {
-    //                 dispatch(clientData(res.data));
-    //                 dispatch(signIn({ isAuth: true }));
-    //             });
-    //         })
-    //         .catch(err => console.log(err.response));
-    //     //window.location.replace("http://192.168.0.105:3000/");
-    // }
+    if (location.search) {
+        const parsed = queryString.parse(location.search);
+        dispatch(companyId(parsed.brand));
+        getLinkToken(parsed.dt)
+            .then(res => {
+                const token = res.data.token;
+                const tokenParts = res.data.token.split(".");
+                const userID = JSON.parse(atob(tokenParts[1]));
+                sessionStorage.setItem("userID", userID.userId);
+                // sessionStorage.setItem("token", res.data.token);
+                getUserData(res.data.token).then(res => {
+                    dispatch(setToken(token));
+                    dispatch(clientData(res.data));
+                    dispatch(signIn({ isAuth: true }));
+                });
+            })
+            .catch(err => console.log(err));
+        // window.location.replace("http://192.168.0.105:3000/");
+    }
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
+
     return (
         <>
             <Switch>
-                <Route
+            <Route
                     path="/"
                     exact
                     render={render =>
                         isLoggedIn ? (
                             <ClientPanelContainer {...render} />
                         ) : (
-                            <HomePageContainer {...render} />
+                            <ClientPanelContainer {...render} />
                         )
                     }
                 />

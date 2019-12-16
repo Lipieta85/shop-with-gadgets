@@ -5,6 +5,14 @@ import "../../assets/styles/basket-summary.scss";
 
 const BasketSummary = () => {
     const total = useSelector(state => state.cartReducer.total);
+    const items = useSelector(state => state.cartReducer.addedItems);
+    
+    let currency = []
+    if (items) {
+        items.map(item => {
+           return currency.push(item.price.currency)
+        })
+    }
 
     return (
         <div className="row basket-summary">
@@ -12,7 +20,7 @@ const BasketSummary = () => {
                 <div className="border list-unstyled p-3">
                     <div className="basket-summary content  p-0 m-0">
                         <li className="basket-summary-order text-uppercase">
-                            <b>Kwota do zapłaty: {total} zł</b>
+                            <b>Kwota do zapłaty: {total} {currency}</b>
                         </li>
                     </div>
                 </div>

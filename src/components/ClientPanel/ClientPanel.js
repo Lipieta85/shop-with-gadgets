@@ -29,22 +29,28 @@ const ClientPanel = props => {
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        dispatch(initProducts(token, currentPage, currentItems));
-        if (currentPage < 3) {
-            setShortPagination([2, 3, 4]);
-        } else if (currentPage > pagination.totalPages - 3) {
-            setShortPagination([
-                pagination.totalPages - 3,
-                pagination.totalPages - 2,
-                pagination.totalPages - 1,
-            ]);
-        } else {
-            setShortPagination([currentPage - 1, currentPage, currentPage + 1]);
+        if (token) {
+            dispatch(initProducts(token, currentPage, currentItems));
+            if (currentPage < 3) {
+                setShortPagination([2, 3, 4]);
+            } else if (currentPage > pagination.totalPages - 3) {
+                setShortPagination([
+                    pagination.totalPages - 3,
+                    pagination.totalPages - 2,
+                    pagination.totalPages - 1,
+                ]);
+            } else {
+                setShortPagination([
+                    currentPage - 1,
+                    currentPage,
+                    currentPage + 1,
+                ]);
+            }
         }
     }, [dispatch, token, currentPage, currentItems, pagination.totalPages]);
 
     let product = items
-        ? items.map(item => {
+        ? items.map((item, i) => {
               return (
                   <div
                       className="card border-secondary m-1 col-sm-6 col-lg-4"
@@ -76,21 +82,18 @@ const ClientPanel = props => {
                                   <strong>
                                       Cena: {item.price.price}{" "}
                                       {item.price.currency}/
-                                      {item.availability.unitOfMeasure}
+                                      {item.product.uom_primary}
                                   </strong>
                               </p>
                               <span className="card-available-quantity">
-                                  Dostępna ilość:{" "}
-                                  {item.availability.availability}{" "}
-                                  {item.availability.unitOfMeasure}
+                                  Dostępna ilość: {item.availability}{" "}
+                                  {item.product.uom_primary}
                               </span>
                               <div className="buttons-container row d-flex align-items-center">
                                   <ButtonInput
                                       itemId={item.product.id}
-                                      availabaleItemQuantity={
-                                          item.availability.availability
-                                      }
-                                      itemUnit={item.availability.unitOfMeasure}
+                                      availabaleItemQuantity={item.availability}
+                                      itemUnit={item.product.uom_primary}
                                       token={token}
                                   />
                               </div>

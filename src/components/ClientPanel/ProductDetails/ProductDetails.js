@@ -1,33 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import defImg from "../../../assets/images/default.jpg";
 import Button from "../Button";
 import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
 import Spinner from "../../UI/Spinner/Spinner";
-import { initProducts, setPage, nextPage } from "../../../actions/index";
 import { Link } from "react-router-dom";
 import "../../../assets/styles/product-details.scss";
-//import { setProducts } from "../../../actions";
 
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
-    const currentPage = useSelector(state => state.pageReducer.currentPage);
     const pagination = useSelector(state => state.cartReducer.pagination);
     const [loadedProduct, setLoadedProduct] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
     const [productId, setProductId] = useState(id);
     const [currentItems] = useState(pagination.totalItems);
-
-    const dispatch = useDispatch();
-
-    const token = sessionStorage.getItem("token");
-
-    useEffect(() => {
-        dispatch(initProducts(token, currentPage, currentItems));
-    }, [dispatch, token, currentPage, currentItems]);
 
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < products.length) {
@@ -42,7 +31,6 @@ const ProductDetails = props => {
             });
             return setLoadedProduct(products[selectedIndex]);
         }
-        //eslint-disable-next-line
     }, [
         loadedProduct,
         id,
@@ -51,15 +39,8 @@ const ProductDetails = props => {
         props.history,
         pagination.totalPages,
         currentItems,
+        products
     ]);
-
-    useEffect(() => {
-        setLoadedProduct(products[0]);
-        setSelectedIndex(0);
-        products.map((product, i) => {
-            return i === 0 ? setProductId(product.product.id) : null;
-        });
-    }, [currentPage, products]);
 
     const nexItem = () => {
         setSelectedIndex(prevState => prevState + 1);
@@ -69,9 +50,6 @@ const ProductDetails = props => {
                 : null;
         });
         if (selectedIndex + 1 === products.length) {
-            currentPage === pagination.totalPages
-                ? dispatch(setPage(1))
-                : dispatch(nextPage());
             setLoadedProduct(products[0]);
             setSelectedIndex(0);
             products.map((product, i) => {
@@ -102,17 +80,14 @@ const ProductDetails = props => {
     let productUnit;
     let productPrice;
     if (loadedProduct) {
-        for (var key in loadedProduct.availability) {
-            if (key === "availability") {
-                productAvailability = loadedProduct.availability[key];
-            }
-            if (key === "unitOfMeasure") {
-                productUnit = loadedProduct.availability[key];
-            }
-        }
+        productAvailability = loadedProduct.availability;
+
         for (let key in loadedProduct.product) {
             if (key === "description1") {
                 productTitle = loadedProduct.product[key];
+            }
+            if (key === "uom_primary") {
+                productUnit = loadedProduct.product[key];
             }
         }
         for (let key in loadedProduct) {
@@ -143,9 +118,6 @@ const ProductDetails = props => {
                                         <h3 className="product-details-header">
                                             {productTitle}
                                         </h3>
-                                        <p className="product-details-text">
-                                            {productTitle}
-                                        </p>
                                         <p className="font-weight-bold">
                                             Kod produktu:{" "}
                                             <span className="product-details-text">
@@ -174,6 +146,7 @@ const ProductDetails = props => {
                                         <div className="product-buttons-container row">
                                             <Button
                                                 itemId={productId}
+                                                itemUnit={productUnit}
                                                 changeProduct={props}
                                             />
                                         </div>
