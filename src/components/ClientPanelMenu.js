@@ -64,13 +64,13 @@ const ClientPanelMenu = () => {
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
                         <div className="d-flex">
-                            <FontAwesomeIcon icon={faShoppingBasket} size="2x" color="#a0a3a6"/>
+                            <FontAwesomeIcon icon={faShoppingBasket} size="2x" color="#a0a3a6" className="icon-anim"/>
                             <span className="badge badge-blue">{totalQuantity}</span>
                         </div>
                     ) : (
                         <div className="d-flex align-items-center">
                             <Link to="/Basket" className="no-deco basket-box" onClick={buttonHandler}>
-                                <FontAwesomeIcon icon={faShoppingBasket} size="2x" className="basket"/>
+                                <FontAwesomeIcon icon={faShoppingBasket} size="2x" className="basket icon-anim"/>
                                 {totalQuantity===0?<>             
                                     <span className="basket-counter counter-gray">{totalQuantity}</span>
                                     <span className="basket-title">Koszyk (pusty)</span>

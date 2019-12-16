@@ -98,6 +98,7 @@ const Button = props => {
                     color={props.availabaleItemQuantity===0?"#e2e2e2":"#a0a3a6"}
                     onClick={dispatchHandler}
                     cursor="pointer"
+                    className="icon-anim"
                 />
             </div>
         </>
