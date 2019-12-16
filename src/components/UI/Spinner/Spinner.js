@@ -1,6 +1,5 @@
 import React from "react";
 import { usePromiseTracker } from "react-promise-tracker";
-import "../../../assets/styles/spinner.scss";
 
 const Spinner = () => {
     const { promiseInProgress } = usePromiseTracker();
@@ -8,7 +7,7 @@ const Spinner = () => {
     return (
         <div>
             {promiseInProgress === true ? (
-                <div class="d-flex justify-content-center position-fixed" style={{top: "45%", left: "45%"}}>
+                <div class="d-flex justify-content-center position-fixed" style={{top: "46%", left: "48%"}}>
                 <div class="spinner-border" role="status" style={{width: "70px", height: "70px"}}>
                   <span class="sr-only">Loading...</span>
                 </div>

@@ -9,6 +9,11 @@ $gray:#a0a3a6;
     min-height: calc(100vh - 57px);
     padding: 90px 10px 0 10px;
     .card-container {
+        .card{
+            border:none;
+            border-radius: 0;
+            box-shadow:0px 0px 6px rgba(0,0,0,0.2);
+        }
         .buttons-container {
             margin: 7px auto 7px auto;
             .product-input {
@@ -17,37 +22,17 @@ $gray:#a0a3a6;
             }
         }
     }
+    .navigation-pager{
+        margin-top: 1.5rem;
+        .page-item.active{  
+            .page-link{
+                background-color: $blue;
+                border-color: $blue;
+            } 
+        }
+    }
 }
 
-.navigation-pager{
-    margin-top: 1.5rem;
-}
-.blue-value{
-    color: $blue; 
-    font-size: 18px;
-    font-weight: bold;
-}
-.gray-value{
-    color: $gray; 
-}
-.y-rem-18{
-    margin:0;
-    padding: 0;
-    display: inline-block;
-    background-color: transparent;
-    height: 1.8rem;
-}
-.card{
-    border:none;
-    border-radius: 0;
-    box-shadow:0px 0px 6px rgba(0,0,0,0.2);
-}
-.page-item.active{  
-    .page-link{
-        background-color: $blue;
-        border-color: $blue;
-    } 
-}
 
 @media (min-width: 1839px) {
     .client-side {

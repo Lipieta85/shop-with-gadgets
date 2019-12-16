@@ -5,7 +5,6 @@ import { getClientOrdersHistory } from "../../actions/index";
 import defImg from "../../assets/images/default.jpg";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { clearBasket } from "../../actions/index";
 import "../../assets/styles/order-history.scss";
 
 const OrderHistory = () => {
@@ -130,7 +129,6 @@ const OrderHistory = () => {
                                     <Link
                                         to="/"
                                         className="btn btn-outline-primary mt-4"
-                                        onClick={() => dispatch(clearBasket())}
                                         >
                                         {" "}
                                         Wróć do sklepu
