@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EACd,UAAU,EAAE,kBAAkB;CAKjC;;AAND,AAEI,iBAFa,CAEb,cAAc,CAAC;EACX,UAAU,EAAE,IAAI;EAChB,YAAY,EAAE,KAAK;CACtB;;AAGL,MAAM,EAAE,SAAS,EAAE,KAAK;EACpB,AAAA,gBAAgB,CAAC;IACb,OAAO,EAAE,MAAM;GAClB;;;AAGL,MAAM,EAAE,SAAS,EAAE,KAAK;EACpB,AAAA,gBAAgB,CAAC;IACb,OAAO,EAAE,CAAC;GACb;EACD,AAAA,cAAc,CAAC;IACX,YAAY,EAAE,IAAI;GACrB",
-    "sources": [
-        "basket-container.scss"
-    ],
-    "names": [],
-    "file": "basket-container.css"
-}

@@ -14,8 +14,6 @@ const OrderHistory = () => {
     //const newOrders = useSelector(state => state.clientDataReducer.clientData);
     const [clickedOrder, setClickedOrder] = useState();
 
-    const dispatch = useDispatch();
-
     let confirmedOrder;
     let selectedOrderView;
 

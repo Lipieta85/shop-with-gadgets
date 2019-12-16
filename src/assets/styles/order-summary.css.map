@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,UAAU,EAAE,kBAAkB;EAC9B,WAAW,EAAE,IAAI;CAOpB;;AATD,AAGI,cAHU,CAGV,mBAAmB,CAAC;EAChB,SAAS,EAAE,IAAI;CAIlB",
-    "sources": [
-        "order-summary.scss"
-    ],
-    "names": [],
-    "file": "order-summary.css"
-}

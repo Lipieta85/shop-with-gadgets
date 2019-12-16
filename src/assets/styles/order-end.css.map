@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,UAAU,EAAE,2BAA2B,CAAC,MAAM,CAAC,SAAS;EACxD,eAAe,EAAE,KAAK;EACtB,UAAU,EAAE,kBAAkB;EAC9B,WAAW,EAAE,KAAK;CACrB;;AACD,AAAA,cAAc,CAAA;EACV,gBAAgB,EAAE,wBAAwB;EAC1C,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,kBAAe;CAC1C",
-    "sources": [
-        "order-end.scss"
-    ],
-    "names": [],
-    "file": "order-end.css"
-}
