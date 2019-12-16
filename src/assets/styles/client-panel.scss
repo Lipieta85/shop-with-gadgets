@@ -61,9 +61,9 @@ $gray:#a0a3a6;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .client-side {
-        padding-top: 70px;
+        padding: 70px 0px;
         .container-fluid {
             .buttons-container {
                 padding-left: 8px;

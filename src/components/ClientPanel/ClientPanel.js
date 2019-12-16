@@ -52,7 +52,7 @@ const ClientPanel = props => {
     let product = items
         ? items.map((item, i) => {
               return (
-                <div className="card-box col-sm-6 col-md-4 col-xl-3 p-1">
+                <div className="card-box col-6 col-md-4 col-xl-3">
                   <div className="card" key={item.product.id}>
                       <Link to={`/product/${item.product.id}`}>
                           <div className="card-img d-flex align-items-center pt-3 px-3">

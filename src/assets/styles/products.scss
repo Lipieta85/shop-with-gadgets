@@ -1,5 +1,6 @@
 .card-box{
     max-width: 295px;
+    padding: .25rem;
     .card {
         box-shadow: inset -2px -2px #ccc;
         .card-img {
@@ -51,7 +52,7 @@
     }
 }
 
-@media (max-width: 475px) {
+@media (max-width: 500px) {
     .card {
         .card-img {
             height: 150px;
@@ -64,29 +65,32 @@
     }
 }
 
-@media (max-width: 400px) {
-    .card {
-        padding: 5px;
-        .card-img {
-            height: 90px;
-            .card-img-wrapper {
-                .card-img-content {
-                    max-height: 90px;
+@media (max-width: 450px) {
+    .card-box{
+        padding:2px 1px;
+        .card {
+            padding: 5px;
+            .card-img {
+                height: 90px;
+                .card-img-wrapper {
+                    .card-img-content {
+                        max-height: 90px;
+                    }
                 }
             }
-        }
-        .card-title {
-            font-size: 17px;
-            margin-bottom: 2px;
-        }
-        .card-text {
-            strong {
-                font-size: 13px;
+            .card-title {
+                font-size: 15px;
+                margin-bottom: 2px;
             }
-        }
-        .card-available-quantity {
-            font-size: 13px;
-            margin-bottom: 10px;
+            .card-text {
+                strong {
+                    font-size: 11px;
+                }
+            }
+            .card-available-quantity {
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
         }
     }
 }
