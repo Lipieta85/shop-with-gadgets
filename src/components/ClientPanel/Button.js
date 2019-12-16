@@ -53,7 +53,6 @@ const Button = props => {
     };
 
     const dispatchHandler = event => {
-        console.log(props);
         if (input.current.value < 0) {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
