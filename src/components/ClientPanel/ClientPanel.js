@@ -53,7 +53,7 @@ const ClientPanel = props => {
         ? items.map((item, i) => {
               return (
                   <div
-                      className="card border-secondary m-1 col-sm-6 col-lg-4"
+                      className="card m-1 col-sm-6 col-lg-4"
                       key={item.product.id}
                   >
                       <Link to={`/product/${item.product.id}`}>
@@ -140,7 +140,7 @@ const ClientPanel = props => {
                         {pagination.totalPages > 1 && (
                             <nav
                                 aria-label="navigation align-items-bottom"
-                                className="w-100"
+                                className="w-100 navigation-pager"
                             >
                                 <ul className="pagination justify-content-center">
                                     <li className="page-item">

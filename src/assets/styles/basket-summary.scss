@@ -1,11 +1,24 @@
-.row {
-    .border {
-        background-color: #f7f7f7;
+$blue:rgb(3,88,153);
+
+.basket-summary {
+    margin: 0 auto;
+    text-align: right;
+    .summary-p{
+        padding: 1rem 0.6rem !important;
     }
-    .basket-summary {
-        width: 90%;
-        margin: 0 auto;
-    }
+}
+
+.badge-blue{
+    position: relative;
+    top: 17px;
+    left: -10px;
+    color: white;
+    font-size: 0.7rem;
+    height: 16px;
+    background-color: $blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 767px) {

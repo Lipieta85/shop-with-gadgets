@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../assets/styles/nav-menu.scss";
 import logo from "../../assets/images/filtron_logo.png";
 
 const NavMenu = () => {
     return (
         <div
-            className="nav-menu fixed-top w-100"
+            className="nav-menu fixed-top w-100 nav-shadow"
             style={{ backgroundColor: "#FFF" }}
         >
-            <div className="container-fluid border-bottom">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-1"></div>
                     <div className="col-sm-6 col-md-5 col-lg-3">

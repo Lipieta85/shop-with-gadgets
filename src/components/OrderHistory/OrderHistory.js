@@ -3,15 +3,15 @@ import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientOrdersHistory } from "../../actions/index";
 import defImg from "../../assets/images/default.jpg";
-
+import axios from "axios";
+import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
 
 const OrderHistory = () => {
+    const dispatch = useDispatch();
     const orders = useSelector(state => state.orderReducer.historyOfBuy);
     //const newOrders = useSelector(state => state.clientDataReducer.clientData);
     const [clickedOrder, setClickedOrder] = useState();
-
-    const dispatch = useDispatch();
 
     let confirmedOrder;
     let selectedOrderView;
@@ -123,7 +123,18 @@ const OrderHistory = () => {
                 <div className="row">
                     <div className="col-12">
                         <h4 className="order-list ml-1">
-                            Lista Twoich zamówień:
+                            {orders.length===0?
+                                <>
+                                    <h2>Lista zamówień jest pusta</h2>
+                                    <Link
+                                        to="/"
+                                        className="btn btn-outline-primary mt-4"
+                                        >
+                                        {" "}
+                                        Wróć do sklepu
+                                    </Link>
+                                </>
+                            :"Lista zamówień:"}
                         </h4>
                     </div>
                 </div>

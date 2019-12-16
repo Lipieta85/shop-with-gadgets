@@ -1,7 +1,11 @@
+$blue:rgb(3,88,153);
+$gray:#a0a3a6;
+
 .client-panel {
     margin-top: 15px;
     .admin-panel__logged-panel {
         background-color: #f7f7f7;
+        box-shadow:0px 0px 6px rgba(0,0,0,0.2);
         padding: 20px;
         .logged-panel-header {
             text-transform: uppercase;
@@ -32,6 +36,21 @@
                     font-weight: bold;
                     font-size: 16px;
                     padding-top: 15px;
+                }
+                .blue-value{
+                    color: $blue; 
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+                .gray-value{
+                    color: $gray; 
+                }
+                .y-rem-18{
+                    margin:0;
+                    padding: 0;
+                    display: inline-block;
+                    background-color: transparent;
+                    height: 1.8rem;
                 }
                 .value {
                     color: #4d4f51;
