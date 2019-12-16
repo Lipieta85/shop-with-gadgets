@@ -60,7 +60,7 @@ const OrderSummary = () => {
         products.map(item => {
             const basketProducts = {
                 prodId: item.product.id,
-                uomPrimary: item.availability.unitOfMeasure,
+                uomPrimary: item.product.uom_primary,
                 quantity: item.quantity,
             };
             return items.push(basketProducts);
