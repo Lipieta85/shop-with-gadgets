@@ -20,11 +20,11 @@ const ClientPanelMenu = () => {
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
-    let currency = [];
+    let currency = []
     if (addedItems) {
         addedItems.map(item => {
-            return (currency = item.price.currency);
-        });
+           return currency.push(item.price.currency)
+        })
     }
 
     useEffect(() => {
@@ -64,46 +64,21 @@ const ClientPanelMenu = () => {
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
                         <div className="d-flex">
-                            <FontAwesomeIcon
-                                icon={faShoppingBasket}
-                                size="2x"
-                                color="#a0a3a6"
-                            />
-                            <span className="badge badge-blue">
-                                {totalQuantity}
-                            </span>
+                            <FontAwesomeIcon icon={faShoppingBasket} size="2x" color="#a0a3a6" className="icon-anim"/>
+                            <span className="badge badge-blue">{totalQuantity}</span>
                         </div>
                     ) : (
                         <div className="d-flex align-items-center">
-                            <Link
-                                to="/Basket"
-                                className="no-deco basket-box"
-                                onClick={buttonHandler}
-                            >
-                                <FontAwesomeIcon
-                                    icon={faShoppingBasket}
-                                    size="2x"
-                                    className="basket"
-                                />
-                                {totalQuantity === 0 ? (
-                                    <>
-                                        <span className="basket-counter counter-gray">
-                                            {totalQuantity}
-                                        </span>
-                                        <span className="basket-title">
-                                            Koszyk (pusty)
-                                        </span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span className="basket-counter counter-blue">
-                                            {totalQuantity}
-                                        </span>
-                                        <span className="basket-title">
-                                            Twój koszyk
-                                        </span>
-                                    </>
-                                )}
+                            <Link to="/Basket" className="no-deco basket-box" onClick={buttonHandler}>
+                                <FontAwesomeIcon icon={faShoppingBasket} size="2x" className="basket icon-anim"/>
+                                {totalQuantity===0?<>             
+                                    <span className="basket-counter counter-gray">{totalQuantity}</span>
+                                    <span className="basket-title">Koszyk (pusty)</span>
+                                </>:<>
+                                    <span className="basket-counter counter-blue">{totalQuantity}</span>
+                                    <span className="basket-title">Twój koszyk</span>
+                                </>}
+                                
                             </Link>
                         </div>
                     )}

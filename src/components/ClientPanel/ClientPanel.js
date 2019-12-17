@@ -52,10 +52,8 @@ const ClientPanel = props => {
     let product = items
         ? items.map((item, i) => {
               return (
-                  <div
-                      className="card m-1 col-sm-6 col-lg-4"
-                      key={item.product.id}
-                  >
+                <div className="card-box col-6 col-md-4 col-xl-3">
+                  <div className="card" key={item.product.id}>
                       <Link to={`/product/${item.product.id}`}>
                           <div className="card-img d-flex align-items-center pt-3 px-3">
                               <div className="card-img-wrapper">
@@ -100,6 +98,7 @@ const ClientPanel = props => {
                           </div>
                       </div>
                   </div>
+                </div>
               );
           })
         : null;
@@ -263,7 +262,7 @@ const ClientPanel = props => {
                             </nav>
                         )}
                     </div>
-                    <div className="client-panel col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
+                    <div className="client-panel cp-parent col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />
                     </div>
                 </div>

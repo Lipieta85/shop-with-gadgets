@@ -57,10 +57,12 @@ const Button = props => {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
         }
-        if (disabled) {
-            alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
-            );
+        if(props.availabaleItemQuantity === 0){
+            event.preventDefault();
+            return false;
+        }
+        if (disabled && props.availabaleItemQuantity > 0) {
+            alert("Wpisana ilość produktu przekracza dostępną ilość w magazynie");
             event.preventDefault();
         } else {
             dispatch(
@@ -92,9 +94,10 @@ const Button = props => {
                 <FontAwesomeIcon
                     icon={faShoppingBasket}
                     size="2x"
-                    color="#a0a3a6"
+                    color={props.availabaleItemQuantity===0?"#e2e2e2":"#a0a3a6"}
                     onClick={dispatchHandler}
                     cursor="pointer"
+                    className="icon-anim"
                 />
             </div>
         </>
