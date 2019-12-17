@@ -16,12 +16,13 @@ const NavMenu = () => {
     };
 
     const oneCategoryHandler = (e) => {
-        console.log(e.target.id)
-        dispatch(setProductCategories(token, e.target.id))
+        e.preventDefault()
+        // console.log(e.target.id)
+        // dispatch(setProductCategories(token, e.target.id))
     }
 
-    const allProductsHandler = () => {
-
+    const allProductsHandler = (e) => {
+        e.preventDefault()
     }
 
     return (
