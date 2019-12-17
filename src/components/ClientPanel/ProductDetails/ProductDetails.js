@@ -12,7 +12,7 @@ import "../../../assets/styles/product-details.scss";
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const pagination = useSelector(state => state.cartReducer.pagination);
-    const [loadedProduct, setLoadedProduct] = useState([]);
+    const [loadedProduct, setLoadedProduct] = useState();
     const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
     const [productId, setProductId] = useState(id);
@@ -41,7 +41,7 @@ const ProductDetails = props => {
         currentItems,
         products
     ]);
-
+    
     const nexItem = () => {
         setSelectedIndex(prevState => prevState + 1);
         products.map((product, i) => {
@@ -79,9 +79,15 @@ const ProductDetails = props => {
     let productTitle;
     let productUnit;
     let productPrice;
+    let productPhoto;
     if (loadedProduct) {
         productAvailability = loadedProduct.availability;
-
+        if (typeof loadedProduct.images[0] != "undefined") {
+            productPhoto = loadedProduct.images[0].medium
+        }
+        else {
+            productPhoto = defImg
+        }
         for (let key in loadedProduct.product) {
             if (key === "description1") {
                 productTitle = loadedProduct.product[key];
@@ -95,8 +101,13 @@ const ProductDetails = props => {
                 productPrice = loadedProduct.price[key];
             }
         }
+        for (let key in loadedProduct.images) {
+            if (key === "large") {
+                productPhoto = loadedProduct.iamges[key];
+            }
+        }
     }
-
+    
     return (
         <div className="product-details">
             <div className="container-fluid">
@@ -108,7 +119,7 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex justify-content-center">
                                 <div className="d-flex justify-content-center">
                                     <Carousel
-                                        loadedProductImage={`${defImg}`}
+                                        loadedProductImage={productPhoto}
                                     />
                                 </div>
                             </div>

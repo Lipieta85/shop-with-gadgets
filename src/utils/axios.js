@@ -14,10 +14,10 @@ instance.interceptors.response.use(
         return response;
     },
     function(error) {
-       /*  if (error.response.status === 401 || error.response.status === 401) {
-            sessionStorage.removeItem("token");
-            window.location.replace("http://192.168.0.105:3000/404");
-        } */
+        // if (error.response.status === 401 || error.response.status === 401) {
+        //     sessionStorage.removeItem("token");
+        //     window.location.replace("https://mh-ecommerce-dev.bpower2.com/index.php/site/login");
+        // }
         return Promise.reject(error);
     },
 );

@@ -4,9 +4,12 @@ import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch } from "react-redux";
+//import { initProducts, setProductCategories } from "../../actions/index";
 
 const NavMenu = () => {
     const dispatch = useDispatch();
+
+    //const token = sessionStorage.getItem("token");
 
     const onSignout = () => {
         dispatch(signOut());
@@ -49,20 +52,42 @@ const NavMenu = () => {
                                     </li>
                                     <li className="nav-item">
                                         <a
+                                            id="30002141"
                                             className="nav-link"
                                             href="/"
                                             onClick={e => e.preventDefault()}
                                         >
-                                            Ubrania
+                                            Biuro
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a
+                                            id="30002142"
                                             className="nav-link"
                                             href="/"
                                             onClick={e => e.preventDefault()}
                                         >
-                                            Długopisy
+                                            Tekstylia
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a
+                                            id="30002143"
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            Gadżety
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a
+                                            id="30002144"
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={e => e.preventDefault()}
+                                        >
+                                            Materiały promocyjne
                                         </a>
                                     </li>
                                 </ul>

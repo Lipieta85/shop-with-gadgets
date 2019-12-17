@@ -21,7 +21,13 @@ $navbar-light-hover-color: black;
 
 .icon-anim{
     &:hover{
-        transform: scale(1.02);
+        transform: scale(1.03);
         transition: transform 0.3s
     }
+}
+.btn-outline-primary{
+    border-radius:1px;
+}
+.f-17{
+    font-size:1.7rem;
 }
