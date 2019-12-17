@@ -13,8 +13,8 @@ const BasketContainer = () => {
                 <NavMenuClient />
                 <div className="row">
                     <div className="col-md-12">
-                        <h5 className="basket-header ml-4">
-                            Twoje produkty znajdujące się aktualnie w koszyku:
+                        <h5 className="basket-header">
+                            Produkty aktualnie znajdujące się w koszyku:
                         </h5>
                     </div>
                 </div>

@@ -91,7 +91,7 @@ const BasketButtons = props => {
                                 id={props.itemId}
                                 defaultValue={props.itemQuantity}
                                 ref={input}
-                                className="basket-quantity-input btn-outline-primary"
+                                className="basket-quantity-input primary-no-action"
                                 onChange={changeAmountHandler}
                                 min="1"
                             />

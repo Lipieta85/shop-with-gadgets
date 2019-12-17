@@ -73,10 +73,10 @@ const OrderSummary = () => {
             currency.push(item.price.currency)
             return (
                 <li
-                    className="row nav-item collection-item border d-flex"
+                    className="row nav-item collection-item d-flex"
                     key={item.product.id}
                 >
-                    <div className="col-md-4 d-flex align-items-center text-center">
+                    <div className="col-sm-4 d-flex align-items-center text-center">
                         <div className="item-img p-1">
                             <img
                                 src={item.images.length ? item.images.map(data => {
@@ -88,7 +88,7 @@ const OrderSummary = () => {
                         </div>
                     </div>
 
-                    <div className="col-md-8 border-left desc-col d-flex align-items-center">
+                    <div className="col-sm-8 desc-col summary-item-info d-flex align-items-center mb-1">
                         <div
                             className="item-desc mt-2"
                             style={{ minHeight: "70px" }}
@@ -136,13 +136,13 @@ const OrderSummary = () => {
     return (
         <div className="order-summary">
             <div className="container">
-                <h2>Podsumowanie Twojego zamówienia</h2>
+                <h2>Podsumowanie zamówienia</h2>
                 <hr />
-                <p className="order-summary-text font-weight-bold">
-                    1. Zamówiłeś następujące produkty
+                <p className="order-summary-text">
+                    1. Zamówione produkty:
                 </p>
                 <div className="m-2">{addedItems}</div>
-                <p className="order-summary-text mt-2">
+                <p className="order-summary-text mt-4">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
                         {total}
@@ -170,13 +170,13 @@ const OrderSummary = () => {
                 <div className="d-flex flex-wrap justify-content-between">
                     <Link
                         to="/Basket"
-                        className="btn btn-outline-primary mr-1 mt-4"
+                        className="btn btn-outline-primary btn-back"
                     >
                         Wróć do koszyka
                     </Link>
                     <Link
                         to="/OrderEnd"
-                        className="btn btn-outline-primary mt-4"
+                        className="btn btn-outline-primary btn-submit"
                         onClick={() => dispatch(createOrder(token, items))}
                     >
                         Zatwierdź zamówienie
