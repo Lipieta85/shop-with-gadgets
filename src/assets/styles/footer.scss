@@ -6,18 +6,30 @@
     bottom: 0;
     height: 55px;
     bottom: 0;
-    .footer-regulations {
-        color: #a0a3a6;
-        &:hover {
-            color: black;
-        }
-    }
-    .footer-rodo {
-        .rodo {
+    .footer-text-line{
+        display: flex;
+        align-items: center;
+        .footer-regulations {
             color: #a0a3a6;
             &:hover {
                 color: black;
             }
         }
+        .footer-rodo {
+            .rodo {
+                color: #a0a3a6;
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+}
+@media (max-width:450px){
+    .footer-regulations{
+        font-size:12px;
+    }
+    .rodo {
+        font-size:12px;
     }
 }

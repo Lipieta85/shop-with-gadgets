@@ -1,8 +1,13 @@
 .order-summary {
     min-height: calc(100vh - 57px);
     padding-top: 80px;
+    background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
+    background-size: cover;
+    .summary-item-info{
+        background-color:#f7f7f7;
+    }
     .order-summary-text {
-        font-size: 16px;
+        //font-size: 16px;
         // .summary-text-value {
         //     color: #ccc;
         // }
@@ -11,3 +16,36 @@
 // .order-text-value {
 //     color: #CCC;
 // }
+.order-summary {
+    @media (max-width:450px){
+        .btn{
+            width: 100%;
+            margin-right:0;
+            margin-top:0;
+            margin-bottom:.8rem;
+            font-size: 14px;
+        }
+        .order-summary-text, b {
+            font-size: 14px;
+        }
+        .title{
+            font-size:17px;
+        }
+        h2{
+            font-size:22px;
+        }
+    }
+    @media (min-width:451px){
+        .btn{
+            margin-top:1.5rem;
+            margin-bottom:2rem;
+        }
+        .order-summary-text {
+            font-size: 16px;
+        }
+        h4{
+            font-size: 20px;
+        }
+    }
+}
+

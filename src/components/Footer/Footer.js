@@ -7,7 +7,7 @@ const Footer = () => {
         <div>
             <footer className="footer border-top d-flex align-items-center">
                 <div className="container-fluid">
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-end footer-text-line">
                         <p className="footer-regulations m-0">
                             <Link
                                 className="regulations text-decoration-none"
