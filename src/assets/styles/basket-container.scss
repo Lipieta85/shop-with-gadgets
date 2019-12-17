@@ -7,7 +7,12 @@
         padding-left: 4.9vw;
     }
 }
-
+@media (min-width:768px) and (max-width:991px){
+    .client-panel-menu{
+        margin: 0 auto;
+        width: 87%;
+    }
+}
 @media (max-width: 991px) {
     .cart-collection {
         padding: 0 15px;
