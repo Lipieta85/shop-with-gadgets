@@ -72,6 +72,7 @@ const BasketButtons = props => {
             id={props.itemId}
             onClick={removeCartButton}
             cursor="pointer"
+            className="icon-anim"
           />
         </div>
       </div>

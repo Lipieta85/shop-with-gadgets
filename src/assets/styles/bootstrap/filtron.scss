@@ -18,3 +18,10 @@ $navbar-light-hover-color: black;
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 
 // Add SASS theme customizations here..
+
+.icon-anim{
+    &:hover{
+        transform: scale(1.02);
+        transition: transform 0.3s
+    }
+}
