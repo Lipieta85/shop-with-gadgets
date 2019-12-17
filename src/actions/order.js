@@ -30,11 +30,16 @@ export const createOrder = (token, items) => {
         let companyId = company.charAt(0).toUpperCase();
         Number(basketId)
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}", "debug": true}`;
         trackPromise(
         axios({
             method: "post",
             url: url,
+            data: {
+                "timeZone": "Pacific/Chatham",
+                "shipToNumber" : "182887",
+                items
+            },          
             headers: {
                 Authorization: token,
             },
