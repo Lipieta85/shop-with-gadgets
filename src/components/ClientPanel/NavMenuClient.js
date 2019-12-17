@@ -16,9 +16,8 @@ const NavMenu = () => {
     };
 
     const oneCategoryHandler = (e) => {
-        e.preventDefault()
-        // console.log(e.target.id)
-        // dispatch(setProductCategories(token, e.target.id))
+        console.log(e.target.id)
+        dispatch(setProductCategories(token, e.target.id))
     }
 
     const allProductsHandler = (e) => {

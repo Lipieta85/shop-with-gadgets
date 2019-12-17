@@ -28,7 +28,6 @@ export const initProducts = (token, currentPage) => {
                 },
             })
                 .then(res => {
-                    console.log(res)
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
@@ -62,7 +61,6 @@ export const initProductsCategories = (token, currentPage) => {
 };
 
 export const setProductCategories = (token, number) => {
-    console.log(number)
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
         trackPromise(
@@ -74,7 +72,6 @@ export const setProductCategories = (token, number) => {
                 },
             })
                 .then(res => {
-                    console.log(res)
                     dispatch(setProducts(res.data))
                     
                 })

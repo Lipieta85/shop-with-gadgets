@@ -109,7 +109,6 @@ const ProductDetails = props => {
             }
         }
     }
-    console.log(productPhoto2)
     
     return (
         <div className="product-details">
