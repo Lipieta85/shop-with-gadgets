@@ -59,7 +59,9 @@ const ClientPanel = props => {
                               <div className="card-img-wrapper">
                                   <img
                                       className="card-img-content"
-                                      src={item.img ? item.img : defImg}
+                                      src={item.images.length ? item.images.map(data => {
+                                          return data.small
+                                      }) : defImg}
                                       alt="Card-cap"
                                   ></img>
                               </div>

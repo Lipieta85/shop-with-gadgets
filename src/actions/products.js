@@ -28,7 +28,7 @@ export const initProducts = (token, currentPage) => {
                 },
             })
                 .then(res => {
-                    console.log(res)
+                    //console.log(res)
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
@@ -37,3 +37,51 @@ export const initProducts = (token, currentPage) => {
         );
     };
 };
+
+export const initProductsCategories = (token, currentPage) => {
+    return (dispatch, getState) => {
+        //const company = getState().clientDataReducer.companyId;
+
+        trackPromise(
+            axios({
+                method: "get",
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/categories`,
+                headers: {
+                    Authorization: token,
+                },
+            })
+                .then(res => {
+                    console.log(res)
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                }),
+        );
+    };
+};
+
+export const setProductCategories = (token, number) => {
+    return (dispatch, getState) => {
+        const company = getState().clientDataReducer.companyId;
+        
+
+        trackPromise(
+            axios({
+                method: "get",
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"category": "${number}"}`,
+                headers: {
+                    Authorization: token,
+                },
+            })
+                .then(res => {
+                    dispatch(setProducts(res.data))
+                    
+                })
+                .catch(error => {
+                    dispatch(fetchProductsFailed());
+                }),
+        );
+    };
+};
+

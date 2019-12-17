@@ -10,14 +10,14 @@ const Carousel = props => {
             original: props.loadedProductImage,
             thumbnail: props.loadedProductImage,
         },
-        {
-            original: props.loadedProductImage,
-            thumbnail: props.loadedProductImage,
-        },
-        {
-            original: props.loadedProductImage,
-            thumbnail: props.loadedProductImage,
-        },
+        // {
+        //     original: props.loadedProductImage,
+        //     thumbnail: props.loadedProductImage,
+        // },
+        // {
+        //     original: props.loadedProductImage,
+        //     thumbnail: props.loadedProductImage,
+        // },
     ];
 
     return (

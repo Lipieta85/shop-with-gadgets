@@ -1,6 +1,7 @@
 import * as type from "../actions/types";
 import axios from "axios";
 import { trackPromise } from "react-promise-tracker";
+import { mapKeys } from "lodash";
 
 export const orderInputState = value => {
     return {
@@ -30,19 +31,33 @@ export const createOrder = (token, items) => {
         let companyId = company.charAt(0).toUpperCase();
         Number(basketId)
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}", "debug": true}`;
+        let clientData = getState().clientDataReducer.clientData;
+
+        let adressess = [];
+        let deliveryAddress = [];
+
+        if (clientData) {
+            clientData.map(data =>
+                adressess.push(data.getWixClientData.deliveryAddresses[0]),
+            );
+            mapKeys(adressess[0], function(value, key) {
+                return deliveryAddress.push({ key: value });
+            });
+        }
+
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         trackPromise(
         axios({
             method: "post",
             url: url,
-            data: {
-                "timeZone": "Pacific/Chatham",
-                "shipToNumber" : "182887",
-                items
-            },          
             headers: {
                 Authorization: token,
             },
+            data: {
+                "timeZone": "Pacific/Chatham",
+                "shipToNumber" : deliveryAddress[0].key,
+                items
+            },          
         })
             .then(res => {
                 console.log(res);
