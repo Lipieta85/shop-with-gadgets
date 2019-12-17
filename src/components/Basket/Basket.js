@@ -8,7 +8,7 @@ import defImg from "../../assets/images/default.jpg";
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
 
-    //const token = sessionStorage.getItem("token");
+    // const token = sessionStorage.getItem("token");
 
     // useEffect(() => {
     //    dispatch(getBasketProducts(token)) 

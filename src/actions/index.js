@@ -2,7 +2,6 @@ export {
     addItemToBasket,
     removeCart,
     addChecked,
-    clearBasket,
     changeBasketAmounts,
     changeBasketQuantity,
     addBasketId, //setProducts //fetchProductsFailed
@@ -17,6 +16,8 @@ export {
     createOrder,
     getClientOrdersHistory,
     setClientOrderHistory,
+    productsToOrder,
+    clearBasket,
 } from "./order.js";
 
 export { setProducts, initProducts, fetchProductsFailed, initProductsCategories, setProductCategories } from "./products.js";

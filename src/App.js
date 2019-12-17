@@ -43,7 +43,7 @@ export default withRouter(function App({ location }, props) {
 
     if (location.search) {
         const parsed = queryString.parse(location.search);
-        dispatch(companyId(parsed.brand));
+        dispatch(companyId("wix"));
         getLinkToken(parsed.dt)
             .then(res => {
                 const token = res.data.token;

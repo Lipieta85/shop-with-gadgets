@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { createOrder } from "../../actions/index";
+import { createOrder, productsToOrder } from "../../actions/index";
 import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
 
@@ -63,7 +63,7 @@ const OrderSummary = () => {
                 uomPrimary: item.product.uom_primary,
                 quantity: item.quantity,
             };
-            return items.push(basketProducts);
+            return dispatch(productsToOrder(basketProducts))
         });
     }
 
