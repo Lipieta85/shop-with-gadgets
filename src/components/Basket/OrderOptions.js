@@ -143,15 +143,15 @@ const OrderOptions = () => {
                 </div>
             </div>
             <div className="basket-checkout d-flex flex-wrap justify-content-between">
-                <Link to="/" className="btn btn-outline-primary mt-1">
-                    Wróć do sklepu
-                </Link>
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
-                    className="btn btn-outline-primary mt-1"
+                    className="btn btn-outline-primary mt-1 w-100"
                     onClick={orderConfirmHandler}
                 >
                     Złóż zamówienie
+                </Link>
+                <Link to="/" className="btn btn-outline-primary mt-1 w-100">
+                    Wróć do sklepu
                 </Link>
             </div>
         </div>

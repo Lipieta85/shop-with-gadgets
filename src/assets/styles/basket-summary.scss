@@ -3,8 +3,11 @@ $blue:rgb(3,88,153);
 .basket-summary {
     margin: 0 auto;
     text-align: right;
-    .summary-p{
-        padding: 1rem 0.6rem !important;
+    .summary-row{
+        background-color: #f7f7f7;
+        .summary-p{
+            padding: 1rem 0.6rem !important;
+        }
     }
 }
 
