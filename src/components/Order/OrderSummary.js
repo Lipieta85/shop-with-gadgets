@@ -142,7 +142,7 @@ const OrderSummary = () => {
                     1. Zamówione produkty:
                 </p>
                 <div className="m-2">{addedItems}</div>
-                <p className="order-summary-text mt-3">
+                <p className="order-summary-text mt-4">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
                         {total}
