@@ -90,8 +90,8 @@ const ClientPanelMenu = () => {
                             Dostępny budżet marketingowy
                         </span>
                         <br />
-                        <span className="blue-value">{budget} </span>
-                        <span className="value">{currency}</span>
+                        <span className="blue-value">{budget} zł</span>
+                        {/* <span className="value">{currency}</span> */}
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
                         <div className="y-rem-18"></div>
@@ -99,8 +99,8 @@ const ClientPanelMenu = () => {
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className="blue-value">{priceValue} </span>
-                        <span className="value">{currency}</span>
+                        <span className="blue-value">{priceValue} zł</span>
+                        {/* <span className="value">{currency}</span> */}
                     </div>
                 </div>
                 <div className="divider"></div>

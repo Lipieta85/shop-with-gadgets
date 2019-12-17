@@ -4,7 +4,7 @@ export {
     addChecked,
     clearBasket,
     changeBasketAmounts,
-    //changeBasketQuantity,
+    changeBasketQuantity,
     addBasketId, //setProducts //fetchProductsFailed
     deleteItem,
     getBasketProducts,
@@ -19,7 +19,7 @@ export {
     setClientOrderHistory,
 } from "./order.js";
 
-export { setProducts, initProducts, fetchProductsFailed } from "./products.js";
+export { setProducts, initProducts, fetchProductsFailed, initProductsCategories, setProductCategories } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";
 

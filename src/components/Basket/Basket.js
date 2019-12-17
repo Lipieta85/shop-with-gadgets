@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getBasketProducts } from "../../actions/index";
+import React from "react";
+import { useSelector} from "react-redux";
+//import { getBasketProducts } from "../../actions/index";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 import defImg from "../../assets/images/default.jpg";
@@ -8,14 +8,14 @@ import defImg from "../../assets/images/default.jpg";
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
 
-    const dispatch = useDispatch();
+    //const token = sessionStorage.getItem("token");
 
-    const token = sessionStorage.getItem("token");
+    // useEffect(() => {
+    //    dispatch(getBasketProducts(token)) 
+    // }, [dispatch, token])
 
-    useEffect(() => {
-       dispatch(getBasketProducts(token)) 
-    }, [dispatch, token])
 
+    //const basketItems = sessionStorage.getItem("basket") ? sessionStorage.getItem("basket") : items
     let addedItems = items.length ? (
         items.map(item => {
             return (
@@ -26,7 +26,9 @@ const Basket = props => {
                     <div className="col-md-4 d-flex align-items-center text-center p-1">
                         <div className="item-img">
                             <img
-                                src={item.img ? item.img : defImg}
+                                src={item.images.length ? item.images.map(data => {
+                                    return data.small
+                                }) : defImg}
                                 alt="item"
                                 className="item-basket-img"
                             />
@@ -41,6 +43,7 @@ const Basket = props => {
                             itemQuantity={item.quantity}
                             itemTotalPrice={item.itemTotalPrice}
                             itemCurrency={item.price.currency}
+                            itemUnit={item.product.uom_primary}
                         />
                     </div>
                 </li>

@@ -79,9 +79,11 @@ const OrderSummary = () => {
                     <div className="col-md-4 d-flex align-items-center text-center">
                         <div className="item-img p-1">
                             <img
-                                src={item.img ? item.img : defImg}
+                                src={item.images.length ? item.images.map(data => {
+                                    return data.small
+                                }) : defImg}
                                 alt="item"
-                                className="item-summary-img w-25 p-2"
+                                className="item-summary-img w-50 p-2"
                             />
                         </div>
                     </div>
@@ -143,7 +145,7 @@ const OrderSummary = () => {
                 <p className="order-summary-text mt-2">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
-                        {total} {currency}
+                        {total}
                     </span>
                 </p>
                 <p className="order-summary-text">

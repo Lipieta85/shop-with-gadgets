@@ -1,5 +1,5 @@
 import * as type from "../actions/types";
-import axios from "axios";
+import axios from "../utils/axios";
 import { mapKeys } from "lodash";
 import { trackPromise } from "react-promise-tracker";
 
@@ -27,8 +27,8 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
-        let clientData = getState().clientDataReducer.clientData;
         let companyId = company.charAt(0).toUpperCase();
+        let clientData = getState().clientDataReducer.clientData;
 
         let adressess = [];
         let deliveryAddress = [];
@@ -68,7 +68,6 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     },
                 })
                     .then(res => {
-                        console.log(res);
                         if (existed_item) {
                             dispatch(addIfItemExist(id, productQuantity));
                         } else {
@@ -80,7 +79,7 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     }),
             );
         } else {
-            const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":${company}}`;
+            const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
             trackPromise(
                 axios({
                     method: "post",
@@ -101,7 +100,6 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                     },
                 })
                     .then(res => {
-                        console.log(res);
                         dispatch(addBasketId(res.data.create.order.id_orders));
                         if (existed_item) {
                             dispatch(addIfItemExist(id, productQuantity));
@@ -202,42 +200,35 @@ export const clearBasket = () => {
 //   };
 // };
 
-export const changeBasketQuantity = (productId, newProductAmount) => {
+export const changeBasketQuantity = (productId, newProductAmount, unit) => {
     return (dispatch, getState) => {
-        //let basketId = getState().cartReducer.basket;
-        let addedItems = getState().cartReducer.addedItems;
-        let items = [];
-        console.log(addedItems);
-        dispatch(changeBasketAmounts(productId, newProductAmount)).then(() => {
-            addedItems.map(item => {
-                const basketProducts = {
-                    prodId: item.product.id,
-                    uomPrimary: item.product.uom_primary,
-                    quantity: item.quantity,
-                };
-                return items.push(basketProducts);
+        let basketId = getState().cartReducer.basket;
+        //let addedItems = getState().cartReducer.addedItems;
+        let company = getState().clientDataReducer.companyId;
+        let companyId = company.charAt(0).toUpperCase();
+
+        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        axios({
+            method: "put",
+            url: url,
+            data: {
+                timeZone: "Pacific/Chatham",
+                shipToNumber: "182887",
+                items: [
+                    {
+                        prodId: productId,
+                        uomPrimary: unit,
+                        quantity: newProductAmount,
+                    },
+                ],
+            },
+        })
+            .then(res => {
+                dispatch(changeBasketAmounts(productId, newProductAmount));
+            })
+            .catch(error => {
+                console.log(error);
             });
-        });
-        console.log(items);
-        // const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
-        // if (basketId) {
-        //     axios({
-        //         method: "delete",
-        //         url: url,
-        //         headers: {
-        //             Authorization: token,
-        //         },
-        //         data: {
-        //             "0": id,
-        //         },
-        //     })
-        //         .then(res => {
-        //             dispatch(deleteItem(id));
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // }
     };
 };
 
