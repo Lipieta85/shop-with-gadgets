@@ -61,7 +61,6 @@ export const createOrder = (token, items) => {
             },          
         })
             .then(res => {
-                console.log(res);
                 dispatch(clearBasket())
             })
             .catch(error => {
@@ -88,7 +87,6 @@ export const getClientOrdersHistory = token => {
             },
         })
             .then(res => {
-                console.log(res);
                 //dispatch(setClientOrderHistory(res))
             })
             .catch(error => {

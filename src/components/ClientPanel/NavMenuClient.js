@@ -20,8 +20,8 @@ const NavMenu = () => {
         dispatch(setProductCategories(token, e.target.id))
     }
 
-    const allProductsHandler = () => {
-
+    const allProductsHandler = (e) => {
+        e.preventDefault()
     }
 
     return (
