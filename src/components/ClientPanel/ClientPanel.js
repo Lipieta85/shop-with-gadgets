@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 import Spinner from "../UI/Spinner/Spinner";
-import { initProducts, nextPage, prevPage, setPage } from "../../actions/index";
+import { initProducts, nextPage, prevPage, setPage, initProductsCategories } from "../../actions/index";
 //import { times } from "lodash";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -31,6 +31,7 @@ const ClientPanel = props => {
     useEffect(() => {
         if (token) {
             dispatch(initProducts(token, currentPage, currentItems));
+            dispatch(initProductsCategories(token))
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -60,6 +61,7 @@ const ClientPanel = props => {
                                   <img
                                       className="card-img-content"
                                       src={item.images.length ? item.images.map(data => {
+                                          console.log(data)
                                           return data.small
                                       }) : defImg}
                                       alt="Card-cap"

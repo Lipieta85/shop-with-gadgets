@@ -28,7 +28,7 @@ export const initProducts = (token, currentPage) => {
                 },
             })
                 .then(res => {
-                    //console.log(res)
+                    console.log(res)
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
@@ -62,19 +62,19 @@ export const initProductsCategories = (token, currentPage) => {
 };
 
 export const setProductCategories = (token, number) => {
+    console.log(number)
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
-        
-
         trackPromise(
             axios({
                 method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"category": "${number}"}`,
+                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"category": 30002142}`,
                 headers: {
                     Authorization: token,
                 },
             })
                 .then(res => {
+                    console.log(res)
                     dispatch(setProducts(res.data))
                     
                 })

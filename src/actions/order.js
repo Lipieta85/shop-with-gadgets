@@ -27,6 +27,7 @@ export const addOrderData = data => {
 export const createOrder = (token, items) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
+        let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
         let companyId = company.charAt(0).toUpperCase();
         Number(basketId)
@@ -50,22 +51,29 @@ export const createOrder = (token, items) => {
         axios({
             method: "post",
             url: url,
-            headers: {
-                Authorization: token,
-            },
             data: {
                 "timeZone": "Pacific/Chatham",
                 "shipToNumber" : deliveryAddress[0].key,
                 items
+            },
+            headers: {
+                Authorization: token,
             },          
         })
             .then(res => {
                 console.log(res);
+                dispatch(clearBasket())
             })
             .catch(error => {
                 console.log(error);
             })
         )
+    };
+};
+
+export const clearBasket = () => {
+    return {
+        type: type.CLEAR_BASKET,
     };
 };
 
@@ -95,3 +103,10 @@ export const setClientOrderHistory = data => {
         data,
     };
 };
+
+export const productsToOrder = (products) => {
+    return {
+        type: type.PRODUCTS_TO_ORDER,
+        products
+    }
+}
