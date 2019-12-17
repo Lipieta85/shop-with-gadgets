@@ -94,3 +94,15 @@
         }
     }
 }
+@media (max-width: 450px) {
+    .cart {
+        .collection-item {
+            .title{
+                font-size:18px;
+            }
+            p,b{
+                font-size:13px;
+            }
+        }
+    }
+}

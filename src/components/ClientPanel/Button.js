@@ -80,9 +80,9 @@ const Button = props => {
         <>
             <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                 <input
-                    type="text"
+                    type="number"
                     ref={input}
-                    className="form-control product-input"
+                    className="form-control product-input basket-quantity-input"
                     id={props.itemId}
                     defaultValue={productQuantity.id}
                     onChange={changeQuantityHandler}

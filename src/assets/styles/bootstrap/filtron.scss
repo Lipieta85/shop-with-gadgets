@@ -28,6 +28,20 @@ $navbar-light-hover-color: black;
 .btn-outline-primary{
     border-radius:1px;
 }
+// No color change on click
+.primary-no-action{
+    color: #666;
+    border-color: #666;
+}
+.btn{
+    cursor: pointer;
+}
 .f-17{
     font-size:1.7rem;
+}
+// Hide arrows - input[number]
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
