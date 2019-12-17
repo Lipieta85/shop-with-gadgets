@@ -65,12 +65,11 @@ const BasketButtons = props => {
                 <div className="text-right">
                     <FontAwesomeIcon
                         icon={faTrash}
-                        size="2x"
                         color="#a0a3a6"
                         id={props.itemId}
                         onClick={removeCartButton}
                         cursor="pointer"
-                        className="icon-anim"
+                        className="icon-anim f-17"
                     />
                 </div>
             </div>

@@ -20,10 +20,10 @@ const Basket = props => {
         items.map(item => {
             return (
                 <li
-                    className="row nav-item collection-item border d-flex"
+                    className="row nav-item collection-item d-flex mb-1"
                     key={item.product.id}
                 >
-                    <div className="col-md-4 d-flex align-items-center text-center p-1">
+                    <div className="col-sm-4 d-flex align-items-center text-center p-1">
                         <div className="item-img">
                             <img
                                 src={item.images.length ? item.images.map(data => {
@@ -35,7 +35,7 @@ const Basket = props => {
                         </div>
                     </div>
 
-                    <div className="col-md-8 border-left desc-col">
+                    <div className="col-sm-8 desc-col">
                         <BasketButtons
                             itemId={item.product.id}
                             itemTitle={item.product.description1}

@@ -16,9 +16,9 @@ const BasketSummary = () => {
     }
 
     return (
-        <div className="row basket-summary collection-item">
-            <div className="col-sm-12 offset-md-4 col-md-8 p-0">
-                <div className="border list-unstyled summary-p">
+        <div className="row basket-summary collection-item mt-1">
+            <div className="col-sm-12 offset-md-4 col-md-8 p-0 summary-row">
+                <div className="list-unstyled summary-p">
                     <div className="basket-summary content  p-0 m-0">
                         <li className="basket-summary-order text-uppercase">
                             <b>
