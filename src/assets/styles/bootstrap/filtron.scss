@@ -19,29 +19,30 @@ $navbar-light-hover-color: black;
 
 // Add SASS theme customizations here..
 
-.icon-anim {
-    &:hover {
+.icon-anim{
+    &:hover{
         transform: scale(1.03);
-        transition: transform 0.3s;
+        transition: transform 0.3s
     }
 }
-.btn-outline-primary {
-    border-radius: 1px;
+.btn-outline-primary{
+    border-radius:1px;
 }
 // No color change on click
-.primary-no-action {
-    color: #666;
-    border-color: #666;
+.primary-no-action{
+    outline: none;
+    border: 2px solid #ced4da;
+    border-radius: 4px;
 }
-.btn {
+.btn{
     cursor: pointer;
 }
-.f-17 {
-    font-size: 1.7rem;
+.f-17{
+    font-size:1.7rem;
 }
 // Hide arrows - input[number]
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }

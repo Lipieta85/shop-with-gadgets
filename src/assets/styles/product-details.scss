@@ -2,7 +2,7 @@
     background: url(../images/bg_top_2.jpg) center no-repeat;
     background-size: cover;
     position: relative;
-    padding-top: 60px;
+    padding:70px 16px 0px 24px;
     min-height: calc(100vh - 57px);
     .product-details-container {
         .product-details-content {
@@ -31,6 +31,11 @@
                 }
             }
         }
+    }
+}
+@media (max-width: 450px){
+    .product-details {
+        padding:50px 0px;
     }
 }
 @media (min-width: 700px) and (max-width: 900px) {
