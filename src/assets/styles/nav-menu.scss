@@ -1,3 +1,16 @@
+.nav-tabs .nav-link {
+    border: none;
+}
+li.nav-item {
+    .active {
+        color: black;
+    }
+}
+
+.navbar {
+    background-color: #f8f9fa;
+}
+
 @media (max-width: 450px) {
     .navbar-brand {
         margin: 0px;
