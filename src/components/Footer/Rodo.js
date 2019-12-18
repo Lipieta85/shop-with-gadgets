@@ -11,15 +11,14 @@ const Rodo = () => {
         getRodoPolicy(token).then(res => {
             setRodo(res.data.data.objects);
         });
-    }, [token]);
+    }, []);
 
     return (
         <div className="rodo">
-            <NavMenu />{" "}
+            <NavMenu /> <h2>Regulamin RODO</h2>
             {rodo ? (
-                rodo.map(e => (
-                    <div id="rodoPart">
-                        <h2>Regulamin RODO</h2>
+                rodo.map((e, key) => (
+                    <div id="rodoPart" key={key}>
                         {
                             <div
                                 dangerouslySetInnerHTML={{

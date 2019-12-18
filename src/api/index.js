@@ -1,4 +1,5 @@
 import axios from "../utils/axios";
+import { trackPromise } from "react-promise-tracker";
 
 export const getToken = async userData => {
     return await axios({
@@ -52,12 +53,14 @@ export const getRodoPolicy = async token => {
 };
 
 export const getStorePolicy = async token => {
-    return await axios({
-        method: "get",
-        url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-        },
-    });
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        }),
+    );
 };
