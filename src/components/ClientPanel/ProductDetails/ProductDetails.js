@@ -80,14 +80,21 @@ const ProductDetails = props => {
     let productUnit;
     let productPrice;
     let productPhoto;
+    let productPhoto2;
+    let productPhoto3;
     if (loadedProduct) {
         productAvailability = loadedProduct.availability;
+
         if (typeof loadedProduct.images[0] != "undefined") {
             productPhoto = loadedProduct.images[0].medium
         }
-        else {
-            productPhoto = defImg
+        if (typeof loadedProduct.images[1] != "undefined") {
+            productPhoto2 = loadedProduct.images[1].medium
         }
+        if (typeof loadedProduct.images[2] != "undefined") {
+            productPhoto3 = loadedProduct.images[2].medium
+        }
+
         for (let key in loadedProduct.product) {
             if (key === "description1") {
                 productTitle = loadedProduct.product[key];
@@ -99,11 +106,6 @@ const ProductDetails = props => {
         for (let key in loadedProduct) {
             if (key === "price") {
                 productPrice = loadedProduct.price[key];
-            }
-        }
-        for (let key in loadedProduct.images) {
-            if (key === "large") {
-                productPhoto = loadedProduct.iamges[key];
             }
         }
     }
@@ -119,7 +121,9 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex justify-content-center">
                                 <div className="d-flex justify-content-center">
                                     <Carousel
-                                        loadedProductImage={productPhoto}
+                                        loadedProductImage={productPhoto ? productPhoto : defImg}
+                                        loadedProductImage2={productPhoto2}
+                                        loadedProductImage3={productPhoto3}
                                     />
                                 </div>
                             </div>

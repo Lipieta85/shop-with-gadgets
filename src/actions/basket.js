@@ -160,46 +160,6 @@ export const addChecked = (item, isChecked) => {
     };
 };
 
-export const clearBasket = () => {
-    return {
-        type: type.CLEAR_BASKET,
-    };
-};
-
-// export const changeBasketQuantity = (productId, newProductAmount) => {
-//   return (dispatch, getState) => {
-//     const basketId = getState().cartReducer.basket;
-//     if (basketId) {
-//       axios
-//         .put(
-//           `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{“orderId”: ${basketId}, “bId”:W}`,
-//           {
-//             timeZone: "Pacific/Chatham",
-//             //shipToNumber: "182887",
-//             items: [
-//               {
-//                 prodId: productId,
-//                 uomPrimary: "SZ",
-//                 quantity: newProductAmount
-//               }
-//             ]
-//           },
-//           {
-//             headers: {
-//               //Authorization: token,
-//             }
-//           }
-//         )
-//         .then(res => {
-//           dispatch(changeBasketAmounts(productId, newProductAmount));
-//         })
-//         .catch(error => {
-//           console.log(error);
-//         });
-//     }
-//   };
-// };
-
 export const changeBasketQuantity = (productId, newProductAmount, unit) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;

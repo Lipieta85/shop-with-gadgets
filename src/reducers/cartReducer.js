@@ -13,6 +13,7 @@ const initialState = {
     orderSelectInputValue: "",
     error: false,
     pagination: {},
+    productsToOrder: []
 };
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -147,6 +148,7 @@ const cartReducer = (state = initialState, action) => {
                 totalQuantity: 0,
                 total: "0.00",
                 budget: "10000.00",
+                basket: null
             };
 
         case type.ORDER_INPUT_STATE:
@@ -239,6 +241,12 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 basket: action.id,
             };
+        case type.PRODUCTS_TO_ORDER:
+            console.log(action.products)
+            return {
+                ...state,
+                productsToOrder: [...state.productsToOrder, action.products]
+            }
         default:
             return state;
     }

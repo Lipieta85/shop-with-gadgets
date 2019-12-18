@@ -4,16 +4,25 @@ import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch } from "react-redux";
-//import { initProducts, setProductCategories } from "../../actions/index";
+import { setProductCategories } from "../../actions/index";
 
 const NavMenu = () => {
     const dispatch = useDispatch();
 
-    //const token = sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
     const onSignout = () => {
         dispatch(signOut());
     };
+
+    const oneCategoryHandler = (e) => {
+        console.log(e.target.id)
+        dispatch(setProductCategories(token, e.target.id))
+    }
+
+    const allProductsHandler = (e) => {
+        e.preventDefault()
+    }
 
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
@@ -43,9 +52,10 @@ const NavMenu = () => {
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item">
                                         <a
+                                            id="1"
                                             className="nav-link active"
                                             href="/"
-                                            onClick={e => e.preventDefault()}
+                                            onClick={allProductsHandler}
                                         >
                                             Wszystkie
                                         </a>
@@ -55,7 +65,7 @@ const NavMenu = () => {
                                             id="30002141"
                                             className="nav-link"
                                             href="/"
-                                            onClick={e => e.preventDefault()}
+                                            onClick={oneCategoryHandler}
                                         >
                                             Biuro
                                         </a>
@@ -65,7 +75,7 @@ const NavMenu = () => {
                                             id="30002142"
                                             className="nav-link"
                                             href="/"
-                                            onClick={e => e.preventDefault()}
+                                            onClick={oneCategoryHandler}
                                         >
                                             Tekstylia
                                         </a>
@@ -75,7 +85,7 @@ const NavMenu = () => {
                                             id="30002143"
                                             className="nav-link"
                                             href="/"
-                                            onClick={e => e.preventDefault()}
+                                            onClick={oneCategoryHandler}
                                         >
                                             Gadżety
                                         </a>
@@ -85,7 +95,7 @@ const NavMenu = () => {
                                             id="30002144"
                                             className="nav-link"
                                             href="/"
-                                            onClick={e => e.preventDefault()}
+                                            onClick={oneCategoryHandler}
                                         >
                                             Materiały promocyjne
                                         </a>
