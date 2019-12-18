@@ -14,7 +14,7 @@ const initialState = {
     error: false,
     pagination: {},
     productsToOrder: [],
-    productsCategory: "1"
+    productsCategory: "1",
 };
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -149,7 +149,7 @@ const cartReducer = (state = initialState, action) => {
                 totalQuantity: 0,
                 total: "0.00",
                 budget: "10000.00",
-                basket: null
+                basket: null,
             };
 
         case type.ORDER_INPUT_STATE:
@@ -243,16 +243,15 @@ const cartReducer = (state = initialState, action) => {
                 basket: action.id,
             };
         case type.PRODUCTS_TO_ORDER:
-            console.log(action.products)
             return {
                 ...state,
-                productsToOrder: [...state.productsToOrder, action.products]
-            }
+                productsToOrder: [...state.productsToOrder, action.products],
+            };
         case type.SET_PRODUCT_CATEGORY:
             return {
                 ...state,
-                productsCategory: action.number
-            }
+                productsCategory: action.number,
+            };
         default:
             return state;
     }
