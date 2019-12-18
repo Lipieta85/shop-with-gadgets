@@ -8,7 +8,6 @@ const Rodo = () => {
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         getRodoPolicy(token).then(res => {
             setRodo(res.data.data.objects);
         });

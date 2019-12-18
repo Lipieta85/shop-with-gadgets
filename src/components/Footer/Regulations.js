@@ -8,7 +8,6 @@ const Regulations = () => {
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         getStorePolicy(token).then(res => {
             setPolicy(res.data.data.objects);
         });
