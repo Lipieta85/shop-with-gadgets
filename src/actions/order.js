@@ -1,5 +1,5 @@
 import * as type from "../actions/types";
-import axios from "axios";
+import axios from "../utils/axios";
 import { trackPromise } from "react-promise-tracker";
 import { mapKeys } from "lodash";
 
