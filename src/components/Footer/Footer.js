@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className="d-flex justify-content-end footer-text-line">
                         <p className="footer-regulations m-0">
                             <Link
-                                className="regulations text-decoration-none"
+                                className=" text-decoration-none"
                                 to="/Regulations"
                             >
                                 Regulamin sklepu
@@ -18,10 +18,7 @@ const Footer = () => {
                         </p>
 
                         <p className="footer-contact details ml-5 m-0">
-                            <Link
-                                className="rodo text-decoration-none"
-                                to="/Rodo"
-                            >
+                            <Link className=" text-decoration-none" to="/Rodo">
                                 Regulamin RODO
                             </Link>
                         </p>

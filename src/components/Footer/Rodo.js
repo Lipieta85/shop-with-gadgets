@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import "../../assets/styles/rodo.scss";
 import { getRodoPolicy } from "./../../api/index";
-
+import Spinner from "./../UI/Spinner/Spinner";
 const Rodo = () => {
     const [rodo, setRodo] = useState("");
     const token = sessionStorage.getItem("token");
@@ -12,8 +12,23 @@ const Rodo = () => {
     });
     return (
         <div className="rodo">
-            <NavMenu />
-            <p> {rodo ? rodo.map(e => e.content) : "brak danych"}</p>
+            <NavMenu />{" "}
+            {rodo ? (
+                rodo.map(e => (
+                    <div id="rodoPart">
+                        <h2>Regulamin RODO</h2>
+                        {
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: e.content,
+                                }}
+                            />
+                        }
+                    </div>
+                ))
+            ) : (
+                <Spinner />
+            )}
         </div>
     );
 };
