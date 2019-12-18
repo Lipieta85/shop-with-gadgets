@@ -114,7 +114,7 @@ const ProductDetails = props => {
                 <NavMenu />
                 <Spinner />
                 <div className="row product-details-container">
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-xl-10">
                         <div className="product-details-content row p-2">
                             <div className="col-md-6 d-flex justify-content-center">
                                 <div className="d-flex justify-content-center">
@@ -190,7 +190,7 @@ const ProductDetails = props => {
                             </div>
                         </div>
                     </div>
-                    <div className="client-panel col-md-3">
+                    <div className="client-panel col-md-3 col-xl-2">
                         <ClientPanelMenu />
                     </div>
                 </div>
