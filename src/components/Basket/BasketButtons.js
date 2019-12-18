@@ -85,13 +85,13 @@ const BasketButtons = props => {
                 style={{ minHeight: "60px" }}
             >
                 <p style={{ margin: "0 5px 0 0" }}>
-                    <b>
+                    <span>
                         Cena: {props.itemPrice} {props.itemCurrency}
-                    </b>
+                    </span>
                 </p>
                 <div className="add-remove d-flex align-items-center">
                     <span className="mr-3">
-                        <b>
+                        <span>
                             Ilość:{" "}
                             <input
                                 type="number"
@@ -102,23 +102,23 @@ const BasketButtons = props => {
                                 onChange={changeAmountHandler}
                                 min="1"
                             />
-                        </b>
+                        </span>
                     </span>
 
                     <span
-                        className="basket-button btn btn-outline-primary"
+                        className="basket-button btn btn-outline-primary primary-no-action actualize-btn"
                         onClick={confirmationButton}
                     >
                         Aktualizuj
                     </span>
                 </div>
                 <div>
-                    <p
-                        className="basket-single-item-total font-bold font-weight-bold"
+                    <span
+                        className="basket-single-item-total"
                         style={{ margin: "0" }}
                     >
                         Razem: {props.itemTotalPrice} {props.itemCurrency}
-                    </p>
+                    </span>
                 </div>
             </div>
         </div>

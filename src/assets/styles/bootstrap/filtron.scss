@@ -30,8 +30,9 @@ $navbar-light-hover-color: black;
 }
 // No color change on click
 .primary-no-action{
-    color: #666;
-    border-color: #666;
+    outline: none;
+    border: 2px solid #ced4da;
+    border-radius: 4px;
 }
 .btn{
     cursor: pointer;

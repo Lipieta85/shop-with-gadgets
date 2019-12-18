@@ -18,7 +18,7 @@ const BasketContainer = () => {
                         </h5>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row basket-content">
                     <div className="cart-content col-sm-12 col-md-12 col-lg-9">
                         <div className="cart">
                             <ul className="cart-collection">
