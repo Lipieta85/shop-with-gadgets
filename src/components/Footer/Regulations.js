@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import "../../assets/styles/regulations.scss";
 import { getStorePolicy } from "./../../api/index";
@@ -7,16 +7,19 @@ const Regulations = () => {
     const [policy, setPolicy] = useState("");
     const token = sessionStorage.getItem("token");
 
-    getStorePolicy(token).then(res => {
-        setPolicy(res.data.data.objects);
-    });
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getStorePolicy(token).then(res => {
+            setPolicy(res.data.data.objects);
+        });
+    }, []);
+
     return (
         <div className="regulations">
-            <NavMenu />{" "}
+            <NavMenu /> <h2>Regulamin sklepu</h2>
             {policy ? (
-                (window.onload = policy.map(e => (
-                    <div id="regPart">
-                        <h2>Regulamin sklepu</h2>
+                (window.onload = policy.map((e, key) => (
+                    <div id="regPart" key={key}>
                         {
                             <div
                                 dangerouslySetInnerHTML={{
@@ -27,7 +30,9 @@ const Regulations = () => {
                     </div>
                 )))
             ) : (
-                <Spinner />
+                <div>
+                    <Spinner />
+                </div>
             )}
         </div>
     );

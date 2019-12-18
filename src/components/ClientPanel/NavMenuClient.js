@@ -15,19 +15,19 @@ const NavMenu = () => {
         dispatch(signOut());
     };
 
-    const oneCategoryHandler = (e) => {
-        console.log(e.target.id)
-        dispatch(setProductCategories(token, e.target.id))
-    }
+    const oneCategoryHandler = e => {
+        console.log(e.target.id);
+        dispatch(setProductCategories(token, e.target.id));
+    };
 
-    const allProductsHandler = (e) => {
-        e.preventDefault()
-    }
+    const allProductsHandler = e => {
+        e.preventDefault();
+    };
 
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-lg primary-color">
                     <Link className="navbar-brand" to="/">
                         <img src={logo} width="200" height="35" alt="" />
                     </Link>
@@ -43,13 +43,10 @@ const NavMenu = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div
-                        className="collapse navbar-collapse"
-                        id="navbarSupportedContent"
-                    >
+                    <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             {window.location.pathname === `/` ? (
-                                <ul className="nav nav-tabs">
+                                <ul className="navbar-nav">
                                     <li className="nav-item">
                                         <a
                                             id="1"
