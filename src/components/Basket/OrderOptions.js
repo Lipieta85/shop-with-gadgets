@@ -4,17 +4,12 @@ import { Link } from "react-router-dom";
 import checkboxes from "./Checkboxes/checkboxes";
 import Checkbox from "./Checkboxes/Checkbox";
 import { orderSelectInputValue } from "../../actions/index";
-import { mapKeys } from "lodash";
 
 import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
-    //const updatedCheck = useSelector(state => state.checkedItems);
-    // const inputStoreState = useSelector(
-    //     state => state.cartReducer.orderInputState,
-    // );
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
@@ -23,7 +18,6 @@ const OrderOptions = () => {
     );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
-    //const [inputValue, setInputValue] = useState("");
     const [selectInputValue, setSelectInputValue] = useState("");
 
     const dispatch = useDispatch();
@@ -47,12 +41,7 @@ const OrderOptions = () => {
             prevState.clear();
             return prevState.set(item, isChecked);
         });
-        // dispatch(addChecked(item, isChecked));
     };
-
-    // const inputHandler = event => {
-    //     setInputValue(event.target.value);
-    // };
 
     const selectValueHandler = event => {
         setSelectInputValue(event.target.value);
@@ -66,20 +55,6 @@ const OrderOptions = () => {
             dispatch(orderSelectInputValue(selectInputValue));
         }
     };
-    let orderAdressess = [];
-    let arr = [];
-
-    if (deliveryData) {
-        deliveryData.map(data =>
-            orderAdressess.push(data.getWixClientData.deliveryAddresses[0]),
-        );
-        mapKeys(orderAdressess[0], function(value, key) {
-            return arr.push({ key: value });
-        });
-        if (arr.length) {
-            dispatch(orderSelectInputValue(arr[1].key));
-        }
-    }
 
     return (
         <div className="order-options">
@@ -91,22 +66,14 @@ const OrderOptions = () => {
                     onChange={selectValueHandler}
                     value={selectInputValue}
                 >
-                    <option defaultValue>
-                        {arr.length ? arr[1].key : null}
-                    </option>
-                    {/* <option className="options" value="Wrocław ul. Wrocławska">
-                        Wrocław ul. Wrocławska
-                    </option>
-                    <option value="Wieluń ul. Sadowa">Wieluń ul. Sadowa</option>
-                    <option value="Gdańsk ul. Gdańska">
-                        Gdańsk ul. Gdańska
-                    </option> */}
+                    {deliveryData[0].getWixClientData.deliveryAddresses.map(
+                        data => {
+                            return <option defaultValue>{data.name}</option>;
+                        },
+                    )}
                 </select>
             </div>
             <hr />
-            {/* <h4 className="options-header">Wpisz numer zamówienia Klienta</h4>
-            <input type="text" value={inputValue} onChange={inputHandler} />
-            <hr /> */}
             <div className="order-type invisible" style={{ height: "0" }}>
                 <h4 className="options-header">Wybierz typ zamówienia:</h4>
                 <div>

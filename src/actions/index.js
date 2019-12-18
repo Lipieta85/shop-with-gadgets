@@ -26,6 +26,7 @@ export {
     fetchProductsFailed,
     initProductsCategories,
     setProductCategories,
+    changeProductCategory,
 } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";

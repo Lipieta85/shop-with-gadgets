@@ -1,27 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/images/filtron_logo.png";
+import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
-import { useDispatch } from "react-redux";
-import { setProductCategories } from "../../actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { setProductCategories, initProducts } from "../../actions/index";
 
 const NavMenu = () => {
+    const id = useSelector(state => state.cartReducer.productsCategory);
+    const company = useSelector(state => state.clientDataReducer.companyId);
+
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
+
+    console.log(id);
+
+    useEffect(() => {
+        const active = document.querySelector(".active");
+        if (active) {
+            active.classList.remove("active");
+            document.getElementById(`${id}`).classList.add("active");
+        }
+    }, [id]);
 
     const onSignout = () => {
         dispatch(signOut());
     };
 
-    const oneCategoryHandler = e => {
-        console.log(e.target.id);
-        dispatch(setProductCategories(token, e.target.id));
+    const oneCategoryHandler = id => {
+        dispatch(setProductCategories(id));
     };
 
-    const allProductsHandler = e => {
-        e.preventDefault();
+    const allProductsHandler = id => {
+        dispatch(setProductCategories(id));
+        dispatch(initProducts(token, Number(id)));
+    };
+
+    const tabHandler = e => {
+        if (e.target.id === "1") {
+            allProductsHandler(e.target.id);
+        } else {
+            oneCategoryHandler(e.target.id);
+        }
     };
 
     return (
@@ -29,7 +51,10 @@ const NavMenu = () => {
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-lg primary-color">
                     <Link className="navbar-brand" to="/">
-                        <img src={logo} width="200" height="35" alt="" />
+                        <img
+                            src={company === "filtron" ? logo : logo2}
+                            alt="company-logo"
+                        />
                     </Link>
                     <button
                         className="navbar-toggler"
@@ -52,9 +77,19 @@ const NavMenu = () => {
                                             id="1"
                                             className="nav-link active"
                                             href="/"
-                                            onClick={allProductsHandler}
+                                            onClick={tabHandler}
                                         >
                                             Wszystkie
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a
+                                            id="30002140"
+                                            className="nav-link"
+                                            href="/"
+                                            onClick={tabHandler}
+                                        >
+                                            Biuro
                                         </a>
                                     </li>
                                     <li className="nav-item">
@@ -62,9 +97,9 @@ const NavMenu = () => {
                                             id="30002141"
                                             className="nav-link"
                                             href="/"
-                                            onClick={oneCategoryHandler}
+                                            onClick={tabHandler}
                                         >
-                                            Biuro
+                                            Tekstylia
                                         </a>
                                     </li>
                                     <li className="nav-item">
@@ -72,9 +107,9 @@ const NavMenu = () => {
                                             id="30002142"
                                             className="nav-link"
                                             href="/"
-                                            onClick={oneCategoryHandler}
+                                            onClick={tabHandler}
                                         >
-                                            Tekstylia
+                                            Gadżety
                                         </a>
                                     </li>
                                     <li className="nav-item">
@@ -82,17 +117,7 @@ const NavMenu = () => {
                                             id="30002143"
                                             className="nav-link"
                                             href="/"
-                                            onClick={oneCategoryHandler}
-                                        >
-                                            Gadżety
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a
-                                            id="30002144"
-                                            className="nav-link"
-                                            href="/"
-                                            onClick={oneCategoryHandler}
+                                            onClick={tabHandler}
                                         >
                                             Materiały promocyjne
                                         </a>
