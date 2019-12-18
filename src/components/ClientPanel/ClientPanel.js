@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 import Spinner from "../UI/Spinner/Spinner";
-import { initProducts, nextPage, prevPage, setPage, initProductsCategories } from "../../actions/index";
-//import { times } from "lodash";
+import {
+    initProducts,
+    nextPage,
+    prevPage,
+    setPage,
+    initProductsCategories,
+    changeProductCategory,
+} from "../../actions/index";
+
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
 import defImg from "../../assets/images/default.jpg";
@@ -14,24 +21,22 @@ import {
     faAngleDoubleLeft,
     faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-//const queryString = require("query-string");
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     const pagination = useSelector(state => state.cartReducer.pagination);
-    const [currentItems] = useState(8);
+    const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
-    //const [firstLastPages] = useState([1, pagination.totalPages]);
 
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
-        if (token) {
-            dispatch(initProducts(token, currentPage, currentItems));
-            dispatch(initProductsCategories(token))
+        if (token && category === "1") {
+            dispatch(initProducts(token, currentPage));
+            dispatch(initProductsCategories(token));
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -48,61 +53,72 @@ const ClientPanel = props => {
                 ]);
             }
         }
-    }, [dispatch, token, currentPage, currentItems, pagination.totalPages]);
+    }, [currentPage, dispatch, pagination.totalPages, token, category]);
+
+    useEffect(() => {
+        if (category !== "1") {
+            dispatch(changeProductCategory(token, category));
+        }
+    }, [category, dispatch, token]);
 
     let product = items
         ? items.map((item, i) => {
               return (
-                <div className="card-box col-6 col-md-4 col-xl-3">
-                  <div className="card" key={item.product.id}>
-                      <Link to={`/product/${item.product.id}`}>
-                          <div className="card-img d-flex align-items-center pt-3 px-3">
-                              <div className="card-img-wrapper">
-                                  <img
-                                      className="card-img-content"
-                                      src={item.images.length ? item.images.map(data => {
-                                          console.log(data)
-                                          return data.small
-                                      }) : defImg}
-                                      alt="Card-cap"
-                                  ></img>
+                  <div className="card-box col-6 col-md-4 col-xl-3">
+                      <div className="card" key={item.product.id}>
+                          <Link to={`/product/${item.product.id}`}>
+                              <div className="card-img d-flex align-items-center pt-3 px-3">
+                                  <div className="card-img-wrapper">
+                                      <img
+                                          className="card-img-content"
+                                          src={
+                                              item.images.length
+                                                  ? item.images.map(data => {
+                                                        return data.small;
+                                                    })
+                                                  : defImg
+                                          }
+                                          alt="Card-cap"
+                                      ></img>
+                                  </div>
                               </div>
-                          </div>
-                      </Link>
-                      <hr />
-                      <div className="card-body pt-0 pb-2 px-1">
-                          <div
-                              className="card-title-container"
-                              style={{ minHeight: "50px" }}
-                          >
-                              <h5 className="card-title text-uppercase">
-                                  {item.product.description1}
-                              </h5>
-                          </div>
-                          <div>
-                              <p className="card-text">
-                                  <strong>
-                                      Cena: {item.price.price}{" "}
-                                      {item.price.currency}/
+                          </Link>
+                          <hr />
+                          <div className="card-body pt-0 pb-2 px-1">
+                              <div
+                                  className="card-title-container"
+                                  style={{ minHeight: "50px" }}
+                              >
+                                  <h5 className="card-title text-uppercase">
+                                      {item.product.description1}
+                                  </h5>
+                              </div>
+                              <div>
+                                  <p className="card-text">
+                                      <strong>
+                                          Cena: {item.price.price}{" "}
+                                          {item.price.currency}/
+                                          {item.product.uom_primary}
+                                      </strong>
+                                  </p>
+                                  <span className="card-available-quantity">
+                                      Dostępna ilość: {item.availability}{" "}
                                       {item.product.uom_primary}
-                                  </strong>
-                              </p>
-                              <span className="card-available-quantity">
-                                  Dostępna ilość: {item.availability}{" "}
-                                  {item.product.uom_primary}
-                              </span>
-                              <div className="buttons-container row d-flex align-items-center">
-                                  <ButtonInput
-                                      itemId={item.product.id}
-                                      availabaleItemQuantity={item.availability}
-                                      itemUnit={item.product.uom_primary}
-                                      token={token}
-                                  />
+                                  </span>
+                                  <div className="buttons-container row d-flex align-items-center">
+                                      <ButtonInput
+                                          itemId={item.product.id}
+                                          availabaleItemQuantity={
+                                              item.availability
+                                          }
+                                          itemUnit={item.product.uom_primary}
+                                          token={token}
+                                      />
+                                  </div>
                               </div>
                           </div>
                       </div>
                   </div>
-                </div>
               );
           })
         : null;

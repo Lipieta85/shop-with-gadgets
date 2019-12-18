@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import "../../assets/styles/regulations.scss";
 import { getStorePolicy } from "./../../api/index";
@@ -7,9 +7,12 @@ const Regulations = () => {
     const [policy, setPolicy] = useState("");
     const token = sessionStorage.getItem("token");
 
-    getStorePolicy(token).then(res => {
-        setPolicy(res.data.data.objects);
-    });
+    useEffect(() => {
+        getStorePolicy(token).then(res => {
+            setPolicy(res.data.data.objects);
+        });
+    }, [token]);
+
     return (
         <div className="regulations">
             <NavMenu />{" "}

@@ -39,9 +39,9 @@ const ProductDetails = props => {
         props.history,
         pagination.totalPages,
         currentItems,
-        products
+        products,
     ]);
-    
+
     const nexItem = () => {
         setSelectedIndex(prevState => prevState + 1);
         products.map((product, i) => {
@@ -75,41 +75,35 @@ const ProductDetails = props => {
         }
     };
 
-    let productAvailability;
-    let productTitle;
-    let productUnit;
-    let productPrice;
-    let productPhoto;
-    let productPhoto2;
-    let productPhoto3;
+    let productAvailability,
+        productTitle,
+        productUnit,
+        productPrice,
+        productCurrency,
+        productCode,
+        productPhoto,
+        productPhoto2,
+        productPhoto3;
+
     if (loadedProduct) {
         productAvailability = loadedProduct.availability;
+        productTitle = loadedProduct.product.description1;
+        productUnit = loadedProduct.product.uom_primary;
+        productPrice = loadedProduct.price.price;
+        productCurrency = loadedProduct.price.currency;
+        productCode = loadedProduct.product.second_item_number;
 
         if (typeof loadedProduct.images[0] != "undefined") {
-            productPhoto = loadedProduct.images[0].medium
+            productPhoto = loadedProduct.images[0].medium;
         }
         if (typeof loadedProduct.images[1] != "undefined") {
-            productPhoto2 = loadedProduct.images[1].medium
+            productPhoto2 = loadedProduct.images[1].medium;
         }
         if (typeof loadedProduct.images[2] != "undefined") {
-            productPhoto3 = loadedProduct.images[2].medium
-        }
-
-        for (let key in loadedProduct.product) {
-            if (key === "description1") {
-                productTitle = loadedProduct.product[key];
-            }
-            if (key === "uom_primary") {
-                productUnit = loadedProduct.product[key];
-            }
-        }
-        for (let key in loadedProduct) {
-            if (key === "price") {
-                productPrice = loadedProduct.price[key];
-            }
+            productPhoto3 = loadedProduct.images[2].medium;
         }
     }
-    
+
     return (
         <div className="product-details">
             <div className="container-fluid">
@@ -121,7 +115,9 @@ const ProductDetails = props => {
                             <div className="col-md-6 d-flex justify-content-center">
                                 <div className="d-flex justify-content-center">
                                     <Carousel
-                                        loadedProductImage={productPhoto ? productPhoto : defImg}
+                                        loadedProductImage={
+                                            productPhoto ? productPhoto : defImg
+                                        }
                                         loadedProductImage2={productPhoto2}
                                         loadedProductImage3={productPhoto3}
                                     />
@@ -136,7 +132,7 @@ const ProductDetails = props => {
                                         <p className="font-weight-bold">
                                             Kod produktu:{" "}
                                             <span className="product-details-text">
-                                                WPK700
+                                                {productCode}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
@@ -148,7 +144,7 @@ const ProductDetails = props => {
                                         <p className="font-weight-bold">
                                             Cena jednostkowa:{" "}
                                             <span className="product-details-text">
-                                                {productPrice} zł
+                                                {productPrice} {productCurrency}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">

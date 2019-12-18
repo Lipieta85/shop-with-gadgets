@@ -50,7 +50,14 @@ const BasketButtons = props => {
             );
             event.preventDefault();
         } else {
-            dispatch(changeBasketQuantity(props.itemId, productAmount));
+            dispatch(
+                changeBasketQuantity(
+                    props.itemId,
+                    productAmount,
+                    props.itemUnit,
+                    token,
+                ),
+            );
         }
     };
 

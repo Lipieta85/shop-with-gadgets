@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 //import { getBasketProducts } from "../../actions/index";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
@@ -11,11 +11,9 @@ const Basket = props => {
     // const token = sessionStorage.getItem("token");
 
     // useEffect(() => {
-    //    dispatch(getBasketProducts(token)) 
+    //    dispatch(getBasketProducts(token))
     // }, [dispatch, token])
 
-
-    //const basketItems = sessionStorage.getItem("basket") ? sessionStorage.getItem("basket") : items
     let addedItems = items.length ? (
         items.map(item => {
             return (
@@ -26,9 +24,13 @@ const Basket = props => {
                     <div className="col-sm-3 d-flex align-items-center text-center p-0 img-box">
                         <div className="item-img white-bg w-100 h-100">
                             <img
-                                src={item.images.length ? item.images.map(data => {
-                                    return data.small
-                                }) : defImg}
+                                src={
+                                    item.images.length
+                                        ? item.images.map(data => {
+                                              return data.small;
+                                          })
+                                        : defImg
+                                }
                                 alt="item"
                                 className="item-basket-img"
                             />

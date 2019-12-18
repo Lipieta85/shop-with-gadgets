@@ -13,7 +13,8 @@ const initialState = {
     orderSelectInputValue: "",
     error: false,
     pagination: {},
-    productsToOrder: []
+    productsToOrder: [],
+    productsCategory: "1"
 };
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -246,6 +247,11 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 productsToOrder: [...state.productsToOrder, action.products]
+            }
+        case type.SET_PRODUCT_CATEGORY:
+            return {
+                ...state,
+                productsCategory: action.number
             }
         default:
             return state;

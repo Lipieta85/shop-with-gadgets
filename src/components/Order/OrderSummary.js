@@ -7,53 +7,16 @@ import defImg from "../../assets/images/default.jpg";
 
 const OrderSummary = () => {
     const products = useSelector(state => state.cartReducer.addedItems);
-    //const basket = useSelector(state => state.cartReducer.basket);
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
-    // const orderInputState = useSelector(
-    //     state => state.cartReducer.orderInputState,
-    // );
-    //const orderData = useSelector(state => state.orderReducer.orderData);
-    //const checkboxStatus = useSelector(state => state.checkedItems);
     const [checkBoxText] = useState("Budżet maretingowy");
 
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
 
-    // const orderDataHandler = () => {
-    //     const order = {
-    //         orderDate: new Date().toISOString().split("T")[0],
-    //         orderNumber: orderInputState,
-    //         orderTotal: total,
-    //         orderPlace: orderSelectInputValue,
-    //         orderProducts: items,
-    //     };
-    //     dispatch(addOrderData(order));
-    //     return orderData;
-    // };
-
-    // useEffect(() => {
-    //     checkboxStatus.forEach((value, key) => {
-
-    //         if (key === "Budżet marketingowy" && value === true) {
-    //             return setCheckBoxText("Budżet marketingowy");
-    //         }
-    //         if (key === "Budżet marketingowy" && value === false) {
-    //             return setCheckBoxText("");
-    //         }
-    //         if (key === "Płatne" && value === true) {
-    //             return setCheckBoxText("Płatne");
-    //         }
-    //         if (key === "Płatne" && value === false) {
-    //             return setCheckBoxText("");
-    //         } else {
-    //             return setCheckBoxText("");
-    //         }
-    //     });
-    // }, []);
     let items = [];
 
     if (products) {
