@@ -11,15 +11,14 @@ const Regulations = () => {
         getStorePolicy(token).then(res => {
             setPolicy(res.data.data.objects);
         });
-    }, [token]);
+    }, []);
 
     return (
         <div className="regulations">
-            <NavMenu />{" "}
+            <NavMenu /> <h2>Regulamin sklepu</h2>
             {policy ? (
-                (window.onload = policy.map(e => (
-                    <div id="regPart">
-                        <h2>Regulamin sklepu</h2>
+                (window.onload = policy.map((e, key) => (
+                    <div id="regPart" key={key}>
                         {
                             <div
                                 dangerouslySetInnerHTML={{
@@ -30,7 +29,9 @@ const Regulations = () => {
                     </div>
                 )))
             ) : (
-                <Spinner />
+                <div>
+                    <Spinner />
+                </div>
             )}
         </div>
     );
