@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import "../../assets/styles/rodo.scss";
 import { getRodoPolicy } from "./../../api/index";
@@ -7,9 +7,12 @@ const Rodo = () => {
     const [rodo, setRodo] = useState("");
     const token = sessionStorage.getItem("token");
 
-    getRodoPolicy(token).then(res => {
-        setRodo(res.data.data.objects);
-    });
+    useEffect(() => {
+        getRodoPolicy(token).then(res => {
+            setRodo(res.data.data.objects);
+        });
+    }, [token]);
+
     return (
         <div className="rodo">
             <NavMenu />{" "}

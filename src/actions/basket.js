@@ -47,7 +47,7 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
         );
 
         const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
-        if (basketId) {
+        if (basketId && !existed_item) {
             trackPromise(
                 axios({
                     method: "put",
@@ -78,7 +78,11 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
                         console.log(error);
                     }),
             );
-        } else {
+        }
+        if (basketId && existed_item) {
+            dispatch(changeBasketQuantity(id, productQuantity, unit, token));
+        }
+        if (!basketId && !existed_item) {
             const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
             trackPromise(
                 axios({
@@ -160,7 +164,12 @@ export const addChecked = (item, isChecked) => {
     };
 };
 
-export const changeBasketQuantity = (productId, newProductAmount, unit) => {
+export const changeBasketQuantity = (
+    productId,
+    newProductAmount,
+    unit,
+    token,
+) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
         //let addedItems = getState().cartReducer.addedItems;
@@ -171,6 +180,9 @@ export const changeBasketQuantity = (productId, newProductAmount, unit) => {
         axios({
             method: "put",
             url: url,
+            headers: {
+                Authorization: token,
+            },
             data: {
                 timeZone: "Pacific/Chatham",
                 shipToNumber: "182887",

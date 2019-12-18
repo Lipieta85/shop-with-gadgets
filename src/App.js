@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { withRouter, Route, Switch } from "react-router-dom";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./assets/styles/bootstrap/filtron.scss";
 //import HomePageContainer from "./containers/HomePageContainer";
 // import AdminPanelContainer from "./containers/AdminPanelContainer";
@@ -43,7 +43,7 @@ export default withRouter(function App({ location }, props) {
 
     if (location.search) {
         const parsed = queryString.parse(location.search);
-        dispatch(companyId(parsed.brand));
+        dispatch(companyId("wix"));
         getLinkToken(parsed.dt)
             .then(res => {
                 const token = res.data.token;
@@ -52,6 +52,7 @@ export default withRouter(function App({ location }, props) {
                 sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    console.log(res.data);
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
                     dispatch(signIn({ isAuth: true }));
@@ -66,7 +67,7 @@ export default withRouter(function App({ location }, props) {
     return (
         <>
             <Switch>
-            <Route
+                <Route
                     path="/"
                     exact
                     render={render =>
@@ -86,6 +87,7 @@ export default withRouter(function App({ location }, props) {
                 <PrivateRoute path="/Rodo" component={Rodo} />
                 <PrivateRoute path="/product/:id" component={ProductDetails} />
                 <Route path="*" component={PageNotFound} />
+                <Redirect to="/" />
             </Switch>
             <Footer />
         </>
