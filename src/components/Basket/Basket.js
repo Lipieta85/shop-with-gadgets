@@ -15,13 +15,15 @@ const Basket = props => {
     // }, [dispatch, token])
 
     let addedItems = items.length ? (
-        items.map(item => {
+        items.map((item, i) => {
             return (
                 <li
                     className="row nav-item collection-item d-flex mb-1"
                     key={item.product.id}
                 >
-                    <div className="col-sm-3 d-flex align-items-center text-center p-0 img-box">
+                    <div className="col-md-1"></div>
+                    <div className="col-sm-3 d-flex text-center p-0 img-box">
+                    <span className="item-number">{i+1}.</span>
                         <div className="item-img white-bg w-100 h-100">
                             <img
                                 src={
@@ -36,7 +38,7 @@ const Basket = props => {
                             />
                         </div>
                     </div>
-                    <div className="col-sm-9 desc-col">
+                    <div className="col-sm-8 desc-col">
                         <BasketButtons
                             itemId={item.product.id}
                             itemTitle={item.product.description1}
