@@ -50,8 +50,7 @@ export const initProductsCategories = (token, currentPage) => {
                 },
             })
                 .then(res => {
-                    console.log(res)
-                    
+                    console.log(res);
                 })
                 .catch(error => {
                     console.log(error);
@@ -72,8 +71,7 @@ export const setProductCategories = (token, number) => {
                 },
             })
                 .then(res => {
-                    dispatch(setProducts(res.data))
-                    
+                    dispatch(setProducts(res.data));
                 })
                 .catch(error => {
                     dispatch(fetchProductsFailed());
@@ -81,4 +79,3 @@ export const setProductCategories = (token, number) => {
         );
     };
 };
-

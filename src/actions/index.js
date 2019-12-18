@@ -20,7 +20,13 @@ export {
     clearBasket,
 } from "./order.js";
 
-export { setProducts, initProducts, fetchProductsFailed, initProductsCategories, setProductCategories } from "./products.js";
+export {
+    setProducts,
+    initProducts,
+    fetchProductsFailed,
+    initProductsCategories,
+    setProductCategories,
+} from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
