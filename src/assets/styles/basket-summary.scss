@@ -4,9 +4,10 @@ $blue:rgb(3,88,153);
     margin: 0 auto;
     text-align: right;
     .summary-row{
-        background-color: #f7f7f7;
+        background-color: #ffffff;
         .summary-p{
             padding: 1rem 0.6rem !important;
+            box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
         }
     }
 }
