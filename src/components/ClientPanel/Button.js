@@ -57,12 +57,14 @@ const Button = props => {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
         }
-        if(props.availabaleItemQuantity === 0){
+        if (props.availabaleItemQuantity === 0) {
             event.preventDefault();
             return false;
         }
         if (disabled && props.availabaleItemQuantity > 0) {
-            alert("Wpisana ilość produktu przekracza dostępną ilość w magazynie");
+            alert(
+                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
+            );
             event.preventDefault();
         } else {
             dispatch(
@@ -85,16 +87,29 @@ const Button = props => {
                     className="form-control product-input basket-quantity-input"
                     id={props.itemId}
                     defaultValue={productQuantity.id}
+                    style={
+                        props.availabaleItemQuantity > 0
+                            ? { visibility: "visible" }
+                            : { visibility: "hidden" }
+                    }
                     onChange={changeQuantityHandler}
                     min="0"
                 />
-                <span className="font-weight-bold ml-1">szt.</span>
+                {props.availabaleItemQuantity > 0 ? (
+                    <span className="font-weight-bold ml-1">szt.</span>
+                ) : (
+                    <span className="font-weight-bold mr-5">Powiadom</span>
+                )}
             </div>
             <div className="product-basket-icon col-5 p-0">
                 <FontAwesomeIcon
                     icon={faShoppingBasket}
                     size="2x"
-                    color={props.availabaleItemQuantity===0?"#e2e2e2":"#a0a3a6"}
+                    color={
+                        props.availabaleItemQuantity === 0
+                            ? "#e2e2e2"
+                            : "#a0a3a6"
+                    }
                     onClick={dispatchHandler}
                     cursor="pointer"
                     className="icon-anim"
