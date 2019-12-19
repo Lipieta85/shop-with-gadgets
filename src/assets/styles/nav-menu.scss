@@ -1,10 +1,11 @@
-.navbar{
+.navbar {
     background-color: #f8f9fa;
-    box-shadow: 0px 0px 6px rgba(0,0,0,.1);
-    .nav-tabs, .nav-link{
-        border:none;     
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+    .nav-tabs,
+    .nav-link {
+        border: none;
     }
-    .nav-link.active{
+    .nav-link.active {
         background-color: transparent;
     }
     .nav-item {
@@ -12,18 +13,18 @@
             color: black;
         }
     }
-    .nav-link{
+    .nav-link {
         transition: 0.3s;
     }
-    .item-separated{
+    .item-separated {
         padding-left: 8px;
-        position:relative;
+        position: relative;
     }
-    .item-separated:not(:last-child){ 
-        &:after{
+    .item-separated:not(:last-child) {
+        &:after {
             position: absolute;
             margin-left: 4px;
-            content:'|';
+            content: "|";
             right: -4px;
             top: 13px;
             font-size: 10px;

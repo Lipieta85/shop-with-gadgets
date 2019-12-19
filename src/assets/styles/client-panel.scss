@@ -1,5 +1,5 @@
-$blue:rgb(3,88,153);
-$gray:#a0a3a6;
+$blue: rgb(3, 88, 153);
+$gray: #a0a3a6;
 
 .client-side {
     background: url(../images/bg_top_2.jpg) center no-repeat;
@@ -9,10 +9,10 @@ $gray:#a0a3a6;
     min-height: calc(100vh - 57px);
     padding: 90px 10px 0 10px;
     .card-container {
-        .card{
-            border:none;
+        .card {
+            border: none;
             border-radius: 0;
-            box-shadow:0px 0px 6px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
         }
         .buttons-container {
             margin: 7px auto 7px auto;
@@ -22,17 +22,16 @@ $gray:#a0a3a6;
             }
         }
     }
-    .navigation-pager{
+    .navigation-pager {
         margin-top: 1.5rem;
-        .page-item.active{  
-            .page-link{
+        .page-item.active {
+            .page-link {
                 background-color: $blue;
                 border-color: $blue;
-            } 
+            }
         }
     }
 }
-
 
 @media (min-width: 1839px) {
     .client-side {
@@ -62,6 +61,9 @@ $gray:#a0a3a6;
 }
 
 @media (max-width: 450px) {
+    .client-panel {
+        margin-top: 20px;
+    }
     .client-side {
         padding: 50px 0px;
         .container-fluid {

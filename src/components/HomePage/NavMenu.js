@@ -28,7 +28,7 @@ const NavMenu = () => {
                     <div className="col-sm-6 col-md-7 col-lg-7 d-flex">
                         <nav className="navbar navbar-expand-lg navbar-light w-100">
                             <button
-                                className="navbar-toggler mt-2"
+                                className="navbar-toggler"
                                 type="button"
                                 data-toggle="collapse"
                                 data-target="#navbarNavDropdown"
