@@ -157,6 +157,9 @@ const ProductDetails = props => {
                                         <div className="product-buttons-container row">
                                             <Button
                                                 itemId={productId}
+                                                availabaleItemQuantity={
+                                                    productAvailability
+                                                }
                                                 itemUnit={productUnit}
                                                 changeProduct={props}
                                             />
