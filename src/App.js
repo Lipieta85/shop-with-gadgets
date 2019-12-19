@@ -52,7 +52,7 @@ export default withRouter(function App({ location }, props) {
                 sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
-                    console.log(res.data.getWixClientData.budget);
+                    //console.log(res.data.getWixClientData.budget);
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
                     dispatch(signIn({ isAuth: true }));

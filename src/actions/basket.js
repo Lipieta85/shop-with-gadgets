@@ -210,7 +210,6 @@ export const changeBasketQuantity = (
                 return deliveryAddress.push({ key: value });
             });
         }
-        console.log(newProductAmount);
 
         const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         axios({

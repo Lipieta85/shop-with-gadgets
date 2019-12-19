@@ -20,14 +20,12 @@ const OrderSummary = () => {
     let items = [];
 
     if (products) {
-        console.log(products);
         products.map(item => {
             const basketProducts = {
                 prodId: item.product.id,
                 uomPrimary: item.product.uom_primary,
                 quantity: item.quantity,
             };
-            console.log(basketProducts);
             return dispatch(productsToOrder(basketProducts));
         });
     }
