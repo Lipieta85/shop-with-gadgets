@@ -6,7 +6,7 @@
     bottom: 0;
     height: 55px;
     bottom: 0;
-    .footer-text-line{
+    .footer-text-line {
         display: flex;
         align-items: center;
         .footer-regulations {
@@ -25,11 +25,11 @@
         }
     }
 }
-@media (max-width:450px){
-    .footer-regulations{
-        font-size:12px;
+@media (max-width: 450px) {
+    .footer-regulations {
+        font-size: 12px;
     }
-    .rodo {
-        font-size:12px;
+    .footer-contact {
+        font-size: 12px;
     }
 }

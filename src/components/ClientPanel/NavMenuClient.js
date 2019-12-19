@@ -47,7 +47,7 @@ const NavMenu = () => {
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
-                <nav className="navbar navbar-expand-lg navbar-lg primary-color">
+                <nav className="navbar navbar-expand-lg navbar-light primary-color">
                     <Link className="navbar-brand" to="/">
                         <img
                             src={company === "filtron" ? logo : logo2}
@@ -63,11 +63,17 @@ const NavMenu = () => {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span
+                            className="navbar-toggler-icon"
+                            cursor="pointer"
+                        ></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
+                    <div
+                        className="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul className="navbar-nav ">
                             {window.location.pathname === `/` ? (
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item item-separated">
