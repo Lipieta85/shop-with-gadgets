@@ -69,8 +69,8 @@ const NavMenu = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             {window.location.pathname === `/` ? (
-                                <ul className="navbar-nav">
-                                    <li className="nav-item">
+                                <ul className="nav nav-tabs">
+                                    <li className="nav-item item-separated">
                                         <a
                                             id="1"
                                             className="nav-link active"
@@ -80,7 +80,7 @@ const NavMenu = () => {
                                             Wszystkie
                                         </a>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item item-separated">
                                         <a
                                             id="30002140"
                                             className="nav-link"
@@ -90,7 +90,7 @@ const NavMenu = () => {
                                             Biuro
                                         </a>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item item-separated">
                                         <a
                                             id="30002141"
                                             className="nav-link"
@@ -100,7 +100,7 @@ const NavMenu = () => {
                                             Tekstylia
                                         </a>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item item-separated">
                                         <a
                                             id="30002142"
                                             className="nav-link"
@@ -110,7 +110,7 @@ const NavMenu = () => {
                                             Gadżety
                                         </a>
                                     </li>
-                                    <li className="nav-item">
+                                    <li className="nav-item item-separated">
                                         <a
                                             id="30002143"
                                             className="nav-link"
