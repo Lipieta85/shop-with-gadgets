@@ -23,14 +23,12 @@ const Basket = props => {
                 >
                     <div className="col-md-1"></div>
                     <div className="col-sm-3 d-flex text-center p-0 img-box">
-                    <span className="item-number">{i+1}.</span>
+                        <span className="item-number">{i + 1}.</span>
                         <div className="item-img white-bg w-100 h-100">
                             <img
                                 src={
                                     item.images.length
-                                        ? item.images.map(data => {
-                                              return data.small;
-                                          })
+                                        ? item.images[0].small
                                         : defImg
                                 }
                                 alt="item"

@@ -7,6 +7,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
+    const [quantityLocation] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const inputValue = useSelector(state => state.cartReducer.items);
 
@@ -56,6 +57,7 @@ const BasketButtons = props => {
                     productAmount,
                     props.itemUnit,
                     token,
+                    quantityLocation,
                 ),
             );
         }

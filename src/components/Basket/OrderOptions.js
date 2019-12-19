@@ -31,7 +31,10 @@ const OrderOptions = () => {
     }, [budget]);
 
     useEffect(() => {
-        setSelectInputValue(selectStoreState);
+        setSelectInputValue(
+            deliveryData[0].getWixClientData.deliveryAddresses[0].name,
+        );
+        //eslint-disable-next-line
     }, [selectStoreState]);
 
     const onHandleChange = e => {
@@ -67,8 +70,8 @@ const OrderOptions = () => {
                     value={selectInputValue}
                 >
                     {deliveryData[0].getWixClientData.deliveryAddresses.map(
-                        data => {
-                            return <option defaultValue>{data.name}</option>;
+                        (data, key) => {
+                            return <option value={data.id}>{data.name}</option>;
                         },
                     )}
                 </select>

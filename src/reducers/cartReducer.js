@@ -150,6 +150,7 @@ const cartReducer = (state = initialState, action) => {
                 total: "0.00",
                 budget: "10000.00",
                 basket: null,
+                productsToOrder: [],
             };
 
         case type.ORDER_INPUT_STATE:
@@ -163,6 +164,7 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 orderSelectInputValue: (state.orderSelectInputValue =
                     action.value),
+                productsToOrder: [],
             };
 
         case type.CHANGE_BASKET_AMOUNTS:

@@ -43,7 +43,7 @@ export default withRouter(function App({ location }, props) {
 
     if (location.search) {
         const parsed = queryString.parse(location.search);
-        dispatch(companyId("wix"));
+        dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
             .then(res => {
                 const token = res.data.token;
@@ -52,6 +52,7 @@ export default withRouter(function App({ location }, props) {
                 sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    console.log(res.data.getWixClientData.budget);
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
                     dispatch(signIn({ isAuth: true }));
