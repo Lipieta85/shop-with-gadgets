@@ -14,8 +14,9 @@
         font-size:17px;
     }
     .white-bg{
-        background-color: #f7f7f7;
+        background-color: #ffffff;
         padding: 10px;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
     }
     .item-info{
         padding:0;
@@ -73,7 +74,8 @@
         }
     }
     .desc-col {
-        background-color: #f7f7f7;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
         padding: 10px;
         .text-right {
             button {
@@ -85,7 +87,7 @@
         width: 80px;
         padding: 4px;
         margin: 5px;
-        background-color: #f7f7f7;
+        background-color: transparent;
         &:hover {
             color: black;
         }
