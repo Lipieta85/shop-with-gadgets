@@ -20,7 +20,8 @@ const ClientPanelMenu = () => {
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
-    let currency = [];
+
+    //let currency = [];
     if (addedItems) {
         addedItems.map(item => {
             return currency.push(item.price.currency);
@@ -50,13 +51,12 @@ const ClientPanelMenu = () => {
         }
     }, [orderHistoryShow, orderHistory]);
 
-    const buttonHandler = e => {
-        if (addedItems.length === 0) {
-            e.preventDefault();
-            //alert("Koszyk jest pusty, dodaj produkt");
-        }
-    };
-    console.log(totalQuantity);
+    // const buttonHandler = e => {
+    //     if (addedItems.length === 0) {
+    //         e.preventDefault();
+    //         //alert("Koszyk jest pusty, dodaj produkt");
+    //     }
+    // };
     return (
         <div className="client-panel">
             <div className="admin-panel__logged-panel">
@@ -66,7 +66,7 @@ const ClientPanelMenu = () => {
                         <Link
                             to="/Basket"
                             className="no-deco basket-box"
-                            onClick={buttonHandler}
+                            //onClick={buttonHandler}
                         >
                             <div className="d-flex">
                                 <FontAwesomeIcon
@@ -86,7 +86,7 @@ const ClientPanelMenu = () => {
                             <Link
                                 to="/Basket"
                                 className="no-deco basket-box"
-                                onClick={buttonHandler}
+                                //onClick={buttonHandler}
                             >
                                 <FontAwesomeIcon
                                     icon={faShoppingBasket}
@@ -123,7 +123,7 @@ const ClientPanelMenu = () => {
                             Dostępny budżet marketingowy
                         </span>
                         <br />
-                        <span className="blue-value">{budget} zł</span>
+                        <span className="blue-value">{budget} PLN</span>
                         {/* <span className="value">{currency}</span> */}
                         <span className="budget-alert">{budgetAlert}</span>
                         <br />
@@ -132,7 +132,7 @@ const ClientPanelMenu = () => {
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className="blue-value">{priceValue} zł</span>
+                        <span className="blue-value">{priceValue} PLN</span>
                         {/* <span className="value">{currency}</span> */}
                     </div>
                 </div>

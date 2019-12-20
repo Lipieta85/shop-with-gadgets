@@ -7,6 +7,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
+    const [quantityLocation] = useState(false);
     const [disabled, setDisabled] = useState(false);
     const inputValue = useSelector(state => state.cartReducer.items);
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
@@ -56,6 +57,7 @@ const BasketButtons = props => {
                     productAmount,
                     props.itemUnit,
                     token,
+                    quantityLocation,
                 ),
             );
         }
@@ -67,11 +69,7 @@ const BasketButtons = props => {
 
     return (
         <>
-            {totalQuantity <= "0" ? (
-                <Redirect to="/" />
-            ) : (
-                console.log("total" + totalQuantity)
-            )}
+            {totalQuantity <= "0" ? <Redirect to="/" /> : ""}
             <div className="item-desc">
                 <div className="d-flex justify-content-between">
                     <h4 className="title text-uppercase">{props.itemTitle}</h4>

@@ -13,12 +13,12 @@ import storageSession from "redux-persist/lib/storage/session";
 import rootReducer from "./reducers/index";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-//import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const history = createBrowserHistory();
 const persistConfig = {
     key: "root",
-    storage: storageSession
+    storage: storageSession,
 };
 let middleware = [];
 if (window.location.hostname === "localhost") {
@@ -27,7 +27,10 @@ if (window.location.hostname === "localhost") {
     middleware = [...middleware, thunk];
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(persistedReducer, applyMiddleware(...middleware));
+const store = createStore(
+    persistedReducer,
+    composeWithDevTools(applyMiddleware(...middleware)),
+);
 
 let persistor = persistStore(store);
 // const store = createStore(
@@ -50,7 +53,7 @@ ReactDOM.render(
             <Router history={history}>
                 <App />
             </Router>
-            </PersistGate>
+        </PersistGate>
     </Provider>,
     document.getElementById("root"),
 );

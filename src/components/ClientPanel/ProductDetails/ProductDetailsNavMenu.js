@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
 
 import logo from "../../../assets/images/filtron_logo.png";
+import logo2 from "../../../assets/images/WIX_logo.png";
 
 const ProductDetailsNavMenu = () => {
+    const company = useSelector(state => state.clientDataReducer.companyId);
+
     const dispatch = useDispatch();
 
     const onSignout = () => {
@@ -17,7 +20,10 @@ const ProductDetailsNavMenu = () => {
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand" to="/">
-                        <img src={logo} width="200" height="35" alt="" />
+                        <img
+                            src={company === "filtron" ? logo : logo2}
+                            alt="company-logo"
+                        />
                     </Link>
                     <button
                         className="navbar-toggler"

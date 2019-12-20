@@ -19,7 +19,13 @@ export const addIfItemExist = (id, productQuantity) => {
     };
 };
 
-export const addItemToBasket = (id, productQuantity, unit, token) => {
+export const addItemToBasket = (
+    id,
+    productQuantity,
+    unit,
+    token,
+    quantityLocation,
+) => {
     let productAmount = Object.values(productQuantity);
     let productNumber = String(productAmount[0]);
 
@@ -80,7 +86,15 @@ export const addItemToBasket = (id, productQuantity, unit, token) => {
             );
         }
         if (basketId && existed_item) {
-            dispatch(changeBasketQuantity(id, productQuantity, unit, token));
+            dispatch(
+                changeBasketQuantity(
+                    id,
+                    productQuantity,
+                    unit,
+                    token,
+                    quantityLocation,
+                ),
+            );
         }
         if (!basketId && !existed_item) {
             const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
@@ -169,12 +183,33 @@ export const changeBasketQuantity = (
     newProductAmount,
     unit,
     token,
+    quantityLocation,
 ) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
         //let addedItems = getState().cartReducer.addedItems;
         let company = getState().clientDataReducer.companyId;
         let companyId = company.charAt(0).toUpperCase();
+        let clientData = getState().clientDataReducer.clientData;
+
+        let productAmount = Object.values(newProductAmount);
+
+        // if (productAmount[0] === 1 && quantityLocation) {
+        //     productAmount[0] += 1;
+        // }
+
+        let productNumber = String(productAmount[0]);
+        let adressess = [];
+        let deliveryAddress = [];
+
+        if (clientData) {
+            clientData.map(data =>
+                adressess.push(data.getWixClientData.deliveryAddresses[0]),
+            );
+            mapKeys(adressess[0], function(value, key) {
+                return deliveryAddress.push({ key: value });
+            });
+        }
 
         const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         axios({
@@ -185,12 +220,12 @@ export const changeBasketQuantity = (
             },
             data: {
                 timeZone: "Pacific/Chatham",
-                shipToNumber: "182887",
+                shipToNumber: deliveryAddress[0].key,
                 items: [
                     {
                         prodId: productId,
                         uomPrimary: unit,
-                        quantity: newProductAmount,
+                        quantity: productNumber,
                     },
                 ],
             },

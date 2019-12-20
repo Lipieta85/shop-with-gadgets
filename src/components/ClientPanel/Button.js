@@ -9,6 +9,7 @@ const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const [disabled, setDisabled] = useState(false);
+    const [quantityLocation] = useState(true);
 
     const dispatch = useDispatch();
 
@@ -73,6 +74,7 @@ const Button = props => {
                     productQuantity,
                     props.itemUnit,
                     token,
+                    quantityLocation,
                 ),
             );
         }

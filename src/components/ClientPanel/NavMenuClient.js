@@ -15,8 +15,6 @@ const NavMenu = () => {
 
     const token = sessionStorage.getItem("token");
 
-    console.log(id);
-
     useEffect(() => {
         const active = document.querySelector(".active");
         if (active) {

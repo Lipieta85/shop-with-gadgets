@@ -9,7 +9,6 @@ export default function NotFound() {
                 <a
                     className="btn btn-outline-primary mt-4"
                     href="https://mh-ecommerce-dev.bpower2.com/index.php/site/desktop"
-                    onClick={() => sessionStorage.remove("token")}
                 >
                     Wróć do strony logowania
                 </a>
