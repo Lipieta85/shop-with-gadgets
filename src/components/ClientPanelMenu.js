@@ -21,7 +21,7 @@ const ClientPanelMenu = () => {
 
     const [budgetAlert, setBudgetAlert] = useState("");
 
-    let currency = [];
+    //let currency = [];
     if (addedItems) {
         addedItems.map(item => {
             return currency.push(item.price.currency);
@@ -57,7 +57,6 @@ const ClientPanelMenu = () => {
     //         //alert("Koszyk jest pusty, dodaj produkt");
     //     }
     // };
-
     return (
         <div className="client-panel">
             <div className="admin-panel__logged-panel">

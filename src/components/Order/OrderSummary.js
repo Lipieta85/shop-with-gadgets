@@ -11,7 +11,7 @@ const OrderSummary = () => {
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
-    const [checkBoxText] = useState("Budżet maretingowy");
+    const [checkBoxText] = useState("Budżet marketingowy");
 
     const dispatch = useDispatch();
 
