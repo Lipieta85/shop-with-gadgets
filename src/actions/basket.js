@@ -2,6 +2,7 @@ import * as type from "../actions/types";
 import axios from "../utils/axios";
 import { mapKeys } from "lodash";
 import { trackPromise } from "react-promise-tracker";
+import host from "../api/host";
 
 export const addIfItemEmpty = (id, productQuantity) => {
     return {
@@ -52,7 +53,7 @@ export const addItemToBasket = (
             item => id === item.product.id,
         );
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        const url = `${host}index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         if (basketId && !existed_item) {
             trackPromise(
                 axios({
@@ -97,7 +98,7 @@ export const addItemToBasket = (
             );
         }
         if (!basketId && !existed_item) {
-            const urlPost = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
+            const urlPost = `${host}index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
             trackPromise(
                 axios({
                     method: "post",
@@ -141,7 +142,7 @@ export const removeCart = (token, id) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
+        const url = `${host}index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
         if (basketId) {
             axios({
                 method: "delete",
@@ -211,7 +212,7 @@ export const changeBasketQuantity = (
             });
         }
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        const url = `${host}index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         axios({
             method: "put",
             url: url,
@@ -249,7 +250,7 @@ export const changeBasketAmounts = (productId, newProductAmount) => {
 
 export const getBasketProducts = token => {
     return (dispatch, getState) => {
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/get/parameters/{"clientId":"16"}`;
+        const url = `${host}index.php/restApi/cart/method/get/parameters/{"clientId":"16"}`;
         axios({
             method: "get",
             url: url,
@@ -266,5 +267,12 @@ export const getBasketProducts = token => {
             .catch(error => {
                 console.log(error);
             });
+    };
+};
+
+export const setBudget = data => {
+    return {
+        type: type.SET_BUDGET,
+        data,
     };
 };

@@ -1,11 +1,11 @@
 import axios from "../utils/axios";
 import { trackPromise } from "react-promise-tracker";
+import host from "./host";
 
 export const getToken = async userData => {
     return await axios({
         method: "post",
-        url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/generateJWT",
+        url: `${host}index.php/restApi/generateJWT`,
         headers: {
             "Content-Type": "application/json",
             "X-PINGOTHER": "pingpong",
@@ -19,8 +19,7 @@ export const getToken = async userData => {
 export const getUserData = async token => {
     return await axios({
         method: "get",
-        url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/user/method/getWixClientData",
+        url: `${host}index.php/restApi/user/method/getWixClientData`,
         headers: {
             "Content-Type": "application/json",
             Authorization: token,
@@ -31,8 +30,7 @@ export const getUserData = async token => {
 export const getLinkToken = async token => {
     return await axios({
         method: "post",
-        url:
-            "https://mh-ecommerce-dev.bpower2.com/index.php/restApi/generateJWT/useDisposableToken/1",
+        url: `${host}index.php/restApi/generateJWT/useDisposableToken/1`,
         headers: {
             "Content-Type": "application/json",
         },
@@ -44,7 +42,7 @@ export const getLinkToken = async token => {
 export const getRodoPolicy = async token => {
     return await axios({
         method: "get",
-        url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22rodoPolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
+        url: `${host}index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22rodoPolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
         headers: {
             "Content-Type": "application/json",
             Authorization: token,
@@ -56,7 +54,7 @@ export const getStorePolicy = async token => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            url: `${host}index.php/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

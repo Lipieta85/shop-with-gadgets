@@ -2,6 +2,7 @@ import * as type from "../actions/types";
 import axios from "../utils/axios";
 import { trackPromise } from "react-promise-tracker";
 import { mapKeys } from "lodash";
+import host from "../api/host";
 
 export const orderInputState = value => {
     return {
@@ -30,7 +31,7 @@ export const createOrder = (token, items) => {
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
         let companyId = company.charAt(0).toUpperCase();
-        Number(basketId)
+        Number(basketId);
 
         let clientData = getState().clientDataReducer.clientData;
 
@@ -46,27 +47,27 @@ export const createOrder = (token, items) => {
             });
         }
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+        const url = `${host}index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         trackPromise(
-        axios({
-            method: "post",
-            url: url,
-            data: {
-                "timeZone": "Pacific/Chatham",
-                "shipToNumber" : deliveryAddress[0].key,
-                items
-            },
-            headers: {
-                Authorization: token,
-            },          
-        })
-            .then(res => {
-                dispatch(clearBasket())
+            axios({
+                method: "post",
+                url: url,
+                data: {
+                    timeZone: "Pacific/Chatham",
+                    shipToNumber: deliveryAddress[0].key,
+                    items,
+                },
+                headers: {
+                    Authorization: token,
+                },
             })
-            .catch(error => {
-                console.log(error);
-            })
-        )
+                .then(res => {
+                    dispatch(clearBasket());
+                })
+                .catch(error => {
+                    console.log(error);
+                }),
+        );
     };
 };
 
@@ -78,7 +79,7 @@ export const clearBasket = () => {
 
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
+        const url = `${host}index.php/restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
         axios({
             method: "get",
             url: url,
@@ -102,9 +103,9 @@ export const setClientOrderHistory = data => {
     };
 };
 
-export const productsToOrder = (products) => {
+export const productsToOrder = products => {
     return {
         type: type.PRODUCTS_TO_ORDER,
-        products
-    }
-}
+        products,
+    };
+};
