@@ -11,7 +11,7 @@ const Rodo = () => {
         getRodoPolicy(token).then(res => {
             setRodo(res.data.data.objects);
         });
-    }, []);
+    }, [token]);
 
     return (
         <div className="rodo">

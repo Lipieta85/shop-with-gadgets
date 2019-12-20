@@ -28,7 +28,6 @@ export const initProducts = (token, currentPage) => {
                 },
             })
                 .then(res => {
-                    console.log(res);
                     dispatch(setProducts(res.data));
                 })
                 .catch(error => {
@@ -68,10 +67,9 @@ export const setProductCategories = number => {
 };
 
 export const changeProductCategory = (token, number) => {
-    console.log(number);
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
-        console.log(company);
+
         const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"category": ${Number(
             number,
         )}}`;

@@ -26,14 +26,14 @@ const OrderSummary = () => {
                 uomPrimary: item.product.uom_primary,
                 quantity: item.quantity,
             };
-            return dispatch(productsToOrder(basketProducts))
+            return dispatch(productsToOrder(basketProducts));
         });
     }
 
     let currency = [];
     let addedItems = products.length ? (
         products.map(item => {
-            currency.push(item.price.currency)
+            currency.push(item.price.currency);
             return (
                 <li
                     className="row nav-item collection-item d-flex"
@@ -42,9 +42,11 @@ const OrderSummary = () => {
                     <div className="col-sm-4 d-flex align-items-center text-center">
                         <div className="item-img p-1">
                             <img
-                                src={item.images.length ? item.images.map(data => {
-                                    return data.small
-                                }) : defImg}
+                                src={
+                                    item.images.length
+                                        ? item.images[0].small
+                                        : defImg
+                                }
                                 alt="item"
                                 className="item-summary-img w-50 p-2"
                             />
@@ -65,7 +67,8 @@ const OrderSummary = () => {
                                         <b>
                                             Cena:{" "}
                                             <span className="order-text-value">
-                                                {item.price.price} {item.price.currency}
+                                                {item.price.price}{" "}
+                                                {item.price.currency}
                                             </span>
                                         </b>
                                     </div>
@@ -81,7 +84,8 @@ const OrderSummary = () => {
                                         <span className="mr-3 mb-3">
                                             <b>Razem: </b>
                                             <b className="order-text-value">
-                                                {item.itemTotalPrice} {item.price.currency}
+                                                {item.itemTotalPrice}{" "}
+                                                {item.price.currency}
                                             </b>
                                         </span>
                                     </div>
@@ -101,14 +105,12 @@ const OrderSummary = () => {
             <div className="container">
                 <h2>Podsumowanie zamówienia</h2>
                 <hr />
-                <p className="order-summary-text">
-                    1. Zamówione produkty:
-                </p>
+                <p className="order-summary-text">1. Zamówione produkty:</p>
                 <div className="m-2">{addedItems}</div>
                 <p className="order-summary-text mt-4">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
-                        {total}
+                        {total} {products[0].price.currency}
                     </span>
                 </p>
                 <p className="order-summary-text">
