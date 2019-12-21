@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToBasket } from "../../actions/index";
-
+import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
@@ -25,7 +25,7 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
         products.map(item => {
-            if (input.current.id === item.product.id) {
+            if (input.current&&item.product&&input.current.id === item.product.id) {
                 if (input.current.value > item.availability) {
                     setDisabled(true);
                 } else {
@@ -79,16 +79,20 @@ const Button = props => {
     return (
         <>
             <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
-                <input
-                    type="number"
-                    ref={input}
-                    className="form-control product-input basket-quantity-input"
-                    id={props.itemId}
-                    defaultValue={productQuantity.id}
-                    onChange={changeQuantityHandler}
-                    min="0"
-                />
-                <span className="font-weight-bold ml-1">szt.</span>
+                {props.availabaleItemQuantity===0?(
+                    <span className='availability-check'>Powiadom o dostępności</span>
+                ):(<>
+                        <input
+                            type="number"
+                            ref={input}
+                            className="form-control product-input basket-quantity-input"
+                            id={props.itemId}
+                            defaultValue={productQuantity.id}
+                            onChange={changeQuantityHandler}
+                            min="0"
+                        /><span className="font-weight-bold ml-1">szt.</span>
+                    </>
+                )}
             </div>
             <div className="product-basket-icon col-5 p-0">
                 <FontAwesomeIcon

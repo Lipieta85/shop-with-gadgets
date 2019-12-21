@@ -2,6 +2,15 @@
     min-height: calc(100vh - 57px);
     background: url(../images/bg_top_2.jpg) center no-repeat;
     background-size: cover;
+    .clear-button-box{
+        .clear-button{
+            color:gray;
+            font-size:12px;
+            &:hover{
+                color:black;
+            }
+        }
+    }
     .basket-header {
         margin-top: 90px;
     }

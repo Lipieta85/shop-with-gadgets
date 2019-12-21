@@ -1,14 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { clearBasket } from "../../actions/index"; 
 import "../../assets/styles/basket-summary.scss";
 
 const BasketSummary = () => {
     const total = useSelector(state => state.cartReducer.total);
     const items = useSelector(state => state.cartReducer.addedItems);
-    const dispatch = useDispatch();
     let currency = [];
     if (items) {
         items.map(item => {
@@ -30,7 +26,6 @@ const BasketSummary = () => {
                     </div>
                 </div>
             </div>
-            <div className="clear-button-box"><Link to="/" className="btn pull-right clear-button" onClick={() => dispatch(clearBasket())} >Wyczyść koszyk</Link></div>
         </div>
     );
 };
