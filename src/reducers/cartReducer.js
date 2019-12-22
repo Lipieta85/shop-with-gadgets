@@ -7,7 +7,7 @@ const initialState = {
     addedItems: [],
     total: "0.00",
     totalQuantity: 0,
-    budget: "10000.00",
+    budget: "",
     basket: null,
     orderInputState: "",
     orderSelectInputValue: "",
@@ -148,7 +148,6 @@ const cartReducer = (state = initialState, action) => {
                 addedItems: [],
                 totalQuantity: 0,
                 total: "0.00",
-                budget: "10000.00",
                 basket: null,
                 productsToOrder: [],
             };
@@ -254,6 +253,12 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 productsCategory: action.number,
             };
+        case type.SET_BUDGET: {
+            return {
+                ...state,
+                budget: String(action.data),
+            };
+        }
         default:
             return state;
     }

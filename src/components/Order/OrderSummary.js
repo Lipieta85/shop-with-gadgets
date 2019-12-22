@@ -7,19 +7,20 @@ import defImg from "../../assets/images/default.jpg";
 
 const OrderSummary = () => {
     const products = useSelector(state => state.cartReducer.addedItems);
+    const productsOrdered = useSelector(
+        state => state.cartReducer.productsToOrder,
+    );
     const total = useSelector(state => state.cartReducer.total);
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
-    const [checkBoxText] = useState("Budżet marketingowy");
+    const [checkBoxText] = useState("Budżet maretingowy");
 
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
 
-    let items = [];
-
-    if (products) {
+    if (products && productsOrdered.length === 0) {
         products.map(item => {
             const basketProducts = {
                 prodId: item.product.id,
@@ -142,7 +143,7 @@ const OrderSummary = () => {
                     <Link
                         to="/OrderEnd"
                         className="btn btn-outline-primary btn-submit"
-                        onClick={() => dispatch(createOrder(token, items))}
+                        onClick={() => dispatch(createOrder(token))}
                     >
                         Zatwierdź zamówienie
                     </Link>

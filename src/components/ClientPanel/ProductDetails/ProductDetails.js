@@ -16,14 +16,10 @@ const ProductDetails = props => {
     const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
     const [productId, setProductId] = useState(id);
-    const [currentItems] = useState(pagination.totalItems);
 
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < products.length) {
-            return (
-                setLoadedProduct(products[selectedIndex]),
-                props.history.push("/product/" + productId)
-            );
+            return setLoadedProduct(products[selectedIndex]);
         }
         if (!selectedIndex) {
             products.map((product, i) => {
@@ -38,7 +34,6 @@ const ProductDetails = props => {
         productId,
         props.history,
         pagination.totalPages,
-        currentItems,
         products,
     ]);
 
@@ -56,6 +51,7 @@ const ProductDetails = props => {
                 return i === 0 ? setProductId(product.product.id) : null;
             });
         }
+        props.history.push("/product/" + productId);
     };
     const prevItem = () => {
         setSelectedIndex(prevState => prevState - 1);
@@ -73,6 +69,7 @@ const ProductDetails = props => {
                     : null;
             });
         }
+        props.history.push("/product/" + productId);
     };
 
     let productAvailability,

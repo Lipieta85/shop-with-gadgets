@@ -19,7 +19,7 @@ instance.interceptors.response.use(
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("userID");
             storage.removeItem("persist:root");
-            window.location.replace("http://192.168.0.105:3000/404");
+            window.location.replace(`https://mh-gadgets-dev.bpower2.com/404`);
         }
         // if (error.response.status === 404) {
         //     window.location.replace("http://192.168.0.105:3000/404");
