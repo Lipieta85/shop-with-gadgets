@@ -20,6 +20,7 @@ import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
 import { clientData, companyId, setToken, setBudget } from "./actions/index";
 import queryString from "query-string";
+import host from "./api/host";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -54,10 +55,9 @@ export default withRouter(function App({ location }, props) {
                 getUserData(res.data.token).then(res => {
                     dispatch(
                         setBudget(
-                            // res.data.getWixClientData.budget
-                            //     ? res.data.getWixClientData.budget
-                            //     : "",
-                            Number(10000),
+                            res.data.getWixClientData.budget
+                                ? res.data.getWixClientData.budget
+                                : "",
                         ),
                     );
                     dispatch(setToken(token));
@@ -72,9 +72,7 @@ export default withRouter(function App({ location }, props) {
     useEffect(() => {
         if (!location.search) {
             if (sessionStorage.getItem("token") === null) {
-                window.location.replace(
-                    "https://mh-ecommerce-qa.bpower2.com/index.php/site/desktop",
-                );
+                window.location.replace(`${host}site/desktop`);
             }
         }
     }, [location.search]);

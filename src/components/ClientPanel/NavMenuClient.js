@@ -179,7 +179,7 @@ const NavMenu = () => {
                                 <a
                                     className="nav-link"
                                     onClick={onSignout}
-                                    href="https://mh-ecommerce-qa.bpower2.com/index.php/site/desktop"
+                                    href="https://mh-ecommerce-dev.bpower2.com/index.php/site/desktop"
                                 >
                                     Wyloguj
                                 </a>

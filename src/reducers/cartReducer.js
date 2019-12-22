@@ -148,7 +148,6 @@ const cartReducer = (state = initialState, action) => {
                 addedItems: [],
                 totalQuantity: 0,
                 total: "0.00",
-                budget: "10000.00",
                 basket: null,
                 productsToOrder: [],
             };

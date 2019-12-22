@@ -57,7 +57,6 @@ button:focus {
 
 @media (min-width: 1199px) {
     .image-gallery-content.fullscreen img {
-        width: 60%;
         margin: 0 auto;
         text-align: center;
     }
@@ -67,11 +66,7 @@ button:focus {
         width: 500px;
     }
 }
-// @media (max-width: 750px) {
-//     .image-gallery-swipe {
-//         margin-left: 20%;
-//     }
-// }
+
 .image-gallery-content.fullscreen .image-gallery-slide {
     background: #e4e4e6;
 }

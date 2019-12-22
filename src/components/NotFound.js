@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/styles/order-end.scss";
+import storage from "redux-persist/lib/storage/session";
 
 export default function NotFound() {
+    useEffect(() => {
+        storage.removeItem("persist:root");
+    }, []);
     return (
         <div className="order-end text-center">
             <div className="order-end-box">

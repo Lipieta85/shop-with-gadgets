@@ -1,6 +1,6 @@
 import * as type from "../actions/types";
 import axios from "../utils/axios";
-import { trackPromise } from "react-promise-tracker";
+import { postOrder } from "../api/index";
 import { mapKeys } from "lodash";
 import host from "../api/host";
 
@@ -47,27 +47,15 @@ export const createOrder = (token, items) => {
             });
         }
 
-        const url = `${host}index.php/restApi/cart/method/createOrder/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
-        trackPromise(
-            axios({
-                method: "post",
-                url: url,
-                data: {
-                    timeZone: "Pacific/Chatham",
-                    shipToNumber: deliveryAddress[0].key,
-                    items,
-                },
-                headers: {
-                    Authorization: token,
-                },
+        let delivery = deliveryAddress[0].key;
+
+        postOrder(token, items, basketId, companyId, delivery)
+            .then(res => {
+                dispatch(clearBasket());
             })
-                .then(res => {
-                    dispatch(clearBasket());
-                })
-                .catch(error => {
-                    console.log(error);
-                }),
-        );
+            .catch(error => {
+                console.log(error);
+            });
     };
 };
 
@@ -79,7 +67,7 @@ export const clearBasket = () => {
 
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
-        const url = `${host}index.php/restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
+        const url = `${host}restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
         axios({
             method: "get",
             url: url,

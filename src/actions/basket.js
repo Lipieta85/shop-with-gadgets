@@ -1,8 +1,12 @@
 import * as type from "../actions/types";
-import axios from "../utils/axios";
 import { mapKeys } from "lodash";
-import { trackPromise } from "react-promise-tracker";
-import host from "../api/host";
+import {
+    postProduct,
+    putProduct,
+    removeProduct,
+    changeProduct,
+    getBasketProduct,
+} from "../api";
 
 export const addIfItemEmpty = (id, productQuantity) => {
     return {
@@ -49,42 +53,32 @@ export const addItemToBasket = (
             });
         }
 
+        let delivery = deliveryAddress[0].key;
+
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
         );
 
-        const url = `${host}index.php/restApi/cart/method/addProduct/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
         if (basketId && !existed_item) {
-            trackPromise(
-                axios({
-                    method: "put",
-                    url: url,
-                    headers: {
-                        Authorization: token,
-                    },
-                    data: {
-                        timeZone: "Pacific/Chatham",
-                        shipToNumber: deliveryAddress[0].key,
-                        items: [
-                            {
-                                prodId: id,
-                                uomPrimary: unit,
-                                quantity: productNumber,
-                            },
-                        ],
-                    },
+            putProduct(
+                id,
+                unit,
+                token,
+                delivery,
+                productNumber,
+                companyId,
+                basketId,
+            )
+                .then(res => {
+                    if (existed_item) {
+                        dispatch(addIfItemExist(id, productQuantity));
+                    } else {
+                        dispatch(addIfItemEmpty(id, productQuantity));
+                    }
                 })
-                    .then(res => {
-                        if (existed_item) {
-                            dispatch(addIfItemExist(id, productQuantity));
-                        } else {
-                            dispatch(addIfItemEmpty(id, productQuantity));
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    }),
-            );
+                .catch(error => {
+                    console.log(error);
+                });
         }
         if (basketId && existed_item) {
             dispatch(
@@ -98,38 +92,18 @@ export const addItemToBasket = (
             );
         }
         if (!basketId && !existed_item) {
-            const urlPost = `${host}index.php/restApi/cart/method/create/parameters/{"bId":"${companyId}"}`;
-            trackPromise(
-                axios({
-                    method: "post",
-                    url: urlPost,
-                    headers: {
-                        Authorization: token,
-                    },
-                    data: {
-                        timeZone: "Pacific/Chatham",
-                        shipToNumber: deliveryAddress[0].key,
-                        items: [
-                            {
-                                prodId: id,
-                                uomPrimary: unit,
-                                quantity: productNumber,
-                            },
-                        ],
-                    },
+            postProduct(id, unit, token, delivery, productNumber, companyId)
+                .then(res => {
+                    dispatch(addBasketId(res.data.create.order.id_orders));
+                    if (existed_item) {
+                        dispatch(addIfItemExist(id, productQuantity));
+                    } else {
+                        dispatch(addIfItemEmpty(id, productQuantity));
+                    }
                 })
-                    .then(res => {
-                        dispatch(addBasketId(res.data.create.order.id_orders));
-                        if (existed_item) {
-                            dispatch(addIfItemExist(id, productQuantity));
-                        } else {
-                            dispatch(addIfItemEmpty(id, productQuantity));
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    }),
-            );
+                .catch(error => {
+                    console.log(error);
+                });
         }
     };
 };
@@ -142,18 +116,8 @@ export const removeCart = (token, id) => {
     return (dispatch, getState) => {
         let basketId = getState().cartReducer.basket;
 
-        const url = `${host}index.php/restApi/cart/method/deleteProduct/parameters/{"orderId":${basketId}}`;
         if (basketId) {
-            axios({
-                method: "delete",
-                url: url,
-                headers: {
-                    Authorization: token,
-                },
-                data: {
-                    "0": id,
-                },
-            })
+            removeProduct(token, id, basketId)
                 .then(res => {
                     dispatch(deleteItem(id));
                 })
@@ -195,10 +159,6 @@ export const changeBasketQuantity = (
 
         let productAmount = Object.values(newProductAmount);
 
-        // if (productAmount[0] === 1 && quantityLocation) {
-        //     productAmount[0] += 1;
-        // }
-
         let productNumber = String(productAmount[0]);
         let adressess = [];
         let deliveryAddress = [];
@@ -212,25 +172,18 @@ export const changeBasketQuantity = (
             });
         }
 
-        const url = `${host}index.php/restApi/cart/method/updateQuantity/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
-        axios({
-            method: "put",
-            url: url,
-            headers: {
-                Authorization: token,
-            },
-            data: {
-                timeZone: "Pacific/Chatham",
-                shipToNumber: deliveryAddress[0].key,
-                items: [
-                    {
-                        prodId: productId,
-                        uomPrimary: unit,
-                        quantity: productNumber,
-                    },
-                ],
-            },
-        })
+        let delivery = deliveryAddress[0].key;
+
+        changeProduct(
+            productId,
+            productNumber,
+            unit,
+            token,
+            quantityLocation,
+            delivery,
+            basketId,
+            companyId,
+        )
             .then(res => {
                 dispatch(changeBasketAmounts(productId, newProductAmount));
             })
@@ -250,14 +203,7 @@ export const changeBasketAmounts = (productId, newProductAmount) => {
 
 export const getBasketProducts = token => {
     return (dispatch, getState) => {
-        const url = `${host}index.php/restApi/cart/method/get/parameters/{"clientId":"16"}`;
-        axios({
-            method: "get",
-            url: url,
-            headers: {
-                Authorization: token,
-            },
-        })
+        getBasketProduct(token)
             .then(res => {
                 let baskets = [];
                 baskets.push(res.data.get);
