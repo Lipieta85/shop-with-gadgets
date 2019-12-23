@@ -1,5 +1,5 @@
 import axios from "axios";
-//import storage from 'redux-persist/lib/storage/session';
+import storage from "redux-persist/lib/storage/session";
 
 const instance = axios.create({});
 
@@ -15,10 +15,11 @@ instance.interceptors.response.use(
         return response;
     },
     function(error) {
-        if (error.response.status === 401) {
-            //sessionStorage.removeItem("token");
-            //storage.removeItem("persist:root");
-            //window.location.replace("http://192.168.0.105:3000/404");
+        if (error.response.status === 401 && sessionStorage.length) {
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("userID");
+            storage.removeItem("persist:root");
+            window.location.replace("http://192.168.0.105:3000/404");
         }
         // if (error.response.status === 404) {
         //     window.location.replace("http://192.168.0.105:3000/404");

@@ -31,7 +31,10 @@ const OrderOptions = () => {
     }, [budget]);
 
     useEffect(() => {
-        setSelectInputValue(selectStoreState);
+        setSelectInputValue(
+            deliveryData[0].getWixClientData.deliveryAddresses[0].name,
+        );
+        //eslint-disable-next-line
     }, [selectStoreState]);
 
     const onHandleChange = e => {
@@ -67,8 +70,8 @@ const OrderOptions = () => {
                     value={selectInputValue}
                 >
                     {deliveryData[0].getWixClientData.deliveryAddresses.map(
-                        data => {
-                            return <option defaultValue>{data.name}</option>;
+                        (data, key) => {
+                            return <option value={data.id}>{data.name}</option>;
                         },
                     )}
                 </select>
@@ -115,10 +118,15 @@ const OrderOptions = () => {
                 </Link>
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
-                    className="btn btn-outline-primary mt-1 w-100"
-                    onClick={orderConfirmHandler}
+                    className="btn mt-1 w-100 button-parent"
+                    onClick={orderConfirmHandler} 
+                    style={{padding:0}}
                 >
-                    Złóż zamówienie
+                    {addedItems.length===0?
+                        <button disabled className="order-button">Złóż zamówienie</button>
+                    :
+                        <button className="order-button">Złóż zamówienie</button>
+                    }
                 </Link>
             </div>
         </div>

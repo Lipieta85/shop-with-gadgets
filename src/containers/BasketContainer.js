@@ -7,6 +7,8 @@ import OrderOptions from "../components/Basket/OrderOptions";
 import { useDispatch } from "react-redux";
 import { clearBasket } from "../actions/index"; 
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/basket-container.scss";
 
 const BasketContainer = () => {
@@ -15,19 +17,24 @@ const BasketContainer = () => {
         <div className="basket-container">
             <div className="container-fluid">
                 <NavMenuClient />
-                <div className="row">
-                    <div className="col-md-12">
-                        <h5 className="basket-header">
-                            Produkty aktualnie znajdujące się w koszyku:
-                            <span className="clear-button-box"><Link to="/" className="btn pull-right clear-button" onClick={() => dispatch(clearBasket())} >Wyczyść koszyk</Link></span>
-                        </h5>
-                        
-                    </div>
-                </div>
                 <div className="row basket-content">
                     <div className="cart-content col-sm-12 col-md-12 col-lg-9">
                         <div className="cart">
                             <ul className="cart-collection">
+                                <h5 className="basket-header">
+                                    Produkty aktualnie znajdujące się w koszyku:
+                                </h5>
+                                <div className="clear-button-box">
+                                    <Link to="/" className="pull-right clear-button unselectable" onClick={() => dispatch(clearBasket())}>
+                                        Wyczyść koszyk <FontAwesomeIcon
+                                            icon={faTimes}
+                                            color="#a0a3a6"
+                                            cursor="pointer"
+                                            size="1x"
+                                            className="icon-anim clear-icon"
+                                        />
+                                    </Link>
+                                </div>
                                 <Basket />
                                 <BasketSummary />
                             </ul>

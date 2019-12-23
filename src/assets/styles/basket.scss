@@ -1,7 +1,4 @@
 .basket-container{
-    .client-panel{
-        margin-top:10px;
-    }
     .actualize-btn{
         border-color: #a0a3a6;
         &:hover{
@@ -66,6 +63,9 @@
 }
 .cart {
     margin-top: 10px;
+    .basket-header{
+        width: 95%;
+    }
     .collection-item {
         margin: 0 auto;
         width: 95%;
@@ -109,8 +109,18 @@
 .updateQuantity {
     width: 50px;
 }
+@media (min-width:992px){
+    .basket-container{
+        .client-panel{
+            margin-top:125px !important;
+        }
+    }
+}
 @media (max-width: 767px) {
     .cart {
+        .basket-header{
+            width: 100%;
+        }
         .collection-item {
             width: 100%;
             .item-basket-img {

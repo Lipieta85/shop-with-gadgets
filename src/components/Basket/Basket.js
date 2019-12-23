@@ -21,16 +21,14 @@ const Basket = props => {
                     className="row nav-item collection-item d-flex mb-1"
                     key={item.product.id}
                 >
-                    <div className="col-md-1"></div>
+                    <div className="col-md-1 hidden-sm"></div>
                     <div className="col-sm-3 d-flex text-center p-0 img-box">
-                    <span className="item-number">{i+1}.</span>
+                        <span className="item-number">{i + 1}.</span>
                         <div className="item-img white-bg w-100 h-100">
                             <img
                                 src={
                                     item.images.length
-                                        ? item.images.map(data => {
-                                              return data.small;
-                                          })
+                                        ? item.images[0].small
                                         : defImg
                                 }
                                 alt="item"
@@ -38,7 +36,7 @@ const Basket = props => {
                             />
                         </div>
                     </div>
-                    <div className="col-sm-8 desc-col">
+                    <div className="col-sm-9 col-md-8 desc-col">
                         <BasketButtons
                             itemId={item.product.id}
                             itemTitle={item.product.description1}

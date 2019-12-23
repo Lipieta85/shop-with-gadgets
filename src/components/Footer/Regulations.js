@@ -11,7 +11,7 @@ const Regulations = () => {
         getStorePolicy(token).then(res => {
             setPolicy(res.data.data.objects);
         });
-    }, []);
+    }, [token]);
 
     return (
         <div className="regulations">
