@@ -1,6 +1,9 @@
 import * as type from "../actions/types";
-import axios from "../utils/axios";
-import { trackPromise } from "react-promise-tracker";
+import {
+    getAllProducts,
+    getProductsCategories,
+    changeProductsCategory,
+} from "../api";
 
 export const setProducts = products => {
     return {
@@ -19,43 +22,25 @@ export const initProducts = (token, currentPage) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
 
-        trackPromise(
-            axios({
-                method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
-                headers: {
-                    Authorization: token,
-                },
+        getAllProducts(token, currentPage, company)
+            .then(res => {
+                dispatch(setProducts(res.data));
             })
-                .then(res => {
-                    dispatch(setProducts(res.data));
-                })
-                .catch(error => {
-                    dispatch(fetchProductsFailed());
-                }),
-        );
+            .catch(error => {
+                dispatch(fetchProductsFailed());
+            });
     };
 };
 
-export const initProductsCategories = (token, currentPage) => {
+export const initProductsCategories = token => {
     return (dispatch, getState) => {
-        //const company = getState().clientDataReducer.companyId;
-
-        trackPromise(
-            axios({
-                method: "get",
-                url: `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/categories`,
-                headers: {
-                    Authorization: token,
-                },
+        getProductsCategories(token)
+            .then(res => {
+                console.log(res);
             })
-                .then(res => {
-                    console.log(res);
-                })
-                .catch(error => {
-                    console.log(error);
-                }),
-        );
+            .catch(error => {
+                console.log(error);
+            });
     };
 };
 
@@ -70,23 +55,12 @@ export const changeProductCategory = (token, number) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
 
-        const url = `https://mh-ecommerce-dev.bpower2.com/index.php/restApi/products/method/${company}/parameters/{"category": ${Number(
-            number,
-        )}}`;
-        trackPromise(
-            axios({
-                method: "get",
-                url: url,
-                headers: {
-                    Authorization: token,
-                },
+        changeProductsCategory(token, company, number)
+            .then(res => {
+                dispatch(setProducts(res.data));
             })
-                .then(res => {
-                    dispatch(setProducts(res.data));
-                })
-                .catch(error => {
-                    dispatch(fetchProductsFailed());
-                }),
-        );
+            .catch(error => {
+                dispatch(fetchProductsFailed());
+            });
     };
 };

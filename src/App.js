@@ -18,8 +18,9 @@ import OrderHistory from "./components/OrderHistory/OrderHistory";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
-import { clientData, companyId, setToken } from "./actions/index";
+import { clientData, companyId, setToken, setBudget } from "./actions/index";
 import queryString from "query-string";
+import host from "./api/host";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -52,7 +53,13 @@ export default withRouter(function App({ location }, props) {
                 sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
-                    //console.log(res.data.getWixClientData.budget);
+                    dispatch(
+                        setBudget(
+                            res.data.getWixClientData.budget
+                                ? res.data.getWixClientData.budget
+                                : "",
+                        ),
+                    );
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
                     dispatch(signIn({ isAuth: true }));
@@ -61,6 +68,14 @@ export default withRouter(function App({ location }, props) {
             .catch(err => console.log(err));
         // window.location.replace("http://192.168.0.105:3000/");
     }
+
+    useEffect(() => {
+        if (!location.search) {
+            if (sessionStorage.getItem("token") === null) {
+                window.location.replace(`${host}site/desktop`);
+            }
+        }
+    }, [location.search]);
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
 
