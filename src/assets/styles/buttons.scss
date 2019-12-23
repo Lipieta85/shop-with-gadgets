@@ -1,0 +1,20 @@
+.availability-check{
+    font-size: 13px;
+    cursor: pointer;
+    height: 34px;
+    display: flex;
+    color: #a0a3a6;
+    align-items: center;
+    transition: 0.3s;
+    border: 2px solid #ced4da;
+    padding: 3px 8px 5px 8px;
+    border-radius: 2px;
+    &:hover{
+        background-color: #bdc2c7;
+        border: 2px solid #bdc2c7;
+        color: white;
+    }
+    &:active{
+        background-color:#b1b4b8;
+    }
+}

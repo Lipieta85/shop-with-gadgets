@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import "../../assets/styles/basket-summary.scss";
 
 const BasketSummary = () => {
     const total = useSelector(state => state.cartReducer.total);
     const items = useSelector(state => state.cartReducer.addedItems);
-
     let currency = [];
     if (items) {
         items.map(item => {
@@ -15,7 +13,7 @@ const BasketSummary = () => {
         });
     }
 
-    return (
+    return items.length!==0?(
         <div className="row basket-summary collection-item mt-1">
             <div className="col-sm-12 offset-md-4 col-md-8 p-0 summary-row">
                 <div className="list-unstyled summary-p">
@@ -29,7 +27,7 @@ const BasketSummary = () => {
                 </div>
             </div>
         </div>
-    );
+    ):''
 };
 
 export default BasketSummary;
