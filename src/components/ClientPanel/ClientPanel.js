@@ -100,8 +100,13 @@ const ClientPanel = props => {
                                       </strong>
                                   </p>
                                   <span className="card-available-quantity">
-                                      Dostępna ilość: {item.availability}{" "}
-                                      {item.product.uom_primary}
+                                      {item.availability===0?
+                                        <span className="f-09 availability-alert">Niedostępny</span>
+                                      :
+                                        <>
+                                            <span className="f-09">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
+                                        </>
+                                      }
                                   </span>
                                   <div className="buttons-container row d-flex align-items-center">
                                       <ButtonInput

@@ -81,37 +81,39 @@ const Button = props => {
     };
 
     return (
-        <>
-            <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
-                {props.availabaleItemQuantity===0?(
+        <> 
+            {props.availabaleItemQuantity===0?(
+                <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
                     <span className='availability-check unselectable'>Powiadom</span>
-                ):(<>
-                        <input
-                            type="number"
-                            ref={input}
-                            className="form-control product-input basket-quantity-input"
-                            id={props.itemId}
-                            defaultValue={productQuantity.id}
-                            onChange={changeQuantityHandler}
-                            min="0"
-                        /><span className="font-weight-bold ml-1">szt.</span>
-                    </>
-                )}
-            </div>
-            <div className="product-basket-icon col-5 p-0">
-                <FontAwesomeIcon
-                    icon={faShoppingBasket}
-                    size="2x"
-                    color={
-                        props.availabaleItemQuantity === 0
-                            ? "#e2e2e2"
-                            : "#a0a3a6"
-                    }
-                    onClick={dispatchHandler}
-                    cursor="pointer"
-                    className="icon-anim"
-                />
-            </div>
+                </div>
+            ):( <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
+                    <input
+                        type="number"
+                        ref={input}
+                        className="form-control product-input basket-quantity-input"
+                        id={props.itemId}
+                        defaultValue={productQuantity.id}
+                        onChange={changeQuantityHandler}
+                        min="0"
+                    /><span className="font-weight-bold ml-1">szt.</span>
+                </div>
+            )}
+            {props.availabaleItemQuantity!==0?
+                <div className="product-basket-icon col-5 p-0">
+                    <FontAwesomeIcon
+                        icon={faShoppingBasket}
+                        size="2x"
+                        color={
+                            props.availabaleItemQuantity === 0
+                                ? "#e2e2e2"
+                                : "#a0a3a6"
+                        }
+                        onClick={dispatchHandler}
+                        cursor="pointer"
+                        className="icon-anim"
+                    />
+                </div>
+            :''} 
         </>
     );
 };
