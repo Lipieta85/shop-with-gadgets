@@ -12,8 +12,13 @@
         //     color: #ccc;
         // }
     }
+    li{
+        margin-bottom: 10px;
+    }
     .summary-table{
         width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
         .table-row:nth-child(even){
             background-color: rgb(242, 242, 242);
         }
@@ -83,8 +88,14 @@
                 margin: 5px;
             }
         }
+        ol{
+            padding-left: 15px;
+        }
     }
     @media (max-width:400px){
+        ol{
+            padding-left: 15px;
+        }
         .summary-table{
             td,th{
                 padding: 2px;
@@ -107,8 +118,8 @@
         h4{
             font-size: 20px;
         }
-        .summary-table{
-
+        ol{
+            padding-left: 20px;
         }
     }
 }

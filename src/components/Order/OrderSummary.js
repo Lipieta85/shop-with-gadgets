@@ -16,6 +16,9 @@ const OrderSummary = () => {
     );
     const [checkBoxText] = useState("Budżet maretingowy");
 
+    const budgetOrder = true;
+    const orderIsFirst = true;
+
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
@@ -37,33 +40,23 @@ const OrderSummary = () => {
             currency.push(item.price.currency);
             return (
                 <tr key={item.product.id} className='table-row'>
-                    <td className="">
-                        <div className="">
-                            <img src={item.images.length? item.images[0].small: defImg}
-                                alt="item"
-                                className="summary-img"
-                            />
+                    <td>
+                        <img src={item.images.length? item.images[0].small: defImg}
+                            alt="item"
+                            className="summary-img"
+                        />
                         <span className="text-uppercase">
                             {item.product.description1}
                         </span>
-                        </div>
                     </td>
                     <td>
-                        <span className="">
-                            {item.price.price}{" "}
-                            {item.price.currency}
-                        </span>
+                        {item.price.price}{" "}
+                        {item.price.currency}
                     </td>    
+                    <td>{item.quantity}</td>  
                     <td>
-                        <span className="">
-                            {item.quantity}
-                        </span>
-                    </td>  
-                    <td>
-                        <span className="">
-                            {item.itemTotalPrice}{" "}
-                            {item.price.currency}
-                        </span>
+                        {item.itemTotalPrice}{" "}
+                        {item.price.currency}
                     </td>                               
                 </tr>
             );
@@ -77,7 +70,21 @@ const OrderSummary = () => {
             <div className="container">
                 <h2>Podsumowanie zamówienia</h2>
                 <hr />
-                <p className="order-summary-text">1. Zamówione produkty:</p>
+                <ol>
+                {budgetOrder&&orderIsFirst?
+                    <li className="order-summary-text">Wartość Twojego budżetu: 
+                        <span className="summary-text-value font-weight-bold text-uppercase">
+                            {} {products[0].price.currency}
+                        </span>
+                    </li>
+                :<></>
+                }
+                {budgetOrder&&!orderIsFirst?
+                    <li className="order-summary-text">Wartość dostępnego budżetu: </li>
+                :<></>
+                }
+                <li className="order-summary-text">Zamówione produkty:</li>
+                </ol>
                 <table className="summary-table">
                     <thead>
                         <tr className="summary-header">
@@ -91,30 +98,41 @@ const OrderSummary = () => {
                         {addedItems}
                     </tbody> 
                 </table>
-                <p className="order-summary-text mt-4">
-                    2. Kwota do zapłaty:{" "}
-                    <span className="summary-text-value font-weight-bold text-uppercase">
-                        {total} {products[0].price.currency}
-                    </span>
-                </p>
-                <p className="order-summary-text">
-                    3. Adres dostawy:{" "}
-                    <span className="summary-text-value font-weight-bold text-uppercase">
-                        {orderSelectInputValue}
-                    </span>
-                </p>
+                <ol start={budgetOrder?3:2}>
+                    <li className="order-summary-text">
+                        {budgetOrder?'Wartość zamówienia: ':'Kwota do zapłaty: '}
+                        <span className="summary-text-value font-weight-bold text-uppercase">
+                            {total} {products[0].price.currency}
+                        </span>
+                    </li>
+                    {budgetOrder?
+                        <li className="order-summary-text">
+                            Pozostało do wykorzystania:
+                            <span className="summary-text-value font-weight-bold text-uppercase">
+                                {} {products[0].price.currency}
+                            </span>
+                        </li> 
+                    :<></>
+                    }
+                    <li className="order-summary-text">
+                        Adres dostawy:{" "}
+                        <span className="summary-text-value font-weight-bold text-uppercase">
+                            {orderSelectInputValue}
+                        </span>
+                    </li>
+                    <li className="order-summary-text">
+                        Typ zamówienia:{" "}
+                        <span className="summary-text-value font-weight-bold text-uppercase">
+                            {checkBoxText}
+                        </span>
+                    </li>
+                </ol>
                 {/* <p className="order-summary-text">
                     4. Numer zamówienia Klienta:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">
                         {orderInputState}
                     </span>
-                </p> */}
-                <p className="order-summary-text">
-                    5. Typ zamówienia:{" "}
-                    <span className="summary-text-value font-weight-bold text-uppercase">
-                        {checkBoxText}
-                    </span>
-                </p>
+                </p> */}  
                 <hr />
                 <div className="d-flex flex-wrap justify-content-between">
                     <Link
