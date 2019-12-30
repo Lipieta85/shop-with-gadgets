@@ -1,20 +1,28 @@
 .availability-check{
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     height: 34px;
     display: flex;
-    color: #a0a3a6;
+    color: white;
+    background-color: #a0a3a6;
     align-items: center;
+    justify-content: center;
     transition: 0.3s;
-    border: 2px solid #ced4da;
+    border: 2px solid #a0a3a6;
     padding: 3px 8px 5px 8px;
-    border-radius: 2px;
+    border-radius: 1px;
+    width: 100%;
+    /* margin-left: 1.2rem;
+    margin-right: 1.2rem; */
+    margin: 0;
+    border-right: none;
+    border-left: none;
+    height: 50px;
     &:hover{
-        background-color: #bdc2c7;
-        border: 2px solid #bdc2c7;
-        color: white;
+        background-color: #96989b;
+        border: 2px solid #96989b;
     }
     &:active{
-        background-color:#b1b4b8;
+        background-color:#96989b;
     }
 }

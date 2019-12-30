@@ -40,7 +40,6 @@ export const addItemToBasket = (
         let company = getState().clientDataReducer.companyId;
         let companyId = company.charAt(0).toUpperCase();
         let clientData = getState().clientDataReducer.clientData;
-
         let adressess = [];
         let deliveryAddress = [];
 
