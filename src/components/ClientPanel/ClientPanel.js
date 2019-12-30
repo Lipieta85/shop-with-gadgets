@@ -66,6 +66,9 @@ const ClientPanel = props => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
                       <div className="card" key={item.product.id}>
+                          {/* <div className="card-label-box">
+                              <div className="card-label">Nowość</div>
+                          </div> */}
                           <Link to={`/product/${item.product.id}`}>
                               <div className="card-img d-flex align-items-center pt-3 px-3">
                                   <div className="card-img-wrapper">
