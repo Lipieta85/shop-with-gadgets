@@ -44,15 +44,15 @@ export const addItemToBasket = (
         let deliveryAddress = [];
 
         if (clientData) {
-            /* clientData.map(data =>
+            clientData.map(data =>
                 adressess.push(data.getWixClientData.deliveryAddresses[0]),
             );
             mapKeys(adressess[0], function(value, key) {
                 return deliveryAddress.push({ key: value });
-            }); EDIT*/
+            });
         }
 
-        let delivery = /* deliveryAddress[0].key; */"test"
+        let delivery = deliveryAddress[0].key;
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
