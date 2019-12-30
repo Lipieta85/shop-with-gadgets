@@ -36,65 +36,36 @@ const OrderSummary = () => {
         products.map(item => {
             currency.push(item.price.currency);
             return (
-                <li
-                    className="row nav-item collection-item d-flex"
-                    key={item.product.id}
-                >
-                    <div className="col-sm-4 d-flex align-items-center text-center">
-                        <div className="item-img p-1">
-                            <img
-                                src={
-                                    item.images.length
-                                        ? item.images[0].small
-                                        : defImg
-                                }
+                <tr key={item.product.id} className='table-row'>
+                    <td className="">
+                        <div className="">
+                            <img src={item.images.length? item.images[0].small: defImg}
                                 alt="item"
-                                className="item-summary-img w-50 p-2"
+                                className="summary-img"
                             />
+                        <span className="text-uppercase">
+                            {item.product.description1}
+                        </span>
                         </div>
-                    </div>
-
-                    <div className="col-sm-8 desc-col summary-item-info d-flex align-items-center mb-1">
-                        <div
-                            className="item-desc mt-2"
-                            style={{ minHeight: "70px" }}
-                        >
-                            <h4 className="title text-uppercase">
-                                {item.product.description1}
-                            </h4>
-                            <div>
-                                <div className="d-flex flex-wrap justify-content-between">
-                                    <div>
-                                        <b>
-                                            Cena:{" "}
-                                            <span className="order-text-value">
-                                                {item.price.price}{" "}
-                                                {item.price.currency}
-                                            </span>
-                                        </b>
-                                    </div>
-                                    <div className="add-remove">
-                                        <span className="mx-3 mb-4">
-                                            <b>Ilość: </b>
-                                            <b className="order-text-value">
-                                                {item.quantity}
-                                            </b>
-                                        </span>
-                                    </div>
-                                    <div className="add-remove">
-                                        <span className="mr-3 mb-3">
-                                            <b>Razem: </b>
-                                            <b className="order-text-value">
-                                                {item.itemTotalPrice}{" "}
-                                                {item.price.currency}
-                                            </b>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </td>
+                    <td>
+                        <span className="">
+                            {item.price.price}{" "}
+                            {item.price.currency}
+                        </span>
+                    </td>    
+                    <td>
+                        <span className="">
+                            {item.quantity}
+                        </span>
+                    </td>  
+                    <td>
+                        <span className="">
+                            {item.itemTotalPrice}{" "}
+                            {item.price.currency}
+                        </span>
+                    </td>                               
+                </tr>
             );
         })
     ) : (
@@ -107,7 +78,19 @@ const OrderSummary = () => {
                 <h2>Podsumowanie zamówienia</h2>
                 <hr />
                 <p className="order-summary-text">1. Zamówione produkty:</p>
-                <div className="m-2">{addedItems}</div>
+                <table className="summary-table">
+                    <thead>
+                        <tr className="summary-header">
+                            <th>Nazwa produktu</th>
+                            <th>Cena</th>
+                            <th>Ilość</th>
+                            <th>Razem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {addedItems}
+                    </tbody> 
+                </table>
                 <p className="order-summary-text mt-4">
                     2. Kwota do zapłaty:{" "}
                     <span className="summary-text-value font-weight-bold text-uppercase">

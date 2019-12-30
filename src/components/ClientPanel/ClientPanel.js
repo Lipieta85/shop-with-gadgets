@@ -85,7 +85,7 @@ const ClientPanel = props => {
                               </div>
                           </Link>
                           <hr />
-                          <div className="card-body pt-0 pb-2 px-1">
+                          <div className="card-body pt-0 pb-0 px-0">
                               <div
                                   className="card-title-container"
                                   style={{ minHeight: "50px" }}
@@ -102,25 +102,25 @@ const ClientPanel = props => {
                                           {item.product.uom_primary}
                                       </strong>
                                   </p>
-                                  <span className="card-available-quantity">
-                                      {item.availability===0?
-                                        <span className="f-09 availability-alert">Niedostępny</span>
-                                      :
-                                        <>
+                                    {item.availability===0?
+                                        <div className="card-available-quantity pb-2">
+                                            <span className="f-09 availability-alert">Niedostępny</span>
+                                        </div>
+                                    :
+                                        <div className="card-available-quantity pb-1">
                                             <span className="f-09">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
-                                        </>
-                                      }
-                                  </span>
-                                  <div className="buttons-container row d-flex align-items-center">
-                                      <ButtonInput
-                                          itemId={item.product.id}
-                                          availabaleItemQuantity={
-                                              item.availability
-                                          }
-                                          itemUnit={item.product.uom_primary}
-                                          token={token}
-                                      />
-                                  </div>
+                                        </div>
+                                    }
+                                    <div className="buttons-container row d-flex align-items-center mt-2">
+                                        <ButtonInput
+                                            itemId={item.product.id}
+                                            availabaleItemQuantity={
+                                                item.availability
+                                            }
+                                            itemUnit={item.product.uom_primary}
+                                            token={token}
+                                        />
+                                    </div>
                               </div>
                           </div>
                       </div>

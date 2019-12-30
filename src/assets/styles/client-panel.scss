@@ -10,12 +10,18 @@ $gray: #a0a3a6;
     padding: 90px 10px 0 10px;
     .card-container {
         .card {
+            overflow: hidden;
             border: none;
+            height: 364px;
             border-radius: 0;
             box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
             .card-body{
+                .card-title{
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
                 .availability-alert{
-                    color: #d81e1e;;
+                    color: #d81e1e;
                 }
             }
             .card-label-box{
@@ -93,6 +99,9 @@ $gray: #a0a3a6;
 }
 
 @media (max-width: 450px) {
+    .card{
+        height: 278px !important;
+    }
     .client-panel {
         margin-top: 20px;
     }
@@ -100,7 +109,7 @@ $gray: #a0a3a6;
         padding: 50px 0px;
         .container-fluid {
             .buttons-container {
-                padding-left: 8px;
+                padding-left: 0px;
                 .product-input {
                     font-size: 11px;
                     width: 60px;

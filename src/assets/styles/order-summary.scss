@@ -12,12 +12,51 @@
         //     color: #ccc;
         // }
     }
+    .summary-table{
+        width: 100%;
+        .table-row:nth-child(even){
+            background-color: rgb(242, 242, 242);
+        }
+        .table-row:nth-child(odd){
+            background-color: rgb(255, 255, 255);
+        }
+        th{
+            padding-left: 5px;
+        }
+        td{
+            border-right: 1px solid #e1e1e1;
+            padding-left: 5px;
+        }
+        .summary-header{
+            background-color: gray;
+            color: white;
+            height: 40px;
+            padding: 5px 5px;
+        }
+        .summary-img{
+            margin: 10px;
+            width:80px;
+            margin-right:20px;
+        }
+    }
 }
 // .order-text-value {
 //     color: #CCC;
 // }
 .order-summary {
-    @media (max-width:450px){
+    @media (max-width:991px){
+        .summary-table{
+            td,th{
+                padding: 2px;
+                font-size: 13px;
+            }   
+            .summary-img{
+                width: 70px;
+                margin: 5px;
+            }
+        }
+    }
+    @media (max-width:550px){
         .btn{
             width: 100%;
             margin-right:0;
@@ -34,8 +73,30 @@
         h2{
             font-size:22px;
         }
+        .summary-table{
+            td,th{
+                padding: 2px;
+                font-size: 11px;
+            }   
+            .summary-img{
+                width: 50px;
+                margin: 5px;
+            }
+        }
     }
-    @media (min-width:451px){
+    @media (max-width:400px){
+        .summary-table{
+            td,th{
+                padding: 2px;
+                font-size: 9px;
+            }   
+            .summary-img{
+                width: 50px;
+                margin: 3px;
+            }
+        }
+    }
+    @media (min-width:551px){
         .btn{
             margin-top:1.5rem;
             margin-bottom:2rem;
@@ -45,6 +106,9 @@
         }
         h4{
             font-size: 20px;
+        }
+        .summary-table{
+
         }
     }
 }

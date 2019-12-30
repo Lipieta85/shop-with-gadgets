@@ -84,7 +84,7 @@ const Button = props => {
         <> 
             {props.availabaleItemQuantity===0?(
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
-                    <span className='availability-check unselectable'>Powiadom</span>
+                    <span className='availability-check unselectable'>Powiadom o dostępności</span>
                 </div>
             ):( <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                     <input
