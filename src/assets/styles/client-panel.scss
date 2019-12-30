@@ -58,14 +58,14 @@ $gray: #a0a3a6;
         .page-item{
             &:hover{
                 .page-link {
-                    border: 2px solid #035899 !important;
+                    border: 2px solid $gray !important;
                 }
             }
         }
         .page-item.active {
             .page-link {
-                background-color: $blue;
-                border-color: $blue;
+                background-color: $gray;
+                border-color: $gray;
             }
         }
     }
