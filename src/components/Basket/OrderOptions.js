@@ -9,6 +9,7 @@ import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
+    const total = useSelector(state => state.cartReducer.total);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
@@ -33,7 +34,7 @@ const OrderOptions = () => {
     useEffect(() => {
         setSelectInputValue(
             deliveryData[0].getWixClientData.deliveryAddresses[0].name,
-        ); EDIT
+        );
         //eslint-disable-next-line
     }, [selectStoreState]);
 
@@ -122,7 +123,7 @@ const OrderOptions = () => {
                     onClick={orderConfirmHandler} 
                     style={{padding:0}}
                 >
-                    {addedItems.length===0?
+                    {addedItems.length===0||(+total)>(+budget)?
                         <button disabled className="order-button">Złóż zamówienie</button>
                     :
                         <button className="order-button">Złóż zamówienie</button>

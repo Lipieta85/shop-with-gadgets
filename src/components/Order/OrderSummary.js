@@ -33,7 +33,6 @@ const OrderSummary = () => {
             return dispatch(productsToOrder(basketProducts));
         });
     }
-
     let currency = [];
     let addedItems = products.length ? (
         products.map(item => {

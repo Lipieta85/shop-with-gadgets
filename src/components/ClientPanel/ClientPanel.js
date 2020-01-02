@@ -25,10 +25,10 @@ import {
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    const pagination = useSelector(state => state.cartReducer.pagination);
+    let pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
-
+    pagination = {totalPages:7}//EDIT
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
@@ -66,10 +66,12 @@ const ClientPanel = props => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
                       <div className="card" key={item.product.id}>
-                          {i===0||i===6?//TEST
+                          {i===0||i===6?//item.promotion czy cos
                             <>
                                 <div className="card-label-box">
-                                    <div className="card-label">Nowość</div>
+                                    <div className="card-label">
+                                        <div className="label-textarea unselectable">Nowość</div>
+                                    </div>
                                 </div>
                             </>:''
                           }
@@ -108,11 +110,12 @@ const ClientPanel = props => {
                                   </p>
                                     {item.availability===0?
                                         <div className="card-available-quantity pb-2">
-                                            <span className="f-09 availability-alert">Niedostępny</span>
+                                            <span className="quantity availability-alert">Niedostępny</span>
                                         </div>
                                     :
                                         <div className="card-available-quantity pb-1">
-                                            <span className="f-09">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
+                                            <span className="quantity m-desktop">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
+                                            <span className="quantity m-mobile">Dostępnych: {item.availability}{" "}{item.product.uom_primary}</span>
                                         </div>
                                     }
                                     <div className="buttons-container row d-flex align-items-center mt-2">

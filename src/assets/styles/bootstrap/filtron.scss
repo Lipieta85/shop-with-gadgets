@@ -27,11 +27,12 @@ $navbar-light-hover-color: black;
 }
 .btn-outline-primary{
     border-radius:1px;
+    border-width: .1rem;
 }
 // No color change on click
 .primary-no-action{
     outline: none;
-    border: 2px solid #ced4da;
+    border: 0.1rem solid #ced4da;
     border-radius: 4px;
 }
 .btn{
@@ -59,4 +60,20 @@ input[type=number] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+@media (max-width:450px){
+    .m-desktop{
+        display: none!important;
+    }
+    .m-mobile{
+        display: block!important;
+    }
+}
+@media (min-width:450px){
+    .m-desktop{
+        display: block!important;
+    }
+    .m-mobile{
+        display: none!important;
+    }
 }
