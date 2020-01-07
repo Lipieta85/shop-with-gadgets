@@ -66,13 +66,15 @@ const ClientPanel = props => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
                       <div className="card" key={item.product.id}>
-                          {i===0||i===6?//TEST
-                            <>
-                                <div className="card-label-box">
-                                    <div className="card-label">Nowość</div>
-                                </div>
-                            </>:''
-                          }
+                          {i === 0 || i === 6 ? ( //TEST
+                              <>
+                                  <div className="card-label-box">
+                                      <div className="card-label">Nowość</div>
+                                  </div>
+                              </>
+                          ) : (
+                              ""
+                          )}
                           <Link to={`/product/${item.product.id}`}>
                               <div className="card-img d-flex align-items-center pt-3 px-3">
                                   <div className="card-img-wrapper">
@@ -106,25 +108,31 @@ const ClientPanel = props => {
                                           {item.product.uom_primary}
                                       </strong>
                                   </p>
-                                    {item.availability===0?
-                                        <div className="card-available-quantity pb-2">
-                                            <span className="f-09 availability-alert">Niedostępny</span>
-                                        </div>
-                                    :
-                                        <div className="card-available-quantity pb-1">
-                                            <span className="f-09">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
-                                        </div>
-                                    }
-                                    <div className="buttons-container row d-flex align-items-center mt-2">
-                                        <ButtonInput
-                                            itemId={item.product.id}
-                                            availabaleItemQuantity={
-                                                item.availability
-                                            }
-                                            itemUnit={item.product.uom_primary}
-                                            token={token}
-                                        />
-                                    </div>
+                                  {item.availability === 0 ? (
+                                      <div className="card-available-quantity pb-2">
+                                          <span className="f-09 availability-alert">
+                                              Niedostępny
+                                          </span>
+                                      </div>
+                                  ) : (
+                                      <div className="card-available-quantity pb-1">
+                                          <span className="f-09">
+                                              Dostępna ilość:{" "}
+                                              {item.availability}{" "}
+                                              {item.product.uom_primary}
+                                          </span>
+                                      </div>
+                                  )}
+                                  <div className="buttons-container row d-flex align-items-center mt-2">
+                                      <ButtonInput
+                                          itemId={item.product.id}
+                                          availabaleItemQuantity={
+                                              item.availability
+                                          }
+                                          itemUnit={item.product.uom_primary}
+                                          token={token}
+                                      />
+                                  </div>
                               </div>
                           </div>
                       </div>

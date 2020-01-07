@@ -1,4 +1,5 @@
 import * as type from "../actions/types";
+import host2 from "../api/host2";
 import { mapKeys } from "lodash";
 import {
     postProduct,
@@ -31,6 +32,7 @@ export const addItemToBasket = (
     token,
     quantityLocation,
 ) => {
+    let newProductQuantity = productQuantity;
     let productAmount = Object.values(productQuantity);
     let productNumber = String(productAmount[0]);
 
@@ -69,10 +71,14 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
-                    if (existed_item) {
-                        dispatch(addIfItemExist(id, productQuantity));
+                    if (res.data.addProduct.error) {
+                        window.location.replace(`${host2}/404`);
                     } else {
-                        dispatch(addIfItemEmpty(id, productQuantity));
+                        if (existed_item) {
+                            dispatch(addIfItemExist(id, productQuantity));
+                        } else {
+                            dispatch(addIfItemEmpty(id, productQuantity));
+                        }
                     }
                 })
                 .catch(error => {
@@ -83,7 +89,7 @@ export const addItemToBasket = (
             dispatch(
                 changeBasketQuantity(
                     id,
-                    productQuantity,
+                    newProductQuantity,
                     unit,
                     token,
                     quantityLocation,
@@ -93,11 +99,15 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
-                    dispatch(addBasketId(res.data.create.order.id_orders));
-                    if (existed_item) {
-                        dispatch(addIfItemExist(id, productQuantity));
+                    if (!res.data.create.order) {
+                        window.location.replace(`${host2}/404`);
                     } else {
-                        dispatch(addIfItemEmpty(id, productQuantity));
+                        dispatch(addBasketId(res.data.create.order.id_orders));
+                        if (existed_item) {
+                            dispatch(addIfItemExist(id, productQuantity));
+                        } else {
+                            dispatch(addIfItemEmpty(id, productQuantity));
+                        }
                     }
                 })
                 .catch(error => {
@@ -150,15 +160,31 @@ export const changeBasketQuantity = (
     quantityLocation,
 ) => {
     return (dispatch, getState) => {
+        let changedProductAmount = newProductAmount;
+
+        let value = Number(Object.values(changedProductAmount).join(""));
+
         let basketId = getState().cartReducer.basket;
-        //let addedItems = getState().cartReducer.addedItems;
+        let addedItems = getState().cartReducer.addedItems;
         let company = getState().clientDataReducer.companyId;
         let companyId = company.charAt(0).toUpperCase();
         let clientData = getState().clientDataReducer.clientData;
+        let addedItem = addedItems.find(item => item.product.id === productId);
+        let amount = 0;
+        if (quantityLocation) {
+            amount = addedItem.quantity;
+            amount += value;
+            for (let key in changedProductAmount) {
+                changedProductAmount[key] = String(amount);
+            }
+        }
 
-        let productAmount = Object.values(newProductAmount);
+        let productAmount = Object.values(changedProductAmount);
 
-        let productNumber = String(productAmount[0]);
+        let productNumber = quantityLocation
+            ? String(amount)
+            : String(productAmount[0]);
+
         let adressess = [];
         let deliveryAddress = [];
 
@@ -172,7 +198,6 @@ export const changeBasketQuantity = (
         }
 
         let delivery = deliveryAddress[0].key;
-
         changeProduct(
             productId,
             productNumber,
@@ -184,19 +209,25 @@ export const changeBasketQuantity = (
             companyId,
         )
             .then(res => {
-                dispatch(changeBasketAmounts(productId, newProductAmount));
+                if (res.data.updateQuantity.error) {
+                    window.location.replace(`${host2}/404`);
+                } else {
+                    dispatch(
+                        changeBasketAmounts(productId, changedProductAmount),
+                    );
+                }
             })
             .catch(error => {
-                console.log(error);
+                window.location.replace(`${host2}/404`);
             });
     };
 };
 
-export const changeBasketAmounts = (productId, newProductAmount) => {
+export const changeBasketAmounts = (productId, changedProductAmount) => {
     return {
         type: type.CHANGE_BASKET_AMOUNTS,
         productId,
-        newProductAmount,
+        changedProductAmount,
     };
 };
 

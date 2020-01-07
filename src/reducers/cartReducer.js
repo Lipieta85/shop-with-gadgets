@@ -172,7 +172,7 @@ const cartReducer = (state = initialState, action) => {
             );
 
             let oldAddedItemQuantity = Number(addedItem3.quantity);
-            let addedValue3 = Object.values(action.newProductAmount);
+            let addedValue3 = Object.values(action.changedProductAmount);
             let addedValueNum3 = Number(addedValue3[0]);
 
             let oldItemTotal =
@@ -196,7 +196,7 @@ const cartReducer = (state = initialState, action) => {
                     2,
                 ),
                 items: state.items.map(item =>
-                    item.product.id === action.id
+                    item.product.id === action.productId
                         ? {
                               ...item,
 
