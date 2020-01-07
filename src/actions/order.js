@@ -51,11 +51,37 @@ export const createOrder = (token, items) => {
 
         postOrder(token, items, basketId, companyId, delivery)
             .then(res => {
+                if (res.data.create.errors === "") {
+                    dispatch(setOrderErrorFalse());
+                    dispatch(setOrderNumber(res.data.create.orderNumber));
+                } else {
+                    dispatch(setOrderErrorTrue());
+                }
                 dispatch(clearBasket());
             })
             .catch(error => {
                 console.log(error);
+                dispatch(setOrderErrorTrue());
             });
+    };
+};
+
+export const setOrderErrorFalse = () => {
+    return {
+        type: type.SET_ORDER_ERROR_FALSE,
+    };
+};
+
+export const setOrderErrorTrue = () => {
+    return {
+        type: type.SET_ORDER_ERROR_TRUE,
+    };
+};
+
+export const setOrderNumber = orderNum => {
+    return {
+        type: type.SET_ORDER_NUMBER,
+        number: orderNum,
     };
 };
 
@@ -67,7 +93,7 @@ export const clearBasket = () => {
 
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
-        const url = `${host}restApi/cart/method/getOrders/parameters/{“clientId”:182887}`;
+        const url = `${host}/restApi/order/method/getAll/parameters/{"clientId":16}`;
         axios({
             method: "get",
             url: url,
@@ -76,6 +102,7 @@ export const getClientOrdersHistory = token => {
             },
         })
             .then(res => {
+                console.log(res);
                 //dispatch(setClientOrderHistory(res))
             })
             .catch(error => {

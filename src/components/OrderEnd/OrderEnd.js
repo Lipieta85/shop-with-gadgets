@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../assets/styles/order-end.scss";
+import { useSelector } from "react-redux";
 import Spinner from "../UI/Spinner/Spinner";
 
+import "../../assets/styles/order-end.scss";
+
 const OrderEnd = () => {
+    const orderState = useSelector(state => state.orderReducer.setOrderError);
+    const orderNumber = useSelector(state => state.orderReducer.orderNumber);
+
+    const [confirmText, setConfirmText] = useState(
+        <h3>
+            Trwa przetwarzanie zamówienia. Proszę nie zamykać okna
+            przeglądarki...
+        </h3>,
+    );
+
+    useEffect(() => {
+        if (orderState === false) {
+            setConfirmText(
+                <h3>
+                    Twoje zamówienie o numerze {orderNumber} zostało przekazane
+                    do realizacji. W ciągu 15 minut otrzymasz potwierdzenie
+                    zamówienia na adres e-mail.
+                </h3>,
+            );
+        }
+
+        if (orderState === true) {
+            setConfirmText(
+                <h3>
+                    Twoje zamówienie nie zostało złożone z powodu błędu.
+                    Skontatkuj się ze swoim Opiekunem Klienta.
+                </h3>,
+            );
+        }
+    }, [orderState, orderNumber]);
+
     return (
         <div className="order-end text-center">
             <div className="order-end-box">
-                <h3>Twoje zamówienie zostało przekazane do realizacji</h3>
+                {confirmText}
                 <Spinner />
+
                 <Link to="/" className="btn btn-outline-primary mt-4">
                     {" "}
                     Wróć do sklepu
