@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 import defImg from "../../assets/images/default.jpg";
+import { Link } from "react-router-dom";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
@@ -25,6 +26,7 @@ const Basket = props => {
                     <div className="col-sm-3 d-flex text-center p-0 img-box">
                         <span className="item-number">{i + 1}.</span>
                         <div className="item-img white-bg w-100 h-100">
+                        <Link to={`/product/${item.product.id}`}>
                             <img
                                 src={
                                     item.images.length
@@ -34,7 +36,9 @@ const Basket = props => {
                                 alt="item"
                                 className="item-basket-img"
                             />
+                        </Link>
                         </div>
+                        
                     </div>
                     <div className="col-sm-9 col-md-8 desc-col">
                         <BasketButtons
@@ -50,9 +54,7 @@ const Basket = props => {
                 </li>
             );
         })
-    ) : (
-        <p className="emptyBasket">Twój koszyk jest pusty</p>
-    );
+    ) : ("");
     return <>{addedItems}</>;
 };
 

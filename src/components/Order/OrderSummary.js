@@ -34,7 +34,6 @@ const OrderSummary = () => {
             return dispatch(productsToOrder(basketProducts));
         });
     }
-
     let currency = [];
     let addedItems = products.length ? (
         products.map(item => {
@@ -50,7 +49,7 @@ const OrderSummary = () => {
                             }
                             alt="item"
                             className="summary-img"
-                        />
+                        /> 
                         <span className="text-uppercase">
                             {item.product.description1}
                         </span>

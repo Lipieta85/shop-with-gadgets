@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s;
-    border: 2px solid #a0a3a6;
+    border: 0.1rem solid #a0a3a6;
     padding: 3px 8px 5px 8px;
     border-radius: 1px;
     width: 100%;
@@ -20,7 +20,7 @@
     height: 50px;
     &:hover{
         background-color: #96989b;
-        border: 2px solid #96989b;
+        border: 0.1rem solid #96989b;
     }
     &:active{
         background-color:#96989b;
