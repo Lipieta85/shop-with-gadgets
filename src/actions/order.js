@@ -91,6 +91,25 @@ export const clearBasket = () => {
     };
 };
 
+export const getBudgetHistory = token => {
+    return () => {
+        axios({
+            method: "get",
+            url: `${host}/restApi/user/method/wixBudgetHistory`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
         const url = `${host}/restApi/order/method/getAll/parameters/{"clientId":16}`;

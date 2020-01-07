@@ -14,10 +14,11 @@ const Button = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
-
+    console.log(input);
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {
+        console.log(props.changeProduct);
         if (props.changeProduct) {
             input.current.value = 1;
             setProductQuantity({ id: 1 });
