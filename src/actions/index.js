@@ -15,6 +15,7 @@ export {
     orderSelectInputValue,
     addOrderData,
     createOrder,
+    getBudgetHistory,
     getClientOrdersHistory,
     setClientOrderHistory,
     productsToOrder,

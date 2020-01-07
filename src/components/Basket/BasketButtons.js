@@ -29,9 +29,14 @@ const BasketButtons = props => {
             ...productAmount,
             [input.current.id]: input.current.value,
         });
+
         inputValue.map(item => {
             if (input.current.id === item.product.id) {
-                if (input.current.value > item.availability) {
+                if (
+                    input.current.value >
+                    parseInt(item.availability, 10) +
+                        parseInt(input.current.value, 10)
+                ) {
                     setDisabled(true);
                 } else {
                     setDisabled(false);
