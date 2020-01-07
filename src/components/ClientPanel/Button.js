@@ -14,7 +14,6 @@ const Button = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
-
     const token = sessionStorage.getItem("token");
 
     useEffect(() => {

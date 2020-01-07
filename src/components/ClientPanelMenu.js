@@ -23,7 +23,7 @@ const ClientPanelMenu = () => {
     const [budgetAlert, setBudgetAlert] = useState("");
 
     let currency = [];
-    
+
     if (addedItems) {
         addedItems.map(item => {
             return currency.push(item.price.currency);

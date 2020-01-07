@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
-import { getClientOrdersHistory } from "../../actions/index";
+import { getClientOrdersHistory, getBudgetHistory } from "../../actions/index";
 import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
-
 const OrderHistory = () => {
     const dispatch = useDispatch();
     const orders = useSelector(state => state.orderReducer.historyOfBuy);
@@ -18,7 +17,8 @@ const OrderHistory = () => {
     const token = sessionStorage.getItem("token");
     
     useEffect(() => {
-        dispatch(getClientOrdersHistory(token))
+        dispatch(getClientOrdersHistory(token));
+        dispatch(getBudgetHistory(token));
     }, [token, dispatch]);
 
     const orderDetailHandler = selectedOrder => {
@@ -122,18 +122,20 @@ const OrderHistory = () => {
                 <div className="row">
                     <div className="col-12">
                         <h4 className="order-list ml-1">
-                            {orders.length===0?
+                            {orders.length === 0 ? (
                                 <>
                                     <h2>Lista zamówień jest pusta</h2>
                                     <Link
                                         to="/"
                                         className="btn btn-outline-primary mt-4"
-                                        >
+                                    >
                                         {" "}
                                         Wróć do sklepu
                                     </Link>
                                 </>
-                            :"Lista zamówień:"}
+                            ) : (
+                                "Lista zamówień:"
+                            )}
                         </h4>
                     </div>
                 </div>
