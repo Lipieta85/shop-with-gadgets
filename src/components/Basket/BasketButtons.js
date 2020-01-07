@@ -28,15 +28,8 @@ const BasketButtons = props => {
             ...productAmount,
             [input.current.id]: input.current.value,
         });
-        console.log(productAmount);
-        console.log(input.current.value);
 
         inputValue.map(item => {
-            console.log(item.availability);
-            // console.log(
-            //     parseInt(item.availability, 10) +
-            //         parseInt(input.current.value, 10),
-            // );
             if (input.current.id === item.product.id) {
                 if (
                     input.current.value >
