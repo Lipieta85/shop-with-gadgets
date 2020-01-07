@@ -64,7 +64,6 @@ const ClientPanel = props => {
         ? items.map((item, i) => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
-                      {console.log(item)}
                       <div className="card" key={item.product.id}>
                           {i===0||i===6?//item.promotion czy cos
                             <>
