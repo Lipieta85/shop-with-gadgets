@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,6 +12,9 @@ const ClientPanelMenu = () => {
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
+    const userName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.exId);
+    const companyName =useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.name);
+    
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
     );
@@ -62,7 +63,10 @@ const ClientPanelMenu = () => {
     return (
         <div className="client-panel">
             <div className="admin-panel__logged-panel">
-                <h4 className="logged-panel-header">Witaj</h4>
+                <div className="logged-panel-header">
+                    <div>Zalogowany: {userName} ({companyName})</div>
+                </div>
+                <div className="divider"></div>
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
                         <Link

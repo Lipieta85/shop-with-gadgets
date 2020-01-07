@@ -47,9 +47,9 @@ const OrderOptions = () => {
         });
     };
 
-    // const selectValueHandler = event => {
-    //     setSelectInputValue(event.target.value);
-    // };
+     const selectValueHandler = event => {
+         setSelectInputValue(event.target.value);
+     };
 
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
@@ -64,7 +64,7 @@ const OrderOptions = () => {
         <div className="order-options">
             <h4 className="options-header">Wybierz adres dostawy</h4>
             <div className="input-group mb-3">
-                {/* <select
+                {<select
                     className="custom-select"
                     id="inputGroupSelect02"
                     onChange={selectValueHandler}
@@ -79,7 +79,7 @@ const OrderOptions = () => {
                             );
                         },
                     )}
-                </select> */}
+                </select>}
             </div>
             <hr />
             <div className="order-type invisible" style={{ height: "0" }}>
@@ -127,7 +127,7 @@ const OrderOptions = () => {
                     onClick={orderConfirmHandler}
                     style={{ padding: 0 }}
                 >
-                    {addedItems.length===0||(+total)>(+budget)?
+                    {addedItems.length===0/* ||(+total)>(+budget) */?
                         <button disabled className="order-button">Złóż zamówienie</button>
                     :
                         <button className="order-button">Złóż zamówienie</button>

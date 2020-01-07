@@ -55,10 +55,10 @@ export default withRouter(function App({ location }, props) {
                 getUserData(res.data.token).then(res => {
                     dispatch(
                         setBudget(
-                            res.data.getWixClientData.budget
-                                ? res.data.getWixClientData.budget
-                                : "",
-                            //Number(20000),
+                           // res.data.getWixClientData.budget
+                            //    ? res.data.getWixClientData.budget
+                            //    : "",
+                            Number(20000),
                         ),
                     );
                     dispatch(setToken(token));

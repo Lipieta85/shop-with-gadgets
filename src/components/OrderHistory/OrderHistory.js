@@ -16,7 +16,7 @@ const OrderHistory = () => {
     let selectedOrderView;
 
     const token = sessionStorage.getItem("token");
-
+    
     useEffect(() => {
         dispatch(getClientOrdersHistory(token))
     }, [token, dispatch]);

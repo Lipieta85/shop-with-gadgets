@@ -93,7 +93,7 @@ export const clearBasket = () => {
 
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
-        const url = `${host}/restApi/order/method/getAll/parameters/{"clientId":16}`;
+        const url = `${host}/restApi/order/method/getAll/parameters/{"clientId":15}`;
         axios({
             method: "get",
             url: url,
