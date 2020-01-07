@@ -32,9 +32,9 @@ const OrderOptions = () => {
     }, [budget]);
 
     useEffect(() => {
-        /* setSelectInputValue(
+        setSelectInputValue(
             deliveryData[0].getWixClientData.deliveryAddresses[0].name,
-        ); */
+        );
         //eslint-disable-next-line
     }, [selectStoreState]);
 
@@ -47,9 +47,9 @@ const OrderOptions = () => {
         });
     };
 
-    const selectValueHandler = event => {
-        setSelectInputValue(event.target.value);
-    };
+    // const selectValueHandler = event => {
+    //     setSelectInputValue(event.target.value);
+    // };
 
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
@@ -72,7 +72,11 @@ const OrderOptions = () => {
                 >
                     {deliveryData[0].getWixClientData.deliveryAddresses.map(
                         (data, key) => {
-                            return <option value={data.id}>{data.name}</option>;
+                            return (
+                                <option key={data.id} value={data.id}>
+                                    {data.name}
+                                </option>
+                            );
                         },
                     )}
                 </select> */}
@@ -120,8 +124,8 @@ const OrderOptions = () => {
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
                     className="btn mt-1 w-100 button-parent"
-                    onClick={orderConfirmHandler} 
-                    style={{padding:0}}
+                    onClick={orderConfirmHandler}
+                    style={{ padding: 0 }}
                 >
                     {addedItems.length===0||(+total)>(+budget)?
                         <button disabled className="order-button">Złóż zamówienie</button>

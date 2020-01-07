@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductCategories, initProducts } from "../../actions/index";
+import host from "../../api/host";
 
 const NavMenu = () => {
     const id = useSelector(state => state.cartReducer.productsCategory);
@@ -179,7 +180,7 @@ const NavMenu = () => {
                                 <a
                                     className="nav-link"
                                     onClick={onSignout}
-                                    href="https://mh-ecommerce-dev.bpower2.com/index.php/site/desktop"
+                                    href={`${host}site/desktop`}
                                 >
                                     Wyloguj
                                 </a>

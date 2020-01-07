@@ -58,6 +58,7 @@ export default withRouter(function App({ location }, props) {
                             res.data.getWixClientData.budget
                                 ? res.data.getWixClientData.budget
                                 : "",
+                            //Number(20000),
                         ),
                     );
                     dispatch(setToken(token));
@@ -70,7 +71,7 @@ export default withRouter(function App({ location }, props) {
     }
 
     useEffect(() => {
-        if (!location.search) {
+        if (!location.search && window.location.pathname !== `/404`) {
             if (sessionStorage.getItem("token") === null) {
                 window.location.replace(`${host}site/desktop`);
             }

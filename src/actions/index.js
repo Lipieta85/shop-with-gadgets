@@ -19,6 +19,9 @@ export {
     setClientOrderHistory,
     productsToOrder,
     clearBasket,
+    setOrderErrorTrue,
+    setOrderErrorFalse,
+    setOrderNumber,
 } from "./order.js";
 
 export {

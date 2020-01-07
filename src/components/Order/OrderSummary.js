@@ -6,6 +6,7 @@ import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
 
 const OrderSummary = () => {
+    const items = useSelector(state => state.cartReducer.items);
     const products = useSelector(state => state.cartReducer.addedItems);
     const productsOrdered = useSelector(
         state => state.cartReducer.productsToOrder,
@@ -38,9 +39,14 @@ const OrderSummary = () => {
         products.map(item => {
             currency.push(item.price.currency);
             return (
-                <tr key={item.product.id} className='table-row'>
+                <tr key={item.product.id} className="table-row">
                     <td>
-                        <img src={item.images.length? item.images[0].small: defImg}
+                        <img
+                            src={
+                                item.images.length
+                                    ? item.images[0].small
+                                    : defImg
+                            }
                             alt="item"
                             className="summary-img"
                         /> 
@@ -49,14 +55,12 @@ const OrderSummary = () => {
                         </span>
                     </td>
                     <td>
-                        {item.price.price}{" "}
-                        {item.price.currency}
-                    </td>    
-                    <td>{item.quantity}</td>  
+                        {item.price.price} {item.price.currency}
+                    </td>
+                    <td>{item.quantity}</td>
                     <td>
-                        {item.itemTotalPrice}{" "}
-                        {item.price.currency}
-                    </td>                               
+                        {item.itemTotalPrice} {item.price.currency}
+                    </td>
                 </tr>
             );
         })
@@ -70,19 +74,24 @@ const OrderSummary = () => {
                 <h2>Podsumowanie zamówienia</h2>
                 <hr />
                 <ol>
-                {budgetOrder&&orderIsFirst?
-                    <li className="order-summary-text">Wartość Twojego budżetu: 
-                        <span className="summary-text-value font-weight-bold text-uppercase">
-                            {} {products[0].price.currency}
-                        </span>
-                    </li>
-                :<></>
-                }
-                {budgetOrder&&!orderIsFirst?
-                    <li className="order-summary-text">Wartość dostępnego budżetu: </li>
-                :<></>
-                }
-                <li className="order-summary-text">Zamówione produkty:</li>
+                    {budgetOrder && orderIsFirst ? (
+                        <li className="order-summary-text">
+                            Wartość Twojego budżetu:
+                            <span className="summary-text-value font-weight-bold text-uppercase">
+                                {} {items[0].price.currency}
+                            </span>
+                        </li>
+                    ) : (
+                        <></>
+                    )}
+                    {budgetOrder && !orderIsFirst ? (
+                        <li className="order-summary-text">
+                            Wartość dostępnego budżetu:{" "}
+                        </li>
+                    ) : (
+                        <></>
+                    )}
+                    <li className="order-summary-text">Zamówione produkty:</li>
                 </ol>
                 <table className="summary-table">
                     <thead>
@@ -93,26 +102,27 @@ const OrderSummary = () => {
                             <th>Razem</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {addedItems}
-                    </tbody> 
+                    <tbody>{addedItems}</tbody>
                 </table>
-                <ol start={budgetOrder?3:2}>
+                <ol start={budgetOrder ? 3 : 2}>
                     <li className="order-summary-text">
-                        {budgetOrder?'Wartość zamówienia: ':'Kwota do zapłaty: '}
+                        {budgetOrder
+                            ? "Wartość zamówienia: "
+                            : "Kwota do zapłaty: "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {total} {products[0].price.currency}
                         </span>
                     </li>
-                    {budgetOrder?
+                    {budgetOrder ? (
                         <li className="order-summary-text">
                             Pozostało do wykorzystania:
                             <span className="summary-text-value font-weight-bold text-uppercase">
                                 {} {products[0].price.currency}
                             </span>
-                        </li> 
-                    :<></>
-                    }
+                        </li>
+                    ) : (
+                        <></>
+                    )}
                     <li className="order-summary-text">
                         Adres dostawy:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
@@ -131,7 +141,7 @@ const OrderSummary = () => {
                     <span className="summary-text-value font-weight-bold text-uppercase">
                         {orderInputState}
                     </span>
-                </p> */}  
+                </p> */}
                 <hr />
                 <div className="d-flex flex-wrap justify-content-between">
                     <Link

@@ -26,7 +26,11 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
         products.map(item => {
-            if (input.current&&item.product&&input.current.id === item.product.id) {
+            if (
+                input.current &&
+                item.product &&
+                input.current.id === item.product.id
+            ) {
                 if (input.current.value > item.availability) {
                     setDisabled(true);
                 } else {
@@ -35,7 +39,7 @@ const Button = props => {
             }
             return disabled;
         });
-    }, [props.changeProduct, disabled, products]);
+    }, [props.changeProduct, disabled, products, dispatch]);
 
     const changeQuantityHandler = event => {
         setProductQuantity({
@@ -77,16 +81,20 @@ const Button = props => {
                     quantityLocation,
                 ),
             );
+            setProductQuantity({ id: input.current.value });
         }
     };
 
     return (
-        <> 
-            {props.availabaleItemQuantity===0?(
+        <>
+            {props.availabaleItemQuantity === 0 ? (
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
-                    <span className='availability-check unselectable'>Powiadom o dostępności</span>
+                    <span className="availability-check unselectable">
+                        Powiadom o dostępności
+                    </span>
                 </div>
-            ):( <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
+            ) : (
+                <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                     <input
                         type="number"
                         ref={input}
@@ -95,10 +103,11 @@ const Button = props => {
                         defaultValue={productQuantity.id}
                         onChange={changeQuantityHandler}
                         min="0"
-                    /><span className="font-weight-bold ml-1">szt.</span>
+                    />
+                    <span className="font-weight-bold ml-1">szt.</span>
                 </div>
             )}
-            {props.availabaleItemQuantity!==0?
+            {props.availabaleItemQuantity !== 0 ? (
                 <div className="product-basket-icon col-5 p-0">
                     <FontAwesomeIcon
                         icon={faShoppingBasket}
@@ -113,7 +122,9 @@ const Button = props => {
                         className="icon-anim"
                     />
                 </div>
-            :''} 
+            ) : (
+                ""
+            )}
         </>
     );
 };
