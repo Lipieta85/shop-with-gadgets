@@ -4,6 +4,7 @@ import { removeCart, changeBasketQuantity } from "../../actions/index";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
@@ -72,7 +73,9 @@ const BasketButtons = props => {
             {totalQuantity <= "0" ? <Redirect to="/" /> : ""}
             <div className="item-desc">
                 <div className="d-flex justify-content-between">
-                    <h4 className="title text-uppercase">{props.itemTitle}</h4>
+                    <Link to={`/product/${props.itemId}`}>
+                        <h4 className="title text-uppercase">{props.itemTitle}</h4>
+                    </Link>
                     <div className="text-right">
                         <FontAwesomeIcon
                             icon={faTrash}

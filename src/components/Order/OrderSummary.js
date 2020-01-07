@@ -43,7 +43,7 @@ const OrderSummary = () => {
                         <img src={item.images.length? item.images[0].small: defImg}
                             alt="item"
                             className="summary-img"
-                        />
+                        /> 
                         <span className="text-uppercase">
                             {item.product.description1}
                         </span>

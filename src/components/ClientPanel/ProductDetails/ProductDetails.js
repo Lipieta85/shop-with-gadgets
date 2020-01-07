@@ -164,16 +164,18 @@ const ProductDetails = props => {
                                     </div>
                                 </div>
                                 <div className="navButtons">
-                                    <div className="mt-3 d-flex justify-content-between">
-                                        <Link
-                                            className="btn btn-outline-primary"
-                                            to="/"
-                                        >
-                                            Powrót
-                                        </Link>
-                                        <div>
+                                    <div className="mt-3 row m-0">
+                                        <div className="col-4 p-0">
+                                            <Link
+                                                className="btn btn-outline-primary"
+                                                to="/"
+                                            >
+                                                Powrót
+                                            </Link>
+                                        </div>
+                                        <div className="col-8 p-0 right-buttons">
                                             <button
-                                                className="btn btn-outline-primary mr-3"
+                                                className="btn btn-outline-primary btn-prev"
                                                 onClick={prevItem}
                                             >
                                                 Poprzedni
@@ -184,7 +186,7 @@ const ProductDetails = props => {
                                             >
                                                 Następny
                                             </button>
-                                        </div>
+                                        </div>                                    
                                     </div>
                                 </div>
                             </div>

@@ -20,6 +20,11 @@ $gray: #a0a3a6;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
+                a{
+                    .card-title{
+                        color: rgb(31, 31, 31);
+                    }
+                }
                 .availability-alert{
                     color: #d81e1e;
                 }

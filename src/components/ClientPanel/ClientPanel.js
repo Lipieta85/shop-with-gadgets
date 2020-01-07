@@ -25,10 +25,9 @@ import {
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    let pagination = useSelector(state => state.cartReducer.pagination);
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
-    pagination = {totalPages:7}//EDIT
     const dispatch = useDispatch();
 
     const token = sessionStorage.getItem("token");
@@ -65,6 +64,7 @@ const ClientPanel = props => {
         ? items.map((item, i) => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
+                      {console.log(item)}
                       <div className="card" key={item.product.id}>
                           {i===0||i===6?//item.promotion czy cos
                             <>
@@ -96,9 +96,11 @@ const ClientPanel = props => {
                                   className="card-title-container"
                                   style={{ minHeight: "50px" }}
                               >
-                                  <h5 className="card-title text-uppercase">
-                                      {item.product.description1}
-                                  </h5>
+                                  <Link to={`/product/${item.product.id}`}>
+                                    <h5 className="card-title text-uppercase">
+                                        {item.product.description1}
+                                    </h5>
+                                  </Link>
                               </div>
                               <div>
                                   <p className="card-text">

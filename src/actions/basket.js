@@ -43,16 +43,16 @@ export const addItemToBasket = (
         let adressess = [];
         let deliveryAddress = [];
 
-        if (clientData) {
+        /* if (clientData) {
             clientData.map(data =>
                 adressess.push(data.getWixClientData.deliveryAddresses[0]),
             );
             mapKeys(adressess[0], function(value, key) {
                 return deliveryAddress.push({ key: value });
             });
-        }
+        } */
 
-        let delivery = deliveryAddress[0].key;
+        let delivery = /* deliveryAddress[0].key */"test";
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
@@ -162,16 +162,16 @@ export const changeBasketQuantity = (
         let adressess = [];
         let deliveryAddress = [];
 
-        if (clientData) {
+        /* if (clientData) {
             clientData.map(data =>
                 adressess.push(data.getWixClientData.deliveryAddresses[0]),
             );
             mapKeys(adressess[0], function(value, key) {
                 return deliveryAddress.push({ key: value });
             });
-        }
+        } */
 
-        let delivery = deliveryAddress[0].key;
+        let delivery = /* deliveryAddress[0].key */"test";
 
         changeProduct(
             productId,

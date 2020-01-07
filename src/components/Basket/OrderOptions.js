@@ -32,9 +32,9 @@ const OrderOptions = () => {
     }, [budget]);
 
     useEffect(() => {
-        setSelectInputValue(
+        /* setSelectInputValue(
             deliveryData[0].getWixClientData.deliveryAddresses[0].name,
-        );
+        ); */
         //eslint-disable-next-line
     }, [selectStoreState]);
 
