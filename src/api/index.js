@@ -264,6 +264,19 @@ export const getUserOrders = async (token, delivery) => {
     );
 };
 
+export const getUserBudgetHistory = async token => {
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `${host}/restApi/user/method/wixBudgetHistory`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        }),
+    );
+};
+
 export const getSingleUserOrder = async (token, orderId) => {
     return await trackPromise(
         axios({

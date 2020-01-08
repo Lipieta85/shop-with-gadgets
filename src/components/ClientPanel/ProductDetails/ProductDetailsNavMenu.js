@@ -80,6 +80,12 @@ const ProductDetailsNavMenu = () => {
                                     >
                                         Lista zamówień
                                     </Link>
+                                    <Link
+                                        className="dropdown-item text-uppercase"
+                                        to="/BudgetHistory"
+                                    >
+                                        Historia budżetu
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item text-uppercase">
