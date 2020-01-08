@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 import Regulations from "./components/Footer/Regulations";
 import Rodo from "./components/Footer/Rodo";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
+import BudgetHistory from "./components/BudgetHistory/BudgetHistory";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
@@ -100,6 +101,7 @@ export default withRouter(function App({ location }, props) {
                 <PrivateRoute path="/Order" component={OrderContainer} />
                 <PrivateRoute path="/OrderEnd" component={OrderEndContainer} />
                 <PrivateRoute path="/OrderHistory" component={OrderHistory} />
+                <PrivateRoute path="/BudgetHistory" component={BudgetHistory} />
                 <PrivateRoute path="/Regulations" component={Regulations} />
                 <PrivateRoute path="/Rodo" component={Rodo} />
                 <PrivateRoute path="/product/:id" component={ProductDetails} />

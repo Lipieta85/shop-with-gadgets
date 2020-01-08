@@ -3,35 +3,29 @@ import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getClientOrdersHistory,
-    getBudgetHistory,
     getClientSingleOrdersHistory,
 } from "../../actions/index";
 //import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
-
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const singleOrder = useSelector(
         state => state.orderReducer.singleOrderHistory,
     );
     const [clickedOrder, setClickedOrder] = useState();
-
     const dispatch = useDispatch();
-
     let confirmedOrder;
     let selectedOrderView;
-
     const token = localStorage.getItem("token");
-
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
-        dispatch(getBudgetHistory(token));
     }, [token, dispatch]);
-
+    console.log(orders);
     const orderDetailHandler = selectedOrder => {
         orders.map((order, i) => {
+            console.log("order", order);
             if (i === selectedOrder) {
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
                 if (singleOrder.length) {
@@ -50,7 +44,6 @@ const OrderHistory = () => {
                                         />
                                     </div>
                                 </div> */}
-
                                 <div className="col-md-8 border-left desc-col d-flex align-items-center">
                                     <div
                                         className="item-desc mt-2"
@@ -116,29 +109,21 @@ const OrderHistory = () => {
             return setClickedOrder(selectedOrderView);
         });
     };
-
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
-            <button
-                className="order-button border-secondary btn mb-1"
-                onClick={() => orderDetailHandler(i)}
-            >
-                Zamówienie z dnia: {order.date_of_order}
-                <br />
-                Miejsce dostawy: {order.ship_to_number}
-                <br />
-                <div className="d-flex justify-content-between">
-                    <span>
-                        Wartość netto: {order.order_total_amount}{" "}
-                        {order.currency_code}
-                    </span>
-                    <br />
-                    <span>Status: {order.status}</span>
-                </div>
-            </button>
+            <tr>
+                <td>{order.date_of_order}</td>
+                {/* <td>{order.ship_to_number}</td> */}
+                <td>
+                    {order.status}
+                    <button onClick={() => orderDetailHandler(i)}></button>
+                </td>
+                <td style={{ textAlign: "right" }}>
+                    {order.order_total_amount} {order.currency_code}
+                </td>
+            </tr>
         ));
     }
-
     return (
         <div className="order-history">
             <div className="container-fluid p-5">
@@ -165,14 +150,21 @@ const OrderHistory = () => {
                 </div>
                 <Spinner />
                 <div className="row">
-                    <div className="col-sm-12 col-md-4 order-container">
-                        {confirmedOrder.reverse()}
+                    <div className="col-sm-12 col-md-5 order-container">
+                        <table className="w-100">
+                            <tr>
+                                <th>Data</th>
+                                {/* <th>Miejsce dostawy</th> */}
+                                <th>Status</th>
+                                <th>Netto</th>
+                            </tr>
+                            {confirmedOrder.reverse()}
+                        </table>
                     </div>
-                    <div className="col-sm-12 col-md-8">{clickedOrder}</div>
+                    <div className="col-sm-12 col-md-7">{clickedOrder}</div>
                 </div>
             </div>
         </div>
     );
 };
-
 export default OrderHistory;
