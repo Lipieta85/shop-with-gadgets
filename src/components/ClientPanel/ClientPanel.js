@@ -65,11 +65,11 @@ const ClientPanel = props => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
                       <div className="card" key={item.product.id}>
-                          {i===0||i===6?//item.promotion czy cos
+                          {item.extraTag?
                             <>
                                 <div className="card-label-box">
                                     <div className="card-label">
-                                        <div className="label-textarea unselectable">Nowość</div>
+                                        <div className="label-textarea unselectable">{item.extraTag}</div>
                                     </div>
                                 </div>
                             </>:''

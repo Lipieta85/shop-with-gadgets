@@ -12,9 +12,10 @@ const ClientPanelMenu = () => {
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
-    const userName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.exId);
-    const companyName =useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.name);
-    
+    //const userName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.exId);
+    //const companyName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.name);
+    const userName = "test";
+    const companyName = "test";
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
     );
@@ -66,7 +67,6 @@ const ClientPanelMenu = () => {
                 <div className="logged-panel-header">
                     <div>Zalogowany: {userName} ({companyName})</div>
                 </div>
-                <div className="divider"></div>
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
                         <Link
