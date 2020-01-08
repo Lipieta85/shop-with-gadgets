@@ -4,7 +4,7 @@ import cartReducer from "./cartReducer";
 import orderReducer from "./orderReducer";
 import pageReducer from "./pageReducer";
 import clientDataReducer from "./clientDataReducer";
-import storage from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage";
 
 const appReducer = combineReducers({
     authReducer,
@@ -16,7 +16,7 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
     if (action.type === "SIGN_OUT") {
-        sessionStorage.removeItem("userID");
+        localStorage.removeItem("userID");
         storage.removeItem("persist:root");
         state = undefined;
     }

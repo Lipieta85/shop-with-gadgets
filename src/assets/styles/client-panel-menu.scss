@@ -32,7 +32,12 @@ $gray:#a0a3a6;
                     padding: 15px 0;
                 }
                 .budget-alert {
-                    color: #d81e1e;;
+                    color: #d81e1e;
+                }
+                .budget-alert-exceeded {
+                    color: #d81e1e;
+                    font-weight: bold;
+                    font-size: 18px;
                 }
                 .purchase-header {
                     text-transform: uppercase;

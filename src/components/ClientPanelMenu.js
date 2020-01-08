@@ -140,7 +140,7 @@ const ClientPanelMenu = () => {
                             Wartość twoich zakupów
                         </span>
                         <br />
-                        <span className={+priceValue>+budget?"budget-alert":"blue-value"}>{priceValue} PLN</span>
+                        <span className={+priceValue>+budget?"budget-alert-exceeded":"blue-value"}>{priceValue} PLN</span>
                         {/* <span className="value">{currency}</span> */}
                     </div>
                 </div>

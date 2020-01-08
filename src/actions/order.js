@@ -1,6 +1,6 @@
 import * as type from "../actions/types";
 import axios from "../utils/axios";
-import { postOrder } from "../api/index";
+import { postOrder, getUserOrders, getSingleUserOrder } from "../api/index";
 import { mapKeys } from "lodash";
 import host from "../api/host";
 
@@ -60,7 +60,6 @@ export const createOrder = (token, items) => {
                 dispatch(clearBasket());
             })
             .catch(error => {
-                console.log(error);
                 dispatch(setOrderErrorTrue());
             });
     };
@@ -112,17 +111,24 @@ export const getBudgetHistory = token => {
 
 export const getClientOrdersHistory = token => {
     return (dispatch, getState) => {
-        const url = `${host}/restApi/order/method/getAll/parameters/{"clientId":15}`;
-        axios({
-            method: "get",
-            url: url,
-            headers: {
-                Authorization: token,
-            },
-        })
+        let clientData = getState().clientDataReducer.clientData;
+        let adressess = [];
+        let deliveryAddress = [];
+
+        if (clientData) {
+            clientData.map(data =>
+                adressess.push(data.getWixClientData.deliveryAddresses[0]),
+            );
+            mapKeys(adressess[0], function(value, key) {
+                return deliveryAddress.push({ key: value });
+            });
+        }
+
+        let delivery = deliveryAddress[0].key;
+
+        getUserOrders(token, delivery)
             .then(res => {
-                console.log(res);
-                //dispatch(setClientOrderHistory(res))
+                dispatch(setClientOrderHistory(res.data.getAll.orders));
             })
             .catch(error => {
                 console.log(error);
@@ -141,5 +147,24 @@ export const productsToOrder = products => {
     return {
         type: type.PRODUCTS_TO_ORDER,
         products,
+    };
+};
+
+export const getClientSingleOrdersHistory = (token, id) => {
+    return (dispatch, getState) => {
+        getSingleUserOrder(token, id)
+            .then(res => {
+                dispatch(setSingleOrderHistory(res.data.get));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
+export const setSingleOrderHistory = data => {
+    return {
+        type: type.SET_SINGLE_ORDER_HISTORY,
+        data,
     };
 };

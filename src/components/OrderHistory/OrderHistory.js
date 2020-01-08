@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
-import { getClientOrdersHistory, getBudgetHistory } from "../../actions/index";
-import defImg from "../../assets/images/default.jpg";
+import {
+    getClientOrdersHistory,
+    getBudgetHistory,
+    getClientSingleOrdersHistory,
+} from "../../actions/index";
+//import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
+import Spinner from "../UI/Spinner/Spinner";
+
 const OrderHistory = () => {
-    const dispatch = useDispatch();
-    const orders = useSelector(state => state.orderReducer.historyOfBuy);
-    //const newOrders = useSelector(state => state.clientDataReducer.clientData);
+    const orders = useSelector(state => state.orderReducer.clientOrderHistory);
+    const singleOrder = useSelector(
+        state => state.orderReducer.singleOrderHistory,
+    );
     const [clickedOrder, setClickedOrder] = useState();
+
+    const dispatch = useDispatch();
 
     let confirmedOrder;
     let selectedOrderView;
 
-    const token = sessionStorage.getItem("token");
-    
+    const token = localStorage.getItem("token");
+
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
         dispatch(getBudgetHistory(token));
@@ -24,73 +33,85 @@ const OrderHistory = () => {
     const orderDetailHandler = selectedOrder => {
         orders.map((order, i) => {
             if (i === selectedOrder) {
-                selectedOrderView = order.orderProducts.map(order => {
-                    return (
-                        <li
-                            className="row nav-item collection-item border d-flex"
-                            key={order.product.id}
-                        >
-                            <div className="col-md-4 d-flex align-items-center text-center">
-                                <div className="item-img p-1">
-                                    <img
-                                        src={order.img ? order.img : defImg}
-                                        alt="item"
-                                        className="item-summary-img w-50 p-2"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="col-md-8 border-left desc-col d-flex align-items-center">
-                                <div
-                                    className="item-desc mt-2"
-                                    style={{ minHeight: "70px" }}
-                                >
-                                    <div className="d-flex">
-                                        <h4 className="title text-uppercase">
-                                            {order.product.description1}
-                                        </h4>
-                                        <p className="ml-3">
-                                            ({order.product.second_item_number})
-                                        </p>
+                dispatch(getClientSingleOrdersHistory(token, order.order_id));
+                if (singleOrder.length) {
+                    selectedOrderView = singleOrder.map(order => {
+                        return (
+                            <li
+                                className="row nav-item collection-item border d-flex"
+                                //key={order.product.id}
+                            >
+                                {/* <div className="col-md-4 d-flex align-items-center text-center">
+                                    <div className="item-img p-1">
+                                        <img
+                                            src={order.img ? order.img : defImg}
+                                            alt="item"
+                                            className="item-summary-img w-50 p-2"
+                                        />
                                     </div>
-                                    <div>
-                                        <div className="d-flex flex-wrap justify-content-between">
-                                            <div>
-                                                <b>
-                                                    Cena:{" "}
-                                                    <span className="order-text-value mr-3">
-                                                        {order.price.price} zł
+                                </div> */}
+
+                                <div className="col-md-8 border-left desc-col d-flex align-items-center">
+                                    <div
+                                        className="item-desc mt-2"
+                                        style={{ minHeight: "70px" }}
+                                    >
+                                        <div className="d-flex">
+                                            <h4 className="title text-uppercase">
+                                                {order.name}
+                                            </h4>
+                                            {/* <p className="ml-3">
+                                                (
+                                                {
+                                                    order.product
+                                                        .second_item_number
+                                                }
+                                                )
+                                            </p> */}
+                                        </div>
+                                        <div>
+                                            <div className="d-flex flex-wrap justify-content-between">
+                                                <div>
+                                                    <b>
+                                                        Cena:{" "}
+                                                        <span className="order-text-value mr-3">
+                                                            {order.unitPrice} zł
+                                                        </span>
+                                                    </b>
+                                                </div>
+                                                <div className="order-history-delivery">
+                                                    <span className="mr-3 mb-4">
+                                                        <b className="mr-1">
+                                                            Ilość
+                                                            zamówiona/dostarczona:
+                                                        </b>
+                                                        <b className="order-text-value">
+                                                            {
+                                                                order.quantityOrdered
+                                                            }{" "}
+                                                            /{" "}
+                                                            {
+                                                                order.quantityDelivered
+                                                            }
+                                                        </b>
                                                     </span>
-                                                </b>
-                                            </div>
-                                            <div className="order-history-delivery">
-                                                <span className="mr-3 mb-4">
-                                                    <b className="mr-1">
-                                                        Ilość
-                                                        zamówiona/dostarczona:
-                                                    </b>
-                                                    <b className="order-text-value">
-                                                        {order.quantity} /{" "}
-                                                        {order.quantity}
-                                                    </b>
-                                                </span>
-                                            </div>
-                                            <div className="add-remove">
-                                                <span className="mr-3 mb-3">
-                                                    <b>Razem: </b>
-                                                    <b className="order-text-value">
-                                                        {order.itemTotalPrice}{" "}
-                                                        zł
-                                                    </b>
-                                                </span>
+                                                </div>
+                                                <div className="add-remove">
+                                                    <span className="mr-3 mb-3">
+                                                        <b>Razem: </b>
+                                                        <b className="order-text-value">
+                                                            {order.total} zł
+                                                        </b>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                    );
-                });
+                            </li>
+                        );
+                    });
+                }
             }
             return setClickedOrder(selectedOrderView);
         });
@@ -102,14 +123,17 @@ const OrderHistory = () => {
                 className="order-button border-secondary btn mb-1"
                 onClick={() => orderDetailHandler(i)}
             >
-                Zamówienie z dnia: {order.orderDate}
+                Zamówienie z dnia: {order.date_of_order}
                 <br />
-                Miejsce dostawy: {order.orderPlace}
+                Miejsce dostawy: {order.ship_to_number}
                 <br />
                 <div className="d-flex justify-content-between">
-                    <span>Wartość netto: {order.orderTotal} zł</span>
+                    <span>
+                        Wartość netto: {order.order_total_amount}{" "}
+                        {order.currency_code}
+                    </span>
                     <br />
-                    <span>Status: Dostarczona</span>
+                    <span>Status: {order.status}</span>
                 </div>
             </button>
         ));
@@ -139,9 +163,10 @@ const OrderHistory = () => {
                         </h4>
                     </div>
                 </div>
+                <Spinner />
                 <div className="row">
                     <div className="col-sm-12 col-md-4 order-container">
-                        {confirmedOrder}
+                        {confirmedOrder.reverse()}
                     </div>
                     <div className="col-sm-12 col-md-8">{clickedOrder}</div>
                 </div>

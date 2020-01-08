@@ -5,7 +5,7 @@ import { getStorePolicy } from "./../../api/index";
 import Spinner from "./../UI/Spinner/Spinner";
 const Regulations = () => {
     const [policy, setPolicy] = useState("");
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         getStorePolicy(token).then(res => {

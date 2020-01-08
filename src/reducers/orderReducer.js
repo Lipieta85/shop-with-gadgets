@@ -5,6 +5,7 @@ const initialState = {
     clientOrderHistory: [],
     setOrderError: "",
     orderNumber: 0,
+    singleOrderHistory: [],
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -41,6 +42,11 @@ const orderReducer = (state = initialState, action) => {
                 ...state,
                 setOrderError: "",
                 orderNumber: 0,
+            };
+        case type.SET_SINGLE_ORDER_HISTORY:
+            return {
+                ...state,
+                singleOrderHistory: action.data,
             };
         default:
             return state;
