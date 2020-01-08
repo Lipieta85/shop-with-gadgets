@@ -8,7 +8,7 @@ import "../../assets/styles/order-end.scss";
 const OrderEnd = () => {
     const orderState = useSelector(state => state.orderReducer.setOrderError);
     const orderNumber = useSelector(state => state.orderReducer.orderNumber);
-
+    const [disabled, setDisabled] = useState(true);
     const [confirmText, setConfirmText] = useState(
         <h3>
             Trwa przetwarzanie zamówienia. Proszę nie zamykać okna
@@ -35,7 +35,14 @@ const OrderEnd = () => {
                 </h3>,
             );
         }
+        if (orderNumber > 0) {
+            setDisabled(false);
+        }
     }, [orderState, orderNumber]);
+
+    const disabledButton = () => {
+        return disabled ? { display: "none" } : { display: "block" };
+    };
 
     return (
         <div className="order-end text-center">
@@ -43,7 +50,11 @@ const OrderEnd = () => {
                 {confirmText}
                 <Spinner />
 
-                <Link to="/" className="btn btn-outline-primary mt-4">
+                <Link
+                    to="/"
+                    style={disabledButton()}
+                    className="btn btn-outline-primary mt-4 w-25 mx-auto"
+                >
                     {" "}
                     Wróć do sklepu
                 </Link>

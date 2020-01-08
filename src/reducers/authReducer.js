@@ -7,7 +7,7 @@ export default (state = { isAuth: false }, action) => {
                 isAuth: action.isAuth,
             };
         case "SIGN_OUT":
-            sessionStorage.removeItem("token");
+            localStorage.removeItem("token");
             return {
                 ...state,
                 isAuth: false,

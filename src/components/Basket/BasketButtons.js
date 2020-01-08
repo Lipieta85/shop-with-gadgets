@@ -16,7 +16,7 @@ const BasketButtons = props => {
 
     const input = useRef();
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         return setProductAmount({

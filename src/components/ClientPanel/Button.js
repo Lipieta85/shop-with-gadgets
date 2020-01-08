@@ -14,15 +14,20 @@ const Button = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
-    const token = sessionStorage.getItem("token");
+
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         if (props.changeProduct) {
-            input.current.value = 1;
-            setProductQuantity({ id: 1 });
+            if (input.current !== null) {
+                input.current.value = 1;
+                setProductQuantity({ id: 1 });
+            }
         }
         if (disabled) {
-            setProductQuantity({ id: input.current.value });
+            if (input.current !== null) {
+                setProductQuantity({ id: input.current.value });
+            }
         }
         products.map(item => {
             if (

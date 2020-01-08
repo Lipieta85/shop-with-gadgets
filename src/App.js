@@ -50,14 +50,14 @@ export default withRouter(function App({ location }, props) {
                 const token = res.data.token;
                 const tokenParts = res.data.token.split(".");
                 const userID = JSON.parse(atob(tokenParts[1]));
-                sessionStorage.setItem("userID", userID.userId);
-                sessionStorage.setItem("token", res.data.token);
+                localStorage.setItem("userID", userID.userId);
+                localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
                     dispatch(
                         setBudget(
-                            //  res.data.getWixClientData.budget
-                            //    ? res.data.getWixClientData.budget
-                            //  : "",
+                            // res.data.getWixClientData.budget
+                            //     ? res.data.getWixClientData.budget
+                            //     : "",
                             Number(20000),
                         ),
                     );
@@ -72,7 +72,7 @@ export default withRouter(function App({ location }, props) {
 
     useEffect(() => {
         if (!location.search && window.location.pathname !== `/404`) {
-            if (sessionStorage.getItem("token") === null) {
+            if (localStorage.getItem("token") === null) {
                 window.location.replace(`${host}site/desktop`);
             }
         }

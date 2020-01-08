@@ -30,7 +30,7 @@ const ClientPanel = props => {
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const dispatch = useDispatch();
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         if (token && category === "1") {
