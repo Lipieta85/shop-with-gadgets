@@ -70,7 +70,7 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
-                    //console.log(res)
+                    console.log(res)
                     if (res.data.addProduct.error) {
                         window.location.replace(`${host2}/404`);
                     } else {

@@ -53,9 +53,10 @@ export default withRouter(function App({ location }, props) {
                 sessionStorage.setItem("userID", userID.userId);
                 sessionStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    console.log(res);
                     dispatch(
                         setBudget(
-                           // res.data.getWixClientData.budget
+                            //res.data.getWixClientData.budget
                             //    ? res.data.getWixClientData.budget
                             //    : "",
                             Number(20000),
