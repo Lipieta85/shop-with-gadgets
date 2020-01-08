@@ -5,7 +5,7 @@ import { getRodoPolicy } from "./../../api/index";
 import Spinner from "./../UI/Spinner/Spinner";
 const Rodo = () => {
     const [rodo, setRodo] = useState("");
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         getRodoPolicy(token).then(res => {

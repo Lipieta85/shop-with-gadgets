@@ -171,6 +171,7 @@ export const changeBasketQuantity = (
         let clientData = getState().clientDataReducer.clientData;
         let addedItem = addedItems.find(item => item.product.id === productId);
         let amount = 0;
+
         if (quantityLocation) {
             amount = addedItem.quantity;
             amount += value;

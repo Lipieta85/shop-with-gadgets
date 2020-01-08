@@ -22,7 +22,7 @@ const OrderSummary = () => {
 
     const dispatch = useDispatch();
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     if (products && productsOrdered.length === 0) {
         products.map(item => {
@@ -49,7 +49,7 @@ const OrderSummary = () => {
                             }
                             alt="item"
                             className="summary-img"
-                        /> 
+                        />
                         <span className="text-uppercase">
                             {item.product.description1}
                         </span>
@@ -110,14 +110,14 @@ const OrderSummary = () => {
                             ? "Wartość zamówienia: "
                             : "Kwota do zapłaty: "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
-                            {total} {products[0].price.currency}
+                            {total} {items[0].price.currency}
                         </span>
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
                             Pozostało do wykorzystania:
                             <span className="summary-text-value font-weight-bold text-uppercase">
-                                {} {products[0].price.currency}
+                                {} {items[0].price.currency}
                             </span>
                         </li>
                     ) : (

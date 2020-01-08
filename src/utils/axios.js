@@ -1,5 +1,5 @@
 import axios from "axios";
-import storage from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage";
 import host2 from "../api/host2";
 
 const instance = axios.create({});
@@ -7,18 +7,18 @@ const instance = axios.create({});
 instance.interceptors.response.use(
     function(response) {
         if (response.data.token) {
-            sessionStorage.removeItem("token");
-            sessionStorage.setItem("token", response.data.token);
+            localStorage.removeItem("token");
+            localStorage.setItem("token", response.data.token);
 
-            const token = sessionStorage.getItem("token");
+            const token = localStorage.getItem("token");
             instance.defaults.headers.common["Authorization"] = token;
         }
         return response;
     },
     function(error) {
-        if (error.response.status === 401 && sessionStorage.length) {
-            sessionStorage.removeItem("token");
-            sessionStorage.removeItem("userID");
+        if (error.response.status === 401 && localStorage.length) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userID");
             storage.removeItem("persist:root");
             window.location.replace(`${host2}/404`);
         }

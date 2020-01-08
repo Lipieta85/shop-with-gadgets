@@ -14,7 +14,7 @@ const NavMenu = () => {
 
     const dispatch = useDispatch();
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const active = document.querySelector(".active");

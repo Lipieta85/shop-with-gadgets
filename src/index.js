@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { applyMiddleware, createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import storageSession from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage";
 import rootReducer from "./reducers/index";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
@@ -18,7 +18,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const history = createBrowserHistory();
 const persistConfig = {
     key: "root",
-    storage: storageSession,
+    storage,
 };
 let middleware = [];
 if (window.location.hostname === "localhost") {

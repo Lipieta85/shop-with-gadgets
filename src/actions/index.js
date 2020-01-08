@@ -23,6 +23,8 @@ export {
     setOrderErrorTrue,
     setOrderErrorFalse,
     setOrderNumber,
+    getClientSingleOrdersHistory,
+    setSingleOrderHistory,
 } from "./order.js";
 
 export {

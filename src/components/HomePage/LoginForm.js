@@ -28,7 +28,7 @@ const LoginForm = props => {
                 //const token = res.data.token.split(".");
                 //const userID = JSON.parse(atob(token[1]));
                 //sessionStorage.setItem("userID", userID.userId);
-                sessionStorage.setItem("token", res.data.token);
+                localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(userInfo => {
                     dispatch(signIn({ isAuth: true }));
                 });
