@@ -44,7 +44,6 @@ export const addItemToBasket = (
         let clientData = getState().clientDataReducer.clientData;
         let adressess = [];
         let deliveryAddress = [];
-
         if (clientData) {
             clientData.map(data =>
                 adressess.push(data.getWixClientData.deliveryAddresses[0]),
@@ -54,7 +53,7 @@ export const addItemToBasket = (
             });
         }
 
-        let delivery = deliveryAddress[0].key;
+        let delivery = deliveryAddress[0].key/* "test" */;
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
@@ -71,6 +70,7 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
+                    //console.log(res)
                     if (res.data.addProduct.error) {
                         window.location.replace(`${host2}/404`);
                     } else {

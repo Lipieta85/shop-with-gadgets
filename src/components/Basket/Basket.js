@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
-
     // const token = sessionStorage.getItem("token");
 
     // useEffect(() => {
