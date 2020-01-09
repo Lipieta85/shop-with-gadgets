@@ -19,13 +19,13 @@ const OrderHistory = () => {
     let confirmedOrder;
     let selectedOrderView;
     const token = localStorage.getItem("token");
+
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
     }, [token, dispatch]);
-    console.log(orders);
+
     const orderDetailHandler = selectedOrder => {
         orders.map((order, i) => {
-            console.log("order", order);
             if (i === selectedOrder) {
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
                 if (singleOrder.length) {
@@ -131,7 +131,7 @@ const OrderHistory = () => {
                 <div className="row">
                     <div className="col-12">
                         <h4 className="order-list ml-1">
-                            {orders.length === 0 ? (
+                            {/* {orders.length === 0 ? (
                                 <>
                                     <h2>Lista zamówień jest pusta</h2>
                                     <Link
@@ -144,7 +144,7 @@ const OrderHistory = () => {
                                 </>
                             ) : (
                                 "Lista zamówień:"
-                            )}
+                            )} */}
                         </h4>
                     </div>
                 </div>
@@ -158,7 +158,7 @@ const OrderHistory = () => {
                                 <th>Status</th>
                                 <th>Netto</th>
                             </tr>
-                            {confirmedOrder.reverse()}
+                            {/* {confirmedOrder.reverse()} */}
                         </table>
                     </div>
                     <div className="col-sm-12 col-md-7">{clickedOrder}</div>

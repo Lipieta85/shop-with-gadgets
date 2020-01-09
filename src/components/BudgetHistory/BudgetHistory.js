@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 import { getClientBudgetHistory } from "../../actions/index";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
@@ -22,6 +23,30 @@ const BudgetHistory = () => {
         dispatch(getClientBudgetHistory(token));
     }, [token, dispatch]);
 
+    //zaokraglanie liczby do 2 miejsc po przecinku
+    Math.decimal = function(n, k) {
+        var factor = Math.pow(10, k + 1);
+        n = Math.round(Math.round(n * factor) / 10);
+        return n / (factor / 10);
+    };
+
+    if (remainingBudget) {
+        var budgetAtTheBeggining = parseFloat(remainingBudget.amount, 10);
+        budgetHistory.map(
+            i => (budgetAtTheBeggining -= parseFloat(i.operation_amount, 10)),
+        );
+    }
+    // if (budgetHistory) {
+    //     var array = budgetHistory.map(i => i.operation_entry_data_time);
+
+    //     // console.log(array.reverse());
+    //     // console.log(
+    //     //     array.sort(function(a, b) {
+    //     //         return new Date(b.date) - new Date(a.date);
+    //     //     }),
+    //     // );
+    // }
+
     return (
         <div className="order-history">
             <div className="container-fluid p-5">
@@ -33,7 +58,10 @@ const BudgetHistory = () => {
                                 budgetHistory.length === 0 ? (
                                     <>
                                         Pozostały dostępny budżet: {""}
-                                        {remainingBudget.amount}{" "}
+                                        {Math.decimal(
+                                            remainingBudget.amount,
+                                            2,
+                                        )}{" "}
                                         {remainingBudget.currencyCode}
                                         <h2>Historia budżetu jest pusta</h2>
                                         <Link
@@ -47,16 +75,32 @@ const BudgetHistory = () => {
                                 ) : (
                                     <>
                                         Pozostały dostępny budżet: {""}
-                                        {remainingBudget.amount}
-                                        {""}
+                                        {Math.decimal(
+                                            remainingBudget.amount,
+                                            2,
+                                        )}
                                         {remainingBudget.currencyCode}
-                                        {budgetHistory.map((i, key) => (
-                                            <div key={key}>
-                                                {i.operation_entry_data_time}{" "}
-                                                {i.operation_amount}{" "}
-                                                {remainingBudget.currencyCode}
-                                            </div>
-                                        ))}
+                                        {""}
+                                        {budgetHistory
+                                            .map((i, key) => (
+                                                <div key={key}>
+                                                    {" "}
+                                                    {
+                                                        i.operation_entry_data_time
+                                                    }{" "}
+                                                    {Math.decimal(
+                                                        i.operation_amount,
+                                                        2,
+                                                    )}{" "}
+                                                    {
+                                                        remainingBudget.currencyCode
+                                                    }
+                                                </div>
+                                            ))
+                                            .reverse()}
+                                        Budżet użytkownika na początku:{" "}
+                                        {Math.decimal(budgetAtTheBeggining, 2)}{" "}
+                                        {remainingBudget.currencyCode}
                                     </>
                                 )
                             ) : (
