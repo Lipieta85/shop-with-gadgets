@@ -9,6 +9,7 @@ const Rodo = () => {
 
     useEffect(() => {
         getRodoPolicy(token).then(res => {
+            console.log(res);
             setRodo(res.data.data.objects);
         });
     }, [token]);

@@ -1,8 +1,10 @@
 import React from "react";
 import "../../assets/styles/footer.scss";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+    const { t } = useTranslation();
     return (
         <div>
             <footer className="footer border-top d-flex align-items-center">
@@ -14,7 +16,7 @@ const Footer = () => {
                                 to="/Regulations"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
-                                Regulamin sklepu
+                                {t(`Footer.Regulamin`)}
                             </Link>
                         </p>
 
@@ -24,7 +26,7 @@ const Footer = () => {
                                 to="/Rodo"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
-                                Regulamin RODO
+                                {t(`Footer.RODO`)}
                             </Link>
                         </p>
                     </div>

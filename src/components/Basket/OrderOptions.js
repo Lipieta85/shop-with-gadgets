@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import checkboxes from "./Checkboxes/checkboxes";
 import Checkbox from "./Checkboxes/Checkbox";
 import { orderSelectInputValue } from "../../actions/index";
+import { useTranslation } from "react-i18next";
 
 import "../../assets/styles/order-options.scss";
 
@@ -22,6 +23,8 @@ const OrderOptions = () => {
     const [selectInputValue, setSelectInputValue] = useState("");
 
     const dispatch = useDispatch();
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (budget < 0) {
@@ -54,7 +57,7 @@ const OrderOptions = () => {
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
             e.preventDefault();
-            alert("Koszyk jest pusty, dodaj produkt");
+            alert(`${t("Basket.AlertKoszykPusty")}`);
         } else {
             dispatch(orderSelectInputValue(selectInputValue));
         }
@@ -62,7 +65,7 @@ const OrderOptions = () => {
 
     return (
         <div className="order-options">
-            <h4 className="options-header">Wybierz adres dostawy</h4>
+            <h4 className="options-header">{t("Basket.WybierzAdres")}</h4>
             <div className="input-group mb-3">
                 <select
                     className="custom-select"
@@ -119,7 +122,7 @@ const OrderOptions = () => {
             </div>
             <div className="basket-checkout d-flex flex-wrap justify-content-between">
                 <Link to="/" className="btn btn-outline-primary mt-1 w-100">
-                    Wróć do sklepu
+                    {t("Basket.Wróć")}
                 </Link>
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
@@ -127,11 +130,15 @@ const OrderOptions = () => {
                     onClick={orderConfirmHandler}
                     style={{ padding: 0 }}
                 >
-                    {addedItems.length===0||(+total)>(+budget)?
-                        <button disabled className="order-button">Złóż zamówienie</button>
-                    :
-                        <button className="order-button">Złóż zamówienie</button>
-                    }
+                    {addedItems.length === 0 || +total > +budget ? (
+                        <button disabled className="order-button">
+                            Złóż zamówienie
+                        </button>
+                    ) : (
+                        <button className="order-button">
+                            {t("Basket.ZłóżZamówienie")}
+                        </button>
+                    )}
                 </Link>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 import "../assets/styles/client-panel-menu.scss";
 
@@ -22,6 +23,7 @@ const ClientPanelMenu = () => {
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
+    const { t } = useTranslation();
 
     let currency = [];
 
@@ -65,7 +67,9 @@ const ClientPanelMenu = () => {
         <div className="client-panel">
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
-                    <div>Zalogowany: {userName} ({companyName})</div>
+                    <div>
+                        {t(`CPanelMenu.Zalogowany`)}: {userName} ({companyName})
+                    </div>
                 </div>
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
@@ -84,7 +88,7 @@ const ClientPanelMenu = () => {
                                 <span className="badge badge-blue">
                                     {totalQuantity}
                                 </span>
-                                <span>Twój koszyk</span>
+                                <span>{t(`CPanelMenu.TwójKoszyk`)}</span>
                             </div>
                         </Link>
                     ) : (
@@ -105,7 +109,7 @@ const ClientPanelMenu = () => {
                                             {totalQuantity}
                                         </span>
                                         <span className="basket-title">
-                                            Koszyk (pusty)
+                                            {t(`CPanelMenu.Koszyk(pusty)`)}
                                         </span>
                                     </>
                                 ) : (
@@ -114,7 +118,7 @@ const ClientPanelMenu = () => {
                                             {totalQuantity}
                                         </span>
                                         <span className="basket-title">
-                                            Twój koszyk
+                                            {t(`CPanelMenu.TwójKoszyk`)}
                                         </span>
                                     </>
                                 )}
@@ -126,7 +130,7 @@ const ClientPanelMenu = () => {
                 <div className="logged-panel__purchase-value">
                     <div className="purchase-text">
                         <span className="available-budget">
-                            Dostępny budżet marketingowy
+                            {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
                         </span>
                         <br />
                         <span className="blue-value">
@@ -137,10 +141,18 @@ const ClientPanelMenu = () => {
                         <br />
                         <div className="y-rem-18"></div>
                         <span className="purchase-header">
-                            Wartość twoich zakupów
+                            {t(`CPanelMenu.WartośćTwoichZakupów`)}
                         </span>
                         <br />
-                        <span className={+priceValue>+budget?"budget-alert-exceeded":"blue-value"}>{priceValue} PLN</span>
+                        <span
+                            className={
+                                +priceValue > +budget
+                                    ? "budget-alert-exceeded"
+                                    : "blue-value"
+                            }
+                        >
+                            {priceValue} PLN
+                        </span>
                         {/* <span className="value">{currency}</span> */}
                     </div>
                 </div>

@@ -28,6 +28,7 @@ import {
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
+import { useTranslation } from "react-i18next";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -43,13 +44,17 @@ export default withRouter(function App({ location }, props) {
 
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
-
     useEffect(() => {
         const { pathname } = location;
         setCurrentPath(pathname);
         initializeReactGA(currentPath);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    const { i18n } = useTranslation();
+
+    useEffect(() => {
+        i18n.changeLanguage(parsed.lang);
+    }, [i18n, location.search, parsed.lang]);
 
     if (location.search) {
         dispatch(companyId(parsed.brand));

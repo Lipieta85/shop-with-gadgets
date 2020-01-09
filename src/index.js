@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "../node_modules/font-awesome/css/font-awesome.min.css";
@@ -14,6 +14,7 @@ import rootReducer from "./reducers/index";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+import "./i18next";
 
 const history = createBrowserHistory();
 const persistConfig = {
@@ -51,7 +52,9 @@ ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <Router history={history}>
-                <App />
+                <Suspense fallback={<div>"Loading"</div>}>
+                    <App />
+                </Suspense>
             </Router>
         </PersistGate>
     </Provider>,
