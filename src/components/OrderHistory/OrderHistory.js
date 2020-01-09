@@ -67,11 +67,9 @@ const OrderHistory = () => {
                                         </div>
                                         <div className="order-history-delivery">
                                             <span className="mr-3 mb-4">
-                                                <span className="mr-1">Ilość zamówionych:</span>
-                                                <b className="order-text-value">{+order.quantityOrdered}</b>
-                                                <br/>
-                                                <span className="mr-1">Ilość dostarczonych:</span>
-                                                <b className="order-text-value">{+order.quantityDelivered}</b>
+                                                <span className="mr-1">Zamówionych / dostarczonych:</span>
+                                                <b className="order-text-value">({+order.quantityOrdered}</b>
+                                                <b className="order-text-value"> / {+order.quantityDelivered})</b>
                                             </span>
                                             <span className="mr-1 pull-right mb-0">
                                                 <b>Razem: </b>
@@ -160,6 +158,22 @@ const OrderHistory = () => {
                         </table>  
                     </div>
                     <div className="col-7 orders-right">
+                        <div className="summary-details-box">
+                            <div className="summary-details">
+                                {showedOrder&&
+                                    <>
+                                        <div>Numer zamówienia: <b>{showedOrder.order_number}</b></div>
+                                        <div>Data złożenia: <b>{showedOrder.date_of_order}</b></div>
+                                        <div>Godzina: <b>{showedOrder.time_of_order}</b></div>
+                                        <div>Adres dostarczenia: <b>{showedOrder.ship_to_number}</b></div>
+                                        <div>Status: <b>{showedOrder.status}</b></div>
+                                        <div>Waluta: <b>{showedOrder.currency_code}</b></div>
+                                        <div>Zapłacona kwota: <b>{showedOrder.order_total_amount} zł</b></div>
+                                    </>
+                                }
+                            </div>
+                        </div>
+                        <h5>Zamówione produkty:</h5>
                         {clickedOrder}
                         <div className="summary-box">
                             <div className="orders-summary">
