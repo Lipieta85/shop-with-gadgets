@@ -4,6 +4,7 @@ const initialState = {
     clientData: [],
     companyId: null,
     token: "",
+    language: "",
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 token: action.token,
+            };
+        case type.GET_LANGUAGE:
+            return {
+                ...state,
+                language: action.data,
             };
         default:
             return state;

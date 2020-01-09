@@ -39,4 +39,4 @@ export {
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
-export { clientData, companyId, setToken } from "./clientData.js";
+export { clientData, companyId, setToken, getLang } from "./clientData.js";

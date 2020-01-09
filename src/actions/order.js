@@ -131,6 +131,7 @@ export const getClientOrdersHistory = token => {
 
         getUserOrders(token, delivery)
             .then(res => {
+                console.log(res);
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
             })
             .catch(error => {

@@ -251,12 +251,11 @@ export const postOrder = async (
         }),
     );
 };
-
 export const getUserOrders = async (token, delivery) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/getAll/parameters/{"clientId":${delivery}}`,
+            url: `${host}/restApi/order/method/getAll/parameters/{"clientId":15}`,
             headers: {
                 Authorization: token,
             },
@@ -284,6 +283,24 @@ export const getSingleUserOrder = async (token, orderId) => {
             url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId}}`,
             headers: {
                 Authorization: token,
+            },
+        }),
+    );
+};
+
+export const postSubscribe = (token, productId, clientEmail, lang) => {
+    return trackPromise(
+        axios({
+            method: "post",
+            url: `${host}/restApi/products/method/subscribe`,
+            headers: {
+                Authorization: token,
+            },
+            data: {
+                product: productId,
+                lang: lang,
+                email: clientEmail,
+                storeUrl: "xxx", //edit
             },
         }),
     );

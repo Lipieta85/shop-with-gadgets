@@ -22,6 +22,7 @@ const orderReducer = (state = initialState, action) => {
                 historyOfBuy: state.historyOfBuy.concat(action.data),
             };
         case type.SET_CLIENT_ORDER_HISTORY:
+            console.log(action.data);
             return {
                 ...state,
                 clientOrderHistory: action.data,

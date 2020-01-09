@@ -19,7 +19,13 @@ import BudgetHistory from "./components/BudgetHistory/BudgetHistory";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
-import { clientData, companyId, setToken, setBudget } from "./actions/index";
+import {
+    clientData,
+    companyId,
+    setToken,
+    setBudget,
+    getLang,
+} from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
 
@@ -33,18 +39,19 @@ function initializeReactGA() {
 }
 
 export default withRouter(function App({ location }, props) {
+    const parsed = queryString.parse(location.search);
+
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
+
     useEffect(() => {
         const { pathname } = location;
-
         setCurrentPath(pathname);
         initializeReactGA(currentPath);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (location.search) {
-        const parsed = queryString.parse(location.search);
         dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
             .then(res => {
@@ -54,7 +61,6 @@ export default withRouter(function App({ location }, props) {
                 localStorage.setItem("userID", userID.userId);
                 localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
-                    //console.log(res);
                     dispatch(
                         setBudget(
                             res.data.getWixClientData.budget
@@ -65,6 +71,7 @@ export default withRouter(function App({ location }, props) {
                     );
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
+                    dispatch(getLang(parsed.lang));
                     dispatch(signIn({ isAuth: true }));
                 });
             })
