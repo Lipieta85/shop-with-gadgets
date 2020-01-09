@@ -111,7 +111,7 @@ const ClientPanel = props => {
                                   </p>
                                     {item.availability===0?
                                         <div className="card-available-quantity pb-2">
-                                            <span className="quantity availability-alert">Niedostępny</span>
+                                            <span className="quantity">Niedostępny</span>
                                         </div>
                                     :
                                         <div className="card-available-quantity pb-1">
