@@ -52,7 +52,7 @@ export const getRodoPolicy = async token => {
         }),
     );
 };
-
+//mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/{"`key`":"rodoPolicy","lang":"pl"}
 export const getStorePolicy = async token => {
     return await trackPromise(
         axios({

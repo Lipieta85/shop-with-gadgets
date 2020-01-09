@@ -1,0 +1,69 @@
+{
+  "Nav": {
+    "Wszystkie": "All",
+    "Biuro": "Office",
+    "Tekstylia": "Fabrics",
+    "Gadżety": "Gadgets",
+    "MateriałyPromocyjne": "Promotional materials",
+    "WróćDoStronyGłównej": "Return to the main page",
+    "MojeKonto": "My account",
+    "ListaZamówień": "List of orders",
+    "HistoriaBudżetu": "Budget History",
+    "Wyloguj": "Log Out"
+  },
+  "CPanelMenu": {
+    "Zalogowany": "Logged",
+    "TwójKoszyk": "Your Basket",
+    "Koszyk(pusty)": "Basket (Empty)",
+    "DostępnyBudżetMarketingowy": "Marketing Budget Available",
+    "WartośćTwoichZakupów": "Value of Your Purchases"
+  },
+  "Card": {
+    "Cena": "Price",
+    "Niedostępny": "Inaccessible",
+    "DostępnaIlość": "Available Quantity",
+    "Dostępnych": "Available",
+    "Powiadom": "Notify When Available"
+  },
+  "Footer": {
+    "Regulamin": "Shop rules",
+    "RODO": "RODO rules"
+  },
+  "Basket": {
+    "Alert": "The quantity of product entered exceeds the quantity in stock",
+    "Ilość": "Qauntity",
+    "Aktualizuj": "Update",
+    "Razem": "Sum",
+    "Wyczyść": "Clear Basket",
+    "Kwota": "Amount to pay",
+    "AlertKoszykPusty": "Basket is empty, add product",
+    "Wróć": "RETURN TO THE SHOP",
+    "ZłóżZamówienie": "SUBMIT YOUR ORDER",
+    "WybierzAdres": "Choose a delivery address",
+    "KoszykJestPusty": "Basket Is Empty",
+    "ProduktyWKoszyku": "Products currently in the basket"
+  },
+  "Order": {
+    "Podsumowanie": "Order Summary",
+    "WartośćBudżetu": "The Value Of Your Budget",
+    "WartośćDostępnegoBudżetu": "Value of Available Budget",
+    "ZamówioneProdukty": "Ordered products",
+    "NazwaProduktu": "Product Name",
+    "PozostałoDoWykorzystania": "Remaining to use",
+    "AdresDostawy": "Delivery address",
+    "TypZamówienia": "Order type",
+    "WróćDoKoszyka": "RETURN TO BASKET",
+    "Zatwierdź": "CONFIRM THE ORDER",
+    "WartośćZamówienia": "Order value"
+  },
+  "OrderEnd": {
+    "ZamówienieONr": "Your order number",
+    "PrzekazaneDoRealizacji": "has been submitted for implementation. You will receive an order confirmation by email within 15 minutes..",
+    "PrzetwarzanieZamówienia": "The order is being processed. Please do not close the window browser...",
+    "BłądZamówienia": "Your order has not been placed due to an error. Contact your Customer Assistant."
+  },
+  "OrderHistory": {
+    "ListaZamówieńJestPusta": "The order list is empty",
+    "ListaZamówień": "Order List"
+  }
+}

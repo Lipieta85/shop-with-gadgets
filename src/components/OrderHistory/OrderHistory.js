@@ -9,6 +9,8 @@ import {
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
+
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
 
@@ -18,11 +20,14 @@ const OrderHistory = () => {
 
     const [clickedOrder, setClickedOrder] = useState();
     const [showedOrder, setShowedOrder] = useState();
+
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
+
     let confirmedOrder;
     let selectedOrderView;
     
-
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -126,17 +131,21 @@ const OrderHistory = () => {
                         <h4 className="order-list ml-1 mb-2">
                             {orders.length === 0 ? (
                                 <>
-                                    <h2>Lista zamówień jest pusta</h2>
+                                    <h2>
+                                        {t(
+                                            "OrderHistory.ListaZamówieńJestPusta",
+                                        )}
+                                    </h2>
                                     <Link
                                         to="/"
                                         className="btn btn-outline-primary mt-4"
                                     >
                                         {" "}
-                                        Wróć do sklepu
+                                        {t("Basket.Wróć")}
                                     </Link>
                                 </>
                             ) : (
-                                "Lista zamówień:"
+                                `${t("OrderHistory.ListaZamówień")}`
                             )} 
                         </h4>
                     </div>

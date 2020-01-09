@@ -4,18 +4,23 @@ import { addItemToBasket } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-import { postSubscribe } from "../../api/index";
+//import { postSubscribe } from "../../api/index";
+import { useTranslation } from "react-i18next";
+
 const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false);
+
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
 
     const input = useRef();
     const token = localStorage.getItem("token");
-    const lang = useSelector(state => state.clientDataReducer.language);
+    //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
         state =>
             state.clientDataReducer.clientData[0].getWixClientData.data
@@ -181,7 +186,7 @@ const Button = props => {
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        Powiadom o dostępności
+                        {t(`Card.Powiadom`)}
                     </button>
                 </div>
             ) : (

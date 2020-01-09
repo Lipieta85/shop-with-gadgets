@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrder, productsToOrder } from "../../actions/index";
+import { useTranslation } from "react-i18next";
 import "../../assets/styles/order-summary.scss";
 import defImg from "../../assets/images/default.jpg";
 
@@ -21,6 +22,8 @@ const OrderSummary = () => {
     const orderIsFirst = true;
 
     const dispatch = useDispatch();
+
+    const { t } = useTranslation();
 
     const token = localStorage.getItem("token");
 
@@ -65,18 +68,18 @@ const OrderSummary = () => {
             );
         })
     ) : (
-        <p>Twój koszyk jest pusty</p>
+        <p>{t("Basket.KoszykJestPusty")}</p>
     );
 
     return (
         <div className="order-summary">
             <div className="container">
-                <h2>Podsumowanie zamówienia</h2>
+                <h2>{t("Order.Podsumowanie")}</h2>
                 <hr />
                 <ol>
                     {budgetOrder && orderIsFirst ? (
                         <li className="order-summary-text">
-                            Wartość Twojego budżetu:
+                            {t("Order.WartośćBudżetu")}:
                             <span className="summary-text-value font-weight-bold text-uppercase">
                                 {} {items[0].price.currency}
                             </span>
@@ -86,20 +89,22 @@ const OrderSummary = () => {
                     )}
                     {budgetOrder && !orderIsFirst ? (
                         <li className="order-summary-text">
-                            Wartość dostępnego budżetu:{" "}
+                            {t("Order.WartośćDostępnegoBudżetu")}:{" "}
                         </li>
                     ) : (
                         <></>
                     )}
-                    <li className="order-summary-text">Zamówione produkty:</li>
+                    <li className="order-summary-text">
+                        {t("Order.ZamówioneProdukty")}:
+                    </li>
                 </ol>
                 <table className="summary-table">
                     <thead>
                         <tr className="summary-header">
-                            <th>Nazwa produktu</th>
-                            <th>Cena</th>
-                            <th>Ilość</th>
-                            <th>Razem</th>
+                            <th>{t("Order.NazwaProduktu")}</th>
+                            <th>{t("Card.Cena")}</th>
+                            <th>{t("Basket.Ilość")}</th>
+                            <th>{t("Basket.Razem")}</th>
                         </tr>
                     </thead>
                     <tbody>{addedItems}</tbody>
@@ -107,15 +112,15 @@ const OrderSummary = () => {
                 <ol start={budgetOrder ? 3 : 2}>
                     <li className="order-summary-text">
                         {budgetOrder
-                            ? "Wartość zamówienia: "
-                            : "Kwota do zapłaty: "}
+                            ? `${t("Order.WartośćZamówienia")}: `
+                            : `${t("Basket.Kwota")}`}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {total} {items[0].price.currency}
                         </span>
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
-                            Pozostało do wykorzystania:
+                            {t("Order.PozostałoDoWykorzystania")}:
                             <span className="summary-text-value font-weight-bold text-uppercase">
                                 {} {items[0].price.currency}
                             </span>
@@ -124,13 +129,13 @@ const OrderSummary = () => {
                         <></>
                     )}
                     <li className="order-summary-text">
-                        Adres dostawy:{" "}
+                        {t("Order.AdresDostawy")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {orderSelectInputValue}
                         </span>
                     </li>
                     <li className="order-summary-text">
-                        Typ zamówienia:{" "}
+                        {t("Order.TypZamówienia")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {checkBoxText}
                         </span>
@@ -148,14 +153,14 @@ const OrderSummary = () => {
                         to="/Basket"
                         className="btn btn-outline-primary btn-back"
                     >
-                        Wróć do koszyka
+                        {t("Order.WróćDoKoszyka")}
                     </Link>
                     <Link
                         to="/OrderEnd"
                         className="btn btn-outline-primary btn-submit"
                         onClick={() => dispatch(createOrder(token))}
                     >
-                        Zatwierdź zamówienie
+                        {t("Order.Zatwierdź")}
                     </Link>
                 </div>
             </div>

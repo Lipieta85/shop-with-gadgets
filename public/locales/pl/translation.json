@@ -1,0 +1,69 @@
+{
+  "Nav": {
+    "Wszystkie": "Wszystkie",
+    "Biuro": "Biuro",
+    "Tekstylia": "Tekstylia",
+    "Gadżety": "Gadżety",
+    "MateriałyPromocyjne": "Materiały Promocyjne",
+    "WróćDoStronyGłównej": "Wróć Do Strony Głównej",
+    "MojeKonto": "Moje Konto",
+    "ListaZamówień": "Lista Zamówień",
+    "HistoriaBudżetu": "Historia Budżetu",
+    "Wyloguj": "Wyloguj"
+  },
+  "CPanelMenu": {
+    "Zalogowany": "Zalogowany",
+    "TwójKoszyk": "Twój Koszyk",
+    "Koszyk(pusty)": "Koszyk (pusty)",
+    "DostępnyBudżetMarketingowy": "Dostępny Budżet Marketingowy",
+    "WartośćTwoichZakupów": "Wartość Twoich Zakupów"
+  },
+  "Card": {
+    "Cena": "Cena",
+    "Niedostępny": "Niedostępny",
+    "DostępnaIlość": "Dostępna Ilość",
+    "Dostępnych": "Dostępnych",
+    "Powiadom": "Powiadom o dostępności"
+  },
+  "Basket": {
+    "Alert": "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
+    "Ilość": "Ilość",
+    "Aktualizuj": "Aktualizuj",
+    "Razem": "Razem",
+    "Wyczyść": "Wyczyść koszyk",
+    "Kwota": "Kwota do zapłaty",
+    "AlertKoszykPusty": "Koszyk jest pusty, dodaj produkt",
+    "Wróć": "Wróć do sklepu",
+    "ZłóżZamówienie": "Złóż Zamówienie",
+    "WybierzAdres": "Wybierz adres dostawy",
+    "KoszykJestPusty": "Koszyk jest pusty",
+    "ProduktyWKoszyku": "Produkty aktualnie znajdujące się w koszyku"
+  },
+  "Footer": {
+    "Regulamin": "Regulamin sklepu",
+    "RODO": "Regulamin RODO"
+  },
+  "Order": {
+    "Podsumowanie": "Podsumowanie zamówienia",
+    "WartośćBudżetu": "Wartość Twojego Budżetu",
+    "WartośćDostępnegoBudżetu": "Wartość Dostępnego Budżetu",
+    "ZamówioneProdukty": "Zamówione Produkty",
+    "NazwaProduktu": "Nazwa Produktu",
+    "PozostałoDoWykorzystania": "Pozostało Do Wykorzystania",
+    "AdresDostawy": "Adres Dostawy",
+    "TypZamówienia": "Typ Zamówienia",
+    "WróćDoKoszyka": "WRÓĆ DO KOSZYKA",
+    "Zatwierdź": "ZATWIERDŻ ZAMÓWIENIE",
+    "WartośćZamówienia": "Wartość zamówienia"
+  },
+  "OrderEnd": {
+    "ZamówienieONr": "Twoje zamówienie o numerze",
+    "PrzekazaneDoRealizacji": "zostało przekazane do realizacji. W ciągu 15 minut otrzymasz potwierdzenie zamówienia na adres e-mail.",
+    "PrzetwarzanieZamówienia": "Trwa przetwarzanie zamówienia. Proszę nie zamykać okna przeglądarki...",
+    "BłądZamówienia": "Twoje zamówienie nie zostało złożone z powodu błędu.Skontatkuj się ze swoim Opiekunem Klienta."
+  },
+  "OrderHistory": {
+    "ListaZamówieńJestPusta": "Lista Zamówień Jest Pusta",
+    "ListaZamówień": "Lista Zamówień"
+  }
+}

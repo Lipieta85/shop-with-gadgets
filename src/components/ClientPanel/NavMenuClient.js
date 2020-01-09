@@ -7,10 +7,12 @@ import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductCategories, initProducts } from "../../actions/index";
 import host from "../../api/host";
+import { useTranslation } from "react-i18next";
 
 const NavMenu = () => {
     const id = useSelector(state => state.cartReducer.productsCategory);
     const company = useSelector(state => state.clientDataReducer.companyId);
+    const { t } = useTranslation();
 
     const dispatch = useDispatch();
 
@@ -84,7 +86,7 @@ const NavMenu = () => {
                                             href="/"
                                             onClick={tabHandler}
                                         >
-                                            Wszystkie
+                                            {t(`Nav.Wszystkie`)}
                                         </a>
                                     </li>
                                     <li className="nav-item item-separated">
@@ -94,7 +96,7 @@ const NavMenu = () => {
                                             href="/"
                                             onClick={tabHandler}
                                         >
-                                            Biuro
+                                            {t(`Nav.Biuro`)}
                                         </a>
                                     </li>
                                     <li className="nav-item item-separated">
@@ -104,7 +106,7 @@ const NavMenu = () => {
                                             href="/"
                                             onClick={tabHandler}
                                         >
-                                            Tekstylia
+                                            {t(`Nav.Tekstylia`)}
                                         </a>
                                     </li>
                                     <li className="nav-item item-separated">
@@ -114,7 +116,7 @@ const NavMenu = () => {
                                             href="/"
                                             onClick={tabHandler}
                                         >
-                                            Gadżety
+                                            {t(`Nav.Gadżety`)}
                                         </a>
                                     </li>
                                     <li className="nav-item item-separated">
@@ -124,7 +126,7 @@ const NavMenu = () => {
                                             href="/"
                                             onClick={tabHandler}
                                         >
-                                            Materiały promocyjne
+                                            {t(`Nav.MateriałyPromocyjne`)}
                                         </a>
                                     </li>
                                 </ul>
@@ -140,7 +142,7 @@ const NavMenu = () => {
                                         className="nav-link text-uppercase"
                                         to="/"
                                     >
-                                        Wróć do strony głównej{" "}
+                                        {t(`Nav.WróćDoStronyGłównej`)}{" "}
                                     </Link>
                                 </li>
                             ) : null}
@@ -155,7 +157,7 @@ const NavMenu = () => {
                                     aria-expanded="false"
                                     onClick={e => e.preventDefault}
                                 >
-                                    Moje Konto
+                                    {t(`Nav.MojeKonto`)}
                                 </a>
                                 <div
                                     className="dropdown-menu text-uppercase"
@@ -172,13 +174,13 @@ const NavMenu = () => {
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"
                                     >
-                                        Lista zamówień
+                                        {t(`Nav.ListaZamówień`)}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/BudgetHistory"
                                     >
-                                        Historia budżetu
+                                        {t(`Nav.HistoriaBudżetu`)}
                                     </Link>
                                 </div>
                             </li>
@@ -188,7 +190,7 @@ const NavMenu = () => {
                                     onClick={onSignout}
                                     href={`${host}site/desktop`}
                                 >
-                                    Wyloguj
+                                    {t(`Nav.Wyloguj`)}
                                 </a>
                             </li>
                         </ul>

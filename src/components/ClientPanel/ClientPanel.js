@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 import Spinner from "../UI/Spinner/Spinner";
+import { useTranslation } from "react-i18next";
 import {
     initProducts,
     nextPage,
@@ -28,6 +29,8 @@ const ClientPanel = props => {
     const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
 
     const token = localStorage.getItem("token");
@@ -65,15 +68,19 @@ const ClientPanel = props => {
               return (
                   <div className="card-box col-6 col-md-4 col-xl-3">
                       <div className="card" key={item.product.id}>
-                          {item.extraTag?
-                            <>
-                                <div className="card-label-box">
-                                    <div className="card-label">
-                                        <div className="label-textarea unselectable">{item.extraTag}</div>
-                                    </div>
-                                </div>
-                            </>:''
-                          }
+                          {item.extraTag ? (
+                              <>
+                                  <div className="card-label-box">
+                                      <div className="card-label">
+                                          <div className="label-textarea unselectable">
+                                              {item.extraTag}
+                                          </div>
+                                      </div>
+                                  </div>
+                              </>
+                          ) : (
+                              ""
+                          )}
                           <Link to={`/product/${item.product.id}`}>
                               <div className="card-img d-flex align-items-center pt-3 px-3">
                                   <div className="card-img-wrapper">
@@ -96,39 +103,49 @@ const ClientPanel = props => {
                                   style={{ minHeight: "50px" }}
                               >
                                   <Link to={`/product/${item.product.id}`}>
-                                    <h5 className="card-title text-uppercase">
-                                        {item.product.description1}
-                                    </h5>
+                                      <h5 className="card-title text-uppercase">
+                                          {item.product.description1}
+                                      </h5>
                                   </Link>
                               </div>
                               <div>
                                   <p className="card-text">
                                       <strong>
-                                          Cena: {item.price.price}{" "}
+                                          {t(`Card.Cena`)}: {item.price.price}{" "}
                                           {item.price.currency}/
                                           {item.product.uom_primary}
                                       </strong>
                                   </p>
-                                    {item.availability===0?
-                                        <div className="card-available-quantity pb-2">
-                                            <span className="quantity">Niedostępny</span>
-                                        </div>
-                                    :
-                                        <div className="card-available-quantity pb-1">
-                                            <span className="quantity m-desktop">Dostępna ilość: {item.availability}{" "}{item.product.uom_primary}</span>
-                                            <span className="quantity m-mobile">Dostępnych: {item.availability}{" "}{item.product.uom_primary}</span>
-                                        </div>
-                                    }
-                                    <div className="buttons-container row d-flex align-items-center mt-2">
-                                        <ButtonInput
-                                            itemId={item.product.id}
-                                            availabaleItemQuantity={
-                                                item.availability
-                                            }
-                                            itemUnit={item.product.uom_primary}
-                                            token={token}
-                                        />
-                                    </div>
+                                  {item.availability === 0 ? (
+                                      <div className="card-available-quantity pb-2">
+                                          <span className="quantity">
+                                              {t(`Card.Niedostępny`)}
+                                          </span>
+                                      </div>
+                                  ) : (
+                                      <div className="card-available-quantity pb-1">
+                                          <span className="quantity m-desktop">
+                                              {t(`Card.DostępnaIlość`)}:{" "}
+                                              {item.availability}{" "}
+                                              {item.product.uom_primary}
+                                          </span>
+                                          <span className="quantity m-mobile">
+                                              {t(`Card.Dostępnych`)}:{" "}
+                                              {item.availability}{" "}
+                                              {item.product.uom_primary}
+                                          </span>
+                                      </div>
+                                  )}
+                                  <div className="buttons-container row d-flex align-items-center mt-2">
+                                      <ButtonInput
+                                          itemId={item.product.id}
+                                          availabaleItemQuantity={
+                                              item.availability
+                                          }
+                                          itemUnit={item.product.uom_primary}
+                                          token={token}
+                                      />
+                                  </div>
                               </div>
                           </div>
                       </div>

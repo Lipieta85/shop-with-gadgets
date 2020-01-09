@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
@@ -13,6 +14,8 @@ const BasketButtons = props => {
     const inputValue = useSelector(state => state.cartReducer.items);
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const dispatch = useDispatch();
+
+    const { t } = useTranslation();
 
     const input = useRef();
 
@@ -52,9 +55,7 @@ const BasketButtons = props => {
             dispatch(removeCart(token, props.itemId, props.itemUnit));
         }
         if (disabled) {
-            alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
-            );
+            alert(`${t(`Basket.Alert`)}`);
             event.preventDefault();
         } else {
             dispatch(
@@ -79,7 +80,9 @@ const BasketButtons = props => {
             <div className="item-desc">
                 <div className="d-flex justify-content-between">
                     <Link to={`/product/${props.itemId}`}>
-                        <h4 className="title text-uppercase">{props.itemTitle}</h4>
+                        <h4 className="title text-uppercase">
+                            {props.itemTitle}
+                        </h4>
                     </Link>
                     <div className="text-right">
                         <FontAwesomeIcon
@@ -98,13 +101,14 @@ const BasketButtons = props => {
                 >
                     <p style={{ margin: "0 5px 0 0" }}>
                         <span>
-                            Cena: {props.itemPrice} {props.itemCurrency}
+                            {t(`Card.Cena`)}: {props.itemPrice}{" "}
+                            {props.itemCurrency}
                         </span>
                     </p>
                     <div className="add-remove d-flex align-items-center">
                         <span className="mr-3">
                             <span>
-                                Ilość:{" "}
+                                {t(`Basket.Ilość`)}:{" "}
                                 <input
                                     type="number"
                                     id={props.itemId}
@@ -121,7 +125,7 @@ const BasketButtons = props => {
                             className="basket-button btn btn-outline-primary primary-no-action actualize-btn"
                             onClick={confirmationButton}
                         >
-                            Aktualizuj
+                            {t(`Basket.Aktualizuj`)}
                         </span>
                     </div>
                     <div>
@@ -129,7 +133,8 @@ const BasketButtons = props => {
                             className="basket-single-item-total"
                             style={{ margin: "0" }}
                         >
-                            Razem: {props.itemTotalPrice} {props.itemCurrency}
+                            {t(`Basket.Razem`)}: {props.itemTotalPrice}{" "}
+                            {props.itemCurrency}
                         </span>
                     </div>
                 </div>
