@@ -1,8 +1,77 @@
 .order-history {
     min-height: calc(100vh - 57px);
-    padding-top: 70px;
+    padding-top: 50px;
     background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
     background-size: cover;
+    table{
+        background-color: white;
+        th, .cell{
+            padding: 5px 8px;
+        }
+        th{
+            background-color: gray;
+            font-weight: 500;
+            color: white;
+        }
+        td{
+            padding: 0;
+            color: rgb(0, 0, 0);
+            font-weight: 300;
+            position: relative;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+        tr{
+            cursor: pointer;
+            transition: .1s;
+            &:hover{
+                background-color: rgb(211, 211, 211);
+            }   
+            .row-button{
+                position: absolute;
+                width: 100%;
+                opacity: 0;
+                height: 100%;
+            }
+        }
+    }
+    .orders-right{
+        padding-top: 2px;
+        .order-item-box{
+            padding: 0px 20px 5px 20px;
+            .order-item{
+                padding: 10px;
+                background-color: rgba(255,255,255,0.8);
+                border-radius: 1px;
+                box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+                .item-desc{
+                    width: 100%;
+                    padding-left: 10px;
+                }
+                .title{
+                    margin-bottom: .5rem;
+                }
+                .order-img{
+                    float: left;
+                    width: 150px;
+                    height: 100%;
+                    border: 1px solid rgb(224, 224, 224);
+                    background-color: rgb(240, 240, 240);
+                }
+            } 
+        }
+        .summary-box{
+            padding: 0px 5px;
+            .orders-summary{
+                padding: 15px;
+                background-color: rgba(255,255,255,0.8);
+                border-radius: 1px;
+                box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+                text-align: right;
+            }
+        }
+    }
 }
 
 @media (max-width: 767.98px) {

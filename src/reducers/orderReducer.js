@@ -18,9 +18,10 @@ const orderReducer = (state = initialState, action) => {
         case type.SET_CLIENT_ORDER_HISTORY:
             return {
                 ...state,
-                clientOrderHistory: state.clientOrderHistory.concat(
+                clientOrderHistory:action.data
+               /*  clientOrderHistory: state.clientOrderHistory.concat(
                     action.data,
-                ),
+                ), */
             };
         case type.SET_ORDER_ERROR_TRUE:
             return {
