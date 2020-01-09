@@ -3,14 +3,12 @@ import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getClientOrdersHistory,
-    getBudgetHistory,
     getClientSingleOrdersHistory,
 } from "../../actions/index";
 //import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import "../../assets/styles/order-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
-
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
 
@@ -21,7 +19,6 @@ const OrderHistory = () => {
     const [clickedOrder, setClickedOrder] = useState();
     const [showedOrder, setShowedOrder] = useState();
     const dispatch = useDispatch();
-
     let confirmedOrder;
     let selectedOrderView;
     
@@ -30,7 +27,7 @@ const OrderHistory = () => {
 
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
-        dispatch(getBudgetHistory(token));
+        //dispatch(getBudgetHistory(token));
         orderDetailHandler(orders.length-1)
     }, [token, dispatch]);
 
@@ -140,7 +137,7 @@ const OrderHistory = () => {
                                 </>
                             ) : (
                                 "Lista zamówień:"
-                            )}
+                            )} 
                         </h4>
                     </div>
                     <div className="col-7">
@@ -178,5 +175,4 @@ const OrderHistory = () => {
         </div>
     );
 };
-
 export default OrderHistory;

@@ -1,8 +1,11 @@
 import * as type from "../actions/types";
-import axios from "../utils/axios";
-import { postOrder, getUserOrders, getSingleUserOrder } from "../api/index";
+import {
+    postOrder,
+    getUserOrders,
+    getSingleUserOrder,
+    getUserBudgetHistory,
+} from "../api/index";
 import { mapKeys } from "lodash";
-import host from "../api/host";
 
 export const orderInputState = value => {
     return {
@@ -90,22 +93,22 @@ export const clearBasket = () => {
     };
 };
 
-export const getBudgetHistory = token => {
-    return () => {
-        axios({
-            method: "get",
-            url: `${host}/restApi/user/method/wixBudgetHistory`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-            },
-        })
+export const getClientBudgetHistory = token => {
+    return dispatch => {
+        getUserBudgetHistory(token)
             .then(res => {
-                console.log(res);
+                dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
             .catch(error => {
                 console.log(error);
             });
+    };
+};
+
+export const setClientBudgetHistory = data => {
+    return {
+        type: type.SET_CLIENT_BUDGET_HISTORY,
+        data,
     };
 };
 
@@ -128,6 +131,7 @@ export const getClientOrdersHistory = token => {
 
         getUserOrders(token, delivery)
             .then(res => {
+                console.log(res);
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
             })
             .catch(error => {

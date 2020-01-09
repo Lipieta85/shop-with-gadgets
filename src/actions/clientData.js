@@ -20,3 +20,9 @@ export const setToken = token => {
         token,
     };
 };
+export const getLang = data => {
+    return {
+        type: type.GET_LANGUAGE,
+        data,
+    };
+};

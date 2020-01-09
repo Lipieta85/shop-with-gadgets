@@ -6,22 +6,26 @@ const initialState = {
     setOrderError: "",
     orderNumber: 0,
     singleOrderHistory: [],
+    wixBudgetHistory: [],
 };
 
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
+        case type.SET_CLIENT_BUDGET_HISTORY:
+            return {
+                ...state,
+                wixBudgetHistory: action.data,
+            };
         case type.ADD_ORDER_DATA:
             return {
                 ...state,
                 historyOfBuy: state.historyOfBuy.concat(action.data),
             };
         case type.SET_CLIENT_ORDER_HISTORY:
+            console.log(action.data);
             return {
                 ...state,
-                clientOrderHistory:action.data
-               /*  clientOrderHistory: state.clientOrderHistory.concat(
-                    action.data,
-                ), */
+                clientOrderHistory: action.data,
             };
         case type.SET_ORDER_ERROR_TRUE:
             return {
