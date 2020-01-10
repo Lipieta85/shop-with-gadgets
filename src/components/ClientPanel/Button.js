@@ -4,28 +4,27 @@ import { addItemToBasket } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-//import { postSubscribe } from "../../api/index";
-import { useTranslation } from "react-i18next";
-
+import { postSubscribe } from "../../api/index";
 const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-    const [disabled, setDisabled] = useState(false);
-    const [quantityLocation] = useState(true);
-    const [clicked, setClicked] = useState(false);
-
-    const { t } = useTranslation();
-
-    const dispatch = useDispatch();
-
-    const input = useRef();
-    const token = localStorage.getItem("token");
-    //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
         state =>
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );
+    const [disabled, setDisabled] = useState(false);
+    const [quantityLocation] = useState(true);
+    const [clicked, setClicked] = useState(true);
+    const [email, setEmail] = useState(`${clientEmail}`);
+    const [success, setSuccess] = useState();
+    const [failed, setFailed] = useState();
+    const dispatch = useDispatch();
+
+    const input = useRef();
+    const token = localStorage.getItem("token");
+    const lang = useSelector(state => state.clientDataReducer.language);
+
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -99,11 +98,22 @@ const Button = props => {
     };
     const openModal = () => {
         setClicked(true);
+        //   console.log(props.itemId);
+        //   console.log(props.itemTitle);
+    };
+    const closeModal = () => {
+        setSuccess(false);
+        setFailed(false);
     };
     const sendNotification = () => {
-        // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
-        //     console.log(res.data.subscribe);
-        // });
+        postSubscribe(token, props.itemId, email, lang).then(res => {
+            //     console.log(res.data.subscribe);
+            if (res.data.subscribe.error) {
+                setFailed(true);
+            } else {
+                setSuccess(true);
+            }
+        });
     };
     return (
         <>
@@ -117,14 +127,15 @@ const Button = props => {
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
                     >
-                        <div className="modal-dialog" role="document">
+                        <div className="modal-dialog modal-lg" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5
                                         className="modal-title"
                                         id="exampleModalLabel"
                                     >
-                                        Powiadom o dostępności
+                                        Powiadom o dostępności produktu:{" "}
+                                        {props.itemId}
                                     </h5>
                                     <button
                                         type="button"
@@ -138,6 +149,29 @@ const Button = props => {
                                 <div className="modal-body">
                                     <div>
                                         <form>
+                                            {success ? (
+                                                <div
+                                                    className="alert alert-success"
+                                                    role="alert"
+                                                >
+                                                    Udało ci się zasubskrybować
+                                                    przedmiot {props.itemTitle}.
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                            {failed ? (
+                                                <div
+                                                    className="alert alert-danger"
+                                                    role="alert"
+                                                >
+                                                    Subskrybujesz już przedmiot{" "}
+                                                    {props.itemTitle} lub
+                                                    wystąpił błąd.
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
                                             <label>
                                                 Podaj swój adres email i kliknij
                                                 „Powiadom mnie”, a otrzymasz
@@ -147,9 +181,12 @@ const Button = props => {
                                             <input
                                                 type="email"
                                                 className="form-control"
-                                                id="exampleFormControlInput1"
                                                 placeholder={clientEmail}
+                                                onChange={event =>
+                                                    setEmail(event.target.value)
+                                                }
                                                 defaultValue={clientEmail}
+                                                onClose={closeModal}
                                             ></input>
                                         </form>
                                     </div>
@@ -159,6 +196,7 @@ const Button = props => {
                                         type="button"
                                         className="btn btn-secondary"
                                         data-dismiss="modal"
+                                        onClick={closeModal}
                                     >
                                         Zamknij
                                     </button>
@@ -186,7 +224,7 @@ const Button = props => {
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        {t(`Card.Powiadom`)}
+                        Powiadom o dostępności
                     </button>
                 </div>
             ) : (

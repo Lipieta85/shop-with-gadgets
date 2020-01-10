@@ -300,7 +300,6 @@ export const postSubscribe = (token, productId, clientEmail, lang) => {
                 product: productId,
                 lang: lang,
                 email: clientEmail,
-                storeUrl: "xxx", //edit
             },
         }),
     );

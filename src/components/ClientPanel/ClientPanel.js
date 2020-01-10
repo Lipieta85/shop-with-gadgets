@@ -143,6 +143,7 @@ const ClientPanel = props => {
                                               item.availability
                                           }
                                           itemUnit={item.product.uom_primary}
+                                          itemTitle={item.product.description1}
                                           token={token}
                                       />
                                   </div>
