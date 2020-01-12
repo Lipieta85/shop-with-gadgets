@@ -22,7 +22,8 @@ const Button = props => {
     const token = localStorage.getItem("token");
     //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
-        state =>
+        state =>state.clientDataReducer.clientData[0].getWixClientData.data
+        &&
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );

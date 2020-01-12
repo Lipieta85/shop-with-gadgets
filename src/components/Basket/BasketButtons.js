@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import "../../assets/styles/basket.scss";
 
 const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});

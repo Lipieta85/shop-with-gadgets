@@ -20,6 +20,7 @@ const OrderHistory = () => {
 
     const [clickedOrder, setClickedOrder] = useState();
     const [showedOrder, setShowedOrder] = useState();
+    const [currency, setCurrency] = useState();
 
     const { t } = useTranslation();
 
@@ -40,9 +41,10 @@ const OrderHistory = () => {
         orders.map((order, i) => { 
             if (i === selectedOrder) {
                 setShowedOrder(order);
+                setCurrency(order.currency_code);
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
                 if (singleOrder.length) {
-                    selectedOrderView = singleOrder.map(order => {
+                    selectedOrderView = singleOrder.map(orderItem => {
                         return (
                             <li className="row nav-item collection-item d-flex order-item-box"/* key={order.product.id} */>
                                 {/* <div className="col-md-4 d-flex align-items-center text-center">
@@ -59,27 +61,27 @@ const OrderHistory = () => {
                                     <div className="item-desc" style={{ minHeight: "70px" }}>    
                                         <div className="d-flex">
                                             <h4 className="text-uppercase title">
-                                                {order.name}
+                                                {orderItem.name}
                                             </h4>
                                         </div>
                                         <div>
                                             <span>
                                                 Cena:{" "}
                                                 <b className="order-text-value mr-3">
-                                                    {+order.unitPrice} zł
+                                                    {+orderItem.unitPrice} {currency}
                                                 </b>
                                             </span>
                                         </div>
                                         <div className="order-history-delivery">
                                             <span className="mr-3 mb-4">
                                                 <span className="mr-1">Zamówionych / dostarczonych:</span>
-                                                <b className="order-text-value">({+order.quantityOrdered}</b>
-                                                <b className="order-text-value"> / {+order.quantityDelivered})</b>
+                                                <b className="order-text-value">({+orderItem.quantityOrdered}</b>
+                                                <b className="order-text-value">/{+orderItem.quantityDelivered})</b>
                                             </span>
                                             <span className="mr-1 pull-right mb-0">
                                                 <b>Razem: </b>
                                                 <b className="order-text-value">
-                                                    {+order.total} zł
+                                                    {+orderItem.total} {currency}
                                                 </b>
                                             </span>
                                         </div>    
@@ -103,7 +105,6 @@ const OrderHistory = () => {
                         {order.date_of_order}
                     </div> 
                 </td>
-                {/* <td>{order.ship_to_number}</td> */}
                 <td>
                     <button className="row-button" onClick={()=>orderDetailHandler(i)}></button>
                     <div className="cell">
@@ -122,10 +123,10 @@ const OrderHistory = () => {
   
     return (
         <div className="order-history">
-            <div className="container-fluid p-5">
+            <div className="container-fluid order-history-container pt-5">
                 <NavMenu />
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-sm-5">
                         <h4 className="order-list ml-1 mb-2">
                             {orders.length === 0 ? (
                                 <>
@@ -147,7 +148,7 @@ const OrderHistory = () => {
                             )} 
                         </h4>
                     </div>
-                    <div className="col-7">
+                    <div className="col-sm-7">
                         <h4 className="order-list ml-1 mb-2">
                             Szczegóły zamówienia ({showedOrder&&showedOrder.order_number})
                         </h4>
@@ -155,30 +156,50 @@ const OrderHistory = () => {
                 </div>
                 <Spinner />
                 <div className="row">
-                    <div className="col-5 order-container">
+                    <div className="col-sm-5 order-container">
                         <table className="table">
                             <tr>
                                 <th>Data</th>
-                                {/* <th>Miejsce dostawy</th> */}
                                 <th>Status</th>
                                 <th>Netto</th>
                             </tr>
                             {confirmedOrder.reverse()}
                         </table>  
                     </div>
-                    <div className="col-7 orders-right">
+                    <div className="col-sm-7 orders-right">
                         <div className="summary-details-box">
                             <div className="summary-details">
                                 {showedOrder&&
-                                    <>
-                                        <div>Numer zamówienia: <b>{showedOrder.order_number}</b></div>
-                                        <div>Data złożenia: <b>{showedOrder.date_of_order}</b></div>
-                                        <div>Godzina: <b>{showedOrder.time_of_order}</b></div>
-                                        <div>Adres dostarczenia: <b>{showedOrder.ship_to_number}</b></div>
-                                        <div>Status: <b>{showedOrder.status}</b></div>
-                                        <div>Waluta: <b>{showedOrder.currency_code}</b></div>
-                                        <div>Zapłacona kwota: <b>{showedOrder.order_total_amount} zł</b></div>
-                                    </>
+                                    <table>
+                                        <tr>
+                                            <td>Numer zamówienia: </td>
+                                            <td><b>{showedOrder.order_number}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Data złożenia: </td>
+                                            <td><b>{showedOrder.date_of_order}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Godzina: </td>
+                                            <td><b>{showedOrder.time_of_order}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adres dostarczenia: </td>
+                                            <td><b>{showedOrder.ship_to_number}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status: </td>
+                                            <td><b>{showedOrder.status}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waluta: </td>
+                                            <td><b>{showedOrder.currency_code}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zapłacona kwota: </td>
+                                            <td><b>{showedOrder.order_total_amount}</b></td>
+                                        </tr>
+                                    </table>
                                 }
                             </div>
                         </div>
@@ -186,9 +207,8 @@ const OrderHistory = () => {
                         {clickedOrder}
                         <div className="summary-box">
                             <div className="orders-summary">
-                                {/* <div>Adres dostawy: {showedOrder&&showedOrder.ship_to_number}</div> */}
                                 <div className="font-weight-bold">
-                                    Zapłacona kwota: {showedOrder&&showedOrder.order_total_amount} zł 
+                                    Zapłacona kwota: {showedOrder&&showedOrder.order_total_amount} {currency}
                                 </div>
                             </div>
                         </div>
