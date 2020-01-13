@@ -8,11 +8,13 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 
 const Button = props => {
+    const orderTypes = {S5:"S5",S6:"S6"};
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(false); //zmienic nazwe
+    const [proposal, setProposal] = useState(false);
 
     const { t } = useTranslation();
 
@@ -27,6 +29,8 @@ const Button = props => {
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );
+    const clientData = useSelector(state => state.clientDataReducer);
+    const basketData = useSelector(state => state.cartReducer);
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -72,6 +76,11 @@ const Button = props => {
     };
 
     const dispatchHandler = event => {
+        let marketingOrderType = clientData.clientData[0].getWixClientData.data.marketingOrderType;
+        if(input.current.value*props.price>basketData.budget&&marketingOrderType===orderTypes.S5){
+            setProposal(true);
+            return false;
+        }
         if (input.current.value < 0) {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
@@ -106,9 +115,12 @@ const Button = props => {
         //     console.log(res.data.subscribe);
         // });
     };
+    const sendProposal = () =>{
+
+    }
     return (
         <>
-            {clicked === true ? (
+            {clicked===true&&
                 <>
                     <div
                         className="modal fade"
@@ -175,9 +187,55 @@ const Button = props => {
                         </div>
                     </div>
                 </>
-            ) : (
-                ""
-            )}
+            }
+            {proposal===true&&
+                <>
+                    <div
+                        className="modal fade"
+                        id="proposalModal"
+                        tabIndex="-1"
+                        role="dialog"
+                        aria-labelledby="proposalModalLabel"
+                        aria-hidden="true"
+                    >
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="proposalModalLabel">
+                                        Wniosek o zamówienie płatne
+                                    </h5>
+                                    <button
+                                        type="button" className="close"
+                                        data-dismiss="modal" aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <div>
+                                        <label>
+                                            Próbujesz dodać do koszyka <b>{props.name}</b> w ilości: <b>{input.current.value}</b>. 
+                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>.
+                                            Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                        Anuluj
+                                    </button>
+                                    <a href="https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/paid-order-application-workflow-conf-id">
+                                        <button type="button" className="btn btn-primary" onClick={sendProposal}>
+                                            Złóż wniosek
+                                        </button>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
             {props.availabaleItemQuantity === 0 ? (
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
                     <button
@@ -214,6 +272,8 @@ const Button = props => {
                                 ? "#e2e2e2"
                                 : "#a0a3a6"
                         }
+                        data-toggle="modal"
+                        data-target="#proposalModal"
                         onClick={dispatchHandler}
                         cursor="pointer"
                         className="icon-anim"

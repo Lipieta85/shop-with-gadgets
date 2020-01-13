@@ -139,11 +139,14 @@ const ClientPanel = props => {
                                   <div className="buttons-container row d-flex align-items-center mt-2">
                                       <ButtonInput
                                           itemId={item.product.id}
+                                          name={item.product.description1}
                                           availabaleItemQuantity={
                                               item.availability
                                           }
                                           itemUnit={item.product.uom_primary}
                                           token={token}
+                                          price={item.price.price}
+                                          currency={item.price.currency}
                                       />
                                   </div>
                               </div>
