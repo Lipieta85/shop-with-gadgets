@@ -3,7 +3,7 @@ import * as type from "../actions/types";
 import { mapKeys } from "lodash";
 
 const initialState = {
-    items: null,
+    items: [],
     addedItems: [],
     total: "0.00",
     totalQuantity: 0,

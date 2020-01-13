@@ -4,6 +4,7 @@ import {
     getUserOrders,
     getSingleUserOrder,
     getUserBudgetHistory,
+    singleOrderCancel
 } from "../api/index";
 import { mapKeys } from "lodash";
 
@@ -113,23 +114,9 @@ export const setClientBudgetHistory = data => {
 };
 
 export const getClientOrdersHistory = token => {
-    return (dispatch, getState) => {
-        let clientData = getState().clientDataReducer.clientData;
-        let adressess = [];
-        let deliveryAddress = [];
-
-        if (clientData) {
-            clientData.map(data =>
-                adressess.push(data.getWixClientData.deliveryAddresses[0]),
-            );
-            mapKeys(adressess[0], function(value, key) {
-                return deliveryAddress.push({ key: value });
-            });
-        }
-
-        let delivery = deliveryAddress[0].key;
-
-        getUserOrders(token, delivery)
+    return (dispatch) => {
+        
+        getUserOrders(token)
             .then(res => {
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
             })
@@ -171,3 +158,37 @@ export const setSingleOrderHistory = data => {
         data,
     };
 };
+
+export const orderCancel = (token, orderId) => {
+    return (dispatch, getState) => {
+        singleOrderCancel(token, orderId)
+        .then(res => {
+            if (res.data.cancel === true) {
+            dispatch(cancelOrderStatus(true))
+            dispatch(setOrderStatus(1))
+            }
+            if (res.data.cancel === false) {
+            dispatch(cancelOrderStatus(false))
+            dispatch(setOrderStatus(2))
+            }
+        })
+        .catch(error => {
+            dispatch(cancelOrderStatus(false))
+            dispatch(setOrderStatus(2))
+        })
+    }
+}
+
+export const cancelOrderStatus = status => {
+    return {
+        type: type.CANCEL_ORDER_STATUS,
+        status
+    }
+}
+
+export const setOrderStatus = (status) => {
+    return {
+        type: type.SET_ORDER_STATUS,
+        status
+    }
+}

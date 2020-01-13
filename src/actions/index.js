@@ -26,6 +26,9 @@ export {
     setOrderNumber,
     getClientSingleOrdersHistory,
     setSingleOrderHistory,
+    orderCancel,
+    cancelOrderStatus,
+    setOrderStatus
 } from "./order.js";
 
 export {
@@ -39,4 +42,4 @@ export {
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
-export { clientData, companyId, setToken, getLang } from "./clientData.js";
+export { clientData, companyId, setToken, getLang, userName, companyName, setCurrencyCode } from "./clientData.js";

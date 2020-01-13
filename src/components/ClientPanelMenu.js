@@ -13,10 +13,9 @@ const ClientPanelMenu = () => {
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
-    //const userName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.exId);
-    //const companyName = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.data.name);
-    const userName = "test";
-    const companyName = "test";
+    const companyName = useSelector(state => state.clientDataReducer.companyName);
+    const userName = useSelector(state => state.clientDataReducer.userName);
+    const currencyCode = useSelector(state => state.clientDataReducer.currencyCode);
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
     );
@@ -32,7 +31,7 @@ const ClientPanelMenu = () => {
             return currency.push(item.price.currency);
         });
     }
-
+    
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
@@ -67,9 +66,7 @@ const ClientPanelMenu = () => {
         <div className="client-panel">
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
-                    <div>
-                        {t(`CPanelMenu.Zalogowany`)}: {userName} ({companyName})
-                    </div>
+                    <div>{t(`CPanelMenu.Zalogowany`)}: {userName} ({companyName})</div>
                 </div>
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
@@ -134,7 +131,7 @@ const ClientPanelMenu = () => {
                         </span>
                         <br />
                         <span className="blue-value">
-                            {budget} {budget ? "PLN" : ""}
+                            {budget} {budget ? currencyCode : ""}
                         </span>
                         {/* <span className="value">{currency}</span> */}
                         <span className="budget-alert">{budgetAlert}</span>
@@ -151,7 +148,7 @@ const ClientPanelMenu = () => {
                                     : "blue-value"
                             }
                         >
-                            {priceValue} PLN
+                            {priceValue} {currencyCode}
                         </span>
                         {/* <span className="value">{currency}</span> */}
                     </div>
