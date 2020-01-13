@@ -5,27 +5,29 @@ import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 //import { postSubscribe } from "../../api/index";
-import { useTranslation } from "react-i18next";
-
+import NotificationModal from "./NotificationModal";
 const Button = props => {
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-    const [disabled, setDisabled] = useState(false);
-    const [quantityLocation] = useState(true);
-    const [clicked, setClicked] = useState(false);
-
-    const { t } = useTranslation();
-
-    const dispatch = useDispatch();
-
-    const input = useRef();
-    const token = localStorage.getItem("token");
-    //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
         state =>
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );
+    const [disabled, setDisabled] = useState(false);
+    const [quantityLocation] = useState(true);
+    const [clicked, setClicked] = useState(true);
+    //const [showedProduct, setShowedProduct] = useState(products.length - 1);
+    // const [email, setEmail] = useState(`${clientEmail}`);
+    // const [success, setSuccess] = useState();
+    // const [failed, setFailed] = useState();
+    const dispatch = useDispatch();
+
+    const input = useRef();
+    const [name, setName] = useState("");
+    const token = localStorage.getItem("token");
+    //const lang = useSelector(state => state.clientDataReducer.language);
+
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -97,97 +99,46 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
     };
-    const openModal = () => {
+    const openModal = x => {
         setClicked(true);
+        //  console.log(clicked);
+        // console.log(props.itemId);
+        setName(props.itemTitle);
+        console.log(name);
+        console.log(props.itemTitle);
     };
-    const sendNotification = () => {
-        // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
-        //     console.log(res.data.subscribe);
-        // });
-    };
+    // const closeModal = () => {
+    //     setSuccess(false);
+    //     setFailed(false);
+    // };
+    // const sendNotification = () => {
+    //     postSubscribe(token, props.itemId, email, lang).then(res => {
+    //         console.log(res.data.subscribe);
+    //         if (res.data.subscribe.error) {
+    //             setFailed(true);
+    //         } else {
+    //             setSuccess(true);
+    //         }
+    //     });
+    // };
     return (
         <>
-            {clicked === true ? (
-                <>
-                    <div
-                        className="modal fade"
-                        id="exampleModal"
-                        tabIndex="-1"
-                        role="dialog"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                    >
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5
-                                        className="modal-title"
-                                        id="exampleModalLabel"
-                                    >
-                                        Powiadom o dostępności
-                                    </h5>
-                                    <button
-                                        type="button"
-                                        className="close"
-                                        data-dismiss="modal"
-                                        aria-label="Close"
-                                    >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div>
-                                        <form>
-                                            <label>
-                                                Podaj swój adres email i kliknij
-                                                „Powiadom mnie”, a otrzymasz
-                                                powiadomienie, gdy produkt
-                                                będzie znów dostępny.
-                                            </label>
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                id="exampleFormControlInput1"
-                                                placeholder={clientEmail}
-                                                defaultValue={clientEmail}
-                                            ></input>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button
-                                        type="button"
-                                        className="btn btn-secondary"
-                                        data-dismiss="modal"
-                                    >
-                                        Zamknij
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-primary"
-                                        onClick={sendNotification}
-                                    >
-                                        Powiadom mnie
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </>
-            ) : (
-                ""
-            )}
             {props.availabaleItemQuantity === 0 ? (
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
                     <button
                         type="button"
                         className="availability-check unselectable"
-                        onClick={openModal}
+                        onClick={() => openModal(name)}
+                        value={props.itemTitle}
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        {t(`Card.Powiadom`)}
+                        Powiadom o dostępności {name}
                     </button>
+
+                    {clicked === true && name && (
+                        <NotificationModal id={props.itemId} name={name} />
+                    )}
                 </div>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">

@@ -186,7 +186,7 @@ const ProductDetails = props => {
                                             >
                                                 Następny
                                             </button>
-                                        </div>                                    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
