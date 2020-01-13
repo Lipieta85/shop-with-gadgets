@@ -42,7 +42,8 @@
         "redux-thunk": "^2.3.0",
         "slick-carousel": "^1.8.1",
         "url-parse": "^1.4.7",
-        "uuid4": "^1.1.4"
+        "uuid4": "^1.1.4",
+        "uuidv4": "^6.0.0"
     },
     "scripts": {
         "start": "react-scripts start",

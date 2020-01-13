@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "../../assets/images/filtron_logo.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
@@ -10,7 +10,7 @@ import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 
 const NavMenu = () => {
-    const id = useSelector(state => state.cartReducer.productsCategory);
+    //const id = useSelector(state => state.cartReducer.productsCategory);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const { t } = useTranslation();
 
@@ -18,13 +18,13 @@ const NavMenu = () => {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        const active = document.querySelector(".active");
-        if (active) {
-            active.classList.remove("active");
-            document.getElementById(`${id}`).classList.add("active");
-        }
-    }, [id]);
+    // useEffect(() => {
+    //     const active = document.querySelector(".active");
+    //     if (active) {
+    //         active.classList.remove("active");
+    //         document.getElementById(`${id}`).classList.add("active");
+    //     }
+    // }, [id]);
 
     const onSignout = () => {
         dispatch(signOut());

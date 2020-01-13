@@ -26,3 +26,21 @@ export const getLang = data => {
         data,
     };
 };
+export const companyName = name => {
+    return {
+        type: type.COMPANY_NAME,
+        name
+    }
+}
+export const userName = name => {
+    return {
+        type: type.USER_NAME,
+        name
+    }
+}
+export const setCurrencyCode = code => {
+    return {
+        type: type.SET_CURRENCY_CODE,
+        code
+    }
+}

@@ -5,6 +5,9 @@ const initialState = {
     companyId: null,
     token: "",
     language: "",
+    companyName: "",
+    userName: "",
+    currencyCode: ""
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -29,6 +32,21 @@ const clientDataReducer = (state = initialState, action) => {
                 ...state,
                 language: action.data,
             };
+        case type.COMPANY_NAME:
+            return {
+                ...state,
+                companyName: action.name,
+            };
+        case type.USER_NAME:
+            return {
+                ...state,
+                userName: action.name,
+            };
+        case type.SET_CURRENCY_CODE:
+            return {
+                ...state,
+                currencyCode: action.code
+            }
         default:
             return state;
     }

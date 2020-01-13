@@ -4,11 +4,13 @@ import { addItemToBasket } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from 'react-i18next';
 //import { postSubscribe } from "../../api/index";
-import { useTranslation } from "react-i18next";
-
+import NotificationModal from "./NotificationModal";
 const Button = props => {
     const orderTypes = {S5:"S5",S6:"S6"};
+    const serverAddress = "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
+    const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const [disabled, setDisabled] = useState(false);
@@ -18,9 +20,14 @@ const Button = props => {
 
     const { t } = useTranslation();
 
+    //const [showedProduct, setShowedProduct] = useState(products.length - 1);
+    // const [email, setEmail] = useState(`${clientEmail}`);
+    // const [success, setSuccess] = useState();
+    // const [failed, setFailed] = useState();
     const dispatch = useDispatch();
 
     const input = useRef();
+    const [name, setName] = useState("");
     const token = localStorage.getItem("token");
     //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
@@ -108,87 +115,35 @@ const Button = props => {
         }
     };
     const openModal = () => {
+        setName(props.itemTitle);
         setClicked(true);
+        //  console.log(clicked);
+        // console.log(props.itemId);
+        
     };
     const sendNotification = () => {
         // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
         //     console.log(res.data.subscribe);
         // });
     };
-    const sendProposal = () =>{
-
-    }
+    // const closeModal = () => {
+        //     setSuccess(false);
+        //     setFailed(false);
+        // };
+        // const sendNotification = () => {
+        //     postSubscribe(token, props.itemId, email, lang).then(res => {
+        //         console.log(res.data.subscribe);
+        //         if (res.data.subscribe.error) {
+        //             setFailed(true);
+        //         } else {
+        //             setSuccess(true);
+        //         }
+        //     });
+        // };
     return (
         <>
-            {clicked===true&&
-                <>
-                    <div
-                        className="modal fade"
-                        id="exampleModal"
-                        tabIndex="-1"
-                        role="dialog"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                    >
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5
-                                        className="modal-title"
-                                        id="exampleModalLabel"
-                                    >
-                                        Powiadom o dostępności
-                                    </h5>
-                                    <button
-                                        type="button"
-                                        className="close"
-                                        data-dismiss="modal"
-                                        aria-label="Close"
-                                    >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div>
-                                        <form>
-                                            <label>
-                                                Podaj swój adres email i kliknij
-                                                „Powiadom mnie”, a otrzymasz
-                                                powiadomienie, gdy produkt
-                                                będzie znów dostępny.
-                                            </label>
-                                            <input
-                                                type="email"
-                                                className="form-control"
-                                                id="exampleFormControlInput1"
-                                                placeholder={clientEmail}
-                                                defaultValue={clientEmail}
-                                            ></input>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button
-                                        type="button"
-                                        className="btn btn-secondary"
-                                        data-dismiss="modal"
-                                    >
-                                        Zamknij
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-primary"
-                                        onClick={sendNotification}
-                                    >
-                                        Powiadom mnie
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </>
-            }
             {proposal===true&&
+                //<NotificationModal id={props.itemId} name={name} />
                 <>
                     <div
                         className="modal fade"
@@ -214,9 +169,14 @@ const Button = props => {
                                 <div className="modal-body">
                                     <div>
                                         <label>
-                                            Próbujesz dodać do koszyka <b>{props.name}</b> w ilości: <b>{input.current.value}</b>. 
-                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>.
-                                            Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                           {/*  Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
+                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
+                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
+                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
+                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
+                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
+                                            przez MANN+HUMMEL FT Poland.
                                         </label>
                                     </div>
                                 </div>
@@ -224,12 +184,11 @@ const Button = props => {
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">
                                         Anuluj
                                     </button>
-                                    <a href="https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/paid-order-application-workflow-conf-id">
-                                        <button type="button" className="btn btn-primary" onClick={sendProposal}>
+                                    <a href={serverAddress+proposalAttr}>
+                                        <button type="button" className="btn btn-primary">
                                             Złóż wniosek
                                         </button>
-                                    </a>
-                                    
+                                    </a>  
                                 </div>
                             </div>
                         </div>
@@ -241,12 +200,17 @@ const Button = props => {
                     <button
                         type="button"
                         className="availability-check unselectable"
-                        onClick={openModal}
+                        onClick={() => openModal()}
+                        value={props.itemTitle}
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        {t(`Card.Powiadom`)}
+                        Powiadom o dostępności {name}
                     </button>
+
+                    {clicked === true && (
+                        <NotificationModal id={props.itemId} name={name} />
+                    )}
                 </div>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
@@ -262,7 +226,7 @@ const Button = props => {
                     <span className="font-weight-bold ml-1">szt.</span>
                 </div>
             )}
-            {props.availabaleItemQuantity !== 0 ? (
+            {props.availabaleItemQuantity !== 0 &&
                 <div className="product-basket-icon col-5 p-0">
                     <FontAwesomeIcon
                         icon={faShoppingBasket}
@@ -279,9 +243,7 @@ const Button = props => {
                         className="icon-anim"
                     />
                 </div>
-            ) : (
-                ""
-            )}
+            }
         </>
     );
 };
