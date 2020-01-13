@@ -17,7 +17,6 @@ const Button = props => {
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false); //zmienic nazwe
     const [proposal, setProposal] = useState(false);
-    console.log(proposal)
 
     const { t } = useTranslation();
 
@@ -87,7 +86,6 @@ const Button = props => {
         let marketingOrderType = clientData.clientData[0].getWixClientData.data.marketingOrderType;
         if(input.current.value*props.price>basketData.budget&&marketingOrderType===orderTypes.S5){
             setProposal(true);
-            console.log('test')
             return false;
         }
         if (input.current.value < 0) {
@@ -124,6 +122,9 @@ const Button = props => {
         // console.log(props.itemId);
         
     };
+    const closeProposal = () => {
+        setProposal(false);
+    }
     const sendNotification = () => {
         // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
         //     console.log(res.data.subscribe);
@@ -164,6 +165,7 @@ const Button = props => {
                                     <button
                                         type="button" className="close"
                                         data-dismiss="modal" aria-label="Close"
+                                        onClick={closeProposal}
                                     >
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -183,7 +185,7 @@ const Button = props => {
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
                                         Anuluj
                                     </button>
                                     <a href={serverAddress+proposalAttr}>
