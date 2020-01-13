@@ -4,12 +4,14 @@ import { addItemToBasket } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from "react-i18next";
-
+import { useTranslation } from 'react-i18next';
 //import { postSubscribe } from "../../api/index";
 import NotificationModal from "./NotificationModal";
 import { sendNotification } from "../../actions/products";
 const Button = props => {
+    const orderTypes = {S5:"S5",S6:"S6"};
+    const serverAddress = "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
+    const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
 
@@ -21,7 +23,11 @@ const Button = props => {
 
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
-    const [clicked, setClicked] = useState(true);
+    const [clicked, setClicked] = useState(false); //zmienic nazwe
+    const [proposal, setProposal] = useState(false);
+
+    const { t } = useTranslation();
+
     const [email, setEmail] = useState(`${clientEmail}`);
     const [success, setSuccess] = useState();
     const [failed, setFailed] = useState();
@@ -31,7 +37,14 @@ const Button = props => {
     const [name, setName] = useState("");
     const token = localStorage.getItem("token");
     const lang = useSelector(state => state.clientDataReducer.language);
-
+    const clientEmail = useSelector(
+        state =>state.clientDataReducer.clientData[0].getWixClientData.data
+        &&
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .customerServiceEmail,
+    );
+    const clientData = useSelector(state => state.clientDataReducer);
+    const basketData = useSelector(state => state.cartReducer);
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -77,6 +90,11 @@ const Button = props => {
     };
 
     const dispatchHandler = event => {
+        let marketingOrderType = clientData.clientData[0].getWixClientData.data.marketingOrderType;
+        if(input.current.value*props.price>basketData.budget&&marketingOrderType===orderTypes.S5){
+            setProposal(true);
+            return false;
+        }
         if (input.current.value < 0) {
             alert("Wpisana wartość jest nie prawidłowa");
             return false;
@@ -103,7 +121,8 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
     };
-    const openModal = e => {
+    const openModal = () => {
+        setName(props.itemTitle);
         setClicked(true);
         console.log(clicked);
         console.log(e.currentTarget.value);
@@ -111,21 +130,82 @@ const Button = props => {
         // setName(props.itemTitle);
         // console.log(name);
         // console.log(props.itemId);
-        // console.log(props.itemTitle);
+        
     };
-    const closeModal = () => {
-        setSuccess(false);
-        setFailed(false);
-        setClicked(false);
-        setTimeout(console.log(clicked), 40000);
+    const sendNotification = () => {
+        // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
+        //     console.log(res.data.subscribe);
+        // });
     };
-
-    const send = () => {
-        dispatch(sendNotification(token, props.itemId, email, lang));
-    };
-
+    // const closeModal = () => {
+        //     setSuccess(false);
+        //     setFailed(false);
+        // };
+        // const sendNotification = () => {
+        //     postSubscribe(token, props.itemId, email, lang).then(res => {
+        //         console.log(res.data.subscribe);
+        //         if (res.data.subscribe.error) {
+        //             setFailed(true);
+        //         } else {
+        //             setSuccess(true);
+        //         }
+        //     });
+        // };
     return (
         <>
+            {proposal===true&&
+                //<NotificationModal id={props.itemId} name={name} />
+                <>
+                    <div
+                        className="modal fade"
+                        id="proposalModal"
+                        tabIndex="-1"
+                        role="dialog"
+                        aria-labelledby="proposalModalLabel"
+                        aria-hidden="true"
+                    >
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="proposalModalLabel">
+                                        Wniosek o zamówienie płatne
+                                    </h5>
+                                    <button
+                                        type="button" className="close"
+                                        data-dismiss="modal" aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <div>
+                                        <label>
+                                           {/*  Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
+                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
+                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
+                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
+                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
+                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
+                                            przez MANN+HUMMEL FT Poland.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                        Anuluj
+                                    </button>
+                                    <a href={serverAddress+proposalAttr}>
+                                        <button type="button" className="btn btn-primary">
+                                            Złóż wniosek
+                                        </button>
+                                    </a>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
             {props.availabaleItemQuantity === 0 ? (
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
                     <button
@@ -138,127 +218,10 @@ const Button = props => {
                     >
                         {t(`Card.Powiadom`)}
                     </button>
-                    {/* {clicked === true && (
-                        <>
-                            <div
-                                className="modal fade"
-                                id="exampleModal"
-                                tabIndex="-1"
-                                role="dialog"
-                                aria-labelledby="exampleModalLabel"
-                                aria-hidden="true"
-                                open={props.open}
-                            >
-                                <div
-                                    className="modal-dialog modal-lg"
-                                    role="document"
-                                >
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <h5
-                                                className="modal-title"
-                                                id="exampleModalLabel"
-                                            >
-                                                Powiadom o dostępności produktu:{" "}
-                                                {name}
-                                            </h5>
-                                            <button
-                                                type="button"
-                                                className="close"
-                                                data-dismiss="modal"
-                                                aria-label="Close"
-                                            >
-                                                <span aria-hidden="true">
-                                                    &times;
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <div>
-                                                <form>
-                                                    {success ? (
-                                                        <div
-                                                            className="alert alert-success"
-                                                            role="alert"
-                                                        >
-                                                            Udało ci się
-                                                            zasubskrybować
-                                                            przedmiot{" "}
-                                                            {props.itemTitle}.
-                                                        </div>
-                                                    ) : (
-                                                        ""
-                                                    )}
-                                                    {failed ? (
-                                                        <div
-                                                            className="alert alert-danger"
-                                                            role="alert"
-                                                        >
-                                                            Subskrybujesz już
-                                                            przedmiot{" "}
-                                                            {props.itemTitle}{" "}
-                                                            lub wystąpił błąd.
-                                                        </div>
-                                                    ) : (
-                                                        ""
-                                                    )}
-                                                    <label>
-                                                        Podaj swój adres email i
-                                                        kliknij „Powiadom mnie”,
-                                                        a otrzymasz
-                                                        powiadomienie, gdy
-                                                        produkt będzie znów
-                                                        dostępny.
-                                                    </label>
-                                                    <input
-                                                        type="email"
-                                                        className="form-control"
-                                                        placeholder={
-                                                            clientEmail
-                                                        }
-                                                        onChange={event =>
-                                                            setEmail(
-                                                                event.target
-                                                                    .value,
-                                                            )
-                                                        }
-                                                        defaultValue={
-                                                            clientEmail
-                                                        }
-                                                        onClose={closeModal}
-                                                    ></input>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button
-                                                type="button"
-                                                className="btn btn-secondary"
-                                                data-dismiss="modal"
-                                                onClick={closeModal}
-                                            >
-                                                Zamknij
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary"
-                                                onClick={send}
-                                            >
-                                                Powiadom mnie
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </>
-                    )} */}
-                    {
-                        <NotificationModal
-                            id={props.itemId}
-                            name={props.itemTitle}
-                            open={clicked}
-                        />
-                    }
+
+                    {clicked === true && (
+                        <NotificationModal id={props.itemId} name={name} />
+                    )}
                 </div>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
@@ -274,7 +237,7 @@ const Button = props => {
                     <span className="font-weight-bold ml-1">szt.</span>
                 </div>
             )}
-            {props.availabaleItemQuantity !== 0 ? (
+            {props.availabaleItemQuantity !== 0 &&
                 <div className="product-basket-icon col-5 p-0">
                     <FontAwesomeIcon
                         icon={faShoppingBasket}
@@ -284,14 +247,14 @@ const Button = props => {
                                 ? "#e2e2e2"
                                 : "#a0a3a6"
                         }
+                        data-toggle="modal"
+                        data-target="#proposalModal"
                         onClick={dispatchHandler}
                         cursor="pointer"
                         className="icon-anim"
                     />
                 </div>
-            ) : (
-                ""
-            )}
+            }
         </>
     );
 };

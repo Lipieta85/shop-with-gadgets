@@ -12,6 +12,8 @@ const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const total = useSelector(state => state.cartReducer.total);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
+    const clientData = useSelector(state => state.clientDataReducer);
+    console.log(clientData);
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
