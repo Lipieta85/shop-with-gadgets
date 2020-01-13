@@ -18,6 +18,12 @@ const OrderOptions = () => {
     const deliveryData = useSelector(
         state => state.clientDataReducer.clientData,
     );
+    const orderType = useSelector(
+        state =>
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .marketingOrderType,
+    );
+
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState("");
@@ -56,6 +62,7 @@ const OrderOptions = () => {
 
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
+            console.log(addedItems);
             e.preventDefault();
             alert(`${t("Basket.AlertKoszykPusty")}`);
         } else {
@@ -130,10 +137,16 @@ const OrderOptions = () => {
                     onClick={orderConfirmHandler}
                     style={{ padding: 0 }}
                 >
-                    {addedItems.length === 0 || +total > +budget ? (
-                        <button disabled className="order-button">
-                            Złóż zamówienie
-                        </button>
+                    {orderType !== "S6" ? (
+                        addedItems.length === 0 || +total > +budget ? (
+                            <button disabled className="order-button">
+                                Złóż zamówienie
+                            </button>
+                        ) : (
+                            <button className="order-button">
+                                {t("Basket.ZłóżZamówienie")}
+                            </button>
+                        )
                     ) : (
                         <button className="order-button">
                             {t("Basket.ZłóżZamówienie")}

@@ -1,0 +1,42 @@
+.budget-history {
+    min-height: calc(100vh - 57px);
+    padding-top: 70px;
+    background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
+    background-size: cover;
+    padding-left: 10%;
+    padding-right: 10%;
+    table {
+        background-color: white;
+        th,
+        .cell {
+            padding: 5px 8px;
+        }
+        th {
+            background-color: gray;
+            font-weight: 500;
+            color: white;
+        }
+        td {
+            padding: 0;
+            color: rgb(0, 0, 0);
+            font-weight: 300;
+            position: relative;
+            border: none;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr {
+            transition: 0.1s;
+            &:hover {
+                background-color: rgb(211, 211, 211);
+            }
+        }
+    }
+}
+h2 {
+    padding-left: 40%;
+}
+.title {
+    padding-left: 35%;
+}

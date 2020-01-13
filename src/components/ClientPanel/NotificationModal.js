@@ -21,16 +21,17 @@ const NotificationModal = props => {
         setSuccess(false);
         setFailed(false);
     };
-    const sendNotification = () => {
-        postSubscribe(token, props.itemId, email, lang).then(res => {
-            console.log(res.data.subscribe);
-            if (res.data.subscribe.error) {
-                setFailed(true);
-            } else {
-                setSuccess(true);
-            }
-        });
-    };
+
+    // const sendNotification = () => {
+    //     postSubscribe(token, props.itemId, email, lang).then(res => {
+    //         console.log(res.data.subscribe);
+    //         if (res.data.subscribe.error) {
+    //             setFailed(true);
+    //         } else {
+    //             setSuccess(true);
+    //         }
+    //     });
+    // };
 
     return (
         <>
@@ -43,6 +44,7 @@ const NotificationModal = props => {
                         role="dialog"
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
+                        open={props.open}
                     >
                         <div className="modal-dialog modal-lg" role="document">
                             <div className="modal-content">
@@ -120,7 +122,7 @@ const NotificationModal = props => {
                                     <button
                                         type="button"
                                         className="btn btn-primary"
-                                        onClick={sendNotification}
+                                        // onClick={sendNotification}
                                     >
                                         Powiadom mnie
                                     </button>
