@@ -13,7 +13,7 @@ const OrderOptions = () => {
     const total = useSelector(state => state.cartReducer.total);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const clientData = useSelector(state => state.clientDataReducer);
-    console.log(clientData);
+    //console.log(clientData);
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
@@ -69,23 +69,31 @@ const OrderOptions = () => {
         <div className="order-options">
             <h4 className="options-header">{t("Basket.WybierzAdres")}</h4>
             <div className="input-group mb-3">
-                <select
-                    className="custom-select"
-                    id="inputGroupSelect02"
-                    onChange={selectValueHandler}
-                    value={selectInputValue}
-                >
-                    {deliveryData[0].getWixClientData.deliveryAddresses.map(
-                        (data, key) => {
-                            return (
-                                <option key={data.id} value={data.id}>
-                                    {data.name}
-                                </option>
-                            );
-                        },
-                    )}
-                </select>
+                <div>
+                    <select
+                        className="custom-select"
+                        id="inputGroupSelect02"
+                        onChange={selectValueHandler}
+                        value={selectInputValue}
+                    >
+                        {deliveryData[0].getWixClientData.deliveryAddresses.map(
+                            (data, key) => {
+                                return (
+                                    <option key={data.id} value={data.id}>
+                                        {data.name}
+                                    </option>
+                                );
+                            },
+                        )}
+                    </select>
+                </div>
             </div>
+            {/* {clientData.outofUE&&
+                <p className="out-of-ue-info">
+                    Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty 
+                    niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."
+                </p>
+            } */}
             <hr />
             <div className="order-type invisible" style={{ height: "0" }}>
                 <h4 className="options-header">Wybierz typ zamówienia:</h4>

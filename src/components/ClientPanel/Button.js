@@ -27,7 +27,7 @@ const Button = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
-    const [name, setName] = useState("");
+    const [name, setName] = useState();
     const token = localStorage.getItem("token");
     //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
@@ -117,6 +117,7 @@ const Button = props => {
     const openModal = () => {
         setName(props.itemTitle);
         setClicked(true);
+        
         //  console.log(clicked);
         // console.log(props.itemId);
         
@@ -141,60 +142,59 @@ const Button = props => {
         //     });
         // };
     return (
-        <>
-            {proposal===true&&
-                //<NotificationModal id={props.itemId} name={name} />
-                <>
-                    <div
-                        className="modal fade"
-                        id="proposalModal"
-                        tabIndex="-1"
-                        role="dialog"
-                        aria-labelledby="proposalModalLabel"
-                        aria-hidden="true"
-                    >
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="proposalModalLabel">
-                                        Wniosek o zamówienie płatne
-                                    </h5>
-                                    <button
-                                        type="button" className="close"
-                                        data-dismiss="modal" aria-label="Close"
-                                    >
-                                        <span aria-hidden="true">&times;</span>
+        <> 
+            <>
+                {/* <NotificationModal id={props.itemId} name={name} open={clicked} /> */}
+                <div
+                    className="modal fade"
+                    id="proposalModal"
+                    tabIndex="-1"
+                    role="dialog"
+                    aria-labelledby="proposalModalLabel"
+                    aria-hidden="true"
+                    open={proposal}
+                >
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="proposalModalLabel">
+                                    Wniosek o zamówienie płatne
+                                </h5>
+                                <button
+                                    type="button" className="close"
+                                    data-dismiss="modal" aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <div>
+                                    <label>
+                                        {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
+                                        {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
+                                        Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                        Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
+                                        MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
+                                        Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
+                                        Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
+                                        przez MANN+HUMMEL FT Poland.
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                    Anuluj
+                                </button>
+                                <a href={serverAddress+proposalAttr}>
+                                    <button type="button" className="btn btn-primary">
+                                        Złóż wniosek
                                     </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div>
-                                        <label>
-                                           {/*  Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
-                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
-                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
-                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
-                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
-                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
-                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
-                                            przez MANN+HUMMEL FT Poland.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                                        Anuluj
-                                    </button>
-                                    <a href={serverAddress+proposalAttr}>
-                                        <button type="button" className="btn btn-primary">
-                                            Złóż wniosek
-                                        </button>
-                                    </a>  
-                                </div>
+                                </a>  
                             </div>
                         </div>
                     </div>
-                </>
-            }
+                </div>
+            </>
             {props.availabaleItemQuantity === 0 ? (
                 <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
                     <button
@@ -205,12 +205,9 @@ const Button = props => {
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        Powiadom o dostępności {name}
+                        Powiadom o dostępności
                     </button>
-
-                    {clicked === true && (
-                        <NotificationModal id={props.itemId} name={name} />
-                    )}
+                    <NotificationModal id={props.itemId} name={name} open={clicked} />
                 </div>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
