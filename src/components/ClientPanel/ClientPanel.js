@@ -145,6 +145,8 @@ const ClientPanel = props => {
                                           itemUnit={item.product.uom_primary}
                                           itemTitle={item.product.description1}
                                           token={token}
+                                          price={item.price.price}
+                                          currency={item.price.currency}
                                       />
                                   </div>
                               </div>

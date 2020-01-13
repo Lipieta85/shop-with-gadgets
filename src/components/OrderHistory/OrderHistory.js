@@ -20,7 +20,8 @@ const OrderHistory = () => {
         state => state.orderReducer.singleOrderHistory,
     );
 
-    const [showedOrder, setShowedOrder] = useState(orders.length - 1);
+    const [showedOrder, setShowedOrder] = useState();
+    const [currency, setCurrency] = useState();
 
     const { t } = useTranslation();
 
@@ -60,7 +61,6 @@ const OrderHistory = () => {
                         ></button>
                         <div className="cell">{order.date_of_order}</div>
                     </td>
-                    {/* <td>{order.ship_to_number}</td> */}
                     <td>
                         <button
                             className="row-button"
@@ -86,6 +86,7 @@ const OrderHistory = () => {
         orders.map((order, i) => {
             if (i === selectedOrder) {
                 setShowedOrder(order);
+                setCurrency(order.currency_code);
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
             };
             return null
@@ -94,10 +95,10 @@ const OrderHistory = () => {
 
     return (
         <div className="order-history">
-            <div className="container-fluid p-5">
+            <div className="container-fluid order-history-container pt-5">
                 <NavMenu />
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-sm-5">
                         <h4 className="order-list ml-1 mb-2">
                             {orders.length === 0 ? (
                                 <>
@@ -119,7 +120,7 @@ const OrderHistory = () => {
                             )}
                         </h4>
                     </div>
-                    <div className="col-7">
+                    <div className="col-sm-7">
                         <h4 className="order-list ml-1 mb-2">
                             Szczegóły zamówienia (
                             {showedOrder && showedOrder.order_number})
@@ -128,72 +129,54 @@ const OrderHistory = () => {
                 </div>
                 <Spinner />
                 <div className="row">
-                    <div className="col-5 order-container">
+                    <div className="col-sm-5 order-container">
                         <table className="table">
                             <tr>
                                 <th>Data</th>
-                                {/* <th>Miejsce dostawy</th> */}
                                 <th>Status</th>
                                 <th>Netto</th>
                             </tr>
                             {confirmedOrder.reverse()}
                         </table>
                     </div>
-                    <div className="col-7 orders-right">
+                    <div className="col-sm-7 orders-right">
                         <div className="summary-details-box">
                             <div className="summary-details">
-                                {showedOrder && (
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <div>
-                                                Numer zamówienia:{" "}
-                                                <b>
-                                                    {showedOrder.order_number}
-                                                </b>
-                                            </div>
-                                            <div>
-                                                Data złożenia:{" "}
-                                                <b>
-                                                    {showedOrder.date_of_order}
-                                                </b>
-                                            </div>
-                                            <div>
-                                                Godzina:{" "}
-                                                <b>
-                                                    {showedOrder.time_of_order}
-                                                </b>
-                                            </div>
-                                            <div>
-                                                Adres dostarczenia:{" "}
-                                                <b>
-                                                    {showedOrder.ship_to_number}
-                                                </b>
-                                            </div>
-                                            <div>
-                                                Status:{" "}
-                                                <b>{showedOrder.status}</b>
-                                            </div>
-                                            <div>
-                                                Waluta:{" "}
-                                                <b>
-                                                    {showedOrder.currency_code}
-                                                </b>
-                                            </div>
-                                            <div>
-                                                Zapłacona kwota:{" "}
-                                                <b>
-                                                    {
-                                                        showedOrder.order_total_amount
-                                                    }{" "}
-                                                    {showedOrder.currency_code}
-                                                </b>
-                                            </div>
-                                        </div>
+                                {showedOrder&&
+                                    <table>
+                                        <tr>
+                                            <td>Numer zamówienia: </td>
+                                            <td><b>{showedOrder.order_number}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Data złożenia: </td>
+                                            <td><b>{showedOrder.date_of_order}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Godzina: </td>
+                                            <td><b>{showedOrder.time_of_order}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adres dostarczenia: </td>
+                                            <td><b>{showedOrder.ship_to_number}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status: </td>
+                                            <td><b>{showedOrder.status}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waluta: </td>
+                                            <td><b>{showedOrder.currency_code}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zapłacona kwota: </td>
+                                            <td><b>{showedOrder.order_total_amount}</b></td>
+                                        </tr>
                                         {showedOrder.status_number <= 530 ? (
                                             <ChooseModal orderNumber={showedOrder.order_id} showedOrderNumber={showedOrder.order_number}/>
                                         ) : null}
-                                    </div>
-                                )}
+                                    </table>
+                                }
                             </div>
                         </div>
                         {showedOrder && <ConfirmModal showedOrderNumber={showedOrder.order_number}/>}
@@ -259,12 +242,8 @@ const OrderHistory = () => {
                     }) : null }
                         <div className="summary-box">
                             <div className="orders-summary">
-                                {/* <div>Adres dostawy: {showedOrder&&showedOrder.ship_to_number}</div> */}
                                 <div className="font-weight-bold">
-                                    Zapłacona kwota:{" "}
-                                    {showedOrder &&
-                                        showedOrder.order_total_amount}{" "}
-                                    zł
+                                    Zapłacona kwota: {showedOrder&&showedOrder.order_total_amount} {currency}
                                 </div>
                             </div>
                         </div>
