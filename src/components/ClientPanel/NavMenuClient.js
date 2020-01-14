@@ -182,6 +182,12 @@ const NavMenu = () => {
                                     >
                                         {t(`Nav.HistoriaBudżetu`)}
                                     </Link>
+                                    <Link
+                                        className="dropdown-item text-uppercase"
+                                        to="/y"
+                                    >
+                                        {t(`Nav.ZamówieniaPłatne`)}
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item text-uppercase">

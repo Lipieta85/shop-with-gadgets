@@ -86,6 +86,12 @@ const ProductDetailsNavMenu = () => {
                                     >
                                         Historia budżetu
                                     </Link>
+                                    <Link
+                                        className="dropdown-item text-uppercase"
+                                        to="/"
+                                    >
+                                        Zamówienia Płatne
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item text-uppercase">

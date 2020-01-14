@@ -14,13 +14,12 @@ const Button = props => {
     const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-
     const clientEmail = useSelector(
-        state =>
+        state =>state.clientDataReducer.clientData[0].getWixClientData.data
+        &&
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );
-
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false); //zmienic nazwe
@@ -32,17 +31,11 @@ const Button = props => {
     const [success, setSuccess] = useState();
     const [failed, setFailed] = useState();
     const dispatch = useDispatch();
-    const { t } = useTranslation();
     const input = useRef();
     const [name, setName] = useState();
     const token = localStorage.getItem("token");
     const lang = useSelector(state => state.clientDataReducer.language);
-    const clientEmail = useSelector(
-        state =>state.clientDataReducer.clientData[0].getWixClientData.data
-        &&
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
+    
     const clientData = useSelector(state => state.clientDataReducer);
     const basketData = useSelector(state => state.cartReducer);
     useEffect(() => {

@@ -104,7 +104,7 @@ const ClientPanel = props => {
                               >
                                   <Link to={`/product/${item.product.id}`}>
                                       <h5 className="card-title text-uppercase">
-                                          {item.product.description1}
+                                          {item.product.name}
                                       </h5>
                                   </Link>
                               </div>
@@ -113,7 +113,7 @@ const ClientPanel = props => {
                                       <strong>
                                           {t(`Card.Cena`)}: {item.price.price}{" "}
                                           {item.price.currency}/
-                                          {item.product.uom_primary}
+                                          {item.product.unitOfMeasure}
                                       </strong>
                                   </p>
                                   {item.availability === 0 ? (
@@ -127,12 +127,12 @@ const ClientPanel = props => {
                                           <span className="quantity m-desktop">
                                               {t(`Card.DostępnaIlość`)}:{" "}
                                               {item.availability}{" "}
-                                              {item.product.uom_primary}
+                                              {item.product.unitOfMeasure}
                                           </span>
                                           <span className="quantity m-mobile">
                                               {t(`Card.Dostępnych`)}:{" "}
                                               {item.availability}{" "}
-                                              {item.product.uom_primary}
+                                              {item.product.unitOfMeasure}
                                           </span>
                                       </div>
                                   )}
@@ -142,8 +142,8 @@ const ClientPanel = props => {
                                           availabaleItemQuantity={
                                               item.availability
                                           }
-                                          itemUnit={item.product.uom_primary}
-                                          itemTitle={item.product.description1}
+                                          itemUnit={item.product.unitOfMeasure}
+                                          itemTitle={item.product.name}
                                           token={token}
                                           price={item.price.price}
                                           currency={item.price.currency}
