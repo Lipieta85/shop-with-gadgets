@@ -72,7 +72,9 @@ const ClientPanel = props => {
                               <>
                                   <div className="card-label-box">
                                       <div className="card-label">
-                                          <div className="label-textarea unselectable">
+                                          <div className="label-textarea unselectable"
+                                            style={{fontSize:item.extraTag.length>12?'8.4px':''}}
+                                          >
                                               {item.extraTag}
                                           </div>
                                       </div>

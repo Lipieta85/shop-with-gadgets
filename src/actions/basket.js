@@ -41,6 +41,7 @@ export const addItemToBasket = (
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
         let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
+        console.log(companyId)
         let clientData = getState().clientDataReducer.clientData;
         let adressess = [];
         let deliveryAddress = [];
@@ -98,8 +99,9 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
+                    console.log(res)
                     if (!res.data.create.order) {
-                        window.location.replace(`${host2}/404`);
+                        //window.location.replace(`${host2}/404`);
                     } else {
                         dispatch(addBasketId(res.data.create.order.id_orders));
                         if (existed_item) {
