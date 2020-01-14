@@ -158,6 +158,10 @@ const OrderHistory = () => {
                                                     <td><b>{showedOrder.time_of_order}</b></td>
                                                 </tr>
                                                 <tr>
+                                                    <td>Waluta: </td>
+                                                    <td><b>{showedOrder.currency_code}</b></td>
+                                                </tr>
+                                                <tr>
                                                     <td>Adres dostarczenia: </td>
                                                     <td><b>{showedOrder.ship_to_number}</b></td>
                                                 </tr>
@@ -166,12 +170,8 @@ const OrderHistory = () => {
                                                     <td><b>{showedOrder.status}</b></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Waluta: </td>
-                                                    <td><b>{showedOrder.currency_code}</b></td>
-                                                </tr>
-                                                <tr>
                                                     <td>Zapłacona kwota: </td>
-                                                    <td><b>{(+showedOrder.order_total_amount).toFixed(2)}</b></td>
+                                                    <td><b>{(+showedOrder.order_total_amount).toFixed(2)} {showedOrder.currency_code}</b></td>
                                                 </tr>
                                             </table>
                                             <div className="w-100 text-right">
@@ -237,7 +237,7 @@ const OrderHistory = () => {
                                                         )
                                                     </b>
                                                 </span>
-                                                <span className="mr-1 pull-right mb-0">
+                                                <span className="pull-right mb-0">
                                                     <b>Razem: </b>
                                                     <b className="order-text-value">
                                                         {+order.total} {showedOrder&&showedOrder.currency_code}
