@@ -34,7 +34,7 @@ export const createOrder = (token, items) => {
         let basketId = getState().cartReducer.basket;
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
-        let companyId = company.charAt(0).toUpperCase();
+        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
         Number(basketId);
 
         let clientData = getState().clientDataReducer.clientData;
@@ -98,7 +98,6 @@ export const getClientBudgetHistory = token => {
     return dispatch => {
         getUserBudgetHistory(token)
             .then(res => {
-                console.log(res);
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
             .catch(error => {

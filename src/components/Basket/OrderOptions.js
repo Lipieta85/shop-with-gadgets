@@ -12,7 +12,7 @@ const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const total = useSelector(state => state.cartReducer.total);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
-    const clientData = useSelector(state => state.clientDataReducer);
+    //const clientData = useSelector(state => state.clientDataReducer);
     //console.log(clientData);
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
@@ -64,7 +64,6 @@ const OrderOptions = () => {
 
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
-            console.log(addedItems);
             e.preventDefault();
             alert(`${t("Basket.AlertKoszykPusty")}`);
         } else {

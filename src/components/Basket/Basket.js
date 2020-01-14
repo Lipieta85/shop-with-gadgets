@@ -41,12 +41,12 @@ const Basket = props => {
                       <div className="col-sm-9 col-md-8 desc-col">
                           <BasketButtons
                               itemId={item.product.id}
-                              itemTitle={item.product.description1}
+                              itemTitle={item.product.name}
                               itemPrice={item.price.price}
                               itemQuantity={item.quantity}
                               itemTotalPrice={item.itemTotalPrice}
                               itemCurrency={item.price.currency}
-                              itemUnit={item.product.uom_primary}
+                              itemUnit={item.product.unitOfMeasure}
                           />
                       </div>
                   </li>

@@ -4,6 +4,7 @@ import cartReducer from "./cartReducer";
 import orderReducer from "./orderReducer";
 import pageReducer from "./pageReducer";
 import clientDataReducer from "./clientDataReducer";
+import subscriptionReducer from "./subscriptionReducer"
 import storage from "redux-persist/lib/storage";
 
 const appReducer = combineReducers({
@@ -12,6 +13,7 @@ const appReducer = combineReducers({
     orderReducer,
     pageReducer,
     clientDataReducer,
+    subscriptionReducer
 });
 
 const rootReducer = (state, action) => {

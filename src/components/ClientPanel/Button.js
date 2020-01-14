@@ -5,40 +5,52 @@ import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
+import { ButtonToolbar, Button } from "react-bootstrap";
 //import { postSubscribe } from "../../api/index";
-import NotificationModal from "./NotificationModal";
-import { sendNotification } from "../../actions/products";
-const Button = props => {
+import ClientModal from "./ClientModal";
+import ClientResponseModal from "./ClientResponseModal";
+
+const ButtonComponent = props => {
+    const subsriptionState = useSelector(
+        state => state.subscriptionReducer.subscribeState,
+    );
     const orderTypes = { S5: "S5", S6: "S6" };
     const serverAddress =
         "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
     const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false); //zmienic nazwe
     const [proposal, setProposal] = useState(false);
+    const [name, setName] = useState("");
+    const [productid, setProductid] = useState();
+    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShowResponse, setModalShowResponse] = React.useState(false);
 
     const { t } = useTranslation();
-    const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data &&
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
-    const [email, setEmail] = useState(`${clientEmail}`);
-    const [success, setSuccess] = useState();
-    const [failed, setFailed] = useState();
-    const dispatch = useDispatch();
-    const input = useRef();
-    const [name, setName] = useState();
-    const token = localStorage.getItem("token");
-    const lang = useSelector(state => state.clientDataReducer.language);
 
+    const dispatch = useDispatch();
+    
+    const input = useRef();
+    
+    const token = localStorage.getItem("token");
     const clientData = useSelector(state => state.clientDataReducer);
     const basketData = useSelector(state => state.cartReducer);
+    const clientResponseModal = document.querySelector(
+        "#clientResponseButtonModal",
+    );
+    useEffect(() => {
+        setModalShow(false);
+        if (subsriptionState === true) {
+            clientResponseModal.click();
+        }
+        if (subsriptionState === false) {
+            clientResponseModal.click();
+        }
+    }, [subsriptionState]);
+
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -119,38 +131,23 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
     };
-    const openModal = () => {
-        setName(props.itemTitle);
-        setClicked(true);
 
-        //  console.log(clicked);
-        // console.log(props.itemId);
+    const handleShowModal = () => {
+        setModalShow(true);
+        setName(props.itemTitle);
+        setProductid(props.itemId)     
     };
     const closeProposal = () => {
         setProposal(false);
+    }
+    
+    const handleShowModalResponse = () => {
+        setModalShowResponse(true);
     };
-    const sendNotification = () => {
-        // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
-        //     console.log(res.data.subscribe);
-        // });
-    };
-    // const closeModal = () => {
-    //     setSuccess(false);
-    //     setFailed(false);
-    // };
-    // const sendNotification = () => {
-    //     postSubscribe(token, props.itemId, email, lang).then(res => {
-    //         console.log(res.data.subscribe);
-    //         if (res.data.subscribe.error) {
-    //             setFailed(true);
-    //         } else {
-    //             setSuccess(true);
-    //         }
-    //     });
-    // };
+
     return (
-        <>
-            {proposal === true && (
+        <> 
+            {proposal===true&&
                 <>
                     <div
                         className="modal fade"
@@ -170,10 +167,8 @@ const Button = props => {
                                         Wniosek o zamówienie płatne
                                     </h5>
                                     <button
-                                        type="button"
-                                        className="close"
-                                        data-dismiss="modal"
-                                        aria-label="Close"
+                                        type="button" className="close"
+                                        data-dismiss="modal" aria-label="Close"
                                         onClick={closeProposal}
                                     >
                                         <span aria-hidden="true">&times;</span>
@@ -184,33 +179,17 @@ const Button = props => {
                                         <label>
                                             {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
                                             {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
-                                            Ilość produktów jaką chcesz zamówić
-                                            przekracza dostępny budżet
-                                            marketingowy. Jeśli chcesz zamówić
-                                            większą ilość, wypełnij wniosek o
-                                            możliwość składania zamówień
-                                            płatnych. Uwaga: po złożeniu wniosku
-                                            i jego zaakceptowaniu przez
-                                            przedstawiciela MANN+HUMMEL FT
-                                            Poland Twój budżet marketingowy na
-                                            gadżety zostanie wyzerowany. Od tej
-                                            chwili aż do przyznania Ci nowego
-                                            budżetu marketingowego na gadżety
-                                            wszystkie Twoje zamówienia będą
-                                            realizowane w trybie pełnej
-                                            płatności na podstawie faktury
-                                            wystawionej przez MANN+HUMMEL FT
-                                            Poland.
+                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
+                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
+                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
+                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
+                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
+                                            przez MANN+HUMMEL FT Poland.
                                         </label>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button
-                                        type="button"
-                                        className="btn btn-secondary"
-                                        data-dismiss="modal"
-                                        onClick={closeProposal}
-                                    >
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
                                         Anuluj
                                     </button>
                                     <a href={serverAddress + proposalAttr}>
@@ -226,25 +205,42 @@ const Button = props => {
                         </div>
                     </div>
                 </>
-            )}
+            }
             {props.availabaleItemQuantity === 0 ? (
-                <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
-                    <button
-                        type="button"
-                        className="availability-check unselectable"
-                        onClick={e => openModal(e)}
-                        value={props.itemTitle}
-                        data-toggle="modal"
-                        data-target="#exampleModal"
-                    >
-                        {t(`Card.Powiadom`)}
-                    </button>
-                    <NotificationModal
-                        id={props.itemId}
-                        name={name}
-                        open={clicked}
-                    />
-                </div>
+                <>
+                    <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
+                        <ButtonToolbar className="w-100">
+                            <Button
+                                className="availability-check unselectable"
+                                onClick={handleShowModal}
+                            >
+                                Powiadom o dostępności
+                            </Button>
+                            <ClientModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                name={name}
+                                productid={productid}
+                            />
+                        </ButtonToolbar>
+                    </div>
+                    <div>
+                        <ButtonToolbar className="invisible">
+                            <Button
+                                className="availability-check unselectable"
+                                id="clientResponseButtonModal"
+                                onClick={handleShowModalResponse}
+                            >
+                                Powiadom o dostępności
+                            </Button>
+                            <ClientResponseModal
+                                show={modalShowResponse}
+                                onHide={() => setModalShowResponse(false)}
+                                name={name}
+                            />
+                        </ButtonToolbar>
+                    </div>
+                </>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                     <input
@@ -281,4 +277,4 @@ const Button = props => {
     );
 };
 
-export default Button;
+export default ButtonComponent;

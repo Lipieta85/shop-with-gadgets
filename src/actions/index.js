@@ -42,7 +42,7 @@ export {
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
-export {
+export { sendSubscribe, subscribeRes, resetSubscribe } from "./subscription.js";export {
     clientData,
     companyId,
     setToken,

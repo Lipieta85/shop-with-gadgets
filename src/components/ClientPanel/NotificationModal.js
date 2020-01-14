@@ -4,7 +4,7 @@ import { postSubscribe } from "../../api/index";
 const NotificationModal = props => {
     const products = useSelector(state => state.cartReducer.items);
     const [showedProduct, setShowedProduct] = useState(products.length - 1);
-
+    const [name, setName] = useState("");
     const [success, setSuccess] = useState();
     const [failed, setFailed] = useState();
     const clientEmail = useSelector(
@@ -22,16 +22,9 @@ const NotificationModal = props => {
         setFailed(false);
     };
 
-    // const sendNotification = () => {
-    //     postSubscribe(token, props.itemId, email, lang).then(res => {
-    //         console.log(res.data.subscribe);
-    //         if (res.data.subscribe.error) {
-    //             setFailed(true);
-    //         } else {
-    //             setSuccess(true);
-    //         }
-    //     });
-    // };
+    useEffect(() => {
+        setName(props.itemTitle);
+    }, [props]);
 
     return (
         <>
@@ -129,11 +122,28 @@ const NotificationModal = props => {
                                 </div>
                             </div>
                         </div>
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-dismiss="modal"
+                                onClick={closeModal}
+                            >
+                                Zamknij
+                            </button>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                //onClick={sendNotification}
+                            >
+                                Powiadom mnie
+                            </button>
+                        </div>
                     </div>
                 </>
             )}
         </>
     );
-};
+}
 
 export default NotificationModal;
