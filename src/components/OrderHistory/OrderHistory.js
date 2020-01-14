@@ -219,7 +219,7 @@ const OrderHistory = () => {
                                                 <span>
                                                     Cena:{" "}
                                                     <b className="order-text-value mr-3">
-                                                        {+order.unitPrice}
+                                                        {+order.unitPrice} {showedOrder&&showedOrder.currency_code}
                                                     </b>
                                                 </span>
                                             </div>
@@ -240,7 +240,7 @@ const OrderHistory = () => {
                                                 <span className="mr-1 pull-right mb-0">
                                                     <b>Razem: </b>
                                                     <b className="order-text-value">
-                                                        {+order.total}
+                                                        {+order.total} {showedOrder&&showedOrder.currency_code}
                                                     </b>
                                                 </span>
                                             </div>
@@ -252,7 +252,7 @@ const OrderHistory = () => {
                             <div className="summary-box">
                                 <div className="orders-summary">
                                     <div className="font-weight-bold">
-                                        Zapłacona kwota: {showedOrder&&showedOrder.order_total_amount} {currency}
+                                        Zapłacona kwota: {showedOrder&&showedOrder.order_total_amount} {showedOrder&&showedOrder.currency_code}
                                     </div>
                                 </div>
                             </div>
