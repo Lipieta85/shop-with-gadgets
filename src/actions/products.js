@@ -3,6 +3,7 @@ import {
     getAllProducts,
     getProductsCategories,
     changeProductsCategory,
+    postSubscribe,
 } from "../api";
 
 export const setProducts = products => {
@@ -61,6 +62,17 @@ export const changeProductCategory = (token, number) => {
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
+            });
+    };
+};
+export const sendNotification = (token, id, email, language) => {
+    return dispatch => {
+        postSubscribe(token, id, email, language)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(error => {
+                console.log(error);
             });
     };
 };

@@ -4,7 +4,7 @@ import {
     getUserOrders,
     getSingleUserOrder,
     getUserBudgetHistory,
-    singleOrderCancel
+    singleOrderCancel,
 } from "../api/index";
 import { mapKeys } from "lodash";
 
@@ -98,6 +98,7 @@ export const getClientBudgetHistory = token => {
     return dispatch => {
         getUserBudgetHistory(token)
             .then(res => {
+                console.log(res);
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
             .catch(error => {
@@ -114,8 +115,7 @@ export const setClientBudgetHistory = data => {
 };
 
 export const getClientOrdersHistory = token => {
-    return (dispatch) => {
-        
+    return dispatch => {
         getUserOrders(token)
             .then(res => {
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
@@ -162,33 +162,33 @@ export const setSingleOrderHistory = data => {
 export const orderCancel = (token, orderId) => {
     return (dispatch, getState) => {
         singleOrderCancel(token, orderId)
-        .then(res => {
-            if (res.data.cancel === true) {
-            dispatch(cancelOrderStatus(true))
-            dispatch(setOrderStatus(1))
-            }
-            if (res.data.cancel === false) {
-            dispatch(cancelOrderStatus(false))
-            dispatch(setOrderStatus(2))
-            }
-        })
-        .catch(error => {
-            dispatch(cancelOrderStatus(false))
-            dispatch(setOrderStatus(2))
-        })
-    }
-}
+            .then(res => {
+                if (res.data.cancel === true) {
+                    dispatch(cancelOrderStatus(true));
+                    dispatch(setOrderStatus(1));
+                }
+                if (res.data.cancel === false) {
+                    dispatch(cancelOrderStatus(false));
+                    dispatch(setOrderStatus(2));
+                }
+            })
+            .catch(error => {
+                dispatch(cancelOrderStatus(false));
+                dispatch(setOrderStatus(2));
+            });
+    };
+};
 
 export const cancelOrderStatus = status => {
     return {
         type: type.CANCEL_ORDER_STATUS,
-        status
-    }
-}
+        status,
+    };
+};
 
-export const setOrderStatus = (status) => {
+export const setOrderStatus = status => {
     return {
         type: type.SET_ORDER_STATUS,
-        status
-    }
-}
+        status,
+    };
+};

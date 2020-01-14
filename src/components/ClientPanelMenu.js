@@ -13,11 +13,20 @@ const ClientPanelMenu = () => {
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
     const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
-    const companyName = useSelector(state => state.clientDataReducer.companyName);
+    const companyName = useSelector(
+        state => state.clientDataReducer.companyName,
+    );
     const userName = useSelector(state => state.clientDataReducer.userName);
-    const currencyCode = useSelector(state => state.clientDataReducer.currencyCode);
+    const currencyCode = useSelector(
+        state => state.clientDataReducer.currencyCode,
+    );
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
+    );
+    const orderType = useSelector(
+        state =>
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .marketingOrderType,
     );
     const [orderList, setOrderList] = useState();
 
@@ -31,7 +40,7 @@ const ClientPanelMenu = () => {
             return currency.push(item.price.currency);
         });
     }
-    
+
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
@@ -66,7 +75,9 @@ const ClientPanelMenu = () => {
         <div className="client-panel">
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
-                    <div>{t(`CPanelMenu.Zalogowany`)}: {userName} ({companyName})</div>
+                    <div>
+                        {t(`CPanelMenu.Zalogowany`)}: {userName} ({companyName})
+                    </div>
                 </div>
                 <div className="logged-panel-btn-group">
                     {window.location.pathname === "/Basket" ? (
@@ -126,31 +137,50 @@ const ClientPanelMenu = () => {
                 <div className="divider"></div>
                 <div className="logged-panel__purchase-value">
                     <div className="purchase-text">
-                        <span className="available-budget">
-                            {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
-                        </span>
+                        {orderType && orderType === "S6" ? (
+                            <>
+                                <span className="available-budget">
+                                    {t(`CPanelMenu.ZamówieniePłatne`)}
+                                    <div className="divider"></div>
+                                </span>
+                                <span className="purchase-header">
+                                    {t(`CPanelMenu.WartośćTwoichZakupów`)}
+                                </span>
+                                <br />
+                                <span className="blue-value">
+                                    {priceValue} {currencyCode}
+                                </span>
+                            </>
+                        ) : (
+                            <>
+                                <span className="available-budget">
+                                    {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
+                                </span>
+                                <br />
+                                <span className="blue-value">
+                                    {budget} {budget ? currencyCode : ""}
+                                </span>
+                                <span className="budget-alert">
+                                    {budgetAlert}
+                                </span>
+                                <br />
+                                <div className="y-rem-18"></div>
+                                <span className="purchase-header">
+                                    {t(`CPanelMenu.WartośćTwoichZakupów`)}
+                                </span>
+                                <br />
+                                <span
+                                    className={
+                                        +priceValue > +budget
+                                            ? "budget-alert-exceeded"
+                                            : "blue-value"
+                                    }
+                                >
+                                    {priceValue} {currencyCode}
+                                </span>
+                            </>
+                        )}
                         <br />
-                        <span className="blue-value">
-                            {budget} {budget ? currencyCode : ""}
-                        </span>
-                        {/* <span className="value">{currency}</span> */}
-                        <span className="budget-alert">{budgetAlert}</span>
-                        <br />
-                        <div className="y-rem-18"></div>
-                        <span className="purchase-header">
-                            {t(`CPanelMenu.WartośćTwoichZakupów`)}
-                        </span>
-                        <br />
-                        <span
-                            className={
-                                +priceValue > +budget
-                                    ? "budget-alert-exceeded"
-                                    : "blue-value"
-                            }
-                        >
-                            {priceValue} {currencyCode}
-                        </span>
-                        {/* <span className="value">{currency}</span> */}
                     </div>
                 </div>
                 <div className="divider"></div>

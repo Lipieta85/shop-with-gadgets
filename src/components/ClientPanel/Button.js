@@ -7,12 +7,20 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from 'react-i18next';
 //import { postSubscribe } from "../../api/index";
 import NotificationModal from "./NotificationModal";
+import { sendNotification } from "../../actions/products";
 const Button = props => {
     const orderTypes = {S5:"S5",S6:"S6"};
     const serverAddress = "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
     const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
+
+    const clientEmail = useSelector(
+        state =>
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .customerServiceEmail,
+    );
+
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false); //zmienic nazwe
@@ -20,16 +28,15 @@ const Button = props => {
 
     const { t } = useTranslation();
 
-    //const [showedProduct, setShowedProduct] = useState(products.length - 1);
-    // const [email, setEmail] = useState(`${clientEmail}`);
-    // const [success, setSuccess] = useState();
-    // const [failed, setFailed] = useState();
+    const [email, setEmail] = useState(`${clientEmail}`);
+    const [success, setSuccess] = useState();
+    const [failed, setFailed] = useState();
     const dispatch = useDispatch();
-
+    const { t } = useTranslation();
     const input = useRef();
     const [name, setName] = useState();
     const token = localStorage.getItem("token");
-    //const lang = useSelector(state => state.clientDataReducer.language);
+    const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
         state =>state.clientDataReducer.clientData[0].getWixClientData.data
         &&
@@ -204,12 +211,12 @@ const Button = props => {
                     <button
                         type="button"
                         className="availability-check unselectable"
-                        onClick={() => openModal()}
+                        onClick={e => openModal(e)}
                         value={props.itemTitle}
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        Powiadom o dostępności
+                        {t(`Card.Powiadom`)}
                     </button>
                     <NotificationModal id={props.itemId} name={name} open={clicked} />
                 </div>

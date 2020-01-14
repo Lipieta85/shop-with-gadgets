@@ -16,6 +16,7 @@
     "TwójKoszyk": "Your Basket",
     "Koszyk(pusty)": "Basket (Empty)",
     "DostępnyBudżetMarketingowy": "Marketing Budget Available",
+    "ZamówieniePłatne": "Payed Order",
     "WartośćTwoichZakupów": "Value of Your Purchases"
   },
   "Card": {
@@ -65,5 +66,9 @@
   "OrderHistory": {
     "ListaZamówieńJestPusta": "The order list is empty",
     "ListaZamówień": "Order List"
+  },
+  "BudgetHistory": {
+    "HistoriaBudżetuJestPusta": "The budget history is empty",
+    "HistoriaBudżetu": "Budget History"
   }
 }

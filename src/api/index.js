@@ -251,7 +251,7 @@ export const postOrder = async (
         }),
     );
 };
-export const getUserOrders = async (token) => {
+export const getUserOrders = async token => {
     return await trackPromise(
         axios({
             method: "get",
