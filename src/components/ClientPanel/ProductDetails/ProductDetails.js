@@ -84,8 +84,8 @@ const ProductDetails = props => {
 
     if (loadedProduct) {
         productAvailability = loadedProduct.availability;
-        productTitle = loadedProduct.product.description1;
-        productUnit = loadedProduct.product.uom_primary;
+        productTitle = loadedProduct.product.name;
+        productUnit = loadedProduct.product.unitOfMeasure;
         productPrice = loadedProduct.price.price;
         productCurrency = loadedProduct.price.currency;
         productCode = loadedProduct.product.second_item_number;

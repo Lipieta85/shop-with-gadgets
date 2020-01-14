@@ -22,8 +22,9 @@ export const fetchProductsFailed = () => {
 export const initProducts = (token, currentPage) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
-
-        getAllProducts(token, currentPage, company)
+        const lang = getState().clientDataReducer.language
+        
+        getAllProducts(token, currentPage, company, lang)
             .then(res => {
                 dispatch(setProducts(res.data));
             })

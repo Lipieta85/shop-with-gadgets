@@ -4,47 +4,53 @@ import { addItemToBasket } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { ButtonToolbar, Button } from "react-bootstrap";
 //import { postSubscribe } from "../../api/index";
-import NotificationModal from "./NotificationModal";
-import { sendNotification } from "../../actions/products";
-const Button = props => {
-    const orderTypes = {S5:"S5",S6:"S6"};
-    const serverAddress = "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
+import ClientModal from "./ClientModal";
+import ClientResponseModal from "./ClientResponseModal";
+
+const ButtonComponent = props => {
+    const subsriptionState = useSelector(
+        state => state.subscriptionReducer.subscribeState,
+    );
+    const orderTypes = { S5: "S5", S6: "S6" };
+    const serverAddress =
+        "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
     const proposalAttr = "paid-order-application-workflow-conf-id";
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-
-    const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
-
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [clicked, setClicked] = useState(false); //zmienic nazwe
     const [proposal, setProposal] = useState(false);
+    const [name, setName] = useState("");
+    const [productid, setProductid] = useState();
+    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShowResponse, setModalShowResponse] = React.useState(false);
 
     const { t } = useTranslation();
 
-    const [email, setEmail] = useState(`${clientEmail}`);
-    const [success, setSuccess] = useState();
-    const [failed, setFailed] = useState();
     const dispatch = useDispatch();
-    const { t } = useTranslation();
+    
     const input = useRef();
-    const [name, setName] = useState();
+    
     const token = localStorage.getItem("token");
-    const lang = useSelector(state => state.clientDataReducer.language);
-    const clientEmail = useSelector(
-        state =>state.clientDataReducer.clientData[0].getWixClientData.data
-        &&
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
     const clientData = useSelector(state => state.clientDataReducer);
     const basketData = useSelector(state => state.cartReducer);
+    const clientResponseModal = document.querySelector(
+        "#clientResponseButtonModal",
+    );
+    useEffect(() => {
+        setModalShow(false);
+        if (subsriptionState === true) {
+            clientResponseModal.click();
+        }
+        if (subsriptionState === false) {
+            clientResponseModal.click();
+        }
+    }, [subsriptionState]);
+
     useEffect(() => {
         if (props.changeProduct) {
             if (input.current !== null) {
@@ -90,8 +96,12 @@ const Button = props => {
     };
 
     const dispatchHandler = event => {
-        let marketingOrderType = clientData.clientData[0].getWixClientData.data.marketingOrderType;
-        if(input.current.value*props.price>basketData.budget&&marketingOrderType===orderTypes.S5){
+        let marketingOrderType =
+            clientData.clientData[0].getWixClientData.data.marketingOrderType;
+        if (
+            input.current.value * props.price > basketData.budget &&
+            marketingOrderType === orderTypes.S5
+        ) {
             setProposal(true);
             return false;
         }
@@ -121,36 +131,20 @@ const Button = props => {
             setProductQuantity({ id: input.current.value });
         }
     };
-    const openModal = () => {
+
+    const handleShowModal = () => {
+        setModalShow(true);
         setName(props.itemTitle);
-        setClicked(true);
-        
-        //  console.log(clicked);
-        // console.log(props.itemId);
-        
+        setProductid(props.itemId)     
     };
     const closeProposal = () => {
         setProposal(false);
     }
-    const sendNotification = () => {
-        // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
-        //     console.log(res.data.subscribe);
-        // });
+    
+    const handleShowModalResponse = () => {
+        setModalShowResponse(true);
     };
-    // const closeModal = () => {
-        //     setSuccess(false);
-        //     setFailed(false);
-        // };
-        // const sendNotification = () => {
-        //     postSubscribe(token, props.itemId, email, lang).then(res => {
-        //         console.log(res.data.subscribe);
-        //         if (res.data.subscribe.error) {
-        //             setFailed(true);
-        //         } else {
-        //             setSuccess(true);
-        //         }
-        //     });
-        // };
+
     return (
         <> 
             {proposal===true&&
@@ -166,7 +160,10 @@ const Button = props => {
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="proposalModalLabel">
+                                    <h5
+                                        className="modal-title"
+                                        id="proposalModalLabel"
+                                    >
                                         Wniosek o zamówienie płatne
                                     </h5>
                                     <button
@@ -195,11 +192,14 @@ const Button = props => {
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
                                         Anuluj
                                     </button>
-                                    <a href={serverAddress+proposalAttr}>
-                                        <button type="button" className="btn btn-primary">
+                                    <a href={serverAddress + proposalAttr}>
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary"
+                                        >
                                             Złóż wniosek
                                         </button>
-                                    </a>  
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -207,19 +207,40 @@ const Button = props => {
                 </>
             }
             {props.availabaleItemQuantity === 0 ? (
-                <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
-                    <button
-                        type="button"
-                        className="availability-check unselectable"
-                        onClick={e => openModal(e)}
-                        value={props.itemTitle}
-                        data-toggle="modal"
-                        data-target="#exampleModal"
-                    >
-                        {t(`Card.Powiadom`)}
-                    </button>
-                    <NotificationModal id={props.itemId} name={name} open={clicked} />
-                </div>
+                <>
+                    <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
+                        <ButtonToolbar className="w-100">
+                            <Button
+                                className="availability-check unselectable"
+                                onClick={handleShowModal}
+                            >
+                                Powiadom o dostępności
+                            </Button>
+                            <ClientModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                name={name}
+                                productid={productid}
+                            />
+                        </ButtonToolbar>
+                    </div>
+                    <div>
+                        <ButtonToolbar className="invisible">
+                            <Button
+                                className="availability-check unselectable"
+                                id="clientResponseButtonModal"
+                                onClick={handleShowModalResponse}
+                            >
+                                Powiadom o dostępności
+                            </Button>
+                            <ClientResponseModal
+                                show={modalShowResponse}
+                                onHide={() => setModalShowResponse(false)}
+                                name={name}
+                            />
+                        </ButtonToolbar>
+                    </div>
+                </>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
                     <input
@@ -234,7 +255,7 @@ const Button = props => {
                     <span className="font-weight-bold ml-1">szt.</span>
                 </div>
             )}
-            {props.availabaleItemQuantity !== 0 &&
+            {props.availabaleItemQuantity !== 0 && (
                 <div className="product-basket-icon col-5 p-0">
                     <FontAwesomeIcon
                         icon={faShoppingBasket}
@@ -251,9 +272,9 @@ const Button = props => {
                         className="icon-anim"
                     />
                 </div>
-            }
+            )}
         </>
     );
 };
 
-export default Button;
+export default ButtonComponent;

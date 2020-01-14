@@ -31,7 +31,7 @@ const OrderSummary = () => {
         products.map(item => {
             const basketProducts = {
                 prodId: item.product.id,
-                uomPrimary: item.product.uom_primary,
+                uomPrimary: item.product.unitOfMeasure,
                 quantity: item.quantity,
             };
             return dispatch(productsToOrder(basketProducts));
@@ -54,7 +54,7 @@ const OrderSummary = () => {
                             className="summary-img"
                         />
                         <span className="text-uppercase">
-                            {item.product.description1}
+                            {item.product.name}
                         </span>
                     </td>
                     <td>
