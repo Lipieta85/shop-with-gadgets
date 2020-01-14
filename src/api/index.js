@@ -66,11 +66,11 @@ export const getStorePolicy = async token => {
     );
 };
 
-export const getAllProducts = async (token, currentPage, company) => {
+export const getAllProducts = async (token, currentPage, company, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/${company}/parameters/{"pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

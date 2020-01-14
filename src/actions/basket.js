@@ -40,7 +40,7 @@ export const addItemToBasket = (
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
-        let companyId = company.charAt(0).toUpperCase();
+        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
         let clientData = getState().clientDataReducer.clientData;
         let adressess = [];
         let deliveryAddress = [];
@@ -166,7 +166,7 @@ export const changeBasketQuantity = (
         let basketId = getState().cartReducer.basket;
         let addedItems = getState().cartReducer.addedItems;
         let company = getState().clientDataReducer.companyId;
-        let companyId = company.charAt(0).toUpperCase();
+        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
         let clientData = getState().clientDataReducer.clientData;
         let addedItem = addedItems.find(item => item.product.id === productId);
         let amount = 0;

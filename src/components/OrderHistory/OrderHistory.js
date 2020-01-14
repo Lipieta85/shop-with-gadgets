@@ -210,7 +210,7 @@ const OrderHistory = () => {
                                             <span>
                                                 Cena:{" "}
                                                 <b className="order-text-value mr-3">
-                                                    {+order.unitPrice} {showedOrder.currency_code}
+                                                    {+order.unitPrice}
                                                 </b>
                                             </span>
                                         </div>
@@ -231,7 +231,7 @@ const OrderHistory = () => {
                                             <span className="mr-1 pull-right mb-0">
                                                 <b>Razem: </b>
                                                 <b className="order-text-value">
-                                                    {+order.total} {showedOrder.currency_code}
+                                                    {+order.total}
                                                 </b>
                                             </span>
                                         </div>
