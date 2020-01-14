@@ -21,7 +21,7 @@ const ProductDetailsNavMenu = () => {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <Link className="navbar-brand" to="/">
                         <img
-                            src={company === "filtron" || "" ? logo : logo2}
+                            src={company === "filtron" || "all" ? logo : logo2}
                             alt="company-logo"
                         />
                     </Link>

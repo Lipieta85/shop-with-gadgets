@@ -1,46 +1,47 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToBasket } from "../../actions/index";
-import "../../assets/styles/buttons.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
-//import { postSubscribe } from "../../api/index";
 import ClientModal from "./ClientModal";
 import ClientResponseModal from "./ClientResponseModal";
+import NotificationModal from "./NotificationModal";
+import "../../assets/styles/buttons.scss";
 
 const ButtonComponent = props => {
     const subsriptionState = useSelector(
         state => state.subscriptionReducer.subscribeState,
     );
-    const orderTypes = { S5: "S5", S6: "S6" };
-    const serverAddress =
-        "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
-    const proposalAttr = "paid-order-application-workflow-conf-id";
+    const basketData = useSelector(state => state.cartReducer);
+    const orderType = useSelector(
+        state =>
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .marketingOrderType,
+    );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
-    const [clicked, setClicked] = useState(false); //zmienic nazwe
-    const [proposal, setProposal] = useState(false);
     const [name, setName] = useState("");
     const [productid, setProductid] = useState();
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShowResponse, setModalShowResponse] = React.useState(false);
+    const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
 
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
-    
+
     const input = useRef();
-    
+
     const token = localStorage.getItem("token");
-    const clientData = useSelector(state => state.clientDataReducer);
-    const basketData = useSelector(state => state.cartReducer);
+
     const clientResponseModal = document.querySelector(
         "#clientResponseButtonModal",
     );
+
     useEffect(() => {
         setModalShow(false);
         if (subsriptionState === true) {
@@ -94,15 +95,13 @@ const ButtonComponent = props => {
             return disabled;
         });
     };
-
+    let clicked = false;
     const dispatchHandler = event => {
-        let marketingOrderType =
-            clientData.clientData[0].getWixClientData.data.marketingOrderType;
         if (
             input.current.value * props.price > basketData.budget &&
-            marketingOrderType === orderTypes.S5
+            orderType === "S5"
         ) {
-            setProposal(true);
+            setModalShowPaidOrders(true);
             return false;
         }
         if (input.current.value < 0) {
@@ -135,77 +134,15 @@ const ButtonComponent = props => {
     const handleShowModal = () => {
         setModalShow(true);
         setName(props.itemTitle);
-        setProductid(props.itemId)     
+        setProductid(props.itemId);
     };
-    const closeProposal = () => {
-        setProposal(false);
-    }
-    
+
     const handleShowModalResponse = () => {
         setModalShowResponse(true);
     };
 
     return (
-        <> 
-            {proposal===true&&
-                <>
-                    <div
-                        className="modal fade"
-                        id="proposalModal"
-                        tabIndex="-1"
-                        role="dialog"
-                        aria-labelledby="proposalModalLabel"
-                        aria-hidden="true"
-                    >
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5
-                                        className="modal-title"
-                                        id="proposalModalLabel"
-                                    >
-                                        Wniosek o zamówienie płatne
-                                    </h5>
-                                    <button
-                                        type="button" className="close"
-                                        data-dismiss="modal" aria-label="Close"
-                                        onClick={closeProposal}
-                                    >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div>
-                                        <label>
-                                            {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
-                                            {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
-                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
-                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
-                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
-                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
-                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
-                                            przez MANN+HUMMEL FT Poland.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
-                                        Anuluj
-                                    </button>
-                                    <a href={serverAddress + proposalAttr}>
-                                        <button
-                                            type="button"
-                                            className="btn btn-primary"
-                                        >
-                                            Złóż wniosek
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </>
-            }
+        <>
             {props.availabaleItemQuantity === 0 ? (
                 <>
                     <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
@@ -224,6 +161,7 @@ const ButtonComponent = props => {
                             />
                         </ButtonToolbar>
                     </div>
+
                     <div>
                         <ButtonToolbar className="invisible">
                             <Button
@@ -273,6 +211,16 @@ const ButtonComponent = props => {
                     />
                 </div>
             )}
+            <ButtonToolbar className="invisible">
+                <Button
+                    className="availability-check unselectable paid-orders-modal"
+                    id="paid-orders-modal"
+                ></Button>
+                <NotificationModal
+                    show={modalShowPaidOrders}
+                    onHide={() => setModalShowPaidOrders(false)}
+                />
+            </ButtonToolbar>
         </>
     );
 };
