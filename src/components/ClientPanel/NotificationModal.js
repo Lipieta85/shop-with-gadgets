@@ -43,6 +43,7 @@ const NotificationModal = props => {
                         role="dialog"
                         aria-labelledby="exampleModalLabel"
                         aria-hidden="true"
+                        open={props.open}
                     >
                         <div className="modal-dialog modal-lg" role="document">
                             <div className="modal-content">

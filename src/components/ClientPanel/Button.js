@@ -27,7 +27,7 @@ const Button = props => {
     const dispatch = useDispatch();
 
     const input = useRef();
-    const [name, setName] = useState("");
+    const [name, setName] = useState();
     const token = localStorage.getItem("token");
     //const lang = useSelector(state => state.clientDataReducer.language);
     const clientEmail = useSelector(
@@ -117,10 +117,14 @@ const Button = props => {
     const openModal = () => {
         setName(props.itemTitle);
         setClicked(true);
+        
         //  console.log(clicked);
         // console.log(props.itemId);
         
     };
+    const closeProposal = () => {
+        setProposal(false);
+    }
     const sendNotification = () => {
         // postSubscribe(token, props.itemId, clientEmail, lang).then(res => {
         //     console.log(res.data.subscribe);
@@ -141,9 +145,8 @@ const Button = props => {
         //     });
         // };
     return (
-        <>
+        <> 
             {proposal===true&&
-                //<NotificationModal id={props.itemId} name={name} />
                 <>
                     <div
                         className="modal fade"
@@ -162,6 +165,7 @@ const Button = props => {
                                     <button
                                         type="button" className="close"
                                         data-dismiss="modal" aria-label="Close"
+                                        onClick={closeProposal}
                                     >
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -169,8 +173,8 @@ const Button = props => {
                                 <div className="modal-body">
                                     <div>
                                         <label>
-                                           {/*  Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
-                                            W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
+                                            {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
+                                            {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
                                             Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
                                             Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
                                             MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
@@ -181,7 +185,7 @@ const Button = props => {
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
                                         Anuluj
                                     </button>
                                     <a href={serverAddress+proposalAttr}>
@@ -205,12 +209,9 @@ const Button = props => {
                         data-toggle="modal"
                         data-target="#exampleModal"
                     >
-                        Powiadom o dostępności {name}
+                        Powiadom o dostępności
                     </button>
-
-                    {clicked === true && (
-                        <NotificationModal id={props.itemId} name={name} />
-                    )}
+                    <NotificationModal id={props.itemId} name={name} open={clicked} />
                 </div>
             ) : (
                 <div className="product-input col-7 p-0 d-flex align-items-center justify-content-center">
