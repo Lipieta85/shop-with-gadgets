@@ -24,10 +24,9 @@ const ClientPanelMenu = () => {
         state => state.orderReducer.historyShow,
     );
     const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
+        state => state.clientDataReducer.marketingOrderType,
     );
+    console.log(orderType);
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
@@ -44,12 +43,7 @@ const ClientPanelMenu = () => {
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
-                <div>
-                    Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić
-                    większą ilość produktów złóż najpierw zamówienie
-                    standardowe, a dodatkowe produkty zamów osobnym zamówieniem
-                    płatnym.
-                </div>,
+                <div>{t("CPanelMenu.PrzekroczonyBudżetMarketingowy")}</div>,
             );
         } else setBudgetAlert("");
     }, [budget]);

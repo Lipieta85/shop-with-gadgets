@@ -16,8 +16,9 @@
     "TwójKoszyk": "Your Basket",
     "Koszyk(pusty)": "Basket (Empty)",
     "DostępnyBudżetMarketingowy": "Marketing Budget Available",
-    "ZamówieniePłatne": "Payed Order",
-    "WartośćTwoichZakupów": "Value of Your Purchases"
+    "ZamówieniePłatne": "Paid Order",
+    "WartośćTwoichZakupów": "Value of Your Purchases",
+    "PrzekroczonyBudżetMarketingowy": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered."
   },
   "Card": {
     "Cena": "Price",
@@ -42,7 +43,8 @@
     "ZłóżZamówienie": "SUBMIT YOUR ORDER",
     "WybierzAdres": "Choose a delivery address",
     "KoszykJestPusty": "Basket Is Empty",
-    "ProduktyWKoszyku": "Products currently in the basket"
+    "ProduktyWKoszyku": "Products currently in the basket",
+    "WybierzTypZamówienia": "Choose order type"
   },
   "Order": {
     "Podsumowanie": "Order Summary",
@@ -55,7 +57,11 @@
     "TypZamówienia": "Order type",
     "WróćDoKoszyka": "RETURN TO BASKET",
     "Zatwierdź": "CONFIRM THE ORDER",
-    "WartośćZamówienia": "Order value"
+    "WartośćZamówienia": "Order value",
+    "AnulujZamówienie": "Cancel order",
+    "PotwierdzenieAnulowaniaZamówienia": "Are you sure you want cancel order",
+    "Tak": "Yes",
+    "Nie": "No"
   },
   "OrderEnd": {
     "ZamówienieONr": "Your order number",
@@ -69,6 +75,18 @@
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "The budget history is empty",
-    "HistoriaBudżetu": "Budget History"
+    "HistoriaBudżetu": "Budget History",
+    "Data": "Date",
+    "WykorzystanyBudżet": "Used budget",
+    "BudżetUżytkownikaNaPoczątku": "User budget at the beggining"
+  },
+  "ProductDetails": {
+    "KodProduktu": "Product code",
+    "JednostkaMiary": "Product unit",
+    "CenaJednostkowa": "Product price",
+    "StanMagazynowy": "Product availability",
+    "Powrót": "Back",
+    "Poprzedni": "Previous",
+    "Następny": "Next"
   }
 }

@@ -66,7 +66,10 @@ const ClientPanel = props => {
     let product = items
         ? items.map((item, i) => {
               return (
-                  <div className="card-box col-6 col-md-4 col-xl-3" key={item.product.id}>
+                  <div
+                      className="card-box col-6 col-md-4 col-xl-3"
+                      key={item.product.id}
+                  >
                       <div className="card">
                           {item.extraTag ? (
                               <>
@@ -104,7 +107,7 @@ const ClientPanel = props => {
                               >
                                   <Link to={`/product/${item.product.id}`}>
                                       <h5 className="card-title text-uppercase">
-                                          {item.product.description1}
+                                          {item.product.name}
                                       </h5>
                                   </Link>
                               </div>
@@ -241,7 +244,7 @@ const ClientPanel = props => {
                                             </button>
                                         </li>
                                     )}
-                                    {shortPagination.map((item,i) => {
+                                    {shortPagination.map((item, i) => {
                                         //item += 1;
 
                                         return (

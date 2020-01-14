@@ -27,7 +27,8 @@ import {
     getLang,
     userName,
     companyName,
-    setCurrencyCode
+    setCurrencyCode,
+    getMarketingOrderType,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -74,15 +75,23 @@ export default withRouter(function App({ location }, props) {
                             res.data.getWixClientData.budget
                                 ? res.data.getWixClientData.budget.amount
                                 : "",
-                            //Number(20000),
                         ),
                     );
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
-                    dispatch(companyName(res.data.getWixClientData.data.name))
-                    dispatch(userName(res.data.getWixClientData.data.exId))
-                    dispatch(setCurrencyCode(res.data.getWixClientData.budget.currencyCode))
+                    dispatch(companyName(res.data.getWixClientData.data.name));
+                    dispatch(userName(res.data.getWixClientData.data.exId));
+                    dispatch(
+                        setCurrencyCode(
+                            res.data.getWixClientData.budget.currencyCode,
+                        ),
+                    );
                     dispatch(getLang(parsed.lang));
+                    dispatch(
+                        getMarketingOrderType(
+                            res.data.getWixClientData.data.marketingOrderType,
+                        ),
+                    );
                     dispatch(signIn({ isAuth: true }));
                 });
             })
