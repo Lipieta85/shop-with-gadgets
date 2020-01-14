@@ -9,7 +9,7 @@ const ChooseModal = (props) => {
     const dispatch = useDispatch();
 
     return (
-        <div>
+        <>
             <button
                 type="button"
                 className="btn btn-outline-primary"
@@ -62,7 +62,7 @@ const ChooseModal = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

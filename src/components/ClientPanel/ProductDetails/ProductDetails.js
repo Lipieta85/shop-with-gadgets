@@ -141,7 +141,7 @@ const ProductDetails = props => {
                                         <p className="font-weight-bold">
                                             Cena jednostkowa:{" "}
                                             <span className="product-details-text">
-                                                {productPrice} {productCurrency}
+                                                {(+productPrice).toFixed(2)} {productCurrency}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">

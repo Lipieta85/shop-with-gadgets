@@ -43,7 +43,7 @@
         .orders-right{
             table{
                 td{
-                    padding-right: 8px;
+                    padding-right: 25px;
                 }
             }
             padding-top: 2px;
@@ -72,12 +72,18 @@
                         margin-bottom: .5rem;
                         font-size: 18px;
                     }
-                    .order-img{
+                    .order-img-box{
                         float: left;
-                        width: 150px;
+                        width: 110px;
                         height: 100%;
-                        border: 1px solid rgb(224, 224, 224);
-                        background-color: rgb(240, 240, 240);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: white;
+                        .order-img{
+                            width: 110px;
+                            border: 1px solid rgb(224, 224, 224);
+                        }
                     }
                 } 
             }

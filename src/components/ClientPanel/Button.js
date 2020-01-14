@@ -22,6 +22,12 @@ const ButtonComponent = props => {
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
+    const clientEmail = useSelector(
+        state =>state.clientDataReducer.clientData[0]
+        &&
+            state.clientDataReducer.clientData[0].getWixClientData.data
+                .customerServiceEmail,
+    );
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [name, setName] = useState("");
@@ -33,7 +39,6 @@ const ButtonComponent = props => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
-
     const input = useRef();
 
     const token = localStorage.getItem("token");
