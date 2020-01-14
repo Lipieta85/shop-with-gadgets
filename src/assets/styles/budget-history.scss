@@ -5,6 +5,18 @@
     background-size: cover;
     padding-left: 10%;
     padding-right: 10%;
+    .budgetTitles {
+        display: flex;
+        justify-content: space-between;
+        .titleBudgetHistory {
+            margin: 0;
+            padding-top: 10px;
+        }
+        .titleBudgetAtTheBegging {
+            padding-top: 20px;
+            margin-right: 0;
+        }
+    }
     table {
         background-color: white;
         th,
@@ -34,9 +46,10 @@
         }
     }
 }
-.titleBudgetHistory {
-    padding-left: 40%;
-}
-.titleBudgetAtTheBegging {
-    padding-left: 35%;
-}
+
+// .titleBudgetHistory {
+//     padding-left: 40%;
+// }
+// .titleBudgetAtTheBegging {
+//     padding-left: 35%;
+//}

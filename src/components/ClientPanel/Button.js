@@ -32,9 +32,9 @@ const ButtonComponent = props => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
-    
+
     const input = useRef();
-    
+
     const token = localStorage.getItem("token");
     const clientData = useSelector(state => state.clientDataReducer);
     const basketData = useSelector(state => state.cartReducer);
@@ -135,19 +135,19 @@ const ButtonComponent = props => {
     const handleShowModal = () => {
         setModalShow(true);
         setName(props.itemTitle);
-        setProductid(props.itemId)     
+        setProductid(props.itemId);
     };
     const closeProposal = () => {
         setProposal(false);
-    }
-    
+    };
+
     const handleShowModalResponse = () => {
         setModalShowResponse(true);
     };
 
     return (
-        <> 
-            {proposal===true&&
+        <>
+            {proposal === true && (
                 <>
                     <div
                         className="modal fade"
@@ -164,11 +164,13 @@ const ButtonComponent = props => {
                                         className="modal-title"
                                         id="proposalModalLabel"
                                     >
-                                        Wniosek o zamówienie płatne
+                                        {t("Button.WniosekZamówieniePłatne")}
                                     </h5>
                                     <button
-                                        type="button" className="close"
-                                        data-dismiss="modal" aria-label="Close"
+                                        type="button"
+                                        className="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close"
                                         onClick={closeProposal}
                                     >
                                         <span aria-hidden="true">&times;</span>
@@ -179,25 +181,27 @@ const ButtonComponent = props => {
                                         <label>
                                             {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
                                             {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
-                                            Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych.
-                                            Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela 
-                                            MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. 
-                                            Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie 
-                                            Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej 
-                                            przez MANN+HUMMEL FT Poland.
+                                            {t(
+                                                "Button.OstrzeżenieZamówieniePłatne",
+                                            )}
                                         </label>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={closeProposal}>
-                                        Anuluj
+                                    <button
+                                        type="button"
+                                        className="btn btn-secondary"
+                                        data-dismiss="modal"
+                                        onClick={closeProposal}
+                                    >
+                                        {t("Button.Anuluj")}
                                     </button>
                                     <a href={serverAddress + proposalAttr}>
                                         <button
                                             type="button"
                                             className="btn btn-primary"
                                         >
-                                            Złóż wniosek
+                                            {t("Button.ZłóżWniosek")}
                                         </button>
                                     </a>
                                 </div>
@@ -205,7 +209,7 @@ const ButtonComponent = props => {
                         </div>
                     </div>
                 </>
-            }
+            )}
             {props.availabaleItemQuantity === 0 ? (
                 <>
                     <div className="product-input col-12 p-0 d-flex align-items-center justify-content-center">
@@ -214,7 +218,7 @@ const ButtonComponent = props => {
                                 className="availability-check unselectable"
                                 onClick={handleShowModal}
                             >
-                                Powiadom o dostępności
+                                {t("Button.PowiadomODostępności")}
                             </Button>
                             <ClientModal
                                 show={modalShow}
@@ -231,7 +235,7 @@ const ButtonComponent = props => {
                                 id="clientResponseButtonModal"
                                 onClick={handleShowModalResponse}
                             >
-                                Powiadom o dostępności
+                                {t("Button.PowiadomODostępności")}
                             </Button>
                             <ClientResponseModal
                                 show={modalShowResponse}

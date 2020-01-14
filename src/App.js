@@ -64,12 +64,14 @@ export default withRouter(function App({ location }, props) {
         dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
             .then(res => {
+                console.log(res);
                 const token = res.data.token;
                 const tokenParts = res.data.token.split(".");
                 const userID = JSON.parse(atob(tokenParts[1]));
                 localStorage.setItem("userID", userID.userId);
                 localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    console.log(res);
                     dispatch(
                         setBudget(
                             res.data.getWixClientData.budget

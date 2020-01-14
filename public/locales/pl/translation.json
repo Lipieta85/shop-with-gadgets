@@ -88,5 +88,23 @@
     "Powrót": "Powrót",
     "Poprzedni": "Poprzedni",
     "Następny": "Następny"
+  },
+  "Button": {
+    "WniosekZamówieniePłatne": "Wniosek o zamówienie płatne",
+    "OstrzeżenieZamówieniePłatne": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland.",
+    "Anuluj": "Anuluj",
+    "ZłóżWniosek": "Złóż wniosek",
+    "PowiadomODostępności": "Powiadom o dostępności"
+  },
+  "ClientModal": {
+    "PowiadomMnie": "Powiadom mnie",
+    "PowiadomODostępnościProduktu": "Powiadom o dostępności produktu",
+    "Subskrybuj": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
+    "Zamknij": "Close"
+  },
+  "ClientResponseModal": {
+    "UdanaSubskrypcja": "Udało ci się zasubskrybować produkt",
+    "UdanaSubskrypcjaInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
+    "NieudanaSubskrypcja": "Subskrybujesz już ten produkt lub wystąpił błąd."
   }
 }

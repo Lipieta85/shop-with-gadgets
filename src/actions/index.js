@@ -42,7 +42,8 @@ export {
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
-export { sendSubscribe, subscribeRes, resetSubscribe } from "./subscription.js";export {
+export { sendSubscribe, subscribeRes, resetSubscribe } from "./subscription.js";
+export {
     clientData,
     companyId,
     setToken,

@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { postSubscribe } from "../../api/index";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";]
 const NotificationModal = props => {
     const products = useSelector(state => state.cartReducer.items);
     const [showedProduct, setShowedProduct] = useState(products.length - 1);
@@ -13,9 +12,6 @@ const NotificationModal = props => {
                 .customerServiceEmail,
     );
     const [email, setEmail] = useState(`${clientEmail}`);
-
-    const token = localStorage.getItem("token");
-    const lang = useSelector(state => state.clientDataReducer.language);
 
     const closeModal = () => {
         setSuccess(false);
@@ -46,7 +42,7 @@ const NotificationModal = props => {
                                         className="modal-title"
                                         id="exampleModalLabel"
                                     >
-                                        Powiadom o dostępności produktu:{" "}
+                                        {t("ClientModal.PowiadomODostępnościProduktu")}:{" "}
                                         {props.name}
                                     </h5>
                                     <button
@@ -66,8 +62,9 @@ const NotificationModal = props => {
                                                     className="alert alert-success"
                                                     role="alert"
                                                 >
-                                                    Udało ci się zasubskrybować
-                                                    przedmiot {props.itemTitle}.
+                                                    {t("ClientResponseModal.UdanaSubskrypcja")}
+                                                    {" "}{props.itemTitle}.
+                                                     {t("ClientResponseModal.UdanaSubskrypcjaInfo")}
                                                 </div>
                                             ) : (
                                                 ""
@@ -110,14 +107,13 @@ const NotificationModal = props => {
                                         data-dismiss="modal"
                                         onClick={closeModal}
                                     >
-                                        Zamknij
+                                         {t("ClientModal.Zamknij")}
                                     </button>
                                     <button
                                         type="button"
                                         className="btn btn-primary"
-                                        // onClick={sendNotification}
                                     >
-                                        Powiadom mnie
+                                        {t("ClientModal.PowiadomMnie")}
                                     </button>
                                 </div>
                             </div>
@@ -129,14 +125,14 @@ const NotificationModal = props => {
                                 data-dismiss="modal"
                                 onClick={closeModal}
                             >
-                                Zamknij
+                                   {t("ClientModal.Zamknij")}
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-primary"
                                 //onClick={sendNotification}
                             >
-                                Powiadom mnie
+                                 {t("ClientModal.PowiadomMnie")}
                             </button>
                         </div>
                     </div>
@@ -144,6 +140,6 @@ const NotificationModal = props => {
             )}
         </>
     );
-}
+};
 
 export default NotificationModal;

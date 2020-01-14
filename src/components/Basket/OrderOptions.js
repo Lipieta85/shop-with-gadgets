@@ -21,9 +21,7 @@ const OrderOptions = () => {
         state => state.clientDataReducer.clientData,
     );
     const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
+        state => state.clientDataReducer.marketingOrderType,
     );
 
     const [checkedItems, setCheckedItems] = useState(new Map());

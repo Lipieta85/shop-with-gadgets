@@ -8,7 +8,7 @@ const initialState = {
     companyName: "",
     userName: "",
     currencyCode: "",
-    orderType: "",
+    marketingOrderType: "",
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -49,10 +49,9 @@ const clientDataReducer = (state = initialState, action) => {
                 currencyCode: action.code,
             };
         case type.GET_MARKETING_ORDER_TYPE:
-            console.log(action);
             return {
                 ...state,
-                orderType: action.code,
+                marketingOrderType: action.code,
             };
         default:
             return state;

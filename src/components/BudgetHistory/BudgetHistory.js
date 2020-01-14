@@ -81,9 +81,24 @@ const BudgetHistory = () => {
                                         </Link>
                                     </div>
                                 ) : (
-                                    <h2 className="titleBudgetHistory">
-                                        {t("BudgetHistory.HistoriaBudżetu")}
-                                    </h2>
+                                    <div className="budgetTitles">
+                                        <h2 className="titleBudgetHistory">
+                                            {t("BudgetHistory.HistoriaBudżetu")}
+                                        </h2>
+                                        <div className="titleBudgetAtTheBegging">
+                                            {t(
+                                                "BudgetHistory.BudżetUżytkownikaNaPoczątku",
+                                            )}
+                                            :{" "}
+                                            {Math.decimal(
+                                                budgetAtTheBeggining,
+                                                2,
+                                            )}{" "}
+                                            {remainingBudget
+                                                ? remainingBudget.currencyCode
+                                                : ""}
+                                        </div>
+                                    </div>
                                 )
                             ) : (
                                 ""
@@ -115,13 +130,6 @@ const BudgetHistory = () => {
                                         ""
                                     )}
                                 </div>
-                            </div>
-                            <div className="titleBudgetAtTheBegging">
-                                {t("BudgetHistory.BudżetUżytkownikaNaPoczątku")}
-                                : {Math.decimal(budgetAtTheBeggining, 2)}{" "}
-                                {remainingBudget
-                                    ? remainingBudget.currencyCode
-                                    : ""}
                             </div>
                         </h5>
                     </div>
