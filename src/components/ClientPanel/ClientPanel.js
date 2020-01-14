@@ -111,7 +111,7 @@ const ClientPanel = props => {
                               <div>
                                   <p className="card-text">
                                       <strong>
-                                          {t(`Card.Cena`)}: {item.price.price}{" "}
+                                          {t(`Card.Cena`)}: {(+item.price.price).toFixed(2)}{" "}
                                           {item.price.currency}/
                                           {item.product.unitOfMeasure}
                                       </strong>
@@ -245,7 +245,6 @@ const ClientPanel = props => {
                                         //item += 1;
 
                                         return (
-                                            <>
                                                 <li
                                                     className={
                                                         item === currentPage
@@ -263,7 +262,6 @@ const ClientPanel = props => {
                                                         {item}
                                                     </button>
                                                 </li>
-                                            </>
                                         );
                                     })}
                                     {currentPage <

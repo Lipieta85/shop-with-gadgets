@@ -23,11 +23,11 @@ const ClientPanelMenu = () => {
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
     );
-    const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
-    );
+    // const orderType = useSelector(
+    //     state =>
+    //         state.clientDataReducer.clientData[0].getWixClientData.data
+    //             .marketingOrderType,
+    // );
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
@@ -137,8 +137,8 @@ const ClientPanelMenu = () => {
                 <div className="divider"></div>
                 <div className="logged-panel__purchase-value">
                     <div className="purchase-text">
-                        {orderType && orderType === "S6" ? (
-                            <>
+                        {/* {orderType && orderType === "S6" ? ( */}
+                            {/* <>
                                 <span className="available-budget">
                                     {t(`CPanelMenu.ZamówieniePłatne`)}
                                     <div className="divider"></div>
@@ -151,7 +151,7 @@ const ClientPanelMenu = () => {
                                     {priceValue} {currencyCode}
                                 </span>
                             </>
-                        ) : (
+                        ) : ( */}
                             <>
                                 <span className="available-budget">
                                     {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
@@ -179,7 +179,7 @@ const ClientPanelMenu = () => {
                                     {priceValue} {currencyCode}
                                 </span>
                             </>
-                        )}
+                        {/* )} */}
                         <br />
                     </div>
                 </div>
