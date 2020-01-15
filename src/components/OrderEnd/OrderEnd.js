@@ -27,6 +27,7 @@ const OrderEnd = () => {
 
         if (orderState === true) {
             setConfirmText(<h3>{t("OrderEnd.BłądZamówienia")}</h3>);
+            setDisabled(false);
         }
         if (orderNumber > 0) {
             setDisabled(false);

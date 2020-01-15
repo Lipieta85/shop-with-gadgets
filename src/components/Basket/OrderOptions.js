@@ -23,7 +23,10 @@ const OrderOptions = () => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-
+    const clientData = useSelector(
+        state => state.clientDataReducer.clientData[0]&&
+        state.clientDataReducer.clientData[0].getWixClientData.data
+    );
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState("");
@@ -92,7 +95,7 @@ const OrderOptions = () => {
                     </select>
                 </div>
             </div>
-            {/* {clientData.outofUE&&
+            {/* {clientData.isUE&&
                 <p className="out-of-ue-info">
                     Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty 
                     niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."

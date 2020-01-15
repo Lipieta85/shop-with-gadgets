@@ -5,9 +5,8 @@ import { sendSubscribe } from "../../actions/index";
 import { useTranslation } from "react-i18next";
 const ClientModal = props => {
     const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
+        state => state.clientDataReducer.clientData[0]&&
+            state.clientDataReducer.clientData[0].getWixClientData.data.customerServiceEmail,
     );
     const lang = useSelector(state => state.clientDataReducer.language);
 

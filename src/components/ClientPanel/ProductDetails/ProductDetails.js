@@ -145,7 +145,7 @@ const ProductDetails = props => {
                                             )}
                                             :{" "}
                                             <span className="product-details-text">
-                                                {productPrice} {productCurrency}
+                                                {(+productPrice).toFixed(2)} {productCurrency}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
