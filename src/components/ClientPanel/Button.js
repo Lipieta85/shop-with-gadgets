@@ -21,7 +21,6 @@ const ButtonComponent = props => {
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-    
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [name, setName] = useState("");
@@ -51,6 +50,7 @@ const ButtonComponent = props => {
         if (subsriptionState === false) {
             clientResponseModal.click();
         }
+        //eslint-disable-next-line
     }, [subsriptionState]);
 
     useEffect(() => {
@@ -98,11 +98,8 @@ const ButtonComponent = props => {
     };
     
     const dispatchHandler = event => {
-        if (
-            input.current.value * props.price > basketData.budget &&
-            orderType === "S5"
-        ) {
-            setModalShowPaidOrders(true);
+        if (disabled && props.availabaleItemQuantity > 0) {
+            setModalShowAlert(true);
             return false;
         }
         if (input.current.value < 0) {
@@ -113,12 +110,11 @@ const ButtonComponent = props => {
             event.preventDefault();
             return false;
         }
-        if (disabled && props.availabaleItemQuantity > 0) {
-            alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
-            );
+        if (input.current.value * props.price > basketData.budget && orderType === "S5") {
+            setModalShowPaidOrders(true);
             event.preventDefault();
-        } else {
+        }
+        else {
             dispatch(
                 addItemToBasket(
                     props.itemId,
@@ -220,7 +216,7 @@ const ButtonComponent = props => {
                 <NotificationModal
                     show={modalShowPaidOrders}
                     onHide={() => setModalShowPaidOrders(false)}
-                    text={t("Button.PowiadomODostępności")}
+                    text={t("PaidOrder.OstrzeżenieZamówieniePłatne")}
                 />
                 <Button
                     className="availability-check unselectable alert-modal"

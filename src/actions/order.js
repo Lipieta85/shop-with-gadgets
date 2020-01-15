@@ -58,16 +58,25 @@ export const createOrder = (token, items) => {
                 if (res.data.create.fault === false) {
                     dispatch(setOrderErrorFalse());
                     dispatch(setOrderNumber(res.data.create.orderNumber));
+                    dispatch(clearBasket());
                 } else {
                     dispatch(setOrderErrorTrue());
+                    dispatch(resetOrderError())
                 }
-                dispatch(clearBasket());
+                
             })
             .catch(error => {
                 dispatch(setOrderErrorTrue());
+                dispatch(resetOrderError())
             });
     };
 };
+
+export const resetOrderError = () => {
+    return {
+        type: type.RESET_ORDER_ERROR
+    }
+}
 
 export const setOrderErrorFalse = () => {
     return {

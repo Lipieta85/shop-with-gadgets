@@ -63,6 +63,11 @@ const orderReducer = (state = initialState, action) => {
                 ...state,
                 cancelOrderStatus: action.status
             }
+        case type.RESET_ORDER_ERROR:
+            return {
+                ...state,
+                setOrderError: ""
+            }
         default:
             return state;
     }

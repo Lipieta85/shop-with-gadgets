@@ -24,13 +24,6 @@ const BudgetHistory = () => {
         dispatch(getClientBudgetHistory(token));
     }, [token, dispatch]);
 
-    //zaokraglanie liczby do 2 miejsc po przecinku
-    Math.decimal = function(n, k) {
-        var factor = Math.pow(10, k + 1);
-        n = Math.round(Math.round(n * factor) / 10);
-        return n / (factor / 10);
-    };
-
     if (remainingBudget) {
         var budgetAtTheBeggining = parseFloat(remainingBudget.amount, 10);
         budgetHistory.map(
@@ -50,7 +43,7 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {Math.decimal(i.operation_amount, 2)}{" "}
+                            {(+i.operation_amount).toFixed(2)}{" "}
                             {remainingBudget.currencyCode}
                         </div>
                     </td>
@@ -91,10 +84,7 @@ const BudgetHistory = () => {
                                                 "BudgetHistory.BudżetUżytkownikaNaPoczątku",
                                             )}
                                             :{" "}
-                                            {Math.decimal(
-                                                budgetAtTheBeggining,
-                                                2,
-                                            )}{" "}
+                                            {(+budgetAtTheBeggining).toFixed(2)}{" "}
                                             {remainingBudget
                                                 ? remainingBudget.currencyCode
                                                 : ""}
