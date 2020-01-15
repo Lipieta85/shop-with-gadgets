@@ -151,7 +151,6 @@ const ClientPanelMenu = () => {
                                 </span>
                                 <br />
                                 <span className="blue-value">
-                                    {console.log(budget)}
                                     {budget} {budget ? currencyCode : ""}
                                 </span>
                                 <span className="budget-alert">

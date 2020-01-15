@@ -12,8 +12,7 @@ const OrderOptions = () => {
     const budget = useSelector(state => state.cartReducer.budget);
     const total = useSelector(state => state.cartReducer.total);
     const addedItems = useSelector(state => state.cartReducer.addedItems);
-    //const clientData = useSelector(state => state.clientDataReducer);
-    //console.log(clientData);
+
     const selectStoreState = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
@@ -23,10 +22,7 @@ const OrderOptions = () => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-    const clientData = useSelector(
-        state => state.clientDataReducer.clientData[0]&&
-        state.clientDataReducer.clientData[0].getWixClientData.data
-    );
+
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState("");
@@ -36,12 +32,14 @@ const OrderOptions = () => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (budget < 0) {
-            setDisabledCheckbox(true);
-        } else {
-            setDisabledCheckbox(false);
+        if (orderType === "S5") {
+            if (budget < 0) {
+                setDisabledCheckbox(true);
+            } else {
+                setDisabledCheckbox(false);
+            }
         }
-    }, [budget]);
+    }, [budget, orderType]);
 
     useEffect(() => {
         setSelectInputValue(
@@ -159,6 +157,10 @@ const OrderOptions = () => {
                                 {t("Basket.ZłóżZamówienie")}
                             </button>
                         )
+                    ) : addedItems.length === 0 ? (
+                        <button disabled className="order-button">
+                            {t("Basket.ZłóżZamówienie")}
+                        </button>
                     ) : (
                         <button className="order-button">
                             {t("Basket.ZłóżZamówienie")}
