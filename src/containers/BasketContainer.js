@@ -25,9 +25,25 @@ const BasketContainer = () => {
                         <div className="cart">
                             <ul className="cart-collection">
                                 <h5 className="basket-header">
-                                    {addedItems.length === 0
-                                        ? `${t("Basket.KoszykJestPusty")}`
-                                        : `${t("Basket.ProduktyWKoszyku")}`}
+                                    {addedItems.length === 0 ? (
+                                        <div>
+                                            {" "}
+                                            <div className="order-end text-center">
+                                                <div className="order-end-box">
+                                                    Brak produktów w koszyku.
+                                                    <Link
+                                                        to="/"
+                                                        className="btn btn-outline-primary mt-4 w-25 mx-auto"
+                                                    >
+                                                        {" "}
+                                                        {t("Basket.Wróć")}
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        `${t("Basket.ProduktyWKoszyku")}`
+                                    )}
                                 </h5>
                                 <div className="clear-button-box">
                                     {addedItems.length !== 0 && (
@@ -54,11 +70,12 @@ const BasketContainer = () => {
                             </ul>
                         </div>
                     </div>
+
                     <div className="col-sm-12 col-md-12 col-lg-3">
                         <div className="client-panel-menu">
                             <ClientPanelMenu />
                         </div>
-                        <OrderOptions />
+                        {addedItems.length === 0 ? "" : <OrderOptions />}
                     </div>
                 </div>
             </div>
