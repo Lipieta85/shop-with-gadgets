@@ -26,6 +26,7 @@ import {
     setBudget,
     getLang,
     userName,
+    isUE,
     companyName,
     setCurrencyCode
 } from "./actions/index";
@@ -81,6 +82,7 @@ export default withRouter(function App({ location }, props) {
                     dispatch(clientData(res.data));
                     dispatch(companyName(res.data.getWixClientData.data.name))
                     dispatch(userName(res.data.getWixClientData.data.exId))
+                    dispatch(isUE(res.data.getWixClientData.data.isUE))
                     dispatch(setCurrencyCode(res.data.getWixClientData.budget.currencyCode))
                     dispatch(getLang(parsed.lang));
                     dispatch(signIn({ isAuth: true }));

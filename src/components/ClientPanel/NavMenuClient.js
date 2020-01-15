@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProductCategories, initProducts } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
+import { ButtonToolbar, Button } from "react-bootstrap";
+import NotificationModal from "./NotificationModal";
 
 const NavMenu = () => {
     //const id = useSelector(state => state.cartReducer.productsCategory);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const { t } = useTranslation();
+    const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
 
     const dispatch = useDispatch();
 
@@ -38,6 +41,10 @@ const NavMenu = () => {
         dispatch(setProductCategories(id));
         dispatch(initProducts(token, Number(id)));
     };
+
+    const showPaidOrders = () =>{
+        setModalShowPaidOrders(true);
+    }
 
     const tabHandler = e => {
         if (e.target.id === "1") {
@@ -184,11 +191,21 @@ const NavMenu = () => {
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
-                                        to="/y"
+                                        onClick={showPaidOrders}
                                     >
                                         {t(`Nav.ZamówieniaPłatne`)}
                                     </Link>
                                 </div>
+                                <ButtonToolbar className="invisible">
+                                    <Button
+                                        className="availability-check unselectable paid-orders-modal"
+                                        id="paid-orders-modal"
+                                    ></Button>
+                                    <NotificationModal
+                                        show={modalShowPaidOrders}
+                                        onHide={() => setModalShowPaidOrders(false)}
+                                    />
+                                </ButtonToolbar>
                             </li>
                             <li className="nav-item text-uppercase">
                                 <a

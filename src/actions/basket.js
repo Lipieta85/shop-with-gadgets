@@ -41,7 +41,6 @@ export const addItemToBasket = (
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
         let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
-        console.log(companyId)
         let clientData = getState().clientDataReducer.clientData;
         let adressess = [];
         let deliveryAddress = [];

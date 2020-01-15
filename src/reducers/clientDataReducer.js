@@ -3,6 +3,7 @@ import * as type from "../actions/types";
 const initialState = {
     clientData: [],
     companyId: null,
+    confId:"",
     token: "",
     language: "",
     companyName: "",
@@ -41,6 +42,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userName: action.name,
+            };
+        case type.IS_UE:
+            return {
+                ...state,
+                isUE: action.data,
             };
         case type.SET_CURRENCY_CODE:
             return {
