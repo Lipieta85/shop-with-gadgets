@@ -98,7 +98,9 @@
     "WniosekZamówieniePłatne": "Wniosek o zamówienie płatne",
     "Anuluj": "Anuluj",
     "ZłóżWniosek": "Złóż wniosek",
-    "PowiadomODostępności": "Powiadom o dostępności"
+    "PowiadomODostępności": "Powiadom o dostępności",
+    "WartośćAlertHeader":"Niepoprawna wartość",
+    "WartośćAlertText":"Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
   },
   "ClientModal": {
     "PowiadomMnie": "Powiadom mnie",

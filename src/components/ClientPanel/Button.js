@@ -225,6 +225,8 @@ const ButtonComponent = props => {
                 <AlertModal
                     show={modalShowAlert}
                     onHide={() => setModalShowAlert(false)}
+                    header={t("Button.WartośćAlertHeader")}
+                    text={t("Button.WartośćAlertText")}   
                 />
             </ButtonToolbar>
         </>

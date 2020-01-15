@@ -11,11 +11,11 @@ const AlertModal = props => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Niepoprawna wartość
+                    {props.header}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-               Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie.
+                {props.text}
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>OK</Button>
