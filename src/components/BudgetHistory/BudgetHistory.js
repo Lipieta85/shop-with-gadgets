@@ -14,7 +14,11 @@ const BudgetHistory = () => {
     const budgetHistory = useSelector(
         state => state.orderReducer.wixBudgetHistory.history,
     );
-
+    function numberWithSpaces(num) {
+        var parts = num.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        return parts.join(".");
+    }
     const dispatch = useDispatch();
 
     const { t } = useTranslation();
@@ -25,10 +29,7 @@ const BudgetHistory = () => {
     }, [token, dispatch]);
 
     if (remainingBudget) {
-        var budgetAtTheBeggining = parseFloat(remainingBudget.amount, 10);
-        budgetHistory.map(
-            i => (budgetAtTheBeggining -= parseFloat(i.operation_amount, 10)),
-        );
+        var budgetAtTheBeggining = "1000";
     }
 
     let history;
@@ -43,8 +44,30 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {(+i.operation_amount).toFixed(2)}{" "}
+                            {numberWithSpaces((+i.operation_amount).toFixed(2))}{" "}
                             {remainingBudget.currencyCode}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="cell">
+                            {i.reference_id ? i.reference_id : "---"}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="cell">
+                            {i.operation_type === "LOCK_ADD"
+                                ? "blokada"
+                                : i.operation_type === "LOCK_REMOVE"
+                                ? "usunięcie blokady"
+                                : i.operation_type === "BOOKING_ADD"
+                                ? "księgowanie (finalne)"
+                                : i.operation_type === "BOOKING_REMOVE"
+                                ? "usunięcie księgowania"
+                                : i.operation_type === "UPDATE_ADD"
+                                ? "aktualizacja budżetu"
+                                : i.operation_type === "UPDATE_REMOVE"
+                                ? "usunięcie aktualizacji"
+                                : ""}
                         </div>
                     </td>
                 </tr>
@@ -84,10 +107,16 @@ const BudgetHistory = () => {
                                                 "BudgetHistory.BudżetUżytkownikaNaPoczątku",
                                             )}
                                             :{" "}
-                                            {(+budgetAtTheBeggining).toFixed(2)}{" "}
-                                            {remainingBudget
-                                                ? remainingBudget.currencyCode
-                                                : ""}
+                                            <b>
+                                                {numberWithSpaces(
+                                                    (+budgetAtTheBeggining).toFixed(
+                                                        2,
+                                                    ),
+                                                )}{" "}
+                                                {remainingBudget
+                                                    ? remainingBudget.currencyCode
+                                                    : ""}
+                                            </b>
                                         </div>
                                     </div>
                                 )
@@ -112,10 +141,23 @@ const BudgetHistory = () => {
                                                                 "BudgetHistory.WykorzystanyBudżet",
                                                             )}
                                                         </th>
+                                                        <th>
+                                                            Numer zamówienia
+                                                        </th>
+                                                        <th>Rodzaj operacji</th>
                                                     </tr>
                                                     {history}
                                                 </tbody>
                                             </table>
+                                            <div className="remainingBudgetTitle">
+                                                Budżet użytkownika obecnie:{" "}
+                                                <b>
+                                                    {remainingBudget.amount}{" "}
+                                                    {
+                                                        remainingBudget.currencyCode
+                                                    }
+                                                </b>
+                                            </div>
                                         </>
                                     ) : (
                                         ""
