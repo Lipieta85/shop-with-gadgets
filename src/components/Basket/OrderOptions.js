@@ -22,7 +22,6 @@ const OrderOptions = () => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-
     const [checkedItems, setCheckedItems] = useState(new Map());
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState("");

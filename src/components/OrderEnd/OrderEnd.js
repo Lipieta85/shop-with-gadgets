@@ -3,19 +3,29 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
-
+import { usePromiseTracker } from "react-promise-tracker";
 import "../../assets/styles/order-end.scss";
 
 const OrderEnd = () => {
     const orderState = useSelector(state => state.orderReducer.setOrderError);
     const orderNumber = useSelector(state => state.orderReducer.orderNumber);
     const [disabled, setDisabled] = useState(true);
+    const { promiseInProgress } = usePromiseTracker();
     const { t } = useTranslation();
     const [confirmText, setConfirmText] = useState(
-        <h3>{t("OrderEnd.PrzetwarzanieZamówienia")}</h3>,
+        "",
     );
 
+    // useEffect(() => {
+    //     if (promiseInProgress === true) {
+    //         setConfirmText(<h3>{t("OrderEnd.PrzetwarzanieZamówienia")}</h3>)
+    //     }
+    // }, [promiseInProgress, t])
+
     useEffect(() => {
+        if (promiseInProgress === true) {
+            setConfirmText(<h3>{t("OrderEnd.PrzetwarzanieZamówienia")}</h3>)
+        }
         if (orderState === false) {
             setConfirmText(
                 <h3>
@@ -32,7 +42,7 @@ const OrderEnd = () => {
         if (orderNumber > 0) {
             setDisabled(false);
         }
-    }, [orderState, orderNumber, t]);
+    }, [orderState, orderNumber, t, promiseInProgress]);
 
     const disabledButton = () => {
         return disabled ? { display: "none" } : { display: "block" };

@@ -7,14 +7,16 @@ import host from "../api/host";
 export default function NotFound() {
     const dispatch = useDispatch();
     const link = `${host}site/desktop`;
+
     useEffect(() => {
         dispatch(signOut());
     }, [dispatch]);
+    
     return (
         <div className="order-end text-center">
             <div className="order-end-box">
                 <h3>Twoje dane autoryzacyjne wygasły, zaloguj sie ponownie</h3>
-                <a className="btn btn-outline-primary mt-4" href={link}>
+                <a className="btn btn-outline-primary mt-4" href={link} onClick={dispatch(signOut())}>
                     Wróć do strony logowania
                 </a>
             </div>

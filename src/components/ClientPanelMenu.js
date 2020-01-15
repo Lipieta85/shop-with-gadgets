@@ -45,7 +45,7 @@ const ClientPanelMenu = () => {
                 <div>{t("CPanelMenu.PrzekroczonyBudżetMarketingowy")}</div>,
             );
         } else setBudgetAlert("");
-    }, [budget]);
+    }, [budget, t]);
 
     useEffect(() => {
         if (orderHistoryShow) {

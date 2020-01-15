@@ -277,6 +277,7 @@ const OrderHistory = () => {
                                                           <img
                                                               src={order.image}
                                                               className="order-img"
+                                                              alt="orderPicture"
                                                           />
                                                       )}
                                                   </div>

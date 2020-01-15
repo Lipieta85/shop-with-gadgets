@@ -29,6 +29,7 @@ export {
     orderCancel,
     cancelOrderStatus,
     setOrderStatus,
+    resetOrderError
 } from "./order.js";
 
 export {

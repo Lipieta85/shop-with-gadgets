@@ -16,6 +16,8 @@ const OrderSummary = () => {
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
+    const budget = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.budget.amount);
+    const updatedBudget = useSelector(state => state.cartReducer.budget)
     const [checkBoxText] = useState("Budżet maretingowy");
 
     const budgetOrder = true;
@@ -80,8 +82,8 @@ const OrderSummary = () => {
                     {budgetOrder && orderIsFirst ? (
                         <li className="order-summary-text">
                             {t("Order.WartośćBudżetu")}:
-                            <span className="summary-text-value font-weight-bold text-uppercase">
-                                {} {items[0].price.currency}
+                            <span className="summary-text-value font-weight-bold text-uppercase ml-1">
+                                {budget} {items[0].price.currency}
                             </span>
                         </li>
                     ) : (
@@ -120,9 +122,9 @@ const OrderSummary = () => {
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
-                            {t("Order.PozostałoDoWykorzystania")}:
-                            <span className="summary-text-value font-weight-bold text-uppercase">
-                                {} {items[0].price.currency}
+                            {t("Order.PozostałoDoWykorzystania")}: 
+                            <span className="summary-text-value font-weight-bold text-uppercase ml-1">
+                                {updatedBudget} {items[0].price.currency}
                             </span>
                         </li>
                     ) : (
