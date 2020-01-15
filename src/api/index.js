@@ -92,7 +92,7 @@ export const getProductsCategories = async token => {
     );
 };
 
-export const changeProductsCategory = async (token, company, number) => {
+export const changeProductsCategory = async (token, number, company) => {
     return await trackPromise(
         axios({
             method: "get",

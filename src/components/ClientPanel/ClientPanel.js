@@ -63,6 +63,12 @@ const ClientPanel = props => {
         }
     }, [category, dispatch, token]);
 
+    // useEffect(() => {
+    //     if (category !== "1") { 
+    //         return window.location.replace(`${host2}/404`)
+    //     }
+    // }, [])
+
     let product = items
         ? items.map((item, i) => {
               return (
@@ -179,7 +185,7 @@ const ClientPanel = props => {
     const pageHandler = event => {
         dispatch(setPage(Number(event.target.innerText)));
         document
-            .querySelectorAll(".active")
+            .querySelectorAll(".pagination .active")
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
@@ -237,7 +243,7 @@ const ClientPanel = props => {
                                             className={
                                                 pagination.totalPages ===
                                                 currentPage
-                                                    ? "page-item active"
+                                                    ? "page-item"
                                                     : "page-item"
                                             }
                                         >
@@ -246,7 +252,7 @@ const ClientPanel = props => {
                                             </button>
                                         </li>
                                     )}
-                                    {shortPagination.map((item, i) => {
+                                    {pagination.totalPages > 4&&shortPagination.map((item,i) => {
                                         //item += 1;
 
                                         return (
@@ -275,7 +281,7 @@ const ClientPanel = props => {
                                             className={
                                                 pagination.totalPages ===
                                                 currentPage
-                                                    ? "page-item active"
+                                                    ? "page-item"
                                                     : "page-item"
                                             }
                                         >

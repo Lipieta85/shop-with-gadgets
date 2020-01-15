@@ -20,12 +20,6 @@ const ButtonComponent = props => {
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-    const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0] &&
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [name, setName] = useState("");
@@ -54,6 +48,7 @@ const ButtonComponent = props => {
         if (subsriptionState === false) {
             clientResponseModal.click();
         }
+        //eslint-disable-next-line
     }, [subsriptionState]);
 
     useEffect(() => {
@@ -99,7 +94,7 @@ const ButtonComponent = props => {
             return disabled;
         });
     };
-    let clicked = false;
+    
     const dispatchHandler = event => {
         if (
             input.current.value * props.price > basketData.budget &&

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/filtron_logo.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
-import { setProductCategories, initProducts } from "../../actions/index";
+import { setProductCategories, initProducts, setPage } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
@@ -18,25 +18,22 @@ const NavMenu = () => {
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
 
     const dispatch = useDispatch();
-
+    const [id, setId] = useState(1);
     const token = localStorage.getItem("token");
-
-    // useEffect(() => {
-    //     const active = document.querySelector(".active");
-    //     if (active) {
-    //         active.classList.remove("active");
-    //         document.getElementById(`${id}`).classList.add("active");
-    //     }
-    // }, [id]);
-
+    useEffect(() => {
+        const active = document.querySelector(".nav-menu .active");
+        if (active) {
+            active.classList.remove("active");
+            document.getElementById(`${id}`).classList.add("active");
+        }
+    }, [id]);
     const onSignout = () => {
         dispatch(signOut());
     };
-
     const oneCategoryHandler = id => {
         dispatch(setProductCategories(id));
+        //dispatch(setPage(1))
     };
-
     const allProductsHandler = id => {
         dispatch(setProductCategories(id));
         dispatch(initProducts(token, Number(id)));
@@ -52,8 +49,8 @@ const NavMenu = () => {
         } else {
             oneCategoryHandler(e.target.id);
         }
+        setId(Number(e.target.id));
     };
-
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
@@ -78,7 +75,6 @@ const NavMenu = () => {
                             cursor="pointer"
                         ></span>
                     </button>
-
                     <div
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
@@ -87,54 +83,49 @@ const NavMenu = () => {
                             {window.location.pathname === `/` ? (
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item item-separated">
-                                        <a
+                                        <button
                                             id="1"
                                             className="nav-link active"
-                                            href="/"
                                             onClick={tabHandler}
                                         >
                                             {t(`Nav.Wszystkie`)}
-                                        </a>
+                                        </button>
                                     </li>
                                     <li className="nav-item item-separated">
-                                        <a
+                                        <button
                                             id="30002140"
                                             className="nav-link"
-                                            href="/"
                                             onClick={tabHandler}
                                         >
                                             {t(`Nav.Biuro`)}
-                                        </a>
+                                        </button>
                                     </li>
                                     <li className="nav-item item-separated">
-                                        <a
+                                        <button
                                             id="30002141"
                                             className="nav-link"
-                                            href="/"
                                             onClick={tabHandler}
                                         >
                                             {t(`Nav.Tekstylia`)}
-                                        </a>
+                                        </button>
                                     </li>
                                     <li className="nav-item item-separated">
-                                        <a
+                                        <button
                                             id="30002142"
                                             className="nav-link"
-                                            href="/"
                                             onClick={tabHandler}
                                         >
                                             {t(`Nav.Gadżety`)}
-                                        </a>
+                                        </button>
                                     </li>
                                     <li className="nav-item item-separated">
-                                        <a
+                                        <button
                                             id="30002143"
                                             className="nav-link"
-                                            href="/"
                                             onClick={tabHandler}
                                         >
                                             {t(`Nav.MateriałyPromocyjne`)}
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             ) : null}
@@ -222,5 +213,4 @@ const NavMenu = () => {
         </div>
     );
 };
-
 export default NavMenu;
