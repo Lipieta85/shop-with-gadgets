@@ -40,7 +40,9 @@ export const addItemToBasket = (
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
-        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
+        let companyId =
+            company !== "all" ? company.charAt(0).toUpperCase() : "";
+
         let clientData = getState().clientDataReducer.clientData;
         let adressess = [];
         let deliveryAddress = [];
@@ -53,7 +55,7 @@ export const addItemToBasket = (
             });
         }
 
-        let delivery = deliveryAddress[0].key/* "test" */;
+        let delivery = deliveryAddress[0].key; /* "test" */
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
@@ -98,7 +100,7 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
-                    console.log(res)
+                    console.log(res);
                     if (!res.data.create.order) {
                         //window.location.replace(`${host2}/404`);
                     } else {
@@ -167,7 +169,8 @@ export const changeBasketQuantity = (
         let basketId = getState().cartReducer.basket;
         let addedItems = getState().cartReducer.addedItems;
         let company = getState().clientDataReducer.companyId;
-        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
+        let companyId =
+            company !== "all" ? company.charAt(0).toUpperCase() : "";
         let clientData = getState().clientDataReducer.clientData;
         let addedItem = addedItems.find(item => item.product.id === productId);
         let amount = 0;

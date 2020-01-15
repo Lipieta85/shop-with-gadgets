@@ -8,7 +8,7 @@ import Carousel from "./Carousel";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Link } from "react-router-dom";
 import "../../../assets/styles/product-details.scss";
-
+import { useTranslation } from "react-i18next";
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const pagination = useSelector(state => state.cartReducer.pagination);
@@ -16,7 +16,7 @@ const ProductDetails = props => {
     const [selectedIndex, setSelectedIndex] = useState();
     const id = props.match.params.id;
     const [productId, setProductId] = useState(id);
-
+    const { t } = useTranslation();
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < products.length) {
             return setLoadedProduct(products[selectedIndex]);
@@ -127,25 +127,30 @@ const ProductDetails = props => {
                                             {productTitle}
                                         </h3>
                                         <p className="font-weight-bold">
-                                            Kod produktu:{" "}
+                                            {t("ProductDetails.KodProduktu")}:{" "}
                                             <span className="product-details-text">
                                                 {productCode}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            Jednostka miary:{" "}
+                                            {t("ProductDetails.JednostkaMiary")}
+                                            :{" "}
                                             <span className="product-details-text">
                                                 {productUnit}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            Cena jednostkowa:{" "}
+                                            {t(
+                                                "ProductDetails.CenaJednostkowa",
+                                            )}
+                                            :{" "}
                                             <span className="product-details-text">
                                                 {(+productPrice).toFixed(2)} {productCurrency}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            Stan magazynowy:{" "}
+                                            {t("ProductDetails.StanMagazynowy")}
+                                            :{" "}
                                             <span className="product-details-text">
                                                 {productAvailability}{" "}
                                                 {productUnit}
@@ -170,7 +175,7 @@ const ProductDetails = props => {
                                                 className="btn btn-outline-primary"
                                                 to="/"
                                             >
-                                                Powrót
+                                                {t("ProductDetails.Powrót")}
                                             </Link>
                                         </div>
                                         <div className="col-8 p-0 right-buttons">
@@ -178,13 +183,13 @@ const ProductDetails = props => {
                                                 className="btn btn-outline-primary btn-prev"
                                                 onClick={prevItem}
                                             >
-                                                Poprzedni
+                                                {t("ProductDetails.Poprzedni")}
                                             </button>
                                             <button
                                                 className="btn btn-outline-primary"
                                                 onClick={nexItem}
                                             >
-                                                Następny
+                                                {t("ProductDetails.Następny")}
                                             </button>
                                         </div>
                                     </div>

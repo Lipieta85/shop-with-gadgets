@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientBudgetHistory } from "../../actions/index";
 import { Link } from "react-router-dom";
 import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
+import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
+
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
         state => state.orderReducer.wixBudgetHistory.remainingBudget,
@@ -81,9 +82,24 @@ const BudgetHistory = () => {
                                         </Link>
                                     </div>
                                 ) : (
-                                    <h2>
-                                        {t("BudgetHistory.HistoriaBudżetu")}
-                                    </h2>
+                                    <div className="budgetTitles">
+                                        <h2 className="titleBudgetHistory">
+                                            {t("BudgetHistory.HistoriaBudżetu")}
+                                        </h2>
+                                        <div className="titleBudgetAtTheBegging">
+                                            {t(
+                                                "BudgetHistory.BudżetUżytkownikaNaPoczątku",
+                                            )}
+                                            :{" "}
+                                            {Math.decimal(
+                                                budgetAtTheBeggining,
+                                                2,
+                                            )}{" "}
+                                            {remainingBudget
+                                                ? remainingBudget.currencyCode
+                                                : ""}
+                                        </div>
+                                    </div>
                                 )
                             ) : (
                                 ""
@@ -95,9 +111,16 @@ const BudgetHistory = () => {
                                             <table className="table">
                                                 <tbody>
                                                     <tr>
-                                                        <th>Data</th>
                                                         <th>
-                                                            Wykorzystany budżet
+                                                            {" "}
+                                                            {t(
+                                                                "BudgetHistory.Data",
+                                                            )}
+                                                        </th>
+                                                        <th>
+                                                            {t(
+                                                                "BudgetHistory.WykorzystanyBudżet",
+                                                            )}
                                                         </th>
                                                     </tr>
                                                     {history}
@@ -109,75 +132,12 @@ const BudgetHistory = () => {
                                     )}
                                 </div>
                             </div>
-                            <div className="title">
-                                Budżet użytkownika na początku:{" "}
-                                {Math.decimal(budgetAtTheBeggining, 2)}{" "}
-                                {remainingBudget
-                                    ? remainingBudget.currencyCode
-                                    : ""}
-                            </div>
                         </h5>
                     </div>
                 </div>
                 <Spinner />
             </div>
         </div>
-        // <div className="col-12">
-        //     <h4 className="order-list ml-1">
-        //         {budgetHistory ? (
-        //             budgetHistory.length === 0 ? (
-        //                 <>
-        //                     Pozostały dostępny budżet: {""}
-        //                     {Math.decimal(
-        //                         remainingBudget.amount,
-        //                         2,
-        //                     )}{" "}
-        //                     {remainingBudget.currencyCode}
-        //                     <h2>Historia budżetu jest pusta</h2>
-        //                     <Link
-        //                         to="/"
-        //                         className="btn btn-outline-primary mt-4"
-        //                     >
-        //                         {" "}
-        //                         Wróć do sklepu
-        //                     </Link>
-        //                 </>
-        //             ) : (
-        //                 <>
-        //                     Pozostały dostępny budżet: {""}
-        //                     {Math.decimal(
-        //                         remainingBudget.amount,
-        //                         2,
-        //                     )}
-        //                     {remainingBudget.currencyCode}
-        //                     {""}
-        //                     {budgetHistory
-        //                         .map((i, key) => (
-        //                             <div key={key}>
-        //                                 {" "}
-        //                                 {
-        //                                     i.operation_entry_data_time
-        //                                 }{" "}
-        //                                 {Math.decimal(
-        //                                     i.operation_amount,
-        //                                     2,
-        //                                 )}{" "}
-        //                                 {
-        //                                     remainingBudget.currencyCode
-        //                                 }
-        //                             </div>
-        //                         ))
-        //                         .reverse()}
-        //                     Budżet użytkownika na początku:{" "}
-        //                     {Math.decimal(budgetAtTheBeggining, 2)}{" "}
-        //                     {remainingBudget.currencyCode}
-        //                 </>
-        //             )
-        //         ) : (
-        //             ""
-        //         )}
-        //     </h4>
-        // </div>
     );
 };
 

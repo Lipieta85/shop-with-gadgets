@@ -23,11 +23,9 @@ const ClientPanelMenu = () => {
     const orderHistoryShow = useSelector(
         state => state.orderReducer.historyShow,
     );
-    // const orderType = useSelector(
-    //     state =>
-    //         state.clientDataReducer.clientData[0].getWixClientData.data
-    //             .marketingOrderType,
-    // );
+    const orderType = useSelector(
+        state => state.clientDataReducer.marketingOrderType,
+    );
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
@@ -44,12 +42,7 @@ const ClientPanelMenu = () => {
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
-                <div>
-                    Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić
-                    większą ilość produktów złóż najpierw zamówienie
-                    standardowe, a dodatkowe produkty zamów osobnym zamówieniem
-                    płatnym.
-                </div>,
+                <div>{t("CPanelMenu.PrzekroczonyBudżetMarketingowy")}</div>,
             );
         } else setBudgetAlert("");
     }, [budget]);
@@ -137,8 +130,8 @@ const ClientPanelMenu = () => {
                 <div className="divider"></div>
                 <div className="logged-panel__purchase-value">
                     <div className="purchase-text">
-                        {/* {orderType && orderType === "S6" ? ( */}
-                            {/* <>
+                        {orderType && orderType === "S6" ? (
+                            <>
                                 <span className="available-budget">
                                     {t(`CPanelMenu.ZamówieniePłatne`)}
                                     <div className="divider"></div>
@@ -151,13 +144,14 @@ const ClientPanelMenu = () => {
                                     {priceValue} {currencyCode}
                                 </span>
                             </>
-                        ) : ( */}
+                        ) : (
                             <>
                                 <span className="available-budget">
                                     {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
                                 </span>
                                 <br />
                                 <span className="blue-value">
+                                    {console.log(budget)}
                                     {budget} {budget ? currencyCode : ""}
                                 </span>
                                 <span className="budget-alert">
@@ -179,7 +173,7 @@ const ClientPanelMenu = () => {
                                     {priceValue} {currencyCode}
                                 </span>
                             </>
-                        {/* )} */}
+                        )}
                         <br />
                     </div>
                 </div>

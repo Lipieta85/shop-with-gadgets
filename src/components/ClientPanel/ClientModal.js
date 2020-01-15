@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { sendSubscribe } from "../../actions/index";
-
+import { useTranslation } from "react-i18next";
 const ClientModal = props => {
     const clientEmail = useSelector(
         state => state.clientDataReducer.clientData[0]&&
             state.clientDataReducer.clientData[0].getWixClientData.data.customerServiceEmail,
     );
     const lang = useSelector(state => state.clientDataReducer.language);
-    
-    const [productId, setProductId] = useState();
 
+    const [productId, setProductId] = useState();
+    const { t } = useTranslation();
     const [email, setEmail] = useState(`${clientEmail}`);
 
     const dispatch = useDispatch();
@@ -36,15 +36,13 @@ const ClientModal = props => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Powiadom o dostępności produktu: {props.name}
+                    {t("ClientModal.PowiadomODostępnościProduktu")}:{" "}
+                    {props.name}
                 </Modal.Title>
             </Modal.Header>
-            
+
             <Modal.Body>
-                <p>
-                    Podaj swój adres email i kliknij „Powiadom mnie”, a
-                    otrzymasz powiadomienie, gdy produkt będzie znów dostępny.
-                </p>
+                <p>{t("ClientModal.Subskrybuj")}</p>
                 <input
                     onChange={event => setEmail(event.target.value)}
                     defaultValue={clientEmail}
@@ -52,10 +50,14 @@ const ClientModal = props => {
                 />
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={sendNotification}>Powiadom mnie</Button>
+                <Button onClick={sendNotification}>
+                    {t("ClientModal.PowiadomMnie")}
+                </Button>
             </Modal.Footer>
         </Modal>
     );
 };
 
 export default ClientModal;
+//Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again
+//Get notified if this product comes back in stock — it's easy!

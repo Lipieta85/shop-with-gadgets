@@ -21,9 +21,7 @@ const OrderOptions = () => {
         state => state.clientDataReducer.clientData,
     );
     const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
+        state => state.clientDataReducer.marketingOrderType,
     );
     const clientData = useSelector(
         state => state.clientDataReducer.clientData[0]&&
@@ -105,7 +103,9 @@ const OrderOptions = () => {
             } */}
             <hr />
             <div className="order-type invisible" style={{ height: "0" }}>
-                <h4 className="options-header">Wybierz typ zamówienia:</h4>
+                <h4 className="options-header">
+                    {t("Basket.ChooseOrderType")}:
+                </h4>
                 <div>
                     {checkboxes.map(item => (
                         <li
@@ -152,7 +152,7 @@ const OrderOptions = () => {
                     {orderType !== "S6" ? (
                         addedItems.length === 0 || +total > +budget ? (
                             <button disabled className="order-button">
-                                Złóż zamówienie
+                                {t("Basket.ZłóżZamówienie")}
                             </button>
                         ) : (
                             <button className="order-button">

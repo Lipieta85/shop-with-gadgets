@@ -34,18 +34,25 @@ export const getLang = data => {
 export const companyName = name => {
     return {
         type: type.COMPANY_NAME,
-        name
-    }
-}
+        name,
+    };
+};
 export const userName = name => {
     return {
         type: type.USER_NAME,
-        name
-    }
-}
+        name,
+    };
+};
 export const setCurrencyCode = code => {
     return {
         type: type.SET_CURRENCY_CODE,
-        code
-    }
-}
+        code,
+    };
+};
+
+export const getMarketingOrderType = code => {
+    return {
+        type: type.GET_MARKETING_ORDER_TYPE,
+        code,
+    };
+};

@@ -28,7 +28,8 @@ import {
     userName,
     isUE,
     companyName,
-    setCurrencyCode
+    setCurrencyCode,
+    getMarketingOrderType,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -75,7 +76,6 @@ export default withRouter(function App({ location }, props) {
                             res.data.getWixClientData.budget
                                 ? res.data.getWixClientData.budget.amount
                                 : "",
-                            //Number(20000),
                         ),
                     );
                     dispatch(setToken(token));
@@ -85,6 +85,11 @@ export default withRouter(function App({ location }, props) {
                     dispatch(isUE(res.data.getWixClientData.data.isUE))
                     dispatch(setCurrencyCode(res.data.getWixClientData.budget.currencyCode))
                     dispatch(getLang(parsed.lang));
+                    dispatch(
+                        getMarketingOrderType(
+                            res.data.getWixClientData.data.marketingOrderType,
+                        ),
+                    );
                     dispatch(signIn({ isAuth: true }));
                 });
             })

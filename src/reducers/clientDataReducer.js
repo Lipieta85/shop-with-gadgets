@@ -8,7 +8,8 @@ const initialState = {
     language: "",
     companyName: "",
     userName: "",
-    currencyCode: ""
+    currencyCode: "",
+    marketingOrderType: "",
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -51,8 +52,13 @@ const clientDataReducer = (state = initialState, action) => {
         case type.SET_CURRENCY_CODE:
             return {
                 ...state,
-                currencyCode: action.code
-            }
+                currencyCode: action.code,
+            };
+        case type.GET_MARKETING_ORDER_TYPE:
+            return {
+                ...state,
+                marketingOrderType: action.code,
+            };
         default:
             return state;
     }

@@ -16,15 +16,13 @@ const ButtonComponent = props => {
     );
     const basketData = useSelector(state => state.cartReducer);
     const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
+        state => state.clientDataReducer.marketingOrderType,
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const clientEmail = useSelector(
-        state =>state.clientDataReducer.clientData[0]
-        &&
+        state =>
+            state.clientDataReducer.clientData[0] &&
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );
@@ -39,6 +37,7 @@ const ButtonComponent = props => {
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
+
     const input = useRef();
 
     const token = localStorage.getItem("token");
@@ -156,7 +155,7 @@ const ButtonComponent = props => {
                                 className="availability-check unselectable"
                                 onClick={handleShowModal}
                             >
-                                Powiadom o dostępności
+                                {t("Button.PowiadomODostępności")}
                             </Button>
                             <ClientModal
                                 show={modalShow}
@@ -174,7 +173,7 @@ const ButtonComponent = props => {
                                 id="clientResponseButtonModal"
                                 onClick={handleShowModalResponse}
                             >
-                                Powiadom o dostępności
+                                {t("Button.PowiadomODostępności")}
                             </Button>
                             <ClientResponseModal
                                 show={modalShowResponse}
