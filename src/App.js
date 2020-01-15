@@ -26,6 +26,7 @@ import {
     setBudget,
     getLang,
     userName,
+    isUE,
     companyName,
     setCurrencyCode,
     getMarketingOrderType,
@@ -79,13 +80,10 @@ export default withRouter(function App({ location }, props) {
                     );
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
-                    dispatch(companyName(res.data.getWixClientData.data.name));
-                    dispatch(userName(res.data.getWixClientData.data.exId));
-                    dispatch(
-                        setCurrencyCode(
-                            res.data.getWixClientData.budget.currencyCode,
-                        ),
-                    );
+                    dispatch(companyName(res.data.getWixClientData.data.name))
+                    dispatch(userName(res.data.getWixClientData.data.exId))
+                    dispatch(isUE(res.data.getWixClientData.data.isUE))
+                    dispatch(setCurrencyCode(res.data.getWixClientData.budget.currencyCode))
                     dispatch(getLang(parsed.lang));
                     dispatch(
                         getMarketingOrderType(

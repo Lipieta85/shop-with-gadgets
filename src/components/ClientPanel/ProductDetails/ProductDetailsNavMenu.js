@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
+import { ButtonToolbar, Button } from "react-bootstrap";
+import NotificationModal from "../../ClientPanel/NotificationModal";
 
 import { useTranslation } from "react-i18next";
 import logo from "../../../assets/images/filtron_logo.png";
@@ -9,13 +11,16 @@ import logo2 from "../../../assets/images/WIX_logo.png";
 
 const ProductDetailsNavMenu = () => {
     const company = useSelector(state => state.clientDataReducer.companyId);
+    const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const onSignout = () => {
         dispatch(signOut());
     };
-
+    const showPaidOrders = () =>{
+        setModalShowPaidOrders(true);
+    }
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
@@ -88,11 +93,21 @@ const ProductDetailsNavMenu = () => {
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
-                                        to="/"
+                                        onClick={showPaidOrders}
                                     >
                                         Zamówienia Płatne
                                     </Link>
                                 </div>
+                                <ButtonToolbar className="invisible">
+                                    <Button
+                                        className="availability-check unselectable paid-orders-modal"
+                                        id="paid-orders-modal"
+                                    ></Button>
+                                    <NotificationModal
+                                        show={modalShowPaidOrders}
+                                        onHide={() => setModalShowPaidOrders(false)}
+                                    />
+                                </ButtonToolbar>
                             </li>
                             <li className="nav-item text-uppercase">
                                 <a

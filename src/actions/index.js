@@ -48,6 +48,7 @@ export {
     companyId,
     setToken,
     getLang,
+    isUE,
     userName,
     companyName,
     setCurrencyCode,

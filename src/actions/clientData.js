@@ -6,7 +6,12 @@ export const clientData = data => {
         data,
     };
 };
-
+export const isUE = data => {
+    return {
+        type: type.IS_UE,
+        data,
+    };
+};
 export const companyId = id => {
     return {
         type: type.COMPANY_ID,
