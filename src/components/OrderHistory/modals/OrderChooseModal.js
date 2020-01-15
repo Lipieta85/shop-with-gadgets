@@ -28,13 +28,25 @@ const ChooseModal = props => {
             >
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                        <div className="modal-body text-uppercase">
-                            <b>
+                        <div className="modal-body text-left">
+                            <p>
+                                <b className="text-uppercase">
+                                    Anulowanie Zamówienia
+                                </b>
+                            </p>
+                            <p>
                                 {t("Order.PotwierdzenieAnulowaniaZamówienia")}{" "}
                                 {props.showedOrderNumber}
-                            </b>
+                            </p>
                         </div>
-                        <div className="modal-footer d-flex justify-content-between">
+                        <div className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-outline-primary"
+                                data-dismiss="modal"
+                            >
+                                {t("Order.Nie")}
+                            </button>
                             <button
                                 type="button"
                                 className="btn btn-outline-primary"
@@ -46,13 +58,6 @@ const ChooseModal = props => {
                                 }
                             >
                                 {t("Order.Tak")}
-                            </button>
-                            <button
-                                type="button"
-                                className="btn btn-outline-primary"
-                                data-dismiss="modal"
-                            >
-                                {t("Order.Nie")}
                             </button>
                         </div>
                     </div>
