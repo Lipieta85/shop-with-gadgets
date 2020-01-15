@@ -17,6 +17,9 @@ const OrderSummary = () => {
         state => state.cartReducer.orderSelectInputValue,
     );
     const budget = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.budget.amount);
+    const orderType = useSelector(
+        state => state.clientDataReducer.marketingOrderType,
+    );
     const updatedBudget = useSelector(state => state.cartReducer.budget)
     const [checkBoxText] = useState("Budżet maretingowy");
 
@@ -139,7 +142,7 @@ const OrderSummary = () => {
                     <li className="order-summary-text">
                         {t("Order.TypZamówienia")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
-                            {checkBoxText}
+                            {orderType === "S5" ? `${t("Order.BudżetMarketingowy")}` : `${t("Order.ZamówieniePłatne")}`}
                         </span>
                     </li>
                 </ol>
