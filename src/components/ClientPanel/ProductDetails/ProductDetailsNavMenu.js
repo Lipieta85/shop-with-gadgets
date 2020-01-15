@@ -106,6 +106,7 @@ const ProductDetailsNavMenu = () => {
                                     <NotificationModal
                                         show={modalShowPaidOrders}
                                         onHide={() => setModalShowPaidOrders(false)}
+                                        text={t("PaidOrder.OstrzeżenieZamówieniePłatneNAV")}
                                     />
                                 </ButtonToolbar>
                             </li>

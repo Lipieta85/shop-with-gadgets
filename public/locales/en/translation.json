@@ -12,6 +12,10 @@
     "ZamówieniaPłatne": "Paid orders",
     "Wyloguj": "Log Out"
   },
+  "PaidOrder":{
+    "OstrzeżenieZamówieniePłatne": "The number of products you want to order exceeds the available marketing budget. If you want to order a larger amount, fill out the application for the possibility of placing paid orders. Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland.",
+    "OstrzeżenieZamówieniePłatneNAV": "Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland."
+  },
   "CPanelMenu": {
     "Zalogowany": "Logged",
     "TwójKoszyk": "Your Basket",
@@ -92,10 +96,11 @@
   },
   "Button": {
     "WniosekZamówieniePłatne": "Paid order application",
-    "OstrzeżenieZamówieniePłatne": "The number of products you want to order exceeds the available marketing budget. If you want to order a larger amount, fill out the application for the possibility of placing paid orders. Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland.",
     "Anuluj": "Cancel",
     "ZłóżWniosek": "Order application",
-    "PowiadomODostępności": "Notify when available"
+    "PowiadomODostępności": "Notify when available",
+    "WartośćAlertHeader":"Invalid value",
+    "WartośćAlertText":"The value entered is invalid or exceeds the available quantity in the warehouse."
   },
   "ClientModal": {
     "PowiadomMnie": "Notify me",

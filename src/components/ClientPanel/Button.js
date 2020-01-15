@@ -8,6 +8,7 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import ClientModal from "./ClientModal";
 import ClientResponseModal from "./ClientResponseModal";
 import NotificationModal from "./NotificationModal";
+import AlertModal from "./AlertModal";
 import "../../assets/styles/buttons.scss";
 
 const ButtonComponent = props => {
@@ -27,6 +28,7 @@ const ButtonComponent = props => {
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShowResponse, setModalShowResponse] = React.useState(false);
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
+    const [modalShowAlert, setModalShowAlert] = React.useState(false);
 
     const { t } = useTranslation();
 
@@ -96,27 +98,23 @@ const ButtonComponent = props => {
     };
     
     const dispatchHandler = event => {
-        if (
-            input.current.value * props.price > basketData.budget &&
-            orderType === "S5"
-        ) {
-            setModalShowPaidOrders(true);
+        if (disabled && props.availabaleItemQuantity > 0) {
+            setModalShowAlert(true);
             return false;
         }
         if (input.current.value < 0) {
-            alert("Wpisana wartość jest nie prawidłowa");
+            setModalShowAlert(true);
             return false;
         }
         if (props.availabaleItemQuantity === 0) {
             event.preventDefault();
             return false;
         }
-        if (disabled && props.availabaleItemQuantity > 0) {
-            alert(
-                "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
-            );
+        if (input.current.value * props.price > basketData.budget && orderType === "S5") {
+            setModalShowPaidOrders(true);
             event.preventDefault();
-        } else {
+        }
+        else {
             dispatch(
                 addItemToBasket(
                     props.itemId,
@@ -218,6 +216,17 @@ const ButtonComponent = props => {
                 <NotificationModal
                     show={modalShowPaidOrders}
                     onHide={() => setModalShowPaidOrders(false)}
+                    text={t("PaidOrder.OstrzeżenieZamówieniePłatne")}
+                />
+                <Button
+                    className="availability-check unselectable alert-modal"
+                    id="alert-modal"
+                ></Button>
+                <AlertModal
+                    show={modalShowAlert}
+                    onHide={() => setModalShowAlert(false)}
+                    header={t("Button.WartośćAlertHeader")}
+                    text={t("Button.WartośćAlertText")}   
                 />
             </ButtonToolbar>
         </>
