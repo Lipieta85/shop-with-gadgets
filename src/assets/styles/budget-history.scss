@@ -17,6 +17,10 @@
             margin-right: 0;
         }
     }
+    .remainingBudgetTitle {
+        display: flex;
+        justify-content: flex-end;
+    }
     table {
         background-color: white;
         th,
