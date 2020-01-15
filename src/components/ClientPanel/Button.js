@@ -16,15 +16,13 @@ const ButtonComponent = props => {
     );
     const basketData = useSelector(state => state.cartReducer);
     const orderType = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .marketingOrderType,
+        state => state.clientDataReducer.marketingOrderType,
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
     const clientEmail = useSelector(
-        state =>state.clientDataReducer.clientData[0]
-        &&
+        state =>
+            state.clientDataReducer.clientData[0] &&
             state.clientDataReducer.clientData[0].getWixClientData.data
                 .customerServiceEmail,
     );

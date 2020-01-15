@@ -1,14 +1,15 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const NotificationModal = props => {
     const serverAddress =
         "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/";
-    const wixClientData = useSelector(
-        state =>state.clientDataReducer.clientData[0]&&
-            state.clientDataReducer.clientData[0].getWixClientData
-    );
+    // const wixClientData = useSelector(
+    //     state =>
+    //         state.clientDataReducer.clientData[0] &&
+    //         state.clientDataReducer.clientData[0].getWixClientData,
+    // );
 
     return (
         <Modal
@@ -36,7 +37,9 @@ const NotificationModal = props => {
                 wystawionej przez MANN+HUMMEL FT Poland.
             </Modal.Body>
             <Modal.Footer>
-                <Button href={serverAddress + wixClientData.paidOrderApplicationWorkflowConfId}>Wyslij wniosek</Button>
+                {/* <Button href={serverAddress + wixClientData.paidOrderApplicationWorkflowConfId}>Wyslij wniosek</Button> */}
+
+                <Button href={serverAddress + "74"}>Wyslij wniosek</Button>
                 <Button onClick={props.onHide}>Anuluj</Button>
             </Modal.Footer>
         </Modal>

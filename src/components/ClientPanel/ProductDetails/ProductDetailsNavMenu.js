@@ -68,13 +68,12 @@ const ProductDetailsNavMenu = () => {
                                     className="dropdown-menu text-uppercase"
                                     aria-labelledby="navbarDropdown"
                                 >
-                                    {/* <a
+                                    <Link
                                         className="dropdown-item text-uppercase"
-                                        href="/"
-                                        onClick={e => e.preventDefault()}
+                                        to="/Basket"
                                     >
-                                        Edycja Konta
-                                    </a> */}
+                                        Koszyk
+                                    </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"

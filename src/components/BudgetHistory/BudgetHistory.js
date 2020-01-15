@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import NavMenu from "../ClientPanel/NavMenuClient";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientBudgetHistory } from "../../actions/index";
 import { Link } from "react-router-dom";
 import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
+import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
+
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
         state => state.orderReducer.wixBudgetHistory.remainingBudget,
