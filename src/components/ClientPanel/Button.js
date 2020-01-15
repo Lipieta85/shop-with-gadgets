@@ -8,6 +8,7 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import ClientModal from "./ClientModal";
 import ClientResponseModal from "./ClientResponseModal";
 import NotificationModal from "./NotificationModal";
+import AlertModal from "./AlertModal";
 import "../../assets/styles/buttons.scss";
 
 const ButtonComponent = props => {
@@ -20,12 +21,7 @@ const ButtonComponent = props => {
     );
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
-    const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0] &&
-            state.clientDataReducer.clientData[0].getWixClientData.data
-                .customerServiceEmail,
-    );
+    
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [name, setName] = useState("");
@@ -33,6 +29,7 @@ const ButtonComponent = props => {
     const [modalShow, setModalShow] = React.useState(false);
     const [modalShowResponse, setModalShowResponse] = React.useState(false);
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
+    const [modalShowAlert, setModalShowAlert] = React.useState(false);
 
     const { t } = useTranslation();
 
@@ -99,7 +96,7 @@ const ButtonComponent = props => {
             return disabled;
         });
     };
-    let clicked = false;
+    
     const dispatchHandler = event => {
         if (
             input.current.value * props.price > basketData.budget &&
@@ -109,7 +106,7 @@ const ButtonComponent = props => {
             return false;
         }
         if (input.current.value < 0) {
-            alert("Wpisana wartość jest nie prawidłowa");
+            setModalShowAlert(true);
             return false;
         }
         if (props.availabaleItemQuantity === 0) {
@@ -223,6 +220,15 @@ const ButtonComponent = props => {
                 <NotificationModal
                     show={modalShowPaidOrders}
                     onHide={() => setModalShowPaidOrders(false)}
+                    text={t("Button.PowiadomODostępności")}
+                />
+                <Button
+                    className="availability-check unselectable alert-modal"
+                    id="alert-modal"
+                ></Button>
+                <AlertModal
+                    show={modalShowAlert}
+                    onHide={() => setModalShowAlert(false)}
                 />
             </ButtonToolbar>
         </>

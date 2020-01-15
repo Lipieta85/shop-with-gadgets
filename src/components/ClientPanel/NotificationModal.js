@@ -21,8 +21,8 @@ const NotificationModal = props => {
                 {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
                 Ilość produktów jaką chcesz zamówić przekracza dostępny budżet
                 marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij
-                wniosek o możliwość składania zamówień płatnych. Uwaga: po
-                złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela
+                wniosek o możliwość składania zamówień płatnych. 
+                Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela
                 MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety
                 zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego
                 budżetu marketingowego na gadżety wszystkie Twoje zamówienia
