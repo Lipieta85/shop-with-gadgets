@@ -1,11 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderCancel } from "../../../actions/index";
-
-const ChooseModal = (props) => {
-
+import { useTranslation } from "react-i18next";
+const ChooseModal = props => {
     const token = localStorage.getItem("token");
-
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     return (
@@ -16,7 +15,7 @@ const ChooseModal = (props) => {
                 data-toggle="modal"
                 data-target="#exampleModal"
             >
-                Anuluj zamówienie
+                {t("Order.AnulujZamówienie")}
             </button>
 
             <div
@@ -31,7 +30,7 @@ const ChooseModal = (props) => {
                     <div className="modal-content">
                         <div className="modal-body text-uppercase">
                             <b>
-                                Czy napewno chcesz anulować zamówienie nr{" "}
+                                {t("Order.PotwierdzenieAnulowaniaZamówienia")}{" "}
                                 {props.showedOrderNumber}
                             </b>
                         </div>
@@ -42,21 +41,18 @@ const ChooseModal = (props) => {
                                 data-dismiss="modal"
                                 onClick={() =>
                                     dispatch(
-                                        orderCancel(
-                                            token,
-                                            props.orderNumber,
-                                        ),
+                                        orderCancel(token, props.orderNumber),
                                     )
                                 }
                             >
-                                Tak
+                                {t("Order.Tak")}
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-outline-primary"
                                 data-dismiss="modal"
                             >
-                                Nie
+                                {t("Order.Nie")}
                             </button>
                         </div>
                     </div>

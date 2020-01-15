@@ -18,7 +18,8 @@
     "Koszyk(pusty)": "Basket (Empty)",
     "DostępnyBudżetMarketingowy": "Marketing Budget Available",
     "ZamówieniePłatne": "Paid Order",
-    "WartośćTwoichZakupów": "Value of Your Purchases"
+    "WartośćTwoichZakupów": "Value of Your Purchases",
+    "PrzekroczonyBudżetMarketingowy": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered."
   },
   "Card": {
     "Cena": "Price",
@@ -43,7 +44,8 @@
     "ZłóżZamówienie": "SUBMIT YOUR ORDER",
     "WybierzAdres": "Choose a delivery address",
     "KoszykJestPusty": "Basket Is Empty",
-    "ProduktyWKoszyku": "Products currently in the basket"
+    "ProduktyWKoszyku": "Products currently in the basket",
+    "WybierzTypZamówienia": "Choose order type"
   },
   "Order": {
     "Podsumowanie": "Order Summary",
@@ -56,7 +58,11 @@
     "TypZamówienia": "Order type",
     "WróćDoKoszyka": "RETURN TO BASKET",
     "Zatwierdź": "CONFIRM THE ORDER",
-    "WartośćZamówienia": "Order value"
+    "WartośćZamówienia": "Order value",
+    "AnulujZamówienie": "Cancel order",
+    "PotwierdzenieAnulowaniaZamówienia": "Are you sure you want cancel order",
+    "Tak": "Yes",
+    "Nie": "No"
   },
   "OrderEnd": {
     "ZamówienieONr": "Your order number",
@@ -70,6 +76,35 @@
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "The budget history is empty",
-    "HistoriaBudżetu": "Budget History"
+    "HistoriaBudżetu": "Budget History",
+    "Data": "Date",
+    "WykorzystanyBudżet": "Used budget",
+    "BudżetUżytkownikaNaPoczątku": "User budget at the beggining"
+  },
+  "ProductDetails": {
+    "KodProduktu": "Product code",
+    "JednostkaMiary": "Product unit",
+    "CenaJednostkowa": "Product price",
+    "StanMagazynowy": "Product availability",
+    "Powrót": "Back",
+    "Poprzedni": "Previous",
+    "Następny": "Next"
+  },
+  "Button": {
+    "WniosekZamówieniePłatne": "Paid order application",
+    "OstrzeżenieZamówieniePłatne": "The number of products you want to order exceeds the available marketing budget. If you want to order a larger amount, fill out the application for the possibility of placing paid orders. Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland.",
+    "Anuluj": "Cancel",
+    "ZłóżWniosek": "Order application",
+    "PowiadomODostępności": "Notify when available"
+  },
+  "ClientModal": {
+    "PowiadomMnie": "Notify me",
+    "PowiadomODostępnościProduktu": "Notify when product available",
+    "Subskrybuj": "Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again",
+    "Zamknij": "Close"
+  },
+  "ClientResponseModal": {
+    "UdanaSubskrypcja": "Successfully subscribed",
+    "NieudanaSubskrypcja": "Already subscribed or failed. "
   }
 }

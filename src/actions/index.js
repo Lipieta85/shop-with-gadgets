@@ -28,7 +28,7 @@ export {
     setSingleOrderHistory,
     orderCancel,
     cancelOrderStatus,
-    setOrderStatus
+    setOrderStatus,
 } from "./order.js";
 
 export {
@@ -42,6 +42,14 @@ export {
 
 export { nextPage, prevPage, setPage } from "./page.js";
 
-export { clientData, companyId, setToken, getLang, userName, companyName, setCurrencyCode } from "./clientData.js";
-
 export { sendSubscribe, subscribeRes, resetSubscribe } from "./subscription.js";
+export {
+    clientData,
+    companyId,
+    setToken,
+    getLang,
+    userName,
+    companyName,
+    setCurrencyCode,
+    getMarketingOrderType,
+} from "./clientData.js";

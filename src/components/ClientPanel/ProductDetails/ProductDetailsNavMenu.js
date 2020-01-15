@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
 
+import { useTranslation } from "react-i18next";
 import logo from "../../../assets/images/filtron_logo.png";
 import logo2 from "../../../assets/images/WIX_logo.png";
 
 const ProductDetailsNavMenu = () => {
     const company = useSelector(state => state.clientDataReducer.companyId);
-
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const onSignout = () => {
@@ -47,7 +48,7 @@ const ProductDetailsNavMenu = () => {
                                     className="nav-link text-uppercase"
                                     to="/"
                                 >
-                                    Wróć do strony głównej{" "}
+                                    {t("Nav.WróćDoStronyGłównej")}{" "}
                                 </Link>
                             </li>
                             <li className="nav-item dropdown">
@@ -61,30 +62,29 @@ const ProductDetailsNavMenu = () => {
                                     aria-expanded="false"
                                     onClick={e => e.preventDefault}
                                 >
-                                    Moje Konto
+                                    {t("Nav.MojeKonto")}
                                 </a>
                                 <div
                                     className="dropdown-menu text-uppercase"
                                     aria-labelledby="navbarDropdown"
                                 >
-                                    {/* <a
+                                    <Link
                                         className="dropdown-item text-uppercase"
-                                        href="/"
-                                        onClick={e => e.preventDefault()}
+                                        to="/Basket"
                                     >
-                                        Edycja Konta
-                                    </a> */}
+                                        Koszyk
+                                    </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"
                                     >
-                                        Lista zamówień
+                                        {t("Nav.ListaZamówień")}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/BudgetHistory"
                                     >
-                                        Historia budżetu
+                                        {t("Nav.HistoriaBudżetu")}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
@@ -100,7 +100,7 @@ const ProductDetailsNavMenu = () => {
                                     onClick={onSignout}
                                     href="/"
                                 >
-                                    Wyloguj
+                                    {t("Nav.Wyloguj")}
                                 </a>
                             </li>
                         </ul>
