@@ -9,11 +9,18 @@ import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
-        state => state.orderReducer.wixBudgetHistory.remainingBudget,
+        state => state.clientDataReducer.remainingBudget,
+    );
+
+    const currencyCode = useSelector(
+        state => state.clientDataReducer.currencyCode,
     );
     const budgetHistory = useSelector(
         state => state.orderReducer.wixBudgetHistory.history,
     );
+    const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
+    const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
+
     function numberWithSpaces(num) {
         var parts = num.toString().split(".");
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -27,10 +34,6 @@ const BudgetHistory = () => {
     useEffect(() => {
         dispatch(getClientBudgetHistory(token));
     }, [token, dispatch]);
-
-    if (remainingBudget) {
-        var budgetAtTheBeggining = "1000";
-    }
 
     let history;
     if (budgetHistory && remainingBudget) {
@@ -67,7 +70,7 @@ const BudgetHistory = () => {
                     <td>
                         <div className="cell">
                             {numberWithSpaces((+i.operation_amount).toFixed(2))}{" "}
-                            {remainingBudget.currencyCode}
+                            {currencyCode}
                         </div>
                     </td>
                 </tr>
@@ -103,17 +106,13 @@ const BudgetHistory = () => {
                                             {t("BudgetHistory.HistoriaBudżetu")}
                                         </h2>
                                         <div className="titleBudgetAtTheBegging">
-                                            Przyznany budżet marketingowy na rok
-                                            XXXX:{" "}
+                                            Przyznany budżet marketingowy na rok{" "}
+                                            {periodFrom.substr(0, 4)}:{" "}
                                             <b>
                                                 {numberWithSpaces(
-                                                    (+budgetAtTheBeggining).toFixed(
-                                                        2,
-                                                    ),
+                                                    baseBudget.toFixed(2),
                                                 )}{" "}
-                                                {remainingBudget
-                                                    ? remainingBudget.currencyCode
-                                                    : ""}
+                                                {currencyCode}
                                             </b>
                                         </div>
                                     </div>
@@ -144,15 +143,14 @@ const BudgetHistory = () => {
                                             </table>
                                             <div className="remainingBudgetTitle">
                                                 Pozostały do wykorzystania
-                                                budżet marketingowy na rok XXXX:
+                                                budżet marketingowy na rok{" "}
+                                                {periodFrom.substr(0, 4)}:{" "}
                                                 <b>
                                                     {" "}
                                                     {numberWithSpaces(
-                                                        remainingBudget.amount,
+                                                        remainingBudget,
                                                     )}{" "}
-                                                    {
-                                                        remainingBudget.currencyCode
-                                                    }
+                                                    {currencyCode}
                                                 </b>
                                             </div>
                                         </>

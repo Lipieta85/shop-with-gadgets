@@ -3,13 +3,16 @@ import * as type from "../actions/types";
 const initialState = {
     clientData: [],
     companyId: null,
-    confId:"",
+    confId: "",
     token: "",
     language: "",
     companyName: "",
     userName: "",
     currencyCode: "",
     marketingOrderType: "",
+    remainingBudget: "",
+    baseBudget: "",
+    periodFrom: "",
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -58,6 +61,21 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 marketingOrderType: action.code,
+            };
+        case type.GET_REMAINING_BUDGET:
+            return {
+                ...state,
+                remainingBudget: action.code,
+            };
+        case type.GET_PERIOD_FROM:
+            return {
+                ...state,
+                periodFrom: action.code,
+            };
+        case type.GET_BASE_BUDGET:
+            return {
+                ...state,
+                baseBudget: action.code,
             };
         default:
             return state;

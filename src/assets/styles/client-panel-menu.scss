@@ -1,6 +1,4 @@
 @import "./mixins/mixins.scss";
-$blue: rgb(3, 88, 153);
-$gray: #a0a3a6;
 
 .client-panel {
     margin-top: 10px;
@@ -18,13 +16,16 @@ $gray: #a0a3a6;
         }
         p {
             color: #98a3a8;
+            color: black;
             font-size: 16px;
         }
         .divider {
             margin: 15px 0;
             display: block;
             height: 1px;
-            background: #e4e6e7;
+            @include themify($themes) {
+                background: themed("clientPanelDivider");
+            }
         }
         .logged-panel__purchase-value {
             .purchase-text {
@@ -44,9 +45,6 @@ $gray: #a0a3a6;
                         color: themed("clientPanelColor");
                     }
                     font-size: 18px;
-                    @include themify($themes) {
-                        font-family: themed("baseFontFamily");
-                    }
                 }
                 .purchase-header {
                     text-transform: uppercase;
@@ -56,12 +54,15 @@ $gray: #a0a3a6;
                 }
                 .blue-value {
                     @include themify($themes) {
-                        color: themed("clientPanelColor");
+                        color: themed("clientPanelColorBlue");
                     }
                     font-size: 18px;
+                    font-weight: bold;
                 }
                 .gray-value {
-                    color: $gray;
+                    @include themify($themes) {
+                        color: themed("clientPanelColor");
+                    }
                 }
                 .y-rem-18 {
                     margin: 0;
@@ -87,7 +88,11 @@ $gray: #a0a3a6;
             }
             .distributors-btn {
                 width: 130px;
-                border: 0.1rem solid #004c97;
+                @include themify($themes) {
+                    border-color: themed("clientPanelColor");
+                }
+                border-style: solid;
+                border-width: 0.1rem;
                 margin: 5px 0;
                 font-size: 12px;
             }
