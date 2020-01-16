@@ -29,14 +29,13 @@ export {
     orderCancel,
     cancelOrderStatus,
     setOrderStatus,
-    resetOrderError
+    resetOrderError,
 } from "./order.js";
 
 export {
     setProducts,
     initProducts,
     fetchProductsFailed,
-    initProductsCategories,
     setProductCategories,
     changeProductCategory,
 } from "./products.js";
@@ -54,4 +53,7 @@ export {
     companyName,
     setCurrencyCode,
     getMarketingOrderType,
+    getRemainingBudget,
+    getBaseBudget,
+    getPeriodFrom,
 } from "./clientData.js";

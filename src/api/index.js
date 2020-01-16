@@ -79,13 +79,18 @@ export const getProductsCategories = async token => {
     );
 };
 
-export const changeProductsCategory = async (token, number, company) => {
+export const changeProductsCategory = async (
+    token,
+    number,
+    company,
+    currentPage,
+) => {
     return await trackPromise(
         axios({
             method: "get",
             url: `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
                 number,
-            )}}`,
+            )}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

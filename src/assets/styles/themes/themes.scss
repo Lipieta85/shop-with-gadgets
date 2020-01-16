@@ -55,6 +55,13 @@ $themes: (
       footerFontCH:$wixBlack,
       footerBorderC:$lightNav,
     //}
+
+        clientPanelColor: #d81e1e,
+        clientPanelColorBlue: rgb(3, 88, 153),
+        clientPanelBackgroundColor: #f8f9fa,
+        clientPanelDivider: #e4e6e7,
+        basketColorHover: #8b8e91,
+        basketColor: #a0a3a6,
   ),
   //..............................................................................
   dark: (
@@ -98,5 +105,13 @@ $themes: (
       footerFontCH:$wixBlack,
       footerBorderC:$wixOrangeDarker,
     //}
+    
+        clientPanelColor: rgb(35, 31, 32),
+        clientPanelColorBlue: rgb(35, 31, 32),
+        clientPanelBackgroundColor: rgb(255, 182, 15),
+        clientPanelDivider: white,
+        basketColorHover: #a0a3a6,
+        basketColor: #8b8e91,
   ),
 );
+

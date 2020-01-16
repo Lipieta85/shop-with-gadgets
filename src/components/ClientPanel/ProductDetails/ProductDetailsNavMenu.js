@@ -18,16 +18,20 @@ const ProductDetailsNavMenu = () => {
     const onSignout = () => {
         dispatch(signOut());
     };
-    const showPaidOrders = () =>{
+    const showPaidOrders = () => {
         setModalShowPaidOrders(true);
-    }
+    };
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link className="navbar-brand" to="/">
+                    <Link to="/" className="navbar-brand">
                         <img
-                            src={company === "filtron" || company === "all" ? logo : logo2}
+                            src={
+                                company === "filtron" || company === "all"
+                                    ? logo
+                                    : logo2
+                            }
                             alt="company-logo"
                         />
                     </Link>
@@ -105,8 +109,12 @@ const ProductDetailsNavMenu = () => {
                                     ></Button>
                                     <NotificationModal
                                         show={modalShowPaidOrders}
-                                        onHide={() => setModalShowPaidOrders(false)}
-                                        text={t("PaidOrder.OstrzeżenieZamówieniePłatneNAV")}
+                                        onHide={() =>
+                                            setModalShowPaidOrders(false)
+                                        }
+                                        text={t(
+                                            "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
+                                        )}
                                     />
                                 </ButtonToolbar>
                             </li>

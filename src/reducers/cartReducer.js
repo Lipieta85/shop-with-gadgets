@@ -16,6 +16,7 @@ const initialState = {
     productsToOrder: [],
     productsCategory: "1",
 };
+
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case type.ADD_IF_ITEM_EXIST:

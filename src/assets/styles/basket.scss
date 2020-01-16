@@ -1,38 +1,42 @@
-@import './mixins/mixins.scss';
+@import "./mixins/mixins.scss";
 
-.basket-container{
-    .title{
+.basket-container {
+    .title {
         color: black;
     }
-    .actualize-btn{
+    .actualize-btn {
         border-color: #a0a3a6;
-        &:hover{
+        &:hover {
             background-color: #a0a3a6;
             border-color: #a0a3a6;
         }
     }
-    .item-number{
-        position:absolute;
-        font-size:17px;
+    .item-number {
+        position: absolute;
+        font-size: 17px;
     }
-    .white-bg{
+    .white-bg {
         background-color: #ffffff;
         padding: 10px;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
     }
-    .item-info{
-        padding:0;
+    .item-info {
+        padding: 0;
     }
 }
 .basket-box {
     &:hover {
         .basket {
-            color: #8b8e91;
+            @include themify($themes) {
+                color: themed("basketColorHover");
+            }
         }
     }
     .basket {
         transition: 0.3s;
-        color: #a0a3a6;
+        @include themify($themes) {
+            color: themed("basketColor");
+        }
     }
     .basket-title {
         position: relative;
@@ -68,7 +72,7 @@
 }
 .cart {
     margin-top: 10px;
-    .basket-header{
+    .basket-header {
         width: 95%;
     }
     .collection-item {
@@ -114,16 +118,16 @@
 .updateQuantity {
     width: 50px;
 }
-@media (min-width:992px){
-    .basket-container{
-        .client-panel{
-            margin-top:125px !important;
+@media (min-width: 992px) {
+    .basket-container {
+        .client-panel {
+            margin-top: 125px !important;
         }
     }
 }
 @media (max-width: 767px) {
     .cart {
-        .basket-header{
+        .basket-header {
             width: 100%;
         }
         .collection-item {
@@ -134,38 +138,39 @@
             }
         }
     }
-    .item-number{
-        left:5px;
+    .item-number {
+        left: 5px;
     }
 }
-@media (min-width:768px){
-    .item-number{
-        left:-30px;
+@media (min-width: 768px) {
+    .item-number {
+        left: -30px;
     }
 }
 @media (max-width: 576px) {
-    .img-box{
-        padding-right:0 !important;
+    .img-box {
+        padding-right: 0 !important;
     }
     .cart {
         .collection-item {
-            .title{
-                font-size:18px;
+            .title {
+                font-size: 18px;
             }
-            p,b{
-                font-size:13px;
+            p,
+            b {
+                font-size: 13px;
             }
         }
     }
-    .basket-content{
+    .basket-content {
         padding-right: 0;
     }
 }
 @media (min-width: 576px) {
-    .img-box{
-        padding-right:0.25rem !important;
+    .img-box {
+        padding-right: 0.25rem !important;
     }
-    .basket-content{
+    .basket-content {
         padding-right: 15px;
     }
 }
