@@ -1,6 +1,12 @@
+@import './mixins/mixins.scss';
+
 .footer {
-    background-color: #f8f9fa;
-    color: #a0a3a6;
+    @include themify($themes) {
+        background-color: themed('footerBgC');  
+        color: themed('footerFontC');   
+        border-color:themed('footerBorderC');   
+    }
+    border-top: 2px solid;
     text-transform: uppercase;
     width: 100%;
     bottom: 0;
@@ -9,8 +15,10 @@
     .footer-text-line {
         display: flex;
         align-items: center;
-        .footer-regulations {
-            color: #a0a3a6;
+        .footer-regulations a{
+            @include themify($themes) { 
+                color: themed('footerFontC');
+            }
             &:hover {
                 color: black;
             }

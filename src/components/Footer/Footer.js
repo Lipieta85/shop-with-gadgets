@@ -7,7 +7,7 @@ const Footer = () => {
     const { t } = useTranslation();
     return (
         <div>
-            <footer className="footer border-top d-flex align-items-center">
+            <footer className="footer d-flex align-items-center">
                 <div className="container-fluid">
                     <div className="d-flex justify-content-end footer-text-line">
                         <p className="footer-regulations m-0">
