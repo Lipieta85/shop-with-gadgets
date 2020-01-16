@@ -29,11 +29,11 @@ const BasketContainer = () => {
                                         <div>
                                             {" "}
                                             <div className="order-end text-center">
-                                                <div className="order-end-box">
-                                                    Brak produktów w koszyku.
+                                                <div className="order-end-box p-4">
+                                                    <h5>Brak produktów w koszyku.</h5>
                                                     <Link
                                                         to="/"
-                                                        className="btn btn-outline-primary mt-4 w-25 mx-auto"
+                                                        className="btn btn-outline-primary mt-2"
                                                     >
                                                         {" "}
                                                         {t("Basket.Wróć")}

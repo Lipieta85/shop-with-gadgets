@@ -76,8 +76,8 @@
     "BłądZamówienia": "Twoje zamówienie nie zostało złożone z powodu błędu.Skontatkuj się ze swoim Opiekunem Klienta."
   },
   "OrderHistory": {
-    "ListaZamówieńJestPusta": "Lista Zamówień Jest Pusta",
-    "ListaZamówień": "Lista Zamówień"
+    "ListaZamówieńJestPusta": "Lista zamówień jest pusta",
+    "ListaZamówień": "Lista zamówień"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",
