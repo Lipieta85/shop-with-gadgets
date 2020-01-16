@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { createOrder, productsToOrder } from "../../actions/index";
@@ -21,7 +21,6 @@ const OrderSummary = () => {
         state => state.clientDataReducer.marketingOrderType,
     );
     const updatedBudget = useSelector(state => state.cartReducer.budget)
-    const [checkBoxText] = useState("Budżet maretingowy");
 
     const budgetOrder = true;
     const orderIsFirst = true;

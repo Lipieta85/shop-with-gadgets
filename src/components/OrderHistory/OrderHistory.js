@@ -7,12 +7,13 @@ import {
 } from "../../actions/index";
 //import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
-import "../../assets/styles/order-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import ConfirmModal from "./modals/OrderConfirmModal";
 import ChooseModal from "./modals/OrderChooseModal";
 import ScreenLock from "../ScreenLock";
+import "../../assets/styles/order-history.scss";
+import "../../assets/styles/order-end.scss";
 
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
@@ -24,7 +25,7 @@ const OrderHistory = () => {
     );
 
     const [showedOrder, setShowedOrder] = useState();
-    const [currency, setCurrency] = useState();
+    //const [currency, setCurrency] = useState();
 
     const { t } = useTranslation();
 
@@ -96,7 +97,7 @@ const OrderHistory = () => {
         orders.map((order, i) => {
             if (i === selectedOrder) {
                 setShowedOrder(order);
-                setCurrency(order.currency_code);
+                //setCurrency(order.currency_code);
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
             }
             return null;
@@ -108,7 +109,7 @@ const OrderHistory = () => {
             <div className="container-fluid order-history-container pt-5">
                 <NavMenu />
                 <ScreenLock />
-                {orders.length === 0 &&
+                {orders.length === 0 ? (
                     <div className="text-center">
                         <div className="order-end-box p-4">
                             <h4>{t("OrderHistory.ListaZamówieńJestPusta")}</h4>
@@ -121,22 +122,24 @@ const OrderHistory = () => {
                             </Link>
                         </div>
                     </div>
-                }
-                <div className="row">
-                    <div className="col-sm-5">
-                        <h4 className="order-list ml-1 mb-2">
-                            {orders.length !== 0 && `${t("OrderHistory.ListaZamówień")}` }
-                        </h4>
+                ) : (
+                    <div className="row">
+                        <div className="col-sm-5">
+                            <div className="order-list ml-1 mb-2">
+                                <h2>{t("OrderHistory.ListaZamówień")}</h2>
+                            </div>
+                        </div>
+                        <div className="col-sm-7">
+                            <h4 className="order-list ml-1 mb-2">
+                                {orders.length !== 0 &&
+                                    "Szczegóły zamówienia (" +
+                                        (showedOrder &&
+                                            showedOrder.order_number) +
+                                        ")"}
+                            </h4>
+                        </div>
                     </div>
-                    <div className="col-sm-7">
-                        <h4 className="order-list ml-1 mb-2">
-                            {orders.length !== 0 &&
-                                "Szczegóły zamówienia (" +
-                                    (showedOrder && showedOrder.order_number) +
-                                    ")"}
-                        </h4>
-                    </div>
-                </div>
+                )}
                 <Spinner />
                 {orders.length !== 0 ? (
                     <div className="row">
