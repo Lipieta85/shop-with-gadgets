@@ -1,8 +1,13 @@
+@import './mixins/mixins.scss';
+
 $blue: rgb(3, 88, 153);
 $gray: #a0a3a6;
 
 .client-side {
-    background: url(../images/bg_top_2.jpg) center no-repeat;
+    //background: url(../images/bg_top_2.jpg) center no-repeat;
+    @include themify($themes) {
+        background-color: themed('mainBackgroundColor');  
+    }
     background-size: cover;
     position: relative;
     margin: 0 auto;

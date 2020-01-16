@@ -1,6 +1,11 @@
+@import './mixins/mixins.scss';
+
 .basket-container {
     min-height: calc(100vh - 57px);
-    background: url(../images/bg_top_2.jpg) center no-repeat;
+    //background: url(../images/bg_top_2.jpg) center no-repeat;
+    @include themify($themes) {
+        background-color: themed('mainBackgroundColor');  
+    }
     background-size: cover;
     .clear-button-box {
         margin: 0 auto;
