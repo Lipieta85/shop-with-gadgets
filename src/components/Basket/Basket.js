@@ -5,6 +5,7 @@ import "../../assets/styles/basket.scss";
 import BasketButtons from "./BasketButtons";
 import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
+import ScreenLock from "../ScreenLock";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
@@ -48,6 +49,7 @@ const Basket = props => {
                               itemCurrency={item.price.currency}
                               itemUnit={item.product.unitOfMeasure}
                           />
+                          <ScreenLock />
                       </div>
                   </li>
               );

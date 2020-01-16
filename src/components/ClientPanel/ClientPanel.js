@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ClientPanelMenu from "../ClientPanelMenu";
 import ButtonInput from "./Button";
 import Spinner from "../UI/Spinner/Spinner";
+import ScreenLock from "../ScreenLock";
 import { useTranslation } from "react-i18next";
 import {
     initProducts,
@@ -201,6 +202,7 @@ const ClientPanel = props => {
                             {product}
                         </div>
                         <Spinner />
+                        <ScreenLock />
                         {pagination.totalPages > 1 && (
                             <nav
                                 aria-label="navigation align-items-bottom"
