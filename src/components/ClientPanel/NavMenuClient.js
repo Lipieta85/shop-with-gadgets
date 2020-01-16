@@ -64,7 +64,7 @@ const NavMenu = () => {
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light primary-color">
-                    <Link className="navbar-brand" to="/">
+                    <Link to="/" className="navbar-brand">
                         <img
                             src={
                                 company === "filtron" || company === "all"

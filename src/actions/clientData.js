@@ -56,3 +56,21 @@ export const getMarketingOrderType = code => {
         code,
     };
 };
+export const getRemainingBudget = code => {
+    return {
+        type: type.GET_REMAINING_BUDGET,
+        code,
+    };
+};
+export const getBaseBudget = code => {
+    return {
+        type: type.GET_BASE_BUDGET,
+        code,
+    };
+};
+export const getPeriodFrom = code => {
+    return {
+        type: type.GET_PERIOD_FROM,
+        code,
+    };
+};

@@ -1,6 +1,13 @@
+@import "./mixins/mixins.scss";
+
 .footer {
-    background-color: #f8f9fa;
-    color: #a0a3a6;
+    @include themify($themes) {
+        background-color: themed("footerBackgroundColor");
+    }
+    border: 0;
+    @include themify($themes) {
+        color: themed("footerColor");
+    }
     text-transform: uppercase;
     width: 100%;
     bottom: 0;
@@ -10,7 +17,9 @@
         display: flex;
         align-items: center;
         .footer-regulations {
-            color: #a0a3a6;
+            // @include themify($themes) {
+            //     color: themed("footerColor");
+            // }
             &:hover {
                 color: black;
             }

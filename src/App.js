@@ -29,6 +29,9 @@ import {
     companyName,
     setCurrencyCode,
     getMarketingOrderType,
+    getRemainingBudget,
+    getBaseBudget,
+    getPeriodFrom,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -70,10 +73,12 @@ export default withRouter(function App({ location }, props) {
                 localStorage.setItem("userID", userID.userId);
                 localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    console.log(res);
                     dispatch(
                         setBudget(
                             res.data.getWixClientData.budget
-                                ? res.data.getWixClientData.budget.amount
+                                ? res.data.getWixClientData.budget
+                                      .remainingBudget
                                 : "",
                         ),
                     );
@@ -88,6 +93,21 @@ export default withRouter(function App({ location }, props) {
                         ),
                     );
                     dispatch(getLang(parsed.lang));
+                    dispatch(
+                        getRemainingBudget(
+                            res.data.getWixClientData.budget.remainingBudget,
+                        ),
+                    );
+                    dispatch(
+                        getBaseBudget(
+                            res.data.getWixClientData.budget.baseBudget,
+                        ),
+                    );
+                    dispatch(
+                        getPeriodFrom(
+                            res.data.getWixClientData.budget.period.from,
+                        ),
+                    );
                     dispatch(
                         getMarketingOrderType(
                             res.data.getWixClientData.data.marketingOrderType,

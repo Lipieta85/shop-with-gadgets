@@ -53,4 +53,7 @@ export {
     companyName,
     setCurrencyCode,
     getMarketingOrderType,
+    getRemainingBudget,
+    getBaseBudget,
+    getPeriodFrom,
 } from "./clientData.js";
