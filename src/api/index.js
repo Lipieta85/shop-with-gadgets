@@ -40,19 +40,6 @@ export const getLinkToken = async token => {
     });
 };
 
-export const getRodoPolicy = async token => {
-    return await trackPromise(
-        axios({
-            method: "get",
-            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22rodoPolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-            },
-        }),
-    );
-};
-//mh-ecommerce-dev.bpower2.com/index.php/restApi/request/model/Pages/params/{"`key`":"rodoPolicy","lang":"pl"}
 export const getStorePolicy = async token => {
     return await trackPromise(
         axios({

@@ -42,6 +42,10 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        td:last-child {
+            display: flex;
+            justify-content: flex-end;
+        }
         tr {
             transition: 0.1s;
             &:hover {
