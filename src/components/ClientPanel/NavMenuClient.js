@@ -5,7 +5,11 @@ import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
-import { setProductCategories, initProducts, setPage } from "../../actions/index";
+import {
+    setProductCategories,
+    initProducts,
+    setPage,
+} from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
@@ -39,9 +43,9 @@ const NavMenu = () => {
         dispatch(initProducts(token, Number(id)));
     };
 
-    const showPaidOrders = () =>{
+    const showPaidOrders = () => {
         setModalShowPaidOrders(true);
-    }
+    };
 
     const tabHandler = e => {
         if (e.target.id === "1") {
@@ -133,8 +137,7 @@ const NavMenu = () => {
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
                             window.location.pathname === `/Basket` ||
-                            window.location.pathname === `/Regulations` ||
-                            window.location.pathname === `/Rodo` ? (
+                            window.location.pathname === `/Regulations` ? (
                                 <li className="nav-item">
                                     <Link
                                         className="nav-link text-uppercase"
@@ -193,8 +196,12 @@ const NavMenu = () => {
                                     ></Button>
                                     <NotificationModal
                                         show={modalShowPaidOrders}
-                                        onHide={() => setModalShowPaidOrders(false)}
-                                        text={t("PaidOrder.OstrzeżenieZamówieniePłatneNAV")}
+                                        onHide={() =>
+                                            setModalShowPaidOrders(false)
+                                        }
+                                        text={t(
+                                            "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
+                                        )}
                                     />
                                 </ButtonToolbar>
                             </li>

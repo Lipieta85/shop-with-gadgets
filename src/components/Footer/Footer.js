@@ -19,16 +19,6 @@ const Footer = () => {
                                 {t(`Footer.Regulamin`)}
                             </Link>
                         </p>
-
-                        <p className="footer-contact details ml-5 m-0">
-                            <Link
-                                className=" text-decoration-none"
-                                to="/Rodo"
-                                onClick={() => window.scrollTo(0, 0)}
-                            >
-                                {t(`Footer.RODO`)}
-                            </Link>
-                        </p>
                     </div>
                 </div>
             </footer>
