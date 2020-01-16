@@ -18,13 +18,13 @@
     }
     .button-parent{
         border: none;
-        .order-button {
+        .order-button, .btn-outline-primary {
             @include themify($themes) {
                 background-color: themed('orderOptionsBtnBg');  
                 color:themed('orderOptionsBtnFontC');  
                 border-color:themed('orderOptionsBtnBorderC');
                 &:hover{
-                    color: white;
+                    color:themed('orderOptionsBtnFontCH');  
                     background-color: themed('orderOptionsBtnBgH');  
                 }
             }

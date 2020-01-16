@@ -1,7 +1,6 @@
 $wixOrange:rgb(255,182,15);
-$wixOrangeDarker:rgb(189, 138, 20);
 $wixOrangeHover:rgb(238, 170, 15);
-$wixOrangeDarkest:rgb(175, 129, 21);
+$wixOrangeDarker:rgb(189, 138, 20);
 $wixBlack:rgb(35,31,32);
 $wixDarkGray:rgb(42,42,42);
 $lightNav:#f8f9fa;
@@ -37,11 +36,17 @@ $themes: (
       pagerActiveBorderC:$gray5,
       pagerFontC:$gray2,
     //} 
+    //basket-summary{
+      basketSummaryBg:$white,
+      backetSummaryBorderC:$white,
+      backetSummaryFontC:$wixBlack,
+    //}
     //order-options{
       orderOptionsBg:$gray9,
       orderOptionsBtnBg:$gray9,
       orderOptionsBtnBgH:$gray2,
       orderOptionsBtnFontC:$gray2,
+      orderOptionsBtnFontCH:$white,
       orderOptionsBtnBorderC:$gray2,
     //}  
     //footer{
@@ -70,22 +75,28 @@ $themes: (
       pagerBgC:$wixOrange,
       pagerBorderC:$wixOrangeHover,
       pagerBorderCH:$wixOrangeDarker,
-      pagerActiveBg:$wixOrangeDarkest,
-      pagerActiveBorderC:$wixOrangeDarkest,
+      pagerActiveBg:$wixOrangeDarker,
+      pagerActiveBorderC:$wixOrangeDarker,
       pagerFontC:$wixBlack,
     //} 
+    //basket-summary{
+      basketSummaryBg:$wixBlack,
+      backetSummaryBorderC:$wixOrange,
+      backetSummaryFontC:$white,
+    //}
     //order-options{
       orderOptionsBg:$wixOrange,
       orderOptionsBtnBg:$wixDarkGray,
       orderOptionsBtnBgH:$wixBlack,
       orderOptionsBtnFontC:$white,
+      orderOptionsBtnFontCH:$white,
       orderOptionsBtnBorderC:$wixDarkGray,
     //}
     //footer{
       footerBgC:$wixOrange,
       footerFontC:$wixBlack,
       footerFontCH:$wixBlack,
-      footerBorderC:$wixOrangeDarkest,
+      footerBorderC:$wixOrangeDarker,
     //}
   ),
 );
