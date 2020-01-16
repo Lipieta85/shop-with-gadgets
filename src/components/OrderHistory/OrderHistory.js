@@ -108,27 +108,24 @@ const OrderHistory = () => {
             <div className="container-fluid order-history-container pt-5">
                 <NavMenu />
                 <ScreenLock />
+                {orders.length === 0 &&
+                    <div className="text-center">
+                        <div className="order-end-box p-4">
+                            <h4>{t("OrderHistory.ListaZamówieńJestPusta")}</h4>
+                            <Link
+                                to="/"
+                                className="btn btn-outline-primary mt-3"
+                            >
+                                {" "}
+                                {t("Basket.Wróć")}
+                            </Link>
+                        </div>
+                    </div>
+                }
                 <div className="row">
                     <div className="col-sm-5">
                         <h4 className="order-list ml-1 mb-2">
-                            {orders.length === 0 ? (
-                                <>
-                                    <h2>
-                                        {t(
-                                            "OrderHistory.ListaZamówieńJestPusta",
-                                        )}
-                                    </h2>
-                                    <Link
-                                        to="/"
-                                        className="btn btn-outline-primary mt-4"
-                                    >
-                                        {" "}
-                                        {t("Basket.Wróć")}
-                                    </Link>
-                                </>
-                            ) : (
-                                `${t("OrderHistory.ListaZamówień")}`
-                            )}
+                            {orders.length !== 0 && `${t("OrderHistory.ListaZamówień")}` }
                         </h4>
                     </div>
                     <div className="col-sm-7">

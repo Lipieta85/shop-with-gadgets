@@ -96,7 +96,7 @@ const OrderOptions = () => {
             {!clientUE&&
                 <p className="out-of-ue-info">
                     Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty 
-                    niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."
+                    niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju.
                 </p>
             }
             <hr />
