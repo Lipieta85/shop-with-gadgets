@@ -5,10 +5,7 @@ import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
 import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    setProductCategories,
-    initProducts,
-} from "../../actions/index";
+import { setProductCategories, initProducts } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
@@ -61,9 +58,13 @@ const NavMenu = () => {
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light primary-color">
-                    <Link className="navbar-brand" to="/">
+                    <Link to="/" className="navbar-brand">
                         <img
-                            src={company === "filtron" || company === "all" ? logo : logo2}
+                            src={
+                                company === "filtron" || company === "all"
+                                    ? logo
+                                    : logo2
+                            }
                             alt="company-logo"
                         />
                     </Link>
@@ -184,12 +185,14 @@ const NavMenu = () => {
                                     >
                                         {t(`Nav.HistoriaBudżetu`)}
                                     </Link>
-                                    {orderType === "S5" ? <Link
-                                        className="dropdown-item text-uppercase"
-                                        onClick={showPaidOrders}
-                                    >
-                                        {t(`Nav.ZamówieniaPłatne`)}
-                                    </Link> : null }
+                                    {orderType === "S5" ? (
+                                        <Link
+                                            className="dropdown-item text-uppercase"
+                                            onClick={showPaidOrders}
+                                        >
+                                            {t(`Nav.ZamówieniaPłatne`)}
+                                        </Link>
+                                    ) : null}
                                 </div>
                                 <ButtonToolbar className="invisible">
                                     <Button

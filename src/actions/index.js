@@ -29,7 +29,7 @@ export {
     orderCancel,
     cancelOrderStatus,
     setOrderStatus,
-    resetOrderError
+    resetOrderError,
 } from "./order.js";
 
 export {
@@ -54,4 +54,7 @@ export {
     companyName,
     setCurrencyCode,
     getMarketingOrderType,
+    getRemainingBudget,
+    getBaseBudget,
+    getPeriodFrom,
 } from "./clientData.js";

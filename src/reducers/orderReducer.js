@@ -7,12 +7,13 @@ const initialState = {
     orderNumber: 0,
     singleOrderHistory: [],
     wixBudgetHistory: [],
-    cancelOrderStatus: 0
+    cancelOrderStatus: 0,
 };
 
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
         case type.SET_CLIENT_BUDGET_HISTORY:
+            console.log(action.data);
             return {
                 ...state,
                 wixBudgetHistory: action.data,
@@ -56,18 +57,18 @@ const orderReducer = (state = initialState, action) => {
         case type.CANCEL_ORDER_STATUS:
             return {
                 ...state,
-                cancelOrderStatus: action.status
-            }
+                cancelOrderStatus: action.status,
+            };
         case type.SET_ORDER_STATUS:
             return {
                 ...state,
-                cancelOrderStatus: action.status
-            }
+                cancelOrderStatus: action.status,
+            };
         case type.RESET_ORDER_ERROR:
             return {
                 ...state,
-                setOrderError: ""
-            }
+                setOrderError: "",
+            };
         default:
             return state;
     }
