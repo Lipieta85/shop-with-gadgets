@@ -66,7 +66,9 @@
     "AnulujZamówienie": "Anuluj zamówienie",
     "PotwierdzenieAnulowaniaZamówienia": "Czy napewno chcesz anulować zamówienie nr",
     "Tak": "Tak",
-    "Nie": "Nie"
+    "Nie": "Nie",
+    "BudżetMarketingowy": "Budżet Marketingowy",
+    "ZamówieniePłatne": "Paid order"
   },
   "OrderEnd": {
     "ZamówienieONr": "Twoje zamówienie o numerze",
