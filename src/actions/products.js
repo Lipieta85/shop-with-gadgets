@@ -1,10 +1,5 @@
 import * as type from "../actions/types";
-import {
-    getAllProducts,
-    getProductsCategories,
-    changeProductsCategory,
-    postSubscribe,
-} from "../api";
+import { getAllProducts, changeProductsCategory, postSubscribe } from "../api";
 
 export const setProducts = products => {
     return {
@@ -34,17 +29,17 @@ export const initProducts = (token, currentPage) => {
     };
 };
 
-export const initProductsCategories = token => {
-    return (dispatch, getState) => {
-        getProductsCategories(token)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
-};
+// export const initProductsCategories = token => {
+//     return (dispatch, getState) => {
+//         getProductsCategories(token)
+//             .then(res => {
+//                 console.log(res);
+//             })
+//             .catch(error => {
+//                 console.log(error);
+//             });
+//     };
+// };
 
 export const setProductCategories = number => {
     return {
@@ -53,11 +48,11 @@ export const setProductCategories = number => {
     };
 };
 
-export const changeProductCategory = (token, number) => {
+export const changeProductCategory = (token, number, currentPage) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
 
-        changeProductsCategory(token, number, company)
+        changeProductsCategory(token, number, company, currentPage)
             .then(res => {
                 dispatch(setProducts(res.data));
             })

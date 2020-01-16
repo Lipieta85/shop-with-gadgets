@@ -36,7 +36,6 @@ export {
     setProducts,
     initProducts,
     fetchProductsFailed,
-    initProductsCategories,
     setProductCategories,
     changeProductCategory,
 } from "./products.js";
