@@ -1,13 +1,12 @@
-@import "./mixins/mixins.scss";
+@import './mixins/mixins.scss';
 
 .footer {
     @include themify($themes) {
-        background-color: themed("footerBackgroundColor");
+        background-color: themed('footerBgC');  
+        color: themed('footerFontC');   
+        border-color:themed('footerBorderC');   
     }
-    border: 0;
-    @include themify($themes) {
-        color: themed("footerColor");
-    }
+    border-top: 2px solid;
     text-transform: uppercase;
     width: 100%;
     bottom: 0;
@@ -16,10 +15,10 @@
     .footer-text-line {
         display: flex;
         align-items: center;
-        .footer-regulations {
-            // @include themify($themes) {
-            //     color: themed("footerColor");
-            // }
+        .footer-regulations a{
+            @include themify($themes) { 
+                color: themed('footerFontC');
+            }
             &:hover {
                 color: black;
             }

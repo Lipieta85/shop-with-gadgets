@@ -1,7 +1,5 @@
 @import './mixins/mixins.scss';
 
-$blue: rgb(3, 88, 153);
-$gray: #a0a3a6;
 
 .client-side {
     //background: url(../images/bg_top_2.jpg) center no-repeat;
@@ -53,7 +51,6 @@ $gray: #a0a3a6;
                     align-items: center;
                     white-space: pre;
                     width: 140px;
-                    color: white;
                     font-weight: bold;
                     transform: rotate(45deg);
                     white-space: pre-wrap;
@@ -73,16 +70,36 @@ $gray: #a0a3a6;
     .navigation-pager {
         margin-top: 1.5rem;
         .page-item{
+            .page-link{
+                @include themify($themes) {
+                    color:themed('pagerFontC'); 
+                    background-color: themed('pagerBgC');  
+                    border-color:themed('pagerBorderC');  
+                }
+                border: 2px solid;
+                svg{
+                    @include themify($themes) {
+                        color:themed('pagerFontC'); 
+                    }
+                }
+            }
             &:hover{
                 .page-link {
-                    border: 0.1rem solid $gray !important;
+                    @include themify($themes) {
+                        border-color:themed('pagerBorderCH')!important;  
+                    }
+                    border: 2px solid !important;
                 }
             }
         }
         .page-item.active {
             .page-link {
-                background-color: $gray;
-                border-color: $gray;
+                @include themify($themes) {
+                    background-color:themed('pagerActiveBg');  
+                    border-color:themed('pagerActiveBorderC');  
+                }
+                background-color: #a0a3a6;
+                border-color: #a0a3a6;
             }
         }
     }

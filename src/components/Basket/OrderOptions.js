@@ -137,7 +137,7 @@ const OrderOptions = () => {
                     ))}
                 </div>
             </div>
-            <div className="basket-checkout d-flex flex-wrap justify-content-between">
+            <div className="basket-checkout d-flex flex-wrap justify-content-between button-parent">
                 <Link to="/" className="btn btn-outline-primary mt-1 w-100">
                     {t("Basket.Wróć")}
                 </Link>
