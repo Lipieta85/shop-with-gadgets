@@ -1,8 +1,9 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import host from "../../api/host";
 
 const NotificationModal = props => {
-    const confAddress = "https://mh-ecommerce-dev.bpower2.com/index.php/workflow/workflowInstance/createByKeyword/keyword/paid-order-application-workflow-conf-id";
+    const confAddress = `${host}/workflow/workflowInstance/createByKeyword/keyword/paid-order-application-workflow-conf-id`;
 
     return (
         <Modal

@@ -12,6 +12,7 @@ import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import ConfirmModal from "./modals/OrderConfirmModal";
 import ChooseModal from "./modals/OrderChooseModal";
+import ScreenLock from "../ScreenLock";
 
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
@@ -106,6 +107,7 @@ const OrderHistory = () => {
         <div className="order-history">
             <div className="container-fluid order-history-container pt-5">
                 <NavMenu />
+                <ScreenLock />
                 <div className="row">
                     <div className="col-sm-5">
                         <h4 className="order-list ml-1 mb-2">
