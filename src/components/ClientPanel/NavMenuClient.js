@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/images/filtron_logo.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     setProductCategories,
     initProducts,
+    setPage,
 } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
@@ -17,6 +18,7 @@ import NotificationModal from "./NotificationModal";
 const NavMenu = () => {
     //const id = useSelector(state => state.cartReducer.productsCategory);
     const company = useSelector(state => state.clientDataReducer.companyId);
+    const category = useSelector(state => state.cartReducer.productsCategory);
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
@@ -24,25 +26,27 @@ const NavMenu = () => {
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
 
     const dispatch = useDispatch();
-    const [id, setId] = useState(1);
+
     const token = localStorage.getItem("token");
     useEffect(() => {
         const active = document.querySelector(".nav-menu .active");
-        if (active) {
+        if (active && category) {
             active.classList.remove("active");
-            document.getElementById(`${id}`).classList.add("active");
+            document.getElementById(`${category}`).classList.add("active");
         }
-    }, [id]);
+    }, [category]);
+
     const onSignout = () => {
         dispatch(signOut());
     };
     const oneCategoryHandler = id => {
         dispatch(setProductCategories(id));
-        //dispatch(setPage(1))
+        dispatch(setPage(1));
     };
     const allProductsHandler = id => {
         dispatch(setProductCategories(id));
         dispatch(initProducts(token, Number(id)));
+        dispatch(setPage(1));
     };
 
     const showPaidOrders = () => {
@@ -55,7 +59,6 @@ const NavMenu = () => {
         } else {
             oneCategoryHandler(e.target.id);
         }
-        setId(Number(e.target.id));
     };
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
@@ -63,7 +66,11 @@ const NavMenu = () => {
                 <nav className="navbar navbar-expand-lg navbar-light primary-color">
                     <Link className="navbar-brand" to="/">
                         <img
-                            src={company === "filtron" || company === "all" ? logo : logo2}
+                            src={
+                                company === "filtron" || company === "all"
+                                    ? logo
+                                    : logo2
+                            }
                             alt="company-logo"
                         />
                     </Link>
@@ -184,12 +191,14 @@ const NavMenu = () => {
                                     >
                                         {t(`Nav.HistoriaBudżetu`)}
                                     </Link>
-                                    {orderType === "S5" ? <Link
-                                        className="dropdown-item text-uppercase"
-                                        onClick={showPaidOrders}
-                                    >
-                                        {t(`Nav.ZamówieniaPłatne`)}
-                                    </Link> : null }
+                                    {orderType === "S5" ? (
+                                        <Link
+                                            className="dropdown-item text-uppercase"
+                                            onClick={showPaidOrders}
+                                        >
+                                            {t(`Nav.ZamówieniaPłatne`)}
+                                        </Link>
+                                    ) : null}
                                 </div>
                                 <ButtonToolbar className="invisible">
                                     <Button

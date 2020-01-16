@@ -29,14 +29,13 @@ export {
     orderCancel,
     cancelOrderStatus,
     setOrderStatus,
-    resetOrderError
+    resetOrderError,
 } from "./order.js";
 
 export {
     setProducts,
     initProducts,
     fetchProductsFailed,
-    initProductsCategories,
     setProductCategories,
     changeProductCategory,
 } from "./products.js";
