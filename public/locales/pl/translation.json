@@ -17,7 +17,8 @@
     "OstrzeżenieZamówieniePłatneNAV": "Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland."
   },
   "CPanelMenu": {
-    "Zalogowany": "Zalogowany",
+    "JesteśZalogowanyJako": "Jesteś Zalogowany Jako",
+    "WImieniu": "w imieniu",
     "TwójKoszyk": "Twój Koszyk",
     "Koszyk(pusty)": "Koszyk (pusty)",
     "DostępnyBudżetMarketingowy": "Dostępny Budżet Marketingowy",
