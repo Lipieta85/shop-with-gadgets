@@ -31,7 +31,7 @@ const ClientPanel = props => {
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const { t } = useTranslation();
-
+        
     const dispatch = useDispatch();
 
     const token = localStorage.getItem("token");
