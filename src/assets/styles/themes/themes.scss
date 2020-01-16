@@ -1,10 +1,27 @@
+//wixBlack rgb(35,31,32)
+//wixOrange rgb(255,182,15)
+//wixDarkGray rgb(42,42,42)
 $themes: (
   light: (
     mainBackgroundColor: rgb(230,230,230),
     navbarBackgroundColor:#f8f9fa,
+    cardBackgroundColor:white,
+    navbarFontColor:rgb(163,166,169),
+    extraTagLabelBackgroundColor:#556e81,
+    extraTagLabelFontColor:white,
+    btnAvailabilityBg:#a0a3a6,
+    btnAvailabilityBgH:#96989b,
+    btnAvailabilityFontBg:white,
   ),
   dark: (
     mainBackgroundColor: rgb(35,31,32),
-    navbarBackgroundColor:rgb(35,31,32),
+    navbarBackgroundColor:rgb(255,182,15),
+    cardBackgroundColor:white,
+    navbarFontColor:rgb(42,42,42),
+    extraTagLabelBackgroundColor:rgb(255,182,15),
+    extraTagLabelFontColor:rgb(42,42,42),
+    btnAvailabilityBg:rgb(255,182,15),
+    btnAvailabilityBgH:rgb(238, 170, 15),
+    btnAvailabilityFontBg:rgb(42,42,42),
   ),
 );
