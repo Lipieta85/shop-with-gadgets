@@ -15,6 +15,9 @@ $gray: #a0a3a6;
     padding: 90px 10px 0 10px;
     .card-container {
         .card {
+            @include themify($themes) {
+                background-color: themed('cardBackgroundColor');  
+            }
             overflow: hidden;
             border: none;
             height: 364px;
@@ -40,6 +43,10 @@ $gray: #a0a3a6;
                 height: 100px;
                 overflow: hidden;
                 .card-label{
+                    @include themify($themes) {
+                        background-color: themed('extraTagLabelBackgroundColor');  
+                        color:themed('extraTagLabelFontColor'); 
+                    }
                     position: relative;
                     display: flex;
                     justify-content: center;
@@ -48,7 +55,6 @@ $gray: #a0a3a6;
                     width: 140px;
                     color: white;
                     font-weight: bold;
-                    background-color: #556e81;
                     transform: rotate(45deg);
                     white-space: pre-wrap;
                 }

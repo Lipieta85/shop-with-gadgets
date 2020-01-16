@@ -1,4 +1,11 @@
+@import './mixins/mixins.scss';
+
 .availability-check{
+    @include themify($themes) {
+        background-color: themed('btnAvailabilityBg');  
+        border-color: themed('btnAvailabilityBg');  
+        color: themed('btnAvailabilityFontBg');
+    }
     font-size: 14px;
     cursor: pointer;
     height: 34px;
@@ -8,7 +15,7 @@
     align-items: center;
     justify-content: center;
     transition: 0.3s;
-    border: 0.1rem solid #a0a3a6;
+    border: 0.1rem solid;
     padding: 3px 8px 5px 8px;
     border-radius: 1px;
     width: 100%;
@@ -19,10 +26,14 @@
     border-left: none;
     height: 50px;
     &:hover{
+        @include themify($themes) {
+            background-color: themed('btnAvailabilityBgH');  
+            border-color: themed('btnAvailabilityBgH');  
+        }
         background-color: #96989b;
-        border: 0.1rem solid #96989b;
+        border: 0.1rem solid;
     }
-    &:active{
+    /* &:active{
         background-color:#96989b;
-    }
+    } */
 }

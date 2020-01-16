@@ -17,7 +17,8 @@
     "OstrzeżenieZamówieniePłatneNAV": "Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland."
   },
   "CPanelMenu": {
-    "Zalogowany": "Logged",
+    "JesteśZalogowanyJako": "You are logged in as",
+    "WImieniu": "behalf",
     "TwójKoszyk": "Your Basket",
     "Koszyk(pusty)": "Basket (Empty)",
     "DostępnyBudżetMarketingowy": "Marketing Budget Available",

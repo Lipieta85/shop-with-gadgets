@@ -19,6 +19,7 @@ const ProductDetails = props => {
     const { t } = useTranslation();
     useEffect(() => {
         if (selectedIndex >= 0 && selectedIndex < products.length) {
+            props.history.push("/product/" + productId);
             return setLoadedProduct(products[selectedIndex]);
         }
         if (!selectedIndex) {
@@ -51,7 +52,6 @@ const ProductDetails = props => {
                 return i === 0 ? setProductId(product.product.id) : null;
             });
         }
-        props.history.push("/product/" + productId);
     };
     const prevItem = () => {
         setSelectedIndex(prevState => prevState - 1);
@@ -69,7 +69,6 @@ const ProductDetails = props => {
                     : null;
             });
         }
-        props.history.push("/product/" + productId);
     };
 
     let productAvailability,
