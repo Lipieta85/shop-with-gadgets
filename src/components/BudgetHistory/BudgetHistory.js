@@ -44,17 +44,6 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {numberWithSpaces((+i.operation_amount).toFixed(2))}{" "}
-                            {remainingBudget.currencyCode}
-                        </div>
-                    </td>
-                    <td>
-                        <div className="cell">
-                            {i.reference_id ? i.reference_id : "---"}
-                        </div>
-                    </td>
-                    <td>
-                        <div className="cell">
                             {i.operation_type === "LOCK_ADD"
                                 ? "blokada"
                                 : i.operation_type === "LOCK_REMOVE"
@@ -68,6 +57,17 @@ const BudgetHistory = () => {
                                 : i.operation_type === "UPDATE_REMOVE"
                                 ? "usunięcie aktualizacji"
                                 : ""}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="cell">
+                            {i.reference_id ? i.reference_id : "---"}
+                        </div>
+                    </td>
+                    <td>
+                        <div className="cell">
+                            {numberWithSpaces((+i.operation_amount).toFixed(2))}{" "}
+                            {remainingBudget.currencyCode}
                         </div>
                     </td>
                 </tr>
@@ -103,10 +103,8 @@ const BudgetHistory = () => {
                                             {t("BudgetHistory.HistoriaBudżetu")}
                                         </h2>
                                         <div className="titleBudgetAtTheBegging">
-                                            {t(
-                                                "BudgetHistory.BudżetUżytkownikaNaPoczątku",
-                                            )}
-                                            :{" "}
+                                            Przyznany budżet marketingowy na rok
+                                            XXXX:{" "}
                                             <b>
                                                 {numberWithSpaces(
                                                     (+budgetAtTheBeggining).toFixed(
@@ -130,29 +128,28 @@ const BudgetHistory = () => {
                                             <table className="table">
                                                 <tbody>
                                                     <tr>
+                                                        <th> Czas zdarzenia</th>
+                                                        <th>Rodzaj operacji</th>
                                                         <th>
-                                                            {" "}
-                                                            {t(
-                                                                "BudgetHistory.Data",
-                                                            )}
+                                                            Numer zamówienia
                                                         </th>
                                                         <th>
                                                             {t(
                                                                 "BudgetHistory.WykorzystanyBudżet",
                                                             )}
                                                         </th>
-                                                        <th>
-                                                            Numer zamówienia
-                                                        </th>
-                                                        <th>Rodzaj operacji</th>
                                                     </tr>
                                                     {history}
                                                 </tbody>
                                             </table>
                                             <div className="remainingBudgetTitle">
-                                                Budżet użytkownika obecnie:{" "}
+                                                Pozostały do wykorzystania
+                                                budżet marketingowy na rok XXXX:
                                                 <b>
-                                                    {remainingBudget.amount}{" "}
+                                                    {" "}
+                                                    {numberWithSpaces(
+                                                        remainingBudget.amount,
+                                                    )}{" "}
                                                     {
                                                         remainingBudget.currencyCode
                                                     }

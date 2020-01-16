@@ -13,7 +13,6 @@ import PageNotFound from "./components/NotFound";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "./components/Footer/Footer";
 import Regulations from "./components/Footer/Regulations";
-import Rodo from "./components/Footer/Rodo";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import BudgetHistory from "./components/BudgetHistory/BudgetHistory";
 import ReactGA from "react-ga";
@@ -80,10 +79,14 @@ export default withRouter(function App({ location }, props) {
                     );
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
-                    dispatch(companyName(res.data.getWixClientData.data.name))
-                    dispatch(userName(res.data.getWixClientData.data.exId))
-                    dispatch(isUE(res.data.getWixClientData.data.isUE))
-                    dispatch(setCurrencyCode(res.data.getWixClientData.budget.currencyCode))
+                    dispatch(companyName(res.data.getWixClientData.data.name));
+                    dispatch(userName(res.data.getWixClientData.data.exId));
+                    dispatch(isUE(res.data.getWixClientData.data.isUE));
+                    dispatch(
+                        setCurrencyCode(
+                            res.data.getWixClientData.budget.currencyCode,
+                        ),
+                    );
                     dispatch(getLang(parsed.lang));
                     dispatch(
                         getMarketingOrderType(
@@ -128,7 +131,6 @@ export default withRouter(function App({ location }, props) {
                 <PrivateRoute path="/OrderHistory" component={OrderHistory} />
                 <PrivateRoute path="/BudgetHistory" component={BudgetHistory} />
                 <PrivateRoute path="/Regulations" component={Regulations} />
-                <PrivateRoute path="/Rodo" component={Rodo} />
                 <PrivateRoute path="/product/:id" component={ProductDetails} />
                 <Route path="*" component={PageNotFound} />
                 <Redirect to="/" />
