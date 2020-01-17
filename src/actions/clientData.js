@@ -1,7 +1,5 @@
 import * as type from "../actions/types";
-import {
-    getStorePolicyAccepted
-} from "../api";
+import { getStorePolicyAccepted } from "../api";
 
 export const clientData = data => {
     return {
@@ -80,19 +78,22 @@ export const getPeriodFrom = code => {
 export const isStorePolicyAccepted = token => {
     return (dispatch, getState) => {
         getStorePolicyAccepted(token)
-        .then(res => {
-            console.log(res.data.wixIsStorePolicyAccepted)
-            dispatch(setStorePolicyAcceptedStatus(res.data.wixIsStorePolicyAccepted))
-        })
-        .catch(error=> {
-            console.log(error)
-        })
-    }
-}
+            .then(res => {
+                dispatch(
+                    setStorePolicyAcceptedStatus(
+                        res.data.wixIsStorePolicyAccepted,
+                    ),
+                );
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
 
-export const setStorePolicyAcceptedStatus = (isAccepted) => {
+export const setStorePolicyAcceptedStatus = isAccepted => {
     return {
         type: type.SET_STORE_POLICY_ACCEPTED_STATUS,
-        isAccepted
-    }
-}
+        isAccepted,
+    };
+};

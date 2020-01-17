@@ -126,7 +126,9 @@ const OrderHistory = () => {
                     <div className="row">
                         <div className="col-sm-5">
                             <div className="order-list ml-1 mb-2">
-                                <h2 className="header-title">{t("OrderHistory.ListaZamówień")}</h2>
+                                <h2 className="header-title">
+                                    {t("OrderHistory.ListaZamówień")}
+                                </h2>
                             </div>
                         </div>
                         <div className="col-sm-7">
@@ -257,14 +259,22 @@ const OrderHistory = () => {
                                     showedOrderNumber={showedOrder.order_number}
                                 />
                             )}
-                            <h5 className="header-title">Zamówione produkty:</h5>
+                            {showedOrder &&
+                            showedOrder.status === "Zakończone" ? (
+                                ""
+                            ) : (
+                                <h5 className="header-title">
+                                    Zamówione produkty:
+                                </h5>
+                            )}
                             {singleOrder
                                 ? singleOrder.map(order => {
                                       return (
-                                          <li
-                                              className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
-                                          >
-                                              {/* <div className="col-md-4 d-flex align-items-center text-center">
+                                          <>
+                                              <li
+                                                  className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
+                                              >
+                                                  {/* <div className="col-md-4 d-flex align-items-center text-center">
                                         <div className="item-img p-1">
                                             <img
                                                 src={order.img ? order.img : defImg}
@@ -273,86 +283,97 @@ const OrderHistory = () => {
                                             />
                                         </div>
                                     </div> */}
-                                              <div className="col-md-12 desc-col d-flex align-items-center order-item">
-                                                  <div className="order-img-box">
-                                                      {order.image && (
-                                                          <img
-                                                              src={order.image}
-                                                              className="order-img"
-                                                              alt="orderPicture"
-                                                          />
-                                                      )}
-                                                  </div>
-                                                  <div
-                                                      className="item-desc"
-                                                      style={{
-                                                          minHeight: "70px",
-                                                      }}
-                                                  >
-                                                      <div className="d-flex">
-                                                          <h4 className="text-uppercase title">
-                                                              {order.name}
-                                                          </h4>
+                                                  <div className="col-md-12 desc-col d-flex align-items-center order-item">
+                                                      <div className="order-img-box">
+                                                          {order.image && (
+                                                              <img
+                                                                  src={
+                                                                      order.image
+                                                                  }
+                                                                  className="order-img"
+                                                                  alt="orderPicture"
+                                                              />
+                                                          )}
                                                       </div>
-                                                      <div>
-                                                          <span>
-                                                              Cena:{" "}
-                                                              <b className="order-text-value mr-3">
-                                                                  {
-                                                                      +order.unitPrice
-                                                                  }{" "}
-                                                                  {showedOrder &&
-                                                                      showedOrder.currency_code}
-                                                              </b>
-                                                          </span>
-                                                      </div>
-                                                      <div className="order-history-delivery">
-                                                          <span className="mr-3 mb-4">
-                                                              <span className="mr-1">
-                                                                  Zamówionych /
-                                                                  dostarczonych:
+                                                      <div
+                                                          className="item-desc"
+                                                          style={{
+                                                              minHeight: "70px",
+                                                          }}
+                                                      >
+                                                          <div className="d-flex">
+                                                              <h4 className="text-uppercase title">
+                                                                  {order.name}
+                                                              </h4>
+                                                          </div>
+                                                          <div>
+                                                              <span>
+                                                                  Cena:{" "}
+                                                                  <b className="order-text-value mr-3">
+                                                                      {
+                                                                          +order.unitPrice
+                                                                      }{" "}
+                                                                      {showedOrder &&
+                                                                          showedOrder.currency_code}
+                                                                  </b>
                                                               </span>
-                                                              <b className="order-text-value">
-                                                                  (
-                                                                  {
-                                                                      +order.quantityOrdered
-                                                                  }
-                                                              </b>
-                                                              <b className="order-text-value">
-                                                                  {" "}
-                                                                  /{" "}
-                                                                  {
-                                                                      +order.quantityDelivered
-                                                                  }
-                                                                  )
-                                                              </b>
-                                                          </span>
-                                                          <span className="pull-right mb-0">
-                                                              <b>Razem: </b>
-                                                              <b className="order-text-value">
-                                                                  {+order.total}{" "}
-                                                                  {showedOrder &&
-                                                                      showedOrder.currency_code}
-                                                              </b>
-                                                          </span>
+                                                          </div>
+                                                          <div className="order-history-delivery">
+                                                              <span className="mr-3 mb-4">
+                                                                  <span className="mr-1">
+                                                                      Zamówionych
+                                                                      /
+                                                                      dostarczonych:
+                                                                  </span>
+                                                                  <b className="order-text-value">
+                                                                      (
+                                                                      {
+                                                                          +order.quantityOrdered
+                                                                      }
+                                                                  </b>
+                                                                  <b className="order-text-value">
+                                                                      {" "}
+                                                                      /{" "}
+                                                                      {
+                                                                          +order.quantityDelivered
+                                                                      }
+                                                                      )
+                                                                  </b>
+                                                              </span>
+                                                              <span className="pull-right mb-0">
+                                                                  <b>Razem: </b>
+                                                                  <b className="order-text-value">
+                                                                      {
+                                                                          +order.total
+                                                                      }{" "}
+                                                                      {showedOrder &&
+                                                                          showedOrder.currency_code}
+                                                                  </b>
+                                                              </span>
+                                                          </div>
                                                       </div>
                                                   </div>
-                                              </div>
-                                          </li>
+                                              </li>
+                                          </>
                                       );
                                   })
                                 : null}
-                            <div className="summary-box">
-                                <div className="orders-summary">
-                                    <div className="font-weight-bold">
-                                        Zapłacona kwota:{" "}
-                                        {showedOrder &&
-                                            showedOrder.order_total_amount}{" "}
-                                        {showedOrder &&
-                                            showedOrder.currency_code}
+                            {showedOrder &&
+                            showedOrder.status === "Zakończone" ? (
+                                ""
+                            ) : (
+                                <div className="summary-box">
+                                    <div className="orders-summary">
+                                        <div className="font-weight-bold">
+                                            Zapłacona kwota:{" "}
+                                            {showedOrder &&
+                                                showedOrder.order_total_amount}{" "}
+                                            {showedOrder &&
+                                                showedOrder.currency_code}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 ) : null}

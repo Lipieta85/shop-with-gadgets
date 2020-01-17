@@ -155,7 +155,7 @@ const ProductDetails = props => {
                                                 {productAvailability}{" "}
                                                 {productUnit}
                                             </span>
-                                        </p>
+                                        </p>{" "}
                                         <div className="product-buttons-container row">
                                             <Button
                                                 itemId={productId}
