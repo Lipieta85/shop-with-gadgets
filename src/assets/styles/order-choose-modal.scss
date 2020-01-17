@@ -1,0 +1,7 @@
+@import "./mixins/mixins.scss";
+.admin-panel {
+    @include themify($themes) {
+        background: themed("divider");
+    }
+}
+       

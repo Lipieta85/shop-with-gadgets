@@ -67,10 +67,10 @@ $themes: (
       basketDescColor:$wixBlack,
       basketDescBorderC:$white,
       basketDescInputBorderC:$gray8,
-      basketDescButtonBgH:$gray5,
+      basketDescButtonBgH:$gray4,
       basketDescButtonColor:$gray2,
       basketDescButtonColorH:$white,
-      basketDescButtonBorderColor:$gray5,
+      basketDescButtonBorderColor:$gray4,
     //}
     //basket-summary{
       basketSummaryBg:$white,
@@ -101,7 +101,7 @@ $themes: (
     //}
     //productDetails{
         prodDetailsC: $gray2,
-        prodDetailsBorder: $grayBorder,
+        prodDetailsBorder: $transparent,
         prodDetailsTextC: $wixBlack,
         prodDetailsBtnContC: $lightNav,
     //}
@@ -122,7 +122,7 @@ $themes: (
       title:$white,
       tableHeader:$wixOrange,
       tableHeaderColor:$wixBlack,
-      divider:$wixOrangeDarker,
+      divider:$hr,
       hrBorderC:$wixOrange,
       endBoxBg:$white,
       endBoxBtnColor:$wixBlack,
