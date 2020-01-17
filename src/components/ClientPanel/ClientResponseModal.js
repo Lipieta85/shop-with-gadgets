@@ -30,7 +30,14 @@ const ClientResponseModal = props => {
                 )}
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Ok</Button>
+                <Button
+                    type="button"
+                    className="btn btn-outline-primary"
+                    variant="conf-button"
+                    onClick={props.onHide}
+                >
+                    Ok
+                </Button>
             </Modal.Footer>
         </Modal>
     );

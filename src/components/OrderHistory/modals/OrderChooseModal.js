@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { orderCancel } from "../../../actions/index";
 import { useTranslation } from "react-i18next";
-import '../../../assets/styles/order-choose-modal.scss';
+import "../../../assets/styles/order-choose-modal.scss";
 const ChooseModal = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
@@ -13,6 +13,7 @@ const ChooseModal = props => {
             <button
                 type="button"
                 className="btn btn-outline-primary"
+                variant="conf-button"
                 data-toggle="modal"
                 data-target="#exampleModal"
             >
@@ -44,14 +45,15 @@ const ChooseModal = props => {
                             <button
                                 type="button"
                                 className="btn btn-outline-primary"
+                                variant="conf-button"
                                 data-dismiss="modal"
-                                variant='conf-button'
                             >
                                 {t("Order.Nie")}
                             </button>
                             <button
                                 type="button"
                                 className="btn btn-outline-primary"
+                                variant="conf-button"
                                 data-dismiss="modal"
                                 onClick={() =>
                                     dispatch(

@@ -1,8 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "../../../assets/styles/order-choose-modal.scss";
 
-const ConfirmModal = (props) => {
-    const cancelOrderStatus = useSelector(state => state.orderReducer.cancelOrderStatus);
+const ConfirmModal = props => {
+    const cancelOrderStatus = useSelector(
+        state => state.orderReducer.cancelOrderStatus,
+    );
     return (
         <div>
             <button
@@ -10,8 +13,7 @@ const ConfirmModal = (props) => {
                 className="order-confirm-modal invisible"
                 data-toggle="modal"
                 data-target="#confirmModal"
-            >
-            </button>
+            ></button>
 
             <div
                 className="modal fade"
@@ -25,13 +27,17 @@ const ConfirmModal = (props) => {
                     <div className="modal-content">
                         <div className="modal-body text-uppercase">
                             <b>
-                                {cancelOrderStatus === true || cancelOrderStatus === 1 ? `Twoje zamówienie o nr ${props.showedOrderNumber} zostało anulowane` : "Nie udało się anulować zamówienia"}
+                                {cancelOrderStatus === true ||
+                                cancelOrderStatus === 1
+                                    ? `Twoje zamówienie o nr ${props.showedOrderNumber} zostało anulowane`
+                                    : "Nie udało się anulować zamówienia"}
                             </b>
                         </div>
                         <div className="modal-footer">
                             <button
                                 type="button"
                                 className="btn btn-outline-primary"
+                                variant="conf-button"
                                 data-dismiss="modal"
                             >
                                 Ok

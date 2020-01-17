@@ -5,20 +5,19 @@ import { useTranslation } from "react-i18next";
 import { signOut } from "../../actions/authorization";
 import { acceptPolicy } from "../../actions/index";
 import "../../assets/styles/store-policy-modal.scss";
-import host from '../../api/host'
+import host from "../../api/host";
 
 const PolicyAcceptedModal = props => {
-    
     const { t } = useTranslation();
 
     const token = localStorage.getItem("token");
-    
+
     const dispatch = useDispatch();
 
     const signOutHandler = () => {
-        dispatch(signOut())
+        dispatch(signOut());
         window.location.replace(`${host}/site/desktop`);
-    }
+    };
 
     return (
         <div className="store-policy-modal">
@@ -45,7 +44,12 @@ const PolicyAcceptedModal = props => {
                 </Modal.Body>
                 <Modal.Footer>
                     <p>Czy akceptujesz regulamin sklepu ?</p>
-                    <Button onClick={() => dispatch(acceptPolicy(token))}>Tak</Button>
+                    <Button
+                        className="btn btn-warning"
+                        onClick={() => dispatch(acceptPolicy(token))}
+                    >
+                        Tak
+                    </Button>
                     <Button onClick={signOutHandler}>Nie</Button>
                 </Modal.Footer>
             </Modal>

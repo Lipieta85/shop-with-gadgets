@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import host from "../../api/host";
-
+import "../../assets/styles/order-choose-modal.scss";
 const NotificationModal = props => {
     const confAddress = `${host}/workflow/workflowInstance/createByKeyword/keyword/paid-order-application-workflow-conf-id`;
 
@@ -23,8 +23,22 @@ const NotificationModal = props => {
                 {props.text}
             </Modal.Body>
             <Modal.Footer>
-                <Button href={confAddress}>Wyslij wniosek</Button>
-                <Button onClick={props.onHide}>Anuluj</Button>
+                <Button
+                    type="button"
+                    className="btn btn-outline-primary"
+                    variant="conf-button"
+                    href={confAddress}
+                >
+                    Wyslij wniosek
+                </Button>
+                <Button
+                    type="button"
+                    className="btn btn-outline-primary"
+                    variant="conf-button"
+                    onClick={props.onHide}
+                >
+                    Anuluj
+                </Button>
             </Modal.Footer>
         </Modal>
     );
