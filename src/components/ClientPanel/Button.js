@@ -160,7 +160,6 @@ const ButtonComponent = props => {
                             />
                         </ButtonToolbar>
                     </div>
-
                     <div>
                         <ButtonToolbar className="invisible">
                             <Button
