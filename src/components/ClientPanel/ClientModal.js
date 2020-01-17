@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { sendSubscribe } from "../../actions/index";
 import { useTranslation } from "react-i18next";
+import "../../assets/styles/modal.scss";
 const ClientModal = props => {
     const clientEmail = useSelector(
-        state => state.clientDataReducer.clientData[0]&&
+        state =>
+            state.clientDataReducer.clientData[0] &&
             state.clientDataReducer.clientData[0].getWixClientData.data.email,
     );
     const lang = useSelector(state => state.clientDataReducer.language);
-
     const [productId, setProductId] = useState();
     const { t } = useTranslation();
     const [email, setEmail] = useState(`${clientEmail}`);
@@ -50,7 +51,7 @@ const ClientModal = props => {
                 />
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={sendNotification}>
+                <Button variant="notify" onClick={sendNotification}>
                     {t("ClientModal.PowiadomMnie")}
                 </Button>
             </Modal.Footer>
@@ -59,5 +60,4 @@ const ClientModal = props => {
 };
 
 export default ClientModal;
-//Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again
-//Get notified if this product comes back in stock — it's easy!
+//{`${style}`}
