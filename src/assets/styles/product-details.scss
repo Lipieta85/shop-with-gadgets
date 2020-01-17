@@ -11,6 +11,7 @@
     min-height: calc(100vh - 57px);
     .client-panel {
         margin-top: 15px;
+        margin-bottom: 15px;
     }
     .product-details-container {
         .product-details-content {
@@ -25,6 +26,14 @@
                             background-color: themed("basketDescButtonBgH");
                             color: themed("basketDescButtonColorH");
                         }
+                        color: themed("prodDetailsBorder");
+                        background-color: themed("prodDetailsBtnContC");
+                    }
+                    &:hover {
+                        @include themify($themes) {
+                            background-color: themed("prodDetailsBtnHoverBgC");
+                            color: themed("prodDetailsBtnHoverC");
+                        }
                     }
                 }
                 .right-buttons {
@@ -38,9 +47,32 @@
                                 background-color: themed("basketDescButtonBgH");
                                 color: themed("basketDescButtonColorH");
                             }
+                            border-color: themed("prodDetailsBorder");
+                            color: themed("prodDetailsBorder");
+                        }
+                        &:hover {
+                            @include themify($themes) {
+                                background-color: themed(
+                                    "prodDetailsBtnHoverBgC"
+                                );
+                                color: themed("prodDetailsBtnHoverC");
+                            }
                         }
                     }
                     .btn-prev {
+                        @include themify($themes) {
+                            background-color: themed("prodDetailsBtnContC");
+                            border-color: themed("prodDetailsBorder");
+                            color: themed("prodDetailsBorder");
+                        }
+                        &:hover {
+                            @include themify($themes) {
+                                background-color: themed(
+                                    "prodDetailsBtnHoverBgC"
+                                );
+                                color: themed("prodDetailsBtnHoverC");
+                            }
+                        }
                         margin-right: 1rem;
                     }
                 }

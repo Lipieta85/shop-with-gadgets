@@ -1,0 +1,9 @@
+@import "./mixins/mixins.scss";
+
+.btn-notify {
+    @include themify($themes) {
+        background-color: themed("prodDetailsBtnContC");
+        border-color: themed("prodDetailsBorder");
+        color: themed("prodDetailsC");
+    }
+}
