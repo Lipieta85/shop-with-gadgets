@@ -96,7 +96,7 @@ const ButtonComponent = props => {
             return disabled;
         });
     };
-    
+
     const dispatchHandler = event => {
         if (disabled && props.availabaleItemQuantity > 0) {
             setModalShowAlert(true);
@@ -110,11 +110,13 @@ const ButtonComponent = props => {
             event.preventDefault();
             return false;
         }
-        if (input.current.value * props.price > basketData.budget && orderType === "S5") {
+        if (
+            input.current.value * props.price > basketData.budget &&
+            orderType === "S5"
+        ) {
             setModalShowPaidOrders(true);
             event.preventDefault();
-        }
-        else {
+        } else {
             dispatch(
                 addItemToBasket(
                     props.itemId,
@@ -226,7 +228,7 @@ const ButtonComponent = props => {
                     show={modalShowAlert}
                     onHide={() => setModalShowAlert(false)}
                     header={t("Button.WartośćAlertHeader")}
-                    text={t("Button.WartośćAlertText")}   
+                    text={t("Button.WartośćAlertText")}
                 />
             </ButtonToolbar>
         </>

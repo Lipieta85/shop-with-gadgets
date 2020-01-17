@@ -44,6 +44,7 @@ $themes: (
       extraTagLabelBackgroundColor:$promotionTag,
       extraTagLabelFontColor:$white,
       btnAvailabilityBg:$gray5,
+      btnAvailabilityBC: $gray5,
       btnAvailabilityBgH:$gray4,
       btnAvailabilityFontBg:$white,
       pagerBgC:$white,
@@ -52,6 +53,9 @@ $themes: (
       pagerActiveBg:$gray5,
       pagerActiveBorderC:$gray5,
       pagerFontC:$gray2,
+    //}
+    //product-details{
+      productDetailsInfoPanelBg:$lightNav,
     //} 
     //basket-container{
       clearButtonColor:$gray3,
@@ -136,6 +140,7 @@ $themes: (
       extraTagLabelBackgroundColor:$wixOrange,
       extraTagLabelFontColor:$wixBlack,
       btnAvailabilityBg:$wixOrange,
+      btnAvailabilityBC: $wixBlack,
       btnAvailabilityBgH:$wixOrangeHover,
       btnAvailabilityFontBg:$wixBlack,
       pagerBgC:$wixOrange,

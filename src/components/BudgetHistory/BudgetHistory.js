@@ -6,12 +6,10 @@ import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
-
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
         state => state.clientDataReducer.remainingBudget,
     );
-
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
     );
@@ -20,21 +18,19 @@ const BudgetHistory = () => {
     );
     const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
     const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
-
     function numberWithSpaces(num) {
         var parts = num.toString().split(".");
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         return parts.join(".");
     }
+    console.log(budgetHistory)
     const dispatch = useDispatch();
-
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
-
     useEffect(() => {
         dispatch(getClientBudgetHistory(token));
-    }, [token, dispatch]);
-
+    }, [dispatch, token]);
+    
     let history;
     if (budgetHistory && remainingBudget) {
         history = budgetHistory
@@ -167,5 +163,4 @@ const BudgetHistory = () => {
         </div>
     );
 };
-
 export default BudgetHistory;

@@ -11,24 +11,25 @@ const Product = ({ items, pagination, currentPage }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        if (items.length > pagination.itemsPerPage && currentPage === 1) {
-            const firstElem = currentPage - 1;
-            const lastElem = pagination.itemsPerPage;
-            const currProducts = items.slice(firstElem, lastElem);
-
-            setProducts(currProducts);
-        }
-
-        if (items.length > pagination.itemsPerPage && currentPage > 1) {
-            const firstElem =
-                pagination.itemsPerPage * currentPage - pagination.itemsPerPage;
-            const lastElem = firstElem + pagination.itemsPerPage;
-            const currProducts = items.slice(firstElem, lastElem);
-
-            setProducts(currProducts);
-        }
-
-        if (items.length === pagination.itemsPerPage) {
+        if (items.length > pagination.itemsPerPage) {
+            if (items.length > pagination.itemsPerPage && currentPage === 1) {
+                const firstElem = currentPage - 1;
+                const lastElem = pagination.itemsPerPage;
+                const currProducts = items.slice(firstElem, lastElem);
+                setProducts(currProducts);
+            }
+            if (items.length > pagination.itemsPerPage && currentPage > 1) {
+                const firstElem =
+                    pagination.itemsPerPage * currentPage -
+                    pagination.itemsPerPage;
+                const lastElem = firstElem + pagination.itemsPerPage;
+                const currProducts = items.slice(firstElem, lastElem);
+                setProducts(currProducts);
+            }
+            if (items.length === pagination.itemsPerPage) {
+                setProducts(items);
+            }
+        } else {
             setProducts(items);
         }
         //eslint-disable-next-line
