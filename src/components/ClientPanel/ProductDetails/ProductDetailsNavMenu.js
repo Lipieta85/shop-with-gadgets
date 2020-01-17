@@ -6,6 +6,7 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "../../ClientPanel/NotificationModal";
 import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
+
 import logo from "../../../assets/images/filtron_logo.png";
 import logo2 from "../../../assets/images/WIX_logo.png";
 

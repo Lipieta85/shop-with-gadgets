@@ -56,4 +56,5 @@ export {
     getRemainingBudget,
     getBaseBudget,
     getPeriodFrom,
+    isStorePolicyAccepted
 } from "./clientData.js";

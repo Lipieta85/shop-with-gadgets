@@ -34,19 +34,6 @@ const store = createStore(
 );
 
 let persistor = persistStore(store);
-// const store = createStore(
-//     rootReducer,
-//     composeWithDevTools(applyMiddleware(thunk)),
-// );
-/* <PersistGate loading={null} persistor={persistor}></PersistGate>
-store.subscribe(() => {
-    sessionStorage.setItem(
-        "basket",
-        JSON.stringify({
-            basket: store.getState().cartReducer.addedItems,
-        }),
-    );
-}); */
 
 ReactDOM.render(
     <Provider store={store}>

@@ -32,6 +32,7 @@ import {
     getRemainingBudget,
     getBaseBudget,
     getPeriodFrom,
+    isStorePolicyAccepted,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -48,7 +49,8 @@ function initializeReactGA() {
 
 export default withRouter(function App({ location }, props) {
     const parsed = queryString.parse(location.search);
-
+    const rootEl = document.getElementById('root')
+    parsed.brand === "wix" ? rootEl.classList.add('theme-dark') : rootEl.classList.add('theme-light')
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -87,6 +89,7 @@ export default withRouter(function App({ location }, props) {
                     dispatch(companyName(res.data.getWixClientData.data.name));
                     dispatch(userName(res.data.getWixClientData.data.exId));
                     dispatch(isUE(res.data.getWixClientData.data.isUE));
+                    dispatch(isStorePolicyAccepted(token));
                     dispatch(
                         setCurrencyCode(
                             res.data.getWixClientData.budget.currencyCode,
