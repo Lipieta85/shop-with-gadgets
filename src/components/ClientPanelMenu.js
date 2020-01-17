@@ -69,7 +69,7 @@ const ClientPanelMenu = () => {
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
                     <div>
-                        {t(`CPanelMenu.JesteśZalogowanyJako`)}: {userName} {t(`CPanelMenu.WImieniu`)}: ({companyName})
+                        {t(`CPanelMenu.JesteśZalogowanyJako`)} {userName} {t(`CPanelMenu.WImieniu`)} "{companyName}" ({userName})
                     </div>
                 </div>
                 <div className="logged-panel-btn-group">
