@@ -308,3 +308,15 @@ export const singleOrderCancel = async (token, orderId) => {
         }),
     );
 };
+
+export const getStorePolicyAccepted = async token => {
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `${host}/restApi/user/method/wixIsStorePolicyAccepted`,
+            headers: {
+                Authorization: token,
+            },
+        }),
+    );
+};

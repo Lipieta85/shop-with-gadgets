@@ -14,7 +14,6 @@ import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "./NotificationModal";
-
 const NavMenu = () => {
     //const id = useSelector(state => state.cartReducer.productsCategory);
     const company = useSelector(state => state.clientDataReducer.companyId);
@@ -24,9 +23,7 @@ const NavMenu = () => {
     );
     const { t } = useTranslation();
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
-
     const dispatch = useDispatch();
-
     const token = localStorage.getItem("token");
     useEffect(() => {
         const active = document.querySelector(".nav-menu .active");
@@ -35,7 +32,6 @@ const NavMenu = () => {
             document.getElementById(`${category}`).classList.add("active");
         }
     }, [category]);
-
     const onSignout = () => {
         dispatch(signOut());
     };
@@ -48,11 +44,9 @@ const NavMenu = () => {
         dispatch(initProducts(token, Number(id)));
         dispatch(setPage(1));
     };
-
     const showPaidOrders = () => {
         setModalShowPaidOrders(true);
     };
-
     const tabHandler = e => {
         if (e.target.id === "1") {
             allProductsHandler(e.target.id);
