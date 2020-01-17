@@ -1,14 +1,18 @@
+@import "./mixins/mixins.scss";
+
 .order-end {
-    background: url(../images/bg_top_2.jpg) center no-repeat;
+    //background: url(../images/bg_top_2.jpg) center no-repeat;
+    @include themify($themes) {
+        background-color: themed("mainBackgroundColor");
+    }
     background-size: cover;
     min-height: calc(100vh - 57px);
     padding-top: 150px;
-    .order-end-box{
+    .order-end-box {
         background-color: rgba(249, 250, 251, 0.8);
         width: 80%;
         margin: auto;
         padding: 40px;
-        box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     }
 }
-
