@@ -1,5 +1,5 @@
 $wixOrange:rgb(255,182,15);
-$wixOrangeHover:rgb(238, 170, 15);
+$wixOrangeHover:rgb(242, 175, 15);
 $wixOrangeDarker:rgb(189, 138, 20);
 $wixBlack:rgb(35,31,32);
 $wixDarkGray:rgb(42,42,42);
@@ -15,6 +15,9 @@ $white:white;
 $promotionTag:#556e81;
 $blue:#035899;
 $grayBorder: rgb(102, 102, 102);
+$basket:#8b8e91;
+$hr:rgba(0, 0, 0, 0.1);
+$transparent:transparent;
 
 $themes: (
   //..............................................................................
@@ -24,6 +27,13 @@ $themes: (
       title:$wixBlack,
       tableHeader:$gray3,
       tableHeaderColor:$white,
+      divider:$lightBgC,
+      hrBorderC:$hr,
+      endBoxBg:$gray9,
+      endBoxBtnBg:$transparent,
+      endBoxBtnBgH:$gray4,
+      endBoxBtnBorderC:$gray4,
+      endBoxBtnBorderCH:$gray4,
     //}
     //nav-menu{
       navbarBackgroundColor:$lightNav,
@@ -108,6 +118,14 @@ $themes: (
       title:$white,
       tableHeader:$wixOrange,
       tableHeaderColor:$wixBlack,
+      divider:$wixOrangeDarker,
+      hrBorderC:$wixOrange,
+      endBoxBg:$white,
+      endBoxBtnColor:$wixBlack,
+      endBoxBtnBg:$wixOrange,
+      endBoxBtnBgH:$wixOrangeHover,
+      endBoxBtnBorderC:$wixOrange,
+      endBoxBtnBorderCH:$wixOrangeHover,
     //}
     //nav-menu{
       navbarBackgroundColor:$wixOrange,
@@ -138,7 +156,7 @@ $themes: (
       basketDescBorderC:$wixOrange,
       basketDescInputBorderC:$wixOrange,
       basketDescButtonBgH:$wixOrange,
-      basketDescButtonColor:$white,
+      basketDescButtonColor:$wixOrange,
       basketDescButtonColorH:$wixBlack,
       basketDescButtonBorderColor:$wixOrange,
     //}
@@ -182,7 +200,7 @@ $themes: (
     clientPanelColorBlue: rgb(35, 31, 32),
     clientPanelBackgroundColor: rgb(255, 182, 15),
     clientPanelDivider: white,
-    basketColorHover: #a0a3a6,
-    basketColor: #8b8e91,
+    basketColorHover: #616161,
+    basketColor: #5a5a5a,
   ),
 );

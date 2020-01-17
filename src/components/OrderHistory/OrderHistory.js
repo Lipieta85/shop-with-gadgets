@@ -236,7 +236,7 @@ const OrderHistory = () => {
                                             <div className="w-100 text-right">
                                                 {showedOrder.status_number <=
                                                 530 ? (
-                                                    <div className="mr-1 mb-1">
+                                                    <div className="mr-1 mb-1 cancel-button">
                                                         <ChooseModal
                                                             orderNumber={
                                                                 showedOrder.order_id

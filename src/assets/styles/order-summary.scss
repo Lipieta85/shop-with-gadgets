@@ -1,12 +1,25 @@
+@import "./mixins/mixins.scss";
+
 .order-summary {
     min-height: calc(100vh - 57px);
     padding-top: 80px;
-    background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
+    //background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
+    @include themify($themes) {
+        background-color: themed("mainBackgroundColor");
+    }
     background-size: cover;
+    .title-header{
+        @include themify($themes) {
+            color: themed("title");
+        }
+    }
     .summary-item-info{
         background-color:#f7f7f7;
     }
     .order-summary-text {
+        @include themify($themes) {
+            color: themed("title");
+        } 
         //font-size: 16px;
         // .summary-text-value {
         //     color: #ccc;
@@ -14,6 +27,11 @@
     }
     li{
         margin-bottom: 10px;
+    }
+    hr{
+        @include themify($themes) {
+            border-color: themed("hrBorderC");
+        } 
     }
     .summary-table{
         width: 100%;
@@ -32,15 +50,27 @@
             padding-left: 5px;
         }
         .summary-header{
-            background-color: gray;
-            color: white;
+            @include themify($themes) {
+                background-color: themed("tableHeader");
+                color: themed("tableHeaderColor");
+            }
             height: 40px;
             padding: 5px 5px;
         }
         .summary-img{
             margin: 10px;
-            width:80px;
+            width:60px;
             margin-right:20px;
+        }
+    }
+    .btn-outline-primary{
+        @include themify($themes) {
+            border-color: themed("basketDescButtonBorderColor");
+            color:themed("basketDescButtonColor");
+            &:hover{
+                background-color:themed("basketDescButtonBgH");
+                color:themed("basketDescButtonColorH");
+            }
         }
     }
 }

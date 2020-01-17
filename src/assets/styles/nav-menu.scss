@@ -1,6 +1,11 @@
 @import './mixins/mixins.scss';
 
 .navbar {
+    .dropdown-item{
+        width: 98%;
+        position: relative;
+        left: 1px;
+    }
     @include themify($themes) {
         background-color: themed('navbarBackgroundColor');  
     }
