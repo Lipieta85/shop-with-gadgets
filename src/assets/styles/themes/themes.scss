@@ -1,19 +1,19 @@
-$wixOrange: rgb(255, 182, 15);
-$wixOrangeHover: rgb(242, 175, 15);
-$wixOrangeDarker: rgb(189, 138, 20);
-$wixBlack: rgb(35, 31, 32);
-$wixDarkGray: rgb(42, 42, 42);
-$lightNav: #f8f9fa;
-$lightBgC: rgb(230, 230, 230);
-$gray9: #f7f7f7;
-$gray8: #ced4da;
-$gray5: #a0a3a6;
-$gray4: #96989b;
-$gray3: gray;
-$gray2: #666;
-$white: white;
-$promotionTag: #556e81;
-$blue: #035899;
+$wixOrange:rgb(255,182,15);
+$wixOrangeHover:rgb(255, 190, 40);
+$wixOrangeDarker:rgb(189, 138, 20);
+$wixBlack:rgb(35,31,32);
+$wixDarkGray:rgb(42,42,42);
+$lightNav:#f8f9fa;
+$lightBgC:rgb(230,230,230);
+$gray9:#f7f7f7;
+$gray8:#ced4da;
+$gray5:#a0a3a6;
+$gray4:#96989b;
+$gray3:gray;
+$gray2:#666;
+$white:white;
+$promotionTag:#556e81;
+$blue:#035899;
 $grayBorder: rgb(102, 102, 102);
 $red: #d81e1e;
 $blue2: rgb(3, 88, 153);
@@ -22,199 +22,195 @@ $hr: rgba(0, 0, 0, 0.1);
 $transparent: transparent;
 
 $themes: (
-    //..............................................................................
-        light:
-        (
-            //all{
-                mainBackgroundColor: $lightBgC,
-            title: $wixBlack,
-            tableHeader: $gray3,
-            tableHeaderColor: $white,
-            divider: $lightBgC,
-            hrBorderC: $hr,
-            endBoxBg: $gray9,
-            endBoxBtnBg: $transparent,
-            endBoxBtnBgH: $gray4,
-            endBoxBtnBorderC: $gray4,
-            endBoxBtnBorderCH: $gray4,
-            //}
-                //nav-menu{
-                navbarBackgroundColor: $lightNav,
-            navbarFontColor: $gray5,
-            //}
-                //client-panel{
-                cardBackgroundColor: $white,
-            extraTagLabelBackgroundColor: $promotionTag,
-            extraTagLabelFontColor: $white,
-            btnAvailabilityBg: $gray5,
-            btnAvailabilityBC: $gray5,
-            btnAvailabilityBgH: $gray4,
-            btnAvailabilityFontBg: $white,
-            pagerBgC: $white,
-            pagerBorderC: $lightBgC,
-            pagerBorderCH: $gray5,
-            pagerActiveBg: $gray5,
-            pagerActiveBorderC: $gray5,
-            pagerFontC: $gray2,
-            //}
-                //product-details{
-                productDetailsInfoPanelBg: $lightNav,
-            //}
-                //basket-container{
-                clearButtonColor: $gray3,
-            clearButtonColorH: $white,
-            //}
-                //basket{
-                basketItemQuantityBg: $blue,
-            basketDescBg: $white,
-            basketDescColor: $wixBlack,
-            basketDescBorderC: $white,
-            basketDescInputBorderC: $gray8,
-            basketDescButtonBgH: $gray4,
-            basketDescButtonColor: $gray2,
-            basketDescButtonColorH: $white,
-            basketDescButtonBorderColor: $gray4,
-            //}
-                //basket-summary{
-                basketSummaryBg: $white,
-            backetSummaryBorderC: $white,
-            backetSummaryFontC: $wixBlack,
-            //}
-                //order-options{
-                orderOptionsBg: $gray9,
-            orderOptionsBtnBg: $gray9,
-            orderOptionsBtnBgH: $gray2,
-            orderOptionsBtnFontC: $gray2,
-            orderOptionsBtnFontCH: $white,
-            orderOptionsBtnBorderC: $gray2,
-            //}
-                //order-history{
-                orderHistoryDetails: $lightNav,
-            orderHistoryDetailsBorderC: $lightNav,
-            //}
-                //footer{
-                footerBgC: $lightNav,
-            footerFontC: $gray5,
-            footerFontCH: $wixBlack,
-            footerBorderC: $lightNav,
-            //}
-                //{budgetHistory{
-                color: $wixBlack,
-            budgetBgC: $gray2,
-            //}
-                //productDetails{
-                prodDetailsC: $gray2,
-            prodDetailsBorder: $grayBorder,
-            prodDetailsTextC: $wixBlack,
-            prodDetailsBtnContC: $lightNav,
-            prodDetailsBtnHoverBgC: $grayBorder,
-            prodDetailsBtnHoverC: $white,
-            //}
-                //carousel{
-                carouselC: $blue,
-            //}
-                //clientPanel{
-                clientPanelColor: $red,
-            clientPanelColorBlue: $blue2,
-            clientPanelBackgroundColor: $lightNav,
-            clientPanelDivider: #e4e6e7,
-            basketColorHover: #8b8e91,
-            basketColor: $gray5 //}
-        ),
-    // ..............................................................................
-        dark: (
-            //all{
-                mainBackgroundColor: $wixBlack,
-            title: $white,
-            tableHeader: $wixOrange,
-            tableHeaderColor: $wixBlack,
-            divider: $hr,
-            hrBorderC: $wixOrange,
-            endBoxBg: $white,
-            endBoxBtnColor: $wixBlack,
-            endBoxBtnBg: $wixOrange,
-            endBoxBtnBgH: $wixOrangeHover,
-            endBoxBtnBorderC: $wixOrange,
-            endBoxBtnBorderCH: $wixOrangeHover,
-            //}
-                //nav-menu{
-                navbarBackgroundColor: $wixOrange,
-            navbarFontColor: $wixBlack,
-            //}
-                //client-panel{
-                cardBackgroundColor: $white,
-            extraTagLabelBackgroundColor: $wixOrange,
-            extraTagLabelFontColor: $wixBlack,
-            btnAvailabilityBg: $wixOrange,
-            btnAvailabilityBC: $wixBlack,
-            btnAvailabilityBgH: $wixOrangeHover,
-            btnAvailabilityFontBg: $wixBlack,
-            pagerBgC: $wixOrange,
-            pagerBorderC: $wixOrangeHover,
-            pagerBorderCH: $wixOrangeDarker,
-            pagerActiveBg: $wixOrangeDarker,
-            pagerActiveBorderC: $wixOrangeDarker,
-            pagerFontC: $wixBlack,
-            //}
-                //basket-container{
-                clearButtonColor: $gray3,
-            clearButtonColorH: $white,
-            //}
-                //basket{
-                basketItemQuantityBg: $wixBlack,
-            basketDescBg: $wixBlack,
-            basketDescColor: $white,
-            basketDescBorderC: $wixOrange,
-            basketDescInputBorderC: $wixOrange,
-            basketDescButtonBgH: $wixOrange,
-            basketDescButtonColor: $wixOrange,
-            basketDescButtonColorH: $wixBlack,
-            basketDescButtonBorderColor: $wixOrange,
-            //}
-                //basket-summary{
-                basketSummaryBg: $wixBlack,
-            backetSummaryBorderC: $wixOrange,
-            backetSummaryFontC: $white,
-            //}
-                //order-options{
-                orderOptionsBg: $wixOrange,
-            orderOptionsBtnBg: $wixDarkGray,
-            orderOptionsBtnBgH: $wixBlack,
-            orderOptionsBtnFontC: $white,
-            orderOptionsBtnFontCH: $white,
-            orderOptionsBtnBorderC: $wixDarkGray,
-            //}
-                //order-history{
-                orderHistoryDetails: $wixBlack,
-            orderHistoryDetailsBorderC: $wixOrange,
-            //}
-                //footer{
-                footerBgC: $wixOrange,
-            footerFontC: $wixBlack,
-            footerFontCH: $wixBlack,
-            footerBorderC: $wixOrangeDarker,
-            //}
-                //{budgetHistory{
-                budgetColor: $white,
-            budgetBgC: $wixOrange,
-            //}
-                //productDetails{
-                prodDetailsC: $white,
-            prodDetailsBorder: $wixOrange,
-            prodDetailsTextC: $wixOrange,
-            prodDetailsBtnContC: $wixBlack,
-            prodDetailsBtnHoverBgC: $wixOrange,
-            prodDetailsBtnHoverC: $wixBlack,
-            //}
-                //carousel{
-                carouselC: $wixOrange,
-            //}
-                //clientPanel{
-                clientPanelColor: rgb(35, 31, 32),
-            clientPanelColorBlue: rgb(35, 31, 32),
-            clientPanelBackgroundColor: rgb(255, 182, 15),
-            clientPanelDivider: white,
-            basketColorHover: #a0a3a6,
-            basketColor: #8b8e91 //}
-        )
+  //..............................................................................
+  light: (
+    //all{
+      mainBackgroundColor: $lightBgC,
+      title:$wixBlack,
+      tableHeader:$gray3,
+      tableHeaderColor:$white,
+      divider:$lightBgC,
+      hrBorderC:$hr,
+      endBoxBg:$gray9,
+      endBoxBtnColor:$gray3,
+      endBoxBtnBg:$transparent,
+      endBoxBtnBgH:$gray4,
+      endBoxBtnBorderC:$gray4,
+      endBoxBtnBorderCH:$gray4,
+      spinner:$wixBlack,
+    //}
+    //nav-menu{
+      navbarBackgroundColor:$lightNav,
+      navbarFontColor:$gray5,
+    //}
+    //client-panel{
+      cardBackgroundColor:$white,
+      extraTagLabelBackgroundColor:$promotionTag,
+      extraTagLabelFontColor:$white,
+      btnAvailabilityBg:$gray5,
+      btnAvailabilityBC: $gray5,
+      btnAvailabilityBgH:$gray4,
+      btnAvailabilityFontBg:$white,
+      pagerBgC:$white,
+      pagerBorderC:$lightBgC,
+      pagerBorderCH:$gray5,
+      pagerActiveBg:$gray5,
+      pagerActiveBorderC:$gray5,
+      pagerFontC:$gray2,
+    //}
+    //product-details{
+      productDetailsInfoPanelBg:$lightNav,
+    //} 
+    //basket-container{
+      clearButtonColor:$gray3,
+      clearButtonColorH:$white,
+    //}
+    //basket{
+      basketItemQuantityBg:$blue,
+      basketDescBg:$white,
+      basketDescColor:$wixBlack,
+      basketDescBorderC:$white,
+      basketDescInputBorderC:$gray8,
+      basketDescButtonBgH:$gray4,
+      basketDescButtonColor:$gray2,
+      basketDescButtonColorH:$white,
+      basketDescButtonBorderColor:$gray4,
+    //}
+    //basket-summary{
+      basketSummaryBg:$white,
+      backetSummaryBorderC:$white,
+      backetSummaryFontC:$wixBlack,
+    //}
+    //order-options{
+      orderOptionsBg:$gray9,
+      orderOptionsBtnBg:$gray9,
+      orderOptionsBtnBgH:$gray2,
+      orderOptionsBtnFontC:$gray2,
+      orderOptionsBtnFontCH:$white,
+      orderOptionsBtnBorderC:$gray2,
+    //}  
+    //order-history{
+      orderHistoryDetails:$lightNav,
+      orderHistoryDetailsBorderC:$lightNav,
+    //}
+    //footer{
+      footerBgC:$lightNav,
+      footerFontC:$gray5,
+      footerFontCH:$wixBlack,
+      footerBorderC:$lightNav,
+    //}
+    //{budgetHistory{
+      color: $wixBlack,
+      budgetBgC: $gray2,
+    //}
+    //productDetails{
+        prodDetailsC: $gray2,
+        prodDetailsBorder: $transparent,
+        prodDetailsTextC: $wixBlack,
+        prodDetailsBtnContC: $lightNav,
+    //}
+    //carousel{
+      carouselC: $blue,
+    //}
+        clientPanelColor: #d81e1e,
+        clientPanelColorBlue: rgb(3, 88, 153),
+        clientPanelBackgroundColor: #f8f9fa,
+        clientPanelDivider: #e4e6e7,
+        basketColorHover: #8b8e91,
+        basketColor: #a0a3a6,
+  ),
+  //..............................................................................
+  dark: (
+    //all{
+      mainBackgroundColor: $wixBlack,
+      title:$white,
+      tableHeader:$wixOrange,
+      tableHeaderColor:$wixBlack,
+      divider:$hr,
+      hrBorderC:$wixOrange,
+      endBoxBg:$white,
+      endBoxBtnColor:$wixBlack,
+      endBoxBtnBg:$wixOrange,
+      endBoxBtnBgH:$wixOrangeHover,
+      endBoxBtnBorderC:$wixOrange,
+      endBoxBtnBorderCH:$wixOrangeHover,
+      spinner:$wixBlack,
+    //}
+    //nav-menu{
+      navbarBackgroundColor:$wixOrange,
+      navbarFontColor:$wixBlack,
+    //}
+    //client-panel{
+      cardBackgroundColor:$white,
+      extraTagLabelBackgroundColor:$wixOrange,
+      extraTagLabelFontColor:$wixBlack,
+      btnAvailabilityBg:$wixOrange,
+      btnAvailabilityBC: $wixBlack,
+      btnAvailabilityBgH:$wixOrangeHover,
+      btnAvailabilityFontBg:$wixBlack,
+      pagerBgC:$wixOrange,
+      pagerBorderC:$wixOrangeHover,
+      pagerBorderCH:$wixOrangeDarker,
+      pagerActiveBg:$wixOrangeDarker,
+      pagerActiveBorderC:$wixOrangeDarker,
+      pagerFontC:$wixBlack,
+    //} 
+    //basket-container{
+      clearButtonColor:$gray3,
+      clearButtonColorH:$white,
+    //}
+    //basket{
+      basketItemQuantityBg:$wixBlack,
+      basketDescBg:$wixBlack,
+      basketDescColor:$white,
+      basketDescBorderC:$wixOrange,
+      basketDescInputBorderC:$wixOrange,
+      basketDescButtonBgH:$wixOrange,
+      basketDescButtonColor:$wixOrange,
+      basketDescButtonColorH:$wixBlack,
+      basketDescButtonBorderColor:$wixOrange,
+    //}
+    //basket-summary{
+      basketSummaryBg:$wixBlack,
+      backetSummaryBorderC:$wixOrange,
+      backetSummaryFontC:$white,
+    //}
+    //order-options{
+      orderOptionsBg:$wixOrange,
+      orderOptionsBtnBg:$wixDarkGray,
+      orderOptionsBtnBgH:$wixBlack,
+      orderOptionsBtnFontC:$white,
+      orderOptionsBtnFontCH:$white,
+      orderOptionsBtnBorderC:$wixDarkGray,
+    //}
+    //order-history{
+      orderHistoryDetails:$wixBlack,
+      orderHistoryDetailsBorderC:$wixOrange,
+    //}
+    //footer{
+      footerBgC:$wixOrange,
+      footerFontC:$wixBlack,
+      footerFontCH:$wixBlack,
+      footerBorderC:$wixOrangeDarker,
+    //}
+    //{budgetHistory{
+      budgetColor: $white,
+      budgetBgC: $wixOrange,
+    //}
+    //productDetails{
+      prodDetailsC: $white,
+      prodDetailsBorder: $wixOrange,
+      prodDetailsTextC: $wixOrange,
+      prodDetailsBtnContC: $wixBlack,
+    //}
+    //carousel{
+      carouselC: $wixOrange, 
+    //}
+    clientPanelColor: rgb(35, 31, 32),
+    clientPanelColorBlue: rgb(35, 31, 32),
+    clientPanelBackgroundColor: rgb(255, 182, 15),
+    clientPanelDivider: white,
+    basketColorHover: #616161,
+    basketColor: #5a5a5a,
+  ),
 );

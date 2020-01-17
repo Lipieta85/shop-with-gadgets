@@ -31,11 +31,11 @@ const ChooseModal = props => {
                     <div className="modal-content">
                         <div className="modal-body text-left">
                             <p>
-                                <b className="text-uppercase">
+                                <b className="text-uppercase modal-text-header">
                                     Anulowanie Zamówienia
                                 </b>
                             </p>
-                            <p>
+                            <p className="modal-text-content">
                                 {t("Order.PotwierdzenieAnulowaniaZamówienia")}{" "}
                                 {props.showedOrderNumber}
                             </p>
@@ -45,6 +45,7 @@ const ChooseModal = props => {
                                 type="button"
                                 className="btn btn-outline-primary"
                                 data-dismiss="modal"
+                                variant='conf-button'
                             >
                                 {t("Order.Nie")}
                             </button>

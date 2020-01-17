@@ -1,4 +1,9 @@
+@import './mixins/mixins.scss';
+
 .spinner{
+    @include themify($themes) {
+        color: themed('spinner');  
+    }
     position: fixed;
     top: 46%; 
     left: 48%;
