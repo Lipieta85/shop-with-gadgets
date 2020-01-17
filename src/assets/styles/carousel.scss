@@ -1,3 +1,5 @@
+@import "./mixins/mixins.scss";
+
 button:focus {
     outline: none;
 }
@@ -16,19 +18,27 @@ button:focus {
 }
 
 .image-gallery-right-nav {
-    color: #004c97;
+    @include themify($themes) {
+        color: themed("carouselC");
+    }
 }
 
 .image-gallery-right-nav:hover::before {
-    color: #004c97;
+    @include themify($themes) {
+        color: themed("carouselC");
+    }
 }
 
 .image-gallery-left-nav:hover::before {
-    color: #004c97;
+    @include themify($themes) {
+        color: themed("carouselC");
+    }
 }
 
 .image-gallery-thumbnail.active {
-    border-color: #004c97;
+    @include themify($themes) {
+        border-color: themed("carouselC");
+    }
 }
 
 .image-gallery-content.fullscreen {
@@ -46,7 +56,9 @@ button:focus {
 .image-gallery-play-button:hover::before,
 .image-gallery-left-nav:hover::before,
 .image-gallery-right-nav:hover::before {
-    color: #004c97;
+    @include themify($themes) {
+        color: themed("carouselC");
+    }
 }
 
 .image-gallery-content {
