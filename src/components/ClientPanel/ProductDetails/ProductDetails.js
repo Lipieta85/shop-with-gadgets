@@ -87,7 +87,7 @@ const ProductDetails = props => {
         productUnit = loadedProduct.product.unitOfMeasure;
         productPrice = loadedProduct.price.price;
         productCurrency = loadedProduct.price.currency;
-        productCode = loadedProduct.product.second_item_number;
+        productCode = loadedProduct.product.code;
 
         if (typeof loadedProduct.images[0] != "undefined") {
             productPhoto = loadedProduct.images[0].medium;
@@ -144,7 +144,8 @@ const ProductDetails = props => {
                                             )}
                                             :{" "}
                                             <span className="product-details-text">
-                                                {(+productPrice).toFixed(2)} {productCurrency}
+                                                {(+productPrice).toFixed(2)}{" "}
+                                                {productCurrency}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
@@ -171,7 +172,7 @@ const ProductDetails = props => {
                                     <div className="mt-3 row m-0">
                                         <div className="col-4 p-0">
                                             <Link
-                                                className="btn btn-outline-primary"
+                                                className="btn btn-outline-primary btn-back"
                                                 to="/"
                                             >
                                                 {t("ProductDetails.Powrót")}
@@ -185,7 +186,7 @@ const ProductDetails = props => {
                                                 {t("ProductDetails.Poprzedni")}
                                             </button>
                                             <button
-                                                className="btn btn-outline-primary"
+                                                className="btn btn-outline-primary btn-next"
                                                 onClick={nexItem}
                                             >
                                                 {t("ProductDetails.Następny")}
