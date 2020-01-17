@@ -1,7 +1,15 @@
+@import "./mixins/mixins.scss";
+
 .budget-history {
     min-height: calc(100vh - 57px);
     padding-top: 70px;
-    background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
+    @include themify($themes) {
+        background-color: themed("mainBackgroundColor");
+    }
+    @include themify($themes) {
+        color: themed("budgetColor");
+    }
+    //background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
     background-size: cover;
     padding-left: 10%;
     padding-right: 10%;
@@ -28,7 +36,10 @@
             padding: 5px 8px;
         }
         th {
-            background-color: gray;
+            @include themify($themes) {
+                background-color: themed("budgetBgC");
+            }
+            border-top: 0;
             font-weight: 500;
             color: white;
         }
@@ -54,10 +65,3 @@
         }
     }
 }
-
-// .titleBudgetHistory {
-//     padding-left: 40%;
-// }
-// .titleBudgetAtTheBegging {
-//     padding-left: 35%;
-//}
