@@ -97,6 +97,7 @@
                 @include themify($themes) {
                     background-color:themed('pagerActiveBg');  
                     border-color:themed('pagerActiveBorderC');  
+                    color: white;
                 }
                 background-color: #a0a3a6;
                 border-color: #a0a3a6;

@@ -2,7 +2,7 @@
 
 .budget-history {
     min-height: calc(100vh - 57px);
-    padding-top: 70px;
+    padding-top: 50px;
     @include themify($themes) {
         background-color: themed("mainBackgroundColor");
     }
@@ -30,6 +30,7 @@
         justify-content: flex-end;
     }
     table {
+        margin-top: 1rem;
         background-color: white;
         th,
         .cell {
@@ -37,11 +38,11 @@
         }
         th {
             @include themify($themes) {
-                background-color: themed("budgetBgC");
+                background-color: themed("tableHeader");
+                color: themed("tableHeaderColor");
             }
             border-top: 0;
             font-weight: 500;
-            color: white;
         }
         td {
             padding: 0;

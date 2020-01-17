@@ -24,7 +24,7 @@
             display: block;
             height: 1px;
             @include themify($themes) {
-                background: themed("clientPanelDivider");
+                background: themed("divider");
             }
         }
         .logged-panel__purchase-value {
