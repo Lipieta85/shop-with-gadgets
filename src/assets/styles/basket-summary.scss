@@ -20,13 +20,15 @@ $blue:rgb(3,88,153);
 }
 
 .badge-blue{
+    @include themify($themes) {
+        background-color: themed('basketItemQuantityBg');
+    }
     position: relative;
     top: 17px;
     left: -10px;
     color: white;
     font-size: 0.7rem;
     height: 16px;
-    background-color: $blue;
     display: flex;
     justify-content: center;
     align-items: center;

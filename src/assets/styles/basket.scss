@@ -2,7 +2,9 @@
 
 .basket-container {
     .title {
-        color: black;
+        @include themify($themes) {
+            color: themed("title");
+        }
     }
     .actualize-btn {
         border-color: #a0a3a6;
@@ -60,7 +62,9 @@
         color: gray;
     }
     .counter-blue {
-        background-color: rgb(3, 88, 153);
+        @include themify($themes) {
+            background-color: themed("basketItemQuantityBg");
+        }
     }
 }
 
@@ -83,7 +87,12 @@
         }
     }
     .desc-col {
-        background-color: #ffffff;
+        @include themify($themes) {
+            background-color: themed("basketDescBg");
+            color:themed("basketDescColor");
+            border-color:themed("basketDescBorderC");
+        }
+        border: .1rem solid;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
         padding: 10px;
         .text-right {
@@ -91,14 +100,30 @@
                 font-size: 13px;
             }
         }
-    }
-    .basket-quantity-input {
-        width: 80px;
-        padding: 4px;
-        margin: 5px;
-        background-color: transparent;
-        &:hover {
-            color: black;
+        .btn.primary-no-action{
+            @include themify($themes) {
+                border-color:themed("basketDescButtonBorderColor");
+                color:themed("basketDescButtonColor");
+                &:hover{
+                    background-color:themed("basketDescButtonBgH");
+                    color:themed("basketDescButtonColorH");
+                }
+            }
+        }
+        .basket-quantity-input {
+            @include themify($themes) {
+                color: themed("title");
+                border-color:themed("basketDescInputBorderC");
+            }
+            width: 80px;
+            padding: 4px;
+            margin: 5px;
+            background-color: transparent; 
+            &:hover {
+                @include themify($themes) {
+                    color: themed("title");
+                }
+            }
         }
     }
     .basket-button {

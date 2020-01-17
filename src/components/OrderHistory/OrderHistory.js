@@ -126,11 +126,11 @@ const OrderHistory = () => {
                     <div className="row">
                         <div className="col-sm-5">
                             <div className="order-list ml-1 mb-2">
-                                <h2>{t("OrderHistory.ListaZamówień")}</h2>
+                                <h2 className="header-title">{t("OrderHistory.ListaZamówień")}</h2>
                             </div>
                         </div>
                         <div className="col-sm-7">
-                            <h4 className="order-list ml-1 mb-2">
+                            <h4 className="order-list ml-1 mb-2 header-title">
                                 {orders.length !== 0 &&
                                     "Szczegóły zamówienia (" +
                                         (showedOrder &&
@@ -257,7 +257,7 @@ const OrderHistory = () => {
                                     showedOrderNumber={showedOrder.order_number}
                                 />
                             )}
-                            <h5>Zamówione produkty:</h5>
+                            <h5 className="header-title">Zamówione produkty:</h5>
                             {singleOrder
                                 ? singleOrder.map(order => {
                                       return (

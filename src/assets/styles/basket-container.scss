@@ -10,6 +10,16 @@
     .clear-button-box {
         margin: 0 auto;
         .clear-button {
+            @include themify($themes) {
+                color: themed('clearButtonColor');  
+                &:hover {
+                    color:themed('clearButtonColorH');
+                    text-decoration: none;
+                    .clear-icon {
+                        color:themed('clearButtonColorH');
+                    }
+                }
+            }
             display: inline-block;
             font-weight: 400;
             text-align: center;
@@ -19,16 +29,8 @@
             transition: color 0.15s ease-in-out,
                 background-color 0.15s ease-in-out,
                 border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            color: gray;
             font-size: 16px;
             padding: 0 0 0.2rem 0;
-            &:hover {
-                color: black;
-                text-decoration: none;
-                .clear-icon {
-                    color: black;
-                }
-            }
             .icon-anim {
                 font-size: 20px;
                 padding-top: 5px;

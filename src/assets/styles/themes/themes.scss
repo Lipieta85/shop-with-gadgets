@@ -6,17 +6,23 @@ $wixDarkGray:rgb(42,42,42);
 $lightNav:#f8f9fa;
 $lightBgC:rgb(230,230,230);
 $gray9:#f7f7f7;
+$gray8:#ced4da;
 $gray5:#a0a3a6;
 $gray4:#96989b;
+$gray3:gray;
 $gray2:#666;
 $white:white;
 $promotionTag:#556e81;
+$blue:#035899;
 
 $themes: (
   //..............................................................................
   light: (
     //all{
       mainBackgroundColor: $lightBgC,
+      title:$wixBlack,
+      tableHeader:$gray3,
+      tableHeaderColor:$white,
     //}
     //nav-menu{
       navbarBackgroundColor:$lightNav,
@@ -36,6 +42,21 @@ $themes: (
       pagerActiveBorderC:$gray5,
       pagerFontC:$gray2,
     //} 
+    //basket-container{
+      clearButtonColor:$gray3,
+      clearButtonColorH:$white,
+    //}
+    //basket{
+      basketItemQuantityBg:$blue,
+      basketDescBg:$white,
+      basketDescColor:$wixBlack,
+      basketDescBorderC:$white,
+      basketDescInputBorderC:$gray8,
+      basketDescButtonBgH:$gray5,
+      basketDescButtonColor:$gray2,
+      basketDescButtonColorH:$white,
+      basketDescButtonBorderColor:$gray5,
+    //}
     //basket-summary{
       basketSummaryBg:$white,
       backetSummaryBorderC:$white,
@@ -49,6 +70,10 @@ $themes: (
       orderOptionsBtnFontCH:$white,
       orderOptionsBtnBorderC:$gray2,
     //}  
+    //order-history{
+      orderHistoryDetails:$lightNav,
+      orderHistoryDetailsBorderC:$lightNav,
+    //}
     //footer{
       footerBgC:$lightNav,
       footerFontC:$gray5,
@@ -67,6 +92,9 @@ $themes: (
   dark: (
     //all{
       mainBackgroundColor: $wixBlack,
+      title:$white,
+      tableHeader:$wixOrange,
+      tableHeaderColor:$wixBlack,
     //}
     //nav-menu{
       navbarBackgroundColor:$wixOrange,
@@ -86,6 +114,21 @@ $themes: (
       pagerActiveBorderC:$wixOrangeDarker,
       pagerFontC:$wixBlack,
     //} 
+    //basket-container{
+      clearButtonColor:$gray3,
+      clearButtonColorH:$white,
+    //}
+    //basket{
+      basketItemQuantityBg:$wixBlack,
+      basketDescBg:$wixBlack,
+      basketDescColor:$white,
+      basketDescBorderC:$wixOrange,
+      basketDescInputBorderC:$wixOrange,
+      basketDescButtonBgH:$wixOrange,
+      basketDescButtonColor:$white,
+      basketDescButtonColorH:$wixBlack,
+      basketDescButtonBorderColor:$wixOrange,
+    //}
     //basket-summary{
       basketSummaryBg:$wixBlack,
       backetSummaryBorderC:$wixOrange,
@@ -98,6 +141,10 @@ $themes: (
       orderOptionsBtnFontC:$white,
       orderOptionsBtnFontCH:$white,
       orderOptionsBtnBorderC:$wixDarkGray,
+    //}
+    //order-history{
+      orderHistoryDetails:$wixBlack,
+      orderHistoryDetailsBorderC:$wixOrange,
     //}
     //footer{
       footerBgC:$wixOrange,
