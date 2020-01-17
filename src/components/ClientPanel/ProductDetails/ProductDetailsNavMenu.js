@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "../../ClientPanel/NotificationModal";
-
+import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
 import logo from "../../../assets/images/filtron_logo.png";
 import logo2 from "../../../assets/images/WIX_logo.png";
@@ -24,7 +24,7 @@ const ProductDetailsNavMenu = () => {
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light">
                     <Link to="/" className="navbar-brand">
                         <img
                             src={
