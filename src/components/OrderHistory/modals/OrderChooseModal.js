@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { orderCancel } from "../../../actions/index";
 import { useTranslation } from "react-i18next";
+import '../../../assets/styles/order-choose-modal.scss';
 const ChooseModal = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();

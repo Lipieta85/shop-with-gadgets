@@ -15,43 +15,32 @@
     .product-details-container {
         .product-details-content {
             margin-top: 22px;
-
             .navButtons {
                 .btn-back {
                     @include themify($themes) {
-                        border-color: themed("prodDetailsBorder");
-                    }
-                    @include themify($themes) {
-                        color: themed("prodDetailsBorder");
-                    }
-                    @include themify($themes) {
-                        background-color: themed("prodDetailsBtnContC");
+                        border-color: themed("basketDescButtonBorderColor");
+                        color: themed("basketDescButtonColor");
+                        background-color: themed("");
+                        &:hover{
+                            background-color: themed("basketDescButtonBgH");
+                            color: themed("basketDescButtonColorH");
+                        }
                     }
                 }
-
                 .right-buttons {
                     text-align: right;
-                    .btn-next {
+                    .btn-next, .btn-prev {
                         @include themify($themes) {
-                            background-color: themed("prodDetailsBtnContC");
-                        }
-                        @include themify($themes) {
-                            border-color: themed("prodDetailsBorder");
-                        }
-                        @include themify($themes) {
-                            color: themed("prodDetailsBorder");
+                            border-color: themed("basketDescButtonBorderColor");
+                            color: themed("basketDescButtonColor");
+                            background-color: themed("");
+                            &:hover{
+                                background-color: themed("basketDescButtonBgH");
+                                color: themed("basketDescButtonColorH");
+                            }
                         }
                     }
                     .btn-prev {
-                        @include themify($themes) {
-                            background-color: themed("prodDetailsBtnContC");
-                        }
-                        @include themify($themes) {
-                            border-color: themed("prodDetailsBorder");
-                        }
-                        @include themify($themes) {
-                            color: themed("prodDetailsBorder");
-                        }
                         margin-right: 1rem;
                     }
                 }
@@ -59,11 +48,7 @@
             .product-details-desc {
                 @include themify($themes) {
                     background-color: themed("prodDetailsBtnContC");
-                }
-                @include themify($themes) {
                     border-color: themed("prodDetailsBorder");
-                }
-                @include themify($themes) {
                     color: themed("prodDetailsC");
                 }
                 border-style: solid;

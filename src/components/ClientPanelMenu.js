@@ -84,7 +84,7 @@ const ClientPanelMenu = () => {
                                     icon={faShoppingBasket}
                                     size="2x"
                                     color="#a0a3a6"
-                                    className="icon-anim"
+                                    className="icon-anim basket"
                                 />
                                 <span className="badge badge-blue">
                                     {totalQuantity}

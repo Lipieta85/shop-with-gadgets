@@ -9,10 +9,24 @@
     min-height: calc(100vh - 57px);
     padding-top: 150px;
     .order-end-box {
-        background-color: rgba(249, 250, 251, 0.8);
+        @include themify($themes) {
+            background-color: themed("endBoxBg");
+        }
         width: 80%;
         margin: auto;
         padding: 40px;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        .btn-outline-primary{
+            @include themify($themes) {
+                border-color: themed("endBoxBtnBorderC");
+                background-color:themed("endBoxBtnBg");
+                color:themed("endBoxBtnColor");
+                &:hover{
+                    border-color: themed("endBoxBtnBorderC");
+                    background-color:themed("endBoxBtnBgH");
+                    color:themed("endBoxBtnColor");
+                }
+            }
+        }
     }
 }

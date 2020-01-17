@@ -1,3 +1,4 @@
+@import "./mixins/mixins.scss";
 .admin-panel {
     background: url(../images/bg_top_2.jpg) center no-repeat;
     background-size: cover;
@@ -35,7 +36,9 @@
             margin: 15px 0;
             display: block;
             height: 1px;
-            background: #e4e6e7;
+            @include themify($themes) {
+                background: themed("divider");
+            }
         }
         .logged-panel__purchase-value {
             .purchase-text {

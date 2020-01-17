@@ -78,7 +78,7 @@ const OrderSummary = () => {
     return (
         <div className="order-summary">
             <div className="container">
-                <h2>{t("Order.Podsumowanie")}</h2>
+                <h2 className="title-header">{t("Order.Podsumowanie")}</h2>
                 <hr />
                 <ol>
                     {budgetOrder && orderIsFirst ? (
