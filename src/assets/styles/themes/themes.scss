@@ -1,5 +1,5 @@
 $wixOrange:rgb(255,182,15);
-$wixOrangeHover:rgb(242, 175, 15);
+$wixOrangeHover:rgb(255, 190, 40);
 $wixOrangeDarker:rgb(189, 138, 20);
 $wixBlack:rgb(35,31,32);
 $wixDarkGray:rgb(42,42,42);
@@ -30,10 +30,12 @@ $themes: (
       divider:$lightBgC,
       hrBorderC:$hr,
       endBoxBg:$gray9,
+      endBoxBtnColor:$gray3,
       endBoxBtnBg:$transparent,
       endBoxBtnBgH:$gray4,
       endBoxBtnBorderC:$gray4,
       endBoxBtnBorderCH:$gray4,
+      spinner:$wixBlack,
     //}
     //nav-menu{
       navbarBackgroundColor:$lightNav,
@@ -130,6 +132,7 @@ $themes: (
       endBoxBtnBgH:$wixOrangeHover,
       endBoxBtnBorderC:$wixOrange,
       endBoxBtnBorderCH:$wixOrangeHover,
+      spinner:$wixBlack,
     //}
     //nav-menu{
       navbarBackgroundColor:$wixOrange,
