@@ -268,7 +268,7 @@ const OrderHistory = () => {
                                 </h5>
                             )}
                             {singleOrder
-                                ? singleOrder.map(order => {
+                                ? singleOrder.map((order, i) => {
                                       return (
                                           <>
                                               <li
@@ -283,8 +283,10 @@ const OrderHistory = () => {
                                             />
                                         </div>
                                     </div> */}
+
                                                   <div className="col-md-12 desc-col d-flex align-items-center order-item">
                                                       <div className="order-img-box">
+                                                          <span>{i + 1}.</span>
                                                           {order.image && (
                                                               <img
                                                                   src={
@@ -303,7 +305,17 @@ const OrderHistory = () => {
                                                       >
                                                           <div className="d-flex">
                                                               <h4 className="text-uppercase title">
-                                                                  {order.name}
+                                                                  <b>
+                                                                      {" "}
+                                                                      {
+                                                                          order.name
+                                                                      }{" "}
+                                                                      (
+                                                                      {
+                                                                          order.code
+                                                                      }
+                                                                      )
+                                                                  </b>
                                                               </h4>
                                                           </div>
                                                           <div>
