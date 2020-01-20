@@ -320,3 +320,16 @@ export const getStorePolicyAccepted = async token => {
         }),
     );
 };
+
+export const setAcceptPolicy = async token => {
+    return await trackPromise(
+        axios({
+            method: "put",
+            url: `${host}/restApi/user/method/wixAcceptStorePolicy`,
+            headers: {
+                Authorization: token,
+            },
+        }),
+    )
+}
+

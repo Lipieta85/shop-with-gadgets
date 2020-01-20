@@ -23,7 +23,7 @@ const BudgetHistory = () => {
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         return parts.join(".");
     }
-    console.log(budgetHistory)
+    
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");

@@ -13,7 +13,8 @@ const initialState = {
     remainingBudget: "",
     baseBudget: "",
     periodFrom: "",
-    storePolicyStatus: 0
+    storePolicyStatus: 0,
+    userIdNumber: 0,
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -78,11 +79,16 @@ const clientDataReducer = (state = initialState, action) => {
                 ...state,
                 baseBudget: action.code,
             };
-            case type.SET_STORE_POLICY_ACCEPTED_STATUS:
-                return {
-                    ...state,
-                    storePolicyStatus: action.isAccepted
-                }
+        case type.SET_STORE_POLICY_ACCEPTED_STATUS:
+            return {
+                ...state,
+                storePolicyStatus: action.isAccepted,
+            };
+        case type.USER_ID_NUMBER:
+            return {
+                ...state,
+                userIdNumber: action.number,
+            };
         default:
             return state;
     }

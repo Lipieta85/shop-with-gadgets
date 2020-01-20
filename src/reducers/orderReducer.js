@@ -13,7 +13,6 @@ const initialState = {
 const orderReducer = (state = initialState, action) => {
     switch (action.type) {
         case type.SET_CLIENT_BUDGET_HISTORY:
-            console.log(action.data);
             return {
                 ...state,
                 wixBudgetHistory: action.data,

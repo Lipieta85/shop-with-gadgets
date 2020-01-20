@@ -26,6 +26,7 @@ const ClientPanelMenu = () => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
+    const userIdNumber = useSelector(state => state.clientDataReducer.userIdNumber);
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
@@ -69,8 +70,7 @@ const ClientPanelMenu = () => {
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
                     <div>
-                        {t(`CPanelMenu.JesteśZalogowanyJako`)} {userName}{" "}
-                        {t(`CPanelMenu.WImieniu`)} "{companyName}" ({userName})
+                        {t(`CPanelMenu.JesteśZalogowanyJako`)} {userName} {t(`CPanelMenu.WImieniu`)} "{companyName}" ({userIdNumber})
                     </div>
                 </div>
                 <div className="logged-panel-btn-group">
