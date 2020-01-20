@@ -4,7 +4,7 @@ import "../../assets/styles/regulations.scss";
 import { getStorePolicy } from "./../../api/index";
 import Spinner from "./../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
-const Regulations = () => {
+const Regulations = (props) => {
     const [policy, setPolicy] = useState("");
     const token = localStorage.getItem("token");
     const { t } = useTranslation();

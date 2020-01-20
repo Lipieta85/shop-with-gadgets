@@ -39,11 +39,16 @@ const OrderHistory = () => {
 
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
+    }, [dispatch, token])
+
+    useEffect(() => {
         if (cancelOrderStatus === true) {
             modal.click();
+            dispatch(getClientOrdersHistory(token));
         }
         if (cancelOrderStatus === false) {
             modal.click();
+            dispatch(getClientOrdersHistory(token));
         }
     }, [token, dispatch, cancelOrderStatus, modal]);
 

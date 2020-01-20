@@ -33,10 +33,12 @@ import {
     getBaseBudget,
     getPeriodFrom,
     isStorePolicyAccepted,
+    userIdNumber
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
 import { useTranslation } from "react-i18next";
+import PolicyAcceptedModal from "./components/PolicyAcceptedModal";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -75,7 +77,6 @@ export default withRouter(function App({ location }, props) {
                 localStorage.setItem("userID", userID.userId);
                 localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
-                    console.log(res);
                     dispatch(
                         setBudget(
                             res.data.getWixClientData.budget
@@ -87,7 +88,8 @@ export default withRouter(function App({ location }, props) {
                     dispatch(setToken(token));
                     dispatch(clientData(res.data));
                     dispatch(companyName(res.data.getWixClientData.data.name));
-                    dispatch(userName(res.data.getWixClientData.data.exId));
+                    dispatch(userIdNumber(res.data.getWixClientData.data.exId));
+                    dispatch(userName(res.data.getWixClientData.userName));
                     dispatch(isUE(res.data.getWixClientData.data.isUE));
                     dispatch(isStorePolicyAccepted(token));
                     dispatch(
@@ -159,6 +161,7 @@ export default withRouter(function App({ location }, props) {
                 <Redirect to="/" />
             </Switch>
             <Footer />
+            <PolicyAcceptedModal />
         </>
     );
 });
