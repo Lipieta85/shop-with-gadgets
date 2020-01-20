@@ -155,13 +155,13 @@ const OrderSummary = () => {
                 <div className="d-flex flex-wrap justify-content-between">
                     <Link
                         to="/Basket"
-                        className="btn btn-outline-primary btn-back"
+                        className="btn btn-outline-primary btn-back border-button"
                     >
                         {t("Order.WróćDoKoszyka")}
                     </Link>
                     <Link
                         to="/OrderEnd"
-                        className="btn btn-outline-primary btn-submit"
+                        className="btn btn-outline-primary btn-submit border-button"
                         onClick={() => dispatch(createOrder(token))}
                     >
                         {t("Order.Zatwierdź")}

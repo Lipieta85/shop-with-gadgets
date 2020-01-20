@@ -123,7 +123,7 @@ const BasketButtons = props => {
                         </span>
 
                         <span
-                            className="basket-button btn btn-outline-primary primary-no-action actualize-btn"
+                            className="basket-button btn btn-outline-primary primary-no-action border-button"
                             onClick={confirmationButton}
                         >
                             {t(`Basket.Aktualizuj`)}

@@ -17,65 +17,13 @@
         .product-details-content {
             margin-top: 22px;
             .navButtons {
-                .btn-back {
-                    @include themify($themes) {
-                        border-color: themed("basketDescButtonBorderColor");
-                        color: themed("basketDescButtonColor");
-                        background-color: themed("");
-                        &:hover{
-                            background-color: themed("basketDescButtonBgH");
-                            color: themed("basketDescButtonColorH");
-                        }
-                        color: themed("prodDetailsBorder");
-                        background-color: themed("prodDetailsBtnContC");
-                    }
-                    &:hover {
-                        @include themify($themes) {
-                            background-color: themed("prodDetailsBtnHoverBgC");
-                            color: themed("prodDetailsBtnHoverC");
-                        }
-                    }
-                }
                 .right-buttons {
                     text-align: right;
-                    .btn-next, .btn-prev {
-                        @include themify($themes) {
-                            border-color: themed("basketDescButtonBorderColor");
-                            color: themed("basketDescButtonColor");
-                            background-color: themed("");
-                            &:hover{
-                                background-color: themed("basketDescButtonBgH");
-                                color: themed("basketDescButtonColorH");
-                            }
-                            border-color: themed("prodDetailsBorder");
-                            color: themed("prodDetailsBorder");
-                        }
-                        &:hover {
-                            @include themify($themes) {
-                                background-color: themed(
-                                    "prodDetailsBtnHoverBgC"
-                                );
-                                color: themed("prodDetailsBtnHoverC");
-                            }
-                        }
-                    }
-                    .btn-prev {
-                        @include themify($themes) {
-                            background-color: themed("prodDetailsBtnContC");
-                            border-color: themed("prodDetailsBorder");
-                            color: themed("prodDetailsBorder");
-                        }
-                        &:hover {
-                            @include themify($themes) {
-                                background-color: themed(
-                                    "prodDetailsBtnHoverBgC"
-                                );
-                                color: themed("prodDetailsBtnHoverC");
-                            }
-                        }
-                        margin-right: 1rem;
-                    }
                 }
+                .btn-prev {
+                    margin-right: 1rem;
+                }
+                
             }
             .product-details-desc {
                 @include themify($themes) {
@@ -85,7 +33,6 @@
                 }
                 border-style: solid;
                 border-width: 1.5px;
-                // background-color: #f7f7f7;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;

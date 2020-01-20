@@ -1,4 +1,5 @@
 @import "./mixins/mixins.scss";
+
 .modal-dialog {
     .modal-text-header{
         color: black;
@@ -6,17 +7,4 @@
     .modal-text-content{
         color: black;
     }
-    .btn-conf-button{
-        @include themify($themes) {
-            border-color: themed("endBoxBtnBorderC");
-            background-color:themed("endBoxBtnBg");
-            color:themed("endBoxBtnColor");
-            &:hover{
-                border-color: themed("endBoxBtnBorderC");
-                background-color:themed("endBoxBtnBgH");
-                color:themed("endBoxBtnColor");
-            }
-        }
-    }
 }
-       

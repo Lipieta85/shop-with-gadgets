@@ -19,6 +19,8 @@ $navbar-light-hover-color: black;
 
 // Add SASS theme customizations here..
 
+@import "../mixins/mixins.scss";
+
 .icon-anim{
     &:hover{
         transform: scale(1.03);
@@ -32,8 +34,7 @@ $navbar-light-hover-color: black;
 // No color change on click
 .primary-no-action{
     outline: none;
-    border: 0.1rem solid #ced4da;
-    border-radius: 4px;
+    border: 0.1rem solid;
 }
 .btn{
     cursor: pointer;
@@ -66,6 +67,29 @@ input[type=number] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+.border-button {
+    border: solid .1rem;
+    @include themify($themes) {
+        border-color: themed("borderBtnBorderColor");
+        color: themed("borderBtnColor");
+        &:hover{
+            background-color: themed("borderBtnBgH");
+            color: themed("borderBtnColorH");
+        }
+    }
+}
+.btn-full-button, .full-button{
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    @include themify($themes) {
+        border-color: themed("fullBtnBorderC");
+        background-color:themed("fullBtnBg");
+        color:themed("fullBtnColor");
+        &:hover{
+            border-color: themed("fullBtnBorderCH");
+            background-color:themed("fullBtnBgH");
+        }
+    }
 }
 @media (max-width:450px){
     .m-desktop{

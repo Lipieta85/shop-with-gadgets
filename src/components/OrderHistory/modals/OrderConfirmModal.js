@@ -36,7 +36,7 @@ const ConfirmModal = props => {
                         <div className="modal-footer">
                             <button
                                 type="button"
-                                className="btn btn-outline-primary"
+                                className="btn btn-outline-primary full-button"
                                 variant="conf-button"
                                 data-dismiss="modal"
                             >

@@ -6,13 +6,6 @@
             color: themed("title");
         }
     }
-    .actualize-btn {
-        border-color: #a0a3a6;
-        &:hover {
-            background-color: #a0a3a6;
-            border-color: #a0a3a6;
-        }
-    }
     .item-number {
         position: absolute;
         font-size: 17px;
@@ -98,16 +91,6 @@
         .text-right {
             button {
                 font-size: 13px;
-            }
-        }
-        .btn.primary-no-action{
-            @include themify($themes) {
-                border-color:themed("basketDescButtonBorderColor");
-                color:themed("basketDescButtonColor");
-                &:hover{
-                    background-color:themed("basketDescButtonBgH");
-                    color:themed("basketDescButtonColorH");
-                }
             }
         }
         .basket-quantity-input {

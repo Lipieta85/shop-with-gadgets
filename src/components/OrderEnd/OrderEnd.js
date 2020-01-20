@@ -57,7 +57,7 @@ const OrderEnd = () => {
                 <Link
                     to="/"
                     style={disabledButton()}
-                    className="btn btn-outline-primary mt-4 w-25 mx-auto"
+                    className="btn btn-outline-primary mt-4 w-25 mx-auto full-button"
                 >
                     {" "}
                     {t("Basket.Wróć")}
