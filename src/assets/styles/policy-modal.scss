@@ -1,0 +1,13 @@
+@import "./mixins/mixins.scss";
+.policy-modal-btn {
+    @include themify($themes) {
+        border-color: themed('endBoxBtnBorderC');
+        background-color: themed("endBoxBtnBg");
+        color: themed("endBoxBtnColor");
+        &:hover {
+            border-color: themed('endBoxBtnBorderC');
+            background-color: themed("endBoxBtnBgH");
+            color: themed("endBoxBtnColor");
+        }
+    }
+}

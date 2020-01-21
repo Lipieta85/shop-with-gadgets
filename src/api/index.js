@@ -53,6 +53,19 @@ export const getStorePolicy = async token => {
     );
 };
 
+export const getContactDetails = async token => {
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storeContact%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        }),
+    );
+};
+
 export const getAllProducts = async (token, currentPage, company, lang) => {
     return await trackPromise(
         axios({

@@ -64,6 +64,7 @@ const OrderHistory = () => {
             setShowedOrder(orders[orders.length - 1]);
             selectOrder(orders[orders.length -1]);
         }
+        //eslint-disable-next-line
     }, [orders, dispatch, token]);
     if (singleOrder.error) {
         return null;
@@ -104,7 +105,7 @@ const OrderHistory = () => {
 
     const deselectAll = () => {
         orders.map((order, i) => {
-            order['selected'] = false;
+           return order['selected'] = false;
         });
     }
     const selectOrder = (order) => {

@@ -1,8 +1,5 @@
 import * as type from "../actions/types";
-import {
-    getStorePolicyAccepted,
-    setAcceptPolicy
-} from "../api/index";
+import { getStorePolicyAccepted, setAcceptPolicy } from "../api/index";
 
 export const clientData = data => {
     return {
@@ -85,33 +82,44 @@ export const getPeriodFrom = code => {
     };
 };
 export const isStorePolicyAccepted = token => {
-    return (dispatch) => {
+    return dispatch => {
         getStorePolicyAccepted(token)
-        .then(res => {
-            dispatch(setStorePolicyAcceptedStatus(res.data.wixIsStorePolicyAccepted))
-        })
-        .catch(error=> {
-            console.log(error)
-        })
-    }
-}
+            .then(res => {
+                dispatch(
+                    setStorePolicyAcceptedStatus(
+                        res.data.wixIsStorePolicyAccepted,
+                    ),
+                );
+            })
+            .catch(error => {
+                dispatch(setStorePolicyAcceptedStatus("error"));
+            });
+    };
+};
 
 export const setStorePolicyAcceptedStatus = isAccepted => {
     return {
         type: type.SET_STORE_POLICY_ACCEPTED_STATUS,
-        isAccepted
-    }
-}
+        isAccepted,
+    };
+};
 
-export const acceptPolicy = (token) => {
+export const acceptPolicy = token => {
     return (dispatch, getState) => {
         setAcceptPolicy(token)
-        .then(res => {
-            dispatch(setStorePolicyAcceptedStatus(false))
-            
-        })
-        .catch(error=> {
-            console.log(error)
-        })
-    }
-}
+            .then(res => {
+                if (res.data.wixAcceptStorePolicy === false) {
+                    dispatch(setStorePolicyAcceptedStatus("error"));
+                } else {
+                    dispatch(
+                        setStorePolicyAcceptedStatus(
+                            res.data.wixAcceptStorePolicy,
+                        ),
+                    );
+                }
+            })
+            .catch(error => {
+                dispatch(setStorePolicyAcceptedStatus("error"));
+            });
+    };
+};
