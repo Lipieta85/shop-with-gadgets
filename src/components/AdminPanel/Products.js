@@ -14,7 +14,6 @@ const Products = () => {
                             className="card m-1 col-sm-6 col-lg-4 border border-primary"
                             key={item.id}
                         >
-                            {console.log(item)}
                             <div className="card-img d-flex align-items-center pt-3 px-3">
                                 <div className="card-img-wrapper">
                                     <img
