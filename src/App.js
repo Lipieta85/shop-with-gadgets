@@ -33,7 +33,7 @@ import {
     getBaseBudget,
     getPeriodFrom,
     isStorePolicyAccepted,
-    userIdNumber
+    userIdNumber,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -51,8 +51,10 @@ function initializeReactGA() {
 
 export default withRouter(function App({ location }, props) {
     const parsed = queryString.parse(location.search);
-    const rootEl = document.getElementById('root')
-    parsed.brand === "wix" ? rootEl.classList.add('theme-dark') : rootEl.classList.add('theme-light')
+    const rootEl = document.getElementById("root");
+    parsed.brand === "wix"
+        ? rootEl.classList.add("theme-dark")
+        : rootEl.classList.add("theme-light");
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
     useEffect(() => {
