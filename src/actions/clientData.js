@@ -1,5 +1,8 @@
 import * as type from "../actions/types";
-import { getStorePolicyAccepted } from "../api";
+import {
+    getStorePolicyAccepted,
+    setAcceptPolicy
+} from "../api/index";
 
 export const clientData = data => {
     return {
@@ -44,6 +47,12 @@ export const userName = name => {
         name,
     };
 };
+export const userIdNumber = number => {
+    return {
+        type: type.USER_ID_NUMBER,
+        number,
+    };
+};
 export const setCurrencyCode = code => {
     return {
         type: type.SET_CURRENCY_CODE,
@@ -76,24 +85,33 @@ export const getPeriodFrom = code => {
     };
 };
 export const isStorePolicyAccepted = token => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         getStorePolicyAccepted(token)
-            .then(res => {
-                dispatch(
-                    setStorePolicyAcceptedStatus(
-                        res.data.wixIsStorePolicyAccepted,
-                    ),
-                );
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
-};
+        .then(res => {
+            dispatch(setStorePolicyAcceptedStatus(res.data.wixIsStorePolicyAccepted))
+        })
+        .catch(error=> {
+            console.log(error)
+        })
+    }
+}
 
 export const setStorePolicyAcceptedStatus = isAccepted => {
     return {
         type: type.SET_STORE_POLICY_ACCEPTED_STATUS,
-        isAccepted,
-    };
-};
+        isAccepted
+    }
+}
+
+export const acceptPolicy = (token) => {
+    return (dispatch, getState) => {
+        setAcceptPolicy(token)
+        .then(res => {
+            dispatch(setStorePolicyAcceptedStatus(false))
+            
+        })
+        .catch(error=> {
+            console.log(error)
+        })
+    }
+}

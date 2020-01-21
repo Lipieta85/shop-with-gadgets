@@ -11,6 +11,7 @@ import {
     setPage,
 } from "../../actions/index";
 import host from "../../api/host";
+import host2 from "../../api/host2";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "./NotificationModal";
@@ -142,75 +143,78 @@ const NavMenu = () => {
                             window.location.pathname === `/Basket` ||
                             window.location.pathname === `/Regulations` ? (
                                 <li className="nav-item">
-                                    <Link
+                                    <a
                                         className="nav-link text-uppercase"
-                                        to="/"
+                                        href={`${host2}/`}
                                     >
                                         {t(`Nav.WróćDoStronyGłównej`)}{" "}
-                                    </Link>
+                                    </a>
                                 </li>
                             ) : null}
-                            <li className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle text-uppercase"
-                                    href="/"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    onClick={e => e.preventDefault}
-                                >
-                                    {t(`Nav.MojeKonto`)}
-                                </a>
-                                <div
-                                    className="dropdown-menu text-uppercase"
-                                    aria-labelledby="navbarDropdown"
-                                >
-                                    <Link
-                                        className="dropdown-item text-uppercase"
-                                        to="/Basket"
+                            {window.location.pathname !== `/Regulations` ? (
+                                <li className="nav-item dropdown">
+                                    <a
+                                        className="nav-link dropdown-toggle text-uppercase"
+                                        href="/"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                        onClick={e => e.preventDefault}
                                     >
-                                        Koszyk
-                                    </Link>
-                                    <Link
-                                        className="dropdown-item text-uppercase"
-                                        to="/OrderHistory"
+                                        {t(`Nav.MojeKonto`)}
+                                    </a>
+                                    <div
+                                        className="dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown"
                                     >
-                                        {t(`Nav.ListaZamówień`)}
-                                    </Link>
-                                    <Link
-                                        className="dropdown-item text-uppercase"
-                                        to="/BudgetHistory"
-                                    >
-                                        {t(`Nav.HistoriaBudżetu`)}
-                                    </Link>
-                                    {orderType === "S5" ? (
                                         <Link
                                             className="dropdown-item text-uppercase"
-                                            onClick={showPaidOrders}
+                                            to="/Basket"
                                         >
-                                            {t(`Nav.ZamówieniaPłatne`)}
+                                            Koszyk
                                         </Link>
-                                    ) : null}
-                                </div>
-                                <ButtonToolbar className="invisible">
-                                    <Button
-                                        className="availability-check unselectable paid-orders-modal"
-                                        id="paid-orders-modal"
-                                    ></Button>
-                                    <NotificationModal
-                                        show={modalShowPaidOrders}
-                                        onHide={() =>
-                                            setModalShowPaidOrders(false)
-                                        }
-                                        text={t(
-                                            "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
-                                        )}
-                                        header="Wniosek o zamówienia płatne"
-                                    />
-                                </ButtonToolbar>
-                            </li>
+                                        <Link
+                                            className="dropdown-item text-uppercase"
+                                            to="/OrderHistory"
+                                        >
+                                            {t(`Nav.ListaZamówień`)}
+                                        </Link>
+                                        <Link
+                                            className="dropdown-item text-uppercase"
+                                            to="/BudgetHistory"
+                                        >
+                                            {t(`Nav.HistoriaBudżetu`)}
+                                        </Link>
+                                        {orderType === "S5" ? (
+                                            <Link
+                                                className="dropdown-item text-uppercase"
+                                                onClick={showPaidOrders}
+                                                to=""
+                                            >
+                                                {t(`Nav.ZamówieniaPłatne`)}
+                                            </Link>
+                                        ) : null}
+                                    </div>
+                                    <ButtonToolbar className="invisible">
+                                        <Button
+                                            className="availability-check unselectable paid-orders-modal"
+                                            id="paid-orders-modal"
+                                        ></Button>
+                                        <NotificationModal
+                                            show={modalShowPaidOrders}
+                                            onHide={() =>
+                                                setModalShowPaidOrders(false)
+                                            }
+                                            text={t(
+                                                "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
+                                            )}
+                                            header="Wniosek o zamówienia płatne"
+                                        />
+                                    </ButtonToolbar>
+                                </li>
+                            ) : null}
                             <li className="nav-item text-uppercase">
                                 <a
                                     className="nav-link"

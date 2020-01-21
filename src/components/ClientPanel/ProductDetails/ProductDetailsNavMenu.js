@@ -12,6 +12,9 @@ import logo2 from "../../../assets/images/WIX_logo.png";
 
 const ProductDetailsNavMenu = () => {
     const company = useSelector(state => state.clientDataReducer.companyId);
+    const orderType = useSelector(
+        state => state.clientDataReducer.marketingOrderType,
+    );
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
     const { t } = useTranslation();
     const dispatch = useDispatch();
@@ -96,12 +99,14 @@ const ProductDetailsNavMenu = () => {
                                     >
                                         {t("Nav.HistoriaBudżetu")}
                                     </Link>
-                                    <Link
-                                        className="dropdown-item text-uppercase"
-                                        onClick={showPaidOrders}
-                                    >
-                                        Zamówienia Płatne
-                                    </Link>
+                                    {orderType === "S5" ? (
+                                        <Link
+                                            className="dropdown-item text-uppercase"
+                                            onClick={showPaidOrders}
+                                        >
+                                            {t(`Nav.ZamówieniaPłatne`)}
+                                        </Link>
+                                    ) : null}
                                 </div>
                                 <ButtonToolbar className="invisible">
                                     <Button

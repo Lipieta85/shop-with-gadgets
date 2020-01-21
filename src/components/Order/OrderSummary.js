@@ -16,11 +16,16 @@ const OrderSummary = () => {
     const orderSelectInputValue = useSelector(
         state => state.cartReducer.orderSelectInputValue,
     );
-    const budget = useSelector(state => state.clientDataReducer.clientData[0].getWixClientData.budget.amount);
+
+    const budget = useSelector(
+        state =>
+            state.clientDataReducer.clientData[0].getWixClientData.budget
+                .remainingBudget,
+    );
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-    const updatedBudget = useSelector(state => state.cartReducer.budget)
+    const updatedBudget = useSelector(state => state.cartReducer.budget);
 
     const budgetOrder = true;
     const orderIsFirst = true;
@@ -81,7 +86,7 @@ const OrderSummary = () => {
                 <h2 className="title-header">{t("Order.Podsumowanie")}</h2>
                 <hr />
                 <ol>
-                    {budgetOrder && orderIsFirst ? (
+                    {budgetOrder && orderIsFirst && orderType === "S5" ? (
                         <li className="order-summary-text">
                             {t("Order.WartośćBudżetu")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
@@ -89,7 +94,12 @@ const OrderSummary = () => {
                             </span>
                         </li>
                     ) : (
-                        <></>
+                        <li className="order-summary-text">
+                            Rodzaj zamówienia:
+                            <span className="summary-text-value font-weight-bold text-uppercase ml-1">
+                                Zamówienie płatne
+                            </span>
+                        </li>
                     )}
                     {budgetOrder && !orderIsFirst ? (
                         <li className="order-summary-text">
@@ -124,7 +134,7 @@ const OrderSummary = () => {
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
-                            {t("Order.PozostałoDoWykorzystania")}: 
+                            {t("Order.PozostałoDoWykorzystania")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
                                 {updatedBudget} {items[0].price.currency}
                             </span>
@@ -141,7 +151,9 @@ const OrderSummary = () => {
                     <li className="order-summary-text">
                         {t("Order.TypZamówienia")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
-                            {orderType === "S5" ? `${t("Order.BudżetMarketingowy")}` : `${t("Order.ZamówieniePłatne")}`}
+                            {orderType === "S5"
+                                ? `${t("Order.BudżetMarketingowy")}`
+                                : `${t("Order.ZamówieniePłatne")}`}
                         </span>
                     </li>
                 </ol>

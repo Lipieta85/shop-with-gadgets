@@ -163,6 +163,7 @@ const ProductDetails = props => {
                                                     productAvailability
                                                 }
                                                 itemUnit={productUnit}
+                                                itemTitle={productTitle}
                                                 changeProduct={props}
                                             />
                                         </div>
