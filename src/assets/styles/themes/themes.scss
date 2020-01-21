@@ -20,6 +20,7 @@ $blue2: rgb(3, 88, 153);
 $basket: #8b8e91;
 $hr: rgba(0, 0, 0, 0.1);
 $transparent: transparent;
+$rowSelected:rgb(215, 215, 215);
 
 $themes: (
     light: (
@@ -32,6 +33,7 @@ $themes: (
         divider: $lightBgC,
         hrBorderC: $hr,
         endBoxBg: $gray9,
+        tableRowSelected:$rowSelected,
 
         fullBtnColor: $white,
         fullBtnBg: $gray4,
@@ -134,6 +136,7 @@ $themes: (
             divider: $hr,
             hrBorderC: $wixOrange,
             endBoxBg: $white,
+            tableRowSelected:$rowSelected,
 
             fullBtnColor: $wixBlack,
             fullBtnBg: $wixOrange,

@@ -16,7 +16,7 @@ import "../../assets/styles/order-history.scss";
 import "../../assets/styles/order-end.scss";
 
 const OrderHistory = () => {
-    const orders = useSelector(state => state.orderReducer.clientOrderHistory);
+    let orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const cancelOrderStatus = useSelector(
         state => state.orderReducer.cancelOrderStatus,
     );
@@ -36,7 +36,6 @@ const OrderHistory = () => {
     const token = localStorage.getItem("token");
 
     const modal = document.querySelector(".order-confirm-modal");
-
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
     }, [dispatch, token])
@@ -60,13 +59,15 @@ const OrderHistory = () => {
                     orders[orders.length - 1].order_id,
                 ),
             );
+            deselectAll();
             setShowedOrder(orders[orders.length - 1]);
+            selectOrder(orders[orders.length -1]);
         }
     }, [orders, dispatch, token]);
 
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
-            <tr>
+            <tr className={order.selected?'row-selected':''}>
                 <td>
                     <button
                         className="row-button"
@@ -98,9 +99,22 @@ const OrderHistory = () => {
         ));
     }
 
+    const deselectAll = () => {
+        orders.map((order, i) => {
+            order['selected'] = false;
+        });
+    }
+    const selectOrder = (order) => {
+        if(order){
+            order['selected'] = true;
+        }   
+    }
+
     const orderDetailHandler = selectedOrder => {
+        deselectAll();
         orders.map((order, i) => {
             if (i === selectedOrder) {
+                selectOrder(order);
                 setShowedOrder(order);
                 //setCurrency(order.currency_code);
                 dispatch(getClientSingleOrdersHistory(token, order.order_id));
@@ -289,9 +303,9 @@ const OrderHistory = () => {
                                         </div>
                                     </div> */}
 
-                                                  <div className="col-md-12 desc-col d-flex align-items-center order-item">
+                                                  <div className="col-md-12 desc-col order-item">
+                                                      <span className="order-iteration">{i + 1}</span>
                                                       <div className="order-img-box">
-                                                          <span>{i + 1}.</span>
                                                           {order.image && (
                                                               <img
                                                                   src={

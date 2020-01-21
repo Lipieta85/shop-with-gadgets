@@ -18,12 +18,12 @@ const NotificationModal = props => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* {props.itemTitle&&
+                {props.itemTitle&&
                     <>
-                        Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
-                        W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>.
+                        Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{props.inputValue} {props.unit}</b>. 
+                        W ramach budżetu marketingowego: <b>{props.budget} {props.currency}</b>, możesz dodać tylko <b>{Math.floor(props.budget/props.price)} {props.unit}</b>{". "}
                     </>
-                } */}
+                }
                 {props.text}
             </Modal.Body>
             <Modal.Footer>
