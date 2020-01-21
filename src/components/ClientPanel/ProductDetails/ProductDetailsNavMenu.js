@@ -121,6 +121,7 @@ const ProductDetailsNavMenu = () => {
                                         text={t(
                                             "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
                                         )}
+                                        header="Wniosek o zamówienia płatne"
                                     />
                                 </ButtonToolbar>
                             </li>

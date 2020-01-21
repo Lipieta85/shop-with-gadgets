@@ -47,8 +47,7 @@ const ClientPanel = props => {
                 ]);
             }
         }
-        //eslint-disable-next-line
-    }, [currentPage, token]);
+    }, [currentPage, dispatch, pagination.totalPages, token, category]);
 
     useEffect(() => {
         if (category !== "1") {

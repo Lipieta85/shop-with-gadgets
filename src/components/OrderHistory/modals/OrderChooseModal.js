@@ -12,7 +12,7 @@ const ChooseModal = props => {
         <>
             <button
                 type="button"
-                className="btn btn-outline-primary"
+                className="btn border-button"
                 variant="conf-button"
                 data-toggle="modal"
                 data-target="#exampleModal"
@@ -44,16 +44,14 @@ const ChooseModal = props => {
                         <div className="modal-footer">
                             <button
                                 type="button"
-                                className="btn btn-outline-primary"
-                                variant="conf-button"
+                                className="btn btn-outline-primary full-button"
                                 data-dismiss="modal"
                             >
                                 {t("Order.Nie")}
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-outline-primary"
-                                variant="conf-button"
+                                className="btn btn-outline-primary full-button"
                                 data-dismiss="modal"
                                 onClick={() =>
                                     dispatch(

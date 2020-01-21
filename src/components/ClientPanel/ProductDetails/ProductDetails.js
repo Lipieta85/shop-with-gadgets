@@ -173,7 +173,7 @@ const ProductDetails = props => {
                                     <div className="mt-3 row m-0">
                                         <div className="col-4 p-0">
                                             <Link
-                                                className="btn btn-outline-primary btn-back"
+                                                className="btn btn-outline-primary btn-back border-button"
                                                 to="/"
                                             >
                                                 {t("ProductDetails.Powrót")}
@@ -181,13 +181,13 @@ const ProductDetails = props => {
                                         </div>
                                         <div className="col-8 p-0 right-buttons">
                                             <button
-                                                className="btn btn-outline-primary btn-prev"
+                                                className="btn btn-outline-primary btn-prev border-button"
                                                 onClick={prevItem}
                                             >
                                                 {t("ProductDetails.Poprzedni")}
                                             </button>
                                             <button
-                                                className="btn btn-outline-primary btn-next"
+                                                className="btn btn-outline-primary btn-next border-button"
                                                 onClick={nexItem}
                                             >
                                                 {t("ProductDetails.Następny")}

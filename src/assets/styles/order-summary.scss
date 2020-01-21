@@ -63,16 +63,7 @@
             margin-right:20px;
         }
     }
-    .btn-outline-primary{
-        @include themify($themes) {
-            border-color: themed("basketDescButtonBorderColor");
-            color:themed("basketDescButtonColor");
-            &:hover{
-                background-color:themed("basketDescButtonBgH");
-                color:themed("basketDescButtonColorH");
-            }
-        }
-    }
+
 }
 // .order-text-value {
 //     color: #CCC;

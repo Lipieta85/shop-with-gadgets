@@ -14,12 +14,16 @@ const NotificationModal = props => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Wniosek o zamówienie płatne
+                  {props.header}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>.  */}
-                {/* W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>. */}
+                {/* {props.itemTitle&&
+                    <>
+                        Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{input.current.value}</b>. 
+                        W ramach budżetu marketingowego możesz dodać tylko <b>{Math.floor(basketData.budget/props.price)}</b>.
+                    </>
+                } */}
                 {props.text}
             </Modal.Body>
             <Modal.Footer>

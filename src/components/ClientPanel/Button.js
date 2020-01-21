@@ -218,6 +218,7 @@ const ButtonComponent = props => {
                     show={modalShowPaidOrders}
                     onHide={() => setModalShowPaidOrders(false)}
                     text={t("PaidOrder.OstrzeżenieZamówieniePłatne")}
+                    header="Przekroczenie dostępnego budżetu"
                 />
                 <Button
                     className="availability-check unselectable alert-modal"
