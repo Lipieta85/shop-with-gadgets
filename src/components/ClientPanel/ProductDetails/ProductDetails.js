@@ -77,6 +77,7 @@ const ProductDetails = props => {
         productPrice,
         productCurrency,
         productCode,
+        productDescription,
         productPhoto,
         productPhoto2,
         productPhoto3;
@@ -88,7 +89,7 @@ const ProductDetails = props => {
         productPrice = loadedProduct.price.price;
         productCurrency = loadedProduct.price.currency;
         productCode = loadedProduct.product.code;
-
+        productDescription = loadedProduct.product.description;
         if (typeof loadedProduct.images[0] != "undefined") {
             productPhoto = loadedProduct.images[0].medium;
         }
@@ -125,6 +126,12 @@ const ProductDetails = props => {
                                         <h3 className="product-details-header">
                                             {productTitle}
                                         </h3>
+                                        <p className="font-weight-bold">
+                                            Opis produktu:{" "}
+                                            <span className="product-details-text">
+                                                {productDescription}
+                                            </span>
+                                        </p>
                                         <p className="font-weight-bold">
                                             {t("ProductDetails.KodProduktu")}:{" "}
                                             <span className="product-details-text">
