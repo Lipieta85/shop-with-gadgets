@@ -10,7 +10,7 @@ const Products = () => {
             <div className="container text-center">
                 <div className="row text-center">
                     {items.map(item => (
-                        <div
+                        <div 
                             className="card m-1 col-sm-6 col-lg-4 border border-primary"
                             key={item.id}
                         >
