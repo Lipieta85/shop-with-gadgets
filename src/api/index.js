@@ -272,7 +272,7 @@ export const getSingleUserOrder = async (token, orderId) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId}}`,
+            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"pl"}`,
             headers: {
                 Authorization: token,
             },
@@ -330,6 +330,5 @@ export const setAcceptPolicy = async token => {
                 Authorization: token,
             },
         }),
-    )
-}
-
+    );
+};

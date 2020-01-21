@@ -34,7 +34,8 @@ export const createOrder = (token, items) => {
         let basketId = getState().cartReducer.basket;
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
-        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
+        let companyId =
+            company !== "all" ? company.charAt(0).toUpperCase() : "";
         Number(basketId);
 
         let clientData = getState().clientDataReducer.clientData;
@@ -61,22 +62,21 @@ export const createOrder = (token, items) => {
                     dispatch(clearBasket());
                 } else {
                     dispatch(setOrderErrorTrue());
-                    dispatch(resetOrderError())
+                    dispatch(resetOrderError());
                 }
-                
             })
             .catch(error => {
                 dispatch(setOrderErrorTrue());
-                dispatch(resetOrderError())
+                dispatch(resetOrderError());
             });
     };
 };
 
 export const resetOrderError = () => {
     return {
-        type: type.RESET_ORDER_ERROR
-    }
-}
+        type: type.RESET_ORDER_ERROR,
+    };
+};
 
 export const setOrderErrorFalse = () => {
     return {

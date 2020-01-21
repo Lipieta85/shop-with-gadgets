@@ -23,6 +23,7 @@ const OrderHistory = () => {
     const singleOrder = useSelector(
         state => state.orderReducer.singleOrderHistory,
     );
+    // const lang = useSelector(state => state.clientDataReducer.language);
 
     const [showedOrder, setShowedOrder] = useState();
     //const [currency, setCurrency] = useState();
@@ -38,7 +39,7 @@ const OrderHistory = () => {
     const modal = document.querySelector(".order-confirm-modal");
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
-    }, [dispatch, token])
+    }, [dispatch, token]);
 
     useEffect(() => {
         if (cancelOrderStatus === true) {
@@ -64,7 +65,9 @@ const OrderHistory = () => {
             selectOrder(orders[orders.length -1]);
         }
     }, [orders, dispatch, token]);
-
+    if (singleOrder.error) {
+        return null;
+    }
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
             <tr className={order.selected?'row-selected':''}>
