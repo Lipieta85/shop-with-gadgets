@@ -6,11 +6,13 @@ const ClientResponseModal = props => {
     const subsriptionState = useSelector(
         state => state.subscriptionReducer.subscribeState,
     );
+    const productName = useSelector(state => state.subscriptionReducer.productName)
     const [name, setName] = useState("");
     const { t } = useTranslation();
+
     useEffect(() => {
-        setName(props.itemTitle);
-    }, [props.itemTitle]);
+        setName(productName);
+    }, [productName]);
 
     return (
         <Modal
@@ -22,11 +24,10 @@ const ClientResponseModal = props => {
             <Modal.Body>
                 {subsriptionState === true || subsriptionState === 1 ? (
                     <p>
-                        {t("ClientResponseModal.UdanaSubskrypcja")}:{""}
-                        {name}. {t("ClientResponseModal.UdanaSubskrypcjaInfo")}
+                        {t("ClientResponseModal.UdanaSubskrypcja ")}{name}. {t("ClientResponseModal.UdanaSubskrypcjaInfo")}
                     </p>
                 ) : (
-                    <p>{t("ClientResponseModal.NieudanaSubskrypcja")}</p>
+                    <p>{t("ClientResponseModal.NieudanaSubskrypcja ")}{name}{t("ClientResponseModal.LubWystąpiłBłąd")}</p>
                 )}
             </Modal.Body>
             <Modal.Footer>

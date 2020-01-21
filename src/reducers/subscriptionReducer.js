@@ -2,6 +2,7 @@ import * as type from "../actions/types";
 
 const initialState = {
     subscribeState: 0,
+    productName: ''
 };
 
 const subscriptionReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const subscriptionReducer = (state = initialState, action) => {
                 ...state,
                 subscribeState: action.number,
             };
+        case type.SET_PRODUCT_NAME:
+            return {
+                ...state,
+                productName: action.name
+            }
         default:
             return state;
     }

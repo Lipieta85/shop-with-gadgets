@@ -141,6 +141,7 @@ const NavMenu = () => {
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
                             window.location.pathname === `/Basket` ||
+                            window.location.pathname === `/Contact` ||
                             window.location.pathname === `/Regulations` ? (
                                 <li className="nav-item">
                                     <a

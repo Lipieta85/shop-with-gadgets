@@ -34,7 +34,8 @@
     "Powiadom": "Notify When Available"
   },
   "Footer": {
-    "Regulamin": "Shop rules"
+    "Regulamin": "Shop rules",
+    "Contact": "Contact details"
   },
   "Basket": {
     "Alert": "The quantity of product entered exceeds the quantity in stock",
@@ -111,7 +112,8 @@
     "Zamknij": "Close"
   },
   "ClientResponseModal": {
-    "UdanaSubskrypcja": "Successfully subscribed",
-    "NieudanaSubskrypcja": "Already subscribed or failed. "
+    "UdanaSubskrypcja ": "Successfully subscribed: ",
+    "NieudanaSubskrypcja ": "Already subscribed item: ",
+    "LubWystąpiłBłąd": "or an error occurred"
   }
 }

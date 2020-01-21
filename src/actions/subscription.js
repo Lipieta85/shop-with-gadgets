@@ -38,3 +38,10 @@ export const resetSubscribe = (number) => {
     }
 }
 
+export const setProductName = (name) => {
+    return {
+        type: type.SET_PRODUCT_NAME,
+        name
+    }
+}
+

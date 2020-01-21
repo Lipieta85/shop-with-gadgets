@@ -47,6 +47,7 @@ const ClientPanel = props => {
                 ]);
             }
         }
+        //eslint-disable-next-line
     }, [currentPage, dispatch, pagination.totalPages, token, category]);
 
     useEffect(() => {
