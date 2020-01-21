@@ -90,7 +90,6 @@ const ProductDetails = props => {
         productCurrency = loadedProduct.price.currency;
         productCode = loadedProduct.product.code;
         productDescription = loadedProduct.product.description;
-        console.log(productDescription);
         if (typeof loadedProduct.images[0] != "undefined") {
             productPhoto = loadedProduct.images[0].medium;
         }
