@@ -20,7 +20,8 @@ import Pager from "./Pager";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    const pagination = useSelector(state => state.cartReducer.pagination);
+    let pagination = useSelector(state => state.cartReducer.pagination);
+    pagination = {totalPages:5}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
 
@@ -47,6 +48,7 @@ const ClientPanel = props => {
                 ]);
             }
         }
+        //eslint-disable-next-line
     }, [currentPage, dispatch, pagination.totalPages, token, category]);
 
     useEffect(() => {

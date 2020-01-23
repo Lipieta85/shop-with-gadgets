@@ -53,6 +53,19 @@ export const getStorePolicy = async token => {
     );
 };
 
+export const getContactDetails = async token => {
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storeContact%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        }),
+    );
+};
+
 export const getAllProducts = async (token, currentPage, company, lang) => {
     return await trackPromise(
         axios({
@@ -84,13 +97,14 @@ export const changeProductsCategory = async (
     number,
     company,
     currentPage,
+    lang,
 ) => {
     return await trackPromise(
         axios({
             method: "get",
             url: `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
                 number,
-            )}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -268,11 +282,11 @@ export const getUserBudgetHistory = async token => {
     );
 };
 
-export const getSingleUserOrder = async (token, orderId) => {
+export const getSingleUserOrder = async (token, orderId, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"pl"}`,
+            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}"}`,
             headers: {
                 Authorization: token,
             },

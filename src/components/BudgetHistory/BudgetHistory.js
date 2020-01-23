@@ -23,14 +23,14 @@ const BudgetHistory = () => {
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         return parts.join(".");
     }
-    
+
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
     useEffect(() => {
         dispatch(getClientBudgetHistory(token));
     }, [dispatch, token]);
-    
+
     let history;
     if (budgetHistory && remainingBudget) {
         history = budgetHistory
@@ -140,9 +140,9 @@ const BudgetHistory = () => {
                                             <div className="remainingBudgetTitle">
                                                 Pozostały do wykorzystania
                                                 budżet marketingowy na rok{" "}
-                                                {periodFrom.substr(0, 4)}:{" "}
+                                                {periodFrom.substr(0, 4)}{" "}
                                                 <b>
-                                                    {" "}
+                                                    {": "}
                                                     {numberWithSpaces(
                                                         remainingBudget,
                                                     )}{" "}

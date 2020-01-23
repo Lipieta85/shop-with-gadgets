@@ -13,6 +13,7 @@ import PageNotFound from "./components/NotFound";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "./components/Footer/Footer";
 import Regulations from "./components/Footer/Regulations";
+import Contact from "./components/Footer/Contact";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import BudgetHistory from "./components/BudgetHistory/BudgetHistory";
 import ReactGA from "react-ga";
@@ -50,20 +51,30 @@ function initializeReactGA() {
 }
 
 export default withRouter(function App({ location }, props) {
+    const company = useSelector(state => state.clientDataReducer.companyId)
     const parsed = queryString.parse(location.search);
-    const rootEl = document.getElementById("root");
-    parsed.brand === "wix"
-        ? rootEl.classList.add("theme-dark")
-        : rootEl.classList.add("theme-light");
+    
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
+
+    const { i18n } = useTranslation();
+
     useEffect(() => {
         const { pathname } = location;
         setCurrentPath(pathname);
         initializeReactGA(currentPath);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    const { i18n } = useTranslation();
+
+    useEffect(() => {
+        document.body.classList.remove('theme-dark', 'theme-light')
+        if (company === "wix") {
+            document.body.classList.add('theme-dark')
+        }
+        else {
+            document.body.classList.add('theme-light')
+        }
+    }, [company])
 
     useEffect(() => {
         i18n.changeLanguage(parsed.lang);
@@ -91,7 +102,7 @@ export default withRouter(function App({ location }, props) {
                     dispatch(clientData(res.data));
                     dispatch(companyName(res.data.getWixClientData.data.name));
                     dispatch(userIdNumber(res.data.getWixClientData.data.exId));
-                    dispatch(userName(res.data.getWixClientData.userName));
+                    dispatch(userName(res.data.getWixClientData.userLogin));
                     dispatch(isUE(res.data.getWixClientData.data.isUE));
                     dispatch(isStorePolicyAccepted(token));
                     dispatch(
@@ -158,6 +169,7 @@ export default withRouter(function App({ location }, props) {
                 <PrivateRoute path="/OrderHistory" component={OrderHistory} />
                 <PrivateRoute path="/BudgetHistory" component={BudgetHistory} />
                 <PrivateRoute path="/Regulations" component={Regulations} />
+                <PrivateRoute path="/Contact" component={Contact} />
                 <PrivateRoute path="/product/:id" component={ProductDetails} />
                 <Route path="*" component={PageNotFound} />
                 <Redirect to="/" />

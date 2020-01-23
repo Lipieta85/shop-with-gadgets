@@ -72,6 +72,11 @@
                 td{
                     padding-right: 25px;
                 }
+                tr:nth-child(even){  
+                    @include themify($themes) {
+                        background-color: themed('orderHistoryDetailsOdd'); 
+                    }
+                }
             }
             padding-top: 2px;
             .summary-details-box{
@@ -155,7 +160,7 @@
     }
 }
 @media (min-width: 576px){
-    span, b{
+    span, b,td{
         font-size: 13px;
     }
     .title{
@@ -165,8 +170,8 @@
         font-size: 12px;
     }
 }
-@media (max-width: 450px){
-    span, b{
+@media (max-width: 500px){
+    span, b, td{
         font-size: 13px;
     }
     .title{
@@ -206,7 +211,7 @@
     }
 }
 @media (min-width: 900px){
-    span, b{
+    span, b,td{
         font-size: 16px;
     }
     .title{

@@ -49,7 +49,8 @@
     "WybierzTypZamówienia": "Wybierz typ zamówienia"
   },
   "Footer": {
-    "Regulamin": "Regulamin sklepu"
+    "Regulamin": "Regulamin sklepu",
+    "Contact": "Dane kontaktowe"
   },
   "Order": {
     "Podsumowanie": "Podsumowanie zamówienia",
@@ -111,8 +112,9 @@
     "Zamknij": "Close"
   },
   "ClientResponseModal": {
-    "UdanaSubskrypcja": "Udało ci się zasubskrybować produkt",
+    "UdanaSubskrypcja ": "Udało ci się zasubskrybować produkt: ",
     "UdanaSubskrypcjaInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
-    "NieudanaSubskrypcja": "Subskrybujesz już ten produkt lub wystąpił błąd."
+    "NieudanaSubskrypcja ": "Subskrybujesz już produkt: ",
+    "LubWystąpiłBłąd": "lub wystąpił błąd"
   }
 }

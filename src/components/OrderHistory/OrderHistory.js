@@ -23,7 +23,7 @@ const OrderHistory = () => {
     const singleOrder = useSelector(
         state => state.orderReducer.singleOrderHistory,
     );
-    // const lang = useSelector(state => state.clientDataReducer.language);
+    const lang = useSelector(state => state.clientDataReducer.language);
 
     const [showedOrder, setShowedOrder] = useState();
     //const [currency, setCurrency] = useState();
@@ -58,19 +58,19 @@ const OrderHistory = () => {
                 getClientSingleOrdersHistory(
                     token,
                     orders[orders.length - 1].order_id,
+                    lang,
                 ),
             );
             deselectAll();
             setShowedOrder(orders[orders.length - 1]);
-            selectOrder(orders[orders.length -1]);
+            selectOrder(orders[orders.length - 1]);
         }
+        //eslint-disable-next-line
     }, [orders, dispatch, token]);
-    if (singleOrder.error) {
-        return null;
-    }
+
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
-            <tr className={order.selected?'row-selected':''}>
+            <tr className={order.selected ? "row-selected" : ""}>
                 <td>
                     <button
                         className="row-button"
@@ -104,14 +104,14 @@ const OrderHistory = () => {
 
     const deselectAll = () => {
         orders.map((order, i) => {
-            order['selected'] = false;
+            return (order["selected"] = false);
         });
-    }
-    const selectOrder = (order) => {
-        if(order){
-            order['selected'] = true;
-        }   
-    }
+    };
+    const selectOrder = order => {
+        if (order) {
+            order["selected"] = true;
+        }
+    };
 
     const orderDetailHandler = selectedOrder => {
         deselectAll();
@@ -120,7 +120,9 @@ const OrderHistory = () => {
                 selectOrder(order);
                 setShowedOrder(order);
                 //setCurrency(order.currency_code);
-                dispatch(getClientSingleOrdersHistory(token, order.order_id));
+                dispatch(
+                    getClientSingleOrdersHistory(token, order.order_id, lang),
+                );
             }
             return null;
         });
@@ -184,9 +186,9 @@ const OrderHistory = () => {
                         <div className="col-sm-7 orders-right">
                             <div className="summary-details-box">
                                 <div className="summary-details">
-                                    {showedOrder && (
+                                    {showedOrder && singleOrder && (
                                         <>
-                                            <table>
+                                            <table className="w-100">
                                                 <tr>
                                                     <td>Numer zamówienia: </td>
                                                     <td>
@@ -234,7 +236,7 @@ const OrderHistory = () => {
                                                     <td>
                                                         <b>
                                                             {
-                                                                showedOrder.ship_to_number
+                                                                singleOrder.shippingAddress
                                                             }
                                                         </b>
                                                     </td>
@@ -286,7 +288,7 @@ const OrderHistory = () => {
                                 />
                             )}
                             {showedOrder &&
-                            showedOrder.status === "Zakończone" ? (
+                            showedOrder.status === "Zamówienie anulowane" ? (
                                 ""
                             ) : (
                                 <h5 className="header-title">
@@ -371,9 +373,9 @@ const OrderHistory = () => {
                                                               <span className="pull-right mb-0">
                                                                   <b>Razem: </b>
                                                                   <b className="order-text-value">
-                                                                      {
-                                                                          +order.total
-                                                                      }{" "}
+                                                                      {(+order.total).toFixed(
+                                                                          2,
+                                                                      )}{" "}
                                                                       {showedOrder &&
                                                                           showedOrder.currency_code}
                                                                   </b>
@@ -387,7 +389,7 @@ const OrderHistory = () => {
                                   })
                                 : null}
                             {showedOrder &&
-                            showedOrder.status === "Zakończone" ? (
+                            showedOrder.status === "Zamówienie anulowane" ? (
                                 ""
                             ) : (
                                 <div className="summary-box">
@@ -395,7 +397,9 @@ const OrderHistory = () => {
                                         <div className="font-weight-bold">
                                             Zapłacona kwota:{" "}
                                             {showedOrder &&
-                                                showedOrder.order_total_amount}{" "}
+                                                showedOrder.order_total_amount.toFixed(
+                                                    2,
+                                                )}{" "}
                                             {showedOrder &&
                                                 showedOrder.currency_code}
                                         </div>
