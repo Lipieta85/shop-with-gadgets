@@ -20,8 +20,7 @@ import Pager from "./Pager";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    let pagination = useSelector(state => state.cartReducer.pagination);
-    pagination = {totalPages:5}
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
 
