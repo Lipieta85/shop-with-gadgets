@@ -170,21 +170,25 @@ const OrderHistory = () => {
                 {orders.length !== 0 ? (
                     <div className="row">
                         <div className="col-sm-5 order-container">
-                            <table className="table">
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Status</th>
-                                    <th>Kwota netto</th>
-                                </tr>
-                                {confirmedOrder.reverse()}
+                            <table className="w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                        <th>Kwota netto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {confirmedOrder.reverse()}
+                                </tbody>
                             </table>
                         </div>
                         <div className="col-sm-7 orders-right">
                             <div className="summary-details-box">
                                 <div className="summary-details">
-                                    {showedOrder && (
+                                    {showedOrder && singleOrder && (
                                         <>
-                                            <table>
+                                            <table className="w-100">
                                                 <tr>
                                                     <td>Numer zamówienia: </td>
                                                     <td>
@@ -232,7 +236,7 @@ const OrderHistory = () => {
                                                     <td>
                                                         <b>
                                                             {
-                                                                showedOrder.ship_to_number
+                                                                singleOrder.shippingAddress
                                                             }
                                                         </b>
                                                     </td>
@@ -291,15 +295,15 @@ const OrderHistory = () => {
                                     Zamówione produkty:
                                 </h5>
                             )}
-                            {singleOrder
-                                ? singleOrder.map((order, i) => {
+                            {singleOrder.items
+                                ? singleOrder.items.map((order, i) => {
                                       return (
                                           <>
-                                              <li className="row nav-item collection-item d-flex order-item-box">
-                                                  <div className="col-md-12 desc-col order-item">
-                                                      <span className="order-iteration">
-                                                          {i + 1}
-                                                      </span>
+                                              <li
+                                                  className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
+                                              >
+                                                  <div className="col-md-12 desc-col d-flex order-item">
+                                                      <span className="order-iteration">{i + 1}</span>
                                                       <div className="order-img-box">
                                                           {order.image && (
                                                               <img

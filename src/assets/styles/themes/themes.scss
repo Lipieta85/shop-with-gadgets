@@ -5,7 +5,8 @@ $wixBlack: rgb(35, 31, 32);
 $wixDarkGray: rgb(42, 42, 42);
 $lightNav: #f8f9fa;
 $lightBgC: rgb(230, 230, 230);
-$gray9: #f7f7f7;
+$gray10: #f7f7f7;
+$gray9: #f2f2f2;
 $gray8: #ced4da;
 $gray5: #a0a3a6;
 $gray4: #96989b;
@@ -32,7 +33,7 @@ $themes: (
         tableHeaderColor: $white,
         divider: $lightBgC,
         hrBorderC: $hr,
-        endBoxBg: $gray9,
+        endBoxBg: $gray10,
         tableRowSelected:$rowSelected,
 
         fullBtnColor: $white,
@@ -85,8 +86,8 @@ $themes: (
         backetSummaryFontC: $wixBlack,
         //}
             //order-options{
-            orderOptionsBg: $gray9,
-        orderOptionsBtnBg: $gray9,
+            orderOptionsBg: $gray10,
+        orderOptionsBtnBg: $gray10,
         orderOptionsBtnBgH: $gray2,
         orderOptionsBtnFontC: $gray2,
         orderOptionsBtnFontCH: $white,
@@ -95,6 +96,7 @@ $themes: (
             //order-history{
             orderHistoryDetails: $lightNav,
         orderHistoryDetailsBorderC: $lightNav,
+        orderHistoryDetailsOdd: $gray9,
         //}
             //footer{
             footerBgC: $lightNav,
@@ -195,6 +197,7 @@ $themes: (
                 //order-history{
                 orderHistoryDetails: $wixBlack,
             orderHistoryDetailsBorderC: $wixOrange,
+            orderHistoryDetailsOdd: $wixDarkGray,
             //}
                 //footer{
                 footerBgC: $wixOrange,

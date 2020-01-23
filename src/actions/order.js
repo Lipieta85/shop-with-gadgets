@@ -152,7 +152,7 @@ export const getClientSingleOrdersHistory = (token, id, lang) => {
     return (dispatch, getState) => {
         getSingleUserOrder(token, id, lang)
             .then(res => {
-                dispatch(setSingleOrderHistory(res.data.get.items));
+                dispatch(setSingleOrderHistory(res.data.get));
             })
             .catch(error => {
                 console.log(error);
