@@ -35,6 +35,7 @@
                     } 
                     font-weight: 500;
                     border-top: none;
+                    border-bottom: 0px;
                 }
                 td{
                     padding: 0;
@@ -153,7 +154,18 @@
         }
     }
 }
-@media (max-width: 400px) {
+@media (min-width: 576px){
+    span, b{
+        font-size: 13px;
+    }
+    .title{
+        font-size: 15px!important;
+    }
+    .cell{
+        font-size: 12px;
+    }
+}
+@media (max-width: 450px){
     span, b{
         font-size: 13px;
     }
@@ -191,5 +203,16 @@
 @media (min-width: 577px) {
     .order-history-container{
         padding: 3rem;  
+    }
+}
+@media (min-width: 900px){
+    span, b{
+        font-size: 16px;
+    }
+    .title{
+        font-size: 18px!important;
+    }
+    .cell{
+        font-size: 16px;
     }
 }

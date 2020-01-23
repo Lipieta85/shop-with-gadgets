@@ -168,13 +168,17 @@ const OrderHistory = () => {
                 {orders.length !== 0 ? (
                     <div className="row">
                         <div className="col-sm-5 order-container">
-                            <table className="table">
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Status</th>
-                                    <th>Kwota netto</th>
-                                </tr>
-                                {confirmedOrder.reverse()}
+                            <table className="w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                        <th>Kwota netto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {confirmedOrder.reverse()}
+                                </tbody>
                             </table>
                         </div>
                         <div className="col-sm-7 orders-right">
@@ -289,24 +293,14 @@ const OrderHistory = () => {
                                     Zamówione produkty:
                                 </h5>
                             )}
-                            {singleOrder
-                                ? singleOrder.map((order, i) => {
+                            {singleOrder.items
+                                ? singleOrder.items.map((order, i) => {
                                       return (
                                           <>
                                               <li
                                                   className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
                                               >
-                                                  {/* <div className="col-md-4 d-flex align-items-center text-center">
-                                        <div className="item-img p-1">
-                                            <img
-                                                src={order.img ? order.img : defImg}
-                                                alt="item"
-                                                className="item-summary-img w-50 p-2"
-                                            />
-                                        </div>
-                                    </div> */}
-
-                                                  <div className="col-md-12 desc-col order-item">
+                                                  <div className="col-md-12 desc-col d-flex order-item">
                                                       <span className="order-iteration">{i + 1}</span>
                                                       <div className="order-img-box">
                                                           {order.image && (
