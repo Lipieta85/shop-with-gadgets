@@ -97,13 +97,14 @@ export const changeProductsCategory = async (
     number,
     company,
     currentPage,
+    lang,
 ) => {
     return await trackPromise(
         axios({
             method: "get",
             url: `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
                 number,
-            )}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -281,11 +282,11 @@ export const getUserBudgetHistory = async token => {
     );
 };
 
-export const getSingleUserOrder = async (token, orderId) => {
+export const getSingleUserOrder = async (token, orderId, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"pl"}`,
+            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}"}`,
             headers: {
                 Authorization: token,
             },

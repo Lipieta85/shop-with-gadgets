@@ -148,11 +148,11 @@ export const productsToOrder = products => {
     };
 };
 
-export const getClientSingleOrdersHistory = (token, id) => {
+export const getClientSingleOrdersHistory = (token, id, lang) => {
     return (dispatch, getState) => {
-        getSingleUserOrder(token, id)
+        getSingleUserOrder(token, id, lang)
             .then(res => {
-                dispatch(setSingleOrderHistory(res.data.get));
+                dispatch(setSingleOrderHistory(res.data.get.items));
             })
             .catch(error => {
                 console.log(error);
