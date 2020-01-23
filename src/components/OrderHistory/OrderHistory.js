@@ -23,7 +23,7 @@ const OrderHistory = () => {
     const singleOrder = useSelector(
         state => state.orderReducer.singleOrderHistory,
     );
-    // const lang = useSelector(state => state.clientDataReducer.language);
+    const lang = useSelector(state => state.clientDataReducer.language);
 
     const [showedOrder, setShowedOrder] = useState();
     //const [currency, setCurrency] = useState();
@@ -58,20 +58,19 @@ const OrderHistory = () => {
                 getClientSingleOrdersHistory(
                     token,
                     orders[orders.length - 1].order_id,
+                    lang,
                 ),
             );
             deselectAll();
             setShowedOrder(orders[orders.length - 1]);
-            selectOrder(orders[orders.length -1]);
+            selectOrder(orders[orders.length - 1]);
         }
         //eslint-disable-next-line
     }, [orders, dispatch, token]);
-    if (singleOrder.error) {
-        return null;
-    }
+
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
-            <tr className={order.selected?'row-selected':''}>
+            <tr className={order.selected ? "row-selected" : ""}>
                 <td>
                     <button
                         className="row-button"
@@ -105,14 +104,14 @@ const OrderHistory = () => {
 
     const deselectAll = () => {
         orders.map((order, i) => {
-           return order['selected'] = false;
+            return (order["selected"] = false);
         });
-    }
-    const selectOrder = (order) => {
-        if(order){
-            order['selected'] = true;
-        }   
-    }
+    };
+    const selectOrder = order => {
+        if (order) {
+            order["selected"] = true;
+        }
+    };
 
     const orderDetailHandler = selectedOrder => {
         deselectAll();
@@ -121,7 +120,9 @@ const OrderHistory = () => {
                 selectOrder(order);
                 setShowedOrder(order);
                 //setCurrency(order.currency_code);
-                dispatch(getClientSingleOrdersHistory(token, order.order_id));
+                dispatch(
+                    getClientSingleOrdersHistory(token, order.order_id, lang),
+                );
             }
             return null;
         });
@@ -283,7 +284,7 @@ const OrderHistory = () => {
                                 />
                             )}
                             {showedOrder &&
-                            showedOrder.status === "Zakończone" ? (
+                            showedOrder.status === "Zamówienie anulowane" ? (
                                 ""
                             ) : (
                                 <h5 className="header-title">
@@ -294,21 +295,11 @@ const OrderHistory = () => {
                                 ? singleOrder.map((order, i) => {
                                       return (
                                           <>
-                                              <li
-                                                  className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
-                                              >
-                                                  {/* <div className="col-md-4 d-flex align-items-center text-center">
-                                        <div className="item-img p-1">
-                                            <img
-                                                src={order.img ? order.img : defImg}
-                                                alt="item"
-                                                className="item-summary-img w-50 p-2"
-                                            />
-                                        </div>
-                                    </div> */}
-
+                                              <li className="row nav-item collection-item d-flex order-item-box">
                                                   <div className="col-md-12 desc-col order-item">
-                                                      <span className="order-iteration">{i + 1}</span>
+                                                      <span className="order-iteration">
+                                                          {i + 1}
+                                                      </span>
                                                       <div className="order-img-box">
                                                           {order.image && (
                                                               <img
@@ -378,9 +369,9 @@ const OrderHistory = () => {
                                                               <span className="pull-right mb-0">
                                                                   <b>Razem: </b>
                                                                   <b className="order-text-value">
-                                                                      {
-                                                                          +order.total
-                                                                      }{" "}
+                                                                      {(+order.total).toFixed(
+                                                                          2,
+                                                                      )}{" "}
                                                                       {showedOrder &&
                                                                           showedOrder.currency_code}
                                                                   </b>
@@ -394,7 +385,7 @@ const OrderHistory = () => {
                                   })
                                 : null}
                             {showedOrder &&
-                            showedOrder.status === "Zakończone" ? (
+                            showedOrder.status === "Zamówienie anulowane" ? (
                                 ""
                             ) : (
                                 <div className="summary-box">
@@ -402,7 +393,9 @@ const OrderHistory = () => {
                                         <div className="font-weight-bold">
                                             Zapłacona kwota:{" "}
                                             {showedOrder &&
-                                                showedOrder.order_total_amount}{" "}
+                                                showedOrder.order_total_amount.toFixed(
+                                                    2,
+                                                )}{" "}
                                             {showedOrder &&
                                                 showedOrder.currency_code}
                                         </div>

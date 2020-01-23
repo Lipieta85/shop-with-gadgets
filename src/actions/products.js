@@ -48,11 +48,11 @@ export const setProductCategories = number => {
     };
 };
 
-export const changeProductCategory = (token, number, currentPage) => {
+export const changeProductCategory = (token, number, currentPage, lang) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
-
-        changeProductsCategory(token, number, company, currentPage)
+        const lang = getState().clientDataReducer.language;
+        changeProductsCategory(token, number, company, currentPage, lang)
             .then(res => {
                 dispatch(setProducts(res.data));
             })
