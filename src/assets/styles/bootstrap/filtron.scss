@@ -68,6 +68,25 @@ input[type=number] {
     -ms-user-select: none;
     user-select: none;
 }
+.loading-box{
+    border: 1px solid gray;
+    height: 26px;
+    position: relative;
+    .loading-bar{
+        position: absolute;
+        height: 24px;
+        @include themify($themes) {
+            background-color: themed("loadingBar");
+        }
+        transition: .3s;
+        width: 1%;
+        top: 0px;
+    }
+    .loading-percent{
+        position: absolute;
+        z-index: 1;
+    }
+}
 .border-button {
     border: solid .1rem;
     @include themify($themes) {

@@ -35,6 +35,7 @@ $themes: (
         hrBorderC: $hr,
         endBoxBg: $gray10,
         tableRowSelected:$rowSelected,
+        loadingBar:rgba(0,0,0,0.1),
 
         fullBtnColor: $white,
         fullBtnBg: $gray4,
@@ -139,6 +140,7 @@ $themes: (
             hrBorderC: $wixOrange,
             endBoxBg: $white,
             tableRowSelected:$rowSelected,
+            loadingBar:rgb(255, 182, 15),
 
             fullBtnColor: $wixBlack,
             fullBtnBg: $wixOrange,
