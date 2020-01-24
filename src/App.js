@@ -81,7 +81,7 @@ export default withRouter(function App({ location }, props) {
     }, [i18n, location.search, parsed.lang]);
 
     if (location.search) {
-        localStorage.removeItem("token");
+        //localStorage.removeItem("token");
         dispatch(companyId(parsed.brand));
         getLinkToken(parsed.dt)
             .then(res => {
