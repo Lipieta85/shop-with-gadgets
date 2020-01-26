@@ -1,4 +1,4 @@
-const host = "https://mh-ecommerce-qa.bpower2.com/index.php";
+const host = "https://mh-ecommerce-dev.bpower2.com/index.php";
 //"https://mh-ecommerce-dev.bpower2.com/index.php";
 // qa`https://mh-ecommerce-qa.bpower2.com/index.php`;
 /*  default: */

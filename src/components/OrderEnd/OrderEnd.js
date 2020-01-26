@@ -14,11 +14,6 @@ const OrderEnd = () => {
     const { t } = useTranslation();
     const [confirmText, setConfirmText] = useState("",);
     let [loadingPercent, setLoadingPercent] = useState("1%");
-    // useEffect(() => {
-    //     if (promiseInProgress === true) {
-    //         setConfirmText(<h3>{t("OrderEnd.PrzetwarzanieZamówienia")}</h3>)
-    //     }
-    // }, [promiseInProgress, t])
 
     useEffect(() => {
         setTimeout(()=>{setLoadingPercent('12%');},100);setTimeout(()=>{setLoadingPercent('14%');},300)

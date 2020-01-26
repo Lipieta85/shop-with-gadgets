@@ -9,6 +9,7 @@ import {
     setProductCategories,
     initProducts,
     setPage,
+    changeLanguage
 } from "../../actions/index";
 import host from "../../api/host";
 import host2 from "../../api/host2";
@@ -16,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "./NotificationModal";
 const NavMenu = () => {
-    //const id = useSelector(state => state.cartReducer.productsCategory);
+    const lang = useSelector(state => state.clientDataReducer.language)
     const company = useSelector(state => state.clientDataReducer.companyId);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const orderType = useSelector(
@@ -55,6 +56,10 @@ const NavMenu = () => {
             oneCategoryHandler(e.target.id);
         }
     };
+    const changeLangHandler = event => {
+        return dispatch(changeLanguage(event.target.value))
+    }
+
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
             <div className="container-fluid p-0">
@@ -143,7 +148,7 @@ const NavMenu = () => {
                             window.location.pathname === `/Basket` ||
                             window.location.pathname === `/Contact` ||
                             window.location.pathname === `/Regulations` ? (
-                                <li className="nav-item">
+                                <li className="nav-item ml-auto">
                                     <a
                                         className="nav-link text-uppercase"
                                         href={`${host2}/`}
@@ -225,6 +230,14 @@ const NavMenu = () => {
                                     {t(`Nav.Wyloguj`)}
                                 </a>
                             </li>
+                            <select
+                                className="custom-select lang-select-btn"
+                                value={lang}
+                                onChange={changeLangHandler}
+                            >
+                                <option value="pl">PL</option>
+                                <option value="en">EN</option>
+                            </select>
                         </ul>
                     </div>
                 </nav>
