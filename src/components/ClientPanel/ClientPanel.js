@@ -17,6 +17,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
+import $ from "jquery";
+import { useTranslation } from "react-i18next";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -26,11 +28,16 @@ const ClientPanel = props => {
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
-    const [search, setSearch] = useState("");
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
+    const { t } = useTranslation();
 
     useEffect(() => {
+        $('.submit_on_enter').keydown((event)=> {
+            if (event.keyCode == 13) {
+              handleSearchBtn();
+            }
+        });
         if (token && category === "1") {
             dispatch(initProducts(token, currentPage));
             if (currentPage < 3) {
@@ -80,39 +87,35 @@ const ClientPanel = props => {
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
-    const handleChange = e => {
-        setSearch(e.target.value);
-    };
     const handleSearchBtn = e => {
-        dispatch(searchProduct(token, lang, search));
+        dispatch(searchProduct(token, lang, $('.submit_on_enter').val()));
     };
     return (
         <div className="client-side">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
-                        <div className="search-panel">
-                            <div className="search-box">
-                                <span>Wyszukaj produkt</span>
-                                <input
-                                    type="text"
-                                    className="search-input"
-                                    placeholder="Nazwa produktu"
-                                    onChange={handleChange}
-                                ></input>
-                                <button
-                                    className="search-button"
-                                    onClick={handleSearchBtn}
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faSearch}
-                                        size="1x"
-                                        color="gray"
-                                    />
-                                </button>
+                        <div className="search-panel row">
+                            <div className="panel-left col-4 m-desktop-flex">
+                                <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
                             </div>
+                            <div className="panel-right col-12 col-sm-8">
+                                <div className="search-box w-100">
+                                    <input 
+                                        type="text" 
+                                        className="search-input submit_on_enter" 
+                                        placeholder={t(`CPanelMenu.NazwaProduktu`)}
+                                    ></input>
+                                    <button className="search-button" onClick={handleSearchBtn}>
+                                        <FontAwesomeIcon
+                                            icon={faSearch}
+                                            size="1x"
+                                        />
+                                    </button> 
+                                </div>
+                            </div> 
                         </div>
-                        <div className="row card-container text-center mt-2">
+                        <div className="row card-container text-center mt-1">
                             {items && (
                                 <Product
                                     items={items}
