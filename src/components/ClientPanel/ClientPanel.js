@@ -9,8 +9,8 @@ import {
     prevPage,
     setPage,
     changeProductCategory,
+    searchProduct,
 } from "../../actions/index";
-
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,9 +25,9 @@ const ClientPanel = props => {
     //pagination = {totalPages:5}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
-
+    const lang = useSelector(state => state.clientDataReducer.language);
+    const [search, setSearch] = useState("");
     const dispatch = useDispatch();
-
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -80,7 +80,12 @@ const ClientPanel = props => {
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
-
+    const handleChange = e => {
+        setSearch(e.target.value);
+    };
+    const handleSearchBtn = e => {
+        dispatch(searchProduct(token, lang, search));
+    };
     return (
         <div className="client-side">
             <div className="container-fluid">
@@ -89,13 +94,21 @@ const ClientPanel = props => {
                         <div className="search-panel">
                             <div className="search-box">
                                 <span>Wyszukaj produkt</span>
-                                <input type="text" className="search-input" placeholder="Nazwa produktu"></input>
-                                <button className="search-button">
-                                <FontAwesomeIcon
-                                    icon={faSearch}
-                                    size="1x"
-                                    color="gray"
-                                />
+                                <input
+                                    type="text"
+                                    className="search-input"
+                                    placeholder="Nazwa produktu"
+                                    onChange={handleChange}
+                                ></input>
+                                <button
+                                    className="search-button"
+                                    onClick={handleSearchBtn}
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faSearch}
+                                        size="1x"
+                                        color="gray"
+                                    />
                                 </button>
                             </div>
                         </div>
