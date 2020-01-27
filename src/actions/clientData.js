@@ -32,12 +32,12 @@ export const getLang = data => {
         data,
     };
 };
-export const changeLanguage = (lang) => {
+export const changeLanguage = lang => {
     return {
         type: type.CHANGE_LANGUAGE,
-        lang
-    }
-}
+        lang,
+    };
+};
 export const companyName = name => {
     return {
         type: type.COMPANY_NAME,
@@ -84,6 +84,12 @@ export const getBaseBudget = code => {
 export const getPeriodFrom = code => {
     return {
         type: type.GET_PERIOD_FROM,
+        code,
+    };
+};
+export const searchProduct = code => {
+    return {
+        type: type.SEARCH_PRODUCT,
         code,
     };
 };

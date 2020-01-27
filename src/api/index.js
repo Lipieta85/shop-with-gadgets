@@ -222,6 +222,17 @@ export const changeProduct = async (
     );
 };
 
+export const searchProduct = async (token, lang, name) => {
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: `${host}/restApi/products/method/all/parameters/{"lang":"${lang}", "search":{"name":"${name}"}}`,
+            headers: {
+                Authorization: token,
+            },
+        }),
+    );
+};
 export const getBasketProduct = async token => {
     return await trackPromise(
         axios({
