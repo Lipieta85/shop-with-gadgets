@@ -127,7 +127,7 @@ const ProductDetails = props => {
                                             {productTitle}
                                         </h3>
                                         <p className="font-weight-bold">
-                                            Opis produktu:{" "}
+                                            {t("ProductDetails.OpisProduktu")}:{" "}
                                             <span className="product-details-text">
                                                 {productDescription}
                                             </span>

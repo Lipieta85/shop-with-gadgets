@@ -2,7 +2,7 @@
 
 .budget-history {
     min-height: calc(100vh - 57px);
-    padding-top: 50px;
+
     @include themify($themes) {
         background-color: themed("mainBackgroundColor");
     }
@@ -12,22 +12,25 @@
     //background: url(/static/media/bg_top_2.850d8c2c.jpg) center no-repeat;
     background-size: cover;
     padding-left: 10%;
+    padding-top: 50px;
     padding-right: 10%;
     .budgetTitles {
         display: flex;
         justify-content: space-between;
+
         .titleBudgetHistory {
             margin: 0;
-            padding-top: 10px;
+            padding-top: 20px;
         }
         .titleBudgetAtTheBegging {
-            padding-top: 20px;
+            padding-top: 30px;
             margin-right: 0;
         }
     }
     .remainingBudgetTitle {
         display: flex;
         justify-content: flex-end;
+        padding-bottom: 20px;
     }
     table {
         margin-top: 1rem;
@@ -63,6 +66,56 @@
             &:hover {
                 background-color: rgb(211, 211, 211);
             }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .budget-history {
+        padding: 60px 0 10px 0;
+        .budgetTitles {
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            font-size: 16px;
+        }
+        .remainingBudgetTitle {
+            font-size: 16px;
+        }
+        .table {
+            padding: 0;
+            width: 100%;
+            margin: 0;
+            th {
+                padding: 5px 2px;
+            }
+        }
+        .cell {
+            font-size: 12px;
+        }
+    }
+}
+@media (max-width: 576px) {
+    .budget-history {
+        padding: 60px 0 10px 0;
+        .budgetTitles {
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        tr {
+            font-size: 14px;
+        }
+        .cell {
+            font-size: 12px;
+        }
+    }
+    .container-fluid {
+        padding: 0rem;
+        .orders-right {
+            padding: 0rem;
         }
     }
 }

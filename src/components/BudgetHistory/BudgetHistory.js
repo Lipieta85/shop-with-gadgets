@@ -75,7 +75,7 @@ const BudgetHistory = () => {
     }
     return (
         <div className="budget-history">
-            <div className="container-fluid p-5">
+            <div className="container-fluid ">
                 <NavMenu />
                 <div>
                     <div>
@@ -137,6 +137,7 @@ const BudgetHistory = () => {
                                                     {history}
                                                 </tbody>
                                             </table>
+
                                             <div className="remainingBudgetTitle">
                                                 Pozostały do wykorzystania
                                                 budżet marketingowy na rok{" "}

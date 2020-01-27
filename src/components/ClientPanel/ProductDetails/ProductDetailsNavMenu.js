@@ -6,11 +6,12 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "../../ClientPanel/NotificationModal";
 import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
-
+import { changeLanguage } from "../../../actions/index";
 import logo from "../../../assets/images/filtron_logo.png";
 import logo2 from "../../../assets/images/WIX_logo.png";
 
 const ProductDetailsNavMenu = () => {
+    const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
@@ -21,6 +22,9 @@ const ProductDetailsNavMenu = () => {
 
     const onSignout = () => {
         dispatch(signOut());
+    };
+    const changeLangHandler = event => {
+        return dispatch(changeLanguage(event.target.value));
     };
     const showPaidOrders = () => {
         setModalShowPaidOrders(true);
@@ -85,7 +89,7 @@ const ProductDetailsNavMenu = () => {
                                         className="dropdown-item text-uppercase"
                                         to="/Basket"
                                     >
-                                        Koszyk
+                                        {t("Nav.Koszyk")}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
@@ -107,6 +111,13 @@ const ProductDetailsNavMenu = () => {
                                             {t(`Nav.ZamówieniaPłatne`)}
                                         </Link>
                                     ) : null}
+                                    <Link
+                                        className="dropdown-item text-uppercase"
+                                        onClick={onSignout}
+                                        href="/"
+                                    >
+                                        {t(`Nav.Wyloguj`)}
+                                    </Link>
                                 </div>
                                 <ButtonToolbar className="invisible">
                                     <Button
@@ -125,7 +136,17 @@ const ProductDetailsNavMenu = () => {
                                     />
                                 </ButtonToolbar>
                             </li>
-                            <li className="nav-item text-uppercase">
+                            <select
+                                className="custom-select lang-select-btn"
+                                value={lang}
+                                onChange={changeLangHandler}
+                            >
+                                <option value="pl">PL</option>
+                                <option value="en">EN</option>
+                                <option value="en">RU</option>
+                                <option value="en">IT</option>
+                            </select>
+                            {/* <li className="nav-item text-uppercase">
                                 <a
                                     className="nav-link"
                                     onClick={onSignout}
@@ -133,7 +154,7 @@ const ProductDetailsNavMenu = () => {
                                 >
                                     {t("Nav.Wyloguj")}
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </nav>

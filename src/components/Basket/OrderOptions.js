@@ -93,12 +93,9 @@ const OrderOptions = () => {
                     </select>
                 </div>
             </div>
-            {!clientUE&&
-                <p className="out-of-ue-info">
-                    Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty 
-                    niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju.
-                </p>
-            }
+            {!clientUE && (
+                <p className="out-of-ue-info">{t("Basket.UEinfo")}</p>
+            )}
             <hr />
             <div className="order-type invisible" style={{ height: "0" }}>
                 <h4 className="options-header">
