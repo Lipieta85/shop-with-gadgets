@@ -104,12 +104,12 @@ const BudgetHistory = () => {
                                         <div className="titleBudgetAtTheBegging">
                                             Przyznany budżet marketingowy na rok{" "}
                                             {periodFrom.substr(0, 4)}:{" "}
-                                            <b>
+                                            <strong>
                                                 {numberWithSpaces(
                                                     baseBudget.toFixed(2),
                                                 )}{" "}
                                                 {currencyCode}
-                                            </b>
+                                            </strong>{" "}
                                         </div>
                                     </div>
                                 )
@@ -141,13 +141,13 @@ const BudgetHistory = () => {
                                                 Pozostały do wykorzystania
                                                 budżet marketingowy na rok{" "}
                                                 {periodFrom.substr(0, 4)}{" "}
-                                                <b>
+                                                <strong>
                                                     {": "}
                                                     {numberWithSpaces(
                                                         remainingBudget,
                                                     )}{" "}
                                                     {currencyCode}
-                                                </b>
+                                                </strong>
                                             </div>
                                         </>
                                     ) : (

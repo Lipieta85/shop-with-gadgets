@@ -20,14 +20,23 @@
         margin-right: -10px;
         display: flex;
         align-items: center;
-        justify-content: right;
+        padding: 0px 5px;
+        .search-input::placeholder{  
+            opacity: 0.5;
+        }
         .search-input{
             border-radius: 2px;
             border:1px solid rgb(192, 192, 192);
-            color:gray;
+            height:28px;
+            padding-left: 2px;
+            &:focus{
+                outline: none;
+            }
         }
         .search-button{
             height: 28px;
+            position: relative;
+            top:1px;
         }
     }
     .card-container {

@@ -52,6 +52,7 @@ function initializeReactGA() {
 
 export default withRouter(function App({ location }, props) {
     const company = useSelector(state => state.clientDataReducer.companyId)
+    const lang = useSelector(state => state.clientDataReducer.language)
     const parsed = queryString.parse(location.search);
     
     const [currentPath, setCurrentPath] = useState(location.pathname);
@@ -77,8 +78,8 @@ export default withRouter(function App({ location }, props) {
     }, [company])
 
     useEffect(() => {
-        i18n.changeLanguage(parsed.lang);
-    }, [i18n, location.search, parsed.lang]);
+        i18n.changeLanguage(lang);
+    }, [i18n, location.search, lang]);
 
     if (location.search) {
         //localStorage.removeItem("token");
@@ -91,6 +92,7 @@ export default withRouter(function App({ location }, props) {
                 localStorage.setItem("userID", userID.userId);
                 localStorage.setItem("token", res.data.token);
                 getUserData(res.data.token).then(res => {
+                    dispatch(getLang(parsed.lang));
                     dispatch(
                         setBudget(
                             res.data.getWixClientData.budget
@@ -111,7 +113,6 @@ export default withRouter(function App({ location }, props) {
                             res.data.getWixClientData.budget.currencyCode,
                         ),
                     );
-                    dispatch(getLang(parsed.lang));
                     dispatch(
                         getRemainingBudget(
                             res.data.getWixClientData.budget.remainingBudget,

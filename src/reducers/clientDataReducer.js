@@ -39,6 +39,11 @@ const clientDataReducer = (state = initialState, action) => {
                 ...state,
                 language: action.data,
             };
+        case type.CHANGE_LANGUAGE:
+            return {
+                ...state,
+                language: action.lang,
+            };
         case type.COMPANY_NAME:
             return {
                 ...state,

@@ -58,5 +58,6 @@ export {
     getPeriodFrom,
     isStorePolicyAccepted,
     acceptPolicy,
-    userIdNumber
+    userIdNumber,
+    changeLanguage
 } from "./clientData.js";
