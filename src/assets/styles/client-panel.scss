@@ -12,31 +12,50 @@
     min-height: calc(100vh - 57px);
     padding: 90px 10px 0 10px;
     .search-panel{
-        height: 34px;
+        height: 42px;
         background-color: #f8f9fa;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
         margin-top: 20px;
-        margin-left: -10px;
+        margin-left: -11px;
         margin-right: -10px;
-        display: flex;
-        align-items: center;
-        padding: 0px 5px;
+        padding: 2px 5px 0px 5px;
+        color: gray;
+        .panel-left{
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+        .panel-right{
+            display: flex;
+            align-items: center;
+            text-align: right;
+            padding: 0;
+            .search-box{
+                width: 100%;
+            }
+        }
         .search-input::placeholder{  
             opacity: 0.5;
         }
         .search-input{
             border-radius: 2px;
-            border:1px solid rgb(192, 192, 192);
-            height:28px;
+            border:1px solid rgb(209, 209, 209);
+            height:29px;
             padding-left: 2px;
+            width: 85%;
+            color: gray;
             &:focus{
                 outline: none;
             }
         }
         .search-button{
-            height: 28px;
+            width: 50px;
+            height: 29px;
+            border-radius: 2px;
+            border:1px solid rgb(209, 209, 209);
+            background-color: white;
             position: relative;
-            top:1px;
+            left: -1px;
         }
     }
     .card-container {
@@ -139,13 +158,26 @@
         padding: 90px 50px 0 50px;
     }
 }
-
+@media (max-width: 1838px) {
+    .search-panel {
+        max-width: 1172px;
+    }
+}
 @media (max-width: 1838px) {
     .client-side {
         padding: 70px 16px 0 24px;
     }
 }
-
+@media (max-width: 600px) {
+    .search-input {
+        width: 85%!important;
+    }
+}
+@media (max-width:380px){
+    .search-button{
+        width: 30px!important;
+    }
+}
 @media (max-width: 991px) {
     .client-side {
         .card-container {

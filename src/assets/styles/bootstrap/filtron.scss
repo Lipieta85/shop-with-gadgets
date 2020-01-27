@@ -110,17 +110,23 @@ input[type=number] {
         }
     }
 }
-@media (max-width:450px){
+@media (max-width:600px){
     .m-desktop{
         display: none!important;
+    }
+    .m-desktop-flex{
+        display:none!important;
     }
     .m-mobile{
         display: block!important;
     }
 }
-@media (min-width:450px){
+@media (min-width:601px){
     .m-desktop{
         display: block!important;
+    }
+    .m-desktop-flex{
+        display:flex!important;
     }
     .m-mobile{
         display: none!important;

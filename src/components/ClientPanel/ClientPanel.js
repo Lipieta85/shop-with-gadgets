@@ -86,20 +86,24 @@ const ClientPanel = props => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
-                        <div className="search-panel">
-                            <div className="search-box">
-                                <span>Wyszukaj produkt</span>
-                                <input type="text" className="search-input" placeholder="Nazwa produktu"></input>
-                                <button className="search-button">
-                                <FontAwesomeIcon
-                                    icon={faSearch}
-                                    size="1x"
-                                    color="gray"
-                                />
-                                </button>
+                        <div className="search-panel row">
+                            <div className="panel-left col-4 m-desktop-flex">
+                                <span>Wyszukaj produkt:</span>
                             </div>
+                            <div className="panel-right col-12 col-sm-8">
+                                <div className="search-box w-100">
+                                    <input type="text" className="search-input" placeholder="Nazwa produktu..."></input>
+                                    <button className="search-button">
+                                        <FontAwesomeIcon
+                                            icon={faSearch}
+                                            size="1x"
+                                            color="gray"
+                                        />
+                                    </button> 
+                                </div>
+                            </div> 
                         </div>
-                        <div className="row card-container text-center mt-2">
+                        <div className="row card-container text-center mt-1">
                             {items && (
                                 <Product
                                     items={items}
