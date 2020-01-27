@@ -85,7 +85,13 @@ const ClientPanel = props => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
-                        <div className="row card-container text-center mt-3">
+                        <div className="search-panel">
+                            <div className="search-box">
+                                <input type="text" className="search-input" placeholder="Nazwa produktu"></input>
+                                <button className="search-button">icon</button>
+                            </div>
+                        </div>
+                        <div className="row card-container text-center mt-2">
                             {items && (
                                 <Product
                                     items={items}
