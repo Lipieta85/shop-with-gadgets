@@ -7,6 +7,7 @@
     "MateriałyPromocyjne": "Promotional materials",
     "WróćDoStronyGłównej": "Return to the main page",
     "MojeKonto": "My account",
+    "Koszyk": "Basket",
     "ListaZamówień": "List of orders",
     "HistoriaBudżetu": "Budget history",
     "ZamówieniaPłatne": "Paid orders",
@@ -50,7 +51,8 @@
     "WybierzAdres": "Choose a delivery address",
     "KoszykJestPusty": "Basket Is Empty",
     "ProduktyWKoszyku": "Products currently in the basket",
-    "WybierzTypZamówienia": "Choose order type"
+    "WybierzTypZamówienia": "Choose order type",
+    "UEinfo": "Dear Customer, please make sure that you have all the documents and certificates necessary to import the ordered products into your country."
   },
   "Order": {
     "Podsumowanie": "Order Summary",
@@ -95,7 +97,8 @@
     "StanMagazynowy": "Product availability",
     "Powrót": "Back",
     "Poprzedni": "Previous",
-    "Następny": "Next"
+    "Następny": "Next",
+    "OpisProduktu": "Product description"
   },
   "Button": {
     "WniosekZamówieniePłatne": "Paid order application",

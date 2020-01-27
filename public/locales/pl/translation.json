@@ -7,6 +7,7 @@
     "MateriałyPromocyjne": "Materiały Promocyjne",
     "WróćDoStronyGłównej": "Wróć Do Strony Głównej",
     "MojeKonto": "Moje Konto",
+    "Koszyk": "Koszyk",
     "ListaZamówień": "Lista Zamówień",
     "HistoriaBudżetu": "Historia Budżetu",
     "ZamówieniaPłatne": "Zamówienia płatne",
@@ -46,7 +47,8 @@
     "WybierzAdres": "Wybierz adres dostawy",
     "KoszykJestPusty": "Koszyk jest pusty",
     "ProduktyWKoszyku": "Produkty aktualnie znajdujące się w koszyku",
-    "WybierzTypZamówienia": "Wybierz typ zamówienia"
+    "WybierzTypZamówienia": "Wybierz typ zamówienia",
+    "UEinfo": "Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."
   },
   "Footer": {
     "Regulamin": "Regulamin sklepu",
@@ -95,7 +97,8 @@
     "StanMagazynowy": " Stan magazynowy",
     "Powrót": "Powrót",
     "Poprzedni": "Poprzedni",
-    "Następny": "Następny"
+    "Następny": "Następny",
+    "OpisProduktu": "Opis produktu"
   },
   "Button": {
     "WniosekZamówieniePłatne": "Wniosek o zamówienie płatne",
