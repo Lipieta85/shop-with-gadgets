@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
+import $ from "jquery";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -26,11 +27,15 @@ const ClientPanel = props => {
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
-    const [search, setSearch] = useState("");
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
+        $('.submit_on_enter').keydown((event)=> {
+            if (event.keyCode == 13) {
+              handleSearchBtn();
+            }
+        });
         if (token && category === "1") {
             dispatch(initProducts(token, currentPage));
             if (currentPage < 3) {
@@ -80,11 +85,8 @@ const ClientPanel = props => {
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
-    const handleChange = e => {
-        setSearch(e.target.value);
-    };
     const handleSearchBtn = e => {
-        dispatch(searchProduct(token, lang, search));
+        dispatch(searchProduct(token, lang, $('.submit_on_enter').val()));
     };
     return (
         <div className="client-side">
@@ -99,9 +101,8 @@ const ClientPanel = props => {
                                 <div className="search-box w-100">
                                     <input 
                                         type="text" 
-                                        className="search-input" 
+                                        className="search-input submit_on_enter" 
                                         placeholder="Nazwa produktu..."
-                                        onChange={handleChange}
                                     ></input>
                                     <button className="search-button" onClick={handleSearchBtn}>
                                         <FontAwesomeIcon
