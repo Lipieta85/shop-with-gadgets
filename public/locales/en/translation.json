@@ -25,7 +25,9 @@
     "DostępnyBudżetMarketingowy": "Marketing Budget Available",
     "ZamówieniePłatne": "Paid Order",
     "WartośćTwoichZakupów": "Value of Your Purchases",
-    "PrzekroczonyBudżetMarketingowy": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered."
+    "PrzekroczonyBudżetMarketingowy": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered.",
+    "WyszukajProdukt":"Find the product:",
+    "NazwaProduktu":"Product name..."
   },
   "Card": {
     "Cena": "Price",

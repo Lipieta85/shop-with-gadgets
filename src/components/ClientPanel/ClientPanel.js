@@ -18,6 +18,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
 import $ from "jquery";
+import { useTranslation } from "react-i18next";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -29,6 +30,7 @@ const ClientPanel = props => {
     const lang = useSelector(state => state.clientDataReducer.language);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
+    const { t } = useTranslation();
 
     useEffect(() => {
         $('.submit_on_enter').keydown((event)=> {
@@ -95,14 +97,14 @@ const ClientPanel = props => {
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
                         <div className="search-panel row">
                             <div className="panel-left col-4 m-desktop-flex">
-                                <span>Wyszukaj produkt:</span>
+                                <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
                             </div>
                             <div className="panel-right col-12 col-sm-8">
                                 <div className="search-box w-100">
                                     <input 
                                         type="text" 
                                         className="search-input submit_on_enter" 
-                                        placeholder="Nazwa produktu..."
+                                        placeholder={t(`CPanelMenu.NazwaProduktu`)}
                                     ></input>
                                     <button className="search-button" onClick={handleSearchBtn}>
                                         <FontAwesomeIcon
