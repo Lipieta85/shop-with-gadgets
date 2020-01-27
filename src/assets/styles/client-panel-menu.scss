@@ -2,6 +2,7 @@
 
 .client-panel {
     margin-top: 10px;
+    margin-bottom: 0px;
     .admin-panel__logged-panel {
         @include themify($themes) {
             background-color: themed("clientPanelBackgroundColor");
@@ -116,7 +117,7 @@
 
 @media (min-width: 768px) and (max-width: 991.98px) {
     .client-panel {
-        margin: 9px 0 10px 0;
+        margin: 9px 0 0 0;
     }
 }
 @media (max-width: 991.98px) {

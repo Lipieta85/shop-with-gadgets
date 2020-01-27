@@ -25,7 +25,9 @@
     "DostępnyBudżetMarketingowy": "Dostępny Budżet Marketingowy",
     "ZamówieniePłatne": "Zamówienie płatne",
     "WartośćTwoichZakupów": "Wartość Twoich Zakupów",
-    "PrzekroczonyBudżetMarketingowy": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym."
+    "PrzekroczonyBudżetMarketingowy": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym.",
+    "WyszukajProdukt":"Wyszukaj produkt:",
+    "NazwaProduktu":"Nazwa produktu..."
   },
   "Card": {
     "Cena": "Cena",
