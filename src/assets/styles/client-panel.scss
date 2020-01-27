@@ -11,6 +11,34 @@
     margin: 0 auto;
     min-height: calc(100vh - 57px);
     padding: 90px 10px 0 10px;
+    .search-panel{
+        height: 34px;
+        background-color: #f8f9fa;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        margin-left: -10px;
+        margin-right: -10px;
+        display: flex;
+        align-items: center;
+        padding: 0px 5px;
+        .search-input::placeholder{  
+            opacity: 0.5;
+        }
+        .search-input{
+            border-radius: 2px;
+            border:1px solid rgb(192, 192, 192);
+            height:28px;
+            padding-left: 2px;
+            &:focus{
+                outline: none;
+            }
+        }
+        .search-button{
+            height: 28px;
+            position: relative;
+            top:1px;
+        }
+    }
     .card-container {
         .card {
             @include themify($themes) {

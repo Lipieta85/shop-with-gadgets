@@ -13,7 +13,8 @@ import {
 
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
 
@@ -85,7 +86,20 @@ const ClientPanel = props => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
-                        <div className="row card-container text-center mt-3">
+                        <div className="search-panel">
+                            <div className="search-box">
+                                <span>Wyszukaj produkt</span>
+                                <input type="text" className="search-input" placeholder="Nazwa produktu"></input>
+                                <button className="search-button">
+                                <FontAwesomeIcon
+                                    icon={faSearch}
+                                    size="1x"
+                                    color="gray"
+                                />
+                                </button>
+                            </div>
+                        </div>
+                        <div className="row card-container text-center mt-2">
                             {items && (
                                 <Product
                                     items={items}
