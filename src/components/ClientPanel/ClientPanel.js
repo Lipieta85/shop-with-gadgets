@@ -23,7 +23,7 @@ const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     let pagination = useSelector(state => state.cartReducer.pagination);
-    //pagination = {totalPages:5}
+    pagination = {totalPages:5}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
@@ -103,7 +103,7 @@ const ClientPanel = props => {
                                 <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
                             </div>
                             <div className="panel-right col-12 col-sm-8">
-                                <div className="search-box w-100">
+                                <div className="search-box">
                                     <input
                                         type="text"
                                         className="search-input submit_on_enter"

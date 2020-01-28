@@ -45,6 +45,7 @@
     "Ilość": "Qauntity",
     "Aktualizuj": "Update",
     "Razem": "Sum",
+    "BrakProduktów":"No products in basket.",
     "Wyczyść": "Clear Basket",
     "Kwota": "Amount to pay",
     "AlertKoszykPusty": "Basket is empty, add product",

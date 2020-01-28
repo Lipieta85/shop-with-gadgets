@@ -30,7 +30,7 @@ const BasketContainer = () => {
                                             {" "}
                                             <div className="order-end text-center">
                                                 <div className="order-end-box p-4">
-                                                    <h5>Brak produktów w koszyku.</h5>
+                                                    <h5>{t("Basket.BrakProduktów")}</h5>
                                                     <Link
                                                         to="/"
                                                         className="btn btn-outline-primary mt-2"
