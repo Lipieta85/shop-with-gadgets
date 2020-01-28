@@ -34,7 +34,7 @@ const ClientPanel = props => {
 
     useEffect(() => {
         $('.submit_on_enter').keydown((event)=> {
-            if (event.keyCode == 13) {
+            if (event.keyCode === 13) {
               handleSearchBtn();
             }
         });
