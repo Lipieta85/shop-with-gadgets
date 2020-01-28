@@ -66,17 +66,26 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
             });
     };
 };
-export const searchProductPanel = (token, lang, name) => {
-    return dispatch => {
-        searchProduct(token, lang, name)
+export const searchProductPanel = (token, currentPage, lang, name) => {
+    return (dispatch, getState) => {
+        const company = getState().clientDataReducer.companyId;
+
+        searchProduct(token, currentPage, lang, name, company)
             .then(res => {
-                dispatch(setProducts(res.data));
+                dispatch(setTypedProducts(res.data));
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
             });
     };
 };
+
+export const setTypedProducts = (typedProducts) => {
+    return {
+        type: type.SET_TYPED_PRODUCTS,
+        typedProducts
+    }
+}
 export const sendNotification = (token, id, email, language) => {
     return dispatch => {
         postSubscribe(token, id, email, language)
