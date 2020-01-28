@@ -9,7 +9,7 @@ import {
     prevPage,
     setPage,
     changeProductCategory,
-    searchProduct,
+    searchProductPanel,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -17,28 +17,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
-import $ from "jquery";
 import { useTranslation } from "react-i18next";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     let pagination = useSelector(state => state.cartReducer.pagination);
-    //pagination = {totalPages:5}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
-
+    const [name, setName] = useState("");
     useEffect(() => {
-        $('.submit_on_enter').keydown((event)=> {
-            if (event.keyCode === 13) {
-              handleSearchBtn();
-            }
-        });
-        if (token && category === "1") {
+        if (token && category === "1" && name === "") {
+            setName("");
             dispatch(initProducts(token, currentPage));
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
@@ -87,8 +81,15 @@ const ClientPanel = props => {
             .forEach(item => item.classList.remove("active"));
         event.target.parentNode.classList.add("active");
     };
+    const handleChange = e => {
+        setName(e.target.value);
+    };
     const handleSearchBtn = e => {
-        dispatch(searchProduct(token, lang, $('.submit_on_enter').val()));
+        if(e.key === undefined || e.key === 'Enter'){
+            if (name === "") {
+                dispatch(initProducts(token, currentPage));
+            } else dispatch(searchProductPanel(token, lang, name));
+        }
     };
     return (
         <div className="client-side">
@@ -101,19 +102,27 @@ const ClientPanel = props => {
                             </div>
                             <div className="panel-right col-12 col-sm-8">
                                 <div className="search-box w-100">
-                                    <input 
-                                        type="text" 
-                                        className="search-input submit_on_enter" 
-                                        placeholder={t(`CPanelMenu.NazwaProduktu`)}
+                                    <input
+                                        type="text"
+                                        className="search-input submit_on_enter"
+                                        onChange={handleChange}
+                                        onKeyDown={handleSearchBtn}
+                                        value={name}
+                                        placeholder={t(
+                                            `CPanelMenu.NazwaProduktu`,
+                                        )}
                                     ></input>
-                                    <button className="search-button" onClick={handleSearchBtn}>
+                                    <button
+                                        className="search-button"
+                                        onClick={handleSearchBtn}
+                                    >
                                         <FontAwesomeIcon
                                             icon={faSearch}
                                             size="1x"
                                         />
-                                    </button> 
+                                    </button>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         <div className="row card-container text-center mt-1">
                             {items && (

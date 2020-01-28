@@ -38,6 +38,7 @@ export {
     fetchProductsFailed,
     setProductCategories,
     changeProductCategory,
+    searchProductPanel,
 } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";
@@ -65,5 +66,4 @@ export {
     acceptPolicy,
     userIdNumber,
     changeLanguage,
-    searchProduct,
 } from "./clientData.js";
