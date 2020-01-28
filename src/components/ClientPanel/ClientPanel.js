@@ -89,6 +89,11 @@ const ClientPanel = props => {
             dispatch(initProducts(token, currentPage));
         } else dispatch(searchProductPanel(token, lang, name));
     };
+    const handleEnterPress = e => {
+        if (e.key === "Enter") {
+            dispatch(searchProductPanel(token, lang, name));
+        }
+    };
     return (
         <div className="client-side">
             <div className="container-fluid">
@@ -105,6 +110,7 @@ const ClientPanel = props => {
                                         className="search-input submit_on_enter"
                                         onChange={handleChange}
                                         value={name}
+                                        onKeyPress={handleEnterPress}
                                         placeholder={t(
                                             `CPanelMenu.NazwaProduktu`,
                                         )}
