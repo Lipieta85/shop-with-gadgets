@@ -23,6 +23,7 @@ const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     let pagination = useSelector(state => state.cartReducer.pagination);
+    //pagination = {totalPages:44}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
@@ -85,13 +86,10 @@ const ClientPanel = props => {
         setName(e.target.value);
     };
     const handleSearchBtn = e => {
-        if (name === "") {
-            dispatch(initProducts(token, currentPage));
-        } else dispatch(searchProductPanel(token, lang, name));
-    };
-    const handleEnterPress = e => {
-        if (e.key === "Enter") {
-            dispatch(searchProductPanel(token, lang, name));
+        if(e.key === undefined || e.key === 'Enter'){
+            if (name === "") {
+                dispatch(initProducts(token, currentPage));
+            } else dispatch(searchProductPanel(token, lang, name));
         }
     };
     return (
@@ -109,8 +107,8 @@ const ClientPanel = props => {
                                         type="text"
                                         className="search-input submit_on_enter"
                                         onChange={handleChange}
+                                        onKeyDown={handleSearchBtn}
                                         value={name}
-                                        onKeyPress={handleEnterPress}
                                         placeholder={t(
                                             `CPanelMenu.NazwaProduktu`,
                                         )}
