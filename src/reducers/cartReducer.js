@@ -226,13 +226,13 @@ const cartReducer = (state = initialState, action) => {
             });
             const products = arr;
             products.pop();
-
-            const pagination = data[0].pagination;
+            state.pagination = data[0].pagination;
+            //const pagination = data[0].pagination;
             return {
                 ...state,
                 items: products,
                 error: false,
-                pagination,
+                pagination:state.pagination,
             };
         case type.FETCH_PRODUCTS_FAILED:
             return {
