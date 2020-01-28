@@ -57,7 +57,8 @@ const NavMenu = () => {
         }
     };
     const changeLangHandler = event => {
-        return dispatch(changeLanguage(event.target.value));
+        dispatch(changeLanguage(event.target.value));
+        dispatch(initProducts(token, 1));
     };
 
     return (
