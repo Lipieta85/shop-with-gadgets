@@ -158,7 +158,7 @@ const OrderHistory = () => {
                         <div className="col-sm-7">
                             <h4 className="order-list ml-1 mb-2 header-title">
                                 {orders.length !== 0 &&
-                                    "Szczegóły zamówienia (" +
+                                    t("OrderHistory.SzczegółyZamówienia") +" (" +
                                         (showedOrder &&
                                             showedOrder.order_number) +
                                         ")"}
@@ -173,9 +173,9 @@ const OrderHistory = () => {
                             <table className="w-100">
                                 <thead>
                                     <tr>
-                                        <th>Data</th>
-                                        <th>Status</th>
-                                        <th>Kwota netto</th>
+                                        <th>{t('OrderHistory.Data')}</th>
+                                        <th>{t('OrderHistory.Status')}</th>
+                                        <th>{t('OrderHistory.KwotaNetto')}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -190,7 +190,7 @@ const OrderHistory = () => {
                                         <>
                                             <table className="w-100">
                                                 <tr>
-                                                    <td>Numer zamówienia: </td>
+                                                    <td>{t('OrderHistory.NumerZamówienia')} </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -200,7 +200,7 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Data złożenia: </td>
+                                                    <td>{t('OrderHistory.DataZłożenia')} </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -210,7 +210,7 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Godzina: </td>
+                                                    <td>{t('OrderHistory.Godzina')} </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -220,7 +220,7 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Waluta: </td>
+                                                    <td>{t('OrderHistory.Waluta')} </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -231,7 +231,7 @@ const OrderHistory = () => {
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        Adres dostarczenia:{" "}
+                                                    {t('OrderHistory.AdresDostarczenia')}{" "}
                                                     </td>
                                                     <td>
                                                         <b>
@@ -242,7 +242,7 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Status: </td>
+                                                    <td>{t('OrderHistory.Status')} </td>
                                                     <td>
                                                         <b>
                                                             {showedOrder.status}
@@ -250,7 +250,7 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Zapłacona kwota: </td>
+                                                    <td>{t('OrderHistory.ZapłaconaKwota')} </td>
                                                     <td>
                                                         <b>
                                                             {(+showedOrder.order_total_amount).toFixed(
@@ -292,7 +292,7 @@ const OrderHistory = () => {
                                 ""
                             ) : (
                                 <h5 className="header-title">
-                                    Zamówione produkty:
+                                    {t('OrderHistory.ZamówioneProdukty')}
                                 </h5>
                             )}
                             {singleOrder.items
@@ -338,7 +338,7 @@ const OrderHistory = () => {
                                                           </div>
                                                           <div>
                                                               <span>
-                                                                  Cena:{" "}
+                                                                  {t('OrderHistory.Cena')}{" "}
                                                                   <b className="order-text-value mr-3">
                                                                       {
                                                                           +order.unitPrice
@@ -351,9 +351,7 @@ const OrderHistory = () => {
                                                           <div className="order-history-delivery">
                                                               <span className="mr-3 mb-4">
                                                                   <span className="mr-1">
-                                                                      Zamówionych
-                                                                      /
-                                                                      dostarczonych:
+                                                                      {t("OrderHistory.ZamówionychDostarczonych")}
                                                                   </span>
                                                                   <b className="order-text-value">
                                                                       (
@@ -371,7 +369,7 @@ const OrderHistory = () => {
                                                                   </b>
                                                               </span>
                                                               <span className="pull-right mb-0">
-                                                                  <b>Razem: </b>
+                                                                  <b>{t('OrderHistory.Razem')} </b>
                                                                   <b className="order-text-value">
                                                                       {(+order.total).toFixed(
                                                                           2,
@@ -395,7 +393,7 @@ const OrderHistory = () => {
                                 <div className="summary-box">
                                     <div className="orders-summary">
                                         <div className="font-weight-bold">
-                                            Zapłacona kwota:{" "}
+                                            {t('OrderHistory.ZapłaconaKwota')}{" "}
                                             {showedOrder &&
                                                 showedOrder.order_total_amount.toFixed(
                                                     2,

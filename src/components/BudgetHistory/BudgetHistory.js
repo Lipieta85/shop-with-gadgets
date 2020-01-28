@@ -102,7 +102,7 @@ const BudgetHistory = () => {
                                             {t("BudgetHistory.HistoriaBudżetu")}
                                         </h2>
                                         <div className="titleBudgetAtTheBegging">
-                                            Przyznany budżet marketingowy na rok{" "}
+                                            {t("BudgetHistory.PrzyznanyBudżet")}{" "}
                                             {periodFrom.substr(0, 4)}:{" "}
                                             <strong>
                                                 {numberWithSpaces(
@@ -123,10 +123,10 @@ const BudgetHistory = () => {
                                             <table className="table">
                                                 <tbody>
                                                     <tr>
-                                                        <th> Czas zdarzenia</th>
-                                                        <th>Rodzaj operacji</th>
+                                                        <th> {t("BudgetHistory.CzasZdarzenia")}</th>
+                                                        <th>{t("BudgetHistory.RodzajOperacji")}</th>
                                                         <th>
-                                                            Numer zamówienia
+                                                        {t("BudgetHistory.NumerZamówienia")}
                                                         </th>
                                                         <th>
                                                             {t(
@@ -139,8 +139,7 @@ const BudgetHistory = () => {
                                             </table>
 
                                             <div className="remainingBudgetTitle">
-                                                Pozostały do wykorzystania
-                                                budżet marketingowy na rok{" "}
+                                                {t("BudgetHistory.PozostałyBudżet")}{" "}
                                                 {periodFrom.substr(0, 4)}{" "}
                                                 <strong>
                                                     {": "}

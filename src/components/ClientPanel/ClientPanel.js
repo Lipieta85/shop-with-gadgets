@@ -104,7 +104,7 @@ const ClientPanel = props => {
                                 <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
                             </div>
                             <div className="panel-right col-12 col-sm-8">
-                                <div className="search-box w-100">
+                                <div className="search-box">
                                     <input
                                         type="text"
                                         className="search-input submit_on_enter"

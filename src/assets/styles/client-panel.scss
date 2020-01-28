@@ -34,6 +34,8 @@
             padding: 0;
             .search-box{
                 width: 100%;
+                display:flex;
+                justify-content: flex-end;
             }
         }
         .search-input::placeholder{  

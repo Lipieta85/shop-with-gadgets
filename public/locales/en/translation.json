@@ -45,6 +45,7 @@
     "Ilość": "Qauntity",
     "Aktualizuj": "Update",
     "Razem": "Sum",
+    "BrakProduktów":"No products in basket.",
     "Wyczyść": "Clear Basket",
     "Kwota": "Amount to pay",
     "AlertKoszykPusty": "Basket is empty, add product",
@@ -83,14 +84,33 @@
   },
   "OrderHistory": {
     "ListaZamówieńJestPusta": "The order list is empty",
-    "ListaZamówień": "Order List"
+    "ListaZamówień": "Order List",
+    "ZamówioneProdukty":"Ordered products:",
+    "SzczegółyZamówienia":"Details of order",
+    "NumerZamówienia":"Order number:",
+    "DataZłożenia":"Order date:",
+    "Godzina":"Time:",
+    "Waluta":"Currency:",
+    "AdresDostarczenia":"Delivery:",
+    "Status":"Status:",
+    "ZapłaconaKwota":"Amount paid:",
+    "Cena":"Price",
+    "Razem":"Sum:",
+    "Data":"Date",
+    "KwotaNetto":"Net amount",
+    "ZamówionychDostarczonych":"Ordered / delivered"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "The budget history is empty",
     "HistoriaBudżetu": "Budget History",
     "Data": "Date",
     "WykorzystanyBudżet": "Used budget",
-    "BudżetUżytkownikaNaPoczątku": "User budget at the beggining"
+    "BudżetUżytkownikaNaPoczątku": "User budget at the beggining",
+    "RodzajOperacji":"Operation type",
+    "NumerZamówienia":"Order number",
+    "CzasZdarzenia":"Time",
+    "PrzyznanyBudżet":"Marketing budget allocated for the year",
+    "PozostałyBudżet":"Marketing budget remaining for the year"
   },
   "ProductDetails": {
     "KodProduktu": "Product code",
