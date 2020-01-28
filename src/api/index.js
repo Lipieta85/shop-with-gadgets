@@ -222,11 +222,12 @@ export const changeProduct = async (
     );
 };
 
-export const searchProduct = async (token, lang, name) => {
+export const searchProduct = async (token, currentPage, lang, name, company) => {
+    
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/all/parameters/{"lang":"${lang}", "search":{"name":"${name}"}}`,
+            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 Authorization: token,
             },

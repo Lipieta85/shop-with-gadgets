@@ -84,14 +84,33 @@
   },
   "OrderHistory": {
     "ListaZamówieńJestPusta": "Lista zamówień jest pusta",
-    "ListaZamówień": "Lista zamówień"
+    "ListaZamówień": "Lista zamówień",
+    "ZamówioneProdukty":"Zamówione produkty:",
+    "SzczegółyZamówienia":"Szczegóły zamówienia",
+    "NumerZamówienia":"Numer zamówienia:",
+    "DataZłożenia":"Data złożenia:",
+    "Godzina":"Godzina:",
+    "Waluta":"Waluta:",
+    "AdresDostarczenia":"Adres dostarczenia:",
+    "Status":"Status:",
+    "ZapłaconaKwota":"Zapłacona kwota:",
+    "Cena":"Cena",
+    "Razem":"Razem:",
+    "Data":"Data",
+    "KwotaNetto":"Kwota netto",
+    "ZamówionychDostarczonych":"Zamówionych / dostarczonych"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",
     "HistoriaBudżetu": "Historia budżetu",
     "Data": "Data",
     "WykorzystanyBudżet": "Wykorzystany budżet",
-    "BudżetUżytkownikaNaPoczątku": "Budżet użytkownika na początku"
+    "BudżetUżytkownikaNaPoczątku": "Budżet użytkownika na początku",
+    "RodzajOperacji":"Rodzaj operacji",
+    "NumerZamówienia":"Numer zamówienia",
+    "CzasZdarzenia":"Czas zdarzenia",
+    "PrzyznanyBudżet":"Przyznany budżet marketingowy na rok",
+    "PozostałyBudżet":"Pozostały do wykorzystania budżet marketingowy na rok"
   },
   "ProductDetails": {
     "KodProduktu": "Kod produktu",

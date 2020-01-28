@@ -39,6 +39,7 @@ export {
     setProductCategories,
     changeProductCategory,
     searchProductPanel,
+    setTypedProducts
 } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";

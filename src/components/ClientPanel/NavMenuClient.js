@@ -224,7 +224,7 @@ const NavMenu = () => {
                                             text={t(
                                                 "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
                                             )}
-                                            header="Wniosek o zamówienia płatne"
+                                            header={t("Button.WniosekZamówieniePłatne")}
                                         />
                                     </ButtonToolbar>
                                 </li>
