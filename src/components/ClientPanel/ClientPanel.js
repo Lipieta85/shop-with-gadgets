@@ -23,7 +23,7 @@ const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     let pagination = useSelector(state => state.cartReducer.pagination);
-    //pagination = {totalPages:44}
+    //pagination = {totalPages:5}
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
@@ -31,6 +31,7 @@ const ClientPanel = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
     const [name, setName] = useState("");
+
     useEffect(() => {
         if (token && category === "1" && name === "") {
             setName("");
