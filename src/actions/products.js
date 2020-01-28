@@ -1,5 +1,10 @@
 import * as type from "../actions/types";
-import { getAllProducts, changeProductsCategory, postSubscribe } from "../api";
+import {
+    getAllProducts,
+    changeProductsCategory,
+    postSubscribe,
+    searchProduct,
+} from "../api";
 
 export const setProducts = products => {
     return {
@@ -53,6 +58,17 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
         const company = getState().clientDataReducer.companyId;
         const lang = getState().clientDataReducer.language;
         changeProductsCategory(token, number, company, currentPage, lang)
+            .then(res => {
+                dispatch(setProducts(res.data));
+            })
+            .catch(error => {
+                dispatch(fetchProductsFailed());
+            });
+    };
+};
+export const searchProductPanel = (token, lang, name) => {
+    return dispatch => {
+        searchProduct(token, lang, name)
             .then(res => {
                 dispatch(setProducts(res.data));
             })

@@ -1,6 +1,5 @@
 import * as type from "../actions/types";
 import { getStorePolicyAccepted, setAcceptPolicy } from "../api/index";
-
 export const clientData = data => {
     return {
         type: type.ADD_CLIENT_DATA,
@@ -87,12 +86,7 @@ export const getPeriodFrom = code => {
         code,
     };
 };
-export const searchProduct = code => {
-    return {
-        type: type.SEARCH_PRODUCT,
-        code,
-    };
-};
+
 export const isStorePolicyAccepted = token => {
     return dispatch => {
         getStorePolicyAccepted(token)
