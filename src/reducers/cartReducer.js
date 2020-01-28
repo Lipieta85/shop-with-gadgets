@@ -226,13 +226,30 @@ const cartReducer = (state = initialState, action) => {
             });
             const products = arr;
             products.pop();
-
             const pagination = data[0].pagination;
+            
             return {
                 ...state,
                 items: products,
                 error: false,
-                pagination,
+                pagination: pagination,
+            };
+        case type.SET_TYPED_PRODUCTS:
+            let data2 = Object.values(action.typedProducts);
+
+            const arr2 = [];
+            mapKeys(data2[0], function(value, key) {
+                return arr2.push(value);
+            });
+            const products2 = arr2;
+            products2.pop();
+            const pagination2 = {page: 1, totalPages: Math.floor(data2[0].length/8), itemsPerPage: 8, totalItems: data2[0].length};
+            
+            return {
+                ...state,
+                items: products2,
+                error: false,
+                pagination: pagination2,
             };
         case type.FETCH_PRODUCTS_FAILED:
             return {

@@ -22,8 +22,7 @@ import { useTranslation } from "react-i18next";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    let pagination = useSelector(state => state.cartReducer.pagination);
-    //pagination = {totalPages:5}
+    const pagination = useSelector(state => state.cartReducer.pagination);  
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
@@ -53,7 +52,7 @@ const ClientPanel = props => {
             }
         }
         //eslint-disable-next-line
-    }, [currentPage, dispatch, pagination.totalPages, token, category]);
+    }, [currentPage, dispatch, token, category]);
 
     useEffect(() => {
         if (category !== "1") {
@@ -87,10 +86,12 @@ const ClientPanel = props => {
         setName(e.target.value);
     };
     const handleSearchBtn = e => {
-        if(e.key === undefined || e.key === 'Enter'){
+        if (e.key === undefined || e.key === "Enter") {
             if (name === "") {
                 dispatch(initProducts(token, currentPage));
-            } else dispatch(searchProductPanel(token, lang, name));
+            } else {
+                dispatch(searchProductPanel(token, currentPage, lang, name));
+            }
         }
     };
     return (
