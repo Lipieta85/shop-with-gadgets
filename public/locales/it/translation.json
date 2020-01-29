@@ -1,0 +1,145 @@
+{
+  "Nav": {
+    "Wszystkie": "Tutto",
+    "Biuro": "Ufficio",
+    "Tekstylia": "Tessili",
+    "Gadżety": "Gadget",
+    "MateriałyPromocyjne": "Materiali promozionali",
+    "WróćDoStronyGłównej": "Torna alla Home Page",
+    "MojeKonto": "Il mio conto",
+    "Koszyk": "Cestino",
+    "ListaZamówień": "Elenco degli ordini",
+    "HistoriaBudżetu": "Storico del budget",
+    "ZamówieniaPłatne": "Zamówienia płatne",
+    "Wyloguj": "Esci"
+  },
+  "PaidOrder": {
+    "OstrzeżenieZamówieniePłatne": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland.",
+    "OstrzeżenieZamówieniePłatneNAV": "Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland."
+  },
+  "CPanelMenu": {
+    "JesteśZalogowanyJako": "Sei registrato come",
+    "WImieniu": "Per conto",
+    "TwójKoszyk": "Twój Koszyk",
+    "Koszyk(pusty)": "Koszyk (pusty)",
+    "DostępnyBudżetMarketingowy": "Dostępny Budżet Marketingowy",
+    "ZamówieniePłatne": "Zamówienie płatne",
+    "WartośćTwoichZakupów": "Wartość Twoich Zakupów",
+    "PrzekroczonyBudżetMarketingowy": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym.",
+    "WyszukajProdukt":"Wyszukaj produkt:",
+    "NazwaProduktu":"Nazwa produktu..."
+  },
+  "Card": {
+    "Cena": "Prezzo",
+    "Niedostępny": "Non disponibile",
+    "DostępnaIlość": "Quantità disponibile",
+    "Dostępnych": "Disponibile",
+    "Powiadom": "Powiadom o dostępności"
+  },
+  "Basket": {
+    "Alert": "Wpisana ilość produktu przekracza dostępną ilość w magazynie",
+    "Ilość": "Quantità",
+    "Aktualizuj": "Aktualizuj",
+    "Razem": "Somma",
+    "BrakProduktów":"Brak produktów w koszyku.",
+    "Wyczyść": "Wyczyść koszyk",
+    "Kwota": "Kwota do zapłaty",
+    "AlertKoszykPusty": "Koszyk jest pusty, dodaj produkt",
+    "Wróć": "Wróć do sklepu",
+    "ZłóżZamówienie": "Złóż Zamówienie",
+    "WybierzAdres": "Wybierz adres dostawy",
+    "KoszykJestPusty": "Koszyk jest pusty",
+    "ProduktyWKoszyku": "Produkty aktualnie znajdujące się w koszyku",
+    "WybierzTypZamówienia": "Wybierz typ zamówienia",
+    "UEinfo": "Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."
+  },
+  "Footer": {
+    "Regulamin": "Regulamin sklepu",
+    "Contact": "Dane kontaktowe"
+  },
+  "Order": {
+    "Podsumowanie": "Podsumowanie zamówienia",
+    "WartośćBudżetu": "Wartość Twojego Budżetu",
+    "WartośćDostępnegoBudżetu": "Wartość Dostępnego Budżetu",
+    "ZamówioneProdukty": "Zamówione Produkty",
+    "NazwaProduktu": "Nazwa Produktu",
+    "PozostałoDoWykorzystania": "Pozostało Do Wykorzystania",
+    "AdresDostawy": "Adres Dostawy",
+    "TypZamówienia": "Typ Zamówienia",
+    "WróćDoKoszyka": "WRÓĆ DO KOSZYKA",
+    "Zatwierdź": "ZATWIERDŻ ZAMÓWIENIE",
+    "WartośćZamówienia": "Wartość zamówienia",
+    "AnulujZamówienie": "Anuluj zamówienie",
+    "PotwierdzenieAnulowaniaZamówienia": "Czy napewno chcesz anulować zamówienie nr",
+    "Tak": "Tak",
+    "Nie": "Nie",
+    "BudżetMarketingowy": "Budżet Marketingowy",
+    "ZamówieniePłatne": "Paid order"
+  },
+  "OrderEnd": {
+    "ZamówienieONr": "Twoje zamówienie o numerze",
+    "PrzekazaneDoRealizacji": "zostało przekazane do realizacji. W ciągu 15 minut otrzymasz potwierdzenie zamówienia na adres e-mail.",
+    "PrzetwarzanieZamówienia": "Trwa przetwarzanie zamówienia. Proszę nie zamykać okna przeglądarki...",
+    "BłądZamówienia": "Twoje zamówienie nie zostało złożone z powodu błędu.Skontatkuj się ze swoim Opiekunem Klienta."
+  },
+  "OrderHistory": {
+    "ListaZamówieńJestPusta": "Lista zamówień jest pusta",
+    "ListaZamówień": "Lista zamówień",
+    "ZamówioneProdukty":"Zamówione produkty:",
+    "SzczegółyZamówienia":"Szczegóły zamówienia",
+    "NumerZamówienia":"Numer zamówienia:",
+    "DataZłożenia":"Data złożenia:",
+    "Godzina":"Godzina:",
+    "Waluta":"Waluta:",
+    "AdresDostarczenia":"Adres dostarczenia:",
+    "Status":"Status:",
+    "ZapłaconaKwota":"Zapłacona kwota:",
+    "Cena":"Cena",
+    "Razem":"Razem:",
+    "Data":"Data",
+    "KwotaNetto":"Kwota netto",
+    "ZamówionychDostarczonych":"Zamówionych / dostarczonych"
+  },
+  "BudgetHistory": {
+    "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",
+    "HistoriaBudżetu": "Historia budżetu",
+    "Data": "Data",
+    "WykorzystanyBudżet": "Wykorzystany budżet",
+    "BudżetUżytkownikaNaPoczątku": "Budżet użytkownika na początku",
+    "RodzajOperacji":"Rodzaj operacji",
+    "NumerZamówienia":"Numer zamówienia",
+    "CzasZdarzenia":"Czas zdarzenia",
+    "PrzyznanyBudżet":"Przyznany budżet marketingowy na rok",
+    "PozostałyBudżet":"Pozostały do wykorzystania budżet marketingowy na rok"
+  },
+  "ProductDetails": {
+    "KodProduktu": "Kod produktu",
+    "JednostkaMiary": "Jednostka miary",
+    "CenaJednostkowa": "Cena jednostkowa",
+    "StanMagazynowy": " Stan magazynowy",
+    "Powrót": "Powrót",
+    "Poprzedni": "Poprzedni",
+    "Następny": "Następny",
+    "OpisProduktu": "Opis produktu"
+  },
+  "Button": {
+    "WniosekZamówieniePłatne": "Wniosek o zamówienie płatne",
+    "Anuluj": "Anuluj",
+    "ZłóżWniosek": "Złóż wniosek",
+    "PowiadomODostępności": "Powiadom o dostępności",
+    "WartośćAlertHeader": "Niepoprawna wartość",
+    "WartośćAlertText": "Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
+  },
+  "ClientModal": {
+    "PowiadomMnie": "Powiadom mnie",
+    "PowiadomODostępnościProduktu": "Powiadom o dostępności produktu",
+    "Subskrybuj": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
+    "Zamknij": "Close"
+  },
+  "ClientResponseModal": {
+    "UdanaSubskrypcja ": "Udało ci się zasubskrybować produkt: ",
+    "UdanaSubskrypcjaInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
+    "NieudanaSubskrypcja ": "Subskrybujesz już produkt: ",
+    "LubWystąpiłBłąd": "lub wystąpił błąd"
+  }
+}
