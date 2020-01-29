@@ -3,16 +3,18 @@ import NavMenu from "../ClientPanel/NavMenuClient";
 import "../../assets/styles/contact.scss";
 import { getContactDetails } from "../../api/index";
 import Spinner from "../UI/Spinner/Spinner";
+import { useSelector } from "react-redux";
 
 const Contact = () => {
     const [contact, setContact] = useState("");
     const token = localStorage.getItem("token");
+    const lang = useSelector(state => state.clientDataReducer.language);
 
     useEffect(() => {
-        getContactDetails(token).then(res => {
+        getContactDetails(token, lang).then(res => {
             setContact(res.data.data.objects);
         });
-    }, [token]);
+    }, [token, lang]);
 
     return (
         <div className="contact-details">

@@ -1,5 +1,9 @@
 import * as type from "../actions/types";
-import { getStorePolicyAccepted, setAcceptPolicy } from "../api/index";
+import {
+    getStorePolicyAccepted,
+    setAcceptPolicy,
+    getStorePolicy,
+} from "../api/index";
 export const clientData = data => {
     return {
         type: type.ADD_CLIENT_DATA,
