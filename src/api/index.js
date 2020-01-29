@@ -40,11 +40,11 @@ export const getLinkToken = async token => {
     });
 };
 
-export const getStorePolicy = async token => {
+export const getStorePolicy = async (token, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storePolicy%22%2C%20%22lang%22%3A%22${lang}%22%7D`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -53,11 +53,11 @@ export const getStorePolicy = async token => {
     );
 };
 
-export const getContactDetails = async token => {
+export const getContactDetails = async (token, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storeContact%22%2C%20%22lang%22%3A%22pl%22%7D`,
+            url: `${host}/restApi/request/model/Pages/params/%7B%22%60key%60%22%3A%22storeContact%22%2C%20%22lang%22%3A%22${lang}%22%7D`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -222,8 +222,13 @@ export const changeProduct = async (
     );
 };
 
-export const searchProduct = async (token, currentPage, lang, name, company) => {
-    
+export const searchProduct = async (
+    token,
+    currentPage,
+    lang,
+    name,
+    company,
+) => {
     return await trackPromise(
         axios({
             method: "get",

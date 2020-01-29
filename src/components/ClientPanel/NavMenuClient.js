@@ -224,20 +224,13 @@ const NavMenu = () => {
                                             text={t(
                                                 "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
                                             )}
-                                            header={t("Button.WniosekZamówieniePłatne")}
+                                            header={t(
+                                                "Button.WniosekZamówieniePłatne",
+                                            )}
                                         />
                                     </ButtonToolbar>
                                 </li>
                             ) : null}
-                            {/* <li className="nav-item text-uppercase">
-                                <a
-                                    className="nav-link"
-                                    onClick={onSignout}
-                                    href={`${host}site/desktop`}
-                                >
-                                    {t(`Nav.Wyloguj`)}
-                                </a>
-                            </li> */}
                             <select
                                 className="custom-select lang-select-btn"
                                 value={lang}
@@ -245,8 +238,8 @@ const NavMenu = () => {
                             >
                                 <option value="pl">PL</option>
                                 <option value="en">EN</option>
-                                <option value="en">RU</option>
-                                <option value="en">IT</option>
+                                <option value="ru">RU</option>
+                                <option value="it">IT</option>
                             </select>
                         </ul>
                     </div>
