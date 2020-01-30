@@ -16,7 +16,7 @@ export default function NotFound() {
         <div className="order-end text-center">
             <div className="order-end-box">
                 <h3>Twoje dane autoryzacyjne wygasły, zaloguj sie ponownie</h3>
-                <a className="btn btn-outline-primary mt-4" href={link} onClick={dispatch(signOut())}>
+                <a className="btn btn-outline-primary mt-4" href={link}>
                     Wróć do strony logowania
                 </a>
             </div>

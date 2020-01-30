@@ -242,7 +242,7 @@ const cartReducer = (state = initialState, action) => {
                 return arr2.push(value);
             });
             const products2 = arr2;
-            products2.pop();
+            
             const pagination2 = {page: 1, totalPages: Math.floor(data2[0].length/8), itemsPerPage: 8, totalItems: data2[0].length};
             
             return {

@@ -2,7 +2,6 @@ import * as type from "../actions/types";
 import {
     getStorePolicyAccepted,
     setAcceptPolicy,
-    getStorePolicy,
 } from "../api/index";
 export const clientData = data => {
     return {
