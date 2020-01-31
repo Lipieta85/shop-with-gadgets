@@ -4,6 +4,7 @@ import {
     changeProductsCategory,
     postSubscribe,
     searchProduct,
+    getProductsCategories
 } from "../api";
 
 export const setProducts = products => {
@@ -34,17 +35,28 @@ export const initProducts = (token, currentPage) => {
     };
 };
 
-// export const initProductsCategories = token => {
-//     return (dispatch, getState) => {
-//         getProductsCategories(token)
-//             .then(res => {
-//                 console.log(res);
-//             })
-//             .catch(error => {
-//                 console.log(error);
-//             });
-//     };
-// };
+export const initProductsCategories = token => {
+    return (dispatch, getState) => {
+        const company = getState().clientDataReducer.companyId;
+        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
+        const lang = getState().clientDataReducer.language;
+
+        getProductsCategories(token, companyId, lang)
+            .then(res => {
+                dispatch(setProductsCategories(res.data.categories))
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
+export const setProductsCategories = (categories) => {
+    return {
+        type: type.SET_PRODUCTS_CATEGORIES,
+        categories
+    }
+}
 
 export const setProductCategories = number => {
     return {

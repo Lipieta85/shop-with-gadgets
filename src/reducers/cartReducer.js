@@ -15,6 +15,7 @@ const initialState = {
     pagination: {},
     productsToOrder: [],
     productsCategory: "1",
+    availableProductsCategory: [],
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -227,7 +228,7 @@ const cartReducer = (state = initialState, action) => {
             const products = arr;
             products.pop();
             const pagination = data[0].pagination;
-            
+
             return {
                 ...state,
                 items: products,
@@ -242,9 +243,14 @@ const cartReducer = (state = initialState, action) => {
                 return arr2.push(value);
             });
             const products2 = arr2;
-            
-            const pagination2 = {page: 1, totalPages: Math.floor(data2[0].length/8), itemsPerPage: 8, totalItems: data2[0].length};
-            
+
+            const pagination2 = {
+                page: 1,
+                totalPages: Math.floor(data2[0].length / 8),
+                itemsPerPage: 8,
+                totalItems: data2[0].length,
+            };
+
             return {
                 ...state,
                 items: products2,
@@ -271,6 +277,12 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 productsCategory: action.number,
             };
+        case type.SET_PRODUCTS_CATEGORIES: {
+            return {
+                ...state,
+                availableProductsCategory: Object.values(action.categories),
+            };
+        }
         case type.SET_BUDGET: {
             return {
                 ...state,

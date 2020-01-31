@@ -40,6 +40,8 @@ export {
     changeProductCategory,
     searchProductPanel,
     setTypedProducts,
+    initProductsCategories,
+    setProductsCategories
 } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";

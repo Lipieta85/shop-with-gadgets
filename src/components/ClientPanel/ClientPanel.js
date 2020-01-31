@@ -10,6 +10,7 @@ import {
     setPage,
     changeProductCategory,
     searchProductPanel,
+    initProductsCategories
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -37,6 +38,7 @@ const ClientPanel = props => {
         if (token && category === "1" && name === "") {
             setName("");
             dispatch(initProducts(token, currentPage));
+            dispatch(initProductsCategories(token));
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
