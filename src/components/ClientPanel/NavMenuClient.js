@@ -20,6 +20,9 @@ const NavMenu = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const category = useSelector(state => state.cartReducer.productsCategory);
+    const availableProductsCategory = useSelector(
+        state => state.cartReducer.availableProductsCategory,
+    );
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
@@ -105,42 +108,25 @@ const NavMenu = () => {
                                             {t(`Nav.Wszystkie`)}
                                         </button>
                                     </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002140"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Biuro`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002141"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Tekstylia`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002142"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Gadżety`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002143"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.MateriałyPromocyjne`)}
-                                        </button>
-                                    </li>
+                                    {availableProductsCategory
+                                        ? availableProductsCategory.map(
+                                              position => {
+                                                  return (
+                                                      <li className="nav-item item-separated">
+                                                          <button
+                                                              id={`${position.SLO_ID}`}
+                                                              className="nav-link"
+                                                              onClick={
+                                                                  tabHandler
+                                                              }
+                                                          >
+                                                              {`${position.SLO_NAZWA}`}
+                                                          </button>
+                                                      </li>
+                                                  );
+                                              },
+                                          )
+                                        : null}
                                 </ul>
                             ) : null}
                         </ul>

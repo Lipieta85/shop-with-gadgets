@@ -164,9 +164,14 @@
         padding: 90px 50px 0 50px;
     }
 }
-@media (max-width: 1838px) {
+@media (max-width: 2512px) {
     .search-panel {
-        max-width: 1172px;
+        max-width: 1660px;
+    }
+}
+@media (max-width: 2110px) {
+    .search-panel {
+        max-width: 1325px;
     }
 }
 @media (max-width: 1838px) {
