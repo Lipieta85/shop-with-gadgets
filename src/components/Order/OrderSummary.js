@@ -19,7 +19,7 @@ const OrderSummary = () => {
 
     const budget = useSelector(
         state =>
-            state.clientDataReducer.clientData[0].getWixClientData.budget
+            state.clientDataReducer.clientData.getWixClientData.budget
                 .remainingBudget,
     );
     const orderType = useSelector(

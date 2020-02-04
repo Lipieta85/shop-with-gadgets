@@ -22,7 +22,7 @@ const clientDataReducer = (state = initialState, action) => {
         case type.ADD_CLIENT_DATA:
             return {
                 ...state,
-                clientData: state.clientData.concat(action.data),
+                clientData: action.data,
             };
         case type.COMPANY_ID:
             return {

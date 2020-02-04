@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ClientPanelMenu from "../ClientPanelMenu";
 import Spinner from "../UI/Spinner/Spinner";
 import ScreenLock from "../ScreenLock";
+import PolicyAcceptedModal from "./PolicyAcceptedModal";
 import {
     initProducts,
     nextPage,
@@ -10,7 +11,7 @@ import {
     setPage,
     changeProductCategory,
     searchProductPanel,
-    initProductsCategories
+    initProductsCategories,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -23,11 +24,11 @@ import { useTranslation } from "react-i18next";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    const pagination = useSelector(state => state.cartReducer.pagination);  
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const [shortPagination2] = useState([2]);
-    const [shortPagination3] = useState([2,3]);
+    const [shortPagination3] = useState([2, 3]);
     const lang = useSelector(state => state.clientDataReducer.language);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
@@ -141,6 +142,7 @@ const ClientPanel = props => {
                             )}
                         </div>
                         <Spinner />
+                        <PolicyAcceptedModal />>
                         <ScreenLock />
                         <Pager
                             pagination={pagination}

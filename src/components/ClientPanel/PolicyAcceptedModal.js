@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { signOut } from "../actions/authorization";
-import { acceptPolicy } from "../actions/index";
-import "../assets/styles/policy-modal.scss";
-import host2 from "../api/host2";
-import host from "../api/host";
+import { signOut } from "../../actions/authorization";
+import { acceptPolicy } from "../../actions/index";
+import { Link } from "react-router-dom";
+import "../../assets/styles/policy-modal.scss";
+import host from "../../api/host";
 
 const PolicyAcceptedModal = props => {
     const storePolicyStatus = useSelector(
@@ -19,6 +19,10 @@ const PolicyAcceptedModal = props => {
 
     const dispatch = useDispatch();
 
+    const checkHandler = () => {
+        setShow(false);
+    };
+
     useEffect(() => {
         if (storePolicyStatus === true) {
             setShow(false);
@@ -29,7 +33,11 @@ const PolicyAcceptedModal = props => {
         ) {
             setShow(true);
         }
-    }, [storePolicyStatus]);
+        if (storePolicyStatus === false && props.modalStatus === true) {
+            setShow(true);
+        }
+        //eslint-disable-next-line
+    }, [storePolicyStatus, props.modalStatus]);
 
     const signOutHandler = () => {
         dispatch(signOut());
@@ -63,14 +71,11 @@ const PolicyAcceptedModal = props => {
                                 Aby korzystać z funkcji sklepu musisz
                                 zaakceptować regulamin sklepu
                             </p>
-                            <a
-                                href={`${host2}/Regulations`}
-                                onClick={() => window.scrollTo(0, 0)}
-                            >
+                            <Link to="/Regulations" onClick={checkHandler}>
                                 <p className="text-uppercase text-center">
                                     {t(`Footer.Regulamin`)}
                                 </p>
-                            </a>
+                            </Link>
                         </div>
                     ) : (
                         <p>Wystąpił błąd, spróbuj ponownie poźniej</p>

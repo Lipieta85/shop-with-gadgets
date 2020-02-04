@@ -6,7 +6,6 @@ import {
     getUserBudgetHistory,
     singleOrderCancel,
 } from "../api/index";
-import { mapKeys } from "lodash";
 
 export const orderInputState = value => {
     return {
@@ -40,19 +39,20 @@ export const createOrder = (token, items) => {
 
         let clientData = getState().clientDataReducer.clientData;
 
-        let adressess = [];
-        let deliveryAddress = [];
+        // let adressess = [];
+        // let deliveryAddress = [];
 
-        if (clientData) {
-            clientData.map(data =>
-                adressess.push(data.getWixClientData.deliveryAddresses[0]),
-            );
-            mapKeys(adressess[0], function(value, key) {
-                return deliveryAddress.push({ key: value });
-            });
-        }
+        // if (clientData) {
+        //     clientData.map(data =>
+        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
+        //     );
+        //     mapKeys(adressess[0], function(value, key) {
+        //         return deliveryAddress.push({ key: value });
+        //     });
+        // }
 
-        let delivery = deliveryAddress[0].key;
+        let delivery =
+            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
 
         postOrder(token, items, basketId, companyId, delivery)
             .then(res => {

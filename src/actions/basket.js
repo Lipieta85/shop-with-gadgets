@@ -1,6 +1,6 @@
 import * as type from "../actions/types";
 import host2 from "../api/host2";
-import { mapKeys } from "lodash";
+
 import {
     postProduct,
     putProduct,
@@ -40,21 +40,23 @@ export const addItemToBasket = (
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
-        let companyId = company !== "all" ? company.charAt(0).toUpperCase() : ''
-        
-        let clientData = getState().clientDataReducer.clientData;
-        let adressess = [];
-        let deliveryAddress = [];
-        if (clientData) {
-            clientData.map(data =>
-                adressess.push(data.getWixClientData.deliveryAddresses[0]),
-            );
-            mapKeys(adressess[0], function(value, key) {
-                return deliveryAddress.push({ key: value });
-            });
-        }
+        let companyId =
+            company !== "all" ? company.charAt(0).toUpperCase() : "";
 
-        let delivery = deliveryAddress[0].key; /* "test" */
+        let clientData = getState().clientDataReducer.clientData;
+        // let adressess = [];
+        // let deliveryAddress = [];
+        // if (clientData) {
+        //     clientData.map(data =>
+        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
+        //     );
+        //     mapKeys(adressess[0], function(value, key) {
+        //         return deliveryAddress.push({ key: value });
+        //     });
+        // }
+
+        let delivery =
+            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
@@ -187,19 +189,21 @@ export const changeBasketQuantity = (
             ? String(amount)
             : String(productAmount[0]);
 
-        let adressess = [];
-        let deliveryAddress = [];
+        // let adressess = [];
+        // let deliveryAddress = [];
 
-        if (clientData) {
-            clientData.map(data =>
-                adressess.push(data.getWixClientData.deliveryAddresses[0]),
-            );
-            mapKeys(adressess[0], function(value, key) {
-                return deliveryAddress.push({ key: value });
-            });
-        }
+        // if (clientData) {
+        //     clientData.map(data =>
+        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
+        //     );
+        //     mapKeys(adressess[0], function(value, key) {
+        //         return deliveryAddress.push({ key: value });
+        //     });
+        // }
 
-        let delivery = deliveryAddress[0].key;
+        let delivery =
+            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
+
         changeProduct(
             productId,
             productNumber,
@@ -239,8 +243,6 @@ export const getBasketProducts = token => {
             .then(res => {
                 let baskets = [];
                 baskets.push(res.data.get);
-                //let lastBasket = baskets[0][baskets[0].length - 1];
-                //console.log(lastBasket)
             })
             .catch(error => {
                 console.log(error);
