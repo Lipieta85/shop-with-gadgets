@@ -43,7 +43,7 @@ const OrderOptions = () => {
 
     useEffect(() => {
         setSelectInputValue(
-            deliveryData[0].getWixClientData.deliveryAddresses[0].name,
+            deliveryData.getWixClientData.deliveryAddresses[0].name,
         );
         //eslint-disable-next-line
     }, [selectStoreState]);
@@ -81,10 +81,10 @@ const OrderOptions = () => {
                         onChange={selectValueHandler}
                         value={selectInputValue}
                     >
-                        {deliveryData[0].getWixClientData.deliveryAddresses.map(
+                        {deliveryData.getWixClientData.deliveryAddresses.map(
                             (data, key) => {
                                 return (
-                                    <option key={data.id} value={data.id}>
+                                    <option key={key} value={data.id}>
                                         {data.name}
                                     </option>
                                 );

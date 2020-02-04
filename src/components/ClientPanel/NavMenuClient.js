@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/filtron_logo.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
@@ -12,10 +12,10 @@ import {
     changeLanguage,
 } from "../../actions/index";
 import host from "../../api/host";
-import host2 from "../../api/host2";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "./NotificationModal";
+import PolicyAcceptedModal from "./PolicyAcceptedModal";
 const NavMenu = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);
@@ -28,6 +28,7 @@ const NavMenu = () => {
     );
     const { t } = useTranslation();
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
+    const [policyModal, setPolicyModal] = useState(false);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     useEffect(() => {
@@ -39,6 +40,7 @@ const NavMenu = () => {
     }, [category]);
     const onSignout = () => {
         dispatch(signOut());
+        window.location.replace(`${host}site/desktop`);
     };
     const oneCategoryHandler = id => {
         dispatch(setProductCategories(id));
@@ -64,8 +66,15 @@ const NavMenu = () => {
         dispatch(initProducts(token, 1));
     };
 
+    const changePolicyModalStatus = () => {
+        if (window.location.pathname === "/Regulations") {
+            setPolicyModal(true);
+        }
+    };
+
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
+            <PolicyAcceptedModal modalStatus={policyModal} />
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light primary-color">
                     <Link to="/" className="navbar-brand">
@@ -110,9 +119,12 @@ const NavMenu = () => {
                                     </li>
                                     {availableProductsCategory
                                         ? availableProductsCategory.map(
-                                              position => {
+                                              (position, i) => {
                                                   return (
-                                                      <li className="nav-item item-separated">
+                                                      <li
+                                                          className="nav-item item-separated"
+                                                          key={i}
+                                                      >
                                                           <button
                                                               id={`${position.SLO_ID}`}
                                                               className="nav-link"
@@ -135,14 +147,13 @@ const NavMenu = () => {
                             window.location.pathname === `/Basket` ||
                             window.location.pathname === `/Contact` ||
                             window.location.pathname === `/Regulations` ? (
-                                <li className="nav-item ml-auto">
-                                    <a
-                                        className="nav-link text-uppercase"
-                                        href={`${host2}/`}
-                                    >
-                                        {t(`Nav.WróćDoStronyGłównej`)}{" "}
-                                    </a>
-                                </li>
+                                <Link
+                                    className="nav-link text-uppercase"
+                                    to={`/`}
+                                    onClick={changePolicyModalStatus}
+                                >
+                                    {t(`Nav.WróćDoStronyGłównej`)}
+                                </Link>
                             ) : null}
                             {window.location.pathname !== `/Regulations` ? (
                                 <li className="nav-item dropdown">
@@ -189,13 +200,13 @@ const NavMenu = () => {
                                                 {t(`Nav.ZamówieniaPłatne`)}
                                             </Link>
                                         ) : null}
-                                        <Link
+                                        <span
                                             className="dropdown-item text-uppercase"
                                             onClick={onSignout}
-                                            href={`${host}site/desktop`}
+                                            style={{ cursor: "pointer" }}
                                         >
                                             {t(`Nav.Wyloguj`)}
-                                        </Link>
+                                        </span>
                                     </div>
                                     <ButtonToolbar className="invisible">
                                         <Button

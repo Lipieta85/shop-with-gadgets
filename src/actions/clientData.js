@@ -1,8 +1,5 @@
 import * as type from "../actions/types";
-import {
-    getStorePolicyAccepted,
-    setAcceptPolicy,
-} from "../api/index";
+import { getStorePolicyAccepted, setAcceptPolicy } from "../api/index";
 export const clientData = data => {
     return {
         type: type.ADD_CLIENT_DATA,
@@ -87,6 +84,12 @@ export const getPeriodFrom = code => {
     return {
         type: type.GET_PERIOD_FROM,
         code,
+    };
+};
+
+export const clearState = () => {
+    return {
+        type: type.CLEAR_STATE,
     };
 };
 

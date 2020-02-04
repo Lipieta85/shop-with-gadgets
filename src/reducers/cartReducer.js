@@ -11,7 +11,7 @@ const initialState = {
     basket: null,
     orderInputState: "",
     orderSelectInputValue: "",
-    error: false,
+    error: "",
     pagination: {},
     productsToOrder: [],
     productsCategory: "1",
@@ -287,6 +287,20 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 budget: String(action.data),
+            };
+        }
+        case type.CLEAR_STATE: {
+            return {
+                ...state,
+                addedItems: [],
+                total: "0.00",
+                totalQuantity: 0,
+                basket: null,
+                orderInputState: "",
+                orderSelectInputValue: "",
+                error: "",
+                productsToOrder: [],
+                productsCategory: "1",
             };
         }
         default:
