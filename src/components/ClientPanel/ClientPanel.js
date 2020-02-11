@@ -105,11 +105,13 @@ const ClientPanel = props => {
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
                         <div className="search-panel row">
-                            <div className="panel-left col-4 m-desktop-flex">
-                                <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
-                            </div>
-                            <div className="panel-right col-12 col-sm-8">
+                            <div className="panel-right col-12 col-sm-10">
                                 <div className="search-box">
+                                    <div className="panel-left m-desktop-flex">
+                                        <span>
+                                            {t(`CPanelMenu.WyszukajProdukt`)}
+                                        </span>
+                                    </div>
                                     <input
                                         type="text"
                                         className="search-input submit_on_enter"

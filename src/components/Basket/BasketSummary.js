@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../../assets/styles/basket-summary.scss";
 import { useTranslation } from "react-i18next";
+import Separator from "../Separator/Separator";
 
 const BasketSummary = () => {
     const total = useSelector(state => state.cartReducer.total);
@@ -22,7 +23,8 @@ const BasketSummary = () => {
                     <div className="basket-summary content  p-0 m-0">
                         <li className="basket-summary-order text-uppercase">
                             <b>
-                                {t(`Basket.Kwota`)}: {total} {currency}
+                                {t(`Basket.Kwota`)}: {Separator(total)}{" "}
+                                {currency}
                             </b>
                         </li>
                     </div>

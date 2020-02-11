@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
+import Separator from "../Separator/Separator";
 import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
@@ -18,11 +19,11 @@ const BudgetHistory = () => {
     );
     const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
     const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
-    function numberWithSpaces(num) {
-        var parts = num.toString().split(".");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        return parts.join(".");
-    }
+    // function numberWithSpaces(num) {
+    //     var parts = num.toString().split(".");
+    //     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    //     return parts.join(".");
+    // }
 
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -65,7 +66,7 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {numberWithSpaces((+i.operation_amount).toFixed(2))}{" "}
+                            {Separator((+i.operation_amount).toFixed(2))}{" "}
                             {currencyCode}
                         </div>
                     </td>
@@ -105,7 +106,7 @@ const BudgetHistory = () => {
                                             {t("BudgetHistory.PrzyznanyBudżet")}{" "}
                                             {periodFrom.substr(0, 4)}:{" "}
                                             <strong>
-                                                {numberWithSpaces(
+                                                {Separator(
                                                     baseBudget.toFixed(2),
                                                 )}{" "}
                                                 {currencyCode}
@@ -123,10 +124,21 @@ const BudgetHistory = () => {
                                             <table className="table">
                                                 <tbody>
                                                     <tr>
-                                                        <th> {t("BudgetHistory.CzasZdarzenia")}</th>
-                                                        <th>{t("BudgetHistory.RodzajOperacji")}</th>
                                                         <th>
-                                                        {t("BudgetHistory.NumerZamówienia")}
+                                                            {" "}
+                                                            {t(
+                                                                "BudgetHistory.CzasZdarzenia",
+                                                            )}
+                                                        </th>
+                                                        <th>
+                                                            {t(
+                                                                "BudgetHistory.RodzajOperacji",
+                                                            )}
+                                                        </th>
+                                                        <th>
+                                                            {t(
+                                                                "BudgetHistory.NumerZamówienia",
+                                                            )}
                                                         </th>
                                                         <th>
                                                             {t(
@@ -139,11 +151,13 @@ const BudgetHistory = () => {
                                             </table>
 
                                             <div className="remainingBudgetTitle">
-                                                {t("BudgetHistory.PozostałyBudżet")}{" "}
+                                                {t(
+                                                    "BudgetHistory.PozostałyBudżet",
+                                                )}{" "}
                                                 {periodFrom.substr(0, 4)}{" "}
                                                 <strong>
                                                     {": "}
-                                                    {numberWithSpaces(
+                                                    {Separator(
                                                         remainingBudget,
                                                     )}{" "}
                                                     {currencyCode}

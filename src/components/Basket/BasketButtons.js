@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Separator from "./../Separator/Separator";
 import "../../assets/styles/basket.scss";
 
 const BasketButtons = props => {
@@ -102,7 +103,7 @@ const BasketButtons = props => {
                 >
                     <p style={{ margin: "0 5px 0 0" }}>
                         <span>
-                            {t(`Card.Cena`)}: {props.itemPrice}{" "}
+                            {t(`Card.Cena`)}: {Separator(props.itemPrice)}{" "}
                             {props.itemCurrency}
                         </span>
                     </p>
@@ -134,7 +135,8 @@ const BasketButtons = props => {
                             className="basket-single-item-total"
                             style={{ margin: "0" }}
                         >
-                            {t(`Basket.Razem`)}: {props.itemTotalPrice}{" "}
+                            {t(`Basket.Razem`)}:{" "}
+                            {Separator(props.itemTotalPrice)}{" "}
                             {props.itemCurrency}
                         </span>
                     </div>

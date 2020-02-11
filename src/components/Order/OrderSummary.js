@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { createOrder, productsToOrder } from "../../actions/index";
 import { useTranslation } from "react-i18next";
 import "../../assets/styles/order-summary.scss";
+import Separator from "../Separator/Separator";
 import defImg from "../../assets/images/default.jpg";
 
 const OrderSummary = () => {
@@ -67,11 +68,11 @@ const OrderSummary = () => {
                         </span>
                     </td>
                     <td>
-                        {item.price.price} {item.price.currency}
+                        {Separator(item.price.price)} {item.price.currency}
                     </td>
                     <td>{item.quantity}</td>
                     <td>
-                        {item.itemTotalPrice} {item.price.currency}
+                        {Separator(item.itemTotalPrice)} {item.price.currency}
                     </td>
                 </tr>
             );
@@ -90,7 +91,7 @@ const OrderSummary = () => {
                         <li className="order-summary-text">
                             {t("Order.WartośćBudżetu")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
-                                {budget} {items[0].price.currency}
+                                {Separator(budget)} {items[0].price.currency}
                             </span>
                         </li>
                     ) : (
@@ -129,14 +130,15 @@ const OrderSummary = () => {
                             ? `${t("Order.WartośćZamówienia")}: `
                             : `${t("Basket.Kwota")}`}
                         <span className="summary-text-value font-weight-bold text-uppercase">
-                            {total} {items[0].price.currency}
+                            {Separator(total)} {items[0].price.currency}
                         </span>
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
                             {t("Order.PozostałoDoWykorzystania")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
-                                {updatedBudget} {items[0].price.currency}
+                                {Separator(updatedBudget)}{" "}
+                                {items[0].price.currency}
                             </span>
                         </li>
                     ) : (
