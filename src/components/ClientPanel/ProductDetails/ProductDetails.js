@@ -7,6 +7,7 @@ import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Link } from "react-router-dom";
+import Separator from "./../../Separator/Separator";
 import "../../../assets/styles/product-details.scss";
 import { useTranslation } from "react-i18next";
 const ProductDetails = props => {
@@ -151,7 +152,9 @@ const ProductDetails = props => {
                                             )}
                                             :{" "}
                                             <span className="product-details-text">
-                                                {(+productPrice).toFixed(2)}{" "}
+                                                {Separator(
+                                                    (+productPrice).toFixed(2),
+                                                )}{" "}
                                                 {productCurrency}
                                             </span>
                                         </p>

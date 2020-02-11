@@ -10,7 +10,7 @@ const Products = () => {
             <div className="container text-center">
                 <div className="row text-center">
                     {items.map(item => (
-                        <div 
+                        <div
                             className="card m-1 col-sm-6 col-lg-4 border border-primary"
                             key={item.id}
                         >
@@ -30,7 +30,7 @@ const Products = () => {
                                 </h5>
                                 <p className="card-text">{item.desc}</p>
                                 <p className="card-text">
-                                    <strong>Cena: {item.price},00 zł</strong>
+                                    <strong>Cenkkkka: {item.price}</strong>
                                 </p>
                                 <button
                                     className="btn btn-outline-primary"

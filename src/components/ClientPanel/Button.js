@@ -9,7 +9,7 @@ import ClientModal from "./ClientModal";
 import ClientResponseModal from "./ClientResponseModal";
 import NotificationModal from "./NotificationModal";
 import AlertModal from "./AlertModal";
-import {setProductName} from "../../actions/index"
+import { setProductName } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 
 const ButtonComponent = props => {
@@ -134,7 +134,7 @@ const ButtonComponent = props => {
     const handleShowModal = () => {
         setModalShow(true);
         setName(props.itemTitle);
-        dispatch(setProductName(props.itemTitle))
+        dispatch(setProductName(props.itemTitle));
         setProductid(props.itemId);
     };
 
@@ -226,7 +226,7 @@ const ButtonComponent = props => {
                     unit={props.itemUnit}
                     budget={basketData.budget}
                     currency={props.currency}
-                    inputValue={input.current&&input.current.value}
+                    inputValue={input.current && input.current.value}
                 />
                 <Button
                     className="availability-check unselectable alert-modal"
