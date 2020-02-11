@@ -8,6 +8,7 @@ export {
     deleteItem,
     getBasketProducts,
     setBudget,
+    addProductConfirmationModalState,
 } from "./basket.js";
 
 export {

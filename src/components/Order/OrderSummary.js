@@ -63,7 +63,7 @@ const OrderSummary = () => {
                             alt="item"
                             className="summary-img"
                         />
-                        <span className="text-uppercase">
+                        <span className="summary-product-name text-uppercase">
                             {item.product.name}
                         </span>
                     </td>
@@ -96,9 +96,9 @@ const OrderSummary = () => {
                         </li>
                     ) : (
                         <li className="order-summary-text">
-                            Rodzaj zamówienia:
+                            {t("Order.RodzajZamówienia")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
-                                Zamówienie płatne
+                                {t("Order.ZamówieniaPłatne")}
                             </span>
                         </li>
                     )}
@@ -159,12 +159,6 @@ const OrderSummary = () => {
                         </span>
                     </li>
                 </ol>
-                {/* <p className="order-summary-text">
-                    4. Numer zamówienia Klienta:{" "}
-                    <span className="summary-text-value font-weight-bold text-uppercase">
-                        {orderInputState}
-                    </span>
-                </p> */}
                 <hr />
                 <div className="d-flex flex-wrap justify-content-between">
                     <Link

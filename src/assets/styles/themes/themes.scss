@@ -21,7 +21,9 @@ $blue2: rgb(3, 88, 153);
 $basket: #8b8e91;
 $hr: rgba(0, 0, 0, 0.1);
 $transparent: transparent;
-$rowSelected:rgb(215, 215, 215);
+$rowSelected: rgb(215, 215, 215);
+$blue3: rgb(0, 76, 151);
+$wixOrange: rgb(255, 182, 15);
 
 $themes: (
     light: (
@@ -34,21 +36,20 @@ $themes: (
         divider: $lightBgC,
         hrBorderC: $hr,
         endBoxBg: $gray10,
-        tableRowSelected:$rowSelected,
-        loadingBar:rgba(0,0,0,0.1),
-
+        tableRowSelected: $rowSelected,
+        loadingBar: rgba(0, 0, 0, 0.1),
         fullBtnColor: $white,
         fullBtnBg: $gray4,
         fullBtnBgH: $gray3,
         fullBtnBorderC: $gray4,
         fullBtnBorderCH: $gray3,
-
         borderBtnBgH: $gray3,
         borderBtnColor: $gray2,
         borderBtnColorH: $white,
         borderBtnBorderColor: $gray3,
-        //}
-            //nav-menu{
+        basketIconHoverColor: $blue3,
+        basketIconHoverColorCP: $blue3,
+        //nav-menu{
             navbarBackgroundColor: $lightNav,
         navbarFontColor: $gray5,
         navbarLangBorderColor: $gray5,
@@ -67,8 +68,11 @@ $themes: (
         pagerActiveBg: $gray5,
         pagerActiveBorderC: $gray5,
         pagerFontC: $gray2,
-        searchPanelBg:$lightNav,
-        searchPanelColor:$gray3,
+        searchPanelBg: $lightNav,
+        searchPanelColor: $gray3,
+        //}
+            //products {
+            productTitle: $blue3,
         //}
             //product-details{
             productDetailsInfoPanelBg: $lightNav,
@@ -83,6 +87,7 @@ $themes: (
         basketDescColor: $wixBlack,
         basketDescBorderC: $white,
         basketDescInputBorderC: $gray8,
+        basketTitle: $blue3,
         //}
             //basket-summary{
             basketSummaryBg: $white,
@@ -129,7 +134,7 @@ $themes: (
         clientPanelBackgroundColor: $lightNav,
         clientPanelDivider: #e4e6e7,
         basketColorHover: #8b8e91,
-        basketColor: $gray5 //},,,,,,
+        basketColor: $gray5 //},,,,,,,,,,,,,,,,
     ),
     // ..............................................................................
         dark: (
@@ -142,19 +147,19 @@ $themes: (
             divider: $hr,
             hrBorderC: $wixOrange,
             endBoxBg: $white,
-            tableRowSelected:$rowSelected,
-            loadingBar:rgb(255, 182, 15),
-
+            tableRowSelected: $rowSelected,
+            loadingBar: rgb(255, 182, 15),
             fullBtnColor: $wixBlack,
             fullBtnBg: $wixOrange,
             fullBtnBgH: $wixOrangeHover,
             fullBtnBorderC: $wixOrange,
             fullBtnBorderCH: $wixOrangeHover,
-
             borderBtnBgH: $wixOrange,
             borderBtnColor: $wixOrange,
             borderBtnColorH: $wixBlack,
             borderBtnBorderColor: $wixOrange,
+            basketIconHoverColor: $wixOrange,
+            basketIconHoverColorCP: $wixBlack,
             //}
                 //nav-menu{
                 navbarBackgroundColor: $wixOrange,
@@ -175,8 +180,11 @@ $themes: (
             pagerActiveBg: $wixOrangeDarker,
             pagerActiveBorderC: $wixOrangeDarker,
             pagerFontC: $wixBlack,
-            searchPanelBg:$wixOrange,
-            searchPanelColor:$wixBlack,
+            searchPanelBg: $wixOrange,
+            searchPanelColor: $wixBlack,
+            //}
+                //products {
+                productTitle: $wixBlack,
             //}
                 //basket-container{
                 clearButtonColor: $gray3,
@@ -188,6 +196,7 @@ $themes: (
             basketDescColor: $white,
             basketDescBorderC: $wixOrange,
             basketDescInputBorderC: $wixOrange,
+            basketTitle: $white,
             //}
                 //basket-summary{
                 basketSummaryBg: $wixBlack,
@@ -238,6 +247,6 @@ $themes: (
             //}
                 //buttons
                 btnBgC: $wixOrange,
-            btnBgCH: $wixOrangeHover //,,,
+            btnBgCH: $wixOrangeHover //,,,,,,,,,,,,,
         ),
 );

@@ -42,7 +42,6 @@ import queryString from "query-string";
 import host from "./api/host";
 import host2 from "./api/host2";
 import { useTranslation } from "react-i18next";
-import PolicyAcceptedModal from "./components/ClientPanel/PolicyAcceptedModal";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -194,7 +193,6 @@ export default withRouter(function App({ location }, props) {
                 <Redirect to="/" />
             </Switch>
             <Footer />
-            <PolicyAcceptedModal />
         </>
     );
 });

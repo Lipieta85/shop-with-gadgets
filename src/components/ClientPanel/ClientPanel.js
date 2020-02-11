@@ -20,6 +20,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
 import { useTranslation } from "react-i18next";
+import AddProductConfirmationModal from "./AddProductConfirmationModal";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -146,6 +147,7 @@ const ClientPanel = props => {
                         <Spinner />
                         <PolicyAcceptedModal />>
                         <ScreenLock />
+                        <AddProductConfirmationModal />
                         <Pager
                             pagination={pagination}
                             currentPage={currentPage}

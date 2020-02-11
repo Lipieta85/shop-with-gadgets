@@ -1,0 +1,13 @@
+@import "./mixins/mixins.scss";
+
+.close-button {
+    @include themify($themes) {
+        background-color: themed("orderOptionsBtnBg");
+        color: themed("orderOptionsBtnFontC");
+        border-color: themed("orderOptionsBtnBorderC");
+        &:hover {
+            color: themed("orderOptionsBtnFontCH");
+            background-color: themed("orderOptionsBtnBgH");
+        }
+    }
+}

@@ -203,11 +203,14 @@ const ButtonComponent = props => {
                                 ? "#e2e2e2"
                                 : "#a0a3a6"
                         }
-                        data-toggle="modal"
+                        // data-toggle="modal"
                         data-target="#proposalModal"
                         onClick={dispatchHandler}
                         cursor="pointer"
                         className="icon-anim"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Zamów"
                     />
                 </div>
             )}

@@ -1,6 +1,8 @@
-.card-box{
+@import "./mixins/mixins.scss";
+
+.card-box {
     max-width: 335px;
-    padding: .25rem;
+    padding: 0.25rem;
     .card {
         box-shadow: inset -2px -2px #ccc;
         .card-img {
@@ -13,12 +15,16 @@
                 }
             }
         }
+        .card-title {
+            @include themify($themes) {
+                color: themed("productTitle");
+            }
+        }
         .card-text {
             margin-bottom: 0;
         }
     }
 }
-
 
 @media (min-width: 992px) and (max-width: 1475px) {
     .card {
@@ -66,8 +72,8 @@
 }
 
 @media (max-width: 450px) {
-    .card-box{
-        padding:2px 1px;
+    .card-box {
+        padding: 2px 1px;
         .card {
             padding: 0px;
             .card-img {

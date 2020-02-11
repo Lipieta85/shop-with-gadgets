@@ -26,8 +26,22 @@
     "ZamówieniePłatne": "Paid Order",
     "WartośćTwoichZakupów": "Value of Your Purchases",
     "PrzekroczonyBudżetMarketingowy": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered.",
-    "WyszukajProdukt":"Find the product:",
-    "NazwaProduktu":"Product name..."
+    "WyszukajProdukt": "Find the product:",
+    "NazwaProduktu": "Product name..."
+  },
+  "NotificationModal": {
+    "PróbujeszDodaćDoKoszyka": "Próbujesz dodać do koszyka",
+    "WIlości": "w ilości",
+    "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
+    "MożeszDodaćTylko": "możesz dodać tylko"
+  },
+  "PolicyModal": {
+    "AkceptacjaRegulaminu": "Ackeptacja regulaminu",
+    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
+    "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
+    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
+    "Tak": "Yes",
+    "Nie": "No"
   },
   "Card": {
     "Cena": "Price",
@@ -45,7 +59,7 @@
     "Ilość": "Qauntity",
     "Aktualizuj": "Update",
     "Razem": "Sum",
-    "BrakProduktów":"No products in basket.",
+    "BrakProduktów": "No products in basket.",
     "Wyczyść": "Clear Basket",
     "Kwota": "Amount to pay",
     "AlertKoszykPusty": "Basket is empty, add product",
@@ -74,7 +88,9 @@
     "Tak": "Yes",
     "Nie": "No",
     "BudżetMarketingowy": "Marketing Budget",
-    "ZamówieniePłatne": "Paid order"
+    "ZamówieniePłatne": "Paid order",
+    "AnulowanieZamówienia": "Order cancelation",
+    "RodzajZamówienia": "Rodzaj zamówienia"
   },
   "OrderEnd": {
     "ZamówienieONr": "Your order number",
@@ -85,20 +101,20 @@
   "OrderHistory": {
     "ListaZamówieńJestPusta": "The order list is empty",
     "ListaZamówień": "Order List",
-    "ZamówioneProdukty":"Ordered products:",
-    "SzczegółyZamówienia":"Details of order",
-    "NumerZamówienia":"Order number:",
-    "DataZłożenia":"Order date:",
-    "Godzina":"Time:",
-    "Waluta":"Currency:",
-    "AdresDostarczenia":"Delivery:",
-    "Status":"Status:",
-    "ZapłaconaKwota":"Amount paid:",
-    "Cena":"Price",
-    "Razem":"Sum:",
-    "Data":"Date",
-    "KwotaNetto":"Net amount",
-    "ZamówionychDostarczonych":"Ordered / delivered"
+    "ZamówioneProdukty": "Ordered products:",
+    "SzczegółyZamówienia": "Details of order",
+    "NumerZamówienia": "Order number:",
+    "DataZłożenia": "Order date:",
+    "Godzina": "Time:",
+    "Waluta": "Currency:",
+    "AdresDostarczenia": "Delivery:",
+    "Status": "Status:",
+    "ZapłaconaKwota": "Amount paid:",
+    "Cena": "Price",
+    "Razem": "Sum:",
+    "Data": "Date",
+    "KwotaNetto": "Net amount",
+    "ZamówionychDostarczonych": "Ordered / delivered"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "The budget history is empty",
@@ -106,11 +122,11 @@
     "Data": "Date",
     "WykorzystanyBudżet": "Used budget",
     "BudżetUżytkownikaNaPoczątku": "User budget at the beggining",
-    "RodzajOperacji":"Operation type",
-    "NumerZamówienia":"Order number",
-    "CzasZdarzenia":"Time",
-    "PrzyznanyBudżet":"Marketing budget allocated for the year",
-    "PozostałyBudżet":"Marketing budget remaining for the year"
+    "RodzajOperacji": "Operation type",
+    "NumerZamówienia": "Order number",
+    "CzasZdarzenia": "Time",
+    "PrzyznanyBudżet": "Marketing budget allocated for the year",
+    "PozostałyBudżet": "Marketing budget remaining for the year"
   },
   "ProductDetails": {
     "KodProduktu": "Product code",
