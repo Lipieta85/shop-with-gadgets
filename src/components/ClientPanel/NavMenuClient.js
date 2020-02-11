@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import logo from "../../assets/images/filtron_logo.png";
+import React, { useEffect, useState } from "react";
+//import logo from "../../assets/images/filtron_logo.png";
+import logo from "../../assets/images/logo3.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
@@ -12,19 +13,23 @@ import {
     changeLanguage,
 } from "../../actions/index";
 import host from "../../api/host";
-import host2 from "../../api/host2";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "./NotificationModal";
+import PolicyAcceptedModal from "./PolicyAcceptedModal";
 const NavMenu = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const category = useSelector(state => state.cartReducer.productsCategory);
+    const availableProductsCategory = useSelector(
+        state => state.cartReducer.availableProductsCategory,
+    );
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
     const { t } = useTranslation();
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
+    const [policyModal, setPolicyModal] = useState(false);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     useEffect(() => {
@@ -36,6 +41,7 @@ const NavMenu = () => {
     }, [category]);
     const onSignout = () => {
         dispatch(signOut());
+        window.location.replace(`${host}site/desktop`);
     };
     const oneCategoryHandler = id => {
         dispatch(setProductCategories(id));
@@ -61,8 +67,15 @@ const NavMenu = () => {
         dispatch(initProducts(token, 1));
     };
 
+    const changePolicyModalStatus = () => {
+        if (window.location.pathname === "/Regulations") {
+            setPolicyModal(true);
+        }
+    };
+
     return (
         <div className="nav-menu fixed-top w-100 nav-shadow">
+            <PolicyAcceptedModal modalStatus={policyModal} />
             <div className="container-fluid p-0">
                 <nav className="navbar navbar-expand-lg navbar-light primary-color">
                     <Link to="/" className="navbar-brand">
@@ -105,42 +118,28 @@ const NavMenu = () => {
                                             {t(`Nav.Wszystkie`)}
                                         </button>
                                     </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002140"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Biuro`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002141"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Tekstylia`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002142"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.Gadżety`)}
-                                        </button>
-                                    </li>
-                                    <li className="nav-item item-separated">
-                                        <button
-                                            id="30002143"
-                                            className="nav-link"
-                                            onClick={tabHandler}
-                                        >
-                                            {t(`Nav.MateriałyPromocyjne`)}
-                                        </button>
-                                    </li>
+                                    {availableProductsCategory
+                                        ? availableProductsCategory.map(
+                                              (position, i) => {
+                                                  return (
+                                                      <li
+                                                          className="nav-item item-separated"
+                                                          key={i}
+                                                      >
+                                                          <button
+                                                              id={`${position.SLO_ID}`}
+                                                              className="nav-link"
+                                                              onClick={
+                                                                  tabHandler
+                                                              }
+                                                          >
+                                                              {`${position.SLO_NAZWA}`}
+                                                          </button>
+                                                      </li>
+                                                  );
+                                              },
+                                          )
+                                        : null}
                                 </ul>
                             ) : null}
                         </ul>
@@ -149,14 +148,13 @@ const NavMenu = () => {
                             window.location.pathname === `/Basket` ||
                             window.location.pathname === `/Contact` ||
                             window.location.pathname === `/Regulations` ? (
-                                <li className="nav-item ml-auto">
-                                    <a
-                                        className="nav-link text-uppercase"
-                                        href={`${host2}/`}
-                                    >
-                                        {t(`Nav.WróćDoStronyGłównej`)}{" "}
-                                    </a>
-                                </li>
+                                <Link
+                                    className="nav-link text-uppercase"
+                                    to={`/`}
+                                    onClick={changePolicyModalStatus}
+                                >
+                                    {t(`Nav.WróćDoStronyGłównej`)}
+                                </Link>
                             ) : null}
                             {window.location.pathname !== `/Regulations` ? (
                                 <li className="nav-item dropdown">
@@ -203,13 +201,13 @@ const NavMenu = () => {
                                                 {t(`Nav.ZamówieniaPłatne`)}
                                             </Link>
                                         ) : null}
-                                        <Link
+                                        <span
                                             className="dropdown-item text-uppercase"
                                             onClick={onSignout}
-                                            href={`${host}site/desktop`}
+                                            style={{ cursor: "pointer" }}
                                         >
                                             {t(`Nav.Wyloguj`)}
-                                        </Link>
+                                        </span>
                                     </div>
                                     <ButtonToolbar className="invisible">
                                         <Button
@@ -224,20 +222,13 @@ const NavMenu = () => {
                                             text={t(
                                                 "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
                                             )}
-                                            header={t("Button.WniosekZamówieniePłatne")}
+                                            header={t(
+                                                "Button.WniosekZamówieniePłatne",
+                                            )}
                                         />
                                     </ButtonToolbar>
                                 </li>
                             ) : null}
-                            {/* <li className="nav-item text-uppercase">
-                                <a
-                                    className="nav-link"
-                                    onClick={onSignout}
-                                    href={`${host}site/desktop`}
-                                >
-                                    {t(`Nav.Wyloguj`)}
-                                </a>
-                            </li> */}
                             <select
                                 className="custom-select lang-select-btn"
                                 value={lang}
@@ -245,8 +236,8 @@ const NavMenu = () => {
                             >
                                 <option value="pl">PL</option>
                                 <option value="en">EN</option>
-                                <option value="en">RU</option>
-                                <option value="en">IT</option>
+                                <option value="ru">RU</option>
+                                <option value="it">IT</option>
                             </select>
                         </ul>
                     </div>

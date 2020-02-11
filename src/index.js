@@ -15,7 +15,6 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import "./i18next";
-
 const history = createBrowserHistory();
 const persistConfig = {
     key: "root",
@@ -34,6 +33,13 @@ const store = createStore(
 );
 
 let persistor = persistStore(store);
+
+if (
+    window.location.href.search("[?&]debug=") &&
+    localStorage.getItem("token") !== null
+) {
+    localStorage.removeItem("token");
+}
 
 ReactDOM.render(
     <Provider store={store}>

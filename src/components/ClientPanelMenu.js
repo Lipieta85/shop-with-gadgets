@@ -178,7 +178,6 @@ const ClientPanelMenu = () => {
                         <br />
                     </div>
                 </div>
-                <div className="divider"></div>
                 <div>{orderList}</div>
             </div>
         </div>

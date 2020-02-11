@@ -7,7 +7,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 // have a look at the Quick start guide
 // for passing in lng and translations on init
 
-const languages = [`pl`, `en`];
+const languages = [`pl`, `en`, `it`, `ru`];
 
 i18n
     // load translation using xhr -> see /public/locales

@@ -18,7 +18,11 @@ $blue:rgb(3,88,153);
         }
     }
 }
-
+.desc-col{
+    span{
+        margin-right:10px;
+    }
+}
 .badge-blue{
     @include themify($themes) {
         background-color: themed('basketItemQuantityBg');
@@ -37,5 +41,27 @@ $blue:rgb(3,88,153);
 @media (max-width: 767px) {
     .basket-summary {
         width: 100%;
+    }
+}
+@media (min-width: 576px){
+    .desc-col{
+        span{
+            font-size: 13px;
+        }
+    }
+    .basket-quantity-input{
+        height: 35px;
+        width: 46px;
+    }
+}
+@media (max-width: 575px){
+    .desc-col{
+        span{
+            font-size: 12px;
+        }
+    }
+    .basket-quantity-input{
+        height: 35px;
+        width: 43px;
     }
 }

@@ -39,7 +39,9 @@ export {
     setProductCategories,
     changeProductCategory,
     searchProductPanel,
-    setTypedProducts
+    setTypedProducts,
+    initProductsCategories,
+    setProductsCategories,
 } from "./products.js";
 
 export { nextPage, prevPage, setPage } from "./page.js";
@@ -67,4 +69,5 @@ export {
     acceptPolicy,
     userIdNumber,
     changeLanguage,
+    clearState,
 } from "./clientData.js";

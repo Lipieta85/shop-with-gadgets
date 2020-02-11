@@ -12,6 +12,8 @@ const Pager = ({
     pageHandler,
     nextPageHandler,
     shortPagination,
+    shortPagination2,
+    shortPagination3
 }) => {
     return (
         pagination.totalPages > 1 && (
@@ -58,6 +60,50 @@ const Pager = ({
                     )}
                     {pagination.totalPages > 4 &&
                         shortPagination.map((item, i) => {
+                            //item += 1;
+
+                            return (
+                                <li
+                                    className={
+                                        item === currentPage
+                                            ? "page-item active"
+                                            : "page-item"
+                                    }
+                                    key={i}
+                                >
+                                    <button
+                                        className="page-link"
+                                        onClick={event => pageHandler(event)}
+                                    >
+                                        {item}
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    {pagination.totalPages === 3 &&
+                        shortPagination2.map((item, i) => {
+                            //item += 1;
+
+                            return (
+                                <li
+                                    className={
+                                        item === currentPage
+                                            ? "page-item active"
+                                            : "page-item"
+                                    }
+                                    key={i}
+                                >
+                                    <button
+                                        className="page-link"
+                                        onClick={event => pageHandler(event)}
+                                    >
+                                        {item}
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    {pagination.totalPages === 4 &&
+                        shortPagination3.map((item, i) => {
                             //item += 1;
 
                             return (

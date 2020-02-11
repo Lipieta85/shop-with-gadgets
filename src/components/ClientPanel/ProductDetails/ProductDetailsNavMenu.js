@@ -132,7 +132,9 @@ const ProductDetailsNavMenu = () => {
                                         text={t(
                                             "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
                                         )}
-                                        header={t("Button.WniosekZamówieniePłatne")}
+                                        header={t(
+                                            "Button.WniosekZamówieniePłatne",
+                                        )}
                                     />
                                 </ButtonToolbar>
                             </li>
@@ -143,18 +145,9 @@ const ProductDetailsNavMenu = () => {
                             >
                                 <option value="pl">PL</option>
                                 <option value="en">EN</option>
-                                <option value="en">RU</option>
-                                <option value="en">IT</option>
+                                <option value="ru">RU</option>
+                                <option value="it">IT</option>
                             </select>
-                            {/* <li className="nav-item text-uppercase">
-                                <a
-                                    className="nav-link"
-                                    onClick={onSignout}
-                                    href="/"
-                                >
-                                    {t("Nav.Wyloguj")}
-                                </a>
-                            </li> */}
                         </ul>
                     </div>
                 </nav>

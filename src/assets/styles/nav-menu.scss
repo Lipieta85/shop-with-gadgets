@@ -1,6 +1,12 @@
 @import "./mixins/mixins.scss";
 
 .navbar {
+    .navbar-nav{
+        border:.1rem solid;
+        @include themify($themes) {
+            border-color: themed("navbarBorderColor");
+        }
+    }
     .dropdown-item {
         width: 98%;
         position: relative;
@@ -16,6 +22,12 @@
         @include themify($themes) {
             color: themed("navbarFontColor");
         }
+        &:hover{
+            @include themify($themes) {
+                color: themed("navbarFontColorH");
+            }
+        }
+        font-size:16.5px;
     }
     .nav-link.active {
         background-color: transparent;
@@ -26,8 +38,10 @@
             margin-right: 200px !important;
         }
         .active {
-            color: black;
-            text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+            @include themify($themes) {
+                color: themed("navbarFontColorH");
+            }
+            text-shadow: 0px 0px 1px rgba(0, 0, 0, .5);
         }
     }
     .nav-link {
@@ -38,8 +52,8 @@
         width: 61px;
         border-radius: 0;
         @include themify($themes) {
-            color: themed("navbarFontColor");
-            background-color: themed("navbarBackgroundColor");
+            color: themed("navbarLangFontColor");
+            background-color: themed("navbarLangBgColor");
             //  border: 1px solid themed("navbarLangBorderColor");
         }
         border: 1px solid transparent;

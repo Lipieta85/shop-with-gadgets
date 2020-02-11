@@ -87,6 +87,12 @@ export const getPeriodFrom = code => {
     };
 };
 
+export const clearState = () => {
+    return {
+        type: type.CLEAR_STATE,
+    };
+};
+
 export const isStorePolicyAccepted = token => {
     return dispatch => {
         getStorePolicyAccepted(token)

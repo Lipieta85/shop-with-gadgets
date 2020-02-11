@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ClientPanelMenu from "../ClientPanelMenu";
 import Spinner from "../UI/Spinner/Spinner";
 import ScreenLock from "../ScreenLock";
+import PolicyAcceptedModal from "./PolicyAcceptedModal";
 import {
     initProducts,
     nextPage,
@@ -10,6 +11,7 @@ import {
     setPage,
     changeProductCategory,
     searchProductPanel,
+    initProductsCategories,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -25,6 +27,8 @@ const ClientPanel = props => {
     const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
+    const [shortPagination2] = useState([2]);
+    const [shortPagination3] = useState([2, 3]);
     const lang = useSelector(state => state.clientDataReducer.language);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
@@ -35,6 +39,7 @@ const ClientPanel = props => {
         if (token && category === "1" && name === "") {
             setName("");
             dispatch(initProducts(token, currentPage));
+            dispatch(initProductsCategories(token));
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -137,17 +142,18 @@ const ClientPanel = props => {
                             )}
                         </div>
                         <Spinner />
+                        <PolicyAcceptedModal />>
                         <ScreenLock />
-                        {pagination &&
-                            <Pager
-                                pagination={pagination}
-                                currentPage={currentPage}
-                                prevPageHandler={prevPageHandler}
-                                pageHandler={pageHandler}
-                                nextPageHandler={nextPageHandler}
-                                shortPagination={shortPagination}
-                            />
-                        } 
+                        <Pager
+                            pagination={pagination}
+                            currentPage={currentPage}
+                            prevPageHandler={prevPageHandler}
+                            pageHandler={pageHandler}
+                            nextPageHandler={nextPageHandler}
+                            shortPagination={shortPagination}
+                            shortPagination2={shortPagination2}
+                            shortPagination3={shortPagination3}
+                        />
                     </div>
                     <div className="client-panel cp-parent col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />

@@ -4,7 +4,9 @@ import {
     changeProductsCategory,
     postSubscribe,
     searchProduct,
+    getProductsCategories,
 } from "../api";
+import host2 from "../api/host2";
 
 export const setProducts = products => {
     return {
@@ -13,9 +15,10 @@ export const setProducts = products => {
     };
 };
 
-export const fetchProductsFailed = () => {
+export const fetchProductsFailed = errorText => {
     return {
         type: type.FETCH_PRODUCTS_FAILED,
+        errorText,
     };
 };
 
@@ -26,7 +29,25 @@ export const initProducts = (token, currentPage) => {
 
         getAllProducts(token, currentPage, company, lang)
             .then(res => {
-                dispatch(setProducts(res.data));
+                if (company === "filtron") {
+                    if (res.data.filtron.error) {
+                        window.location.replace(`${host2}/ServerError`);
+                    } else {
+                        dispatch(setProducts(res.data));
+                    }
+                } else if (company === "wix") {
+                    if (res.data.wix.error) {
+                        window.location.replace(`${host2}/ServerError`);
+                    } else {
+                        dispatch(setProducts(res.data));
+                    }
+                } else {
+                    if (res.data.all.error) {
+                        window.location.replace(`${host2}/ServerError`);
+                    } else {
+                        dispatch(setProducts(res.data));
+                    }
+                }
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
@@ -34,17 +55,29 @@ export const initProducts = (token, currentPage) => {
     };
 };
 
-// export const initProductsCategories = token => {
-//     return (dispatch, getState) => {
-//         getProductsCategories(token)
-//             .then(res => {
-//                 console.log(res);
-//             })
-//             .catch(error => {
-//                 console.log(error);
-//             });
-//     };
-// };
+export const initProductsCategories = token => {
+    return (dispatch, getState) => {
+        const company = getState().clientDataReducer.companyId;
+        let companyId =
+            company !== "all" ? company.charAt(0).toUpperCase() : "";
+        const lang = getState().clientDataReducer.language;
+
+        getProductsCategories(token, companyId, lang)
+            .then(res => {
+                dispatch(setProductsCategories(res.data.categories));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+};
+
+export const setProductsCategories = categories => {
+    return {
+        type: type.SET_PRODUCTS_CATEGORIES,
+        categories,
+    };
+};
 
 export const setProductCategories = number => {
     return {
@@ -80,12 +113,12 @@ export const searchProductPanel = (token, currentPage, lang, name) => {
     };
 };
 
-export const setTypedProducts = (typedProducts) => {
+export const setTypedProducts = typedProducts => {
     return {
         type: type.SET_TYPED_PRODUCTS,
-        typedProducts
-    }
-}
+        typedProducts,
+    };
+};
 export const sendNotification = (token, id, email, language) => {
     return dispatch => {
         postSubscribe(token, id, email, language)
