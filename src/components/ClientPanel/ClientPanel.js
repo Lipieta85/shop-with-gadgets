@@ -136,7 +136,7 @@ const ClientPanel = props => {
                             </div>
                         </div>
                         <div className="row card-container text-center mt-1">
-                            {items && (
+                            {items && pagination && (
                                 <Product
                                     items={items}
                                     pagination={pagination}

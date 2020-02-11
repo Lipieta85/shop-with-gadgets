@@ -105,8 +105,8 @@ const NavMenu = () => {
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul className="navbar-nav ">
-                            {window.location.pathname === `/` ? (
+                        {window.location.pathname === `/` ? (
+                            <ul className="navbar-nav ">
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item item-separated">
                                         <button
@@ -140,8 +140,8 @@ const NavMenu = () => {
                                           )
                                         : null}
                                 </ul>
-                            ) : null}
-                        </ul>
+                            </ul>
+                        ) : null}
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
                             window.location.pathname === `/Basket` ||

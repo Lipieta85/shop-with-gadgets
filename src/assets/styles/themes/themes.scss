@@ -51,8 +51,12 @@ $themes: (
         basketIconHoverColorCP: $blue3,
         //nav-menu{
             navbarBackgroundColor: $lightNav,
-        navbarFontColor: $gray5,
+            navbarBorderColor:$lightNav,
+        navbarFontColor: $gray2,
+        navbarFontColorH:$wixBlack,
+        navbarLangFontColor: black,
         navbarLangBorderColor: $gray5,
+        navbarLangBgColor:$lightNav,
         //}
             //client-panel{
             cardBackgroundColor: $white,
@@ -162,9 +166,13 @@ $themes: (
             basketIconHoverColorCP: $wixBlack,
             //}
                 //nav-menu{
-                navbarBackgroundColor: $wixOrange,
-            navbarFontColor: $wixBlack,
+                navbarBackgroundColor: $wixBlack,
+            navbarFontColor: white,
+            navbarFontColorH:$wixOrange,
+            navbarBorderColor:$wixOrange,
+            navbarLangFontColor: black,
             navbarLangBorderColor: $wixBlack,
+            navbarLangBgColor:$wixOrange,
             //}
                 //client-panel{
                 cardBackgroundColor: $white,

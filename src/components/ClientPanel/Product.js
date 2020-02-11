@@ -51,8 +51,8 @@ const Product = ({ items, pagination, currentPage }) => {
                                         className="label-textarea unselectable"
                                         style={{
                                             fontSize:
-                                                item.extraTag.length > 12
-                                                    ? "8.4px"
+                                                item.extraTag.length > 10
+                                                    ? "8.2px"
                                                     : "",
                                         }}
                                     >
