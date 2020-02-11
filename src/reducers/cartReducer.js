@@ -16,6 +16,7 @@ const initialState = {
     productsToOrder: [],
     productsCategory: "1",
     availableProductsCategory: [],
+    addConfirmProductModalState: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -59,6 +60,7 @@ const cartReducer = (state = initialState, action) => {
                     Number(existed_item.price.price) * addedValueNum
                 ).toFixed(2),
                 totalQuantity: (state.totalQuantity += addedValueNum),
+                addConfirmProductModalState: true,
             };
 
         case type.ADD_IF_ITEM_EMPTY:
@@ -99,6 +101,7 @@ const cartReducer = (state = initialState, action) => {
                     Number(addedItem2.price.price) * addedValueNum2
                 ).toFixed(2),
                 totalQuantity: (state.totalQuantity += addedValueNum2),
+                addConfirmProductModalState: true,
             };
 
         case type.DELETE_ITEM:
@@ -217,6 +220,7 @@ const cartReducer = (state = initialState, action) => {
                 totalQuantity:
                     (state.totalQuantity -= oldAddedItemQuantity) +
                     addedValueNum3,
+                addConfirmProductModalState: true,
             };
         case type.SET_PRODUCTS:
             let data = Object.values(action.products);
@@ -246,8 +250,8 @@ const cartReducer = (state = initialState, action) => {
 
             const pagination2 = {
                 page: 1,
-                totalPages: Math.floor(data2[0].length / 8),
-                itemsPerPage: 8,
+                totalPages: Math.floor(data2[0].length / 12),
+                itemsPerPage: 12,
                 totalItems: data2[0].length,
             };
 
@@ -301,6 +305,12 @@ const cartReducer = (state = initialState, action) => {
                 error: "",
                 productsToOrder: [],
                 productsCategory: "1",
+            };
+        }
+        case type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE: {
+            return {
+                ...state,
+                addConfirmProductModalState: false,
             };
         }
         default:

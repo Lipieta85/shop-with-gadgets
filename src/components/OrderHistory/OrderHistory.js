@@ -14,7 +14,7 @@ import ChooseModal from "./modals/OrderChooseModal";
 import ScreenLock from "../ScreenLock";
 import "../../assets/styles/order-history.scss";
 import "../../assets/styles/order-end.scss";
-
+import Separator from "../Separator/Separator";
 const OrderHistory = () => {
     let orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const cancelOrderStatus = useSelector(
@@ -92,7 +92,9 @@ const OrderHistory = () => {
                     ></button>
                     <div className="cell text-right">
                         {order.status !== "Deleted"
-                            ? (+order.order_total_amount).toFixed(2) +
+                            ? Separator(
+                                  (+order.order_total_amount).toFixed(2),
+                              ) +
                               " " +
                               order.currency_code
                             : "Anulowane"}
@@ -158,7 +160,8 @@ const OrderHistory = () => {
                         <div className="col-sm-7">
                             <h4 className="order-list ml-1 mb-2 header-title">
                                 {orders.length !== 0 &&
-                                    t("OrderHistory.SzczegółyZamówienia") +" (" +
+                                    t("OrderHistory.SzczegółyZamówienia") +
+                                        " (" +
                                         (showedOrder &&
                                             showedOrder.order_number) +
                                         ")"}
@@ -173,14 +176,12 @@ const OrderHistory = () => {
                             <table className="w-100">
                                 <thead>
                                     <tr>
-                                        <th>{t('OrderHistory.Data')}</th>
-                                        <th>{t('OrderHistory.Status')}</th>
-                                        <th>{t('OrderHistory.KwotaNetto')}</th>
+                                        <th>{t("OrderHistory.Data")}</th>
+                                        <th>{t("OrderHistory.Status")}</th>
+                                        <th>{t("OrderHistory.KwotaNetto")}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {confirmedOrder.reverse()}
-                                </tbody>
+                                <tbody>{confirmedOrder.reverse()}</tbody>
                             </table>
                         </div>
                         <div className="col-sm-7 orders-right">
@@ -190,7 +191,11 @@ const OrderHistory = () => {
                                         <>
                                             <table className="w-100">
                                                 <tr>
-                                                    <td>{t('OrderHistory.NumerZamówienia')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.NumerZamówienia",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -200,7 +205,11 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{t('OrderHistory.DataZłożenia')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.DataZłożenia",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -210,7 +219,11 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{t('OrderHistory.Godzina')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.Godzina",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -220,7 +233,11 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{t('OrderHistory.Waluta')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.Waluta",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
                                                             {
@@ -231,7 +248,9 @@ const OrderHistory = () => {
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                    {t('OrderHistory.AdresDostarczenia')}{" "}
+                                                        {t(
+                                                            "OrderHistory.AdresDostarczenia",
+                                                        )}{" "}
                                                     </td>
                                                     <td>
                                                         <b>
@@ -242,7 +261,11 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{t('OrderHistory.Status')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.Status",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
                                                             {showedOrder.status}
@@ -250,11 +273,17 @@ const OrderHistory = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{t('OrderHistory.ZapłaconaKwota')} </td>
+                                                    <td>
+                                                        {t(
+                                                            "OrderHistory.ZapłaconaKwota",
+                                                        )}{" "}
+                                                    </td>
                                                     <td>
                                                         <b>
-                                                            {(+showedOrder.order_total_amount).toFixed(
-                                                                2,
+                                                            {Separator(
+                                                                (+showedOrder.order_total_amount).toFixed(
+                                                                    2,
+                                                                ),
                                                             )}{" "}
                                                             {
                                                                 showedOrder.currency_code
@@ -292,7 +321,7 @@ const OrderHistory = () => {
                                 ""
                             ) : (
                                 <h5 className="header-title">
-                                    {t('OrderHistory.ZamówioneProdukty')}
+                                    {t("OrderHistory.ZamówioneProdukty")}
                                 </h5>
                             )}
                             {singleOrder.items
@@ -303,7 +332,9 @@ const OrderHistory = () => {
                                                   className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
                                               >
                                                   <div className="col-md-12 desc-col d-flex order-item">
-                                                      <span className="order-iteration">{i + 1}</span>
+                                                      <span className="order-iteration">
+                                                          {i + 1}
+                                                      </span>
                                                       <div className="order-img-box">
                                                           {order.image && (
                                                               <img
@@ -338,11 +369,13 @@ const OrderHistory = () => {
                                                           </div>
                                                           <div>
                                                               <span>
-                                                                  {t('OrderHistory.Cena')}{" "}
+                                                                  {t(
+                                                                      "OrderHistory.Cena",
+                                                                  )}{" "}
                                                                   <b className="order-text-value mr-3">
-                                                                      {
-                                                                          +order.unitPrice
-                                                                      }{" "}
+                                                                      {Separator(
+                                                                          +order.unitPrice,
+                                                                      )}{" "}
                                                                       {showedOrder &&
                                                                           showedOrder.currency_code}
                                                                   </b>
@@ -351,7 +384,9 @@ const OrderHistory = () => {
                                                           <div className="order-history-delivery">
                                                               <span className="mr-3 mb-4">
                                                                   <span className="mr-1">
-                                                                      {t("OrderHistory.ZamówionychDostarczonych")}
+                                                                      {t(
+                                                                          "OrderHistory.ZamówionychDostarczonych",
+                                                                      )}
                                                                   </span>
                                                                   <b className="order-text-value">
                                                                       (
@@ -369,10 +404,16 @@ const OrderHistory = () => {
                                                                   </b>
                                                               </span>
                                                               <span className="pull-right mb-0">
-                                                                  <b>{t('OrderHistory.Razem')} </b>
+                                                                  <b>
+                                                                      {t(
+                                                                          "OrderHistory.Razem",
+                                                                      )}{" "}
+                                                                  </b>
                                                                   <b className="order-text-value">
-                                                                      {(+order.total).toFixed(
-                                                                          2,
+                                                                      {Separator(
+                                                                          (+order.total).toFixed(
+                                                                              2,
+                                                                          ),
                                                                       )}{" "}
                                                                       {showedOrder &&
                                                                           showedOrder.currency_code}
@@ -393,10 +434,12 @@ const OrderHistory = () => {
                                 <div className="summary-box">
                                     <div className="orders-summary">
                                         <div className="font-weight-bold">
-                                            {t('OrderHistory.ZapłaconaKwota')}{" "}
+                                            {t("OrderHistory.ZapłaconaKwota")}{" "}
                                             {showedOrder &&
-                                                showedOrder.order_total_amount.toFixed(
-                                                    2,
+                                                Separator(
+                                                    showedOrder.order_total_amount.toFixed(
+                                                        2,
+                                                    ),
                                                 )}{" "}
                                             {showedOrder &&
                                                 showedOrder.currency_code}

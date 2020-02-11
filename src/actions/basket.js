@@ -256,3 +256,9 @@ export const setBudget = data => {
         data,
     };
 };
+
+export const addProductConfirmationModalState = () => {
+    return {
+        type: type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE,
+    };
+};

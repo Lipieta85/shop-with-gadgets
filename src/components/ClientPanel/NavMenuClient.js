@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import logo from "../../assets/images/filtron_logo.png";
-import logo from "../../assets/images/logo3.png";
+import logo from "../../assets/images/filtron_logo.png";
 import logo2 from "../../assets/images/WIX_logo.png";
 import "../../assets/styles/nav-menu.scss";
 import { Link } from "react-router-dom";
@@ -106,8 +105,8 @@ const NavMenu = () => {
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul className="navbar-nav ">
-                            {window.location.pathname === `/` ? (
+                        {window.location.pathname === `/` ? (
+                            <ul className="navbar-nav ">
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item item-separated">
                                         <button
@@ -141,8 +140,8 @@ const NavMenu = () => {
                                           )
                                         : null}
                                 </ul>
-                            ) : null}
-                        </ul>
+                            </ul>
+                        ) : null}
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
                             window.location.pathname === `/Basket` ||

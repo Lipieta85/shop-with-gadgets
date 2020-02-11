@@ -3,6 +3,7 @@ import ButtonInput from "./Button";
 import { Link } from "react-router-dom";
 import defImg from "../../assets/images/default.jpg";
 import { useTranslation } from "react-i18next";
+import Separator from "../Separator/Separator";
 
 const Product = ({ items, pagination, currentPage }) => {
     const token = localStorage.getItem("token");
@@ -94,7 +95,7 @@ const Product = ({ items, pagination, currentPage }) => {
                             <p className="card-text">
                                 <strong>
                                     {t(`Card.Cena`)}:{" "}
-                                    {(+item.price.price).toFixed(2)}{" "}
+                                    {Separator((+item.price.price).toFixed(2))}{" "}
                                     {item.price.currency}/
                                     {item.product.unitOfMeasure}
                                 </strong>

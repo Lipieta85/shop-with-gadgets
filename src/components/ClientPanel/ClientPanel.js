@@ -20,6 +20,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
 import { useTranslation } from "react-i18next";
+import AddProductConfirmationModal from "./AddProductConfirmationModal";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -105,11 +106,13 @@ const ClientPanel = props => {
                 <div className="row">
                     <div className="col-sm-12 col-lg-9 col-xl-10 offset-xl-0 order-lg-first order-last">
                         <div className="search-panel row">
-                            <div className="panel-left col-4 m-desktop-flex">
-                                <span>{t(`CPanelMenu.WyszukajProdukt`)}</span>
-                            </div>
-                            <div className="panel-right col-12 col-sm-8">
+                            <div className="panel-right col-12 col-sm-10">
                                 <div className="search-box">
+                                    <div className="panel-left m-desktop-flex">
+                                        <span>
+                                            {t(`CPanelMenu.WyszukajProdukt`)}
+                                        </span>
+                                    </div>
                                     <input
                                         type="text"
                                         className="search-input submit_on_enter"
@@ -144,6 +147,7 @@ const ClientPanel = props => {
                         <Spinner />
                         <PolicyAcceptedModal />>
                         <ScreenLock />
+                        <AddProductConfirmationModal />
                         <Pager
                             pagination={pagination}
                             currentPage={currentPage}

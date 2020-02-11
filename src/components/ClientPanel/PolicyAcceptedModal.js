@@ -59,7 +59,7 @@ const PolicyAcceptedModal = props => {
                         id="contained-modal-title-vcenter"
                         className="mx-auto"
                     >
-                        <p>Akceptacja regulaminu</p>
+                        {t(`PolicyModal.AkceptacjaRegulaminu`)}
                         {props.name}
                     </Modal.Title>
                 </Modal.Header>
@@ -68,8 +68,9 @@ const PolicyAcceptedModal = props => {
                     {storePolicyStatus !== "error" ? (
                         <div>
                             <p className="text-center">
-                                Aby korzystać z funkcji sklepu musisz
-                                zaakceptować regulamin sklepu
+                                {t(
+                                    `PolicyModal.AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu`,
+                                )}
                             </p>
                             <Link to="/Regulations" onClick={checkHandler}>
                                 <p className="text-uppercase text-center">
@@ -78,24 +79,30 @@ const PolicyAcceptedModal = props => {
                             </Link>
                         </div>
                     ) : (
-                        <p>Wystąpił błąd, spróbuj ponownie poźniej</p>
+                        <p>
+                            {t(
+                                `PolicyModal.WystąpiłBłądSpróbujPonowniePóźniej`,
+                            )}
+                        </p>
                     )}
                 </Modal.Body>
                 <Modal.Footer className="mx-auto">
-                    <p>Czy akceptujesz regulamin sklepu ?</p>
+                    <p>
+                        <p>{t(`PolicyModal.CzyAkceptujeszRegulaminSklepu`)}</p>
+                    </p>
                     <Button
                         type="button"
                         variant="dark"
                         onClick={() => dispatch(acceptPolicy(token))}
                     >
-                        Tak
+                        {t(`PolicyModal.Tak`)}
                     </Button>
                     <Button
                         type="button"
                         variant="dark"
                         onClick={signOutHandler}
                     >
-                        Nie
+                        {t(`PolicyModal.Nie`)}
                     </Button>
                 </Modal.Footer>
             </Modal>

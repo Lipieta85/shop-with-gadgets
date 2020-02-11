@@ -6,6 +6,11 @@
         @include themify($themes) {
             border-color: themed("navbarBorderColor");
         }
+        .nav-tabs{
+            padding-bottom: 2px;
+            padding-right: 2px;
+        }
+        border-radius: 1px;
     }
     .dropdown-item {
         width: 98%;
@@ -22,9 +27,14 @@
         @include themify($themes) {
             color: themed("navbarFontColor");
         }
-        &:hover{
+        &:hover, &:active{
             @include themify($themes) {
                 color: themed("navbarFontColorH");
+            }
+        }
+        &:focus{
+            @include themify($themes) {
+                color: themed("navbarFontColor");
             }
         }
         font-size:16.5px;
@@ -82,3 +92,12 @@
         margin: 0px;
     }
 }
+@media (max-width: 991px) {
+    .navbar-nav{
+        border:.1rem solid;
+        @include themify($themes) {
+            border-color: themed("navbarBackgroundColor")!important;
+        }
+    }
+}
+

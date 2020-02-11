@@ -1,102 +1,109 @@
-@import './mixins/mixins.scss';
-
+@import "./mixins/mixins.scss";
 
 .client-side {
     //background: url(../images/bg_top_2.jpg) center no-repeat;
     @include themify($themes) {
-        background-color: themed('mainBackgroundColor');  
+        background-color: themed("mainBackgroundColor");
     }
     background-size: cover;
     position: relative;
     margin: 0 auto;
     min-height: calc(100vh - 57px);
     padding: 90px 10px 0 10px;
-    .search-panel{
+    .search-panel {
         height: 42px;
         @include themify($themes) {
-            background-color: themed('searchPanelBg');  
-            color:themed('searchPanelColor')
+            background-color: themed("searchPanelBg");
+            color: themed("searchPanelColor");
         }
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
         margin-top: 20px;
         margin-left: -11px;
         margin-right: -10px;
+        display: flex;
+        justify-content: flex-end;
         padding: 2px 5px 0px 5px;
-        .panel-left{
+        .panel-left {
+            //   display: flex;
             display: flex;
             align-items: center;
             padding: 0;
+            margin-right: 5px;
         }
-        .panel-right{
+        .panel-right {
             display: flex;
             align-items: center;
             text-align: right;
             padding: 0;
-            .search-box{
+            .search-box {
                 width: 100%;
-                display:flex;
+                display: flex;
                 justify-content: flex-end;
             }
         }
-        .search-input::placeholder{  
+        .search-input::placeholder {
             opacity: 0.5;
         }
-        .search-input{
+        .search-input {
             border-radius: 2px;
-            border:1px solid rgb(209, 209, 209);
-            height:29px;
+            border: 1px solid rgb(209, 209, 209);
+            height: 29px;
             padding-left: 2px;
             width: 60%;
             color: gray;
-            &:focus{
+            &:focus {
                 outline: none;
             }
         }
-        .search-button{
+        .search-button {
             width: 50px;
             height: 29px;
             border-radius: 2px;
-            border:1px solid rgb(209, 209, 209);
+            border: 1px solid rgb(209, 209, 209);
             background-color: white;
             position: relative;
             left: -1px;
             color: gray;
-            transition: .3s;
+            transition: 0.3s;
         }
     }
     .card-container {
         .card {
             @include themify($themes) {
-                background-color: themed('cardBackgroundColor');  
+                background-color: themed("cardBackgroundColor");
             }
             overflow: hidden;
             border: none;
             height: 364px;
             border-radius: 0;
             box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
-            .card-body{
-                .card-title{
+            .card-body {
+                .card-title {
                     padding-left: 10px;
                     padding-right: 10px;
                 }
-                a{
-                    .card-title{
-                        color: rgb(31, 31, 31);
+                a {
+                    .card-title {
+                        @include themify($themes) {
+                            color: themed("productTitle");
+                        }
                     }
                 }
-                .availability-alert{
+                .availability-alert {
                     color: #d81e1e;
                 }
             }
-            .card-label-box{
+            .card-label-box {
                 position: absolute;
                 width: 100px;
                 height: 100px;
                 overflow: hidden;
-                .card-label{
+                .card-label {
                     @include themify($themes) {
-                        background-color: themed('extraTagLabelBackgroundColor');  
-                        color:themed('extraTagLabelFontColor'); 
+                        background-color: themed(
+                            "extraTagLabelBackgroundColor"
+                        );
+                        color: themed("extraTagLabelFontColor");
                     }
                     position: relative;
                     display: flex;
@@ -115,31 +122,32 @@
             .product-input {
                 width: 60px;
                 height: 33px;
+                padding: 0 0 0 8px;
                 border-radius: 1px;
-                border-width: .1rem;
+                border-width: 0.1rem;
             }
         }
     }
     .navigation-pager {
         margin-top: 1.5rem;
-        .page-item{
-            .page-link{
+        .page-item {
+            .page-link {
                 @include themify($themes) {
-                    color:themed('pagerFontC'); 
-                    background-color: themed('pagerBgC');  
-                    border-color:themed('pagerBorderC');  
+                    color: themed("pagerFontC");
+                    background-color: themed("pagerBgC");
+                    border-color: themed("pagerBorderC");
                 }
                 border: 2px solid;
-                svg{
+                svg {
                     @include themify($themes) {
-                        color:themed('pagerFontC'); 
+                        color: themed("pagerFontC");
                     }
                 }
             }
-            &:hover{
+            &:hover {
                 .page-link {
                     @include themify($themes) {
-                        border-color:themed('pagerBorderCH')!important;  
+                        border-color: themed("pagerBorderCH") !important;
                     }
                     border: 2px solid !important;
                 }
@@ -148,8 +156,8 @@
         .page-item.active {
             .page-link {
                 @include themify($themes) {
-                    background-color:themed('pagerActiveBg');  
-                    border-color:themed('pagerActiveBorderC');  
+                    background-color: themed("pagerActiveBg");
+                    border-color: themed("pagerActiveBorderC");
                     color: white;
                 }
                 background-color: #a0a3a6;
@@ -181,12 +189,12 @@
 }
 @media (max-width: 600px) {
     .search-input {
-        width: 85%!important;
+        width: 85% !important;
     }
 }
-@media (max-width:380px){
-    .search-button{
-        width: 30px!important;
+@media (max-width: 380px) {
+    .search-button {
+        width: 30px !important;
     }
 }
 @media (max-width: 991px) {
@@ -204,18 +212,18 @@
     }
 }
 @media (min-width: 451px) {
-    .quantity{
+    .quantity {
         font-size: 14px;
     }
-    .card-label-box{
+    .card-label-box {
         right: 0px;
         top: -1px;
-        .card-label{
+        .card-label {
             left: -8px;
             top: 24px;
             height: 30px;
             line-height: 12px;
-            .label-textarea{
+            .label-textarea {
                 width: 85px;
                 font-size: 13px;
             }
@@ -223,9 +231,9 @@
     }
 }
 @media (max-width: 450px) {
-    .card{
+    .card {
         height: 278px !important;
-        .quantity{
+        .quantity {
             font-size: 12px;
         }
     }
@@ -239,6 +247,7 @@
                 padding-left: 0px;
                 .product-input {
                     font-size: 11px;
+                    padding: 0;
                     width: 60px;
                 }
                 .product-basket-icon {
@@ -247,15 +256,15 @@
             }
         }
     }
-    .card-label-box{
+    .card-label-box {
         right: -2px;
         top: -1px;
-        .card-label{
+        .card-label {
             left: 1px;
             top: 17px;
             height: 22px;
             line-height: 8px;
-            .label-textarea{
+            .label-textarea {
                 width: 65px;
                 font-size: 8px !important;
             }

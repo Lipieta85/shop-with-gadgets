@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
-
+import Separator from "./Separator/Separator";
 import "../assets/styles/client-panel-menu.scss";
 
 const ClientPanelMenu = () => {
@@ -26,7 +26,9 @@ const ClientPanelMenu = () => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-    const userIdNumber = useSelector(state => state.clientDataReducer.userIdNumber);
+    const userIdNumber = useSelector(
+        state => state.clientDataReducer.userIdNumber,
+    );
     const [orderList, setOrderList] = useState();
 
     const [budgetAlert, setBudgetAlert] = useState("");
@@ -70,7 +72,9 @@ const ClientPanelMenu = () => {
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
                     <div>
-                        {t(`CPanelMenu.JesteśZalogowanyJako`)} {userName} {t(`CPanelMenu.WImieniu`)} "{companyName}" ({userIdNumber})
+                        {/* {t(`CPanelMenu.JesteśZalogowanyJako`)}  */}
+                        {userName} {t(`CPanelMenu.WImieniu`)} "{companyName}" (
+                        {userIdNumber})
                     </div>
                 </div>
                 <div className="logged-panel-btn-group">
@@ -142,7 +146,7 @@ const ClientPanelMenu = () => {
                                 </span>
                                 <br />
                                 <span className="blue-value">
-                                    {priceValue} {currencyCode}
+                                    {Separator(priceValue)} {currencyCode}
                                 </span>
                             </>
                         ) : (
@@ -152,7 +156,9 @@ const ClientPanelMenu = () => {
                                 </span>
                                 <br />
                                 <span className="blue-value">
-                                    {budget && budget > 0 ? budget : "0.00"}{" "}
+                                    {budget && budget > 0
+                                        ? Separator(budget)
+                                        : "0.00"}{" "}
                                     {budget ? currencyCode : ""}
                                 </span>
                                 <span className="budget-alert">
@@ -171,7 +177,7 @@ const ClientPanelMenu = () => {
                                             : "blue-value"
                                     }
                                 >
-                                    {priceValue} {currencyCode}
+                                    {Separator(priceValue)} {currencyCode}
                                 </span>
                             </>
                         )}

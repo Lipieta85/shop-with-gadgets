@@ -73,7 +73,7 @@ const OrderOptions = () => {
     return (
         <div className="order-options">
             <h4 className="options-header">{t("Basket.WybierzAdres")}</h4>
-            <div className="input-group mb-3">
+            <div className="input-group mb-2">
                 <div>
                     <select
                         className="custom-select"

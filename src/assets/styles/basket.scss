@@ -3,7 +3,7 @@
 .basket-container {
     .title {
         @include themify($themes) {
-            color: themed("title");
+            color: themed("basketTitle");
         }
     }
     .item-number {
@@ -24,7 +24,7 @@
     &:hover {
         .basket {
             @include themify($themes) {
-                color: themed("basketColorHover");
+                color: themed("basketIconHoverColorCP");
             }
         }
     }
@@ -83,10 +83,10 @@
     .desc-col {
         @include themify($themes) {
             background-color: themed("basketDescBg");
-            color:themed("basketDescColor");
-            border-color:themed("basketDescBorderC");
+            color: themed("basketDescColor");
+            border-color: themed("basketDescBorderC");
         }
-        border: .1rem solid;
+        border: 0.1rem solid;
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
         padding: 10px 10px 10px 8px;
         .text-right {
@@ -97,12 +97,12 @@
         .basket-quantity-input {
             @include themify($themes) {
                 color: themed("title");
-                border-color:themed("basketDescInputBorderC");
+                border-color: themed("basketDescInputBorderC");
             }
-            width: 80px;
+            width: 60px;
             padding: 4px;
             margin: 5px;
-            background-color: transparent; 
+            background-color: transparent;
             &:hover {
                 @include themify($themes) {
                     color: themed("title");
@@ -126,6 +126,13 @@
 }
 .updateQuantity {
     width: 50px;
+}
+@media (max-width: 899px) {
+    .basket-container {
+        .basket-button {
+            height: 30.4px;
+        }
+    }
 }
 @media (min-width: 992px) {
     .basket-container {
