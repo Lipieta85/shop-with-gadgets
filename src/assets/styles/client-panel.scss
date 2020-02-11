@@ -25,6 +25,7 @@
         padding: 2px 5px 0px 5px;
         .panel-left {
             //   display: flex;
+            display: flex;
             align-items: center;
             padding: 0;
             margin-right: 5px;
@@ -83,7 +84,9 @@
                 }
                 a {
                     .card-title {
-                        color: rgb(31, 31, 31);
+                        @include themify($themes) {
+                            color: themed("productTitle");
+                        }
                     }
                 }
                 .availability-alert {

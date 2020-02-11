@@ -29,6 +29,20 @@
     "WyszukajProdukt": "Wyszukaj produkt:",
     "NazwaProduktu": "Наименование продукта..."
   },
+  "NotificationModal": {
+    "PróbujeszDodaćDoKoszyka": "Próbujesz dodać do koszyka",
+    "WIlości": "w ilości",
+    "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
+    "MożeszDodaćTylko": "możesz dodać tylko"
+  },
+  "PolicyModal": {
+    "AkceptacjaRegulaminu": "Ackeptacja regulaminu",
+    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
+    "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
+    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
+    "Tak": "Yes",
+    "Nie": "No"
+  },
   "Card": {
     "Cena": "Цена",
     "Niedostępny": "Недоступен",
@@ -74,7 +88,9 @@
     "Tak": "Tak",
     "Nie": "Nie",
     "BudżetMarketingowy": "Budżet Marketingowy",
-    "ZamówieniePłatne": "Paid order"
+    "ZamówieniePłatne": "Paid order",
+    "AnulowanieZamówienia": "Anulowanie zamówienia",
+    "RodzajZamówienia": "Rodzaj zamówienia"
   },
   "OrderEnd": {
     "ZamówienieONr": "Ваш заказ с номером",

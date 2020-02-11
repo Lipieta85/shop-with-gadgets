@@ -140,13 +140,6 @@ const ProductDetails = props => {
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            {t("ProductDetails.JednostkaMiary")}
-                                            :{" "}
-                                            <span className="product-details-text">
-                                                {productUnit}
-                                            </span>
-                                        </p>
-                                        <p className="font-weight-bold">
                                             {t(
                                                 "ProductDetails.CenaJednostkowa",
                                             )}

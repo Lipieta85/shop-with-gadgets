@@ -16,17 +16,33 @@ const NotificationModal = props => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                  {props.header}
+                    {props.header}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {props.itemTitle&&
+                {props.itemTitle && (
                     <>
-                        Próbujesz dodać do koszyka <b>{props.itemTitle}</b> w ilości: <b>{props.inputValue} {props.unit}</b>. 
-                        W ramach budżetu marketingowego: <b>{props.budget>0?props.budget:'0'} {props.currency}</b>, 
-                        możesz dodać tylko <b>{props.budget>0?Math.floor(props.budget/props.price):'0'} {props.unit}</b>{". "}
+                        {t("NotificationModal.PróbujeszDodaćDoKoszyka")}{" "}
+                        <b>{props.itemTitle}</b>{" "}
+                        {t("NotificationModal.WIlości")}{" "}
+                        <b>
+                            {props.inputValue} {props.unit}
+                        </b>
+                        . {t("NotificationModal.WRamachBudżetuMarketingowego")}:{" "}
+                        <b>
+                            {props.budget > 0 ? props.budget : "0"}{" "}
+                            {props.currency}
+                        </b>
+                        , {t("NotificationModal.MożeszDodaćTylko")}{" "}
+                        <b>
+                            {props.budget > 0
+                                ? Math.floor(props.budget / props.price)
+                                : "0"}{" "}
+                            {props.unit}
+                        </b>
+                        {". "}
                     </>
-                }
+                )}
                 {props.text}
             </Modal.Body>
             <Modal.Footer>
@@ -36,7 +52,7 @@ const NotificationModal = props => {
                     variant="conf-button"
                     href={confAddress}
                 >
-                    {t('Button.ZłóżWniosek')}
+                    {t("Button.ZłóżWniosek")}
                 </Button>
                 <Button
                     type="button"
@@ -44,7 +60,7 @@ const NotificationModal = props => {
                     variant="conf-button"
                     onClick={props.onHide}
                 >
-                    {t('Button.Anuluj')}
+                    {t("Button.Anuluj")}
                 </Button>
             </Modal.Footer>
         </Modal>

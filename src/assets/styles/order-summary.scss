@@ -8,48 +8,48 @@
         background-color: themed("mainBackgroundColor");
     }
     background-size: cover;
-    .title-header{
+    .title-header {
         @include themify($themes) {
             color: themed("title");
         }
     }
-    .summary-item-info{
-        background-color:#f7f7f7;
+    .summary-item-info {
+        background-color: #f7f7f7;
     }
     .order-summary-text {
         @include themify($themes) {
             color: themed("title");
-        } 
+        }
         //font-size: 16px;
         // .summary-text-value {
         //     color: #ccc;
         // }
     }
-    li{
+    li {
         margin-bottom: 10px;
     }
-    hr{
+    hr {
         @include themify($themes) {
             border-color: themed("hrBorderC");
-        } 
+        }
     }
-    .summary-table{
+    .summary-table {
         width: 100%;
         margin-top: 10px;
         margin-bottom: 10px;
-        .table-row:nth-child(even){
+        .table-row:nth-child(even) {
             background-color: rgb(242, 242, 242);
         }
-        .table-row:nth-child(odd){
+        .table-row:nth-child(odd) {
             background-color: rgb(255, 255, 255);
         }
-        th{
+        th {
             padding-left: 5px;
         }
-        td{
+        td {
             padding-left: 5px;
         }
-        .summary-header{
+        .summary-header {
             @include themify($themes) {
                 background-color: themed("tableHeader");
                 color: themed("tableHeaderColor");
@@ -57,90 +57,97 @@
             height: 40px;
             padding: 5px 5px;
         }
-        .summary-img{
+        .summary-img {
             margin: 10px;
-            width:60px;
-            margin-right:20px;
+            width: 60px;
+            margin-right: 20px;
+        }
+        .summary-product-name {
+            @include themify($themes) {
+                color: themed("productTitle");
+            }
         }
     }
-
 }
 // .order-text-value {
 //     color: #CCC;
 // }
 .order-summary {
-    @media (max-width:991px){
-        .summary-table{
-            td,th{
+    @media (max-width: 991px) {
+        .summary-table {
+            td,
+            th {
                 padding: 2px;
                 font-size: 13px;
-            }   
-            .summary-img{
+            }
+            .summary-img {
                 width: 70px;
                 margin: 5px;
             }
         }
     }
-    @media (max-width:550px){
-        .btn{
+    @media (max-width: 550px) {
+        .btn {
             width: 100%;
-            margin-right:0;
-            margin-top:0;
-            margin-bottom:.8rem;
+            margin-right: 0;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
             font-size: 14px;
         }
-        .order-summary-text, b {
+        .order-summary-text,
+        b {
             font-size: 14px;
         }
-        .title{
-            font-size:17px;
+        .title {
+            font-size: 17px;
         }
-        h2{
-            font-size:22px;
+        h2 {
+            font-size: 22px;
         }
-        .summary-table{
-            td,th{
+        .summary-table {
+            td,
+            th {
                 padding: 2px;
                 font-size: 11px;
-            }   
-            .summary-img{
+            }
+            .summary-img {
                 width: 50px;
                 margin: 5px;
             }
         }
-        ol{
+        ol {
             padding-left: 15px;
         }
     }
-    @media (max-width:400px){
-        ol{
+    @media (max-width: 400px) {
+        ol {
             padding-left: 15px;
         }
-        .summary-table{
-            td,th{
+        .summary-table {
+            td,
+            th {
                 padding: 2px;
                 font-size: 9px;
-            }   
-            .summary-img{
+            }
+            .summary-img {
                 width: 50px;
                 margin: 3px;
             }
         }
     }
-    @media (min-width:551px){
-        .btn{
-            margin-top:1.5rem;
-            margin-bottom:2rem;
+    @media (min-width: 551px) {
+        .btn {
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
         }
         .order-summary-text {
             font-size: 16px;
         }
-        h4{
+        h4 {
             font-size: 20px;
         }
-        ol{
+        ol {
             padding-left: 20px;
         }
     }
 }
-

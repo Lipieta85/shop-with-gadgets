@@ -23,7 +23,6 @@
                 .btn-prev {
                     margin-right: 1rem;
                 }
-                
             }
             .product-details-desc {
                 @include themify($themes) {
@@ -42,6 +41,9 @@
                 .product-details-header {
                     font-weight: bold;
                     text-transform: uppercase;
+                    @include themify($themes) {
+                        color: themed("basketTitle");
+                    }
                 }
                 .product-details-text {
                     text-transform: uppercase;

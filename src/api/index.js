@@ -70,7 +70,7 @@ export const getAllProducts = async (token, currentPage, company, lang) => {
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -104,7 +104,7 @@ export const changeProductsCategory = async (
             method: "get",
             url: `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
                 number,
-            )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

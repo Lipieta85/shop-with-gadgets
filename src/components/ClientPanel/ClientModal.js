@@ -65,4 +65,3 @@ const ClientModal = props => {
 };
 
 export default ClientModal;
-//{`${style}`}

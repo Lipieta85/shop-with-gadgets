@@ -3,7 +3,7 @@
 .basket-container {
     .title {
         @include themify($themes) {
-            color: themed("title");
+            color: themed("basketTitle");
         }
     }
     .item-number {
@@ -23,7 +23,7 @@
     &:hover {
         .basket {
             @include themify($themes) {
-                color: themed("basketColorHover");
+                color: themed("basketIconHoverColorCP");
             }
         }
     }

@@ -1,22 +1,22 @@
-@import './mixins/mixins.scss';
+@import "./mixins/mixins.scss";
 
 .basket-container {
     min-height: calc(100vh - 57px);
     //background: url(../images/bg_top_2.jpg) center no-repeat;
     @include themify($themes) {
-        background-color: themed('mainBackgroundColor');  
+        background-color: themed("mainBackgroundColor");
     }
     background-size: cover;
     .clear-button-box {
         margin: 0 auto;
         .clear-button {
             @include themify($themes) {
-                color: themed('clearButtonColor');  
+                color: themed("clearButtonColor");
                 &:hover {
-                    color:themed('clearButtonColorH');
+                    color: themed("clearButtonColorH");
                     text-decoration: none;
                     .clear-icon {
-                        color:themed('clearButtonColorH');
+                        color: themed("clearButtonColorH");
                     }
                 }
             }
