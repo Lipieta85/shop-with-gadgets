@@ -22,7 +22,7 @@ import { useTranslation } from "react-i18next";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    const pagination = useSelector(state => state.cartReducer.pagination);  
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const lang = useSelector(state => state.clientDataReducer.language);
@@ -128,7 +128,7 @@ const ClientPanel = props => {
                             </div>
                         </div>
                         <div className="row card-container text-center mt-1">
-                            {items && (
+                            {items && pagination && (
                                 <Product
                                     items={items}
                                     pagination={pagination}
@@ -138,14 +138,16 @@ const ClientPanel = props => {
                         </div>
                         <Spinner />
                         <ScreenLock />
-                        <Pager
-                            pagination={pagination}
-                            currentPage={currentPage}
-                            prevPageHandler={prevPageHandler}
-                            pageHandler={pageHandler}
-                            nextPageHandler={nextPageHandler}
-                            shortPagination={shortPagination}
-                        />
+                        {pagination &&
+                            <Pager
+                                pagination={pagination}
+                                currentPage={currentPage}
+                                prevPageHandler={prevPageHandler}
+                                pageHandler={pageHandler}
+                                nextPageHandler={nextPageHandler}
+                                shortPagination={shortPagination}
+                            />
+                        } 
                     </div>
                     <div className="client-panel cp-parent col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />
