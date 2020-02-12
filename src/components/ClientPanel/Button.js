@@ -127,6 +127,7 @@ const ButtonComponent = props => {
                     quantityLocation,
                 ),
             );
+            dispatch(setProductName(props.itemTitle, input.current.value));
             setProductQuantity({ id: input.current.value });
         }
     };
@@ -166,11 +167,9 @@ const ButtonComponent = props => {
                         <ButtonToolbar className="invisible">
                             <Button
                                 className="availability-check unselectable"
-                                id="clientResponseButtonModal"
+                                id="addProductModal"
                                 onClick={handleShowModalResponse}
-                            >
-                                {t("Button.PowiadomODostępności")}
-                            </Button>
+                            ></Button>
                             <ClientResponseModal
                                 show={modalShowResponse}
                                 onHide={() => setModalShowResponse(false)}

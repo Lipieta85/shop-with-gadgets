@@ -11,3 +11,9 @@
         }
     }
 }
+
+.product-name {
+    @include themify($themes) {
+        color: themed("productTitle");
+    }
+}
