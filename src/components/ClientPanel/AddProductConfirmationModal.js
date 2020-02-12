@@ -5,10 +5,11 @@ import { addProductConfirmationModalState } from "../../actions/index";
 import "../../assets/styles/add-product-modal.scss";
 
 const AddProductConfirmationModal = props => {
-    console.log(props);
     const addConfirmProductModalState = useSelector(
         state => state.cartReducer.addConfirmProductModalState,
     );
+    const { productName } = useSelector(state => state.subscriptionReducer);
+    const { productQuantity } = useSelector(state => state.subscriptionReducer);
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
@@ -36,12 +37,16 @@ const AddProductConfirmationModal = props => {
                 onHide={hideModalHandler}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
+                    <Modal.Title className="text-uppercase">
+                        Produkty dodane do koszyka
+                    </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="text-center">
-                    <h5 className="text-uppercase">
-                        Produkty zostały dodane do koszyka
-                    </h5>
+                <Modal.Body>
+                    <h6 className="text-uppercase">
+                        Do koszyka dodano produkt{" "}
+                        <b className="product-name">{productName}</b> w ilości{" "}
+                        <b className="product-name">{productQuantity}</b> szt.
+                    </h6>
                 </Modal.Body>
                 <Modal.Footer className="text-center">
                     <Button

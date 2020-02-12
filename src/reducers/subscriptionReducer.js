@@ -2,7 +2,8 @@ import * as type from "../actions/types";
 
 const initialState = {
     subscribeState: 0,
-    productName: ''
+    productName: "",
+    productQuantity: 0,
 };
 
 const subscriptionReducer = (state = initialState, action) => {
@@ -20,8 +21,9 @@ const subscriptionReducer = (state = initialState, action) => {
         case type.SET_PRODUCT_NAME:
             return {
                 ...state,
-                productName: action.name
-            }
+                productName: action.name,
+                productQuantity: action.productQuantity,
+            };
         default:
             return state;
     }

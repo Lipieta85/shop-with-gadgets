@@ -1,47 +1,43 @@
 import * as type from "./types";
-import {
-    postSubscribe
-} from "../api";
+import { postSubscribe } from "../api";
 
 export const sendSubscribe = (token, productId, clientEmail, lang) => {
-    
     return (dispatch, getState) => {
         postSubscribe(token, productId, clientEmail, lang)
             .then(res => {
                 if (res.data.subscribe.error) {
-                    dispatch(subscribeRes(false))
-                    dispatch(resetSubscribe(2))
-                }
-                else {
-                dispatch(subscribeRes(true))
-                dispatch(resetSubscribe(1))
+                    dispatch(subscribeRes(false));
+                    dispatch(resetSubscribe(2));
+                } else {
+                    dispatch(subscribeRes(true));
+                    dispatch(resetSubscribe(1));
                 }
             })
-            .catch(error => {              
-                dispatch(subscribeRes(false))
-                dispatch(resetSubscribe(2))
+            .catch(error => {
+                dispatch(subscribeRes(false));
+                dispatch(resetSubscribe(2));
             });
-    }
-}
+    };
+};
 
-export const subscribeRes = (resState) => {
+export const subscribeRes = resState => {
     return {
         type: type.SUBSCRIBE_RES,
-        resState
-    }
-}
+        resState,
+    };
+};
 
-export const resetSubscribe = (number) => {
+export const resetSubscribe = number => {
     return {
         type: type.RESET_SUBSCRIBE,
-        number
-    }
-}
+        number,
+    };
+};
 
-export const setProductName = (name) => {
+export const setProductName = (name, productQuantity) => {
     return {
         type: type.SET_PRODUCT_NAME,
-        name
-    }
-}
-
+        name,
+        productQuantity,
+    };
+};
