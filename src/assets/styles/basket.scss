@@ -99,7 +99,7 @@
                 color: themed("title");
                 border-color: themed("basketDescInputBorderC");
             }
-            width: 60px;
+            //width: 60px;
             padding: 4px;
             margin: 5px;
             background-color: transparent;
@@ -130,7 +130,7 @@
 @media (max-width: 899px) {
     .basket-container {
         .basket-button {
-            height: 30.4px;
+            height: 35px;
         }
     }
 }
