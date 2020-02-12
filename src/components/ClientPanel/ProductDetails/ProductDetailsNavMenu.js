@@ -6,7 +6,7 @@ import { ButtonToolbar, Button } from "react-bootstrap";
 import NotificationModal from "../../ClientPanel/NotificationModal";
 import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
-import { changeLanguage } from "../../../actions/index";
+import { changeLanguage, initProducts } from "../../../actions/index";
 import logo from "../../../assets/images/filtron_logo.png";
 import logo2 from "../../../assets/images/WIX_logo.png";
 
@@ -19,12 +19,13 @@ const ProductDetailsNavMenu = () => {
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
     const { t } = useTranslation();
     const dispatch = useDispatch();
-
+    const token = localStorage.getItem("token");
     const onSignout = () => {
         dispatch(signOut());
     };
     const changeLangHandler = event => {
-        return dispatch(changeLanguage(event.target.value));
+        dispatch(changeLanguage(event.target.value));
+        dispatch(initProducts(token, 1));
     };
     const showPaidOrders = () => {
         setModalShowPaidOrders(true);
