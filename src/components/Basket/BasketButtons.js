@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ButtonToolbar } from "react-bootstrap";
+import DeleteModal from "./DeleteModal";
 import Separator from "./../Separator/Separator";
 import "../../assets/styles/basket.scss";
 
@@ -13,6 +15,7 @@ const BasketButtons = props => {
     const [productAmount, setProductAmount] = useState({});
     const [quantityLocation] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
     const inputValue = useSelector(state => state.cartReducer.items);
     const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
     const dispatch = useDispatch();
@@ -72,8 +75,8 @@ const BasketButtons = props => {
         }
     };
 
-    const removeCartButton = () => {
-        return dispatch(removeCart(token, props.itemId, props.itemUnit));
+    const handleShowModal = () => {
+        setModalShow(true);
     };
 
     return (
@@ -87,14 +90,25 @@ const BasketButtons = props => {
                         </h4>
                     </Link>
                     <div className="text-right">
-                        <FontAwesomeIcon
-                            icon={faTrash}
-                            color="#a0a3a6"
-                            id={props.itemId}
-                            onClick={removeCartButton}
-                            cursor="pointer"
-                            className="icon-anim f-17"
-                        />
+                        <ButtonToolbar>
+                            <FontAwesomeIcon
+                                icon={faTrash}
+                                color="#a0a3a6"
+                                id={props.itemId}
+                                onClick={handleShowModal}
+                                cursor="pointer"
+                                className="icon-anim f-17"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Usuń"
+                            />
+                            <DeleteModal
+                                show={modalShow}
+                                itemID={props.itemId}
+                                itemunit={props.itemUnit}
+                                onHide={() => setModalShow(false)}
+                            />
+                        </ButtonToolbar>
                     </div>
                 </div>
                 <div
