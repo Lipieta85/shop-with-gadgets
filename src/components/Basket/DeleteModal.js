@@ -25,10 +25,15 @@ const DeleteModal = props => {
                 aria-labelledby="cocontained-modal"
                 centered
             >
-                <Modal.Body className="mx-auto">
-                    Czy na pewno chcesz usunąć produkty z koszyka ?
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">
+                    <h5 className="text-uppercase">
+                        Czy na pewno chcesz usunąć produkty z koszyka ?
+                    </h5>
                 </Modal.Body>
-                <Modal.Footer className="mx-auto">
+                <Modal.Footer>
                     <Button
                         type="button"
                         className="close-button"
