@@ -5,6 +5,7 @@ import { addProductConfirmationModalState } from "../../actions/index";
 import "../../assets/styles/add-product-modal.scss";
 
 const AddProductConfirmationModal = props => {
+    console.log(props);
     const addConfirmProductModalState = useSelector(
         state => state.cartReducer.addConfirmProductModalState,
     );
@@ -34,11 +35,15 @@ const AddProductConfirmationModal = props => {
                 show={show}
                 onHide={hideModalHandler}
             >
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body className="mx-auto">
-                    Produkty zostały dodane do koszyka
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">
+                    <h5 className="text-uppercase">
+                        Produkty zostały dodane do koszyka
+                    </h5>
                 </Modal.Body>
-                <Modal.Footer className="mx-auto">
+                <Modal.Footer className="text-center">
                     <Button
                         type="button"
                         className="close-button"
