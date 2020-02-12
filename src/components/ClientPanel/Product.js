@@ -10,7 +10,16 @@ const Product = ({ items, pagination, currentPage }) => {
     const { t } = useTranslation();
 
     const [products, setProducts] = useState([]);
-
+    const productNameShow = function(name){
+        let nameToShow = name;
+        if(name.length > 32){
+            nameToShow = name.substr(0,32);
+            if(nameToShow[nameToShow.length-1] === " ")
+                nameToShow = nameToShow.substr(0,31);
+            nameToShow += "...";
+        }    
+        return nameToShow;
+    }
     useEffect(() => {
         if (items.length > pagination.itemsPerPage) {
             if (items.length > pagination.itemsPerPage && currentPage === 1) {
@@ -87,7 +96,7 @@ const Product = ({ items, pagination, currentPage }) => {
                         >
                             <Link to={`/product/${item.product.id}`}>
                                 <h5 className="card-title text-uppercase">
-                                    {item.product.name}
+                                    {productNameShow(item.product.name)}
                                 </h5>
                             </Link>
                         </div>
