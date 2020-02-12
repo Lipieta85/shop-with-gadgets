@@ -220,7 +220,9 @@ const cartReducer = (state = initialState, action) => {
                 totalQuantity:
                     (state.totalQuantity -= oldAddedItemQuantity) +
                     addedValueNum3,
-                addConfirmProductModalState: true,
+                addConfirmProductModalState: action.quantityLocation
+                    ? true
+                    : false,
             };
         case type.SET_PRODUCTS:
             let data = Object.values(action.products);
@@ -305,6 +307,7 @@ const cartReducer = (state = initialState, action) => {
                 error: "",
                 productsToOrder: [],
                 productsCategory: "1",
+                addConfirmProductModalState: false,
             };
         }
         case type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE: {
