@@ -219,7 +219,11 @@ export const changeBasketQuantity = (
                     window.location.replace(`${host2}/404`);
                 } else {
                     dispatch(
-                        changeBasketAmounts(productId, changedProductAmount),
+                        changeBasketAmounts(
+                            productId,
+                            changedProductAmount,
+                            quantityLocation,
+                        ),
                     );
                 }
             })
@@ -229,11 +233,16 @@ export const changeBasketQuantity = (
     };
 };
 
-export const changeBasketAmounts = (productId, changedProductAmount) => {
+export const changeBasketAmounts = (
+    productId,
+    changedProductAmount,
+    quantityLocation,
+) => {
     return {
         type: type.CHANGE_BASKET_AMOUNTS,
         productId,
         changedProductAmount,
+        quantityLocation,
     };
 };
 

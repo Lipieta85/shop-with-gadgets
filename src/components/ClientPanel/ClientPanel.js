@@ -145,9 +145,8 @@ const ClientPanel = props => {
                             )}
                         </div>
                         <Spinner />
-                        <PolicyAcceptedModal />>
+                        <PolicyAcceptedModal />
                         <ScreenLock />
-                        <AddProductConfirmationModal />
                         <Pager
                             pagination={pagination}
                             currentPage={currentPage}
@@ -158,6 +157,7 @@ const ClientPanel = props => {
                             shortPagination2={shortPagination2}
                             shortPagination3={shortPagination3}
                         />
+                        <AddProductConfirmationModal />
                     </div>
                     <div className="client-panel cp-parent col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />

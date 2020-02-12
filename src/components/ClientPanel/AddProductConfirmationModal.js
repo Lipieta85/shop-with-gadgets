@@ -28,12 +28,13 @@ const AddProductConfirmationModal = props => {
         <div className="add-product-modal">
             <Modal
                 {...props}
-                backdrop="static"
                 size="lg"
                 aria-labelledby="cocontained-modal-title-vcenter"
                 centered
                 show={show}
+                onHide={hideModalHandler}
             >
+                <Modal.Header closeButton></Modal.Header>
                 <Modal.Body className="mx-auto">
                     Produkty zostały dodane do koszyka
                 </Modal.Body>
