@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
 import { ButtonToolbar, Button } from "react-bootstrap";
-import NotificationModal from "../../ClientPanel/NotificationModal";
+import NotificationModal from "../modals/NotificationModal";
 import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
 import { changeLanguage, initProducts } from "../../../actions/index";

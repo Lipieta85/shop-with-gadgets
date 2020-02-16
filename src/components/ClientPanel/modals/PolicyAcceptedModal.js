@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { signOut } from "../../actions/authorization";
-import { acceptPolicy } from "../../actions/index";
+import { signOut } from "../../../actions/authorization";
+import { acceptPolicy } from "../../../actions/index";
 import { Link } from "react-router-dom";
-import "../../assets/styles/policy-modal.scss";
-import host from "../../api/host";
+import "../../../assets/styles/policy-modal.scss";
+import host from "../../../api/host";
 
 const PolicyAcceptedModal = props => {
     const storePolicyStatus = useSelector(

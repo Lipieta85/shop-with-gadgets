@@ -14,8 +14,8 @@ import {
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
-import NotificationModal from "./NotificationModal";
-import PolicyAcceptedModal from "./PolicyAcceptedModal";
+import NotificationModal from "./modals/NotificationModal";
+import PolicyAcceptedModal from "./modals/PolicyAcceptedModal";
 const NavMenu = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);

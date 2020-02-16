@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ClientPanelMenu from "../ClientPanelMenu";
 import Spinner from "../UI/Spinner/Spinner";
 import ScreenLock from "../ScreenLock";
-import PolicyAcceptedModal from "./PolicyAcceptedModal";
+import PolicyAcceptedModal from "./modals/PolicyAcceptedModal";
 import {
     initProducts,
     nextPage,
@@ -20,7 +20,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Product from "./Product";
 import Pager from "./Pager";
 import { useTranslation } from "react-i18next";
-import AddProductConfirmationModal from "./AddProductConfirmationModal";
+import AddProductModal from "./modals/AddProductModal";
 
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
@@ -157,7 +157,7 @@ const ClientPanel = props => {
                             shortPagination2={shortPagination2}
                             shortPagination3={shortPagination3}
                         />
-                        <AddProductConfirmationModal />
+                        <AddProductModal />
                     </div>
                     <div className="client-panel cp-parent col-sm-12 col-lg-3 col-xl-2 order-lg-last order-first">
                         <ClientPanelMenu />

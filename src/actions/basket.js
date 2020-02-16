@@ -102,7 +102,7 @@ export const addItemToBasket = (
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
                     if (!res.data.create.order) {
-                        //window.location.replace(`${host2}/404`);
+                        window.location.replace(`${host2}/404`);
                     } else {
                         dispatch(addBasketId(res.data.create.order.id_orders));
                         if (existed_item) {
@@ -269,5 +269,12 @@ export const setBudget = data => {
 export const addProductConfirmationModalState = () => {
     return {
         type: type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE,
+    };
+};
+
+export const changeDeleteAllProductsModalState = modalState => {
+    return {
+        type: type.CHANGE_DELETE_ALL_PRODUCTS_MODAL_STATE,
+        modalState,
     };
 };

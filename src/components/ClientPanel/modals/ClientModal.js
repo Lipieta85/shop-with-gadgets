@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
-import { sendSubscribe } from "../../actions/index";
+import { sendSubscribe } from "../../../actions/index";
 import { useTranslation } from "react-i18next";
-import "../../assets/styles/order-choose-modal.scss";
+import "../../../assets/styles/order-choose-modal.scss";
 const ClientModal = props => {
     const clientEmail = useSelector(
         state =>

@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
-import ClientModal from "./ClientModal";
-import ClientResponseModal from "./ClientResponseModal";
-import NotificationModal from "./NotificationModal";
-import AlertModal from "./AlertModal";
+import ClientModal from "./modals/ClientModal";
+import ClientResponseModal from "./modals/ClientResponseModal";
+import NotificationModal from "./modals/NotificationModal";
+import AlertModal from "./modals/AlertModal";
 import { setProductName } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 
@@ -20,8 +20,8 @@ const ButtonComponent = props => {
     const orderType = useSelector(
         state => state.clientDataReducer.marketingOrderType,
     );
-    const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const products = useSelector(state => state.cartReducer.items);
+    const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
     const [name, setName] = useState("");
@@ -167,7 +167,7 @@ const ButtonComponent = props => {
                         <ButtonToolbar className="invisible">
                             <Button
                                 className="availability-check unselectable"
-                                id="addProductModal"
+                                id="clientResponseButtonModal"
                                 onClick={handleShowModalResponse}
                             ></Button>
                             <ClientResponseModal

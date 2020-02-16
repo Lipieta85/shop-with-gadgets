@@ -9,6 +9,7 @@ export {
     getBasketProducts,
     setBudget,
     addProductConfirmationModalState,
+    changeDeleteAllProductsModalState,
 } from "./basket.js";
 
 export {

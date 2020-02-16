@@ -35,6 +35,12 @@
     "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
     "MożeszDodaćTylko": "możesz dodać tylko"
   },
+  "AddProductModal": {
+    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
+    "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
+    "WIlości": "w ilości",
+    "Szt": "pcs"
+  },
   "PolicyModal": {
     "AkceptacjaRegulaminu": "Ackeptacja regulaminu",
     "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
@@ -70,6 +76,17 @@
     "ProduktyWKoszyku": "Products currently in the basket",
     "WybierzTypZamówienia": "Choose order type",
     "UEinfo": "Dear Customer, please make sure that you have all the documents and certificates necessary to import the ordered products into your country."
+  },
+  "DeleteModal": {
+    "UsuwanieProduktuZKoszyka": "Usuwanie produktu z koszyka",
+    "CzyNapewnoChceszUsunąćProdukt": "Czy na pewno chcesz usunąć produkt",
+    "ZKoszyka": "z koszyka"
+  },
+  "DeleteAllProductsModal": {
+    "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
+    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
+    "Wszystkie": "wszystkie",
+    "ProduktyZKoszyka": "produkty z koszyka"
   },
   "Order": {
     "Podsumowanie": "Order Summary",

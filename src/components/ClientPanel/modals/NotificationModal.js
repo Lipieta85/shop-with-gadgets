@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import host from "../../api/host";
-import "../../assets/styles/order-choose-modal.scss";
+import host from "../../../api/host";
+import "../../../assets/styles/order-choose-modal.scss";
 import { useTranslation } from "react-i18next";
 
 const NotificationModal = props => {

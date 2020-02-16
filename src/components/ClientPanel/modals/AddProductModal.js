@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
-import { addProductConfirmationModalState } from "../../actions/index";
-import "../../assets/styles/add-product-modal.scss";
+import { addProductConfirmationModalState } from "../../../actions/index";
+import { useTranslation } from "react-i18next";
+import "../../../assets/styles/add-product-modal.scss";
 
-const AddProductConfirmationModal = props => {
+const AddProductModal = props => {
     const addConfirmProductModalState = useSelector(
         state => state.cartReducer.addConfirmProductModalState,
     );
@@ -13,6 +14,8 @@ const AddProductConfirmationModal = props => {
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
+
+    const { t } = useTranslation();
 
     const hideModalHandler = () => {
         dispatch(addProductConfirmationModalState());
@@ -38,14 +41,18 @@ const AddProductConfirmationModal = props => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title className="text-uppercase">
-                        Produkty dodane do koszyka
+                        {t("AddProductModal.ProduktyDodaneDoKoszyka")}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h6 className="text-uppercase">
-                        Do koszyka dodano produkt{" "}
-                        <b className="product-name">{productName}</b> w ilości{" "}
-                        <b className="product-name">{productQuantity}</b> szt.
+                    <h6>
+                        {t("AddProductModal.DoKoszykaDodanoProdukt")}{" "}
+                        <b className="product-name text-uppercase">
+                            {productName}
+                        </b>{" "}
+                        {t("AddProductModal.WIlości")}{" "}
+                        <b className="product-name">{productQuantity}</b>{" "}
+                        {t("AddProductModal.Szt")}
                     </h6>
                 </Modal.Body>
                 <Modal.Footer className="text-center">
@@ -62,4 +69,4 @@ const AddProductConfirmationModal = props => {
     );
 };
 
-export default AddProductConfirmationModal;
+export default AddProductModal;

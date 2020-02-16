@@ -5,7 +5,7 @@ import NavMenuClient from "../components/ClientPanel/NavMenuClient";
 import ClientPanelMenu from "../components/ClientPanelMenu";
 import OrderOptions from "../components/Basket/OrderOptions";
 import { useDispatch, useSelector } from "react-redux";
-import { clearBasket } from "../actions/index";
+import { changeDeleteAllProductsModalState } from "../actions/index";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,7 +30,11 @@ const BasketContainer = () => {
                                             {" "}
                                             <div className="order-end text-center">
                                                 <div className="order-end-box p-4">
-                                                    <h5>{t("Basket.BrakProduktów")}</h5>
+                                                    <h5>
+                                                        {t(
+                                                            "Basket.BrakProduktów",
+                                                        )}
+                                                    </h5>
                                                     <Link
                                                         to="/"
                                                         className="btn btn-outline-primary mt-2"
@@ -47,11 +51,14 @@ const BasketContainer = () => {
                                 </h5>
                                 <div className="clear-button-box">
                                     {addedItems.length !== 0 && (
-                                        <Link
-                                            to="/"
+                                        <span
                                             className="pull-right clear-button unselectable"
                                             onClick={() =>
-                                                dispatch(clearBasket())
+                                                dispatch(
+                                                    changeDeleteAllProductsModalState(
+                                                        true,
+                                                    ),
+                                                )
                                             }
                                         >
                                             {t(`Basket.Wyczyść`)}{" "}
@@ -62,7 +69,7 @@ const BasketContainer = () => {
                                                 size="1x"
                                                 className="icon-anim clear-icon"
                                             />
-                                        </Link>
+                                        </span>
                                     )}
                                 </div>
                                 <Basket />

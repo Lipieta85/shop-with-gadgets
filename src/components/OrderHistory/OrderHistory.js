@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
+import NavMenu from "../ClientPanel/productDetails/ProductDetailsNavMenu";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getClientOrdersHistory,
