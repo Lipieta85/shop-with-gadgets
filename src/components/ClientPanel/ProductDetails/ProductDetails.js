@@ -5,9 +5,10 @@ import Button from "../Button";
 import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
+import AddProductModal from "../modals/AddProductModal";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Link } from "react-router-dom";
-import Separator from "./../../Separator/Separator";
+import Separator from "../../Separator/Separator";
 import "../../../assets/styles/product-details.scss";
 import { useTranslation } from "react-i18next";
 const ProductDetails = props => {
@@ -107,6 +108,7 @@ const ProductDetails = props => {
             <div className="container-fluid">
                 <NavMenu />
                 <Spinner />
+                <AddProductModal />
                 <div className="row product-details-container">
                     <div className="col-md-9 col-xl-10">
                         <div className="product-details-content row p-2">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import checkboxes from "./Checkboxes/checkboxes";
-import Checkbox from "./Checkboxes/Checkbox";
 import { orderSelectInputValue } from "../../actions/index";
 import { useTranslation } from "react-i18next";
 
@@ -23,7 +21,7 @@ const OrderOptions = () => {
         state => state.clientDataReducer.marketingOrderType,
     );
     const clientUE = useSelector(state => state.clientDataReducer.isUE);
-    const [checkedItems, setCheckedItems] = useState(new Map());
+
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState("");
 
@@ -47,15 +45,6 @@ const OrderOptions = () => {
         );
         //eslint-disable-next-line
     }, [selectStoreState]);
-
-    const onHandleChange = e => {
-        const item = e.target.name;
-        const isChecked = e.target.checked;
-        setCheckedItems(prevState => {
-            prevState.clear();
-            return prevState.set(item, isChecked);
-        });
-    };
 
     const selectValueHandler = event => {
         setSelectInputValue(event.target.value);
@@ -97,43 +86,6 @@ const OrderOptions = () => {
                 <p className="out-of-ue-info">{t("Basket.UEinfo")}</p>
             )}
             <hr />
-            <div className="order-type invisible" style={{ height: "0" }}>
-                <h4 className="options-header">
-                    {t("Basket.ChooseOrderType")}:
-                </h4>
-                <div>
-                    {checkboxes.map(item => (
-                        <li
-                            className="options-list list-unstyled "
-                            key={item.key}
-                        >
-                            <label className="options-delivery p-1">
-                                <div
-                                    className="list-input "
-                                    style={
-                                        disabledCheckbox
-                                            ? { color: "red" }
-                                            : { color: "black" }
-                                    }
-                                >
-                                    <Checkbox
-                                        id={item.id}
-                                        name={item.name}
-                                        checked={checkedItems.get(item.name)}
-                                        onChange={onHandleChange}
-                                        disabled={disabledCheckbox}
-                                        type="checkbox"
-                                    />
-
-                                    <span className="ml-2 mb-2">
-                                        {item.name}
-                                    </span>
-                                </div>
-                            </label>
-                        </li>
-                    ))}
-                </div>
-            </div>
             <div className="basket-checkout d-flex flex-wrap justify-content-between button-parent">
                 <Link to="/" className="btn btn-outline-primary mt-1 w-100">
                     {t("Basket.Wróć")}

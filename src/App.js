@@ -7,7 +7,7 @@ import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
 import ClientPanelContainer from "./containers/ClientPanelContainer";
 import OrderEndContainer from "./containers/OrderEndContainer";
-import ProductDetails from "./components/ClientPanel/ProductDetails/ProductDetails";
+import ProductDetails from "./components/ClientPanel/productDetails/ProductDetails";
 import PrivateRoute from "./authentication/PrivateRoute";
 import PageNotFound from "./components/NotFound";
 import ServerError from "./components/ServerError";
@@ -148,7 +148,6 @@ export default withRouter(function App({ location }, props) {
                 });
             })
             .catch(err => console.log(err));
-        // window.location.replace("http://192.168.0.105:3000/");
     }
 
     useEffect(() => {

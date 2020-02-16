@@ -17,6 +17,7 @@ const initialState = {
     productsCategory: "1",
     availableProductsCategory: [],
     addConfirmProductModalState: false,
+    deleteAllProductsModalState: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -314,6 +315,12 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addConfirmProductModalState: false,
+            };
+        }
+        case type.CHANGE_DELETE_ALL_PRODUCTS_MODAL_STATE: {
+            return {
+                ...state,
+                deleteAllProductsModalState: action.modalState,
             };
         }
         default:

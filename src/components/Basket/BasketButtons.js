@@ -7,7 +7,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar } from "react-bootstrap";
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "./modals/DeleteModal";
 import Separator from "./../Separator/Separator";
 import "../../assets/styles/basket.scss";
 
@@ -106,6 +106,7 @@ const BasketButtons = props => {
                                 show={modalShow}
                                 itemID={props.itemId}
                                 itemunit={props.itemUnit}
+                                itemname={props.itemTitle}
                                 onHide={() => setModalShow(false)}
                             />
                         </ButtonToolbar>

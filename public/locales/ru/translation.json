@@ -35,6 +35,12 @@
     "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
     "MożeszDodaćTylko": "możesz dodać tylko"
   },
+  "AddProductModal": {
+    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
+    "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
+    "WIlości": "w ilości",
+    "Szt": "шт"
+  },
   "PolicyModal": {
     "AkceptacjaRegulaminu": "Ackeptacja regulaminu",
     "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
@@ -66,6 +72,17 @@
     "ProduktyWKoszyku": "Продукты, которые в настоящее время находятся в корзине",
     "WybierzTypZamówienia": "Wybierz typ zamówienia",
     "UEinfo": "Уважаемый клиент! Убедитесь, что у вас есть все документы и сертификаты, необходимые для импорта заказанных продуктов в вашу страну."
+  },
+  "DeleteModal": {
+    "UsuwanieProduktuZKoszyka": "Usuwanie produktu z koszyka",
+    "CzyNapewnoChceszUsunąćProdukt": "Czy na pewno chcesz usunąć produkt",
+    "ZKoszyka": "z koszyka"
+  },
+  "DeleteAllProductsModal": {
+    "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
+    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
+    "Wszystkie": "wszystkie",
+    "ProduktyZKoszyka": "produkty z koszyka"
   },
   "Footer": {
     "Regulamin": "Правила магазина",

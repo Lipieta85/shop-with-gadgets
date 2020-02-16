@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
-import { removeCart } from "../../actions/index";
+import { removeCart } from "../../../actions/index";
 import { useTranslation } from "react-i18next";
-import "../../assets/styles/add-product-modal.scss";
+import "../../../assets/styles/add-product-modal.scss";
 
 const DeleteModal = props => {
     const token = localStorage.getItem("token");
@@ -26,12 +26,16 @@ const DeleteModal = props => {
                 centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
+                    <Modal.Title className="text-uppercase">
+                        {t(`DeleteModal.UsuwanieProduktuZKoszyka`)}
+                    </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="text-center">
-                    <h5 className="text-uppercase">
-                        Czy na pewno chcesz usunąć produkty z koszyka ?
-                    </h5>
+                <Modal.Body>
+                    <h6>
+                        {t(`DeleteModal.CzyNapewnoChceszUsunąćProdukt`)}{" "}
+                        <b className="text-uppercase">{props.itemname}</b>
+                        {t(`DeleteModal.ZKoszyka`)}?
+                    </h6>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button

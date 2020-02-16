@@ -6,6 +6,7 @@ import BasketButtons from "./BasketButtons";
 import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import ScreenLock from "../ScreenLock";
+import DeleteAllProductsModal from "./modals/DeleteAllProductsModal";
 
 const Basket = props => {
     const items = useSelector(state => state.cartReducer.addedItems);
@@ -50,6 +51,7 @@ const Basket = props => {
                               itemUnit={item.product.unitOfMeasure}
                           />
                           <ScreenLock />
+                          <DeleteAllProductsModal />
                       </div>
                   </li>
               );
