@@ -18,7 +18,7 @@ import "./i18next";
 const history = createBrowserHistory();
 const persistConfig = {
     key: "root",
-    storage,
+    storage: storage,
 };
 let middleware = [];
 if (window.location.hostname === "localhost") {
@@ -35,7 +35,7 @@ const store = createStore(
 let persistor = persistStore(store);
 
 if (
-    window.location.href.search("[?&]debug=") &&
+    window.location.href.includes("brand") &&
     localStorage.getItem("token") !== null
 ) {
     localStorage.removeItem("token");

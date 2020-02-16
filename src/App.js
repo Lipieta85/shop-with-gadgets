@@ -62,6 +62,8 @@ export default withRouter(function App({ location }, props) {
 
     const { i18n } = useTranslation();
 
+    window.history.pushState(null, null, window.location.pathname);
+
     useEffect(() => {
         const { pathname } = location;
         setCurrentPath(pathname);
