@@ -16,10 +16,11 @@ export const getToken = async userData => {
     });
 };
 
-export const getUserData = async token => {
+export const getUserData = async (token, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await axios({
         method: "get",
-        url: `${host}/restApi/user/method/getWixClientData`,
+        url: `${host}/restApi/user/method/getWixClientData/parameters{"aliasUserId":"${aliasUser}"}`,
         headers: {
             "Content-Type": "application/json",
             Authorization: token,
@@ -66,11 +67,12 @@ export const getContactDetails = async (token, lang) => {
     );
 };
 
-export const getAllProducts = async (token, currentPage, company, lang) => {
+export const getAllProducts = async (token, currentPage, company, lang, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`,
+            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "aliasUserId":"${aliasUser}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -79,11 +81,12 @@ export const getAllProducts = async (token, currentPage, company, lang) => {
     );
 };
 
-export const getProductsCategories = async (token, companyId, lang) => {
+export const getProductsCategories = async (token, companyId, lang, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/categories/parameters/{"lang":"${lang}", "bId":"${companyId}"}`,
+            url: `${host}/restApi/products/method/categories/parameters/{"aliasUserId":"${aliasUser}", "lang":"${lang}", "bId":"${companyId}"}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -92,17 +95,12 @@ export const getProductsCategories = async (token, companyId, lang) => {
     );
 };
 
-export const changeProductsCategory = async (
-    token,
-    number,
-    company,
-    currentPage,
-    lang,
-) => {
+export const changeProductsCategory = async (token,number,company,currentPage,lang,aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
+            url: `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUser}", "category": ${Number(
                 number,
             )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`,
             headers: {
@@ -228,11 +226,13 @@ export const searchProduct = async (
     lang,
     name,
     company,
+    aliasUserId
 ) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
+            url: `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUser}", "lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`,
             headers: {
                 Authorization: token,
             },
@@ -257,11 +257,13 @@ export const postOrder = async (
     basketId,
     companyId,
     delivery,
+    aliasUserId
 ) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "post",
-            url: `${host}/restApi/order/method/create/parameters/{"orderId": ${basketId}, "debug": true, "bId":"${companyId}"}`,
+            url: `${host}/restApi/order/method/create/parameters/{"aliasUserId":"${aliasUser}", "orderId": ${basketId}, "debug": true, "bId":"${companyId}"}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -274,11 +276,12 @@ export const postOrder = async (
         }),
     );
 };
-export const getUserOrders = async token => {
+export const getUserOrders = async (token, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/getAll`,
+            url: `${host}/restApi/order/method/getAll/parameters/{"aliasUserId":"${aliasUser}"}`,
             headers: {
                 Authorization: token,
             },
@@ -286,11 +289,12 @@ export const getUserOrders = async token => {
     );
 };
 
-export const getUserBudgetHistory = async token => {
+export const getUserBudgetHistory = async (token, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/user/method/wixBudgetHistory`,
+            url: `${host}/restApi/user/method/wixBudgetHistory/parameters/{"aliasUserId":${aliasUser}}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -299,11 +303,12 @@ export const getUserBudgetHistory = async token => {
     );
 };
 
-export const getSingleUserOrder = async (token, orderId, lang) => {
+export const getSingleUserOrder = async (token, orderId, lang, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "get",
-            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}"}`,
+            url: `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}","aliasUserId":"${aliasUser}"}`,
             headers: {
                 Authorization: token,
             },
@@ -311,11 +316,12 @@ export const getSingleUserOrder = async (token, orderId, lang) => {
     );
 };
 
-export const postSubscribe = (token, productId, clientEmail, lang) => {
+export const postSubscribe = (token, productId, clientEmail, lang, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return trackPromise(
         axios({
             method: "post",
-            url: `${host}/restApi/products/method/subscribe`,
+            url: `${host}/restApi/products/method/subscribe/parameters/{"aliasUserId":"${aliasUser}"}`,
             headers: {
                 Authorization: token,
             },
@@ -328,11 +334,12 @@ export const postSubscribe = (token, productId, clientEmail, lang) => {
     );
 };
 
-export const singleOrderCancel = async (token, orderId) => {
+export const singleOrderCancel = async (token, orderId, aliasUserId) => {
+    let aliasUser = aliasUserId?aliasUserId:'';
     return await trackPromise(
         axios({
             method: "post",
-            url: `${host}/restApi/order/method/cancel/parameters/{"orderId":${orderId}}`,
+            url: `${host}/restApi/order/method/cancel/parameters/{"aliasUserId":"${aliasUser}", "orderId":${orderId}}`,
             headers: {
                 Authorization: token,
             },

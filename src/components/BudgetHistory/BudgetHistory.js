@@ -6,7 +6,7 @@ import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import Separator from "../Separator/Separator";
-import NavMenu from "../ClientPanel/productDetails/ProductDetailsNavMenu";
+import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
         state => state.clientDataReducer.remainingBudget,
