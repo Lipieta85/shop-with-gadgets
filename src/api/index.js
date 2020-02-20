@@ -285,7 +285,7 @@ export const postOrder = async (
     companyId,
     delivery,
 ) => {
-    let url = `${host}/restApi/order/method/create/parameters/{"orderId": ${basketId}, "debug": true, "bId":"${companyId}"}`;
+    let url = `${host}/restApi/order/method/create/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
     return await trackPromise(
         axios({
             method: "post",
