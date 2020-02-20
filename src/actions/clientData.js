@@ -135,3 +135,10 @@ export const acceptPolicy = token => {
             });
     };
 };
+
+export const setAliasUserId = id => {
+    return {
+        type: type.SET_ALIAS_USER_ID,
+        id,
+    };
+};

@@ -33,6 +33,7 @@ export const createOrder = (token, items) => {
         let basketId = getState().cartReducer.basket;
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
         Number(basketId);
@@ -54,7 +55,7 @@ export const createOrder = (token, items) => {
         let delivery =
             clientData.getWixClientData.deliveryAddresses[0].kli_exid;
 
-        postOrder(token, items, basketId, companyId, delivery)
+        postOrder(token, items, basketId, companyId, delivery, aliasUserId)
             .then(res => {
                 console.log(res);
                 if (res.data.create.fault === false) {
@@ -105,8 +106,10 @@ export const clearBasket = () => {
 };
 
 export const getClientBudgetHistory = token => {
-    return dispatch => {
-        getUserBudgetHistory(token)
+    return (dispatch, getState) => {
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+
+        getUserBudgetHistory(token, aliasUserId)
             .then(res => {
                 console.log(res);
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
@@ -125,8 +128,9 @@ export const setClientBudgetHistory = data => {
 };
 
 export const getClientOrdersHistory = token => {
-    return dispatch => {
-        getUserOrders(token)
+    return (dispatch, getState) => {
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+        getUserOrders(token, aliasUserId)
             .then(res => {
                 console.log(res);
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
@@ -153,7 +157,8 @@ export const productsToOrder = products => {
 
 export const getClientSingleOrdersHistory = (token, id, lang) => {
     return (dispatch, getState) => {
-        getSingleUserOrder(token, id, lang)
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+        getSingleUserOrder(token, id, lang, aliasUserId)
             .then(res => {
                 dispatch(setSingleOrderHistory(res.data.get));
             })

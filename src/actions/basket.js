@@ -40,20 +40,11 @@ export const addItemToBasket = (
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
+
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
 
         let clientData = getState().clientDataReducer.clientData;
-        // let adressess = [];
-        // let deliveryAddress = [];
-        // if (clientData) {
-        //     clientData.map(data =>
-        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
-        //     );
-        //     mapKeys(adressess[0], function(value, key) {
-        //         return deliveryAddress.push({ key: value });
-        //     });
-        // }
 
         let delivery =
             clientData.getWixClientData.deliveryAddresses[0].kli_exid;

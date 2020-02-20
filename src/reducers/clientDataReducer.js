@@ -15,6 +15,7 @@ const initialState = {
     periodFrom: "",
     storePolicyStatus: 0,
     userIdNumber: 0,
+    aliasUserId: 0,
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -93,6 +94,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userIdNumber: action.number,
+            };
+        case type.SET_ALIAS_USER_ID:
+            return {
+                ...state,
+                aliasUserId: action.id,
             };
         default:
             return state;

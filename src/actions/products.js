@@ -26,18 +26,21 @@ export const initProducts = (token, currentPage) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
         const lang = getState().clientDataReducer.language;
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
 
-        getAllProducts(token, currentPage, company, lang)
+        getAllProducts(token, currentPage, company, lang, aliasUserId)
             .then(res => {
                 console.log(res);
                 if (company === "filtron") {
                     if (res.data.filtron.error) {
+                        console.log(res);
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data));
                     }
                 } else if (company === "wix") {
                     if (res.data.wix.error) {
+                        console.log(res);
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data));
@@ -62,8 +65,9 @@ export const initProductsCategories = token => {
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
         const lang = getState().clientDataReducer.language;
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
 
-        getProductsCategories(token, companyId, lang)
+        getProductsCategories(token, companyId, lang, aliasUserId)
             .then(res => {
                 dispatch(setProductsCategories(res.data.categories));
             })
@@ -91,7 +95,16 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
         const lang = getState().clientDataReducer.language;
-        changeProductsCategory(token, number, company, currentPage, lang)
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+
+        changeProductsCategory(
+            token,
+            number,
+            company,
+            currentPage,
+            lang,
+            aliasUserId,
+        )
             .then(res => {
                 dispatch(setProducts(res.data));
             })
@@ -103,8 +116,9 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
 export const searchProductPanel = (token, currentPage, lang, name) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
 
-        searchProduct(token, currentPage, lang, name, company)
+        searchProduct(token, currentPage, lang, name, company, aliasUserId)
             .then(res => {
                 dispatch(setTypedProducts(res.data));
             })

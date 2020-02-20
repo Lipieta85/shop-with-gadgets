@@ -72,4 +72,5 @@ export {
     userIdNumber,
     changeLanguage,
     clearState,
+    setAliasUserId,
 } from "./clientData.js";

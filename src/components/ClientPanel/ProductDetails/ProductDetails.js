@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Separator from "../../Separator/Separator";
 import "../../../assets/styles/product-details.scss";
 import { useTranslation } from "react-i18next";
+
 const ProductDetails = props => {
     const products = useSelector(state => state.cartReducer.items);
     const pagination = useSelector(state => state.cartReducer.pagination);
