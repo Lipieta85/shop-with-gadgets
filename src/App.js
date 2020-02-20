@@ -7,7 +7,7 @@ import OrderContainer from "./containers/OrderContainer";
 import BasketContainer from "./containers/BasketContainer";
 import ClientPanelContainer from "./containers/ClientPanelContainer";
 import OrderEndContainer from "./containers/OrderEndContainer";
-import ProductDetails from "./components/ClientPanel/productDetails/ProductDetails";
+import ProductDetails from "./components/ClientPanel/ProductDetails/ProductDetails";
 import PrivateRoute from "./authentication/PrivateRoute";
 import PageNotFound from "./components/NotFound";
 import ServerError from "./components/ServerError";
@@ -145,6 +145,7 @@ export default withRouter(function App({ location }, props) {
                                     .marketingOrderType,
                             ),
                         );
+                        console.log(res.data)
                         dispatch(signIn({ isAuth: true }));
                     }
                 });
