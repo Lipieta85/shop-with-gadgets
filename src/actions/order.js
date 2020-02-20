@@ -33,7 +33,6 @@ export const createOrder = (token, items) => {
         let basketId = getState().cartReducer.basket;
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
-        const aliasUserId = getState().clientDataReducer.aliasUserId;
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
         Number(basketId);
@@ -55,7 +54,7 @@ export const createOrder = (token, items) => {
         let delivery =
             clientData.getWixClientData.deliveryAddresses[0].kli_exid;
 
-        postOrder(token, items, basketId, companyId, delivery, aliasUserId)
+        postOrder(token, items, basketId, companyId, delivery)
             .then(res => {
                 console.log(res);
                 if (res.data.create.fault === false) {

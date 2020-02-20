@@ -65,9 +65,8 @@ export const initProductsCategories = token => {
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
         const lang = getState().clientDataReducer.language;
-        const aliasUserId = getState().clientDataReducer.aliasUserId;
 
-        getProductsCategories(token, companyId, lang, aliasUserId)
+        getProductsCategories(token, companyId, lang)
             .then(res => {
                 dispatch(setProductsCategories(res.data.categories));
             })
