@@ -253,9 +253,9 @@ const cartReducer = (state = initialState, action) => {
 
             const pagination2 = {
                 page: 1,
-                totalPages: Math.floor(data2[0].length / 12),
                 itemsPerPage: 12,
                 totalItems: data2[0].length,
+                totalPages: Math.round(data2[0].length / 12),
             };
 
             return {
@@ -314,7 +314,7 @@ const cartReducer = (state = initialState, action) => {
         case type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE: {
             return {
                 ...state,
-                addConfirmProductModalState: false,
+                addConfirmProductModalState: action.state,
             };
         }
         case type.CHANGE_DELETE_ALL_PRODUCTS_MODAL_STATE: {

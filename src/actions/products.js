@@ -29,6 +29,7 @@ export const initProducts = (token, currentPage) => {
 
         getAllProducts(token, currentPage, company, lang)
             .then(res => {
+                console.log(res);
                 if (company === "filtron") {
                     if (res.data.filtron.error) {
                         window.location.replace(`${host2}/ServerError`);

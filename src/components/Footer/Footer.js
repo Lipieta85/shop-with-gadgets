@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="d-flex justify-content-end footer-text-line">
                         <p className="footer-regulations m-0">
                             <Link
-                                className=" text-decoration-none"
+                                className="text-decoration-none"
                                 to="/Contact"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
@@ -22,7 +22,7 @@ const Footer = () => {
 
                         <p className="footer-regulations details ml-5 m-0">
                             <Link
-                                className=" text-decoration-none"
+                                className="text-decoration-none"
                                 to="/Regulations"
                                 onClick={() => window.scrollTo(0, 0)}
                             >

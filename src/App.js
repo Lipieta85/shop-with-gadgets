@@ -84,73 +84,88 @@ export default withRouter(function App({ location }, props) {
         i18n.changeLanguage(lang);
     }, [i18n, location.search, lang]);
 
-    if (location.search) {
-        dispatch(clearState());
-        dispatch(companyId(parsed.brand));
-        getLinkToken(parsed.dt)
-            .then(res => {
-                const token = res.data.token;
-                const tokenParts = res.data.token.split(".");
-                const userID = JSON.parse(atob(tokenParts[1]));
-                localStorage.setItem("userID", userID.userId);
-                localStorage.setItem("token", res.data.token);
-                getUserData(res.data.token).then(res => {
-                    if (res.data.getWixClientData.error) {
-                        return window.location.replace(`${host2}/ServerError`);
-                    } else {
-                        dispatch(getLang(parsed.lang));
-                        dispatch(
-                            setBudget(
-                                res.data.getWixClientData.budget
-                                    ? res.data.getWixClientData.budget
-                                          .remainingBudget
-                                    : "",
-                            ),
-                        );
-                        dispatch(setToken(token));
-                        dispatch(clientData(res.data));
-                        dispatch(
-                            companyName(res.data.getWixClientData.data.name),
-                        );
-                        dispatch(
-                            userIdNumber(res.data.getWixClientData.data.exId),
-                        );
-                        dispatch(userName(res.data.getWixClientData.userLogin));
-                        dispatch(isUE(res.data.getWixClientData.data.isUE));
-                        dispatch(isStorePolicyAccepted(token));
-                        dispatch(
-                            setCurrencyCode(
-                                res.data.getWixClientData.budget.currencyCode,
-                            ),
-                        );
-                        dispatch(
-                            getRemainingBudget(
-                                res.data.getWixClientData.budget
-                                    .remainingBudget,
-                            ),
-                        );
-                        dispatch(
-                            getBaseBudget(
-                                res.data.getWixClientData.budget.baseBudget,
-                            ),
-                        );
-                        dispatch(
-                            getPeriodFrom(
-                                res.data.getWixClientData.budget.period.from,
-                            ),
-                        );
-                        dispatch(
-                            getMarketingOrderType(
-                                res.data.getWixClientData.data
-                                    .marketingOrderType,
-                            ),
-                        );
-                        dispatch(signIn({ isAuth: true }));
-                    }
-                });
-            })
-            .catch(err => console.log(err));
-    }
+    useEffect(() => {
+        if (location.search) {
+            dispatch(clearState());
+            dispatch(companyId(parsed.brand));
+            getLinkToken(parsed.dt)
+                .then(res => {
+                    const token = res.data.token;
+                    const tokenParts = res.data.token.split(".");
+                    const userID = JSON.parse(atob(tokenParts[1]));
+                    localStorage.setItem("userID", userID.userId);
+                    localStorage.setItem("token", res.data.token);
+                    getUserData(res.data.token).then(res => {
+                        console.log(res);
+                        if (res.data.getWixClientData.error) {
+                            console.log(res);
+                            return window.location.replace(
+                                `${host2}/ServerError`,
+                            );
+                        } else {
+                            dispatch(getLang(parsed.lang));
+                            dispatch(
+                                setBudget(
+                                    res.data.getWixClientData.budget
+                                        ? res.data.getWixClientData.budget
+                                              .remainingBudget
+                                        : "",
+                                ),
+                            );
+                            dispatch(setToken(token));
+                            dispatch(clientData(res.data));
+                            dispatch(
+                                companyName(
+                                    res.data.getWixClientData.data.name,
+                                ),
+                            );
+                            dispatch(
+                                userIdNumber(
+                                    res.data.getWixClientData.data.exId,
+                                ),
+                            );
+                            dispatch(
+                                userName(res.data.getWixClientData.userLogin),
+                            );
+                            dispatch(isUE(res.data.getWixClientData.data.isUE));
+                            dispatch(isStorePolicyAccepted(token));
+                            dispatch(
+                                setCurrencyCode(
+                                    res.data.getWixClientData.budget
+                                        .currencyCode,
+                                ),
+                            );
+                            dispatch(
+                                getRemainingBudget(
+                                    res.data.getWixClientData.budget
+                                        .remainingBudget,
+                                ),
+                            );
+                            dispatch(
+                                getBaseBudget(
+                                    res.data.getWixClientData.budget.baseBudget,
+                                ),
+                            );
+                            dispatch(
+                                getPeriodFrom(
+                                    res.data.getWixClientData.budget.period
+                                        .from,
+                                ),
+                            );
+                            dispatch(
+                                getMarketingOrderType(
+                                    res.data.getWixClientData.data
+                                        .marketingOrderType,
+                                ),
+                            );
+                            dispatch(signIn({ isAuth: true }));
+                        }
+                    });
+                })
+                .catch(err => console.log(err));
+        }
+        //eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         if (
