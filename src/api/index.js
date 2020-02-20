@@ -263,7 +263,7 @@ export const postOrder = async (
     return await trackPromise(
         axios({
             method: "post",
-            url: `${host}/restApi/order/method/create/parameters/{"aliasUserId":"${aliasUser}", "orderId": ${basketId}, "bId":"${companyId}"}`,
+            url: `${host}/restApi/order/method/create/parameters/{"aliasUserId":"${aliasUser}", "orderId": ${basketId}, "debug": true, "bId":"${companyId}"}`,
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,

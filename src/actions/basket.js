@@ -73,8 +73,9 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
+                    console.log(res);
                     if (res.data.addProduct.error) {
-                        window.location.replace(`${host2}/404`);
+                        dispatch(addProductConfirmationModalState("error"));
                     } else {
                         if (existed_item) {
                             dispatch(addIfItemExist(id, productQuantity));
@@ -101,8 +102,9 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
+                    console.log(res);
                     if (!res.data.create.order) {
-                        window.location.replace(`${host2}/404`);
+                        dispatch(addProductConfirmationModalState("error"));
                     } else {
                         dispatch(addBasketId(res.data.create.order.id_orders));
                         if (existed_item) {
@@ -215,8 +217,9 @@ export const changeBasketQuantity = (
             companyId,
         )
             .then(res => {
+                console.log(res);
                 if (res.data.updateQuantity.error) {
-                    window.location.replace(`${host2}/404`);
+                    dispatch(addProductConfirmationModalState("error"));
                 } else {
                     dispatch(
                         changeBasketAmounts(
@@ -266,9 +269,10 @@ export const setBudget = data => {
     };
 };
 
-export const addProductConfirmationModalState = () => {
+export const addProductConfirmationModalState = state => {
     return {
         type: type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE,
+        state,
     };
 };
 

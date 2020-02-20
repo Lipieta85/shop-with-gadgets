@@ -36,7 +36,7 @@ const BudgetHistory = () => {
     if (budgetHistory && remainingBudget) {
         history = budgetHistory
             .map((i, key) => (
-                <tr>
+                <tr key={key}>
                     <td>
                         <div className="cell">
                             {i.operation_entry_data_time}

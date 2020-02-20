@@ -10,16 +10,17 @@ const Product = ({ items, pagination, currentPage }) => {
     const { t } = useTranslation();
 
     const [products, setProducts] = useState([]);
-    const productNameShow = function(name){
+
+    const productNameShow = function(name) {
         let nameToShow = name;
-        if(name.length > 32){
-            nameToShow = name.substr(0,32);
-            if(nameToShow[nameToShow.length-1] === " ")
-                nameToShow = nameToShow.substr(0,31);
+        if (name.length > 32) {
+            nameToShow = name.substr(0, 32);
+            if (nameToShow[nameToShow.length - 1] === " ")
+                nameToShow = nameToShow.substr(0, 31);
             nameToShow += "...";
-        }    
+        }
         return nameToShow;
-    }
+    };
     useEffect(() => {
         if (items.length > pagination.itemsPerPage) {
             if (items.length > pagination.itemsPerPage && currentPage === 1) {
@@ -42,8 +43,7 @@ const Product = ({ items, pagination, currentPage }) => {
         } else {
             setProducts(items);
         }
-        //eslint-disable-next-line
-    }, [items, currentPage]);
+    }, [items, currentPage, pagination.itemsPerPage]);
 
     return products.map((item, i) => {
         return (
