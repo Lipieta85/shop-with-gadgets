@@ -17,7 +17,7 @@ export const getToken = async userData => {
 };
 
 export const getUserData = async (token, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await axios({
         method: "get",
         url: `${host}/restApi/user/method/getWixClientData/parameters{"aliasUserId":"${aliasUser}"}`,
@@ -67,8 +67,14 @@ export const getContactDetails = async (token, lang) => {
     );
 };
 
-export const getAllProducts = async (token, currentPage, company, lang, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+export const getAllProducts = async (
+    token,
+    currentPage,
+    company,
+    lang,
+    aliasUserId,
+) => {
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -81,8 +87,13 @@ export const getAllProducts = async (token, currentPage, company, lang, aliasUse
     );
 };
 
-export const getProductsCategories = async (token, companyId, lang, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+export const getProductsCategories = async (
+    token,
+    companyId,
+    lang,
+    aliasUserId,
+) => {
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -95,8 +106,15 @@ export const getProductsCategories = async (token, companyId, lang, aliasUserId)
     );
 };
 
-export const changeProductsCategory = async (token,number,company,currentPage,lang,aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+export const changeProductsCategory = async (
+    token,
+    number,
+    company,
+    currentPage,
+    lang,
+    aliasUserId,
+) => {
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -226,9 +244,9 @@ export const searchProduct = async (
     lang,
     name,
     company,
-    aliasUserId
+    aliasUserId,
 ) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -257,9 +275,9 @@ export const postOrder = async (
     basketId,
     companyId,
     delivery,
-    aliasUserId
+    aliasUserId,
 ) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "post",
@@ -277,7 +295,7 @@ export const postOrder = async (
     );
 };
 export const getUserOrders = async (token, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -290,7 +308,7 @@ export const getUserOrders = async (token, aliasUserId) => {
 };
 
 export const getUserBudgetHistory = async (token, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -304,7 +322,7 @@ export const getUserBudgetHistory = async (token, aliasUserId) => {
 };
 
 export const getSingleUserOrder = async (token, orderId, lang, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "get",
@@ -316,8 +334,14 @@ export const getSingleUserOrder = async (token, orderId, lang, aliasUserId) => {
     );
 };
 
-export const postSubscribe = (token, productId, clientEmail, lang, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+export const postSubscribe = (
+    token,
+    productId,
+    clientEmail,
+    lang,
+    aliasUserId,
+) => {
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return trackPromise(
         axios({
             method: "post",
@@ -335,7 +359,7 @@ export const postSubscribe = (token, productId, clientEmail, lang, aliasUserId) 
 };
 
 export const singleOrderCancel = async (token, orderId, aliasUserId) => {
-    let aliasUser = aliasUserId?aliasUserId:'';
+    let aliasUser = aliasUserId ? aliasUserId : "";
     return await trackPromise(
         axios({
             method: "post",

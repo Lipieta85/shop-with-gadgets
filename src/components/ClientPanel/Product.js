@@ -43,7 +43,8 @@ const Product = ({ items, pagination, currentPage }) => {
         } else {
             setProducts(items);
         }
-    }, [items, currentPage, pagination.itemsPerPage]);
+        //eslint-disable-next-line
+    }, [items, currentPage]);
 
     return products.map((item, i) => {
         return (

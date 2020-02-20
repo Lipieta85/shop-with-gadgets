@@ -37,6 +37,7 @@ import {
     isStorePolicyAccepted,
     userIdNumber,
     clearState,
+    setAliasUserId,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -88,6 +89,7 @@ export default withRouter(function App({ location }, props) {
         if (location.search) {
             dispatch(clearState());
             dispatch(companyId(parsed.brand));
+            dispatch(setAliasUserId(parsed.aliasUserId));
             getLinkToken(parsed.dt)
                 .then(res => {
                     const token = res.data.token;
