@@ -94,8 +94,9 @@ export const clearState = () => {
 };
 
 export const isStorePolicyAccepted = token => {
-    return dispatch => {
-        getStorePolicyAccepted(token)
+    return (dispatch, getState) => {
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+        getStorePolicyAccepted(token, aliasUserId)
             .then(res => {
                 dispatch(
                     setStorePolicyAcceptedStatus(
@@ -118,7 +119,8 @@ export const setStorePolicyAcceptedStatus = isAccepted => {
 
 export const acceptPolicy = token => {
     return (dispatch, getState) => {
-        setAcceptPolicy(token)
+        const aliasUserId = getState().clientDataReducer.aliasUserId;
+        setAcceptPolicy(token, aliasUserId)
             .then(res => {
                 if (res.data.wixAcceptStorePolicy === false) {
                     dispatch(setStorePolicyAcceptedStatus("error"));

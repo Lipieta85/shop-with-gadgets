@@ -2,10 +2,9 @@ import * as type from "./types";
 import { postSubscribe } from "../api";
 
 export const sendSubscribe = (token, productId, clientEmail, lang) => {
-    return (dispatch, getState) => {
-        const aliasUserId = getState().clientDataReducer.aliasUserId;
+    return (dispatch) => {
 
-        postSubscribe(token, productId, clientEmail, lang, aliasUserId)
+        postSubscribe(token, productId, clientEmail, lang)
             .then(res => {
                 if (res.data.subscribe.error) {
                     dispatch(subscribeRes(false));
