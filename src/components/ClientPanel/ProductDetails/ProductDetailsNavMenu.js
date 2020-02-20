@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../actions/authorization";
 import { ButtonToolbar, Button } from "react-bootstrap";
+import host from "../../../api/host";
 import NotificationModal from "../modals/NotificationModal";
 import "../../../assets/styles/nav-menu.scss";
 import { useTranslation } from "react-i18next";
@@ -22,6 +23,7 @@ const ProductDetailsNavMenu = () => {
     const token = localStorage.getItem("token");
     const onSignout = () => {
         dispatch(signOut());
+        window.location.replace(`${host}site/desktop`);
     };
     const changeLangHandler = event => {
         dispatch(changeLanguage(event.target.value));
@@ -108,6 +110,7 @@ const ProductDetailsNavMenu = () => {
                                         <Link
                                             className="dropdown-item text-uppercase"
                                             onClick={showPaidOrders}
+                                            to=""
                                         >
                                             {t(`Nav.ZamówieniaPłatne`)}
                                         </Link>
@@ -115,7 +118,7 @@ const ProductDetailsNavMenu = () => {
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         onClick={onSignout}
-                                        href="/"
+                                        to=""
                                     >
                                         {t(`Nav.Wyloguj`)}
                                     </Link>

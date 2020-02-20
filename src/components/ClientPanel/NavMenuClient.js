@@ -200,13 +200,14 @@ const NavMenu = () => {
                                                 {t(`Nav.ZamówieniaPłatne`)}
                                             </Link>
                                         ) : null}
-                                        <span
+                                        <Link
                                             className="dropdown-item text-uppercase"
                                             onClick={onSignout}
+                                            to=""
                                             style={{ cursor: "pointer" }}
                                         >
                                             {t(`Nav.Wyloguj`)}
-                                        </span>
+                                        </Link>
                                     </div>
                                     <ButtonToolbar className="invisible">
                                         <Button

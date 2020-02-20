@@ -18,11 +18,14 @@ const AddProductModal = props => {
     const { t } = useTranslation();
 
     const hideModalHandler = () => {
-        dispatch(addProductConfirmationModalState());
+        dispatch(addProductConfirmationModalState(false));
     };
 
     useEffect(() => {
-        if (addConfirmProductModalState) {
+        if (
+            addConfirmProductModalState === true ||
+            addConfirmProductModalState === "error"
+        ) {
             setShow(true);
         } else {
             setShow(false);
@@ -45,15 +48,22 @@ const AddProductModal = props => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h6>
-                        {t("AddProductModal.DoKoszykaDodanoProdukt")}{" "}
-                        <b className="product-name text-uppercase">
-                            {productName}
-                        </b>{" "}
-                        {t("AddProductModal.WIlości")}{" "}
-                        <b className="product-name">{productQuantity}</b>{" "}
-                        {t("AddProductModal.Szt")}
-                    </h6>
+                    {addConfirmProductModalState === "error" ? (
+                        <h5>
+                            Dodanie tego produktu obecnie nie jest możliwe,
+                            skontaktuj sie ze swoim opiekunem
+                        </h5>
+                    ) : (
+                        <h6>
+                            {t("AddProductModal.DoKoszykaDodanoProdukt")}{" "}
+                            <b className="product-name text-uppercase">
+                                {productName}
+                            </b>{" "}
+                            {t("AddProductModal.WIlości")}{" "}
+                            <b className="product-name">{productQuantity}</b>{" "}
+                            {t("AddProductModal.Szt")}
+                        </h6>
+                    )}
                 </Modal.Body>
                 <Modal.Footer className="text-center">
                     <Button
