@@ -21,7 +21,7 @@ const Contact = () => {
 
     return (
         <div className="contact-details">
-            <NavMenu /> <h2>{t(`Footer.Contact`)}</h2>
+            <NavMenu /> <h2>{t(`Footer.ContactDetails`)}</h2>
             {contact ? (
                 contact.map((e, key) => (
                     <div key={key}>

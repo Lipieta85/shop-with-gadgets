@@ -23,7 +23,7 @@ const BasketSummary = () => {
                     <div className="basket-summary content  p-0 m-0">
                         <li className="basket-summary-order text-uppercase">
                             <b>
-                                {t(`Basket.Kwota`)}: {Separator(total)}{" "}
+                                {t(`Basket.AmountToPay`)}: {Separator(total)}{" "}
                                 {currency}
                             </b>
                         </li>

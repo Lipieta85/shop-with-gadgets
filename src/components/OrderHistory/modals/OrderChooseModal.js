@@ -17,7 +17,7 @@ const ChooseModal = props => {
                 data-toggle="modal"
                 data-target="#exampleModal"
             >
-                {t("Order.AnulujZamówienie")}
+                {t("Order.CancelOrder")}
             </button>
 
             <div
@@ -33,11 +33,11 @@ const ChooseModal = props => {
                         <div className="modal-body text-left">
                             <p>
                                 <b className="text-uppercase modal-text-header">
-                                    {t("Order.AnulowanieZamówienia")}
+                                    {t("Order.OrderCancelation")}
                                 </b>
                             </p>
                             <p className="modal-text-content">
-                                {t("Order.PotwierdzenieAnulowaniaZamówienia")}{" "}
+                                {t("Order.AreYouSureCancelOrder")}{" "}
                                 {props.showedOrderNumber}
                             </p>
                         </div>
@@ -47,7 +47,7 @@ const ChooseModal = props => {
                                 className="btn btn-outline-primary full-button"
                                 data-dismiss="modal"
                             >
-                                {t("Order.Nie")}
+                                {t("Order.No")}
                             </button>
                             <button
                                 type="button"
@@ -59,7 +59,7 @@ const ChooseModal = props => {
                                     )
                                 }
                             >
-                                {t("Order.Tak")}
+                                {t("Order.Yes")}
                             </button>
                         </div>
                     </div>

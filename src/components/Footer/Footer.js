@@ -16,7 +16,7 @@ const Footer = () => {
                                 to="/Contact"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
-                                {t(`Footer.Contact`)}
+                                {t(`Footer.ContactDetails`)}
                             </Link>
                         </p>
 
@@ -26,7 +26,7 @@ const Footer = () => {
                                 to="/Regulations"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
-                                {t(`Footer.Regulamin`)}
+                                {t(`Footer.ShopRules`)}
                             </Link>
                         </p>
                     </div>

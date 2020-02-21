@@ -67,7 +67,7 @@ const OrderEnd = () => {
                     className="btn btn-outline-primary mt-4 w-25 mx-auto full-button"
                 >
                     {" "}
-                    {t("Basket.Wróć")}
+                    {t("Basket.RETURNTOTHESHOP")}
                 </Link>
             </div>
         </div>

@@ -110,17 +110,17 @@ const ClientPanel = props => {
                                 <div className="search-box">
                                     <div className="panel-left m-desktop-flex">
                                         <span>
-                                            {t(`CPanelMenu.WyszukajProdukt`)}
+                                            {t(`CPanelMenu.FindTheProduct`)}
                                         </span>
                                     </div>
                                     <input
                                         type="text"
-                                        className="search-input submit_on_enter"
+                                        className="search-input"
                                         onChange={handleChange}
                                         onKeyDown={handleSearchBtn}
                                         value={name}
                                         placeholder={t(
-                                            `CPanelMenu.NazwaProduktu`,
+                                            `CPanelMenu.ProductName`,
                                         )}
                                     ></input>
                                     <button

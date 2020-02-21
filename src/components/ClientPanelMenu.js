@@ -45,7 +45,7 @@ const ClientPanelMenu = () => {
     useEffect(() => {
         if (budget < 0) {
             setBudgetAlert(
-                <div>{t("CPanelMenu.PrzekroczonyBudżetMarketingowy")}</div>,
+                <div>{t("CPanelMenu.ExceededMarketingBudget")}</div>,
             );
         } else setBudgetAlert("");
     }, [budget, t]);
@@ -72,8 +72,8 @@ const ClientPanelMenu = () => {
             <div className="admin-panel__logged-panel">
                 <div className="logged-panel-header">
                     <div>
-                        {/* {t(`CPanelMenu.JesteśZalogowanyJako`)}  */}
-                        {userName} {t(`CPanelMenu.WImieniu`)} "{companyName}" (
+                        {/* {t(`CPanelMenu.YouAreLoggedAs`)}  */}
+                        {userName} {t(`CPanelMenu.Behalf`)} "{companyName}" (
                         {userIdNumber})
                     </div>
                 </div>
@@ -94,7 +94,7 @@ const ClientPanelMenu = () => {
                                 <span className="badge badge-blue">
                                     {totalQuantity}
                                 </span>
-                                <span>{t(`CPanelMenu.TwójKoszyk`)}</span>
+                                <span>{t(`CPanelMenu.YourBasket`)}</span>
                             </div>
                         </Link>
                     ) : (
@@ -115,7 +115,7 @@ const ClientPanelMenu = () => {
                                             {totalQuantity}
                                         </span>
                                         <span className="basket-title">
-                                            {t(`CPanelMenu.Koszyk(pusty)`)}
+                                            {t(`CPanelMenu.Basket(Empty)`)}
                                         </span>
                                     </>
                                 ) : (
@@ -124,7 +124,7 @@ const ClientPanelMenu = () => {
                                             {totalQuantity}
                                         </span>
                                         <span className="basket-title">
-                                            {t(`CPanelMenu.TwójKoszyk`)}
+                                            {t(`CPanelMenu.YourBasket`)}
                                         </span>
                                     </>
                                 )}
@@ -138,11 +138,11 @@ const ClientPanelMenu = () => {
                         {orderType && orderType === "S6" ? (
                             <>
                                 <span className="available-budget">
-                                    {t(`CPanelMenu.ZamówieniePłatne`)}
+                                    {t(`CPanelMenu.PaidOrder`)}
                                     <div className="divider"></div>
                                 </span>
                                 <span className="purchase-header">
-                                    {t(`CPanelMenu.WartośćTwoichZakupów`)}
+                                    {t(`CPanelMenu.ValueOfYourPurchases`)}
                                 </span>
                                 <br />
                                 <span className="blue-value">
@@ -152,7 +152,7 @@ const ClientPanelMenu = () => {
                         ) : (
                             <>
                                 <span className="available-budget">
-                                    {t(`CPanelMenu.DostępnyBudżetMarketingowy`)}
+                                    {t(`CPanelMenu.AvailableMarketingBudget`)}
                                 </span>
                                 <br />
                                 <span className="blue-value">
@@ -167,7 +167,7 @@ const ClientPanelMenu = () => {
                                 <br />
                                 <div className="y-rem-18"></div>
                                 <span className="purchase-header">
-                                    {t(`CPanelMenu.WartośćTwoichZakupów`)}
+                                    {t(`CPanelMenu.ValueOfYourPurchases`)}
                                 </span>
                                 <br />
                                 <span

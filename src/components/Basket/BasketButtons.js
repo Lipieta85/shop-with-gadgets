@@ -118,14 +118,14 @@ const BasketButtons = props => {
                 >
                     <p style={{ margin: "0 5px 0 0" }}>
                         <span>
-                            {t(`Card.Cena`)}: {Separator(props.itemPrice)}{" "}
+                            {t(`Card.Price`)}: {Separator(props.itemPrice)}{" "}
                             {props.itemCurrency}
                         </span>
                     </p>
                     <div className="add-remove d-flex align-items-center">
                         <span className="mr-3">
                             <span>
-                                {t(`Basket.Ilość`)}:{" "}
+                                {t(`Basket.Qauntity`)}:{" "}
                                 <input
                                     type="number"
                                     id={props.itemId}
@@ -142,7 +142,7 @@ const BasketButtons = props => {
                             className="basket-button btn btn-outline-primary primary-no-action border-button"
                             onClick={confirmationButton}
                         >
-                            {t(`Basket.Aktualizuj`)}
+                            {t(`Basket.Update`)}
                         </span>
                     </div>
                     <div>
@@ -150,7 +150,7 @@ const BasketButtons = props => {
                             className="basket-single-item-total"
                             style={{ margin: "0" }}
                         >
-                            {t(`Basket.Razem`)}:{" "}
+                            {t(`Basket.Sum`)}:{" "}
                             {Separator(props.itemTotalPrice)}{" "}
                             {props.itemCurrency}
                         </span>

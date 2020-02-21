@@ -68,7 +68,7 @@ const ProductDetailsNavMenu = () => {
                                     className="nav-link text-uppercase"
                                     to="/"
                                 >
-                                    {t("Nav.WróćDoStronyGłównej")}{" "}
+                                    {t("Nav.GoToTheMainPage")}{" "}
                                 </Link>
                             </li>
                             <li className="nav-item dropdown">
@@ -82,7 +82,7 @@ const ProductDetailsNavMenu = () => {
                                     aria-expanded="false"
                                     onClick={e => e.preventDefault}
                                 >
-                                    {t("Nav.MojeKonto")}
+                                    {t("Nav.Account")}
                                 </a>
                                 <div
                                     className="dropdown-menu text-uppercase"
@@ -92,19 +92,19 @@ const ProductDetailsNavMenu = () => {
                                         className="dropdown-item text-uppercase"
                                         to="/Basket"
                                     >
-                                        {t("Nav.Koszyk")}
+                                        {t("Nav.Basket")}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/OrderHistory"
                                     >
-                                        {t("Nav.ListaZamówień")}
+                                        {t("Nav.ListOfOrders")}
                                     </Link>
                                     <Link
                                         className="dropdown-item text-uppercase"
                                         to="/BudgetHistory"
                                     >
-                                        {t("Nav.HistoriaBudżetu")}
+                                        {t("Nav.BudgetHistory")}
                                     </Link>
                                     {orderType === "S5" ? (
                                         <Link
@@ -112,7 +112,7 @@ const ProductDetailsNavMenu = () => {
                                             onClick={showPaidOrders}
                                             to=""
                                         >
-                                            {t(`Nav.ZamówieniaPłatne`)}
+                                            {t(`Nav.PaidOrders`)}
                                         </Link>
                                     ) : null}
                                     <Link
@@ -120,7 +120,7 @@ const ProductDetailsNavMenu = () => {
                                         onClick={onSignout}
                                         to=""
                                     >
-                                        {t(`Nav.Wyloguj`)}
+                                        {t(`Nav.LogOut`)}
                                     </Link>
                                 </div>
                                 <ButtonToolbar className="invisible">
@@ -134,7 +134,7 @@ const ProductDetailsNavMenu = () => {
                                             setModalShowPaidOrders(false)
                                         }
                                         text={t(
-                                            "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
+                                            "PaidOrder.NoProductsWarning",
                                         )}
                                         header={t(
                                             "Button.WniosekZamówieniePłatne",
@@ -142,16 +142,18 @@ const ProductDetailsNavMenu = () => {
                                     />
                                 </ButtonToolbar>
                             </li>
-                            <select
-                                className="custom-select lang-select-btn"
-                                value={lang}
-                                onChange={changeLangHandler}
-                            >
-                                <option value="pl">PL</option>
-                                <option value="en">EN</option>
-                                <option value="ru">RU</option>
-                                <option value="it">IT</option>
-                            </select>
+                            <li>
+                                <select
+                                    className="custom-select lang-select-btn"
+                                    value={lang}
+                                    onChange={changeLangHandler}
+                                >
+                                    <option value="pl">PL</option>
+                                    <option value="en">EN</option>
+                                    <option value="ru">RU</option>
+                                    <option value="it">IT</option>
+                                </select>
+                            </li>
                         </ul>
                     </div>
                 </nav>

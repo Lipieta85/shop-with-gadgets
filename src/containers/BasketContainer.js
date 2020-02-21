@@ -32,7 +32,7 @@ const BasketContainer = () => {
                                                 <div className="order-end-box p-4">
                                                     <h5>
                                                         {t(
-                                                            "Basket.BrakProduktów",
+                                                            "Basket.NoProductsInBasket",
                                                         )}
                                                     </h5>
                                                     <Link
@@ -40,13 +40,13 @@ const BasketContainer = () => {
                                                         className="btn btn-outline-primary mt-2"
                                                     >
                                                         {" "}
-                                                        {t("Basket.Wróć")}
+                                                        {t("Basket.RETURNTOTHESHOP")}
                                                     </Link>
                                                 </div>
                                             </div>
                                         </div>
                                     ) : (
-                                        `${t("Basket.ProduktyWKoszyku")}`
+                                        `${t("Basket.ProductsInTheBasket")}`
                                     )}
                                 </h5>
                                 <div className="clear-button-box">
@@ -61,7 +61,7 @@ const BasketContainer = () => {
                                                 )
                                             }
                                         >
-                                            {t(`Basket.Wyczyść`)}{" "}
+                                            {t(`Basket.ClearBasket`)}{" "}
                                             <FontAwesomeIcon
                                                 icon={faTimes}
                                                 color="#a0a3a6"

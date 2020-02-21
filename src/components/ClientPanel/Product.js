@@ -101,47 +101,46 @@ const Product = ({ items, pagination, currentPage }) => {
                                 </h5>
                             </Link>
                         </div>
-                        <div>
-                            <p className="card-text">
-                                <strong>
-                                    {t(`Card.Cena`)}:{" "}
-                                    {Separator((+item.price.price).toFixed(2))}{" "}
-                                    {item.price.currency}/
-                                    {item.product.unitOfMeasure}
-                                </strong>
-                            </p>
-                            {item.availability === 0 ? (
-                                <div className="card-available-quantity pb-2">
-                                    <span className="quantity">
-                                        {t(`Card.Niedostępny`)}
-                                    </span>
-                                </div>
-                            ) : (
-                                <div className="card-available-quantity pb-1">
-                                    <span className="quantity m-desktop">
-                                        {t(`Card.DostępnaIlość`)}:{" "}
-                                        {item.availability}{" "}
-                                        {item.product.unitOfMeasure}
-                                    </span>
-                                    <span className="quantity m-mobile">
-                                        {t(`Card.Dostępnych`)}:{" "}
-                                        {item.availability}{" "}
-                                        {item.product.unitOfMeasure}
-                                    </span>
-                                </div>
-                            )}
-                            <div className="buttons-container row d-flex align-items-center mt-2">
-                                <ButtonInput
-                                    itemId={item.product.id}
-                                    availabaleItemQuantity={item.availability}
-                                    itemUnit={item.product.unitOfMeasure}
-                                    itemTitle={item.product.name}
-                                    token={token}
-                                    price={item.price.price}
-                                    currency={item.price.currency}
-                                />
+                        <p className="card-text">
+                            <strong>
+                                {t(`Card.Price`)}:{" "}
+                                {Separator((+item.price.price).toFixed(2))}{" "}
+                                {item.price.currency}/
+                                {item.product.unitOfMeasure}
+                            </strong>
+                        </p>
+                        {item.availability === 0 ? (
+                            <div className="card-available-quantity pb-2">
+                                <span className="quantity">
+                                    {t(`Card.Inaccessible`)}
+                                </span>
                             </div>
+                        ) : (
+                            <div className="card-available-quantity pb-1">
+                                <span className="quantity m-desktop">
+                                    {t(`Card.AvailableQuantity`)}:{" "}
+                                    {item.availability}{" "}
+                                    {item.product.unitOfMeasure}
+                                </span>
+                                <span className="quantity m-mobile">
+                                    {t(`Card.Available`)}:{" "}
+                                    {item.availability}{" "}
+                                    {item.product.unitOfMeasure}
+                                </span>
+                            </div>
+                        )}
+                        <div className="buttons-container row d-flex align-items-center mt-2">
+                            <ButtonInput
+                                itemId={item.product.id}
+                                availabaleItemQuantity={item.availability}
+                                itemUnit={item.product.unitOfMeasure}
+                                itemTitle={item.product.name}
+                                token={token}
+                                price={item.price.price}
+                                currency={item.price.currency}
+                            />
                         </div>
+                        
                     </div>
                 </div>
             </div>

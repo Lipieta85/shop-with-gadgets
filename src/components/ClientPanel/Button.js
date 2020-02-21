@@ -221,7 +221,7 @@ const ButtonComponent = props => {
                 <NotificationModal
                     show={modalShowPaidOrders}
                     onHide={() => setModalShowPaidOrders(false)}
-                    text={t("PaidOrder.OstrzeżenieZamówieniePłatne")}
+                    text={t("PaidOrder.ProductsWarning")}
                     header="Przekroczenie dostępnego budżetu"
                     itemTitle={props.itemTitle}
                     price={props.price}

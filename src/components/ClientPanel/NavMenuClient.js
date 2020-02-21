@@ -106,7 +106,7 @@ const NavMenu = () => {
                         id="navbarSupportedContent"
                     >
                         {window.location.pathname === `/` ? (
-                            <ul className="navbar-nav ">
+                            <div className="navbar-nav ">
                                 <ul className="nav nav-tabs">
                                     <li className="nav-item item-separated">
                                         <button
@@ -114,7 +114,7 @@ const NavMenu = () => {
                                             className="nav-link active"
                                             onClick={tabHandler}
                                         >
-                                            {t(`Nav.Wszystkie`)}
+                                            {t(`Nav.All`)}
                                         </button>
                                     </li>
                                     {availableProductsCategory
@@ -140,7 +140,7 @@ const NavMenu = () => {
                                           )
                                         : null}
                                 </ul>
-                            </ul>
+                            </div>
                         ) : null}
                         <ul className="navbar-nav ml-auto">
                             {window.location.pathname === `/Order` ||
@@ -152,7 +152,7 @@ const NavMenu = () => {
                                     to={`/`}
                                     onClick={changePolicyModalStatus}
                                 >
-                                    {t(`Nav.WróćDoStronyGłównej`)}
+                                    {t(`Nav.GoToTheMainPage`)}
                                 </Link>
                             ) : null}
                             {window.location.pathname !== `/Regulations` ? (
@@ -167,7 +167,7 @@ const NavMenu = () => {
                                         aria-expanded="false"
                                         onClick={e => e.preventDefault}
                                     >
-                                        {t(`Nav.MojeKonto`)}
+                                        {t(`Nav.Account`)}
                                     </a>
                                     <div
                                         className="dropdown-menu text-uppercase"
@@ -177,19 +177,19 @@ const NavMenu = () => {
                                             className="dropdown-item text-uppercase"
                                             to="/Basket"
                                         >
-                                            {t(`Nav.Koszyk`)}
+                                            {t(`Nav.Basket`)}
                                         </Link>
                                         <Link
                                             className="dropdown-item text-uppercase"
                                             to="/OrderHistory"
                                         >
-                                            {t(`Nav.ListaZamówień`)}
+                                            {t(`Nav.ListOfOrders`)}
                                         </Link>
                                         <Link
                                             className="dropdown-item text-uppercase"
                                             to="/BudgetHistory"
                                         >
-                                            {t(`Nav.HistoriaBudżetu`)}
+                                            {t(`Nav.BudgetHistory`)}
                                         </Link>
                                         {orderType === "S5" ? (
                                             <Link
@@ -197,7 +197,7 @@ const NavMenu = () => {
                                                 onClick={showPaidOrders}
                                                 to=""
                                             >
-                                                {t(`Nav.ZamówieniaPłatne`)}
+                                                {t(`Nav.PaidOrders`)}
                                             </Link>
                                         ) : null}
                                         <Link
@@ -206,7 +206,7 @@ const NavMenu = () => {
                                             to=""
                                             style={{ cursor: "pointer" }}
                                         >
-                                            {t(`Nav.Wyloguj`)}
+                                            {t(`Nav.LogOut`)}
                                         </Link>
                                     </div>
                                     <ButtonToolbar className="invisible">
@@ -220,7 +220,7 @@ const NavMenu = () => {
                                                 setModalShowPaidOrders(false)
                                             }
                                             text={t(
-                                                "PaidOrder.OstrzeżenieZamówieniePłatneNAV",
+                                                "PaidOrder.NoProductsWarning",
                                             )}
                                             header={t(
                                                 "Button.WniosekZamówieniePłatne",
@@ -229,16 +229,18 @@ const NavMenu = () => {
                                     </ButtonToolbar>
                                 </li>
                             ) : null}
-                            <select
-                                className="custom-select lang-select-btn"
-                                value={lang}
-                                onChange={changeLangHandler}
-                            >
-                                <option value="pl">PL</option>
-                                <option value="en">EN</option>
-                                <option value="ru">RU</option>
-                                <option value="it">IT</option>
-                            </select>
+                            <li>
+                                <select
+                                    className="custom-select lang-select-btn"
+                                    value={lang}
+                                    onChange={changeLangHandler}
+                                >
+                                    <option value="pl">PL</option>
+                                    <option value="en">EN</option>
+                                    <option value="ru">RU</option>
+                                    <option value="it">IT</option>
+                                </select>
+                            </li> 
                         </ul>
                     </div>
                 </nav>
