@@ -60,6 +60,14 @@ const BudgetHistory = () => {
                         </div>
                     </td>
                     <td>
+                        <div className="cell"> {/**DO WYWALENIA ZARAZ */}
+                            {i.operation_description.includes('Submitting of order')?
+                                'Złożenie zamówienia przez - '+i.operation_description.substr(34)
+                            :
+                                i.operation_description}
+                        </div>
+                    </td>
+                    <td>
                         <div className="cell">
                             {i.reference_id ? i.reference_id : "---"}
                         </div>
@@ -133,6 +141,11 @@ const BudgetHistory = () => {
                                                         <th>
                                                             {t(
                                                                 "BudgetHistory.RodzajOperacji",
+                                                            )}
+                                                        </th>
+                                                        <th>
+                                                            {t(
+                                                                "BudgetHistory.OpisOperacji",
                                                             )}
                                                         </th>
                                                         <th>

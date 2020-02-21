@@ -42,7 +42,7 @@
     "Szt": "pcs"
   },
   "PolicyModal": {
-    "AkceptacjaRegulaminu": "Ackeptacja regulaminu",
+    "AkceptacjaRegulaminu": "Akceptacja regulaminu",
     "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
     "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
     "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
@@ -140,6 +140,7 @@
     "WykorzystanyBudżet": "Used budget",
     "BudżetUżytkownikaNaPoczątku": "User budget at the beggining",
     "RodzajOperacji": "Operation type",
+    "OpisOperacji": "Operation description",
     "NumerZamówienia": "Order number",
     "CzasZdarzenia": "Time",
     "PrzyznanyBudżet": "Marketing budget allocated for the year",
