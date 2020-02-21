@@ -1,10 +1,6 @@
 {
   "Nav": {
     "All": "All",
-    "-Office": "Office",
-    "-Fabrics": "Fabrics",
-    "-Gadgets": "Gadgets",
-    "-PromotionalMaterials": "Promotional materials",
     "GoToTheMainPage": "Go to the main page",
     "MyAccount": "My account",
     "Basket": "Basket",
@@ -53,8 +49,7 @@
     "Price": "Price",
     "Inaccessible": "Inaccessible",
     "AvailableQuantity": "Available Quantity",
-    "Available": "Available",
-    "NotifyWhenAvailable": "Notify When Available"
+    "Available": "Available"
   },
   "Footer": {
     "ShopRules": "Shop rules",
@@ -74,7 +69,6 @@
     "ChooseDeliveryAddress": "Choose a delivery address",
     "BasketIsEmpty": "Basket Is Empty",
     "ProductsInTheBasket": "Products currently in the basket",
-    "ChooseOrderType": "Choose order type",
     "UEinfo": "Dear Customer, please make sure that you have all the documents and certificates necessary to import the ordered products into your country."
   },
   "DeleteModal": {
