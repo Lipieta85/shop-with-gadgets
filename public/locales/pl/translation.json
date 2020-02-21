@@ -1,10 +1,6 @@
 {
   "Nav": {
     "All": "Wszystkie",
-    "--Office": "Biuro",
-    "--Fabrics": "Tekstylia",
-    "--Gadgets": "Gadżety",
-    "--PromotionalMaterials": "Materiały Promocyjne",
     "GoToTheMainPage": "Wróć Do Strony Głównej",
     "MyAccount": "Moje Konto",
     "Basket": "Koszyk",
@@ -53,8 +49,7 @@
     "Price": "Cena",
     "Inaccessible": "Niedostępny",
     "AvailableQuantity": "Dostępna Ilość",
-    "Available": "Dostępnych",
-    "--NotifyWhenAvailable": "Powiadom o dostępności"
+    "Available": "Dostępnych"
   },
   "Footer": {
     "ShopRules": "Regulamin sklepu",
@@ -74,7 +69,6 @@
     "ChooseDeliveryAddress": "Wybierz adres dostawy",
     "BasketIsEmpty": "Koszyk jest pusty",
     "ProductsInTheBasket": "Produkty aktualnie znajdujące się w koszyku",
-    "--ChooseOrderType": "Wybierz typ zamówienia",
     "UEinfo": "Szanowny Kliencie upewnij się, że posiadasz wszystkie dokumenty i certyfikaty niezbędne podczas procedury importowania zamówionych produktów do Twojego kraju."
   },
   "DeleteModal": {
