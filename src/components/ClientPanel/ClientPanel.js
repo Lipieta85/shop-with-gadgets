@@ -8,10 +8,11 @@ import {
     initProducts,
     nextPage,
     prevPage,
-    setPage,
     changeProductCategory,
     searchProductPanel,
     initProductsCategories,
+    paginationType,
+    setPage,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -27,6 +28,9 @@ const ClientPanel = props => {
     const currentPage = useSelector(state => state.pageReducer.currentPage);
     const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
+    const paginationTyp = useSelector(
+        state => state.cartReducer.paginationType,
+    );
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const [shortPagination2] = useState([2]);
     const [shortPagination3] = useState([2, 3]);
@@ -35,9 +39,9 @@ const ClientPanel = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
     const [name, setName] = useState("");
-
+    console.log(currentPage);
     useEffect(() => {
-        if (token && category === "1" && name === "") {
+        if (token && category === "1" && paginationTyp === "back") {
             setName("");
             dispatch(initProducts(token, currentPage));
             dispatch(initProductsCategories(token));
@@ -61,11 +65,37 @@ const ClientPanel = props => {
     }, [currentPage, dispatch, token, category]);
 
     useEffect(() => {
+        if (token && paginationTyp === "front") {
+            setName("");
+            if (currentPage < 3) {
+                setShortPagination([2, 3, 4]);
+            } else if (currentPage > pagination.totalPages - 3) {
+                setShortPagination([
+                    pagination.totalPages - 3,
+                    pagination.totalPages - 2,
+                    pagination.totalPages - 1,
+                ]);
+            } else {
+                setShortPagination([
+                    currentPage - 1,
+                    currentPage,
+                    currentPage + 1,
+                ]);
+            }
+        }
+        if (currentPage > pagination.totalPages) {
+            dispatch(setPage(1));
+        }
+        //eslint-disable-next-line
+    }, [currentPage, pagination]);
+
+    useEffect(() => {
         if (category !== "1") {
+            setName("");
             dispatch(changeProductCategory(token, category, currentPage));
         }
         //eslint-disable-next-line
-    }, [category, dispatch, token]);
+    }, [category, dispatch]);
 
     const nextPageHandler = () => {
         if (currentPage < pagination.totalPages) {
@@ -96,7 +126,8 @@ const ClientPanel = props => {
             if (name === "") {
                 dispatch(initProducts(token, currentPage));
             } else {
-                dispatch(searchProductPanel(token, currentPage, lang, name));
+                dispatch(paginationType("front"));
+                dispatch(searchProductPanel(token, 1, lang, name));
             }
         }
     };

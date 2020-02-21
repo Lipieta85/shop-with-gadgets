@@ -13,6 +13,7 @@ const initialState = {
     orderSelectInputValue: "",
     error: "",
     pagination: {},
+    paginationType: "back",
     productsToOrder: [],
     productsCategory: "1",
     availableProductsCategory: [],
@@ -157,7 +158,11 @@ const cartReducer = (state = initialState, action) => {
                 basket: null,
                 productsToOrder: [],
             };
-
+        case type.SET_PAGINATION_TYPE:
+            return {
+                ...state,
+                paginationType: action.typeVal,
+            };
         case type.ORDER_INPUT_STATE:
             return {
                 ...state,
