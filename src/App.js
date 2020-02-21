@@ -97,7 +97,7 @@ export default withRouter(function App({ location }, props) {
                     const userID = JSON.parse(atob(tokenParts[1]));
                     localStorage.setItem("userID", userID.userId);
                     localStorage.setItem("token", res.data.token);
-                    getUserData(res.data.token).then(res => {
+                    getUserData(res.data.token, parsed.aliasUserId).then(res => {
                         console.log(res);
                         if (res.data.getWixClientData.error) {
                             console.log(res);
