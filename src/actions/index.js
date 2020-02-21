@@ -41,6 +41,7 @@ export {
     setProductCategories,
     changeProductCategory,
     searchProductPanel,
+    paginationType,
     setTypedProducts,
     initProductsCategories,
     setProductsCategories,
