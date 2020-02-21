@@ -19,7 +19,7 @@ export const getToken = async userData => {
 export const getUserData = async (token, aliasUserId) => {
     let url = `${host}/restApi/user/method/getWixClientData`;
     if(aliasUserId)
-        url = `${host}/restApi/user/method/getWixClientData/parameters{"aliasUserId":"${aliasUserId}"}`;
+        url = `${host}/restApi/user/method/getWixClientData/parameters/{"aliasUserId":"${aliasUserId}"}`;
     return await axios({
         method: "get",
         url: url,
