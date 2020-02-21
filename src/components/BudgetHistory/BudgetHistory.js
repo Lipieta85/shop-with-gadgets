@@ -104,7 +104,7 @@ const BudgetHistory = () => {
                                             className="btn btn-outline-primary mt-4"
                                         >
                                             {" "}
-                                            {t("Basket.Wróć")}
+                                            {t("Basket.RETURNTOTHESHOP")}
                                         </Link>
                                     </div>
                                 ) : (

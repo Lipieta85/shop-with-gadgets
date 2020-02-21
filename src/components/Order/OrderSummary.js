@@ -78,25 +78,25 @@ const OrderSummary = () => {
             );
         })
     ) : (
-        <p>{t("Basket.KoszykJestPusty")}</p>
+        <p>{t("Basket.BasketIsEmpty")}</p>
     );
 
     return (
         <div className="order-summary">
             <div className="container">
-                <h2 className="title-header">{t("Order.Podsumowanie")}</h2>
+                <h2 className="title-header">{t("Order.OrderSummary")}</h2>
                 <hr />
                 <ol>
                     {budgetOrder && orderIsFirst && orderType === "S5" ? (
                         <li className="order-summary-text">
-                            {t("Order.WartośćBudżetu")}:
+                            {t("Order.TheValueOfYourBudget")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
                                 {Separator(budget)} {items[0].price.currency}
                             </span>
                         </li>
                     ) : (
                         <li className="order-summary-text">
-                            {t("Order.RodzajZamówienia")}:
+                            {t("Order.OrderType")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
                                 {t("Order.ZamówieniaPłatne")}
                             </span>
@@ -104,22 +104,22 @@ const OrderSummary = () => {
                     )}
                     {budgetOrder && !orderIsFirst ? (
                         <li className="order-summary-text">
-                            {t("Order.WartośćDostępnegoBudżetu")}:{" "}
+                            {t("Order.ValueOfAvailableBudget")}:{" "}
                         </li>
                     ) : (
                         <></>
                     )}
                     <li className="order-summary-text">
-                        {t("Order.ZamówioneProdukty")}:
+                        {t("Order.OrderedProducts")}:
                     </li>
                 </ol>
                 <table className="summary-table">
                     <thead>
                         <tr className="summary-header">
-                            <th>{t("Order.NazwaProduktu")}</th>
-                            <th>{t("Card.Cena")}</th>
-                            <th>{t("Basket.Ilość")}</th>
-                            <th>{t("Basket.Razem")}</th>
+                            <th>{t("Order.ProductName")}</th>
+                            <th>{t("Card.Price")}</th>
+                            <th>{t("Basket.Qauntity")}</th>
+                            <th>{t("Basket.Sum")}</th>
                         </tr>
                     </thead>
                     <tbody>{addedItems}</tbody>
@@ -127,15 +127,15 @@ const OrderSummary = () => {
                 <ol start={budgetOrder ? 3 : 2}>
                     <li className="order-summary-text">
                         {budgetOrder
-                            ? `${t("Order.WartośćZamówienia")}: `
-                            : `${t("Basket.Kwota")}`}
+                            ? `${t("Order.OrderValue")}: `
+                            : `${t("Basket.AmountToPay")}`}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {Separator(total)} {items[0].price.currency}
                         </span>
                     </li>
                     {budgetOrder ? (
                         <li className="order-summary-text">
-                            {t("Order.PozostałoDoWykorzystania")}:
+                            {t("Order.RemainingToUse")}:
                             <span className="summary-text-value font-weight-bold text-uppercase ml-1">
                                 {Separator(updatedBudget)}{" "}
                                 {items[0].price.currency}
@@ -145,17 +145,17 @@ const OrderSummary = () => {
                         <></>
                     )}
                     <li className="order-summary-text">
-                        {t("Order.AdresDostawy")}:{" "}
+                        {t("Order.DeliveryAddress")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {orderSelectInputValue}
                         </span>
                     </li>
                     <li className="order-summary-text">
-                        {t("Order.TypZamówienia")}:{" "}
+                        {t("Order.OrderType")}:{" "}
                         <span className="summary-text-value font-weight-bold text-uppercase">
                             {orderType === "S5"
-                                ? `${t("Order.BudżetMarketingowy")}`
-                                : `${t("Order.ZamówieniePłatne")}`}
+                                ? `${t("Order.MarketingBudget")}`
+                                : `${t("Order.PaidOrder")}`}
                         </span>
                     </li>
                 </ol>
@@ -165,14 +165,14 @@ const OrderSummary = () => {
                         to="/Basket"
                         className="btn btn-outline-primary btn-back border-button"
                     >
-                        {t("Order.WróćDoKoszyka")}
+                        {t("Order.RETURNTOBASKET")}
                     </Link>
                     <Link
                         to="/OrderEnd"
                         className="btn btn-outline-primary btn-submit border-button"
                         onClick={() => dispatch(createOrder(token))}
                     >
-                        {t("Order.Zatwierdź")}
+                        {t("Order.CONFIRMTHEORDER")}
                     </Link>
                 </div>
             </div>

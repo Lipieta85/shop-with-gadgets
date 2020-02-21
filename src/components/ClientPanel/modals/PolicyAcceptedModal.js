@@ -74,7 +74,7 @@ const PolicyAcceptedModal = props => {
                             </p>
                             <Link to="/Regulations" onClick={checkHandler}>
                                 <p className="text-uppercase text-center">
-                                    {t(`Footer.Regulamin`)}
+                                    {t(`Footer.ShopRules`)}
                                 </p>
                             </Link>
                         </div>

@@ -19,7 +19,7 @@ const Regulations = props => {
 
     return (
         <div className="regulations">
-            <NavMenu /> <h2>{t(`Footer.Regulamin`)}</h2>
+            <NavMenu /> <h2>{t(`Footer.ShopRules`)}</h2>
             {policy ? (
                 (window.onload = policy.map((e, key) => (
                     <div id="regPart" key={key}>

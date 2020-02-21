@@ -53,7 +53,7 @@ const OrderOptions = () => {
     const orderConfirmHandler = e => {
         if (addedItems.length === 0) {
             e.preventDefault();
-            alert(`${t("Basket.AlertKoszykPusty")}`);
+            alert(`${t("Basket.BasketIsEmptyAdd")}`);
         } else {
             dispatch(orderSelectInputValue(selectInputValue));
         }
@@ -61,7 +61,7 @@ const OrderOptions = () => {
 
     return (
         <div className="order-options">
-            <h4 className="options-header">{t("Basket.WybierzAdres")}</h4>
+            <h4 className="options-header">{t("Basket.ChooseDeliveryAddress")}</h4>
             <div className="input-group mb-2">
                 <div>
                     <select
@@ -88,7 +88,7 @@ const OrderOptions = () => {
             <hr />
             <div className="basket-checkout d-flex flex-wrap justify-content-between button-parent">
                 <Link to="/" className="btn btn-outline-primary mt-1 w-100">
-                    {t("Basket.Wróć")}
+                    {t("Basket.RETURNTOTHESHOP")}
                 </Link>
                 <Link
                     to={disabledCheckbox === false ? "/Order" : "#"}
@@ -99,20 +99,20 @@ const OrderOptions = () => {
                     {orderType !== "S6" ? (
                         addedItems.length === 0 || +total > +budget ? (
                             <button disabled className="order-button">
-                                {t("Basket.ZłóżZamówienie")}
+                                {t("Basket.SUBMITYOURORDER")}
                             </button>
                         ) : (
                             <button className="order-button">
-                                {t("Basket.ZłóżZamówienie")}
+                                {t("Basket.SUBMITYOURORDER")}
                             </button>
                         )
                     ) : addedItems.length === 0 ? (
                         <button disabled className="order-button">
-                            {t("Basket.ZłóżZamówienie")}
+                            {t("Basket.SUBMITYOURORDER")}
                         </button>
                     ) : (
                         <button className="order-button">
-                            {t("Basket.ZłóżZamówienie")}
+                            {t("Basket.SUBMITYOURORDER")}
                         </button>
                     )}
                 </Link>
