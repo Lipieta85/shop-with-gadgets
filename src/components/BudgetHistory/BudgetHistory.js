@@ -7,9 +7,12 @@ import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import Separator from "../Separator/Separator";
 import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
+import ScreenLock from "../../components/ScreenLock";
+import { getUserData } from "../../api/index";
+import {setBudget} from "../../actions/index";
 const BudgetHistory = () => {
     const remainingBudget = useSelector(
-        state => state.clientDataReducer.remainingBudget,
+        state => state.cartReducer.budget,
     );
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
@@ -19,18 +22,24 @@ const BudgetHistory = () => {
     );
     const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
     const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
-    // function numberWithSpaces(num) {
-    //     var parts = num.toString().split(".");
-    //     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    //     return parts.join(".");
-    // }
-
+    const aliasUserId = useSelector(state => state.clientDataReducer.aliasUserId);
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
+    
     useEffect(() => {
+        getUserData(token, aliasUserId).then(res => {
+            dispatch(
+                setBudget(
+                    res.data.getWixClientData.budget
+                        ? res.data.getWixClientData.budget
+                              .remainingBudget
+                        : "",
+                ),
+            );
+        })
         dispatch(getClientBudgetHistory(token));
-    }, [dispatch, token]);
+    }, [dispatch, token, aliasUserId, remainingBudget]);
 
     let history;
     if (budgetHistory && remainingBudget) {
@@ -188,6 +197,7 @@ const BudgetHistory = () => {
                     </div>
                 </div>
                 <Spinner />
+                <ScreenLock />
             </div>
         </div>
     );

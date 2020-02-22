@@ -39,7 +39,7 @@ const ClientPanel = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
     const [name, setName] = useState("");
-    console.log(currentPage);
+    
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
             setName("");

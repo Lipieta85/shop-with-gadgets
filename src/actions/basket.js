@@ -64,7 +64,6 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
-                    console.log(res);
                     if (res.data.addProduct.error) {
                         dispatch(addProductConfirmationModalState("error"));
                     } else {
@@ -93,7 +92,6 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
-                    console.log(res);
                     if (!res.data.create.order) {
                         dispatch(addProductConfirmationModalState("error"));
                     } else {
@@ -208,7 +206,6 @@ export const changeBasketQuantity = (
             companyId,
         )
             .then(res => {
-                console.log(res);
                 if (res.data.updateQuantity.error) {
                     dispatch(addProductConfirmationModalState("error"));
                 } else {

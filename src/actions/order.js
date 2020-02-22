@@ -56,7 +56,6 @@ export const createOrder = (token, items) => {
 
         postOrder(token, items, basketId, companyId, delivery)
             .then(res => {
-                console.log(res);
                 if (res.data.create.fault === false) {
                     dispatch(setOrderErrorFalse());
                     dispatch(setOrderNumber(res.data.create.orderNumber));
@@ -110,7 +109,6 @@ export const getClientBudgetHistory = token => {
 
         getUserBudgetHistory(token, aliasUserId)
             .then(res => {
-                console.log(res);
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
             .catch(error => {
@@ -131,7 +129,6 @@ export const getClientOrdersHistory = token => {
         const aliasUserId = getState().clientDataReducer.aliasUserId;
         getUserOrders(token, aliasUserId)
             .then(res => {
-                console.log(res);
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
             })
             .catch(error => {
