@@ -16,6 +16,7 @@ const initialState = {
     storePolicyStatus: 0,
     userIdNumber: 0,
     aliasUserId: 0,
+    
 };
 
 const clientDataReducer = (state = initialState, action) => {

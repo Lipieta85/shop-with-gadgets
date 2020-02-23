@@ -284,8 +284,13 @@ export const postOrder = async (
     basketId,
     companyId,
     delivery,
+    delivery2,
 ) => {
     let url = `${host}/restApi/order/method/create/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+    let deliveryNumber = delivery;
+    if (delivery2) {
+        deliveryNumber = delivery2;
+    }
     return await trackPromise(
         axios({
             method: "post",
@@ -294,11 +299,9 @@ export const postOrder = async (
                 "Content-Type": "application/json",
                 Authorization: token,
             },
-            // data: {
-            //     timeZone: moment.tz.guess(),
-            //     shipToNumber: delivery,
-            //     items,
-            // },
+            data: {
+                shipToNumber: deliveryNumber,
+            },
         }),
     );
 };

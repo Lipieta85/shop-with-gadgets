@@ -38,12 +38,13 @@ import {
     userIdNumber,
     clearState,
     setAliasUserId,
+    setDeliveryAddress,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
 import host2 from "./api/host2";
 import { useTranslation } from "react-i18next";
-import Spinner from './components/UI/Spinner/Spinner';
+import Spinner from "./components/UI/Spinner/Spinner";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -58,13 +59,11 @@ export default withRouter(function App({ location }, props) {
     const company = useSelector(state => state.clientDataReducer.companyId);
     const lang = useSelector(state => state.clientDataReducer.language);
     const parsed = queryString.parse(location.search);
-    
+
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
 
     const { i18n } = useTranslation();
-
-    window.history.pushState(null, null, window.location.pathname);
 
     useEffect(() => {
         const { pathname } = location;
@@ -88,6 +87,7 @@ export default withRouter(function App({ location }, props) {
 
     useEffect(() => {
         if (location.search) {
+            window.history.pushState(null, null, window.location.pathname);
             dispatch(clearState());
             dispatch(companyId(parsed.brand));
             dispatch(setAliasUserId(parsed.aliasUserId));
@@ -114,6 +114,12 @@ export default withRouter(function App({ location }, props) {
                                             : "",
                                     ),
                                 );
+                                dispatch(
+                                    setDeliveryAddress(
+                                        res.data.getWixClientData
+                                            .deliveryAddresses[0].kli_exid,
+                                    ),
+                                );
                                 dispatch(setToken(token));
                                 dispatch(clientData(res.data));
                                 dispatch(
@@ -128,7 +134,11 @@ export default withRouter(function App({ location }, props) {
                                 );
                                 dispatch(
                                     userName(
-                                        res.data.getWixClientData.superUserLogin ? res.data.getWixClientData.superUserLogin : res.data.getWixClientData.userLogin,
+                                        res.data.getWixClientData.superUserLogin
+                                            ? res.data.getWixClientData
+                                                  .superUserLogin
+                                            : res.data.getWixClientData
+                                                  .userLogin,
                                     ),
                                 );
                                 dispatch(

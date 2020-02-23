@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { orderSelectInputValue } from "../../actions/index";
+import {
+    orderSelectInputValue,
+    setDeliveryAddress2,
+} from "../../actions/index";
 import { useTranslation } from "react-i18next";
 
 import "../../assets/styles/order-options.scss";
@@ -23,7 +26,7 @@ const OrderOptions = () => {
     const clientUE = useSelector(state => state.clientDataReducer.isUE);
 
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
-    const [selectInputValue, setSelectInputValue] = useState("");
+    const [selectInputValue, setSelectInputValue] = useState();
 
     const dispatch = useDispatch();
 
@@ -41,13 +44,21 @@ const OrderOptions = () => {
 
     useEffect(() => {
         setSelectInputValue(
-            deliveryData.getWixClientData.deliveryAddresses[0].name,
+            selectStoreState
+                ? selectStoreState
+                : deliveryData.getWixClientData.deliveryAddresses[0].name,
         );
         //eslint-disable-next-line
     }, [selectStoreState]);
 
     const selectValueHandler = event => {
+        event.preventDefault();
+        let e = document.getElementById("order-options-select");
+        let selected_value = e.options[e.selectedIndex].attributes[0].value;
+        let newValue = selected_value;
+        dispatch(setDeliveryAddress2(newValue));
         setSelectInputValue(event.target.value);
+        dispatch(orderSelectInputValue(event.target.value));
     };
 
     const orderConfirmHandler = e => {
@@ -61,19 +72,21 @@ const OrderOptions = () => {
 
     return (
         <div className="order-options">
-            <h4 className="options-header">{t("Basket.ChooseDeliveryAddress")}</h4>
+            <h4 className="options-header">
+                {t("Basket.ChooseDeliveryAddress")}
+            </h4>
             <div className="input-group mb-2">
                 <div>
                     <select
                         className="custom-select"
-                        id="inputGroupSelect02"
+                        id="order-options-select"
                         onChange={selectValueHandler}
                         value={selectInputValue}
                     >
                         {deliveryData.getWixClientData.deliveryAddresses.map(
                             (data, key) => {
                                 return (
-                                    <option key={key} value={data.id}>
+                                    <option name={data.kli_exid} key={key}>
                                         {data.name}
                                     </option>
                                 );

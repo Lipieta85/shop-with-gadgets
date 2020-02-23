@@ -33,29 +33,15 @@ export const createOrder = (token, items) => {
         let basketId = getState().cartReducer.basket;
         let items = getState().cartReducer.productsToOrder;
         const company = getState().clientDataReducer.companyId;
+        let delivery = getState().cartReducer.deliveryAddress;
+        let delivery2 = getState().cartReducer.deliveryAddress2;
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
         Number(basketId);
 
-        let clientData = getState().clientDataReducer.clientData;
-
-        // let adressess = [];
-        // let deliveryAddress = [];
-
-        // if (clientData) {
-        //     clientData.map(data =>
-        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
-        //     );
-        //     mapKeys(adressess[0], function(value, key) {
-        //         return deliveryAddress.push({ key: value });
-        //     });
-        // }
-
-        let delivery =
-            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
-
-        postOrder(token, items, basketId, companyId, delivery)
+        postOrder(token, items, basketId, companyId, delivery, delivery2)
             .then(res => {
+                console.log(res);
                 if (res.data.create.fault === false) {
                     dispatch(setOrderErrorFalse());
                     dispatch(setOrderNumber(res.data.create.orderNumber));
