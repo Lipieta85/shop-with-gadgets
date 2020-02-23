@@ -5,7 +5,6 @@ import {
     getClientOrdersHistory,
     getClientSingleOrdersHistory,
 } from "../../actions/index";
-//import defImg from "../../assets/images/default.jpg";
 import { Link } from "react-router-dom";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
@@ -26,7 +25,6 @@ const OrderHistory = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
 
     const [showedOrder, setShowedOrder] = useState();
-    //const [currency, setCurrency] = useState();
 
     const { t } = useTranslation();
 
@@ -70,7 +68,7 @@ const OrderHistory = () => {
 
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
-            <tr className={order.selected ? "row-selected" : ""}>
+            <tr key={i} className={order.selected ? "row-selected" : ""}>
                 <td>
                     <button
                         className="row-button"
@@ -121,7 +119,7 @@ const OrderHistory = () => {
             if (i === selectedOrder) {
                 selectOrder(order);
                 setShowedOrder(order);
-                //setCurrency(order.currency_code);
+                
                 dispatch(
                     getClientSingleOrdersHistory(token, order.order_id, lang),
                 );
@@ -190,107 +188,111 @@ const OrderHistory = () => {
                                     {showedOrder && singleOrder && (
                                         <>
                                             <table className="w-100">
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.OrderNumber",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {
-                                                                showedOrder.order_number
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.OrderDate",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {
-                                                                showedOrder.date_of_order
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.Time",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {
-                                                                showedOrder.time_of_order
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.Currency",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {
-                                                                showedOrder.currency_code
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.Delivery",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {
-                                                                singleOrder.shippingAddress
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.Status",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {showedOrder.status}
-                                                        </b>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        {t(
-                                                            "OrderHistory.AmountPaid",
-                                                        )}{" "}
-                                                    </td>
-                                                    <td>
-                                                        <b>
-                                                            {Separator(
-                                                                (+showedOrder.order_total_amount).toFixed(
-                                                                    2,
-                                                                ),
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.OrderNumber",
                                                             )}{" "}
-                                                            {
-                                                                showedOrder.currency_code
-                                                            }
-                                                        </b>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    showedOrder.order_number
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.OrderDate",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    showedOrder.date_of_order
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.Time",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    showedOrder.time_of_order
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.Currency",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    showedOrder.currency_code
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.Delivery",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    singleOrder.shippingAddress
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.Status",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {
+                                                                    showedOrder.status
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {t(
+                                                                "OrderHistory.AmountPaid",
+                                                            )}{" "}
+                                                        </td>
+                                                        <td>
+                                                            <b>
+                                                                {Separator(
+                                                                    (+showedOrder.order_total_amount).toFixed(
+                                                                        2,
+                                                                    ),
+                                                                )}{" "}
+                                                                {
+                                                                    showedOrder.currency_code
+                                                                }
+                                                            </b>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
                                             <div className="w-100 text-right">
                                                 {showedOrder.status_number <=

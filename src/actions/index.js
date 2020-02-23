@@ -74,4 +74,6 @@ export {
     changeLanguage,
     clearState,
     setAliasUserId,
+    setDeliveryAddress,
+    setDeliveryAddress2
 } from "./clientData.js";

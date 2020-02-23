@@ -144,3 +144,17 @@ export const setAliasUserId = id => {
         id,
     };
 };
+
+export const setDeliveryAddress = (address) => {
+    return {
+        type: type.SET_DELIVERY_ADDRESS,
+        address
+    }
+}
+
+export const setDeliveryAddress2 = (address) => {
+    return {
+        type: type.SET_SECOND_DELIVERY_ADDRESS,
+        address
+    }
+}

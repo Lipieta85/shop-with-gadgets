@@ -40,14 +40,10 @@ export const addItemToBasket = (
         let basketId = getState().cartReducer.basket;
         Number(basketId);
         let company = getState().clientDataReducer.companyId;
+        let delivery = getState().clientDataReducer.deliveryAddress;
 
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
-
-        let clientData = getState().clientDataReducer.clientData;
-
-        let delivery =
-            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
 
         let existed_item = getState().cartReducer.addedItems.find(
             item => id === item.product.id,
@@ -162,9 +158,9 @@ export const changeBasketQuantity = (
         let basketId = getState().cartReducer.basket;
         let addedItems = getState().cartReducer.addedItems;
         let company = getState().clientDataReducer.companyId;
+        let delivery = getState().clientDataReducer.deliveryAddress;
         let companyId =
             company !== "all" ? company.charAt(0).toUpperCase() : "";
-        let clientData = getState().clientDataReducer.clientData;
         let addedItem = addedItems.find(item => item.product.id === productId);
         let amount = 0;
 
@@ -182,21 +178,6 @@ export const changeBasketQuantity = (
             ? String(amount)
             : String(productAmount[0]);
 
-        // let adressess = [];
-        // let deliveryAddress = [];
-
-        // if (clientData) {
-        //     clientData.map(data =>
-        //         adressess.push(data.getWixClientData.deliveryAddresses[0]),
-        //     );
-        //     mapKeys(adressess[0], function(value, key) {
-        //         return deliveryAddress.push({ key: value });
-        //     });
-        // }
-
-        let delivery =
-            clientData.getWixClientData.deliveryAddresses[0].kli_exid;
-
         changeProduct(
             productId,
             productNumber,
@@ -208,7 +189,6 @@ export const changeBasketQuantity = (
             companyId,
         )
             .then(res => {
-                console.log(res);
                 if (res.data.updateQuantity.error) {
                     dispatch(addProductConfirmationModalState("error"));
                 } else {
