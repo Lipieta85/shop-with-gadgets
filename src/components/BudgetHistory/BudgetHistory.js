@@ -7,10 +7,10 @@ import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import Separator from "../Separator/Separator";
 import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
+import ScreenLock from "../../components/ScreenLock";
+
 const BudgetHistory = () => {
-    const remainingBudget = useSelector(
-        state => state.clientDataReducer.remainingBudget,
-    );
+    const remainingBudget = useSelector(state => state.cartReducer.budget);
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
     );
@@ -19,18 +19,16 @@ const BudgetHistory = () => {
     );
     const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
     const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
-    // function numberWithSpaces(num) {
-    //     var parts = num.toString().split(".");
-    //     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    //     return parts.join(".");
-    // }
-
+    const aliasUserId = useSelector(
+        state => state.clientDataReducer.aliasUserId,
+    );
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
+
     useEffect(() => {
         dispatch(getClientBudgetHistory(token));
-    }, [dispatch, token]);
+    }, [dispatch, token, aliasUserId, remainingBudget]);
 
     let history;
     if (budgetHistory && remainingBudget) {
@@ -60,13 +58,17 @@ const BudgetHistory = () => {
                         </div>
                     </td>
                     <td>
-                        <div className="cell"> {/**DO WYWALENIA ZARAZ */}
-                            {i.operation_description ? (
-                                i.operation_description.includes('Submitting of order')?
-                                    'Złożenie zamówienia przez - '+i.operation_description.substr(34)
-                                :
-                                    i.operation_description
-                            ): ''}
+                        <div className="cell">
+                            {" "}
+                            {/**DO WYWALENIA ZARAZ */}
+                            {i.operation_description
+                                ? i.operation_description.includes(
+                                      "Submitting of order",
+                                  )
+                                    ? "Złożenie zamówienia przez - " +
+                                      i.operation_description.substr(34)
+                                    : i.operation_description
+                                : ""}
                         </div>
                     </td>
                     <td>
@@ -188,6 +190,7 @@ const BudgetHistory = () => {
                     </div>
                 </div>
                 <Spinner />
+                <ScreenLock />
             </div>
         </div>
     );

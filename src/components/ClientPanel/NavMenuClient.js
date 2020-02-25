@@ -10,6 +10,7 @@ import {
     initProducts,
     setPage,
     changeLanguage,
+    paginationType,
 } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
@@ -56,8 +57,10 @@ const NavMenu = () => {
     };
     const tabHandler = e => {
         if (e.target.id === "1") {
+            dispatch(paginationType("back"));
             allProductsHandler(e.target.id);
         } else {
+            dispatch(paginationType("front"));
             oneCategoryHandler(e.target.id);
         }
     };

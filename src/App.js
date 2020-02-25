@@ -38,11 +38,13 @@ import {
     userIdNumber,
     clearState,
     setAliasUserId,
+    setDeliveryAddress,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
 import host2 from "./api/host2";
 import { useTranslation } from "react-i18next";
+import Spinner from "./components/UI/Spinner/Spinner";
 
 function initializeReactGA() {
     ReactGA.initialize(process.env.REACT_APP_TRACKING_ID, {
@@ -62,8 +64,6 @@ export default withRouter(function App({ location }, props) {
     const dispatch = useDispatch();
 
     const { i18n } = useTranslation();
-
-    window.history.pushState(null, null, window.location.pathname);
 
     useEffect(() => {
         const { pathname } = location;
@@ -87,6 +87,7 @@ export default withRouter(function App({ location }, props) {
 
     useEffect(() => {
         if (location.search) {
+            window.history.pushState(null, null, window.location.pathname);
             dispatch(clearState());
             dispatch(companyId(parsed.brand));
             dispatch(setAliasUserId(parsed.aliasUserId));
@@ -97,72 +98,87 @@ export default withRouter(function App({ location }, props) {
                     const userID = JSON.parse(atob(tokenParts[1]));
                     localStorage.setItem("userID", userID.userId);
                     localStorage.setItem("token", res.data.token);
-                    getUserData(res.data.token, parsed.aliasUserId).then(res => {
-                        console.log(res);
-                        if (res.data.getWixClientData.error) {
-                            console.log(res);
-                            return window.location.replace(
-                                `${host2}/ServerError`,
-                            );
-                        } else {
-                            dispatch(getLang(parsed.lang));
-                            dispatch(
-                                setBudget(
-                                    res.data.getWixClientData.budget
-                                        ? res.data.getWixClientData.budget
-                                              .remainingBudget
-                                        : "",
-                                ),
-                            );
-                            dispatch(setToken(token));
-                            dispatch(clientData(res.data));
-                            dispatch(
-                                companyName(
-                                    res.data.getWixClientData.data.name,
-                                ),
-                            );
-                            dispatch(
-                                userIdNumber(
-                                    res.data.getWixClientData.data.exId,
-                                ),
-                            );
-                            dispatch(
-                                userName(res.data.getWixClientData.userLogin),
-                            );
-                            dispatch(isUE(res.data.getWixClientData.data.isUE));
-                            dispatch(isStorePolicyAccepted(token));
-                            dispatch(
-                                setCurrencyCode(
-                                    res.data.getWixClientData.budget
-                                        .currencyCode,
-                                ),
-                            );
-                            dispatch(
-                                getRemainingBudget(
-                                    res.data.getWixClientData.budget
-                                        .remainingBudget,
-                                ),
-                            );
-                            dispatch(
-                                getBaseBudget(
-                                    res.data.getWixClientData.budget.baseBudget,
-                                ),
-                            );
-                            dispatch(
-                                getPeriodFrom(
-                                    res.data.getWixClientData.budget.period
-                                        .from,
-                                ),
-                            );
-                            dispatch(
-                                getMarketingOrderType(
-                                    res.data.getWixClientData.data
-                                        .marketingOrderType,
-                                ),
-                            );
-                            dispatch(signIn({ isAuth: true }));
-                        }
-                    });
+                    getUserData(res.data.token, parsed.aliasUserId).then(
+                        res => {
+                            if (res.data.getWixClientData.error) {
+                                return window.location.replace(
+                                    `${host2}/ServerError`,
+                                );
+                            } else {
+                                dispatch(getLang(parsed.lang));
+                                dispatch(
+                                    setBudget(
+                                        res.data.getWixClientData.budget
+                                            ? res.data.getWixClientData.budget
+                                                  .remainingBudget
+                                            : "",
+                                    ),
+                                );
+                                dispatch(
+                                    setDeliveryAddress(
+                                        res.data.getWixClientData
+                                            .deliveryAddresses[0].kli_exid,
+                                    ),
+                                );
+                                dispatch(setToken(token));
+                                dispatch(clientData(res.data));
+                                dispatch(
+                                    companyName(
+                                        res.data.getWixClientData.data.name,
+                                    ),
+                                );
+                                dispatch(
+                                    userIdNumber(
+                                        res.data.getWixClientData.data.exId,
+                                    ),
+                                );
+                                dispatch(
+                                    userName(
+                                        res.data.getWixClientData.superUserLogin
+                                            ? res.data.getWixClientData
+                                                  .superUserLogin
+                                            : res.data.getWixClientData
+                                                  .userLogin,
+                                    ),
+                                );
+                                dispatch(
+                                    isUE(res.data.getWixClientData.data.isUE),
+                                );
+                                dispatch(isStorePolicyAccepted(token));
+                                dispatch(
+                                    setCurrencyCode(
+                                        res.data.getWixClientData.budget
+                                            .currencyCode,
+                                    ),
+                                );
+                                dispatch(
+                                    getRemainingBudget(
+                                        res.data.getWixClientData.budget
+                                            .remainingBudget,
+                                    ),
+                                );
+                                dispatch(
+                                    getBaseBudget(
+                                        res.data.getWixClientData.budget
+                                            .baseBudget,
+                                    ),
+                                );
+                                dispatch(
+                                    getPeriodFrom(
+                                        res.data.getWixClientData.budget.period
+                                            .from,
+                                    ),
+                                );
+                                dispatch(
+                                    getMarketingOrderType(
+                                        res.data.getWixClientData.data
+                                            .marketingOrderType,
+                                    ),
+                                );
+                                dispatch(signIn({ isAuth: true }));
+                            }
+                        },
+                    );
                 })
                 .catch(err => console.log(err));
         }
@@ -211,6 +227,7 @@ export default withRouter(function App({ location }, props) {
                 <Redirect to="/" />
             </Switch>
             <Footer />
+            <Spinner />
         </>
     );
 });

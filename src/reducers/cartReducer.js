@@ -13,11 +13,14 @@ const initialState = {
     orderSelectInputValue: "",
     error: "",
     pagination: {},
+    paginationType: "back",
     productsToOrder: [],
     productsCategory: "1",
     availableProductsCategory: [],
     addConfirmProductModalState: false,
     deleteAllProductsModalState: false,
+    deliveryAddress: "",
+    deliveryAddress2: "",
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -156,8 +159,14 @@ const cartReducer = (state = initialState, action) => {
                 total: "0.00",
                 basket: null,
                 productsToOrder: [],
+                deliveryAddress2: "",
+                orderSelectInputValue: "",
             };
-
+        case type.SET_PAGINATION_TYPE:
+            return {
+                ...state,
+                paginationType: action.typeVal,
+            };
         case type.ORDER_INPUT_STATE:
             return {
                 ...state,
@@ -309,6 +318,7 @@ const cartReducer = (state = initialState, action) => {
                 productsToOrder: [],
                 productsCategory: "1",
                 addConfirmProductModalState: false,
+                deliveryAddress2: "",
             };
         }
         case type.ADD_PRODUCT_CONFIRMATION_PRODUCT_STATE: {
@@ -323,6 +333,16 @@ const cartReducer = (state = initialState, action) => {
                 deleteAllProductsModalState: action.modalState,
             };
         }
+        case type.SET_DELIVERY_ADDRESS:
+            return {
+                ...state,
+                deliveryAddress: action.address,
+            };
+        case type.SET_SECOND_DELIVERY_ADDRESS:
+            return {
+                ...state,
+                deliveryAddress2: action.address,
+            };
         default:
             return state;
     }

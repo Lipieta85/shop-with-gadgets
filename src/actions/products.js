@@ -30,17 +30,14 @@ export const initProducts = (token, currentPage) => {
 
         getAllProducts(token, currentPage, company, lang, aliasUserId)
             .then(res => {
-                console.log(res);
                 if (company === "filtron") {
                     if (res.data.filtron.error) {
-                        console.log(res);
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data));
                     }
                 } else if (company === "wix") {
                     if (res.data.wix.error) {
-                        console.log(res);
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data));
@@ -116,7 +113,7 @@ export const searchProductPanel = (token, currentPage, lang, name) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
         const aliasUserId = getState().clientDataReducer.aliasUserId;
-
+        
         searchProduct(token, currentPage, lang, name, company, aliasUserId)
             .then(res => {
                 dispatch(setTypedProducts(res.data));
@@ -142,5 +139,12 @@ export const sendNotification = (token, id, email, language) => {
             .catch(error => {
                 console.log(error);
             });
+    };
+};
+
+export const paginationType = typeVal => {
+    return {
+        type: type.SET_PAGINATION_TYPE,
+        typeVal,
     };
 };

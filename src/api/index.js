@@ -18,29 +18,33 @@ export const getToken = async userData => {
 
 export const getUserData = async (token, aliasUserId) => {
     let url = `${host}/restApi/user/method/getWixClientData`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/user/method/getWixClientData/parameters/{"aliasUserId":"${aliasUserId}"}`;
-    return await axios({
-        method: "get",
-        url: url,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-        },
-    });
+    return await trackPromise(
+        axios({
+            method: "get",
+            url: url,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+        }),
+    );
 };
 
 export const getLinkToken = async token => {
-    return await axios({
-        method: "post",
-        url: `${host}/restApi/generateJWT/useDisposableToken/1`,
-        headers: {
-            "Content-Type": "application/json",
-        },
-        data: {
-            dToken: token,
-        },
-    });
+    return await trackPromise(
+        axios({
+            method: "post",
+            url: `${host}/restApi/generateJWT/useDisposableToken/1`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                dToken: token,
+            },
+        }),
+    );
 };
 
 export const getStorePolicy = async (token, lang) => {
@@ -77,7 +81,7 @@ export const getAllProducts = async (
     aliasUserId,
 ) => {
     let url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "aliasUserId":"${aliasUserId}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
     return await trackPromise(
         axios({
@@ -91,11 +95,7 @@ export const getAllProducts = async (
     );
 };
 
-export const getProductsCategories = async (
-    token,
-    companyId,
-    lang,
-) => {
+export const getProductsCategories = async (token, companyId, lang) => {
     let url = `${host}/restApi/products/method/categories/parameters/{"lang":"${lang}", "bId":"${companyId}"}`;
     return await trackPromise(
         axios({
@@ -119,11 +119,11 @@ export const changeProductsCategory = async (
 ) => {
     let url = `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
         number,
-    )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`
-    if(aliasUserId)
+    )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+    if (aliasUserId)
         url = `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUserId}", "category": ${Number(
             number,
-        )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`
+        )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
     return await trackPromise(
         axios({
             method: "get",
@@ -254,8 +254,8 @@ export const searchProduct = async (
     aliasUserId,
 ) => {
     let url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`;
-    if(aliasUserId)
-       url = `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUserId}", "lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}` 
+    if (aliasUserId)
+        url = `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUserId}", "lang":"${lang}", "search":{"name":"${name}"}, "pagination":{"page":${currentPage}, "itemsPerPage":8}}`;
     return await trackPromise(
         axios({
             method: "get",
@@ -284,8 +284,13 @@ export const postOrder = async (
     basketId,
     companyId,
     delivery,
+    delivery2,
 ) => {
     let url = `${host}/restApi/order/method/create/parameters/{"orderId": ${basketId}, "bId":"${companyId}"}`;
+    let deliveryNumber = delivery;
+    if (delivery2) {
+        deliveryNumber = delivery2;
+    }
     return await trackPromise(
         axios({
             method: "post",
@@ -294,17 +299,15 @@ export const postOrder = async (
                 "Content-Type": "application/json",
                 Authorization: token,
             },
-            // data: {
-            //     timeZone: moment.tz.guess(),
-            //     shipToNumber: delivery,
-            //     items,
-            // },
+            data: {
+                shipToNumber: deliveryNumber,
+            },
         }),
     );
 };
 export const getUserOrders = async (token, aliasUserId) => {
     let url = `${host}/restApi/order/method/getAll`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/order/method/getAll/parameters/{"aliasUserId":"${aliasUserId}"}`;
     return await trackPromise(
         axios({
@@ -319,7 +322,7 @@ export const getUserOrders = async (token, aliasUserId) => {
 
 export const getUserBudgetHistory = async (token, aliasUserId) => {
     let url = `${host}/restApi/user/method/wixBudgetHistory`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"aliasUserId":${aliasUserId}}`;
     return await trackPromise(
         axios({
@@ -335,7 +338,7 @@ export const getUserBudgetHistory = async (token, aliasUserId) => {
 
 export const getSingleUserOrder = async (token, orderId, lang, aliasUserId) => {
     let url = `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}"}`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/order/method/get/parameters/{"orderId":${orderId},"lang":"${lang}","aliasUserId":"${aliasUserId}"}`;
     return await trackPromise(
         axios({
@@ -348,12 +351,7 @@ export const getSingleUserOrder = async (token, orderId, lang, aliasUserId) => {
     );
 };
 
-export const postSubscribe = (
-    token,
-    productId,
-    clientEmail,
-    lang,
-) => {
+export const postSubscribe = (token, productId, clientEmail, lang) => {
     let url = `${host}/restApi/products/method/subscribe`;
     return trackPromise(
         axios({
@@ -372,7 +370,7 @@ export const postSubscribe = (
 };
 
 export const singleOrderCancel = async (token, orderId) => {
-    let url = `${host}/restApi/order/method/cancel/parameters/{"orderId":${orderId}}`
+    let url = `${host}/restApi/order/method/cancel/parameters/{"orderId":${orderId}}`;
     return await trackPromise(
         axios({
             method: "post",
@@ -386,8 +384,8 @@ export const singleOrderCancel = async (token, orderId) => {
 
 export const getStorePolicyAccepted = async (token, aliasUserId) => {
     let url = `${host}/restApi/user/method/wixIsStorePolicyAccepted`;
-    if(aliasUserId)
-        url = `${host}/restApi/user/method/wixIsStorePolicyAccepted/parameters/{"aliasUserId":"${aliasUserId}"}`
+    if (aliasUserId)
+        url = `${host}/restApi/user/method/wixIsStorePolicyAccepted/parameters/{"aliasUserId":"${aliasUserId}"}`;
     return await trackPromise(
         axios({
             method: "get",
@@ -401,7 +399,7 @@ export const getStorePolicyAccepted = async (token, aliasUserId) => {
 
 export const setAcceptPolicy = async (token, aliasUserId) => {
     let url = `${host}/restApi/user/method/wixAcceptStorePolicy`;
-    if(aliasUserId)
+    if (aliasUserId)
         url = `${host}/restApi/user/method/wixAcceptStorePolicy/parameters/{"aliasUserId":"${aliasUserId}"}`;
     return await trackPromise(
         axios({
