@@ -8,12 +8,9 @@ import { useTranslation } from "react-i18next";
 import Separator from "../Separator/Separator";
 import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 import ScreenLock from "../../components/ScreenLock";
-import { getUserData } from "../../api/index";
-import {setBudget} from "../../actions/index";
+
 const BudgetHistory = () => {
-    const remainingBudget = useSelector(
-        state => state.cartReducer.budget,
-    );
+    const remainingBudget = useSelector(state => state.cartReducer.budget);
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
     );
@@ -22,22 +19,14 @@ const BudgetHistory = () => {
     );
     const baseBudget = useSelector(state => state.clientDataReducer.baseBudget);
     const periodFrom = useSelector(state => state.clientDataReducer.periodFrom);
-    const aliasUserId = useSelector(state => state.clientDataReducer.aliasUserId);
+    const aliasUserId = useSelector(
+        state => state.clientDataReducer.aliasUserId,
+    );
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
-    
+
     useEffect(() => {
-        getUserData(token, aliasUserId).then(res => {
-            dispatch(
-                setBudget(
-                    res.data.getWixClientData.budget
-                        ? res.data.getWixClientData.budget
-                              .remainingBudget
-                        : "",
-                ),
-            );
-        })
         dispatch(getClientBudgetHistory(token));
     }, [dispatch, token, aliasUserId, remainingBudget]);
 
@@ -69,13 +58,17 @@ const BudgetHistory = () => {
                         </div>
                     </td>
                     <td>
-                        <div className="cell"> {/**DO WYWALENIA ZARAZ */}
-                            {i.operation_description ? (
-                                i.operation_description.includes('Submitting of order')?
-                                    'Złożenie zamówienia przez - '+i.operation_description.substr(34)
-                                :
-                                    i.operation_description
-                            ): ''}
+                        <div className="cell">
+                            {" "}
+                            {/**DO WYWALENIA ZARAZ */}
+                            {i.operation_description
+                                ? i.operation_description.includes(
+                                      "Submitting of order",
+                                  )
+                                    ? "Złożenie zamówienia przez - " +
+                                      i.operation_description.substr(34)
+                                    : i.operation_description
+                                : ""}
                         </div>
                     </td>
                     <td>
