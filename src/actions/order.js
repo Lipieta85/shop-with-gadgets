@@ -41,7 +41,6 @@ export const createOrder = (token, items) => {
 
         postOrder(token, items, basketId, companyId, delivery, delivery2)
             .then(res => {
-                console.log(res);
                 if (res.data.create.fault === false) {
                     dispatch(setOrderErrorFalse());
                     dispatch(setOrderNumber(res.data.create.orderNumber));

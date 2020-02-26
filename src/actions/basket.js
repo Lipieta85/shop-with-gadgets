@@ -1,5 +1,4 @@
 import * as type from "../actions/types";
-import host2 from "../api/host2";
 
 import {
     postProduct,
@@ -89,7 +88,6 @@ export const addItemToBasket = (
         if (!basketId && !existed_item) {
             postProduct(id, unit, token, delivery, productNumber, companyId)
                 .then(res => {
-                    console.log(res);
                     if (!res.data.create.order) {
                         dispatch(addProductConfirmationModalState("error"));
                     } else {
@@ -202,7 +200,7 @@ export const changeBasketQuantity = (
                 }
             })
             .catch(error => {
-                window.location.replace(`${host2}/404`);
+                dispatch(addProductConfirmationModalState("error"));
             });
     };
 };

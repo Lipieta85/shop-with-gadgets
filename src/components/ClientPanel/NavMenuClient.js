@@ -33,7 +33,7 @@ const NavMenu = () => {
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     useEffect(() => {
-        const active = document.querySelector(".nav-menu .active");
+        const active = document.querySelector(".navbar .active");
         if (active && category) {
             active.classList.remove("active");
             document.getElementById(`${category}`).classList.add("active");
@@ -56,9 +56,9 @@ const NavMenu = () => {
         setModalShowPaidOrders(true);
     };
     const tabHandler = e => {
-        if (e.target.id === "1") {
+        if (e.target.id === "1" || e.target.id === "2") {
             dispatch(paginationType("back"));
-            allProductsHandler(e.target.id);
+            allProductsHandler("1");
         } else {
             dispatch(paginationType("front"));
             oneCategoryHandler(e.target.id);
@@ -88,6 +88,9 @@ const NavMenu = () => {
                                     : logo2
                             }
                             alt="company-logo"
+                            onClick={tabHandler}
+                            id="2"
+                            className=""
                         />
                     </Link>
                     <button
@@ -243,7 +246,7 @@ const NavMenu = () => {
                                     <option value="ru">RU</option>
                                     <option value="it">IT</option>
                                 </select>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </nav>

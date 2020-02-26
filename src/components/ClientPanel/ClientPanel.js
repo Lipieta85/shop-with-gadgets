@@ -13,6 +13,7 @@ import {
     initProductsCategories,
     paginationType,
     setPage,
+    setProductCategories,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -39,7 +40,7 @@ const ClientPanel = props => {
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
     const [name, setName] = useState("");
-    
+
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
             setName("");
@@ -123,6 +124,7 @@ const ClientPanel = props => {
     };
     const handleSearchBtn = e => {
         if (e.key === undefined || e.key === "Enter") {
+            dispatch(setProductCategories("1"));
             if (name === "") {
                 dispatch(initProducts(token, currentPage));
             } else {
