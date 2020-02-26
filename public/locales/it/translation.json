@@ -124,7 +124,8 @@
     "Sum": "Totale:",
     "Date": "Data",
     "NetAmount": "Kwota netto",
-    "Ordered-delivered": "Zamówionych / dostarczonych"
+    "Ordered-delivered": "Zamówionych / dostarczonych",
+    "OrderPerson": "Ordine effettuato da"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",

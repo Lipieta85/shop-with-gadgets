@@ -124,7 +124,8 @@
     "Sum": "Sum:",
     "Date": "Date",
     "NetAmount": "Net amount",
-    "Ordered-delivered": "Ordered / delivered"
+    "Ordered-delivered": "Ordered / delivered",
+    "OrderPerson": "Order placed by"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "The budget history is empty",

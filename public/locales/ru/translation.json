@@ -124,7 +124,8 @@
     "Sum": "Итого:",
     "Date": "Data",
     "NetAmount": "Kwota netto",
-    "Ordered-delivered": "Zamówionych / dostarczonych"
+    "Ordered-delivered": "Zamówionych / dostarczonych",
+    "OrderPerson": "Comanda plasată de"
   },
   "BudgetHistory": {
     "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",

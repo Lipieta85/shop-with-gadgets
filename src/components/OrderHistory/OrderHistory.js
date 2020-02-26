@@ -14,6 +14,7 @@ import ScreenLock from "../ScreenLock";
 import "../../assets/styles/order-history.scss";
 import "../../assets/styles/order-end.scss";
 import Separator from "../Separator/Separator";
+import { getUserData } from "../../api";
 const OrderHistory = () => {
     let orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const cancelOrderStatus = useSelector(
@@ -37,6 +38,7 @@ const OrderHistory = () => {
     const modal = document.querySelector(".order-confirm-modal");
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
+        getUserData(token).then(res => console.log(res));
     }, [dispatch, token]);
 
     useEffect(() => {
@@ -119,7 +121,7 @@ const OrderHistory = () => {
             if (i === selectedOrder) {
                 selectOrder(order);
                 setShowedOrder(order);
-                
+
                 dispatch(
                     getClientSingleOrdersHistory(token, order.order_id, lang),
                 );
@@ -292,9 +294,38 @@ const OrderHistory = () => {
                                                             </b>
                                                         </td>
                                                     </tr>
+                                                    {showedOrder.placing_order_person_login ? (
+                                                        <tr>
+                                                            <td>
+                                                                {t(
+                                                                    "OrderHistory.OrderPerson",
+                                                                )}
+                                                                :{" "}
+                                                            </td>
+                                                            <td>
+                                                                <b>
+                                                                    {
+                                                                        showedOrder.placing_order_person_login
+                                                                    }
+                                                                </b>{" "}
+                                                                <b>
+                                                                    {showedOrder.placing_order_person_name
+                                                                        ? showedOrder.placing_order_person_name
+                                                                        : null}
+                                                                </b>
+                                                            </td>
+                                                        </tr>
+                                                    ) : null}
                                                 </tbody>
                                             </table>
-                                            <div className="w-100 text-right">
+                                            <div
+                                                className="w-100 text-right"
+                                                style={
+                                                    showedOrder.placing_order_person_login
+                                                        ? { marginTop: "15px" }
+                                                        : null
+                                                }
+                                            >
                                                 {showedOrder.status_number <=
                                                 530 ? (
                                                     <div className="mr-1 mb-1">
