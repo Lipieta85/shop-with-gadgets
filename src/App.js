@@ -96,6 +96,7 @@ export default withRouter(function App({ location }, props) {
                     const token = res.data.token;
                     const tokenParts = res.data.token.split(".");
                     const userID = JSON.parse(atob(tokenParts[1]));
+                    console.log(userID);
                     localStorage.setItem("userID", userID.userId);
                     localStorage.setItem("token", res.data.token);
                     getUserData(res.data.token, parsed.aliasUserId).then(
