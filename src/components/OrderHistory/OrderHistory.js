@@ -309,9 +309,9 @@ const OrderHistory = () => {
                                                                     }
                                                                 </b>{" "}
                                                                 <b>
-                                                                    {
-                                                                        showedOrder.placing_order_person_name
-                                                                    }
+                                                                    {showedOrder.placing_order_person_name
+                                                                        ? showedOrder.placing_order_person_name
+                                                                        : null}
                                                                 </b>
                                                             </td>
                                                         </tr>
