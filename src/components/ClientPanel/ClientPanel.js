@@ -43,7 +43,6 @@ const ClientPanel = props => {
 
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
-            setName("");
             dispatch(initProducts(token, currentPage));
             dispatch(initProductsCategories(token));
             if (currentPage < 3) {
@@ -67,7 +66,6 @@ const ClientPanel = props => {
 
     useEffect(() => {
         if (token && paginationTyp === "front") {
-            setName("");
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -87,12 +85,15 @@ const ClientPanel = props => {
         if (currentPage > pagination.totalPages) {
             dispatch(setPage(1));
         }
+        if(localStorage.getItem("clearSearch") === "true"){
+            localStorage.setItem("clearSearch", "false");
+            setName(""); 
+        }
         //eslint-disable-next-line
     }, [currentPage, pagination]);
 
     useEffect(() => {
         if (category !== "1") {
-            setName("");
             dispatch(changeProductCategory(token, category, currentPage));
         }
         //eslint-disable-next-line
