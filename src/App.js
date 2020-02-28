@@ -56,7 +56,7 @@ function initializeReactGA() {
 }
 
 export default withRouter(function App({ location }, props) {
-    const company = useSelector(state => state.clientDataReducer.companyId);
+    //const company = useSelector(state => state.clientDataReducer.companyId);
     const lang = useSelector(state => state.clientDataReducer.language);
     const parsed = queryString.parse(location.search);
 
@@ -74,12 +74,12 @@ export default withRouter(function App({ location }, props) {
 
     useEffect(() => {
         document.body.classList.remove("theme-dark", "theme-light");
-        if (company === "wix") {
+        if (parsed.brand === "wix") {
             document.body.classList.add("theme-dark");
         } else {
             document.body.classList.add("theme-light");
         }
-    }, [company]);
+    }, [parsed.brand]);
 
     useEffect(() => {
         i18n.changeLanguage(lang);
