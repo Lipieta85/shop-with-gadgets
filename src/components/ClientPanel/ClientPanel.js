@@ -14,6 +14,7 @@ import {
     paginationType,
     setPage,
     setProductCategories,
+    setSearchText,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -39,7 +40,7 @@ const ClientPanel = props => {
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
-    const [name, setName] = useState("");
+    const searchText = useSelector(state => state.searchPanelReducer.searchText);
 
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
@@ -85,10 +86,6 @@ const ClientPanel = props => {
         if (currentPage > pagination.totalPages) {
             dispatch(setPage(1));
         }
-        if(localStorage.getItem("clearSearch") === "true"){
-            localStorage.setItem("clearSearch", "false");
-            setName(""); 
-        }
         //eslint-disable-next-line
     }, [currentPage, pagination]);
 
@@ -121,16 +118,16 @@ const ClientPanel = props => {
         event.target.parentNode.classList.add("active");
     };
     const handleChange = e => {
-        setName(e.target.value);
+        dispatch(setSearchText(e.target.value));
     };
     const handleSearchBtn = e => {
         if (e.key === undefined || e.key === "Enter") {
             dispatch(setProductCategories("1"));
-            if (name === "") {
+            if (searchText === "") {
                 dispatch(initProducts(token, currentPage));
             } else {
                 dispatch(paginationType("front"));
-                dispatch(searchProductPanel(token, 1, lang, name));
+                dispatch(searchProductPanel(token, 1, lang, searchText));
             }
         }
     };
@@ -152,7 +149,7 @@ const ClientPanel = props => {
                                         className="search-input"
                                         onChange={handleChange}
                                         onKeyDown={handleSearchBtn}
-                                        value={name}
+                                        value={searchText}
                                         placeholder={t(
                                             `CPanelMenu.ProductName`,
                                         )}

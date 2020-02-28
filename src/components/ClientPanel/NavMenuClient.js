@@ -11,6 +11,7 @@ import {
     setPage,
     changeLanguage,
     paginationType,
+    setSearchText
 } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
@@ -56,7 +57,7 @@ const NavMenu = () => {
         setModalShowPaidOrders(true);
     };
     const tabHandler = e => {
-        localStorage.setItem("clearSearch", "true")
+        dispatch(setSearchText(""))
         if (e.target.id === "1" || e.target.id === "2") {
             dispatch(paginationType("back"));
             allProductsHandler("1");

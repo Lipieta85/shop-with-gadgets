@@ -20,6 +20,7 @@ export const ADD_CLIENT_DATA = "ADD_CLIENT_DATA";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const COMPANY_ID = "COMPANY_ID";
 export const IS_UE = "IS_UE";
+export const SET_SEARCH_FIELD = "SET_SEARCH_FIELD";
 export const TOKEN = "TOKEN";
 export const SET_CLIENT_ORDER_HISTORY = "SET_CLIENT_ORDER_HISTORY";
 export const SET_CLIENT_BUDGET_HISTORY = "SET_CLIENT_BUDGET_HISTORY";
