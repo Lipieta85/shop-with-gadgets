@@ -14,6 +14,7 @@ import {
     paginationType,
     setPage,
     setProductCategories,
+    setSearchText,
 } from "../../actions/index";
 import "../../assets/styles/products.scss";
 import "../../assets/styles/client-panel.scss";
@@ -39,11 +40,10 @@ const ClientPanel = props => {
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
-    const [name, setName] = useState("");
+    const searchText = useSelector(state => state.searchPanelReducer.searchText);
 
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
-            setName("");
             dispatch(initProducts(token, currentPage));
             dispatch(initProductsCategories(token));
             if (currentPage < 3) {
@@ -67,7 +67,6 @@ const ClientPanel = props => {
 
     useEffect(() => {
         if (token && paginationTyp === "front") {
-            setName("");
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -92,7 +91,6 @@ const ClientPanel = props => {
 
     useEffect(() => {
         if (category !== "1") {
-            setName("");
             dispatch(changeProductCategory(token, category, currentPage));
         }
         //eslint-disable-next-line
@@ -120,16 +118,16 @@ const ClientPanel = props => {
         event.target.parentNode.classList.add("active");
     };
     const handleChange = e => {
-        setName(e.target.value);
+        dispatch(setSearchText(e.target.value));
     };
     const handleSearchBtn = e => {
         if (e.key === undefined || e.key === "Enter") {
             dispatch(setProductCategories("1"));
-            if (name === "") {
+            if (searchText === "") {
                 dispatch(initProducts(token, currentPage));
             } else {
                 dispatch(paginationType("front"));
-                dispatch(searchProductPanel(token, 1, lang, name));
+                dispatch(searchProductPanel(token, 1, lang, searchText));
             }
         }
     };
@@ -151,7 +149,7 @@ const ClientPanel = props => {
                                         className="search-input"
                                         onChange={handleChange}
                                         onKeyDown={handleSearchBtn}
-                                        value={name}
+                                        value={searchText}
                                         placeholder={t(
                                             `CPanelMenu.ProductName`,
                                         )}

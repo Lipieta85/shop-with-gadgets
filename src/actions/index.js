@@ -77,3 +77,5 @@ export {
     setDeliveryAddress,
     setDeliveryAddress2
 } from "./clientData.js";
+
+export { setSearchText } from "./searchPanel.js";
