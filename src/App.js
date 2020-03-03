@@ -202,7 +202,6 @@ export default withRouter(function App({ location }, props) {
                 window.location.replace(`${host}/site/desktop`);
             }
         }
-        console.log("App.js2")
     }, [location.search]);
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientBudgetHistory } from "../../actions/index";
-import { getUserData } from "../../api/index";
 import { Link } from "react-router-dom";
 import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
