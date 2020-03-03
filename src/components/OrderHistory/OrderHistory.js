@@ -68,7 +68,7 @@ const OrderHistory = () => {
             selectOrder(orders[orders.length - 1]);
         }
         //eslint-disable-next-line
-    }, [orders, dispatch, token]);
+    }, [orders]);
 
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
@@ -117,7 +117,7 @@ const OrderHistory = () => {
         }
     };
 
-    const orderDetailHandler = selectedOrder => {
+    const orderDetailHandler = (selectedOrder, e) => {
         deselectAll();
         orders.map((order, i) => {
             if (i === selectedOrder) {

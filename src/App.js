@@ -23,7 +23,7 @@ import { signIn } from "./actions/authorization";
 import {
     clientData,
     companyId,
-    setToken,
+    //setToken,
     setBudget,
     getLang,
     userName,
@@ -124,7 +124,6 @@ export default withRouter(function App({ location }, props) {
                                             .deliveryAddresses[0].kli_exid,
                                     ),
                                 );
-                                dispatch(setToken(token));
                                 dispatch(clientData(res.data));
                                 dispatch(
                                     companyName(
