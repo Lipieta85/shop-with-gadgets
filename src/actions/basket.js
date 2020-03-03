@@ -59,7 +59,6 @@ export const addItemToBasket = (
                 basketId,
             )
                 .then(res => {
-                    console.log(res);
                     if (res.data.addProduct.error) {
                         dispatch(addProductConfirmationModalState("error"));
                     } else {

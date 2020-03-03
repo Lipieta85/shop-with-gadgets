@@ -11,6 +11,9 @@ import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 import ScreenLock from "../../components/ScreenLock";
 
 const BudgetHistory = () => {
+    const remainingBudget = useSelector(
+        state => state.orderReducer.wixBudgetHistory.budget.remainingBudget,
+    );
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
     );
@@ -22,17 +25,12 @@ const BudgetHistory = () => {
     const aliasUserId = useSelector(
         state => state.clientDataReducer.aliasUserId,
     );
-    const [remainingBudget, setRemainingBudget] = useState(null);
+    
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        getUserData(token, aliasUserId).then(res => {
-            setRemainingBudget(
-                res.data.getWixClientData.budget.remainingBudget,
-            );
-        });
         dispatch(getClientBudgetHistory(token));
     }, [dispatch, token, aliasUserId, remainingBudget]);
 

@@ -16,7 +16,6 @@ const initialState = {
     storePolicyStatus: 0,
     userIdNumber: 0,
     aliasUserId: 0,
-    
 };
 
 const clientDataReducer = (state = initialState, action) => {
@@ -100,6 +99,11 @@ const clientDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 aliasUserId: action.id,
+            };
+        case type.CLEAR_STATE:
+            return {
+                ...state,
+                token: ""
             };
         default:
             return state;

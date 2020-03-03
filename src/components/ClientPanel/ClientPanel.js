@@ -10,7 +10,6 @@ import {
     prevPage,
     changeProductCategory,
     searchProductPanel,
-    initProductsCategories,
     paginationType,
     setPage,
     setProductCategories,
@@ -45,7 +44,6 @@ const ClientPanel = props => {
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
             dispatch(initProducts(token, currentPage));
-            dispatch(initProductsCategories(token));
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {

@@ -39,6 +39,8 @@ import {
     clearState,
     setAliasUserId,
     setDeliveryAddress,
+    initProducts,
+    initProductsCategories
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -58,13 +60,14 @@ function initializeReactGA() {
 export default withRouter(function App({ location }, props) {
     const company = useSelector(state => state.clientDataReducer.companyId);
     const lang = useSelector(state => state.clientDataReducer.language);
+    const currentPage = useSelector(state => state.pageReducer.currentPage);
+    const items = useSelector(state => state.cartReducer.items);
     const parsed = queryString.parse(location.search);
-
+    
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
-
     const { i18n } = useTranslation();
-
+    
     useEffect(() => {
         const { pathname } = location;
         setCurrentPath(pathname);
@@ -80,15 +83,15 @@ export default withRouter(function App({ location }, props) {
             document.body.classList.add("theme-light");
         }
     }, [company]);
-
+    
     useEffect(() => {
         i18n.changeLanguage(lang);
     }, [i18n, location.search, lang]);
-
+    
     useEffect(() => {
-        if (location.search) {
-            window.history.pushState(null, null, window.location.pathname);
-            dispatch(clearState());
+        if (location.search) {       
+            window.history.pushState(null, null, window.location.pathname); 
+            dispatch(clearState()); 
             dispatch(companyId(parsed.brand));
             dispatch(setAliasUserId(parsed.aliasUserId));
             getLinkToken(parsed.dt)
@@ -96,7 +99,6 @@ export default withRouter(function App({ location }, props) {
                     const token = res.data.token;
                     const tokenParts = res.data.token.split(".");
                     const userID = JSON.parse(atob(tokenParts[1]));
-                    console.log(userID);
                     localStorage.setItem("userID", userID.userId);
                     localStorage.setItem("token", res.data.token);
                     getUserData(res.data.token, parsed.aliasUserId).then(
@@ -106,6 +108,7 @@ export default withRouter(function App({ location }, props) {
                                     `${host2}/ServerError`,
                                 );
                             } else {
+                                dispatch(signIn({ isAuth: true }));
                                 dispatch(getLang(parsed.lang));
                                 dispatch(
                                     setBudget(
@@ -176,7 +179,10 @@ export default withRouter(function App({ location }, props) {
                                             .marketingOrderType,
                                     ),
                                 );
-                                dispatch(signIn({ isAuth: true }));
+                                if (items.length) {
+                                    dispatch(initProducts(token, currentPage))
+                                }
+                                dispatch(initProductsCategories(token));
                             }
                         },
                     );
@@ -184,7 +190,7 @@ export default withRouter(function App({ location }, props) {
                 .catch(err => console.log(err));
         }
         //eslint-disable-next-line
-    }, []);
+    }, [location.search])
 
     useEffect(() => {
         if (
@@ -196,10 +202,11 @@ export default withRouter(function App({ location }, props) {
                 window.location.replace(`${host}/site/desktop`);
             }
         }
+        console.log("App.js2")
     }, [location.search]);
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
-
+    
     return (
         <>
             <Switch>
