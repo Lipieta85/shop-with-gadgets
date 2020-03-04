@@ -21,18 +21,21 @@ const Contact = () => {
 
     return (
         <div className="contact-details">
-            <NavMenu /> <h2>{t(`Footer.ContactDetails`)}</h2>
+            <NavMenu />
             {contact ? (
                 contact.map((e, key) => (
-                    <div key={key}>
-                        {
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: e.content,
-                                }}
-                            />
-                        }
-                    </div>
+                    <>
+                        <h2>{e.title}</h2>
+                        <div key={key}>
+                            {
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: e.content,
+                                    }}
+                                />
+                            }
+                        </div>
+                    </>
                 ))
             ) : (
                 <Spinner />
