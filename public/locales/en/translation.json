@@ -128,45 +128,45 @@
     "OrderPerson": "Order placed by"
   },
   "BudgetHistory": {
-    "HistoriaBudżetuJestPusta": "The budget history is empty",
-    "HistoriaBudżetu": "Budget History",
-    "Data": "Date",
-    "WykorzystanyBudżet": "Used budget",
-    "BudżetUżytkownikaNaPoczątku": "User budget at the beggining",
-    "RodzajOperacji": "Operation type",
-    "OpisOperacji": "Operation description",
-    "NumerZamówienia": "Order number",
-    "CzasZdarzenia": "Time",
-    "PrzyznanyBudżet": "Marketing budget allocated for the year",
-    "PozostałyBudżet": "Marketing budget remaining for the year"
+    "TheBudgetHistoryIsEmpty": "The budget history is empty",
+    "BudgetHistory": "Budget History",
+    "Date": "Date",
+    "UsedBudget": "Used budget",
+    "UserBudgetAtTheBeggining": "User budget at the beggining",
+    "OperationType": "Operation type",
+    "OperationDescription": "Operation description",
+    "OrderNumber": "Order number",
+    "Time": "Time",
+    "MarketingBudgetAllocatedForTheYear": "Marketing budget allocated for the year",
+    "MarketingBudgetRemainingForTheYear": "Marketing budget remaining for the year"
   },
   "ProductDetails": {
-    "KodProduktu": "Product code",
-    "JednostkaMiary": "Product unit",
-    "CenaJednostkowa": "Product price",
-    "StanMagazynowy": "Product availability",
-    "Powrót": "Back",
-    "Poprzedni": "Previous",
-    "Następny": "Next",
-    "OpisProduktu": "Product description"
+    "ProductCode": "Product code",
+    "ProductUnit": "Product unit",
+    "ProductPrice": "Product price",
+    "ProductAvailability": "Product availability",
+    "Back": "Back",
+    "Previous": "Previous",
+    "Next": "Next",
+    "ProductDescription": "Product description"
   },
   "Button": {
-    "WniosekZamówieniePłatne": "Paid order application",
-    "Anuluj": "Cancel",
-    "ZłóżWniosek": "Order application",
-    "PowiadomODostępności": "Notify when available",
-    "WartośćAlertHeader": "Invalid value",
-    "WartośćAlertText": "The value entered is invalid or exceeds the available quantity in the warehouse."
+    "PaidOrderApplication": "Paid order application",
+    "Cancel": "Cancel",
+    "OrderApplication": "Order application",
+    "NotifyWhenAvailable": "Notify when available",
+    "InvalidValue": "Invalid value",
+    "TheValueEntered": "The value entered is invalid or exceeds the available quantity in the warehouse."
   },
   "ClientModal": {
-    "PowiadomMnie": "Notify me",
-    "PowiadomODostępnościProduktu": "Notify when product available",
-    "Subskrybuj": "Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again",
-    "Zamknij": "Close"
+    "NotifyMe": "Notify me",
+    "NotifyWhenProductAvailable": "Notify when product available",
+    "Subscribe": "Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again",
+    "Close": "Close"
   },
   "ClientResponseModal": {
-    "UdanaSubskrypcja ": "Successfully subscribed: ",
-    "NieudanaSubskrypcja ": "Already subscribed item: ",
-    "LubWystąpiłBłąd": "or an error occurred"
+    "SuccessfullySubscribed": "Successfully subscribed: ",
+    "AlreadySubscribedItem": "Already subscribed item: ",
+    "OrAnErrorOccurred": "or an error occurred"
   }
 }

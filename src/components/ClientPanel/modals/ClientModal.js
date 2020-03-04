@@ -37,13 +37,13 @@ const ClientModal = props => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {t("ClientModal.PowiadomODostępnościProduktu")}:{" "}
+                    {t("ClientModal.NotifyWhenProductAvailable")}:{" "}
                     {props.name}
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <p>{t("ClientModal.Subskrybuj")}</p>
+                <p>{t("ClientModal.Subscribe")}</p>
                 <input
                     onChange={event => setEmail(event.target.value)}
                     defaultValue={clientEmail}
@@ -57,7 +57,7 @@ const ClientModal = props => {
                     variant="conf-button"
                     onClick={sendNotification}
                 >
-                    {t("ClientModal.PowiadomMnie")}
+                    {t("ClientModal.NotifyMe")}
                 </Button>
             </Modal.Footer>
         </Modal>
