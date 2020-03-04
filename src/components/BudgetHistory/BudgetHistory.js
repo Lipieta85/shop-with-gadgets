@@ -41,6 +41,7 @@ const BudgetHistory = () => {
     if (budgetHistory && remainingBudget) {
         history = budgetHistory
             .map((i, key) => (
+                i.reference_type==="ADMIN_CHANGE"&&i.operation_amount==="0.0000"?null: // only for WIX/Filtron
                 <tr key={key}>
                     <td>
                         <div className="cell">
