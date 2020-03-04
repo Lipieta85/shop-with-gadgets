@@ -19,18 +19,21 @@ const Regulations = props => {
 
     return (
         <div className="regulations">
-            <NavMenu /> <h2>{t(`Footer.ShopRules`)}</h2>
+            <NavMenu />
             {policy ? (
                 (window.onload = policy.map((e, key) => (
-                    <div id="regPart" key={key}>
-                        {
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: e.content,
-                                }}
-                            />
-                        }
-                    </div>
+                    <>
+                        <h2>{e.title}</h2>
+                        <div id="regPart" key={key}>
+                            {
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: e.content,
+                                    }}
+                                />
+                            }
+                        </div>
+                    </>
                 )))
             ) : (
                 <div>
