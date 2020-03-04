@@ -15,13 +15,11 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import "./i18next";
-// import { unregister } from "./registerServiceWorker";
-// unregister();
 
 const history = createBrowserHistory();
 const persistConfig = {
     key: "root",
-    storage: storage,
+    storage: storage
 };
 let middleware = [];
 if (window.location.hostname === "localhost") {

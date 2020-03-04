@@ -14,7 +14,7 @@ import ScreenLock from "../ScreenLock";
 import "../../assets/styles/order-history.scss";
 import "../../assets/styles/order-end.scss";
 import Separator from "../Separator/Separator";
-import { getUserData } from "../../api";
+
 const OrderHistory = () => {
     let orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const cancelOrderStatus = useSelector(
@@ -36,10 +36,11 @@ const OrderHistory = () => {
     const token = localStorage.getItem("token");
 
     const modal = document.querySelector(".order-confirm-modal");
+
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
-        getUserData(token).then(res => console.log(res));
-    }, [dispatch, token]);
+        //eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         if (cancelOrderStatus === true) {
@@ -61,12 +62,13 @@ const OrderHistory = () => {
                     lang,
                 ),
             );
+
             deselectAll();
             setShowedOrder(orders[orders.length - 1]);
             selectOrder(orders[orders.length - 1]);
         }
         //eslint-disable-next-line
-    }, [orders, dispatch, token]);
+    }, [orders]);
 
     if (orders) {
         confirmedOrder = orders.map((order, i) => (
@@ -115,7 +117,7 @@ const OrderHistory = () => {
         }
     };
 
-    const orderDetailHandler = selectedOrder => {
+    const orderDetailHandler = (selectedOrder, e) => {
         deselectAll();
         orders.map((order, i) => {
             if (i === selectedOrder) {

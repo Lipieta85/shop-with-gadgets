@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getClientBudgetHistory } from "../../actions/index";
+import { getUserData } from "../../api/index";
 import { Link } from "react-router-dom";
 import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
@@ -10,7 +11,6 @@ import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 import ScreenLock from "../../components/ScreenLock";
 
 const BudgetHistory = () => {
-    const remainingBudget = useSelector(state => state.cartReducer.budget);
     const currencyCode = useSelector(
         state => state.clientDataReducer.currencyCode,
     );
@@ -22,13 +22,20 @@ const BudgetHistory = () => {
     const aliasUserId = useSelector(
         state => state.clientDataReducer.aliasUserId,
     );
+    const [remainingBudget, setRemainingBudget] = useState(null);
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
+        getUserData(token, aliasUserId).then(res => {
+            setRemainingBudget(
+                res.data.getWixClientData.budget.remainingBudget,
+            );
+        });
         dispatch(getClientBudgetHistory(token));
-    }, [dispatch, token, aliasUserId, remainingBudget]);
+        //eslint-disable-next-line
+    }, []);
 
     let history;
     if (budgetHistory && remainingBudget) {

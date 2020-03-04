@@ -93,7 +93,6 @@ const NavMenu = () => {
                             alt="company-logo"
                             onClick={tabHandler}
                             id="2"
-                            className=""
                         />
                     </Link>
                     <button
