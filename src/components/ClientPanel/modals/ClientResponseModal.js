@@ -24,10 +24,10 @@ const ClientResponseModal = props => {
             <Modal.Body>
                 {subsriptionState === true || subsriptionState === 1 ? (
                     <p>
-                        {t("ClientResponseModal.UdanaSubskrypcja ")}{name}. {t("ClientResponseModal.UdanaSubskrypcjaInfo")}
+                        {t("ClientResponseModal.SuccessfullySubscribed")}{name}. {t("ClientResponseModal.SuccessfullySubscribedInfo")}
                     </p>
                 ) : (
-                    <p>{t("ClientResponseModal.NieudanaSubskrypcja ")}{name}{t("ClientResponseModal.LubWystąpiłBłąd")}</p>
+                    <p>{t("ClientResponseModal.AlreadySubscribedItem")}{name}{t("ClientResponseModal.OrAnErrorOccurred")}</p>
                 )}
             </Modal.Body>
             <Modal.Footer>

@@ -105,7 +105,7 @@ const BudgetHistory = () => {
                                     <div>
                                         <h1 className="title">
                                             {t(
-                                                "BudgetHistory.HistoriaBudżetuJestPusta",
+                                                "BudgetHistory.TheBudgetHistoryIsEmpty",
                                             )}
                                         </h1>
                                         <Link
@@ -119,10 +119,10 @@ const BudgetHistory = () => {
                                 ) : (
                                     <div className="budgetTitles">
                                         <h2 className="titleBudgetHistory">
-                                            {t("BudgetHistory.HistoriaBudżetu")}
+                                            {t("BudgetHistory.BudgetHistory")}
                                         </h2>
                                         <div className="titleBudgetAtTheBegging">
-                                            {t("BudgetHistory.PrzyznanyBudżet")}{" "}
+                                            {t("BudgetHistory.MarketingBudgetAllocatedForTheYear")}{" "}
                                             {periodFrom.substr(0, 4)}:{" "}
                                             <strong>
                                                 {Separator(
@@ -146,27 +146,27 @@ const BudgetHistory = () => {
                                                         <th>
                                                             {" "}
                                                             {t(
-                                                                "BudgetHistory.CzasZdarzenia",
+                                                                "BudgetHistory.Time",
                                                             )}
                                                         </th>
                                                         <th>
                                                             {t(
-                                                                "BudgetHistory.RodzajOperacji",
+                                                                "BudgetHistory.OperationType",
                                                             )}
                                                         </th>
                                                         <th>
                                                             {t(
-                                                                "BudgetHistory.OpisOperacji",
+                                                                "BudgetHistory.OperationDescription",
                                                             )}
                                                         </th>
                                                         <th>
                                                             {t(
-                                                                "BudgetHistory.NumerZamówienia",
+                                                                "BudgetHistory.OrderNumber",
                                                             )}
                                                         </th>
                                                         <th>
                                                             {t(
-                                                                "BudgetHistory.WykorzystanyBudżet",
+                                                                "BudgetHistory.UsedBudget",
                                                             )}
                                                         </th>
                                                     </tr>
@@ -176,7 +176,7 @@ const BudgetHistory = () => {
 
                                             <div className="remainingBudgetTitle">
                                                 {t(
-                                                    "BudgetHistory.PozostałyBudżet",
+                                                    "BudgetHistory.MarketingBudgetRemainingForTheYear",
                                                 )}{" "}
                                                 {periodFrom.substr(0, 4)}{" "}
                                                 <strong>

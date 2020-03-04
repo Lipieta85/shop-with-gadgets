@@ -52,7 +52,7 @@ const NotificationModal = props => {
                     variant="conf-button"
                     href={confAddress}
                 >
-                    {t("Button.ZłóżWniosek")}
+                    {t("Button.OrderApplication")}
                 </Button>
                 <Button
                     type="button"
@@ -60,7 +60,7 @@ const NotificationModal = props => {
                     variant="conf-button"
                     onClick={props.onHide}
                 >
-                    {t("Button.Anuluj")}
+                    {t("Button.Cancel")}
                 </Button>
             </Modal.Footer>
         </Modal>

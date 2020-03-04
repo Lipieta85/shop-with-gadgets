@@ -128,45 +128,46 @@
     "OrderPerson": "Comanda plasată de"
   },
   "BudgetHistory": {
-    "HistoriaBudżetuJestPusta": "Historia budżetu jest pusta",
-    "HistoriaBudżetu": "Historia budżetu",
-    "Data": "Data",
-    "WykorzystanyBudżet": "Wykorzystany budżet",
-    "BudżetUżytkownikaNaPoczątku": "Budżet użytkownika na początku",
-    "RodzajOperacji": "Rodzaj operacji",
-    "NumerZamówienia": "Numer zamówienia",
-    "CzasZdarzenia": "Czas zdarzenia",
-    "PrzyznanyBudżet": "Przyznany budżet marketingowy na rok",
-    "PozostałyBudżet": "Pozostały do wykorzystania budżet marketingowy na rok"
+    "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
+    "BudgetHistory": "Historia budżetu",
+    "Date": "Data",
+    "UsedBudget": "Wykorzystany budżet",
+    "UserBudgetAtTheBeggining": "Budżet użytkownika na początku",
+    "OperationType": "Rodzaj operacji",
+    "OperationDescription": "Opis operacji",
+    "OrderNumber": "Numer zamówienia",
+    "Time": "Czas zdarzenia",
+    "MarketingBudgetAllocatedForTheYear": "Przyznany budżet marketingowy na rok",
+    "MarketingBudgetRemainingForTheYear": "Pozostały do wykorzystania budżet marketingowy na rok"
   },
   "ProductDetails": {
-    "KodProduktu": "Kod produktu",
-    "JednostkaMiary": "Jednostka miary",
-    "CenaJednostkowa": "Cena jednostkowa",
-    "StanMagazynowy": " Stan magazynowy",
-    "Powrót": "Powrót",
-    "Poprzedni": "Poprzedni",
-    "Następny": "Następny",
-    "OpisProduktu": "Opis produktu"
+    "ProductCode": "Kod produktu",
+    "ProductUnit": "Jednostka miary",
+    "ProductPrice": "Cena jednostkowa",
+    "ProductAvailability": " Stan magazynowy",
+    "Back": "Powrót",
+    "Previous": "Poprzedni",
+    "Next": "Następny",
+    "ProductDescription": "Opis produktu"
   },
   "Button": {
-    "WniosekZamówieniePłatne": "Wniosek o zamówienie płatne",
-    "Anuluj": "Anuluj",
-    "ZłóżWniosek": "Złóż wniosek",
-    "PowiadomODostępności": "Сообщить о наличии",
-    "WartośćAlertHeader": "Niepoprawna wartość",
-    "WartośćAlertText": "Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
+    "PaidOrderApplication": "Wniosek o zamówienie płatne",
+    "Cancel": "Anuluj",
+    "OrderApplication": "Złóż wniosek",
+    "NotifyWhenAvailable": "Powiadom o dostępności",
+    "InvalidValue": "Niepoprawna wartość",
+    "TheValueEntered": "Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
   },
   "ClientModal": {
-    "PowiadomMnie": "Powiadom mnie",
-    "PowiadomODostępnościProduktu": "Powiadom o dostępności produktu",
-    "Subskrybuj": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
-    "Zamknij": "Close"
+    "NotifyMe": "Powiadom mnie",
+    "NotifyWhenProductAvailable": "Powiadom o dostępności produktu",
+    "Subscribe": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
+    "Close": "Close"
   },
   "ClientResponseModal": {
-    "UdanaSubskrypcja ": "Udało ci się zasubskrybować produkt: ",
-    "UdanaSubskrypcjaInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
-    "NieudanaSubskrypcja ": "Subskrybujesz już produkt: ",
-    "LubWystąpiłBłąd": "lub wystąpił błąd"
+    "SuccessfullySubscribed": "Udało ci się zasubskrybować produkt: ",
+    "SuccessfullySubscribedInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
+    "AlreadySubscribedItem": "Subskrybujesz już produkt: ",
+    "OrAnErrorOccurred": "lub wystąpił błąd"
   }
 }

@@ -131,20 +131,20 @@ const ProductDetails = props => {
                                             {productTitle}
                                         </h3>
                                         <p className="font-weight-bold">
-                                            {t("ProductDetails.OpisProduktu")}:{" "}
+                                            {t("ProductDetails.ProductDescription")}:{" "}
                                             <span className="product-details-text">
                                                 {productDescription}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            {t("ProductDetails.KodProduktu")}:{" "}
+                                            {t("ProductDetails.ProductCode")}:{" "}
                                             <span className="product-details-text">
                                                 {productCode}
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
                                             {t(
-                                                "ProductDetails.CenaJednostkowa",
+                                                "ProductDetails.ProductPrice",
                                             )}
                                             :{" "}
                                             <span className="product-details-text">
@@ -155,7 +155,7 @@ const ProductDetails = props => {
                                             </span>
                                         </p>
                                         <p className="font-weight-bold">
-                                            {t("ProductDetails.StanMagazynowy")}
+                                            {t("ProductDetails.ProductAvailability")}
                                             :{" "}
                                             <span className="product-details-text">
                                                 {productAvailability}{" "}
@@ -182,7 +182,7 @@ const ProductDetails = props => {
                                                 className="btn btn-outline-primary btn-back border-button"
                                                 to="/"
                                             >
-                                                {t("ProductDetails.Powrót")}
+                                                {t("ProductDetails.Back")}
                                             </Link>
                                         </div>
                                         <div className="col-8 p-0 right-buttons">
@@ -190,13 +190,13 @@ const ProductDetails = props => {
                                                 className="btn btn-outline-primary btn-prev border-button"
                                                 onClick={prevItem}
                                             >
-                                                {t("ProductDetails.Poprzedni")}
+                                                {t("ProductDetails.Previous")}
                                             </button>
                                             <button
                                                 className="btn btn-outline-primary btn-next border-button"
                                                 onClick={nexItem}
                                             >
-                                                {t("ProductDetails.Następny")}
+                                                {t("ProductDetails.Next")}
                                             </button>
                                         </div>
                                     </div>

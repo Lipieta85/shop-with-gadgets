@@ -153,7 +153,7 @@ const ButtonComponent = props => {
                                 className="availability-check unselectable"
                                 onClick={handleShowModal}
                             >
-                                {t("Button.PowiadomODostępności")}
+                                {t("Button.NotifyWhenAvailable")}
                             </Button>
                             <ClientModal
                                 show={modalShow}
@@ -237,8 +237,8 @@ const ButtonComponent = props => {
                 <AlertModal
                     show={modalShowAlert}
                     onHide={() => setModalShowAlert(false)}
-                    header={t("Button.WartośćAlertHeader")}
-                    text={t("Button.WartośćAlertText")}
+                    header={t("Button.InvalidValue")}
+                    text={t("Button.TheValueEntered")}
                 />
             </ButtonToolbar>
         </>
