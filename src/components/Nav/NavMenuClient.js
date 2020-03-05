@@ -11,14 +11,16 @@ import {
     setPage,
     changeLanguage,
     paginationType,
-    setSearchText
+    setSearchText,
 } from "../../actions/index";
 import host from "../../api/host";
 import { useTranslation } from "react-i18next";
 import { ButtonToolbar, Button } from "react-bootstrap";
-import NotificationModal from "./modals/NotificationModal";
-import PolicyAcceptedModal from "./modals/PolicyAcceptedModal";
+import NotificationModal from "../ClientPanel/modals/NotificationModal";
+import PolicyAcceptedModal from "../ClientPanel/modals/PolicyAcceptedModal";
+
 const NavMenu = () => {
+    const currentPage = useSelector(state => state.pageReducer.currentPage);
     const lang = useSelector(state => state.clientDataReducer.language);
     const company = useSelector(state => state.clientDataReducer.companyId);
     const category = useSelector(state => state.cartReducer.productsCategory);
@@ -33,13 +35,15 @@ const NavMenu = () => {
     const [policyModal, setPolicyModal] = useState(false);
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
+
     useEffect(() => {
         const active = document.querySelector(".navbar .active");
         if (active && category) {
             active.classList.remove("active");
             document.getElementById(`${category}`).classList.add("active");
         }
-    }, [category]);
+    }, [category, currentPage]);
+
     const onSignout = () => {
         dispatch(signOut());
         window.location.replace(`${host}site/desktop`);
@@ -57,7 +61,7 @@ const NavMenu = () => {
         setModalShowPaidOrders(true);
     };
     const tabHandler = e => {
-        dispatch(setSearchText(""))
+        dispatch(setSearchText(""));
         if (e.target.id === "1" || e.target.id === "2") {
             dispatch(paginationType("back"));
             allProductsHandler("1");
@@ -151,10 +155,8 @@ const NavMenu = () => {
                             </div>
                         ) : null}
                         <ul className="navbar-nav ml-auto">
-                            {window.location.pathname === `/Order` ||
-                            window.location.pathname === `/Basket` ||
-                            window.location.pathname === `/Contact` ||
-                            window.location.pathname === `/Regulations` ? (
+                            {window.location.pathname !== `/` &&
+                            window.location.pathname !== `/OrderEnd` ? (
                                 <Link
                                     className="nav-link text-uppercase"
                                     to={`/`}
@@ -200,13 +202,12 @@ const NavMenu = () => {
                                             {t(`Nav.BudgetHistory`)}
                                         </Link>
                                         {orderType === "S5" ? (
-                                            <Link
+                                            <button
                                                 className="dropdown-item text-uppercase"
                                                 onClick={showPaidOrders}
-                                                to=""
                                             >
                                                 {t(`Nav.PaidOrders`)}
-                                            </Link>
+                                            </button>
                                         ) : null}
                                         <Link
                                             className="dropdown-item text-uppercase"
@@ -231,7 +232,7 @@ const NavMenu = () => {
                                                 "PaidOrder.NoProductsWarning",
                                             )}
                                             header={t(
-                                                "Button.PaidOrderApplication",
+                                                "Button.WniosekZamówieniePłatne",
                                             )}
                                         />
                                     </ButtonToolbar>

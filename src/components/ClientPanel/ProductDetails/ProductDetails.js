@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import defImg from "../../../assets/images/default.jpg";
 import Button from "../Button";
-import NavMenu from "./ProductDetailsNavMenu";
 import ClientPanelMenu from "../../ClientPanelMenu";
 import Carousel from "./Carousel";
 import AddProductModal from "../modals/AddProductModal";
@@ -107,7 +106,6 @@ const ProductDetails = props => {
     return (
         <div className="product-details">
             <div className="container-fluid">
-                <NavMenu />
                 <Spinner />
                 <AddProductModal />
                 <div className="row product-details-container">

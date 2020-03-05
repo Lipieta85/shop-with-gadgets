@@ -1,7 +1,6 @@
 import React from "react";
 import Basket from "../components/Basket/Basket";
 import BasketSummary from "../components/Basket/BasketSummary";
-import NavMenuClient from "../components/ClientPanel/NavMenuClient";
 import ClientPanelMenu from "../components/ClientPanelMenu";
 import OrderOptions from "../components/Basket/OrderOptions";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +18,6 @@ const BasketContainer = () => {
     return (
         <div className="basket-container">
             <div className="container-fluid">
-                <NavMenuClient />
                 <div className="row basket-content">
                     <div className="cart-content col-sm-12 col-md-12 col-lg-9">
                         <div className="cart">
@@ -40,7 +38,9 @@ const BasketContainer = () => {
                                                         className="btn btn-outline-primary mt-2"
                                                     >
                                                         {" "}
-                                                        {t("Basket.RETURNTOTHESHOP")}
+                                                        {t(
+                                                            "Basket.RETURNTOTHESHOP",
+                                                        )}
                                                     </Link>
                                                 </div>
                                             </div>

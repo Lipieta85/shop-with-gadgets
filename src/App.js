@@ -17,6 +17,7 @@ import Regulations from "./components/Footer/Regulations";
 import Contact from "./components/Footer/Contact";
 import OrderHistory from "./components/OrderHistory/OrderHistory";
 import BudgetHistory from "./components/BudgetHistory/BudgetHistory";
+import Nav from "./components/Nav/NavMenuClient";
 import ReactGA from "react-ga";
 import { getUserData, getLinkToken } from "./api/index";
 import { signIn } from "./actions/authorization";
@@ -40,7 +41,7 @@ import {
     setAliasUserId,
     setDeliveryAddress,
     initProducts,
-    initProductsCategories
+    initProductsCategories,
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -61,13 +62,12 @@ export default withRouter(function App({ location }, props) {
     const company = useSelector(state => state.clientDataReducer.companyId);
     const lang = useSelector(state => state.clientDataReducer.language);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    const items = useSelector(state => state.cartReducer.items);
     const parsed = queryString.parse(location.search);
-    
+
     const [currentPath, setCurrentPath] = useState(location.pathname);
     const dispatch = useDispatch();
     const { i18n } = useTranslation();
-    
+
     useEffect(() => {
         const { pathname } = location;
         setCurrentPath(pathname);
@@ -83,15 +83,15 @@ export default withRouter(function App({ location }, props) {
             document.body.classList.add("theme-light");
         }
     }, [company]);
-    
+
     useEffect(() => {
         i18n.changeLanguage(lang);
     }, [i18n, location.search, lang]);
-    
+
     useEffect(() => {
-        if (location.search) {       
-            window.history.pushState(null, null, window.location.pathname); 
-            dispatch(clearState()); 
+        if (location.search) {
+            window.history.pushState(null, null, window.location.pathname);
+            dispatch(clearState());
             dispatch(companyId(parsed.brand));
             dispatch(setAliasUserId(parsed.aliasUserId));
             getLinkToken(parsed.dt)
@@ -178,9 +178,7 @@ export default withRouter(function App({ location }, props) {
                                             .marketingOrderType,
                                     ),
                                 );
-                                if (items.length) {
-                                    dispatch(initProducts(token, currentPage))
-                                }
+                                dispatch(initProducts(token, currentPage));
                                 dispatch(initProductsCategories(token));
                             }
                         },
@@ -189,7 +187,7 @@ export default withRouter(function App({ location }, props) {
                 .catch(err => console.log(err));
         }
         //eslint-disable-next-line
-    }, [location.search])
+    }, [location.search]);
 
     useEffect(() => {
         if (
@@ -204,9 +202,10 @@ export default withRouter(function App({ location }, props) {
     }, [location.search]);
 
     const isLoggedIn = useSelector(state => state.authReducer.isAuth);
-    
+
     return (
         <>
+            <Nav />
             <Switch>
                 <Route
                     path="/"

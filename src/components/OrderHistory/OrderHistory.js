@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getClientOrdersHistory,
@@ -135,7 +134,6 @@ const OrderHistory = () => {
     return (
         <div className="order-history">
             <div className="container-fluid order-history-container pt-5">
-                <NavMenu />
                 <ScreenLock />
                 {orders.length === 0 ? (
                     <div className="text-center">
