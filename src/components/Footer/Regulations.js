@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
-import NavMenu from "../ClientPanel/NavMenuClient";
+import NavMenu from "../Nav/NavMenuClient";
 import "../../assets/styles/regulations.scss";
 import { getStorePolicy } from "./../../api/index";
 import Spinner from "./../UI/Spinner/Spinner";
-import { useTranslation } from "react-i18next";
+
 const Regulations = props => {
     const [policy, setPolicy] = useState("");
     const token = localStorage.getItem("token");
     const lang = useSelector(state => state.clientDataReducer.language);
-    const { t } = useTranslation();
+
     useEffect(() => {
         getStorePolicy(token, lang).then(res => {
             setPolicy(res.data.data.objects);

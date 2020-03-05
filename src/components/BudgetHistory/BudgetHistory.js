@@ -7,7 +7,6 @@ import "../../assets/styles/budget-history.scss";
 import Spinner from "../UI/Spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import Separator from "../Separator/Separator";
-import NavMenu from "../ClientPanel/ProductDetails/ProductDetailsNavMenu";
 import ScreenLock from "../../components/ScreenLock";
 
 const BudgetHistory = () => {
@@ -97,7 +96,6 @@ const BudgetHistory = () => {
     return (
         <div className="budget-history">
             <div className="container-fluid ">
-                <NavMenu />
                 <div>
                     <div>
                         <h5>

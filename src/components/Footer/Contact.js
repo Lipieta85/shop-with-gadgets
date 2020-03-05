@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import NavMenu from "../ClientPanel/NavMenuClient";
+import NavMenu from "../Nav/NavMenuClient";
 import "../../assets/styles/contact.scss";
 import { getContactDetails } from "../../api/index";
 import Spinner from "../UI/Spinner/Spinner";
 import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 
 const Contact = () => {
     const [contact, setContact] = useState("");
     const token = localStorage.getItem("token");
     const lang = useSelector(state => state.clientDataReducer.language);
-
-    const { t } = useTranslation();
 
     useEffect(() => {
         getContactDetails(token, lang).then(res => {

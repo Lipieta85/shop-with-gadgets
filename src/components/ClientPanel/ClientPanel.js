@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ClientPanelMenu from "../ClientPanelMenu";
 import Spinner from "../UI/Spinner/Spinner";
@@ -32,18 +32,27 @@ const ClientPanel = props => {
     const paginationTyp = useSelector(
         state => state.cartReducer.paginationType,
     );
+    const lang = useSelector(state => state.clientDataReducer.language);
+    const searchText = useSelector(
+        state => state.searchPanelReducer.searchText,
+    );
     const [shortPagination, setShortPagination] = useState([2, 3, 4]);
     const [shortPagination2] = useState([2]);
     const [shortPagination3] = useState([2, 3]);
-    const lang = useSelector(state => state.clientDataReducer.language);
+    const [activePage, setActivePage] = useState(0);
+
     const dispatch = useDispatch();
     const token = localStorage.getItem("token");
     const { t } = useTranslation();
-    const searchText = useSelector(state => state.searchPanelReducer.searchText);
 
     useEffect(() => {
+        setActivePage(0);
+    }, []);
+    useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
-            dispatch(initProducts(token, currentPage));
+            if (Number(activePage) === currentPage) {
+                dispatch(initProducts(token, currentPage));
+            }
             if (currentPage < 3) {
                 setShortPagination([2, 3, 4]);
             } else if (currentPage > pagination.totalPages - 3) {
@@ -61,7 +70,7 @@ const ClientPanel = props => {
             }
         }
         //eslint-disable-next-line
-    }, [currentPage, dispatch, token, category]);
+    }, [category, currentPage]);
 
     useEffect(() => {
         if (token && paginationTyp === "front") {
@@ -97,24 +106,32 @@ const ClientPanel = props => {
     const nextPageHandler = () => {
         if (currentPage < pagination.totalPages) {
             dispatch(nextPage());
+            setActivePage(currentPage + 1);
         } else {
             dispatch(setPage(1));
+            setActivePage(1);
         }
     };
     const prevPageHandler = () => {
         if (currentPage > 1) {
             dispatch(prevPage());
+            setActivePage(currentPage - 1);
         } else {
             dispatch(setPage(pagination.totalPages));
+            setActivePage(pagination.totalPages);
         }
     };
-    const pageHandler = event => {
-        dispatch(setPage(Number(event.target.innerText)));
-        document
-            .querySelectorAll(".pagination .active")
-            .forEach(item => item.classList.remove("active"));
-        event.target.parentNode.classList.add("active");
-    };
+    const pageHandler = useCallback(
+        event => {
+            dispatch(setPage(Number(event.target.innerText)));
+            setActivePage(event.target.innerText);
+            document
+                .querySelectorAll(".pagination .active")
+                .forEach(item => item.classList.remove("active"));
+            event.target.parentNode.classList.add("active");
+        },
+        [dispatch],
+    );
     const handleChange = e => {
         dispatch(setSearchText(e.target.value));
     };
