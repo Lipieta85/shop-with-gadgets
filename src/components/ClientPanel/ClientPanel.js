@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ClientPanelMenu from "../ClientPanelMenu";
 import Spinner from "../UI/Spinner/Spinner";
@@ -48,6 +48,7 @@ const ClientPanel = props => {
     useEffect(() => {
         setActivePage(0);
     }, []);
+
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
             if (Number(activePage) === currentPage) {
@@ -121,17 +122,14 @@ const ClientPanel = props => {
             setActivePage(pagination.totalPages);
         }
     };
-    const pageHandler = useCallback(
-        event => {
-            dispatch(setPage(Number(event.target.innerText)));
-            setActivePage(event.target.innerText);
-            document
-                .querySelectorAll(".pagination .active")
-                .forEach(item => item.classList.remove("active"));
-            event.target.parentNode.classList.add("active");
-        },
-        [dispatch],
-    );
+    const pageHandler = event => {
+        dispatch(setPage(Number(event.target.innerText)));
+        setActivePage(event.target.innerText);
+        document
+            .querySelectorAll(".pagination .active")
+            .forEach(item => item.classList.remove("active"));
+        event.target.parentNode.classList.add("active");
+    };
     const handleChange = e => {
         dispatch(setSearchText(e.target.value));
     };

@@ -15,7 +15,7 @@ import "../../assets/styles/order-end.scss";
 import Separator from "../Separator/Separator";
 
 const OrderHistory = () => {
-    let orders = useSelector(state => state.orderReducer.clientOrderHistory);
+    const orders = useSelector(state => state.orderReducer.clientOrderHistory);
     const cancelOrderStatus = useSelector(
         state => state.orderReducer.cancelOrderStatus,
     );
@@ -25,6 +25,7 @@ const OrderHistory = () => {
     const lang = useSelector(state => state.clientDataReducer.language);
 
     const [showedOrder, setShowedOrder] = useState();
+    const [showSingleOrder, setShowSingleOrder] = useState(false);
 
     const { t } = useTranslation();
 
@@ -38,6 +39,7 @@ const OrderHistory = () => {
 
     useEffect(() => {
         dispatch(getClientOrdersHistory(token));
+        setShowSingleOrder(true);
         //eslint-disable-next-line
     }, []);
 
@@ -53,7 +55,7 @@ const OrderHistory = () => {
     }, [token, dispatch, cancelOrderStatus, modal]);
 
     useEffect(() => {
-        if (orders.length) {
+        if (orders.length > 0 && showSingleOrder) {
             dispatch(
                 getClientSingleOrdersHistory(
                     token,
