@@ -80,7 +80,7 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {i.jde_order_id ? i.jde_order_id : (i.reference_id ? i.reference_id : "---")}
+                            {i.jde_order_id ? i.jde_order_id : /* i.reference_id ? i.reference_id : */ "---"}
                         </div>
                     </td>
                     <td>
