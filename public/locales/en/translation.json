@@ -125,7 +125,8 @@
     "Date": "Date",
     "NetAmount": "Net amount",
     "Ordered-delivered": "Ordered / delivered",
-    "OrderPerson": "Order placed by"
+    "OrderPerson": "Order placed by",
+    "Cancelled":"Cancelled"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "The budget history is empty",
