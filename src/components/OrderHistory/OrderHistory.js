@@ -31,8 +31,6 @@ const OrderHistory = () => {
 
     const dispatch = useDispatch();
 
-    let confirmedOrder;
-
     const token = localStorage.getItem("token");
 
     const modal = document.querySelector(".order-confirm-modal");
@@ -71,41 +69,53 @@ const OrderHistory = () => {
         //eslint-disable-next-line
     }, [orders]);
 
-    if (orders) {
-        confirmedOrder = orders.map((order, i) => (
-            <tr key={i} className={order.selected ? "row-selected" : ""}>
-                <td>
-                    <button
-                        className="row-button"
-                        onClick={() => orderDetailHandler(i)}
-                    ></button>
-                    <div className="cell">{order.date_of_order}</div>
-                </td>
-                <td>
-                    <button
-                        className="row-button"
-                        onClick={() => orderDetailHandler(i)}
-                    ></button>
-                    <div className="cell">{order.status}</div>
-                </td>
-                <td>
-                    <button
-                        className="row-button"
-                        onClick={() => orderDetailHandler(i)}
-                    ></button>
-                    <div className="cell text-right">
-                        {order.status !== "Deleted"
-                            ? Separator(
-                                  (+order.order_total_amount).toFixed(2),
-                              ) +
-                              " " +
-                              order.currency_code
-                            : "Anulowane"}
-                    </div>
-                </td>
-            </tr>
-        ));
-    }
+    let confirmedOrder = orders.length ? (
+        orders.map((order, i) => {
+            return (
+                <tr key={i} className={order.selected ? "row-selected" : ""}>
+                    <td>
+                        <button
+                            className="row-button"
+                            onClick={() => orderDetailHandler(i)}
+                        ></button>
+                        <div className="cell">{order.date_of_order}</div>
+                    </td>
+                    <td>
+                        <button
+                            className="row-button"
+                            onClick={() => orderDetailHandler(i)}
+                        ></button>
+                        <div className="cell">{order.status}</div>
+                    </td>
+                    <td>
+                        <button
+                            className="row-button"
+                            onClick={() => orderDetailHandler(i)}
+                        ></button>
+                        <div className="cell text-right">
+                            {order.status !== "Deleted"
+                                ? Separator(
+                                      (+order.order_total_amount).toFixed(2),
+                                  ) +
+                                  " " +
+                                  order.currency_code
+                                : "Anulowane"}
+                        </div>
+                    </td>
+                </tr>
+            );
+        })
+    ) : (
+        <div className="text-center">
+            <div className="order-end-box p-4">
+                <h4>{t("OrderHistory.TheOrderListIsEmpty")}</h4>
+                <Link to="/" className="btn btn-outline-primary mt-3">
+                    {" "}
+                    {t("Basket.RETURNTOTHESHOP")}
+                </Link>
+            </div>
+        </div>
+    );
 
     const deselectAll = () => {
         orders.map((order, i) => {
@@ -137,40 +147,24 @@ const OrderHistory = () => {
         <div className="order-history">
             <div className="container-fluid order-history-container pt-5">
                 <ScreenLock />
-                {orders.length === 0 ? (
-                    <div className="text-center">
-                        <div className="order-end-box p-4">
-                            <h4>{t("OrderHistory.TheOrderListIsEmpty")}</h4>
-                            <Link
-                                to="/"
-                                className="btn btn-outline-primary mt-3"
-                            >
-                                {" "}
-                                {t("Basket.RETURNTOTHESHOP")}
-                            </Link>
+                <div className="row">
+                    <div className="col-sm-5">
+                        <div className="order-list ml-1 mb-2">
+                            <h2 className="header-title">
+                                {t("OrderHistory.OrderList")}
+                            </h2>
                         </div>
                     </div>
-                ) : (
-                    <div className="row">
-                        <div className="col-sm-5">
-                            <div className="order-list ml-1 mb-2">
-                                <h2 className="header-title">
-                                    {t("OrderHistory.OrderList")}
-                                </h2>
-                            </div>
-                        </div>
-                        <div className="col-sm-7">
-                            <h4 className="order-list ml-1 mb-2 header-title">
-                                {orders.length !== 0 &&
-                                    t("OrderHistory.DetailsOfOrder") +
-                                        " (" +
-                                        (showedOrder &&
-                                            showedOrder.order_number) +
-                                        ")"}
-                            </h4>
-                        </div>
+                    <div className="col-sm-7">
+                        <h4 className="order-list ml-1 mb-2 header-title">
+                            {orders.length !== 0 &&
+                                t("OrderHistory.DetailsOfOrder") +
+                                    " (" +
+                                    (showedOrder && showedOrder.order_number) +
+                                    ")"}
+                        </h4>
                     </div>
-                )}
+                </div>
                 <Spinner />
                 {orders.length !== 0 ? (
                     <div className="row">
@@ -364,7 +358,8 @@ const OrderHistory = () => {
                                       return (
                                           <>
                                               <li
-                                                  className="row nav-item collection-item d-flex order-item-box" /* key={order.product.id} */
+                                                  className="row nav-item collection-item d-flex order-item-box"
+                                                  key={i}
                                               >
                                                   <div className="col-md-12 desc-col d-flex order-item">
                                                       <span className="order-iteration">
