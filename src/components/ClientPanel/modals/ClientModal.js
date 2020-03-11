@@ -8,7 +8,7 @@ const ClientModal = props => {
     const clientEmail = useSelector(
         state =>
             state.clientDataReducer.clientData[0] &&
-            state.clientDataReducer.clientData[0].getWixClientData.data.email,
+            state.clientDataReducer.clientData[0].getWixClientData.userEmail,
     );
     const lang = useSelector(state => state.clientDataReducer.language);
     const [productId, setProductId] = useState();
