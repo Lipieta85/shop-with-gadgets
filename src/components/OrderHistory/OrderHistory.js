@@ -99,7 +99,7 @@ const OrderHistory = () => {
                                   ) +
                                   " " +
                                   order.currency_code
-                                : "Anulowane"}
+                                : t("OrderHistory.Cancelled")}
                         </div>
                     </td>
                 </tr>

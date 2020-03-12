@@ -125,7 +125,8 @@
     "Date": "Data",
     "NetAmount": "Kwota netto",
     "Ordered-delivered": "Zamówionych / dostarczonych",
-    "OrderPerson": "Comanda plasată de"
+    "OrderPerson": "Comanda plasată de",
+    "Cancelled":"Cancelled"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
