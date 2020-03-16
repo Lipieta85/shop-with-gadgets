@@ -1,11 +1,13 @@
 import React from "react";
 import { usePromiseTracker } from "react-promise-tracker";
+import { useSelector } from "react-redux";
 
 const ScreenLock = () => {
+    const pageLock = useSelector(state => state.pageReducer.pageLock);
     const { promiseInProgress } = usePromiseTracker();
 
     const stylesHandler = () => {
-        return promiseInProgress === true
+        return promiseInProgress === true && pageLock === true
             ? {
                   position: "fixed",
                   top: 0,

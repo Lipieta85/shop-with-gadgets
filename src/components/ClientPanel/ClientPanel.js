@@ -48,7 +48,7 @@ const ClientPanel = props => {
     useEffect(() => {
         setActivePage(0);
     }, []);
-
+    
     useEffect(() => {
         if (token && category === "1" && paginationTyp === "back") {
             if (Number(activePage) === currentPage) {

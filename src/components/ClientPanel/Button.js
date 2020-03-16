@@ -30,7 +30,8 @@ const ButtonComponent = props => {
     const [modalShowResponse, setModalShowResponse] = React.useState(false);
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
     const [modalShowAlert, setModalShowAlert] = React.useState(false);
-
+    const buttonsNotBlocked = useSelector(state => state.pageReducer.pageLock);
+   
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
@@ -99,6 +100,8 @@ const ButtonComponent = props => {
     };
 
     const dispatchHandler = event => {
+        if (buttonsNotBlocked === false) 
+            return false;
         if (disabled && props.availabaleItemQuantity > 0) {
             setModalShowAlert(true);
             return false;
@@ -133,14 +136,18 @@ const ButtonComponent = props => {
     };
 
     const handleShowModal = () => {
-        setModalShow(true);
-        setName(props.itemTitle);
-        dispatch(setProductName(props.itemTitle));
-        setProductid(props.itemId);
+        if (buttonsNotBlocked === true){
+            setModalShow(true);
+            setName(props.itemTitle);
+            dispatch(setProductName(props.itemTitle));
+            setProductid(props.itemId);
+        } 
     };
 
     const handleShowModalResponse = () => {
-        setModalShowResponse(true);
+        if (buttonsNotBlocked === true){
+            setModalShowResponse(true);
+        }  
     };
 
     return (

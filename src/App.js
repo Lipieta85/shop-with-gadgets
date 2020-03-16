@@ -42,6 +42,7 @@ import {
     setDeliveryAddress,
     initProducts,
     initProductsCategories,
+    setLock
 } from "./actions/index";
 import queryString from "query-string";
 import host from "./api/host";
@@ -93,6 +94,7 @@ export default withRouter(function App({ location }, props) {
             dispatch(clearState());
             dispatch(companyId(parsed.brand));
             dispatch(setAliasUserId(parsed.aliasUserId));
+            dispatch(setLock(true));
             getLinkToken(parsed.dt)
                 .then(res => {
                     const token = res.data.token;
