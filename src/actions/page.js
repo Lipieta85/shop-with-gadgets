@@ -1,5 +1,12 @@
 import * as type from "../actions/types";
 
+export const setLock = data =>{
+    return {
+        type: type.SET_LOCK,
+        data,
+    };
+}
+
 export const nextPage = () => {
     return {
         type: type.NEXT_PAGE,

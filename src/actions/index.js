@@ -36,6 +36,8 @@ export {
 
 export {
     setProducts,
+    setQuantities,
+    getProductQuantities,
     initProducts,
     fetchProductsFailed,
     setProductCategories,
@@ -47,7 +49,7 @@ export {
     setProductsCategories,
 } from "./products.js";
 
-export { nextPage, prevPage, setPage } from "./page.js";
+export { nextPage, prevPage, setPage, setLock } from "./page.js";
 
 export {
     sendSubscribe,

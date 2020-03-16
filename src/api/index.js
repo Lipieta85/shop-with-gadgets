@@ -79,10 +79,17 @@ export const getAllProducts = async (
     company,
     lang,
     aliasUserId,
+    cache
 ) => {
     let url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
-    if (aliasUserId)
+    if (cache)
+        url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "cache":"false", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+    if (aliasUserId){
         url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "aliasUserId":"${aliasUserId}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+        if (cache)
+            url = `${host}/restApi/products/method/${company}/parameters/{"lang":"${lang}", "cache":"false", "aliasUserId":"${aliasUserId}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+    }
+
     return await trackPromise(
         axios({
             method: "get",
@@ -116,14 +123,26 @@ export const changeProductsCategory = async (
     currentPage,
     lang,
     aliasUserId,
+    cache
 ) => {
     let url = `${host}/restApi/products/method/${company}/parameters/{"category": ${Number(
         number,
     )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
-    if (aliasUserId)
+    if (cache)
+        url = `${host}/restApi/products/method/${company}/parameters/{"cache":"false", "category": ${Number(
+            number,
+        )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+    if (aliasUserId){
         url = `${host}/restApi/products/method/${company}/parameters/{"aliasUserId":"${aliasUserId}", "category": ${Number(
             number,
         )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+        if (cache)
+            url = `${host}/restApi/products/method/${company}/parameters/{"cache":"false", "aliasUserId":"${aliasUserId}", "category": ${Number(
+                number,
+            )}, "lang":"${lang}", "pagination":{"page":${currentPage}, "itemsPerPage":12}}`;
+    }
+        
+    
     return await trackPromise(
         axios({
             method: "get",
