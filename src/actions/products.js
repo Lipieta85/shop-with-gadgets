@@ -13,15 +13,18 @@ import host2 from "../api/host2";
 export const setProducts = (products, actionGuid) => {
     // ---- saves guid  of actual products to avoid overwrite
     localStorage.setItem('actionGuid', actionGuid);
+    console.log('showCachedProducts')
     return {
         type: type.SET_PRODUCTS,
         products: products,
     };
 };
 export const setQuantities = (products, actionGuid) => {
+    console.log(localStorage.getItem('actionGuid'));
     // ---- prevents wrong product quantities overwriting when fast clicking
     if(actionGuid.toString() !== localStorage.getItem('actionGuid'))
         return;
+    console.log('setQuantities')
     return {
         type: type.SET_PRODUCTS,
         products: products,
@@ -29,6 +32,7 @@ export const setQuantities = (products, actionGuid) => {
 };
 
 export const getProductQuantities = (token, currentPage, number, actionGuid) =>{
+    console.log('getQuantities')
     if(actionGuid === undefined) actionGuid = number;
     return (dispatch, getState) => {
         // ---- to hide getQuantities loading spinner + screenlock
@@ -103,21 +107,21 @@ export const initProducts = (token, currentPage) => {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 } else if (company === "wix") {
                     if (res.data.wix.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 } else {
                     if (res.data.all.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 }
             })
@@ -176,7 +180,7 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
         )
             .then(res => {
                 dispatch(setProducts(res.data, actionGuid));
-                //dispatch(getProductQuantities(token, currentPage, number, actionGuid))
+                dispatch(getProductQuantities(token, currentPage, number, actionGuid))
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
