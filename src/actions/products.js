@@ -103,21 +103,21 @@ export const initProducts = (token, currentPage) => {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 } else if (company === "wix") {
                     if (res.data.wix.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 } else {
                     if (res.data.all.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
                         dispatch(setProducts(res.data, actionGuid));
-                        dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
                     }
                 }
             })
@@ -176,7 +176,7 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
         )
             .then(res => {
                 dispatch(setProducts(res.data, actionGuid));
-                dispatch(getProductQuantities(token, currentPage, number, actionGuid))
+                //dispatch(getProductQuantities(token, currentPage, number, actionGuid))
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
