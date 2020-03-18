@@ -10,26 +10,54 @@ import { setLock } from "../actions/index";
 
 import host2 from "../api/host2";
 
-export const setProducts = (products, actionGuid) => {
-    // ---- saves guid  of actual products to avoid overwrite
-    localStorage.setItem('actionGuid', actionGuid);
-    return {
-        type: type.SET_PRODUCTS,
-        products: products,
+export const setItems = (products, actionGuid) => {
+    return dispatch => {
+        dispatch(setProducts(products));
+        dispatch(setActionGuid(actionGuid));
     };
 };
-export const setQuantities = (products, actionGuid) => {
-    // ---- prevents wrong product quantities overwriting when fast clicking
-    if(actionGuid.toString() !== localStorage.getItem('actionGuid'))
-        return;
+
+export const setProducts = products => {
+    // ---- saves guid  of actual products to avoid overwrite
     return {
         type: type.SET_PRODUCTS,
         products: products,
     };
 };
 
-export const getProductQuantities = (token, currentPage, number, actionGuid) =>{
-    if(actionGuid === undefined) actionGuid = number;
+export const setActionGuid = actionGuid => {
+    return {
+        type: type.SET_ACTION_GUID,
+        actionGuid,
+    };
+};
+
+export const setAmounts = (products, actionGuid) => {
+    return (dispatch, getState) => {
+        const actionGuidVal = getState().cartReducer.actionGuid;
+        console.log(actionGuidVal);
+        console.log(actionGuid.toString());
+        // ---- prevents wrong product quantities overwriting when fast clicking
+        if (actionGuid.toString() !== actionGuidVal) return;
+        dispatch(setQuantities(products));
+    };
+};
+
+export const setQuantities = products => {
+    // ---- prevents wrong product quantities overwriting when fast clicking
+    return {
+        type: type.SET_PRODUCTS,
+        products: products,
+    };
+};
+
+export const getProductQuantities = (
+    token,
+    currentPage,
+    number,
+    actionGuid,
+) => {
+    if (actionGuid === undefined) actionGuid = number;
     return (dispatch, getState) => {
         // ---- to hide getQuantities loading spinner + screenlock
         dispatch(setLock(false));
@@ -37,38 +65,46 @@ export const getProductQuantities = (token, currentPage, number, actionGuid) =>{
         const lang = getState().clientDataReducer.language;
         const aliasUserId = getState().clientDataReducer.aliasUserId;
 
-        if(number && number.toString() !== actionGuid.toString()){
-            changeProductsCategory(token, number, company, currentPage, lang, aliasUserId, true)
+        if (number && number.toString() !== actionGuid.toString()) {
+            changeProductsCategory(
+                token,
+                number,
+                company,
+                currentPage,
+                lang,
+                aliasUserId,
+                true,
+            )
                 .then(res => {
-                    dispatch(setQuantities(res.data, actionGuid));
+                    dispatch(setAmounts(res.data, actionGuid));
                     dispatch(setLock(true));
                 })
                 .catch(error => {
                     dispatch(fetchProductsFailed());
                     dispatch(setLock(true));
                 });
-        }else{
+        } else {
             getAllProducts(token, currentPage, company, lang, aliasUserId, true)
                 .then(res => {
                     if (company === "filtron") {
                         if (res.data.filtron.error) {
                             window.location.replace(`${host2}/ServerError`);
                         } else {
-                            dispatch(setQuantities(res.data, actionGuid));
+                            dispatch(setAmounts(res.data, actionGuid));
                             dispatch(setLock(true));
                         }
                     } else if (company === "wix") {
                         if (res.data.wix.error) {
                             window.location.replace(`${host2}/ServerError`);
                         } else {
-                            dispatch(setQuantities(res.data, actionGuid));
+                            dispatch(setAmounts(res.data, actionGuid));
                             dispatch(setLock(true));
                         }
                     } else {
                         if (res.data.all.error) {
                             window.location.replace(`${host2}/ServerError`);
                         } else {
-                            dispatch(setQuantities(res.data, actionGuid));
+                            dispatch(setAmounts(res.data, actionGuid));
                             dispatch(setLock(true));
                         }
                     }
@@ -76,10 +112,10 @@ export const getProductQuantities = (token, currentPage, number, actionGuid) =>{
                 .catch(error => {
                     dispatch(fetchProductsFailed());
                     dispatch(setLock(true));
-                });  
+                });
         }
     };
-}
+};
 
 export const fetchProductsFailed = errorText => {
     return {
@@ -95,29 +131,47 @@ export const initProducts = (token, currentPage) => {
         const lang = getState().clientDataReducer.language;
         const aliasUserId = getState().clientDataReducer.aliasUserId;
         const actionGuid = new Date().getTime();
- 
+
         getAllProducts(token, currentPage, company, lang, aliasUserId)
             .then(res => {
                 if (company === "filtron") {
                     if (res.data.filtron.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
-                        dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(setItems(res.data, actionGuid));
+                        dispatch(
+                            getProductQuantities(
+                                token,
+                                currentPage,
+                                actionGuid,
+                            ),
+                        );
                     }
                 } else if (company === "wix") {
                     if (res.data.wix.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
-                        dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(setItems(res.data, actionGuid));
+                        dispatch(
+                            getProductQuantities(
+                                token,
+                                currentPage,
+                                actionGuid,
+                            ),
+                        );
                     }
                 } else {
                     if (res.data.all.error) {
                         window.location.replace(`${host2}/ServerError`);
                     } else {
-                        dispatch(setProducts(res.data, actionGuid));
-                        //dispatch(getProductQuantities(token, currentPage, actionGuid));
+                        dispatch(setItems(res.data, actionGuid));
+                        dispatch(
+                            getProductQuantities(
+                                token,
+                                currentPage,
+                                actionGuid,
+                            ),
+                        );
                     }
                 }
             })
@@ -175,8 +229,15 @@ export const changeProductCategory = (token, number, currentPage, lang) => {
             aliasUserId,
         )
             .then(res => {
-                dispatch(setProducts(res.data, actionGuid));
-                //dispatch(getProductQuantities(token, currentPage, number, actionGuid))
+                dispatch(setItems(res.data, actionGuid));
+                dispatch(
+                    getProductQuantities(
+                        token,
+                        currentPage,
+                        number,
+                        actionGuid,
+                    ),
+                );
             })
             .catch(error => {
                 dispatch(fetchProductsFailed());
@@ -187,7 +248,7 @@ export const searchProductPanel = (token, currentPage, lang, name) => {
     return (dispatch, getState) => {
         const company = getState().clientDataReducer.companyId;
         const aliasUserId = getState().clientDataReducer.aliasUserId;
-        
+
         searchProduct(token, currentPage, lang, name, company, aliasUserId)
             .then(res => {
                 dispatch(setTypedProducts(res.data));

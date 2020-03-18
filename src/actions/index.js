@@ -77,7 +77,7 @@ export {
     clearState,
     setAliasUserId,
     setDeliveryAddress,
-    setDeliveryAddress2
+    setDeliveryAddress2,
 } from "./clientData.js";
 
 export { setSearchText } from "./searchPanel.js";
