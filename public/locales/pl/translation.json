@@ -112,7 +112,7 @@
     "TheOrderListIsEmpty": "Lista zamówień jest pusta",
     "OrderList": "Lista zamówień",
     "OrderedProducts": "Zamówione produkty:",
-    "DetailsOfOrder":"Szczegóły zamówienia: ",
+    "DetailsOfOrder": "Szczegóły zamówienia",
     "OrderNumber": "Numer zamówienia:",
     "OrderDate": "Data złożenia:",
     "Time": "Godzina:",
@@ -126,7 +126,7 @@
     "NetAmount": "Kwota netto",
     "Ordered-delivered": "Zamówionych / dostarczonych",
     "OrderPerson": "Zamówienie złożone przez",
-    "Cancelled":"Anulowane"
+    "Cancelled": "Anulowane"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
