@@ -35,8 +35,6 @@ export const setActionGuid = actionGuid => {
 export const setAmounts = (products, actionGuid) => {
     return (dispatch, getState) => {
         const actionGuidVal = getState().cartReducer.actionGuid;
-        console.log(actionGuidVal);
-        console.log(actionGuid.toString());
         // ---- prevents wrong product quantities overwriting when fast clicking
         if (actionGuid.toString() !== actionGuidVal) return;
         dispatch(setQuantities(products));
