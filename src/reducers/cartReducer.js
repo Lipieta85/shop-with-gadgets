@@ -1,5 +1,4 @@
 import * as type from "../actions/types";
-//import productsData from "../db.json";
 import { mapKeys } from "lodash";
 
 const initialState = {
@@ -21,6 +20,7 @@ const initialState = {
     deleteAllProductsModalState: false,
     deliveryAddress: "",
     deliveryAddress2: "",
+    actionGuid: "",
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -342,6 +342,11 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 deliveryAddress2: action.address,
+            };
+        case type.SET_ACTION_GUID:
+            return {
+                ...state,
+                actionGuid: action.actionGuid,
             };
         default:
             return state;
