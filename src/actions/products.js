@@ -42,7 +42,6 @@ export const setAmounts = (products, actionGuid) => {
 };
 
 export const setQuantities = products => {
-    // ---- prevents wrong product quantities overwriting when fast clicking
     return {
         type: type.SET_PRODUCTS,
         products: products,
