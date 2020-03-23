@@ -6,9 +6,7 @@ import { useTranslation } from "react-i18next";
 import "../../../assets/styles/order-choose-modal.scss";
 const ClientModal = props => {
     const clientEmail = useSelector(
-        state =>
-            state.clientDataReducer.clientData[0] &&
-            state.clientDataReducer.clientData[0].getWixClientData.userEmail,
+        state => state.clientDataReducer.clientData.getWixClientData.userEmail,
     );
     const lang = useSelector(state => state.clientDataReducer.language);
     const [productId, setProductId] = useState();
