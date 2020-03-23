@@ -12,6 +12,7 @@ const PolicyAcceptedModal = props => {
     const storePolicyStatus = useSelector(
         state => state.clientDataReducer.storePolicyStatus,
     );
+    const aliasUserId = useSelector(state => state.clientDataReducer.aliasUserId);
     const [show, setShow] = React.useState(false);
     const { t } = useTranslation();
 
@@ -24,17 +25,15 @@ const PolicyAcceptedModal = props => {
     };
 
     useEffect(() => {
-        if (storePolicyStatus === true) {
+        let policyAccepted = storePolicyStatus;
+        if(aliasUserId !== 0 && aliasUserId !== undefined)
+            policyAccepted = true;
+
+        if (policyAccepted === true)
             setShow(false);
-        }
-        if (
-            storePolicyStatus === false &&
-            window.location.pathname !== `/Regulations`
-        ) {
-            setShow(true);
-        }
-        if (storePolicyStatus === false && props.modalStatus === true) {
-            setShow(true);
+        if (policyAccepted === false){
+            if(window.location.pathname !== `/Regulations` || props.modalStatus === true)
+                setShow(true);
         }
         //eslint-disable-next-line
     }, [storePolicyStatus, props.modalStatus]);
