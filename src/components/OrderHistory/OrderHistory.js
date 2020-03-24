@@ -13,6 +13,7 @@ import ScreenLock from "../ScreenLock";
 import "../../assets/styles/order-history.scss";
 import "../../assets/styles/order-end.scss";
 import Separator from "../Separator/Separator";
+import { usePromiseTracker } from "react-promise-tracker";
 
 const OrderHistory = () => {
     const orders = useSelector(state => state.orderReducer.clientOrderHistory);
@@ -26,6 +27,9 @@ const OrderHistory = () => {
 
     const [showedOrder, setShowedOrder] = useState();
     const [showSingleOrder, setShowSingleOrder] = useState(false);
+
+    const { promiseInProgress } = usePromiseTracker();
+    let confirmedOrder;
 
     const { t } = useTranslation();
 
@@ -69,53 +73,41 @@ const OrderHistory = () => {
         //eslint-disable-next-line
     }, [orders]);
 
-    let confirmedOrder = orders.length ? (
-        orders.map((order, i) => {
-            return (
-                <tr key={i} className={order.selected ? "row-selected" : ""}>
-                    <td>
-                        <button
-                            className="row-button"
-                            onClick={() => orderDetailHandler(i)}
-                        ></button>
-                        <div className="cell">{order.date_of_order}</div>
-                    </td>
-                    <td>
-                        <button
-                            className="row-button"
-                            onClick={() => orderDetailHandler(i)}
-                        ></button>
-                        <div className="cell">{order.status}</div>
-                    </td>
-                    <td>
-                        <button
-                            className="row-button"
-                            onClick={() => orderDetailHandler(i)}
-                        ></button>
-                        <div className="cell text-right">
-                            {order.status !== "Deleted"
-                                ? Separator(
-                                      (+order.order_total_amount).toFixed(2),
-                                  ) +
-                                  " " +
-                                  order.currency_code
-                                : t("OrderHistory.Cancelled")}
-                        </div>
-                    </td>
-                </tr>
-            );
-        })
-    ) : (
-        <div className="text-center">
-            <div className="order-end-box p-4">
-                <h4>{t("OrderHistory.TheOrderListIsEmpty")}</h4>
-                <Link to="/" className="btn btn-outline-primary mt-3">
-                    {" "}
-                    {t("Basket.RETURNTOTHESHOP")}
-                </Link>
-            </div>
-        </div>
-    );
+    if (orders) {
+        confirmedOrder = orders.map((order, i) => (
+            <tr key={i} className={order.selected ? "row-selected" : ""}>
+                <td>
+                    <button
+                        className="row-button"
+                        onClick={() => orderDetailHandler(i)}
+                    ></button>
+                    <div className="cell">{order.date_of_order}</div>
+                </td>
+                <td>
+                    <button
+                        className="row-button"
+                        onClick={() => orderDetailHandler(i)}
+                    ></button>
+                    <div className="cell">{order.status}</div>
+                </td>
+                <td>
+                    <button
+                        className="row-button"
+                        onClick={() => orderDetailHandler(i)}
+                    ></button>
+                    <div className="cell text-right">
+                        {order.status !== "Deleted"
+                            ? Separator(
+                                  (+order.order_total_amount).toFixed(2),
+                              ) +
+                              " " +
+                              order.currency_code
+                            : "Anulowane"}
+                    </div>
+                </td>
+            </tr>
+        ));
+    }
 
     const deselectAll = () => {
         orders.map((order, i) => {
@@ -147,24 +139,40 @@ const OrderHistory = () => {
         <div className="order-history">
             <div className="container-fluid order-history-container pt-5">
                 <ScreenLock />
-                <div className="row">
-                    <div className="col-sm-5">
-                        <div className="order-list ml-1 mb-2">
-                            <h2 className="header-title">
-                                {t("OrderHistory.OrderList")}
-                            </h2>
+                {orders.length === 0 && promiseInProgress === false ? (
+                    <div className="text-center">
+                        <div className="order-end-box p-4">
+                            <h4>{t("OrderHistory.TheOrderListIsEmpty")}</h4>
+                            <Link
+                                to="/"
+                                className="btn btn-outline-primary mt-3"
+                            >
+                                {" "}
+                                {t("Basket.RETURNTOTHESHOP")}
+                            </Link>
                         </div>
                     </div>
-                    <div className="col-sm-7">
-                        <h4 className="order-list ml-1 mb-2 header-title">
-                            {orders.length !== 0 &&
-                                t("OrderHistory.DetailsOfOrder") +
-                                    " (" +
-                                    (showedOrder && showedOrder.order_number) +
-                                    ")"}
-                        </h4>
+                ) : (
+                    <div className="row">
+                        <div className="col-sm-5">
+                            <div className="order-list ml-1 mb-2">
+                                <h2 className="header-title">
+                                    {t("OrderHistory.OrderList")}
+                                </h2>
+                            </div>
+                        </div>
+                        <div className="col-sm-7">
+                            <h4 className="order-list ml-1 mb-2 header-title">
+                                {orders.length !== 0 &&
+                                    t("OrderHistory.DetailsOfOrder") +
+                                        " (" +
+                                        (showedOrder &&
+                                            showedOrder.order_number) +
+                                        ")"}
+                            </h4>
+                        </div>
                     </div>
-                </div>
+                )}
                 <Spinner />
                 {orders.length !== 0 ? (
                     <div className="row">
@@ -356,104 +364,94 @@ const OrderHistory = () => {
                             {singleOrder.items
                                 ? singleOrder.items.map((order, i) => {
                                       return (
-                                          <>
-                                              <li
-                                                  className="row nav-item collection-item d-flex order-item-box"
-                                                  key={i}
-                                              >
-                                                  <div className="col-md-12 desc-col d-flex order-item">
-                                                      <span className="order-iteration">
-                                                          {i + 1}
-                                                      </span>
-                                                      <div className="order-img-box">
-                                                          {order.image && (
-                                                              <img
-                                                                  src={
-                                                                      order.image
-                                                                  }
-                                                                  className="order-img"
-                                                                  alt="orderPicture"
-                                                              />
-                                                          )}
+                                          <li
+                                              className="row nav-item collection-item d-flex order-item-box"
+                                              key={i}
+                                          >
+                                              <div className="col-md-12 desc-col d-flex order-item">
+                                                  <span className="order-iteration">
+                                                      {i + 1}
+                                                  </span>
+                                                  <div className="order-img-box">
+                                                      {order.image && (
+                                                          <img
+                                                              src={order.image}
+                                                              className="order-img"
+                                                              alt="orderPicture"
+                                                          />
+                                                      )}
+                                                  </div>
+                                                  <div
+                                                      className="item-desc"
+                                                      style={{
+                                                          minHeight: "70px",
+                                                      }}
+                                                  >
+                                                      <div className="d-flex">
+                                                          <h4 className="text-uppercase title">
+                                                              <b>
+                                                                  {" "}
+                                                                  {order.name} (
+                                                                  {order.code})
+                                                              </b>
+                                                          </h4>
                                                       </div>
-                                                      <div
-                                                          className="item-desc"
-                                                          style={{
-                                                              minHeight: "70px",
-                                                          }}
-                                                      >
-                                                          <div className="d-flex">
-                                                              <h4 className="text-uppercase title">
-                                                                  <b>
-                                                                      {" "}
-                                                                      {
-                                                                          order.name
-                                                                      }{" "}
-                                                                      (
-                                                                      {
-                                                                          order.code
-                                                                      }
-                                                                      )
-                                                                  </b>
-                                                              </h4>
-                                                          </div>
-                                                          <div>
-                                                              <span>
-                                                                  {t(
-                                                                      "OrderHistory.Price",
+                                                      <div>
+                                                          <span>
+                                                              {t(
+                                                                  "OrderHistory.Price",
+                                                              )}{" "}
+                                                              <b className="order-text-value mr-3">
+                                                                  {Separator(
+                                                                      +order.unitPrice,
                                                                   )}{" "}
-                                                                  <b className="order-text-value mr-3">
-                                                                      {Separator(
-                                                                          +order.unitPrice,
-                                                                      )}{" "}
-                                                                      {showedOrder &&
-                                                                          showedOrder.currency_code}
-                                                                  </b>
+                                                                  {showedOrder &&
+                                                                      showedOrder.currency_code}
+                                                              </b>
+                                                          </span>
+                                                      </div>
+                                                      <div className="order-history-delivery">
+                                                          <span className="mr-3 mb-4">
+                                                              <span className="mr-1">
+                                                                  {t(
+                                                                      "OrderHistory.Ordered-delivered",
+                                                                  )}
                                                               </span>
-                                                          </div>
-                                                          <div className="order-history-delivery">
-                                                              <span className="mr-3 mb-4">
-                                                                  <span className="mr-1">
-                                                                      {t(
-                                                                          "OrderHistory.Ordered-delivered",
-                                                                      )}
-                                                                  </span>
-                                                                  <b className="order-text-value">
-                                                                      (
-                                                                      {
-                                                                          +order.quantityOrdered
-                                                                      }
-                                                                  </b>
-                                                                  <b className="order-text-value">
-                                                                      {" "}
-                                                                      /{" "}
-                                                                      {
-                                                                          +order.quantityDelivered
-                                                                      }
-                                                                      )
-                                                                  </b>
-                                                              </span>
-                                                              <span className="pull-right mb-0">
-                                                                  <b>
-                                                                      {t(
-                                                                          "OrderHistory.Sum",
-                                                                      )}{" "}
-                                                                  </b>
-                                                                  <b className="order-text-value">
-                                                                      {Separator(
-                                                                          (+order.total).toFixed(
-                                                                              2,
-                                                                          ),
-                                                                      )}{" "}
-                                                                      {showedOrder &&
-                                                                          showedOrder.currency_code}
-                                                                  </b>
-                                                              </span>
-                                                          </div>
+                                                              <b className="order-text-value">
+                                                                  (
+                                                                  {
+                                                                      +order.quantityOrdered
+                                                                  }
+                                                              </b>
+                                                              <b className="order-text-value">
+                                                                  {" "}
+                                                                  /{" "}
+                                                                  {
+                                                                      +order.quantityDelivered
+                                                                  }
+                                                                  )
+                                                              </b>
+                                                          </span>
+                                                          <span className="pull-right mb-0">
+                                                              <b>
+                                                                  {t(
+                                                                      "OrderHistory.Sum",
+                                                                  )}{" "}
+                                                              </b>
+                                                              <b className="order-text-value">
+                                                                  {Separator(
+                                                                      (+order.total).toFixed(
+                                                                          2,
+                                                                      ),
+                                                                  )}{" "}
+                                                                  {showedOrder &&
+                                                                      showedOrder.currency_code}
+                                                              </b>
+                                                          </span>
                                                       </div>
                                                   </div>
-                                              </li>
-                                          </>
+                                              </div>
+                                          </li>
                                       );
                                   })
                                 : null}
