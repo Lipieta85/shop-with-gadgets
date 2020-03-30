@@ -234,7 +234,7 @@ const NavMenu = () => {
                                                 "PaidOrder.NoProductsWarning",
                                             )}
                                             header={t(
-                                                "Button.WniosekZamówieniePłatne",
+                                                "Button.PaidOrderApplication",
                                             )}
                                         />
                                     </ButtonToolbar>
