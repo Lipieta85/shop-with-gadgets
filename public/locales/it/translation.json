@@ -11,7 +11,8 @@
   },
   "PaidOrder": {
     "ProductsWarning": "La quantità di prodotti che vuoi ordinare supera il budget di marketing disponibile. Se vuoi ordinare una quantità maggiore, compila una richiesta specifica per poter inoltrare ordini a pagamento. Nota bene: dopo che la richiesta è stata presentata e accettata da un rappresentante di MANN+HUMMEL FT Poland, il tuo budget di marketing per accessori sarà azzerato. D'ora in poi, fino a quando non ti sarà concesso un nuovo budget di marketing per accessori, tutti i tuoi ordini saranno realizzati in modalità di pagamento completo sulla base di una fattura emessa da MANN+HUMMEL FT Poland.",
-    "NoProductsWarning": "Nota bene: dopo che la domanda è stata presentata e accettata dal rappresentante di MANN+HUMMEL FT Poland, il tuo budget di marketing per i gadget sarà azzerato. D'ora in poi, fino a quando non ti sarà concesso un nuovo budget di marketing per i gadget, tutti i tuoi ordini saranno elaborati in modalità di pagamento completo sulla base di una fattura emessa da MANN+HUMMEL FT Poland."
+    "NoProductsWarning": "Nota bene: dopo che la domanda è stata presentata e accettata dal rappresentante di MANN+HUMMEL FT Poland, il tuo budget di marketing per i gadget sarà azzerato. D'ora in poi, fino a quando non ti sarà concesso un nuovo budget di marketing per i gadget, tutti i tuoi ordini saranno elaborati in modalità di pagamento completo sulla base di una fattura emessa da MANN+HUMMEL FT Poland.",
+    "Header": "Superamento del budget disponibile"
   },
   "CPanelMenu": {
     "YouAreLoggedAs": "Sei registrato come",
@@ -123,7 +124,10 @@
     "Date": "Data",
     "NetAmount": "Importo netto",
     "Ordered-delivered": "Ordinati / consegnati",
-    "OrderPerson": "Ordine effettuato da"
+    "OrderPerson": "Ordine effettuato da",
+    "YourOrderNo": "Il tuo ordine n. ",
+    "Cancelled": "è stato cancellato",
+    "NotCancelled": "L'ordine non può essere annullato"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "La storia del budget è vuota",
@@ -132,7 +136,7 @@
     "UsedBudget": "Budget utilizzato",
     "UserBudgetAtTheBeggining": "Budget dell'utente all'inizio",
     "OperationType": "Tipo di operazione",
-    "OperationDescription": "Opis operacji",
+    "OperationDescription": "Descrizione dell'operazione",
     "OrderNumber": "Numero d'ordine",
     "Time": "Durata dell'evento",
     "MarketingBudgetAllocatedForTheYear": "Budget di marketing assegnato per l'anno",

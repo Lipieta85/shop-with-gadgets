@@ -11,7 +11,8 @@
   },
   "PaidOrder": {
     "ProductsWarning": "The number of products you wish to order exceeds the available marketing budget. If you need to order a greater number, please fill in the application for the facility of placing paid orders. Important: after the request is submitted and accepted by a representative of MANN+HUMMEL FT Poland, your marketing budget for premium gifts will be reset to zero. From now on, all your orders will be processed in the full-payment mode, on the basis of an invoice issued by MANN+HUMMEL FT Poland, until you are allocated a new marketing budget for premium gifts.",
-    "NoProductsWarning": "Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland."
+    "NoProductsWarning": "Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland.",
+    "Header": "Exceeding the available budget"
   },
   "CPanelMenu": {
     "YouAreLoggedAs": "You are logged as",
@@ -123,7 +124,10 @@
     "Date": "Date",
     "NetAmount": "Net amount",
     "Ordered-delivered": "Ordered / delivered",
-    "OrderPerson": "Order placed by"
+    "OrderPerson": "Order placed by",
+    "YourOrderNo": "Your order no. ",
+    "Cancelled": "has been cancelled",
+    "NotCancelled": "Order could not be canceled"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Budget history is empty.",

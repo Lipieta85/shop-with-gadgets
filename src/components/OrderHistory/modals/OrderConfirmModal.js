@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import "../../../assets/styles/order-choose-modal.scss";
 
 const ConfirmModal = props => {
     const cancelOrderStatus = useSelector(
         state => state.orderReducer.cancelOrderStatus,
     );
+    const { t } = useTranslation();
     return (
         <div>
             <button
@@ -29,8 +31,8 @@ const ConfirmModal = props => {
                             <b>
                                 {cancelOrderStatus === true ||
                                 cancelOrderStatus === 1
-                                    ? `Twoje zamówienie o nr ${props.showedOrderNumber} zostało anulowane`
-                                    : "Nie udało się anulować zamówienia"}
+                                    ? `${t("OrderHistory.YourOrderNo")} ${props.showedOrderNumber} ${t("OrderHistory.Cancelled")}`
+                                    : t("OrderHistory.NotCancelled")}
                             </b>
                         </div>
                         <div className="modal-footer">
