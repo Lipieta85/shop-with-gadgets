@@ -152,7 +152,7 @@
     "PaidOrderApplication": "Заявка на платный заказ",
     "Cancel": "Отменить",
     "OrderApplication": "Разместите заявку",
-    "NotifyWhenAvailable": "Powiadom o dostępności",
+    "NotifyWhenAvailable": "Уведомлять, когда доступно",
     "InvalidValue": "Неправильное значение ",
     "TheValueEntered": "Введенное значение неправильное или превышает имеющееся на складе количество товара."
   },
