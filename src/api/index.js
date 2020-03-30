@@ -104,6 +104,7 @@ export const getAllProducts = async (
 
 export const getProductsCategories = async (token, companyId, lang) => {
     let url = `${host}/restApi/products/method/categories/parameters/{"lang":"${lang}", "bId":"${companyId}"}`;
+    console.log(url)
     return await trackPromise(
         axios({
             method: "get",
