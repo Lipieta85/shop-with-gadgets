@@ -152,7 +152,7 @@
     "PaidOrderApplication": "Richiesta di ordine a pagamento",
     "Cancel": "Annullare",
     "OrderApplication": "Presentare la richiesta",
-    "NotifyWhenAvailable": "Powiadom o dostępności",
+    "NotifyWhenAvailable": "Notifica quando disponibile",
     "InvalidValue": "Valore non corretto",
     "TheValueEntered": "Il valore inserito non è corretto o supera la quantità disponibile in magazzino."
   },

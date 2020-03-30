@@ -7,6 +7,7 @@ import { signOut } from "../../actions/authorization";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setProductCategories,
+    initProductsCategories,
     initProducts,
     setPage,
     changeLanguage,
@@ -74,6 +75,7 @@ const NavMenu = () => {
     const changeLangHandler = event => {
         dispatch(changeLanguage(event.target.value));
         dispatch(initProducts(token, 1));
+        dispatch(initProductsCategories(token))
     };
 
     const changePolicyModalStatus = () => {
