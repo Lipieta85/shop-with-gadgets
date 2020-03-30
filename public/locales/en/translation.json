@@ -163,7 +163,7 @@
   },
   "ClientModal": {
     "NotifyMe": "Notify me",
-    "NotifyWhenProductAvailable": "Notify me about the product's availability.",
+    "NotifyWhenProductAvailable": "Notify me about the product's availability",
     "Subscribe": "Enter your email address and click “Notify me”, and you will be notified when the product is available again."
   },
   "ClientResponseModal": {
