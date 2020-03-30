@@ -21,7 +21,7 @@
     "AvailableMarketingBudget": "Доступный маркетинговый бюджет",
     "PaidOrder": "Платный заказ",
     "ValueOfYourPurchases": "Стоимость ваших покупок",
-    "ExceededMarketingBudget": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym.",
+    "ExceededMarketingBudget": "Вы превысили свой маркетинговый бюджет. Если вы хотите заказать большее количество товаров, сначала разместите стандартный заказ, а для дополнительных товаров используйте оплаченный заказ.",
     "FindTheProduct": "Поиск товара:",
     "ProductName": "Наименование продукта..."
   },
