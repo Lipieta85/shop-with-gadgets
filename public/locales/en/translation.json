@@ -10,38 +10,38 @@
     "LogOut": "Log Out"
   },
   "PaidOrder": {
-    "ProductsWarning": "The number of products you want to order exceeds the available marketing budget. If you want to order a larger amount, fill out the application for the possibility of placing paid orders. Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland.",
+    "ProductsWarning": "The number of products you wish to order exceeds the available marketing budget. If you need to order a greater number, please fill in the application for the facility of placing paid orders. Important: after the request is submitted and accepted by a representative of MANN+HUMMEL FT Poland, your marketing budget for premium gifts will be reset to zero. From now on, all your orders will be processed in the full-payment mode, on the basis of an invoice issued by MANN+HUMMEL FT Poland, until you are allocated a new marketing budget for premium gifts.",
     "NoProductsWarning": "Note: after submitting the application and accepting it by a representative of MANN + HUMMEL FT Poland, your marketing budget for gadgets will be reset. From now until you are granted a new marketing budget for gadgets, all your orders will be processed in full payment mode based on the invoice issued by MANN + HUMMEL FT Poland."
   },
   "CPanelMenu": {
     "YouAreLoggedAs": "You are logged as",
-    "Behalf": "behalf",
+    "Behalf": "You are placing an order for",
     "YourBasket": "Your Basket",
     "Basket(Empty)": "Basket (Empty)",
     "AvailableMarketingBudget": "Marketing Budget Available",
     "PaidOrder": "Paid Order",
     "ValueOfYourPurchases": "Value of Your Purchases",
     "ExceededMarketingBudget": "You've exceeded your marketing budget. If you want to order a larger number of products, first place a standard order and for additional products used paid ordered.",
-    "FindTheProduct": "Find the product:",
+    "FindTheProduct": "Search for a product:",
     "ProductName": "Product name..."
   },
   "NotificationModal": {
-    "PróbujeszDodaćDoKoszyka": "Próbujesz dodać do koszyka",
-    "WIlości": "w ilości",
-    "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
-    "MożeszDodaćTylko": "możesz dodać tylko"
+    "PróbujeszDodaćDoKoszyka": "You're trying to add to your shopping cart",
+    "WIlości": "with this number of items:",
+    "WRamachBudżetuMarketingowego": "Within the limits of the marketing budget",
+    "MożeszDodaćTylko": "you may only add"
   },
   "AddProductModal": {
-    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
-    "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
-    "WIlości": "w ilości",
+    "ProduktyDodaneDoKoszyka": "the products added to the cart.",
+    "DoKoszykaDodanoProdukt": "The product(s) was added to the shopping cart",
+    "WIlości": "with this number of items:",
     "Szt": "pcs"
   },
   "PolicyModal": {
-    "AkceptacjaRegulaminu": "Akceptacja regulaminu",
-    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
-    "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
-    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
+    "AkceptacjaRegulaminu": "Acceptance of the Terms and Conditions",
+    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "You must accept the store's Terms and Conditions to take advantage of its functions.",
+    "WystąpiłBłądSpróbujPonowniePóźniej": "There was an error. Try again later.",
+    "CzyAkceptujeszRegulaminSklepu": "Do you accept the Terms and Conditions of the store?",
     "Tak": "Yes",
     "Nie": "No"
   },
@@ -60,7 +60,7 @@
     "Qauntity": "Qauntity",
     "Update": "Update",
     "Sum": "Sum",
-    "NoProductsInBasket": "No products in basket.",
+    "NoProductsInBasket": "No products in the cart.",
     "ClearBasket": "Clear Basket",
     "AmountToPay": "Amount to pay",
     "BasketIsEmptyAdd": "Basket is empty, add product",
@@ -72,15 +72,13 @@
     "UEinfo": "Dear Customer, please make sure that you have all the documents and certificates necessary to import the ordered products into your country."
   },
   "DeleteModal": {
-    "UsuwanieProduktuZKoszyka": "Usuwanie produktu z koszyka",
-    "CzyNapewnoChceszUsunąćProdukt": "Czy na pewno chcesz usunąć produkt",
-    "ZKoszyka": "z koszyka"
+    "UsuwanieProduktuZKoszyka": "Removing product from the cart",
+    "CzyNapewnoChceszUsunąćProdukt": "Are you sure you wish to remove the product",
+    "ZKoszyka": "from your shopping cart?"
   },
   "DeleteAllProductsModal": {
-    "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
-    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
-    "Wszystkie": "wszystkie",
-    "ProduktyZKoszyka": "produkty z koszyka"
+    "UsuwanieProduktówZKoszyka": "Removing product(s) from the cart",
+    "YouSureRemoveAll": "Are you sure you want to remove all the products from your shopping cart?"
   },
   "Order": {
     "OrderSummary": "Order Summary",
@@ -94,13 +92,13 @@
     "RETURNTOBASKET": "RETURN TO BASKET",
     "CONFIRMTHEORDER": "CONFIRM THE ORDER",
     "OrderValue": "Order value",
-    "CancelOrder": "Cancel order",
-    "AreYouSureCancelOrder": "Are you sure you want cancel order",
+    "CancelOrder": "Cancel the order",
+    "AreYouSureCancelOrder": "Are you sure you wish to cancel order No. ",
     "Yes": "Yes",
     "No": "No",
     "MarketingBudget": "Marketing Budget",
     "PaidOrder": "Paid order",
-    "OrderCancelation": "Order cancelation"
+    "OrderCancelation": "Cancellation of the order"
   },
   "OrderEnd": {
     "ZamówienieONr": "Your order number",
@@ -112,12 +110,12 @@
     "TheOrderListIsEmpty": "The order list is empty",
     "OrderList": "Order List",
     "OrderedProducts": "Ordered products:",
-    "DetailsOfOrder": "Details of order",
+    "DetailsOfOrder": "Order details",
     "OrderNumber": "Order number:",
-    "OrderDate": "Order date:",
+    "OrderDate": "Date of placing:",
     "Time": "Time:",
     "Currency": "Currency:",
-    "Delivery": "Delivery:",
+    "Delivery": "Address of delivery:",
     "Status": "Status:",
     "AmountPaid": "Amount paid:",
     "Price": "Price",
@@ -125,49 +123,53 @@
     "Date": "Date",
     "NetAmount": "Net amount",
     "Ordered-delivered": "Ordered / delivered",
-    "OrderPerson": "Order placed by",
-    "Cancelled":"Cancelled"
+    "OrderPerson": "Order placed by"
   },
   "BudgetHistory": {
-    "TheBudgetHistoryIsEmpty": "The budget history is empty",
+    "TheBudgetHistoryIsEmpty": "Budget history is empty.",
     "BudgetHistory": "Budget History",
     "Date": "Date",
-    "UsedBudget": "Used budget",
-    "UserBudgetAtTheBeggining": "User budget at the beggining",
-    "OperationType": "Operation type",
+    "UsedBudget": "Budget used:",
+    "UserBudgetAtTheBeggining": "Initial budget of the User:",
+    "OperationType": "Type of operation:",
     "OperationDescription": "Operation description",
-    "OrderNumber": "Order number",
-    "Time": "Time",
-    "MarketingBudgetAllocatedForTheYear": "Marketing budget allocated for the year",
-    "MarketingBudgetRemainingForTheYear": "Marketing budget remaining for the year"
+    "OrderNumber": "Order number:",
+    "Time": "Time of event:",
+    "MarketingBudgetAllocatedForTheYear": "Allocated marketing budget for the year:",
+    "MarketingBudgetRemainingForTheYear": "Remaining marketing budget for the year:"
   },
   "ProductDetails": {
     "ProductCode": "Product code",
-    "ProductUnit": "Product unit",
-    "ProductPrice": "Product price",
-    "ProductAvailability": "Product availability",
-    "Back": "Back",
+    "ProductUnit": "Unit of measurement",
+    "ProductPrice": "Unit price",
+    "ProductAvailability": " Inventory",
+    "Back": "Return",
     "Previous": "Previous",
     "Next": "Next",
-    "ProductDescription": "Product description"
+    "ProductDescription": "Description of the product"
   },
   "Button": {
-    "PaidOrderApplication": "Paid order application",
+    "PaidOrderApplication": "Request for a paid order",
     "Cancel": "Cancel",
-    "OrderApplication": "Order application",
+    "OrderApplication": "Submit a request",
     "NotifyWhenAvailable": "Notify when available",
     "InvalidValue": "Invalid value",
-    "TheValueEntered": "The value entered is invalid or exceeds the available quantity in the warehouse."
+    "TheValueEntered": "The entered value is incorrect, or exceeds the available numbers of items in stock."
   },
   "ClientModal": {
     "NotifyMe": "Notify me",
-    "NotifyWhenProductAvailable": "Notify when product available",
-    "Subscribe": "Write your email and click on 'Notify Me' and you'll receive a notification if this product comes back again",
-    "Close": "Close"
+    "NotifyWhenProductAvailable": "Notify me about the product's availability.",
+    "Subscribe": "Enter your email address and click “Notify me”, and you will be notified when the product is available again."
   },
   "ClientResponseModal": {
-    "SuccessfullySubscribed": "Successfully subscribed: ",
-    "AlreadySubscribedItem": "Already subscribed item: ",
-    "OrAnErrorOccurred": "or an error occurred"
+    "SuccessfullySubscribed": "You have successfully requested this product: ",
+    "SuccessfullySubscribedInfo": "You will receive a message from us when it is available again.",
+    "AlreadySubscribedItem": "You have already subscribed to the product ",
+    "OrAnErrorOccurred": "Or an error has occurred."
+  },
+  "NotFound": {
+    "GoToLog": "Go back to the login page.",
+    "AuthDataExpired": "Your authorisation data has expired, please log in again.",
+    "ServerError": "There was a server error, please contact your manager."
   }
 }

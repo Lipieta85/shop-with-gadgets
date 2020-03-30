@@ -52,11 +52,7 @@ const DeleteAllProductsModal = props => {
                 </Modal.Header>
                 <Modal.Body>
                     <h6>
-                        {t(`DeleteAllProductsModal.CzyNapewnoChceszUsunąć`)}{" "}
-                        <b className="text-uppercase">
-                            {t(`DeleteAllProductsModal.Wszystkie`)}
-                        </b>{" "}
-                        {t(`DeleteAllProductsModal.ProduktyZKoszyka`)}?{" "}
+                        {t(`DeleteAllProductsModal.YouSureRemoveAll`)}
                     </h6>
                 </Modal.Body>
                 <Modal.Footer>

@@ -38,7 +38,7 @@ const ChooseModal = props => {
                             </p>
                             <p className="modal-text-content">
                                 {t("Order.AreYouSureCancelOrder")}{" "}
-                                {props.showedOrderNumber}
+                                {props.showedOrderNumber}{"?"}
                             </p>
                         </div>
                         <div className="modal-footer">

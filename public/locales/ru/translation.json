@@ -6,44 +6,44 @@
     "Basket": "Корзина",
     "ListOfOrders": "Список заказов",
     "BudgetHistory": "История бюджета",
-    "PaidOrders": "Zamówienia płatne",
+    "PaidOrders": "Платные заказы",
     "LogOut": "Выйти"
   },
   "PaidOrder": {
-    "ProductsWarning": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland.",
+    "ProductsWarning": "Количество продуктов, которые вы хотите заказать, превышает доступный маркетинговый бюджет. Если вы хотите заказать большее количество, заполните заявку на размещение платных заказов. Обратите внимание: после того, как заявка будет подана и принята представителем MANN+HUMMEL FT Poland, ваш маркетинговый бюджет на гаджеты будет обнулен. С этого момента и до того, пока вам не будет предоставлен новый маркетинговый бюджет на гаджеты, все ваши заказы будут обрабатываться после полной предоплаты на основании счета-фактуры, выставленного MANN+HUMMEL FT Poland.",
     "NoProductsWarning": "Примечание: после подачи заявки и ее принятия представителем MANN+HUMMEL FT Poland ваш маркетинговый бюджет на гаджеты будет сброшен. С этого момента до предоставления вам нового маркетингового бюджета на гаджеты все ваши заказы будут обрабатываться в режиме полной оплаты на основании счета, выставленного компанией MANN+HUMMEL FT Poland."
   },
   "CPanelMenu": {
-    "YouAreLoggedAs": "Jesteś Zalogowany Jako",
-    "Behalf": "składasz zamówienie w imieniu",
+    "YouAreLoggedAs": "вы вошли как",
+    "Behalf": "вы размещаете заказ от имени",
     "YourBasket": "Ваша корзина",
     "Basket(Empty)": "Корзина (пусто)",
     "AvailableMarketingBudget": "Доступный маркетинговый бюджет",
-    "PaidOrder": "Zamówienie płatne",
+    "PaidOrder": "Платный заказ",
     "ValueOfYourPurchases": "Стоимость ваших покупок",
-    "ExceededMarketingBudget": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym.",
-    "FindTheProduct": "Wyszukaj produkt:",
+    "ExceededMarketingBudget": "Вы превысили свой маркетинговый бюджет. Если вы хотите заказать большее количество товаров, сначала разместите стандартный заказ, а для дополнительных товаров используйте оплаченный заказ.",
+    "FindTheProduct": "Поиск товара:",
     "ProductName": "Наименование продукта..."
   },
   "NotificationModal": {
-    "PróbujeszDodaćDoKoszyka": "Próbujesz dodać do koszyka",
-    "WIlości": "w ilości",
-    "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
-    "MożeszDodaćTylko": "możesz dodać tylko"
+    "PróbujeszDodaćDoKoszyka": "Вы пытаетесь добавить в корзину",
+    "WIlości": "в количестве",
+    "WRamachBudżetuMarketingowego": "в рамках маркетингового бюджета",
+    "MożeszDodaćTylko": "можно только добавить"
   },
   "AddProductModal": {
-    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
-    "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
-    "WIlości": "w ilości",
+    "ProduktyDodaneDoKoszyka": "продукты, добавленные в корзину",
+    "DoKoszykaDodanoProdukt": "Продукт был добавлен в корзину",
+    "WIlości": "в количестве",
     "Szt": "шт"
   },
   "PolicyModal": {
-    "AkceptacjaRegulaminu": "Akceptacja regulaminu",
-    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
-    "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
-    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
-    "Tak": "Yes",
-    "Nie": "No"
+    "AkceptacjaRegulaminu": "Принятие правил",
+    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Для использования функций магазина вы должны принять правила магазина",
+    "WystąpiłBłądSpróbujPonowniePóźniej": "Произошла ошибка. Попробуйте позже",
+    "CzyAkceptujeszRegulaminSklepu": "Вы принимаете правила магазина?",
+    "Tak": "Да",
+    "Nie": "Нет"
   },
   "Card": {
     "Price": "Цена",
@@ -56,7 +56,7 @@
     "Qauntity": "Количество",
     "Update": "Обновить",
     "Sum": "Итого",
-    "NoProductsInBasket": "Brak produktów w koszyku.",
+    "NoProductsInBasket": "Ваша корзина пуста.",
     "ClearBasket": "Очистить корзину",
     "AmountToPay": "Сумма к оплате",
     "BasketIsEmptyAdd": "Корзина пуста, добавить продукт",
@@ -68,19 +68,17 @@
     "UEinfo": "Уважаемый клиент! Убедитесь, что у вас есть все документы и сертификаты, необходимые для импорта заказанных продуктов в вашу страну."
   },
   "DeleteModal": {
-    "UsuwanieProduktuZKoszyka": "Usuwanie produktu z koszyka",
-    "CzyNapewnoChceszUsunąćProdukt": "Czy na pewno chcesz usunąć produkt",
-    "ZKoszyka": "z koszyka"
+    "UsuwanieProduktuZKoszyka": "Удаление продуктов из корзины",
+    "CzyNapewnoChceszUsunąćProdukt": "Вы уверены, что хотите удалить продукт",
+    "ZKoszyka": "из корзины?"
   },
   "DeleteAllProductsModal": {
-    "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
-    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
-    "Wszystkie": "wszystkie",
-    "ProduktyZKoszyka": "produkty z koszyka"
+    "UsuwanieProduktówZKoszyka": "Удаление продуктов из корзины",
+    "YouSureRemoveAll": "Вы уверены, что хотите удалить все продукты из корзины?"
   },
   "Footer": {
     "ShopRules": "Правила магазина",
-    "ContactDetails": "Dane kontaktowe"
+    "ContactDetails": "Контактные данные"
   },
   "Order": {
     "OrderSummary": "Итог заказа",
@@ -94,13 +92,13 @@
     "RETURNTOBASKET": "ВЕРНУТЬСЯ В КОРЗИНУ",
     "CONFIRMTHEORDER": "ПОДТВЕРДИТЬ ЗАКАЗ",
     "OrderValue": "Стоимость заказа",
-    "CancelOrder": "Anuluj zamówienie",
-    "AreYouSureCancelOrder": "Czy napewno chcesz anulować zamówienie nr",
-    "Yes": "Tak",
-    "No": "Nie",
-    "MarketingBudget": "Budżet Marketingowy",
-    "PaidOrder": "Paid order",
-    "OrderCancelation": "Anulowanie zamówienia"
+    "CancelOrder": "Отменить заказ",
+    "AreYouSureCancelOrder": "Вы уверены, что хотите отменить заказ № ",
+    "Yes": "Да",
+    "No": "Нет",
+    "MarketingBudget": "Маркетинговый бюджет",
+    "PaidOrder": "Oплаченный заказ",
+    "OrderCancelation": "Отмена заказа"
   },
   "OrderEnd": {
     "ZamówienieONr": "Ваш заказ с номером",
@@ -112,63 +110,66 @@
     "TheOrderListIsEmpty": "Список заказов пуст",
     "OrderList": "Список заказов",
     "OrderedProducts": "Заказанные продукты:",
-    "DetailsOfOrder": "Szczegóły zamówienia",
-    "OrderNumber": "Numer zamówienia:",
-    "OrderDate": "Data złożenia:",
-    "Time": "Godzina:",
-    "Currency": "Waluta:",
-    "Delivery": "Adres dostarczenia:",
-    "Status": "Status:",
-    "AmountPaid": "Zapłacona kwota:",
+    "DetailsOfOrder": "Информация о заказе",
+    "OrderNumber": "Номер заказа:",
+    "OrderDate": "Дата размещения:",
+    "Time": "Время:",
+    "Currency": "Валюта:",
+    "Delivery": "Адрес доставки:",
+    "Status": "Статус:",
+    "AmountPaid": "Уплаченная сумма:",
     "Price": "Цена",
     "Sum": "Итого:",
-    "Date": "Data",
-    "NetAmount": "Kwota netto",
-    "Ordered-delivered": "Zamówionych / dostarczonych",
-    "OrderPerson": "Comanda plasată de",
-    "Cancelled":"Cancelled"
+    "Date": "Дата",
+    "NetAmount": "Сумма нетто",
+    "Ordered-delivered": "Заказано / доставлено",
+    "OrderPerson": "Comanda plasată de"
   },
   "BudgetHistory": {
-    "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
-    "BudgetHistory": "Historia budżetu",
-    "Date": "Data",
-    "UsedBudget": "Wykorzystany budżet",
-    "UserBudgetAtTheBeggining": "Budżet użytkownika na początku",
-    "OperationType": "Rodzaj operacji",
+    "TheBudgetHistoryIsEmpty": "Нет истории бюджета",
+    "BudgetHistory": "бюджетная история",
+    "Date": "Дата",
+    "UsedBudget": "Использованный бюджет",
+    "UserBudgetAtTheBeggining": "Начальный бюджет пользователя",
+    "OperationType": "Тип операции",
     "OperationDescription": "Opis operacji",
-    "OrderNumber": "Numer zamówienia",
-    "Time": "Czas zdarzenia",
-    "MarketingBudgetAllocatedForTheYear": "Przyznany budżet marketingowy na rok",
-    "MarketingBudgetRemainingForTheYear": "Pozostały do wykorzystania budżet marketingowy na rok"
+    "OrderNumber": "Номер заказа",
+    "Time": "Время события",
+    "MarketingBudgetAllocatedForTheYear": "Выделенный годовой маркетинговый бюджет",
+    "MarketingBudgetRemainingForTheYear": "Годовой маркетинговый бюджет, оставшийся для использования"
   },
   "ProductDetails": {
-    "ProductCode": "Kod produktu",
-    "ProductUnit": "Jednostka miary",
-    "ProductPrice": "Cena jednostkowa",
-    "ProductAvailability": " Stan magazynowy",
-    "Back": "Powrót",
-    "Previous": "Poprzedni",
-    "Next": "Następny",
-    "ProductDescription": "Opis produktu"
+    "ProductCode": "Код продукта",
+    "ProductUnit": "Единица измерения",
+    "ProductPrice": "Цена за единицу",
+    "ProductAvailability": " Наличие на складе",
+    "Back": "Назад",
+    "Previous": "Предыдущий",
+    "Next": "Следующий",
+    "ProductDescription": "Описание продукта"
   },
   "Button": {
-    "PaidOrderApplication": "Wniosek o zamówienie płatne",
-    "Cancel": "Anuluj",
-    "OrderApplication": "Złóż wniosek",
+    "PaidOrderApplication": "Заявка на платный заказ",
+    "Cancel": "Отменить",
+    "OrderApplication": "Разместите заявку",
     "NotifyWhenAvailable": "Powiadom o dostępności",
-    "InvalidValue": "Niepoprawna wartość",
-    "TheValueEntered": "Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
+    "InvalidValue": "Неправильное значение ",
+    "TheValueEntered": "Введенное значение неправильное или превышает имеющееся на складе количество товара."
   },
   "ClientModal": {
-    "NotifyMe": "Powiadom mnie",
-    "NotifyWhenProductAvailable": "Powiadom o dostępności produktu",
-    "Subscribe": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
-    "Close": "Close"
+    "NotifyMe": "Проинформировать меня",
+    "NotifyWhenProductAvailable": "Проинформировать о наличии продукта",
+    "Subscribe": "Введите свой адрес электронной почты и нажмите «Проинформировать меня», и вас проинформируют о том, когда продукт будет снова доступен."
   },
   "ClientResponseModal": {
-    "SuccessfullySubscribed": "Udało ci się zasubskrybować produkt: ",
-    "SuccessfullySubscribedInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
-    "AlreadySubscribedItem": "Subskrybujesz już produkt: ",
-    "OrAnErrorOccurred": "lub wystąpił błąd"
+    "SuccessfullySubscribed": "Вам удалось заказать продукт: ",
+    "SuccessfullySubscribedInfo": "Когда продукт снова будет в наличии, вы получите от нас информационное сообщение.",
+    "AlreadySubscribedItem": "Вы уже заказали продукт: ",
+    "OrAnErrorOccurred": "или произошла ошибка"
+  },
+  "NotFound": {
+    "GoToLog": "Вернуться на страницу входа",
+    "AuthDataExpired": "Срок действия ваших данных авторизации истек, пожалуйста, войдите еще раз",
+    "ServerError": "Произошла ошибка сервера, пожалуйста, свяжитесь со своим контактным лицом"
   }
 }

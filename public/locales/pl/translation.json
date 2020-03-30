@@ -10,7 +10,7 @@
     "LogOut": "Wyloguj"
   },
   "PaidOrder": {
-    "ProductsWarning": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland.",
+    "ProductsWarning": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury wystawionej przez MANN+HUMMEL FT  Poland.",
     "NoProductsWarning": "Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland."
   },
   "CPanelMenu": {
@@ -32,7 +32,7 @@
     "MożeszDodaćTylko": "możesz dodać tylko"
   },
   "AddProductModal": {
-    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
+    "ProduktyDodaneDoKoszyka": "produkty dodane Do Koszyka",
     "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
     "WIlości": "w ilości",
     "Szt": "szt."
@@ -41,7 +41,7 @@
     "AkceptacjaRegulaminu": "Akceptacja regulaminu",
     "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
     "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
-    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
+    "CzyAkceptujeszRegulaminSklepu": "Czy akceptujesz regulamin sklepu?",
     "Tak": "Tak",
     "Nie": "Nie"
   },
@@ -78,9 +78,7 @@
   },
   "DeleteAllProductsModal": {
     "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
-    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
-    "Wszystkie": "wszystkie",
-    "ProduktyZKoszyka": "produkty z koszyka"
+    "YouSureRemoveAll": "Czy na pewno chcesz usunąć wszystkie produkty z koszyka?"
   },
   "Order": {
     "OrderSummary": "Podsumowanie zamówienia",
@@ -95,7 +93,7 @@
     "CONFIRMTHEORDER": "ZATWIERDŻ ZAMÓWIENIE",
     "OrderValue": "Wartość zamówienia",
     "CancelOrder": "Anuluj zamówienie",
-    "AreYouSureCancelOrder": "Czy napewno chcesz anulować zamówienie nr",
+    "AreYouSureCancelOrder": "Czy napewno chcesz anulować zamówienie nr ",
     "Yes": "Tak",
     "No": "Nie",
     "MarketingBudget": "Budżet Marketingowy",
@@ -125,8 +123,7 @@
     "Date": "Data",
     "NetAmount": "Kwota netto",
     "Ordered-delivered": "Zamówionych / dostarczonych",
-    "OrderPerson": "Zamówienie złożone przez",
-    "Cancelled": "Anulowane"
+    "OrderPerson": "Zamówienie złożone przez"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
@@ -162,13 +159,17 @@
   "ClientModal": {
     "NotifyMe": "Powiadom mnie",
     "NotifyWhenProductAvailable": "Powiadom o dostępności produktu",
-    "Subscribe": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
-    "Close": "Close"
+    "Subscribe": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny."
   },
   "ClientResponseModal": {
     "SuccessfullySubscribed": "Udało ci się zasubskrybować produkt: ",
     "SuccessfullySubscribedInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
     "AlreadySubscribedItem": "Subskrybujesz już produkt: ",
     "OrAnErrorOccurred": "lub wystąpił błąd"
+  },
+  "NotFound": {
+    "GoToLog": "Wróć do strony logowania",
+    "AuthDataExpired": "Twoje dane autoryzacyjne wygasły, zaloguj sie ponownie",
+    "ServerError": "Wystąpił błąd serwera, skontaktuj się ze swoim opiekunem"
   }
 }
