@@ -6,43 +6,43 @@
     "Basket": "Cestino",
     "ListOfOrders": "Elenco degli ordini",
     "BudgetHistory": "Storico del budget",
-    "PaidOrders": "Zamówienia płatne",
+    "PaidOrders": "Ordini a pagamento",
     "LogOut": "Esci"
   },
   "PaidOrder": {
-    "ProductsWarning": "Ilość produktów jaką chcesz zamówić przekracza dostępny budżet marketingowy. Jeśli chcesz zamówić większą ilość, wypełnij wniosek o możliwość składania zamówień płatnych. Uwaga: po złożeniu wniosku i jego zaakceptowaniu przez przedstawiciela MANN+HUMMEL FT Poland Twój budżet marketingowy na gadżety zostanie wyzerowany. Od tej chwili aż do przyznania Ci nowego budżetu marketingowego na gadżety wszystkie Twoje zamówienia będą realizowane w trybie pełnej płatności na podstawie faktury  wystawionej przez MANN+HUMMEL FT  Poland.",
+    "ProductsWarning": "La quantità di prodotti che vuoi ordinare supera il budget di marketing disponibile. Se vuoi ordinare una quantità maggiore, compila una richiesta specifica per poter inoltrare ordini a pagamento. Nota bene: dopo che la richiesta è stata presentata e accettata da un rappresentante di MANN+HUMMEL FT Poland, il tuo budget di marketing per accessori sarà azzerato. D'ora in poi, fino a quando non ti sarà concesso un nuovo budget di marketing per accessori, tutti i tuoi ordini saranno realizzati in modalità di pagamento completo sulla base di una fattura emessa da MANN+HUMMEL FT Poland.",
     "NoProductsWarning": "Nota bene: dopo che la domanda è stata presentata e accettata dal rappresentante di MANN+HUMMEL FT Poland, il tuo budget di marketing per i gadget sarà azzerato. D'ora in poi, fino a quando non ti sarà concesso un nuovo budget di marketing per i gadget, tutti i tuoi ordini saranno elaborati in modalità di pagamento completo sulla base di una fattura emessa da MANN+HUMMEL FT Poland."
   },
   "CPanelMenu": {
     "YouAreLoggedAs": "Sei registrato come",
-    "Behalf": "Per conto",
+    "Behalf": "fai un ordine per conto di",
     "YourBasket": "Il tuo carrello",
     "Basket(Empty)": "Carrello (vuoto)",
     "AvailableMarketingBudget": "Budget di marketing disponibile",
-    "PaidOrder": "Zamówienie płatne",
+    "PaidOrder": "Ordine a pagamento",
     "ValueOfYourPurchases": "Importo dei tuoi acquisti",
     "ExceededMarketingBudget": "Przekroczyłeś budżet marketingowy. Jeśli chcesz zamówić większą ilość produktów złóż najpierw zamówienie standardowe, a dodatkowe produkty zamów osobnym zamówieniem płatnym.",
-    "FindTheProduct": "Wyszukaj produkt:",
+    "FindTheProduct": "Cercare il prodotto:",
     "ProductName": "Nome del prodotto..."
   },
   "NotificationModal": {
-    "PróbujeszDodaćDoKoszyka": "Próbujesz dodać do koszyka",
-    "WIlości": "w ilości",
-    "WRamachBudżetuMarketingowego": "w ramach budżetu marketingowego",
-    "MożeszDodaćTylko": "możesz dodać tylko"
+    "PróbujeszDodaćDoKoszyka": "Stai cercando di aggiungere al carrello",
+    "WIlości": "in quantità",
+    "WRamachBudżetuMarketingowego": "nell'ambito del budget di marketing",
+    "MożeszDodaćTylko": "puoi aggiungere solo"
   },
   "AddProductModal": {
-    "ProduktyDodaneDoKoszyka": "Produkty Dodane Do Koszyka",
-    "DoKoszykaDodanoProdukt": "Do koszyka dodano produkt",
-    "WIlości": "w ilości",
+    "ProduktyDodaneDoKoszyka": "prodotti aggiunti al carrello",
+    "DoKoszykaDodanoProdukt": "Un prodotto è stato aggiunto al carrello",
+    "WIlości": "in quantità",
     "Szt": "pezzi"
   },
   "PolicyModal": {
-    "AkceptacjaRegulaminu": "Akceptacja regulaminu",
-    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Aby korzystać z funkcji sklepu musisz zaakceptować regulamin sklepu",
-    "WystąpiłBłądSpróbujPonowniePóźniej": "Wystąpił błąd spróbuj ponownie później",
-    "CzyAkceptujeszRegulaminSklepu": "Czy akcpetujesz regulamin sklepu ?",
-    "Tak": "Yes",
+    "AkceptacjaRegulaminu": "Accettazione del regolamento",
+    "AbyKorzystaćZFunkcjiSklepuMusiszZaakceptowaćRegulaminSklepu": "Per poter utilizzare le funzioni del negozio devi accettare il regolamento del negozio",
+    "WystąpiłBłądSpróbujPonowniePóźniej": "Si è verificato un errore. Riprova più tardi",
+    "CzyAkceptujeszRegulaminSklepu": "Accetti il regolamento del negozio?",
+    "Tak": "Sì",
     "Nie": "No"
   },
   "Card": {
@@ -56,7 +56,7 @@
     "Qauntity": "Quantità",
     "Update": "Aggiorna",
     "Sum": "Somma",
-    "NoProductsInBasket": "Brak produktów w koszyku.",
+    "NoProductsInBasket": "Nessun prodotto nel cestino.",
     "ClearBasket": "Svuota il carrello",
     "AmountToPay": "Importo da pagare",
     "BasketIsEmptyAdd": "Il carrello è vuoto, aggiungere un prodotto",
@@ -68,19 +68,17 @@
     "UEinfo": "Gentile Cliente, devi assicurarti di avere tutti i documenti e i certificati necessari per importare al tuo paese i prodotti ordinati."
   },
   "DeleteModal": {
-    "UsuwanieProduktuZKoszyka": "Usuwanie produktu z koszyka",
-    "CzyNapewnoChceszUsunąćProdukt": "Czy na pewno chcesz usunąć produkt",
-    "ZKoszyka": "z koszyka"
+    "UsuwanieProduktuZKoszyka": "Rimozione di prodotti dal carrello",
+    "CzyNapewnoChceszUsunąćProdukt": "Sei sicuro di voler rimuovere il prodotto",
+    "ZKoszyka": "dal carrello?"
   },
   "DeleteAllProductsModal": {
-    "UsuwanieProduktówZKoszyka": "Usuwanie produktów z koszyka",
-    "CzyNapewnoChceszUsunąć": "Czy napewno chcesz usunąć",
-    "Wszystkie": "wszystkie",
-    "ProduktyZKoszyka": "produkty z koszyka"
+    "UsuwanieProduktówZKoszyka": "Rimozione di prodotti dal carrello",
+    "YouSureRemoveAll": "Sei sicuro di voler rimuovere tutti i prodotti dal carrello?"
   },
   "Footer": {
     "ShopRules": "Regolamento del negozio",
-    "ContactDetails": "Dane kontaktowe"
+    "ContactDetails": "Contatti"
   },
   "Order": {
     "OrderSummary": "Riepilogo dell'ordine",
@@ -94,13 +92,13 @@
     "RETURNTOBASKET": "TORNA AL CARRELLO",
     "CONFIRMTHEORDER": "CONFERMA L'ORDINE",
     "OrderValue": "Importo dell'ordine",
-    "CancelOrder": "Anuluj zamówienie",
-    "AreYouSureCancelOrder": "Czy napewno chcesz anulować zamówienie nr",
-    "Yes": "Tak",
-    "No": "Nie",
-    "MarketingBudget": "Budżet Marketingowy",
-    "PaidOrder": "Paid order",
-    "OrderCancelation": "Rodzaj zamówienia"
+    "CancelOrder": "Annullare l'ordine",
+    "AreYouSureCancelOrder": "Sei sicuro di voler cancellare l'ordine N. ",
+    "Yes": "Sì",
+    "No": "No",
+    "MarketingBudget": "Budget di marketing",
+    "PaidOrder": "Ordine pagato",
+    "OrderCancelation": "Annullamento dell'ordine"
   },
   "OrderEnd": {
     "ZamówienieONr": "Il tuo ordine con numero",
@@ -112,63 +110,66 @@
     "TheOrderListIsEmpty": "L'elenco degli ordini è vuoto",
     "OrderList": "Elenco degli ordini",
     "OrderedProducts": "Prodotti ordinati:",
-    "DetailsOfOrder": "Szczegóły zamówienia",
-    "OrderNumber": "Numer zamówienia:",
-    "OrderDate": "Data złożenia:",
-    "Time": "Godzina:",
-    "Currency": "Waluta:",
-    "Delivery": "Adres dostarczenia:",
+    "DetailsOfOrder": "Dettagli dell'ordine",
+    "OrderNumber": "Numero d'ordine:",
+    "OrderDate": "Data dell'ordine:",
+    "Time": "Ora:",
+    "Currency": "Valuta:",
+    "Delivery": "Indirizzo di consegna:",
     "Status": "Status:",
-    "AmountPaid": "Zapłacona kwota:",
+    "AmountPaid": "Importo pagato:",
     "Price": "Prezzo",
     "Sum": "Totale:",
     "Date": "Data",
-    "NetAmount": "Kwota netto",
-    "Ordered-delivered": "Zamówionych / dostarczonych",
-    "OrderPerson": "Ordine effettuato da",
-    "Cancelled":"Cancelled"
+    "NetAmount": "Importo netto",
+    "Ordered-delivered": "Ordinati / consegnati",
+    "OrderPerson": "Ordine effettuato da"
   },
   "BudgetHistory": {
-    "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",
+    "TheBudgetHistoryIsEmpty": "La storia del budget è vuota",
     "BudgetHistory": "Storico del budget",
     "Date": "Data",
-    "UsedBudget": "Wykorzystany budżet",
-    "UserBudgetAtTheBeggining": "Budżet użytkownika na początku",
-    "OperationType": "Rodzaj operacji",
+    "UsedBudget": "Budget utilizzato",
+    "UserBudgetAtTheBeggining": "Budget dell'utente all'inizio",
+    "OperationType": "Tipo di operazione",
     "OperationDescription": "Opis operacji",
-    "OrderNumber": "Numer zamówienia",
-    "Time": "Czas zdarzenia",
-    "MarketingBudgetAllocatedForTheYear": "Przyznany budżet marketingowy na rok",
-    "MarketingBudgetRemainingForTheYear": "Pozostały do wykorzystania budżet marketingowy na rok"
+    "OrderNumber": "Numero d'ordine",
+    "Time": "Durata dell'evento",
+    "MarketingBudgetAllocatedForTheYear": "Budget di marketing assegnato per l'anno",
+    "MarketingBudgetRemainingForTheYear": "Budget di marketing rimanente per l'anno"
   },
   "ProductDetails": {
-    "ProductCode": "Kod produktu",
-    "ProductUnit": "Jednostka miary",
-    "ProductPrice": "Cena jednostkowa",
-    "ProductAvailability": " Stan magazynowy",
-    "Back": "Powrót",
-    "Previous": "Poprzedni",
-    "Next": "Następny",
-    "ProductDescription": "Opis produktu"
+    "ProductCode": "Codice prodotto",
+    "ProductUnit": "Unità di misura",
+    "ProductPrice": "Prezzo unitario",
+    "ProductAvailability": " Stock",
+    "Back": "Indietro",
+    "Previous": "Precedente",
+    "Next": "Successivo",
+    "ProductDescription": "Descrizione del prodotto"
   },
   "Button": {
-    "PaidOrderApplication": "Wniosek o zamówienie płatne",
-    "Cancel": "Anuluj",
-    "OrderApplication": "Złóż wniosek",
+    "PaidOrderApplication": "Richiesta di ordine a pagamento",
+    "Cancel": "Annullare",
+    "OrderApplication": "Presentare la richiesta",
     "NotifyWhenAvailable": "Powiadom o dostępności",
-    "InvalidValue": "Niepoprawna wartość",
-    "TheValueEntered": "Wpisana wartość jest nieprawidłowa lub przekracza dostępną ilość w magazynie."
+    "InvalidValue": "Valore non corretto",
+    "TheValueEntered": "Il valore inserito non è corretto o supera la quantità disponibile in magazzino."
   },
   "ClientModal": {
-    "NotifyMe": "Powiadom mnie",
-    "NotifyWhenProductAvailable": "Powiadom o dostępności produktu",
-    "Subscribe": "Podaj swój adres email i kliknij „Powiadom mnie”, a otrzymasz powiadomienie, gdy produkt będzie znów dostępny.",
-    "Close": "Close"
+    "NotifyMe": "Notificami",
+    "NotifyWhenProductAvailable": "Segnalare la disponibilità del prodotto",
+    "Subscribe": "Inserisci il tuo indirizzo e-mail, clicca su 'Notificami' e sarai avvisato quando il prodotto torna disponibile."
   },
   "ClientResponseModal": {
-    "SuccessfullySubscribed": "Udało ci się zasubskrybować produkt: ",
-    "SuccessfullySubscribedInfo": "Po ponownej dostępności dostaniesz od nas wiadomość z informacją.",
-    "AlreadySubscribedItem": "Subskrybujesz już produkt: ",
-    "OrAnErrorOccurred": "lub wystąpił błąd"
+    "SuccessfullySubscribed": "Sei riuscito ad abbonarti al prodotto: ",
+    "SuccessfullySubscribedInfo": "Quando torna disponibile, riceverai un messaggio da parte nostra.",
+    "AlreadySubscribedItem": "Sei già abbonato al prodotto: ",
+    "OrAnErrorOccurred": "o si è verificato un errore"
+  },
+  "NotFound": {
+    "GoToLog": "Torna alla pagina di login",
+    "AuthDataExpired": "Le tue credenziali non sono più valide, ti invitiamo a fare nuovamente il login",
+    "ServerError": "Si è verificato un errore del server, ti invitiamo a contattare il tuo supervisore"
   }
 }
