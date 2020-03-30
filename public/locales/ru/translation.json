@@ -153,6 +153,7 @@
     "ProductDescription": "Описание продукта"
   },
   "Button": {
+    "AddToCart": "Добавить в корзину",
     "PaidOrderApplication": "Заявка на платный заказ",
     "Cancel": "Отменить",
     "OrderApplication": "Разместите заявку",

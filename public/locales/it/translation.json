@@ -153,6 +153,7 @@
     "ProductDescription": "Descrizione del prodotto"
   },
   "Button": {
+    "AddToCart": "Aggiungi al carrello",
     "PaidOrderApplication": "Richiesta di ordine a pagamento",
     "Cancel": "Annullare",
     "OrderApplication": "Presentare la richiesta",

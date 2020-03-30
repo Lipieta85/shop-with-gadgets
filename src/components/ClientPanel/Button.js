@@ -216,7 +216,7 @@ const ButtonComponent = props => {
                         className="icon-anim"
                         data-toggle="tooltip"
                         data-placement="top"
-                        title="Zamów"
+                        title={t("Button.AddToCart")}
                     />
                 </div>
             )}

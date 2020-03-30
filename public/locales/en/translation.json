@@ -153,6 +153,7 @@
     "ProductDescription": "Description of the product"
   },
   "Button": {
+    "AddToCart": "Add to cart",
     "PaidOrderApplication": "Request for a paid order",
     "Cancel": "Cancel",
     "OrderApplication": "Submit a request",

@@ -153,6 +153,7 @@
     "ProductDescription": "Opis produktu"
   },
   "Button": {
+    "AddToCart": "Dodaj do koszyka",
     "PaidOrderApplication": "Wniosek o zamówienie płatne",
     "Cancel": "Anuluj",
     "OrderApplication": "Złóż wniosek",
