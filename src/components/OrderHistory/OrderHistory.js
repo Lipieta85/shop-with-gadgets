@@ -96,13 +96,13 @@ const OrderHistory = () => {
                         onClick={() => orderDetailHandler(i)}
                     ></button>
                     <div className="cell text-right">
-                        {order.status !== "Deleted"
+                        {order.status_number !== "999"
                             ? Separator(
                                   (+order.order_total_amount).toFixed(2),
                               ) +
                               " " +
                               order.currency_code
-                            : "Anulowane"}
+                            : t("OrderHistory.IsCancelled")}
                     </div>
                 </td>
             </tr>

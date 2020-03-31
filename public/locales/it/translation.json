@@ -127,7 +127,8 @@
     "OrderPerson": "Ordine effettuato da",
     "YourOrderNo": "Il tuo ordine n. ",
     "Cancelled": "è stato cancellato",
-    "NotCancelled": "L'ordine non può essere annullato"
+    "NotCancelled": "L'ordine non può essere annullato",
+    "IsCancelled" : "Annullato"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "La storia del budget è vuota",
