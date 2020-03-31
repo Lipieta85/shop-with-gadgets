@@ -127,7 +127,8 @@
     "OrderPerson": "Zamówienie złożone przez",
     "YourOrderNo": "Twoje zamówienie o numerze: ",
     "Cancelled": "zostało anulowane",
-    "NotCancelled": "Nie udało się anulować zamówienia"
+    "NotCancelled": "Nie udało się anulować zamówienia",
+    "IsCancelled" : "Anulowane"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Historia budżetu jest pusta",

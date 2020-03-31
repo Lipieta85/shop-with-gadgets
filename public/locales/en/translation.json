@@ -127,18 +127,19 @@
     "OrderPerson": "Order placed by",
     "YourOrderNo": "Your order no. ",
     "Cancelled": "has been cancelled",
-    "NotCancelled": "Order could not be canceled"
+    "NotCancelled": "Order could not be canceled",
+    "IsCancelled" : "Cancelled"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Budget history is empty.",
     "BudgetHistory": "Budget History",
     "Date": "Date",
-    "UsedBudget": "Budget used:",
+    "UsedBudget": "Budget used",
     "UserBudgetAtTheBeggining": "Initial budget of the User:",
-    "OperationType": "Type of operation:",
+    "OperationType": "Type of operation",
     "OperationDescription": "Operation description",
-    "OrderNumber": "Order number:",
-    "Time": "Time of event:",
+    "OrderNumber": "Order number",
+    "Time": "Time of event",
     "MarketingBudgetAllocatedForTheYear": "Allocated marketing budget for the year:",
     "MarketingBudgetRemainingForTheYear": "Remaining marketing budget for the year:"
   },

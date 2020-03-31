@@ -91,8 +91,8 @@ export const clearBasket = () => {
 export const getClientBudgetHistory = token => {
     return (dispatch, getState) => {
         const aliasUserId = getState().clientDataReducer.aliasUserId;
-
-        getUserBudgetHistory(token, aliasUserId)
+        const lang = getState().clientDataReducer.language;
+        getUserBudgetHistory(token, aliasUserId, lang)
             .then(res => {
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
@@ -109,10 +109,11 @@ export const setClientBudgetHistory = data => {
     };
 };
 
-export const getClientOrdersHistory = token => {
+export const getClientOrdersHistory = (token) => {
     return (dispatch, getState) => {
+        const lang = getState().clientDataReducer.language;
         const aliasUserId = getState().clientDataReducer.aliasUserId;
-        getUserOrders(token, aliasUserId)
+        getUserOrders(token, aliasUserId, lang)
             .then(res => {
                 dispatch(setClientOrderHistory(res.data.getAll.orders));
             })

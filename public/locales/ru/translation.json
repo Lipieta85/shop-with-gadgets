@@ -127,7 +127,8 @@
     "OrderPerson": "Заказ размещен",
     "YourOrderNo": "Ваш заказ № ",
     "Cancelled": "было отменено",
-    "NotCancelled": "Заказ не может быть отменен"
+    "NotCancelled": "Заказ не может быть отменен",
+    "IsCancelled" : "Oтменен"
   },
   "BudgetHistory": {
     "TheBudgetHistoryIsEmpty": "Нет истории бюджета",

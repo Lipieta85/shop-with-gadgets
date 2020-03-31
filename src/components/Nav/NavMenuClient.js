@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     setProductCategories,
     initProductsCategories,
+    getClientOrdersHistory,
+    getClientBudgetHistory,
     initProducts,
     setPage,
     changeLanguage,
@@ -75,8 +77,14 @@ const NavMenu = () => {
     const changeLangHandler = event => {
         dispatch(changeLanguage(event.target.value));
         dispatch(initProducts(token, 1));
-        dispatch(initProductsCategories(token))
-    };
+        dispatch(initProductsCategories(token));
+        if(window.location.href.includes("OrderHistory")) {
+            dispatch(getClientOrdersHistory(token))
+        }
+        if(window.location.href.includes("BudgetHistory")) {
+            dispatch(getClientBudgetHistory(token));
+        }
+    }
 
     const changePolicyModalStatus = () => {
         if (window.location.pathname === "/Regulations") {

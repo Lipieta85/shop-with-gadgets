@@ -325,10 +325,10 @@ export const postOrder = async (
         }),
     );
 };
-export const getUserOrders = async (token, aliasUserId) => {
-    let url = `${host}/restApi/order/method/getAll`;
+export const getUserOrders = async (token, aliasUserId, lang) => {
+    let url = `${host}/restApi/order/method/getAll/parameters/{"lang":"${lang}"}`;
     if (aliasUserId)
-        url = `${host}/restApi/order/method/getAll/parameters/{"aliasUserId":"${aliasUserId}"}`;
+        url = `${host}/restApi/order/method/getAll/parameters/{"lang":"${lang}", "aliasUserId":"${aliasUserId}"}`;
     return await trackPromise(
         axios({
             method: "get",
@@ -340,10 +340,10 @@ export const getUserOrders = async (token, aliasUserId) => {
     );
 };
 
-export const getUserBudgetHistory = async (token, aliasUserId) => {
-    let url = `${host}/restApi/user/method/wixBudgetHistory`;
+export const getUserBudgetHistory = async (token, aliasUserId, lang) => {
+    let url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":${lang}}`;
     if (aliasUserId)
-        url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"aliasUserId":${aliasUserId}}`;
+        url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":${lang}, "aliasUserId":${aliasUserId}}`;
     return await trackPromise(
         axios({
             method: "get",
