@@ -93,7 +93,7 @@ export const getClientBudgetHistory = token => {
         const aliasUserId = getState().clientDataReducer.aliasUserId;
         const lang = getState().clientDataReducer.language;
         getUserBudgetHistory(token, aliasUserId, lang)
-            .then(res => {console.log(res)
+            .then(res => {
                 dispatch(setClientBudgetHistory(res.data.wixBudgetHistory));
             })
             .catch(error => {

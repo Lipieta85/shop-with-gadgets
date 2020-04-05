@@ -27,7 +27,7 @@ import AddProductModal from "./modals/AddProductModal";
 const ClientPanel = props => {
     const items = useSelector(state => state.cartReducer.items);
     const currentPage = useSelector(state => state.pageReducer.currentPage);
-    let pagination = useSelector(state => state.cartReducer.pagination);
+    const pagination = useSelector(state => state.cartReducer.pagination);
     const category = useSelector(state => state.cartReducer.productsCategory);
     const paginationTyp = useSelector(
         state => state.cartReducer.paginationType,
