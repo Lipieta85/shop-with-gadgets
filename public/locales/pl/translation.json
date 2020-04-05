@@ -177,5 +177,17 @@
     "GoToLog": "Wróć do strony logowania",
     "AuthDataExpired": "Twoje dane autoryzacyjne wygasły, zaloguj sie ponownie",
     "ServerError": "Wystąpił błąd serwera, skontaktuj się ze swoim opiekunem"
+  },
+  "OpTypes":{
+    "Submitting of order": "Złożenie zamówienia",
+    "Order to settlement": "Zamówienie do rozliczenia",
+    "Settlement of order": "Rozliczenie zamówienia", 
+    "Cancellation of order": "Anulowanie zamówienia", 
+    "Cancelation of order": "Anulowanie zamówienia", 
+    "Cancelation of order by the customer": "Anulowanie zamówienia", 
+    "Booked": "Księgowanie",
+    "Removed booking": "Usunięcie księgowania",
+    "Lock removed": "Usunięcie blokady",
+    "Locked": "Blokada"
   }
 }

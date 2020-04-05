@@ -187,6 +187,20 @@ export const initProductsCategories = token => {
 
         getProductsCategories(token, companyId, lang)
             .then(res => {
+                // PolishCategoryName.en = EngCategoryName;
+                // PolishCategoryName.pl = null; ...
+                for (var key in res.data.categories){
+                    if (res.data.categories[key].pl === null)
+                        res.data.categories[key].translation = key;
+                    if (res.data.categories[key].en)
+                        res.data.categories[key].translation = res.data.categories[key].en;
+                    if (res.data.categories[key].it)
+                        res.data.categories[key].translation = res.data.categories[key].it;
+                    if (res.data.categories[key].ru)
+                        res.data.categories[key].translation = res.data.categories[key].ru;
+                    if (!res.data.categories[key].translation)
+                        res.data.categories[key].translation = key;
+                }
                 dispatch(setProductsCategories(res.data.categories));
             })
             .catch(error => {

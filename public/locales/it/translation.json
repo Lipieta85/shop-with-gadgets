@@ -177,5 +177,17 @@
     "GoToLog": "Torna alla pagina di login",
     "AuthDataExpired": "Le tue credenziali non sono più valide, ti invitiamo a fare nuovamente il login",
     "ServerError": "Si è verificato un errore del server, ti invitiamo a contattare il tuo supervisore"
+  },
+  "OpTypes":{
+    "Submitting of order": "Invio dell'ordine",
+    "Order to settlement": "Ordine di insediamento",
+    "Settlement of order": "Liquidazione dell'ordine", 
+    "Cancellation of order": "Annullamento dell'ordine", 
+    "Cancelation of order": "Annullamento dell'ordine", 
+    "Cancelation of order by the customer": "Annullamento dell'ordine", 
+    "Booked": "Prenotato",
+    "Removed booking": "Prenotazione rimossa",
+    "Lock removed": "Blocco rimosso",
+    "Locked": "Bloccato"
   }
 }

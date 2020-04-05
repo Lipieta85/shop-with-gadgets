@@ -139,28 +139,25 @@ const NavMenu = () => {
                                             {t(`Nav.All`)}
                                         </button>
                                     </li>
-                                    {availableProductsCategory
-                                        ? availableProductsCategory.map(
-                                              (position, i) => {
-                                                  return (
-                                                      <li
-                                                          className="nav-item item-separated"
-                                                          key={i}
-                                                      >
-                                                          <button
-                                                              id={`${position.SLO_ID}`}
-                                                              className="nav-link"
-                                                              onClick={
-                                                                  tabHandler
-                                                              }
-                                                          >
-                                                              {`${position.SLO_NAZWA}`}
-                                                          </button>
-                                                      </li>
-                                                  );
-                                              },
-                                          )
-                                        : null}
+                                    {availableProductsCategory ? 
+                                        availableProductsCategory.map(
+                                            (position, i) => {
+                                                return (
+                                                    <li className="nav-item item-separated" key={i}>
+                                                        <button
+                                                            id={`${position.SLO_ID}`}
+                                                            className="nav-link"
+                                                            onClick={
+                                                                tabHandler
+                                                            }
+                                                        >
+                                                            {`${position.translation}`}
+                                                        </button>
+                                                    </li>
+                                                );
+                                            },
+                                        )
+                                    : null}
                                 </ul>
                             </div>
                         ) : null}

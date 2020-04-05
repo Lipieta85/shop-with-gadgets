@@ -341,9 +341,9 @@ export const getUserOrders = async (token, aliasUserId, lang) => {
 };
 
 export const getUserBudgetHistory = async (token, aliasUserId, lang) => {
-    let url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":${lang}}`;
+    let url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":"en"}`;
     if (aliasUserId)
-        url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":${lang}, "aliasUserId":${aliasUserId}}`;
+        url = `${host}/restApi/user/method/wixBudgetHistory/parameters/{"lang":"en", "aliasUserId":${aliasUserId}}`;
     return await trackPromise(
         axios({
             method: "get",
