@@ -188,6 +188,11 @@
     "Booked": "Booked",
     "Removed booking": "Removed booking",
     "Lock removed": "Lock removed",
-    "Locked": "Locked"
+    "Locked": "Locked",
+    "Deleted": "Deleted",
+    "Invoice booked": "Invoice booked",
+    "Invoiced": "Invoiced",
+    "Waiting for processing": "Waiting for processing",
+    "ready": "Booked / ready for picking"
   }
 }

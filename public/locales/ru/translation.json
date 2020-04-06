@@ -188,6 +188,11 @@
     "Booked": "учет",
     "Removed booking": "Удалить сообщение",
     "Lock removed": "Снятие блокировки",
-    "Locked": "блокада"
+    "Locked": "блокада",
+    "Deleted": "Исключен",
+    "Invoice booked": "Счет забронирован",
+    "Invoiced": "Фактурная",
+    "Waiting for processing": "В ожидании обработки",
+    "ready": "готов к комплектации"
   }
 }

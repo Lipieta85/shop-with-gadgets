@@ -188,6 +188,11 @@
     "Booked": "Prenotato",
     "Removed booking": "Prenotazione rimossa",
     "Lock removed": "Blocco rimosso",
-    "Locked": "Bloccato"
+    "Locked": "Bloccato",
+    "Deleted": "Deleted",
+    "Invoice booked": "Fattura prenotata",
+    "Invoiced": "Fatturato",
+    "Waiting for processing": "In attesa di elaborazione",
+    "ready": "pronto per il raccolto"
   }
 }
