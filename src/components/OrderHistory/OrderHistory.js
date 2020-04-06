@@ -88,7 +88,12 @@ const OrderHistory = () => {
                         className="row-button"
                         onClick={() => orderDetailHandler(i)}
                     ></button>
-                    <div className="cell">{order.status}</div>
+                    <div className="cell">{order.status && 
+                        (!order.status.includes("ready for picking")) ?
+                            t("OpTypes."+order.status) :
+                        t("OpTypes.ready")
+                    }
+                    </div>
                 </td>
                 <td>
                     <button
@@ -273,8 +278,12 @@ const OrderHistory = () => {
                                                         </td>
                                                         <td>
                                                             <b>
-                                                                {
-                                                                    showedOrder.status
+                                                                {  
+                                                                    showedOrder.status && 
+                                                                        (!showedOrder.status.includes("ready for picking")) ?
+                                                                            t("OpTypes."+showedOrder.status) :
+                                                                        t("OpTypes.ready")
+                                                                    
                                                                 }
                                                             </b>
                                                         </td>
@@ -354,7 +363,7 @@ const OrderHistory = () => {
                                 />
                             )}
                             {showedOrder &&
-                            showedOrder.status === "Zamówienie anulowane" ? (
+                            showedOrder.status === "Deleted" ? (
                                 ""
                             ) : (
                                 <h5 className="header-title">
@@ -456,7 +465,7 @@ const OrderHistory = () => {
                                   })
                                 : null}
                             {showedOrder &&
-                            showedOrder.status === "Zamówienie anulowane" ? (
+                            showedOrder.status === "Deleted" ? (
                                 ""
                             ) : (
                                 <div className="summary-box">

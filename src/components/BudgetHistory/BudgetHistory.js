@@ -49,33 +49,14 @@ const BudgetHistory = () => {
                     </td>
                     <td>
                         <div className="cell">
-                            {i.operation_type === "LOCK_ADD"
-                                ? "blokada"
-                                : i.operation_type === "LOCK_REMOVE"
-                                ? "usunięcie blokady"
-                                : i.operation_type === "BOOKING_ADD"
-                                ? "księgowanie (finalne)"
-                                : i.operation_type === "BOOKING_REMOVE"
-                                ? "usunięcie księgowania"
-                                : i.operation_type === "UPDATE_ADD"
-                                ? "aktualizacja budżetu"
-                                : i.operation_type === "UPDATE_REMOVE"
-                                ? "usunięcie aktualizacji"
-                                : ""}
+                            {i.operation_type && t("OpTypes."+i.operation_type)}
                         </div>
                     </td>
                     <td>
                         <div className="cell">
                             {" "}
                             {/**DO WYWALENIA ZARAZ */}
-                            {i.operation_description
-                                ? i.operation_description.includes(
-                                      "Submitting of order",
-                                  )
-                                    ? "Złożenie zamówienia przez - " +
-                                      i.operation_description.substr(34)
-                                    : i.operation_description
-                                : ""}
+                            {i.operation_description && t("OpTypes."+i.operation_description)}
                         </div>
                     </td>
                     <td>

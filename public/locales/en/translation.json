@@ -177,5 +177,22 @@
     "GoToLog": "Go back to the login page.",
     "AuthDataExpired": "Your authorisation data has expired, please log in again.",
     "ServerError": "There was a server error, please contact your manager."
+  },
+  "OpTypes":{
+    "Submitting of order": "Submitting of order",
+    "Order to settlement": "Order to settlement",
+    "Settlement of order": "Settlement of order", 
+    "Cancellation of order": "Cancellation of order", 
+    "Cancelation of order": "Cancellation of order", 
+    "Cancelation of order by the customer": "Cancellation of order",
+    "Booked": "Booked",
+    "Removed booking": "Removed booking",
+    "Lock removed": "Lock removed",
+    "Locked": "Locked",
+    "Deleted": "Deleted",
+    "Invoice booked": "Invoice booked",
+    "Invoiced": "Invoiced",
+    "Waiting for processing": "Waiting for processing",
+    "ready": "Booked / ready for picking"
   }
 }

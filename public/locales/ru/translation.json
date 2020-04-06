@@ -177,5 +177,22 @@
     "GoToLog": "Вернуться на страницу входа",
     "AuthDataExpired": "Срок действия ваших данных авторизации истек, пожалуйста, войдите еще раз",
     "ServerError": "Произошла ошибка сервера, пожалуйста, свяжитесь со своим контактным лицом"
+  },
+  "OpTypes":{
+    "Submitting of order": "Отправка заказа",
+    "Order to settlement": "Заказ на поселение",
+    "Settlement of order": "Урегулирование заказа", 
+    "Cancellation of order": "Отмена заказа", 
+    "Cancelation of order": "Отмена заказа", 
+    "Cancelation of order by the customer": "Отмена заказа", 
+    "Booked": "учет",
+    "Removed booking": "Удалить сообщение",
+    "Lock removed": "Снятие блокировки",
+    "Locked": "блокада",
+    "Deleted": "Исключен",
+    "Invoice booked": "Счет забронирован",
+    "Invoiced": "Фактурная",
+    "Waiting for processing": "В ожидании обработки",
+    "ready": "готов к комплектации"
   }
 }
