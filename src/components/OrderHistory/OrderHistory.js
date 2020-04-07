@@ -88,12 +88,7 @@ const OrderHistory = () => {
                         className="row-button"
                         onClick={() => orderDetailHandler(i)}
                     ></button>
-                    <div className="cell">{order.status && 
-                        (!order.status.includes("ready for picking")) ?
-                            t("OpTypes."+order.status) :
-                        t("OpTypes.ready")
-                    }
-                    </div>
+                    <div className="cell">{order.status_number && t("OpTypes."+order.status_number)}</div>
                 </td>
                 <td>
                     <button
@@ -278,12 +273,8 @@ const OrderHistory = () => {
                                                         </td>
                                                         <td>
                                                             <b>
-                                                                {  
-                                                                    showedOrder.status && 
-                                                                        (!showedOrder.status.includes("ready for picking")) ?
-                                                                            t("OpTypes."+showedOrder.status) :
-                                                                        t("OpTypes.ready")
-                                                                    
+                                                                {showedOrder.status_number && 
+                                                                    t("OpTypes."+showedOrder.status_number)
                                                                 }
                                                             </b>
                                                         </td>

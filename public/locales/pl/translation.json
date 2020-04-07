@@ -189,10 +189,14 @@
     "Removed booking": "Usunięcie księgowania",
     "Lock removed": "Usunięcie blokady",
     "Locked": "Blokada",
-    "Deleted": "Zamówienie anulowane",
-    "Invoice booked": "Zamówienie wysłane",
-    "Invoiced": "Zamówienie wysłane",
-    "Waiting for processing": "Oczekiwanie na przetwarzanie",
-    "ready": "Gotowe do wysyłki"
+    "520": "Zamówienie złożone",
+    "530": "Zamówienie w przygotowaniu",
+    "535": "Zamówienie w przygotowaniu",
+    "550": "Zamówienie w przygotowaniu",
+    "560": "Gotowe do wysyłki",
+    "570": "Zamówienie wysłane",
+    "580": "Zamówienie wysłane",
+    "620": "Zamówienie wysłane",
+    "999": "Zamówienie anulowane"
   }
 }

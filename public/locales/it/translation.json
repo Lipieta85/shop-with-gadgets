@@ -189,10 +189,14 @@
     "Removed booking": "Prenotazione rimossa",
     "Lock removed": "Blocco rimosso",
     "Locked": "Bloccato",
-    "Deleted": "Deleted",
-    "Invoice booked": "Fattura prenotata",
-    "Invoiced": "Fatturato",
-    "Waiting for processing": "In attesa di elaborazione",
-    "ready": "pronto per il raccolto"
+    "520": "In attesa di elaborazione",
+    "530": "Pronto per il raccolto",
+    "535": "Pronto per il raccolto",
+    "550": "Pronto per il raccolto",
+    "560": "Pronto per la spedizione",
+    "570": "Ordine inviato",
+    "580": "Ordine inviato",
+    "620": "Ordine inviato",
+    "999": "Deleted"
   }
 }
