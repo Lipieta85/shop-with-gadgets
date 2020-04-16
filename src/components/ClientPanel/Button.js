@@ -12,15 +12,15 @@ import AlertModal from "./modals/AlertModal";
 import { setProductName } from "../../actions/index";
 import "../../assets/styles/buttons.scss";
 
-const ButtonComponent = props => {
+const ButtonComponent = (props) => {
     const subsriptionState = useSelector(
-        state => state.subscriptionReducer.subscribeState,
+        (state) => state.subscriptionReducer.subscribeState,
     );
-    const basketData = useSelector(state => state.cartReducer);
+    const basketData = useSelector((state) => state.cartReducer);
     const orderType = useSelector(
-        state => state.clientDataReducer.marketingOrderType,
+        (state) => state.clientDataReducer.marketingOrderType,
     );
-    const products = useSelector(state => state.cartReducer.items);
+    const products = useSelector((state) => state.cartReducer.items);
     const [productQuantity, setProductQuantity] = useState({ id: 1 });
     const [disabled, setDisabled] = useState(false);
     const [quantityLocation] = useState(true);
@@ -30,8 +30,10 @@ const ButtonComponent = props => {
     const [modalShowResponse, setModalShowResponse] = React.useState(false);
     const [modalShowPaidOrders, setModalShowPaidOrders] = React.useState(false);
     const [modalShowAlert, setModalShowAlert] = React.useState(false);
-    const buttonsNotBlocked = useSelector(state => state.pageReducer.pageLock);
-   
+    const buttonsNotBlocked = useSelector(
+        (state) => state.pageReducer.pageLock,
+    );
+
     const { t } = useTranslation();
 
     const dispatch = useDispatch();
@@ -67,7 +69,7 @@ const ButtonComponent = props => {
                 setProductQuantity({ id: input.current.value });
             }
         }
-        products.map(item => {
+        products.map((item) => {
             if (
                 input.current &&
                 item.product &&
@@ -83,11 +85,11 @@ const ButtonComponent = props => {
         });
     }, [props.changeProduct, disabled, products, dispatch]);
 
-    const changeQuantityHandler = event => {
+    const changeQuantityHandler = (event) => {
         setProductQuantity({
             [event.target.id]: event.target.value,
         });
-        products.map(item => {
+        products.map((item) => {
             if (event.target.id === item.product.id) {
                 if (event.target.value > item.availability) {
                     setDisabled(true);
@@ -99,9 +101,8 @@ const ButtonComponent = props => {
         });
     };
 
-    const dispatchHandler = event => {
-        if (buttonsNotBlocked === false) 
-            return false;
+    const dispatchHandler = (event) => {
+        if (buttonsNotBlocked === false) return false;
         if (disabled && props.availabaleItemQuantity > 0) {
             setModalShowAlert(true);
             return false;
@@ -136,18 +137,18 @@ const ButtonComponent = props => {
     };
 
     const handleShowModal = () => {
-        if (buttonsNotBlocked === true){
+        if (buttonsNotBlocked === true) {
             setModalShow(true);
             setName(props.itemTitle);
             dispatch(setProductName(props.itemTitle));
             setProductid(props.itemId);
-        } 
+        }
     };
 
     const handleShowModalResponse = () => {
-        if (buttonsNotBlocked === true){
+        if (buttonsNotBlocked === true) {
             setModalShowResponse(true);
-        }  
+        }
     };
 
     return (
@@ -196,7 +197,9 @@ const ButtonComponent = props => {
                         onChange={changeQuantityHandler}
                         min="0"
                     />
-                    <span className="font-weight-bold ml-1">szt.</span>
+                    <span className="font-weight-bold ml-1">
+                        {props.itemUnit}
+                    </span>
                 </div>
             )}
             {props.availabaleItemQuantity !== 0 && (
