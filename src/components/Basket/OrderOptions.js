@@ -10,20 +10,19 @@ import { useTranslation } from "react-i18next";
 import "../../assets/styles/order-options.scss";
 
 const OrderOptions = () => {
-    const budget = useSelector(state => state.cartReducer.budget);
-    const total = useSelector(state => state.cartReducer.total);
-    const addedItems = useSelector(state => state.cartReducer.addedItems);
+    const budget = useSelector((state) => state.cartReducer.budget);
+    const addedItems = useSelector((state) => state.cartReducer.addedItems);
 
     const selectStoreState = useSelector(
-        state => state.cartReducer.orderSelectInputValue,
+        (state) => state.cartReducer.orderSelectInputValue,
     );
     const deliveryData = useSelector(
-        state => state.clientDataReducer.clientData,
+        (state) => state.clientDataReducer.clientData,
     );
     const orderType = useSelector(
-        state => state.clientDataReducer.marketingOrderType,
+        (state) => state.clientDataReducer.marketingOrderType,
     );
-    const clientUE = useSelector(state => state.clientDataReducer.isUE);
+    const clientUE = useSelector((state) => state.clientDataReducer.isUE);
 
     const [disabledCheckbox, setDisabledCheckbox] = useState(false);
     const [selectInputValue, setSelectInputValue] = useState();
@@ -51,7 +50,7 @@ const OrderOptions = () => {
         //eslint-disable-next-line
     }, [selectStoreState]);
 
-    const selectValueHandler = event => {
+    const selectValueHandler = (event) => {
         event.preventDefault();
         let e = document.getElementById("order-options-select");
         let selected_value = e.options[e.selectedIndex].attributes[0].value;
@@ -61,7 +60,7 @@ const OrderOptions = () => {
         dispatch(orderSelectInputValue(event.target.value));
     };
 
-    const orderConfirmHandler = e => {
+    const orderConfirmHandler = (e) => {
         if (addedItems.length === 0) {
             e.preventDefault();
             alert(`${t("Basket.BasketIsEmptyAdd")}`);
@@ -110,7 +109,7 @@ const OrderOptions = () => {
                     style={{ padding: 0 }}
                 >
                     {orderType !== "S6" ? (
-                        addedItems.length === 0 || +total > +budget ? (
+                        addedItems.length === 0 || +budget < 0 ? (
                             <button disabled className="order-button">
                                 {t("Basket.SUBMITYOURORDER")}
                             </button>

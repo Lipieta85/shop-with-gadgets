@@ -8,26 +8,30 @@ import Separator from "./Separator/Separator";
 import "../assets/styles/client-panel-menu.scss";
 
 const ClientPanelMenu = () => {
-    const priceValue = useSelector(state => state.cartReducer.total);
-    const budget = useSelector(state => state.cartReducer.budget);
-    const totalQuantity = useSelector(state => state.cartReducer.totalQuantity);
-    const addedItems = useSelector(state => state.cartReducer.addedItems);
-    const orderHistory = useSelector(state => state.orderReducer.historyOfBuy);
-    const companyName = useSelector(
-        state => state.clientDataReducer.companyName,
+    const priceValue = useSelector((state) => state.cartReducer.total);
+    const budget = useSelector((state) => state.cartReducer.budget);
+    const totalQuantity = useSelector(
+        (state) => state.cartReducer.totalQuantity,
     );
-    const userName = useSelector(state => state.clientDataReducer.userName);
+    const addedItems = useSelector((state) => state.cartReducer.addedItems);
+    const orderHistory = useSelector(
+        (state) => state.orderReducer.historyOfBuy,
+    );
+    const companyName = useSelector(
+        (state) => state.clientDataReducer.companyName,
+    );
+    const userName = useSelector((state) => state.clientDataReducer.userName);
     const currencyCode = useSelector(
-        state => state.clientDataReducer.currencyCode,
+        (state) => state.clientDataReducer.currencyCode,
     );
     const orderHistoryShow = useSelector(
-        state => state.orderReducer.historyShow,
+        (state) => state.orderReducer.historyShow,
     );
     const orderType = useSelector(
-        state => state.clientDataReducer.marketingOrderType,
+        (state) => state.clientDataReducer.marketingOrderType,
     );
     const userIdNumber = useSelector(
-        state => state.clientDataReducer.userIdNumber,
+        (state) => state.clientDataReducer.userIdNumber,
     );
     const [orderList, setOrderList] = useState();
 
@@ -37,7 +41,7 @@ const ClientPanelMenu = () => {
     let currency = [];
 
     if (addedItems) {
-        addedItems.map(item => {
+        addedItems.map((item) => {
             return currency.push(item.price.currency);
         });
     }
@@ -53,14 +57,14 @@ const ClientPanelMenu = () => {
     useEffect(() => {
         if (orderHistoryShow) {
             setOrderList(
-                orderHistory.map(order => {
+                orderHistory.map((order) => {
                     return <p>{order.orderDate}</p>;
                 }),
             );
         }
     }, [orderHistoryShow, orderHistory]);
 
-    const buttonHandler = e => {
+    const buttonHandler = (e) => {
         if (addedItems.length === 0) {
             e.preventDefault();
             //alert("Koszyk jest pusty, dodaj produkt");
@@ -172,7 +176,7 @@ const ClientPanelMenu = () => {
                                 <br />
                                 <span
                                     className={
-                                        +priceValue > +budget
+                                        +budget < 0
                                             ? "budget-alert-exceeded"
                                             : "blue-value"
                                     }
